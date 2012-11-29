@@ -1,0 +1,19 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.16
+Name=pyExifToolGUI
+GenericName=pyExifToolGUI
+Comment= pyside based python gui for exiftool 
+Comment[nl]=pyside gebaseerde python gui
+
+Type=Application
+Categories=Graphics;Photography;
+
+Exec=pyexiftoolgui %F
+TryExec=pyexiftoolgui
+Icon=pyexiftoolgui.png
+
+Terminal=false
+StartupNotify=true
+
+MimeType=application/x-mfusion;image/jpeg;image/tiff;

@@ -1,0 +1,55 @@
+﻿
+exiftool -exif:gpslatitude="42 30 0.00" -exif:gpslatituderef=S a.jpg
+exiftool -exif:gpslatitude="42 deg 30.00 min" -exif:gpslatituderef=S a.jpg
+exiftool -exif:gpslatitude=42.5 -exif:gpslatituderef=S a.jpg
+
+exiftool -xmp:gpslatitude="42 30 0.00 S" a.jpg
+exiftool -xmp:gpslatitude=42.50S a.jpg
+exiftool -xmp:gpslatitude=-42.5 a.jpg
+
+Hoefslagmate 58: geotagged geo:lat=52.514438 geo:lon=6.086426 (ongeveer)
+Recife: geotagged geo:lat=-7.940281 geo:lon=-34.848633 
+
+exiftool -overwrite_original_in_place -xmp:City="Recife" -xmp:Country="Brazil" -xmp:Location="Brazil, Recife, Somewhere" -iptc:City="Recife" -iptc:Country-PrimaryLocationName="Brazil" -exif:gpslatitude=-7.940281 -exif:gpslongitude=-34.848633 -xmp:gpslatitude=-7.940281 -xmp:gpslongitude=-34.848633 -exif:gpslatituderef=S -exif:gpslongituderef=W image.jpg
+
+
+for i in *.jpg; do 
+#  exiftool -overwrite_original_in_place -exif:gpslatitude=52.514438 -exif:gpslongitude=6.086426 -exif:gpslatituderef=N -exif:gpslongituderef=E -xmp:gpslatitude=52.514438 -xmp:gpslongitude=6.086426 "$i"
+  exiftool -overwrite_original_in_place -exif:gpslatitude=52.514438 -exif:gpslongitude=6.086426 -exif:gpslatituderef=N -exif:gpslongituderef=E -exif:GPSMapDatum="WGS-84" -xmp:gpslatitude=52.514438 -xmp:gpslongitude=6.086426 -xmp:City="Zwolle" -xmp:Country="Netherlands" -xmp:Location="The Netherlands, Zwolle, Hoefslagmate 58" "$i"
+  # Can't be done in one command
+  exiftool "-FileModifyDate<DateTimeOriginal" "$i"
+done
+
+-xmp:Location                        : 
+-xmp:Country                         : SPAIN
+-xmp:State                           : MÁLAGA
+-xmp:City                            : FRIGILIANA
+-xmp:Landmark                        : ---
+exiftool -overwrite_original_in_place -xmp:City="Zwolle" -xmp:Country="Netherlands" -xmp:Location="The Netherlands, Zwolle, Hoefslagmate 58" -iptc:City="Zwolle" -iptc:Country-PrimaryLocationName="Netherlands" 20121117-015.jpg
+
+-iptc:Province-State="" -iptc:Sub-location=""
+
+exiftool -D -a -gps:all image.jpg
+    0 GPS Version ID                  : 2.2.0.0
+    1 GPS Latitude Ref                : North
+    2 GPS Latitude                    : 36 deg 39' 46.03"
+    3 GPS Longitude Ref               : West
+    4 GPS Longitude                   : 4 deg 27' 33.61"
+    7 GPS Time Stamp                  : 17:51:28
+    8 GPS Satellites                  : 4
+    9 GPS Status                      : Measurement Active
+   10 GPS Measure Mode                : 2-Dimensional Measurement
+   11 GPS Dilution Of Precision       : 3.6
+   18 GPS Map Datum                   : WGS-84
+   27 GPS Processing Method           : GPS
+   29 GPS Date Stamp                  : 2012:10:22
+
+
+EXIF
+-exif:Make
+-exif:Model
+-exif:Artist
+-exif:Copyright
+-exif:UserComment
+-exif:ImageDescription
+

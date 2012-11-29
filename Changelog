@@ -1,0 +1,17 @@
+
+= 0.16
+- Delete google maps tab and replace with mapcoordinates.net. This gives altitude as well.
+- Edit -> Exif tab writes info as well
+- Create simple setup.py script
+
+
+= 0.15, 2012-11-24
+- Restyle gps tab by adding frames per subsection. Was very crowded, now slightly improved.
+- Progress bar now also for writing exif infor to many images as it can take some time.
+
+= 0.14
+- Write gps data
+
+- Older versions not logged
+
+

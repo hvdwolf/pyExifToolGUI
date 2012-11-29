@@ -1,0 +1,72 @@
+Introduction
+============
+
+I'm on Linux so this tool is written on Linux and primarily aimed at Linux.
+However, it runs fine and functions fine on Mac OS X and Windows as well.
+It is currently not part of any Linux distribution and I'm currently lacking
+the skills to write a good automake/configure script to package it for
+Ubuntu (or any other Debian based linux), or (Open)Suse or Fedora/Redhat.
+This also means that it doesn't do any dependency checks for necessary
+libraries and so on. 
+I simply wrote a "setup" and "remove" script. Currently it only works on
+Linux and Mac OS X. Windows is not my target but eventually it will get it's
+own python executable.
+
+Installation on Linux
+=====================
+Dependencies (Meaning that you need to install them yourself):
+- python: part of every linux system, so always available, but >=2.6 required.
+- pyside: Install via your distribution's package manager. Otherwise download it from www.pyside.org
+- python-pyside (qtcore and qtgui are required): Install via your distribution's package manager. 
+  Otherwise download it from www.pyside.org
+- ExifTool: Install via your distribution's package manager.
+
+Installation:
+- Untar the package to some folder (You obviously did that already if you are reading this).
+- Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
+- Run the setup script from the command line with "sudo ./setup.py install".
+- pyExifToolGUI will be installed and you should have an icon.
+- Start and enjoy.
+
+Installation on Mac OS X
+========================
+- python: part of every linux system, so always available, but 2.7 required.
+  -- (Snow) Leopard: Download python 2.7 from python.org and install. Then run
+     Update Shell Profile.command from /Applications/Python 2.7
+  -- (Mountain) Lion comes with python 2.7
+- pyside: Download it from www.pyside.org. (You can also install it from MacPorts but this will give issues most of the time.)
+- pyX.Y-pyside: Install via MacPorts. (XY needs to be 2.7).
+- ExifTool: Download the DMG from the ExifTool website (highly preferred) or install via MacPorts.
+
+Installation:
+- Untar the package to some folder (You obviously did that already if you are reading this).
+- Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
+- Run the setup script from the command line with "sudo ./setup.py install" (no double-quotes).
+- The script will install a "bare bones" pyExifToolGUI.app in your Applications folder.
+  Note that the pyExifToolGUI.app is NOT a complete self contained application. It needs the mentioned dependencies.
+- Start and enjoy.
+
+
+Installation on Windows
+=======================
+I'm working on a windows python executable, but currently you are on your own here.
+But if you want to try I will provide some basic instructions.
+- Install python on your system. Download it from www.python.org
+- Install pyside on your system. Download it from www.pyside.org (pay attention to the possible combinations)
+- Download pyExifToolGUI-x.y.tgz and unpack it to some folder.
+- Start from a dos/command box with: <drive:\path\to\python\executable drive:\path\to\pyexiftoolgui.py>
+
+
+
+Uninstall / Removal
+===================
+- Open a terminal
+- Move into the folder where you untarred this (You might need to download again if your removed everything).
+- run the setup script from the command line with "sudo ./setup.py remove" (no double quotes).
+- On Mac OS X simply remove pyExifToolGUI.app from /Applications
+
+This file: Version 0.11, 2012-11-27, H. van der Wolf
+
+
+
+

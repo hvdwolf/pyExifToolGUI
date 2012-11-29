@@ -1,0 +1,5 @@
+pyside-uic -o ui_myform.py myform.ui
+
+create an rc file for a gui
+- first create the qrc file itself
+- pyside-rcc myqrcfile.qrc > myqrcfile_rc.py
