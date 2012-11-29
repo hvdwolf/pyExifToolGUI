@@ -241,7 +241,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>601</width>
+         <width>691</width>
          <height>41</height>
         </rect>
        </property>
@@ -261,6 +261,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="radioButton_exif">
+          <property name="toolTip">
+           <string>Select to display all available Exif info</string>
+          </property>
           <property name="text">
            <string>Exif</string>
           </property>
@@ -268,6 +271,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="radioButton_xmp">
+          <property name="toolTip">
+           <string>Select to display all available xmp info</string>
+          </property>
           <property name="text">
            <string>xmp</string>
           </property>
@@ -275,6 +281,9 @@
         </item>
         <item>
          <widget class="QRadioButton" name="radioButton_iptc">
+          <property name="toolTip">
+           <string>Select to display all available Select to display all available Exif info info</string>
+          </property>
           <property name="text">
            <string>IPTC</string>
           </property>
@@ -282,13 +291,29 @@
         </item>
         <item>
          <widget class="QRadioButton" name="radioButton_gps">
+          <property name="toolTip">
+           <string>Select to display all available gps and location info from either or both exif, xmp and IPTC</string>
+          </property>
           <property name="text">
            <string>GPS/Location</string>
           </property>
          </widget>
         </item>
         <item>
+         <widget class="QRadioButton" name="radioButton_gpano">
+          <property name="toolTip">
+           <string>Select to display all available Google PhotoSphere info</string>
+          </property>
+          <property name="text">
+           <string>GPano</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QRadioButton" name="radioButton_makernotes">
+          <property name="toolTip">
+           <string>Select to display all available Maker notes info</string>
+          </property>
           <property name="text">
            <string>Makernotes</string>
           </property>
@@ -1919,10 +1944,10 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="4" column="2">
-          <widget class="QLineEdit" name="CroppedAreaTopPixels"/>
+          <widget class="QLineEdit" name="xmp_CroppedAreaTopPixels"/>
          </item>
          <item row="6" column="2">
-          <widget class="QLineEdit" name="FullPanoWidthPixels"/>
+          <widget class="QLineEdit" name="xmp_FullPanoWidthPixels"/>
          </item>
          <item row="8" column="0">
           <widget class="QLabel" name="label_47">
@@ -1930,9 +1955,6 @@ to convert the data.</string>
             <string>UsePanoramaViewer</string>
            </property>
           </widget>
-         </item>
-         <item row="7" column="2">
-          <widget class="QSpinBox" name="spin_ProjectionType"/>
          </item>
          <item row="5" column="0">
           <widget class="QLabel" name="label_29">
@@ -1949,20 +1971,23 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="2" column="2">
-          <widget class="QLineEdit" name="CroppedAreaImageWidthPixels"/>
+          <widget class="QLineEdit" name="xmp_CroppedAreaImageWidthPixels"/>
          </item>
          <item row="8" column="2">
-          <widget class="QCheckBox" name="UsePanoramaViewer">
+          <widget class="QCheckBox" name="xmp_UsePanoramaViewer">
            <property name="text">
             <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="2">
-          <widget class="QLineEdit" name="CroppedAreaImageHeightPixels"/>
+          <widget class="QLineEdit" name="xmp_CroppedAreaImageHeightPixels"/>
          </item>
          <item row="4" column="3">
-          <widget class="QCheckBox" name="chk_CroppedAreaTopPixels">
+          <widget class="QCheckBox" name="chk_xmp_CroppedAreaTopPixels">
            <property name="text">
             <string/>
            </property>
@@ -1972,7 +1997,7 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="5" column="2">
-          <widget class="QLineEdit" name="FullPanoHeightPixels"/>
+          <widget class="QLineEdit" name="xmp_FullPanoHeightPixels"/>
          </item>
          <item row="0" column="3">
           <widget class="QLabel" name="label_50">
@@ -1988,7 +2013,7 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="2" column="3">
-          <widget class="QCheckBox" name="chk_CroppedAreaImageWidthPixels">
+          <widget class="QCheckBox" name="chk_xmp_CroppedAreaImageWidthPixels">
            <property name="text">
             <string/>
            </property>
@@ -1998,7 +2023,7 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="1" column="3">
-          <widget class="QCheckBox" name="chk_CroppedAreaImageHeightPixels">
+          <widget class="QCheckBox" name="chk_xmp_CroppedAreaImageHeightPixels">
            <property name="text">
             <string/>
            </property>
@@ -2008,7 +2033,7 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="6" column="3">
-          <widget class="QCheckBox" name="chk_FullPanoWidthPixels">
+          <widget class="QCheckBox" name="chk_xmp_FullPanoWidthPixels">
            <property name="text">
             <string/>
            </property>
@@ -2018,7 +2043,7 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="3" column="3">
-          <widget class="QCheckBox" name="chk_CroppedAreaLeftPixels">
+          <widget class="QCheckBox" name="chk_xmp_CroppedAreaLeftPixels">
            <property name="text">
             <string/>
            </property>
@@ -2028,7 +2053,7 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="5" column="3">
-          <widget class="QCheckBox" name="chk_FullPanoHeightPixels">
+          <widget class="QCheckBox" name="chk_xmp_FullPanoHeightPixels">
            <property name="text">
             <string/>
            </property>
@@ -2052,10 +2077,10 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="3" column="2">
-          <widget class="QLineEdit" name="CroppedAreaLeftPixels"/>
+          <widget class="QLineEdit" name="xmp_CroppedAreaLeftPixels"/>
          </item>
          <item row="7" column="3">
-          <widget class="QCheckBox" name="chk_ProjectionType">
+          <widget class="QCheckBox" name="chk_xmp_ProjectionType">
            <property name="text">
             <string/>
            </property>
@@ -2065,7 +2090,7 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="8" column="3">
-          <widget class="QCheckBox" name="chk_UsePanoramaViewer">
+          <widget class="QCheckBox" name="chk_xmp_UsePanoramaViewer">
            <property name="text">
             <string/>
            </property>
@@ -2082,16 +2107,35 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="9" column="2">
-          <widget class="QLineEdit" name="PoseHeadingDegrees"/>
+          <widget class="QLineEdit" name="xmp_PoseHeadingDegrees"/>
          </item>
          <item row="9" column="3">
-          <widget class="QCheckBox" name="chk_PoseHeadingDegrees">
+          <widget class="QCheckBox" name="chk_xmp_PoseHeadingDegrees">
            <property name="text">
             <string/>
            </property>
            <property name="checked">
             <bool>true</bool>
            </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <widget class="QComboBox" name="xmp_ProjectionType">
+           <item>
+            <property name="text">
+             <string>equirectangular</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cylindrical</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>rectilinear</string>
+            </property>
+           </item>
           </widget>
          </item>
         </layout>

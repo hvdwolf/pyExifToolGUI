@@ -53,3 +53,6 @@ EXIF
 -exif:UserComment
 -exif:ImageDescription
 
+
+GPano Google Photosphere
+exiftool -overwrite_original_in_place -xmp:CroppedAreaImageHeightPixels="300" -xmp:CroppedAreaImageWidthPixels="800" -xmp:CroppedAreaLeftPixels="20" -xmp:CroppedAreaTopPixels="20" -xmp:FullPanoHeightPixels="1024" -xmp:FullPanoWidthPixels="8000" -xmp:ProjectionType="equirectangular" -xmp:UsePanoramaViewer=1 -xmp:PoseHeadingDegrees="120" 

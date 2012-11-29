@@ -319,6 +319,9 @@ def loadimages(self,loadedimages, loadedimagesstring,qApp):
                 self.btn_savegps.setEnabled(True)
                 self.btn_exif_copyfrom.setEnabled(True)
                 self.btn_saveexif.setEnabled(True)
+                if float(self.exiftoolversion) > 9.06:
+                   self.btn_gpano_copyfrom.setEnabled(True)
+                   self.btn_savegpano.setEnabled(True)
         	self.progressbar.hide()
                 self.lbl_progress.setText("Click thumb or filename to display the image info")
                 # Set proper events
@@ -328,6 +331,7 @@ def loadimages(self,loadedimages, loadedimagesstring,qApp):
 		self.radioButton_xmp.clicked.connect(self.imageinfo)
 		self.radioButton_iptc.clicked.connect(self.imageinfo)
 		self.radioButton_gps.clicked.connect(self.imageinfo)
+		self.radioButton_gpano.clicked.connect(self.imageinfo)
 		self.radioButton_makernotes.clicked.connect(self.imageinfo)
 
 
@@ -354,6 +358,10 @@ def imageinfo(self, qApp):
             exiftool_params = "-gps:all -xmp:GPSLatitude -xmp:GPSLongitude -xmp:Location -xmp:Country -xmp:State -xmp:City"
             arguments = " -a -gps:all -xmp:GPSLatitude -xmp:GPSLongitude -xmp:Location -xmp:Country -xmp:State -xmp:City"
             header = "GPS tags"
+        if self.radioButton_gpano.isChecked():
+            exiftool_params = "-xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees"
+            arguments = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees"
+            header = "GPano tags"
         if self.radioButton_makernotes.isChecked():
             exiftool_params = "-makernotes:all"
             header = "makernotes tags"
@@ -822,6 +830,81 @@ def saveexifdata(self, qApp):
 
         write_exif_info(self, exiftool_params, qApp)
                
+#------------------------------------------------------------------------
+# Edit -> GPano tab and actions
+def clear_gpano_fields(self):
+        self.xmp_CroppedAreaImageHeightPixels.setText("")
+        self.xmp_CroppedAreaImageWidthPixels.setText("")
+        self.xmp_CroppedAreaLeftPixels.setText("")
+        self.xmp_CroppedAreaTopPixels.setText("")
+        self.xmp_FullPanoHeightPixels.setText("")
+        self.xmp_FullPanoWidthPixels.setText("")
+        self.xmp_ProjectionType.setCurrentIndex(0)
+        self.xmp_UsePanoramaViewer.setChecked(1)
+        self.xmp_PoseHeadingDegrees.setText("")
+
+        self.chk_xmp_CroppedAreaImageHeightPixels.setChecked(1)
+        self.chk_xmp_CroppedAreaImageWidthPixels.setChecked(1)
+        self.chk_xmp_CroppedAreaLeftPixels.setChecked(1)
+        self.chk_xmp_CroppedAreaTopPixels.setChecked(1)
+        self.chk_xmp_FullPanoHeightPixels.setChecked(1)
+        self.chk_xmp_FullPanoWidthPixels.setChecked(1)
+        self.chk_xmp_ProjectionType.setChecked(1)
+        self.chk_xmp_UsePanoramaViewer.setChecked(1)
+        self.chk_xmp_PoseHeadingDegrees.setChecked(1)
+
+def copygpanofromselected(self,qApp):
+        # First clean input fields
+        clear_exif_fields(self)
+        exiftool_params = ' -e -n -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees '
+        p = read_exif_info(self, exiftool_params)
+        if len(p) == 0:
+           data = False
+           message = ("<p>You are trying to copy GPano (Google Photosphere) info from your source image, but your source image "
+                      "doesn't contain the specified GPano data or doesn't seem to contain any GPano data (or you didn't select an image).</p>")
+           ret = QMessageBox.warning(self, "Error copying GPano info from source image", message)
+        else:
+           # remove last character which is the final ending \n (where \ is only the escape character)        
+           p = p[:-1]
+           p_lines = re.split('\n',p)
+           rowcounter = 0
+           for line in p_lines:
+            #try: 
+               descriptor, description = re.split(':', line,1)
+               descriptor = descriptor.strip()
+               description = description.strip()
+               gpslat = 0
+               gpslon = 0
+               if descriptor == "Cropped Area Image Height Pixels":
+                     self.xmp_CroppedAreaImageHeightPixels.setText(description)
+               if descriptor == "Cropped Area Image Width Pixels":
+                     self.xmp_CroppedAreaImageWidthPixels.setText(description)
+               if descriptor == "Cropped Area Left Pixels":
+                     self.xmp_CroppedAreaLeftPixels.setText(description)
+               if descriptor == "Cropped Area Top Pixels":
+                      self.xmp_CroppedAreaTopPixels.setText(description)
+               if descriptor == "Full Pano Height Pixels":
+                     self.xmp_FullPanoHeightPixels.setText(description)
+               if descriptor == "Full Pano Width Pixels":
+                     self.xmp_FullPanoWidthPixels.setText(description)
+               if descriptor == "Projection Type":
+                     if description == "equirectangular":
+                        self.xmp_ProjectionType.setCurrentIndex(0)
+                     elif description == "equirectangular":
+                        self.xmp_ProjectionType.setCurrentIndex(1)
+                     elif description == "rectilinear":
+                        self.xmp_ProjectionType.setCurrentIndex(2)
+               if descriptor == "Use Panorama Viewer":
+                     if description == "True":
+                        self.xmp_UsePanoramaViewer.setChecked(1)
+                     else:
+                        self.xmp_UsePanoramaViewer.setChecked(0)
+               if descriptor == "Pose Heading Degrees":
+                     self.xmp_PoseHeadingDegrees.setText(description)
+               #print "rowcounter " + str(rowcounter) + " descriptor " + descriptor + " ;description " + description
+               rowcounter += 1
+
+
 
 #------------------------------------------------------------------------
 # Real exiftool read/write functions

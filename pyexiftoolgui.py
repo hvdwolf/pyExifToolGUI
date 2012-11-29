@@ -100,6 +100,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_saveexif.clicked.connect(self.saveexifdata)
         self.btn_saveexif.setEnabled(False)
         self.btn_resetexif.clicked.connect(self.clear_exif_fields)
+# Load several buttons from the Edit -> GPano tab
+        self.btn_gpanohelp.clicked.connect(self.gpano_help)
+        self.btn_gpano_copyfrom.clicked.connect(self.copygpanofromselected)
+        self.btn_gpano_copyfrom.setEnabled(False)
+        self.btn_savegpano.clicked.connect(self.savegpanodata)
+        self.btn_savegpano.setEnabled(False)
+        self.btn_resetgpano.clicked.connect(self.clear_gpano_fields)
 # Load several buttons from the Preferences tab
 	self.btn_choose_exiftool.clicked.connect(self.select_exiftool)
 
@@ -238,6 +245,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def exif_help(self):
         petgfunctions.help_mbox(self, "Help on Edit -> Exif tab", programstrings.EXIFHELP)
 
+    def gpano_help(self):
+        petgfunctions.help_mbox(self, "Help on Edit -> GPano tab", programstrings.GPANOHELP)
 
 #------------------------------------------------------------------------
 # Image table actions
@@ -286,6 +295,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def saveexifdata(self):
         petgfunctions.saveexifdata(self, qApp)
+
+# Edit -> GPano tab
+    def clear_gpano_fields(self):
+        petgfunctions.clear_gpano_fields(self)
+
+    def copygpanofromselected(self):
+        petgfunctions.copygpanofromselected(self,qApp)
+
+    def savegpanodata(self):
+        petgfunctions.savegpanodata(self, qApp)
 
 # Preferences tab
     def select_exiftool(self):
