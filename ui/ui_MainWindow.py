@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Thu Nov 29 19:47:36 2012
+# Created: Thu Nov 29 21:49:28 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -931,9 +931,23 @@ class Ui_MainWindow(object):
         self.xmp_ProjectionType.addItem("")
         self.xmp_ProjectionType.addItem("")
         self.gridLayout_4.addWidget(self.xmp_ProjectionType, 7, 2, 1, 1)
-        self.label_10 = QtGui.QLabel(self.editgpanotab)
-        self.label_10.setGeometry(QtCore.QRect(50, 20, 581, 16))
+        self.verticalLayoutWidget_4 = QtGui.QWidget(self.editgpanotab)
+        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(30, 10, 661, 71))
+        self.verticalLayoutWidget_4.setObjectName("verticalLayoutWidget_4")
+        self.verticalLayout_2 = QtGui.QVBoxLayout(self.verticalLayoutWidget_4)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.label_10 = QtGui.QLabel(self.verticalLayoutWidget_4)
         self.label_10.setObjectName("label_10")
+        self.verticalLayout_2.addWidget(self.label_10)
+        self.lbl_exiftool_to_low = QtGui.QLabel(self.verticalLayoutWidget_4)
+        self.lbl_exiftool_to_low.setText("")
+        self.lbl_exiftool_to_low.setObjectName("lbl_exiftool_to_low")
+        self.verticalLayout_2.addWidget(self.lbl_exiftool_to_low)
+        self.lbl_exiftool_to_low_2 = QtGui.QLabel(self.verticalLayoutWidget_4)
+        self.lbl_exiftool_to_low_2.setText("")
+        self.lbl_exiftool_to_low_2.setObjectName("lbl_exiftool_to_low_2")
+        self.verticalLayout_2.addWidget(self.lbl_exiftool_to_low_2)
         self.tabWidget_2.addTab(self.editgpanotab, "")
         self.tabWidget.addTab(self.edittab, "")
         self.tab = QtGui.QWidget()

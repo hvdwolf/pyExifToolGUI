@@ -2140,18 +2140,38 @@ to convert the data.</string>
          </item>
         </layout>
        </widget>
-       <widget class="QLabel" name="label_10">
+       <widget class="QWidget" name="verticalLayoutWidget_4">
         <property name="geometry">
          <rect>
-          <x>50</x>
-          <y>20</y>
-          <width>581</width>
-          <height>16</height>
+          <x>30</x>
+          <y>10</y>
+          <width>661</width>
+          <height>71</height>
          </rect>
         </property>
-        <property name="text">
-         <string>Panorama tags for Google Photosphere. Requires exiftool 9.07 or newer</string>
-        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>Panorama tags for Google Photosphere. Requires exiftool 9.07 or newer</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lbl_exiftool_to_low">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lbl_exiftool_to_low_2">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
      </widget>

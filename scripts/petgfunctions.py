@@ -116,8 +116,13 @@ def tool_check( self ):
                 command_line = self.exiftoolprog + " -ver"
                 args = shlex.split(command_line)
         self.exiftoolversion = subprocess.check_output(args)
+        # remove last character which is the final ending \n (where \ is only the escape character)        
+        self.exiftoolversion = self.exiftoolversion[:-1]
+
         if float(self.exiftoolversion) < 9.07:
            self.lbl_progress.setText("I will disable the GPano options as exiftool >=9.07 is required. You have " + self.exiftoolversion)
+           self.lbl_exiftool_to_low.setText("Your exiftool version is " + self.exiftoolversion + " . You need >=9.07 to write to images.")
+           self.lbl_exiftool_to_low_2.setText("Exiftool and therefore pyExifToolGUI can read the tags. See the View Data tab.")
         else:
            self.lbl_progress.setText("Your exiftoolversion is " + self.exiftoolversion)
         #print "exiftoolversion : " + self.exiftoolversion
@@ -904,6 +909,35 @@ def copygpanofromselected(self,qApp):
                #print "rowcounter " + str(rowcounter) + " descriptor " + descriptor + " ;description " + description
                rowcounter += 1
 
+def savegpanodata(self, qApp):
+        if self.chk_xmp_CroppedAreaImageHeightPixels.isChecked():
+               exiftool_params =  ' -xmp:CroppedAreaImageHeightPixels="' + self.xmp_CroppedAreaImageHeightPixels.text() + '" '
+        if self.chk_xmp_CroppedAreaImageWidthPixels.isChecked():
+               exiftool_params +=  '-xmp:CroppedAreaImageWidthPixels="' + self.xmp_CroppedAreaImageWidthPixels.text() + '" '
+        if self.chk_xmp_CroppedAreaLeftPixels.isChecked():
+               exiftool_params +=  '-xmp:CroppedAreaLeftPixels="' + self.xmp_CroppedAreaLeftPixels.text() + '" '
+        if self.chk_xmp_CroppedAreaTopPixels.isChecked():
+               exiftool_params +=  '-xmp:CroppedAreaTopPixels="' + self.xmp_CroppedAreaTopPixels.text() + '" '
+        if self.chk_xmp_FullPanoHeightPixels.isChecked():
+               exiftool_params +=  '-xmp:FullPanoHeightPixels="' + self.xmp_FullPanoHeightPixels.text() + '" '
+        if self.chk_xmp_FullPanoWidthPixels.isChecked():
+               exiftool_params +=  '-xmp:FullPanoWidthPixels="' + self.xmp_FullPanoWidthPixels.text() + '" '
+        if self.chk_xmp_ProjectionType.isChecked():
+               if self.xmp_ProjectionType.currentIndex == 0:
+                  exiftool_params +=  '-xmp:ProjectionType="equirectangular" '
+               elif self.xmp_ProjectionType.currentIndex == 1:
+                  exiftool_params +=  '-xmp:ProjectionType="cylindrical" '
+               elif self.xmp_ProjectionType.currentIndex == 2:
+                  exiftool_params +=  '-xmp:ProjectionType="rectangular" '
+        if self.chk_xmp_UsePanoramaViewer.isChecked(): 
+               if self.xmp_UsePanoramaViewer.isChecked():
+                  exiftool_params +=  '-xmp:UsePanoramaViewer=1 '
+               else:
+                  exiftool_params +=  '-xmp:UsePanoramaViewer=0 '
+        if self.chk_xmp_PoseHeadingDegrees.isChecked():
+               exiftool_params +=  '-xmp:PoseHeadingDegrees="' + self.xmp_PoseHeadingDegrees.text() + '" '
+
+        write_exif_info(self, exiftool_params, qApp)
 
 
 #------------------------------------------------------------------------
