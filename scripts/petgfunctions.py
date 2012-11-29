@@ -98,7 +98,7 @@ def tool_check( self ):
                           ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.")
                           sys.exit()
                        else:
-		          self.exiftoolprog = result
+                          self.exiftoolprog = result
                 print self.exiftoolprog
                 args = self.exiftoolprog + " -ver"
         else:
@@ -142,6 +142,7 @@ def write_config(self, aftererror):
 	config.add_section("main")
 	if aftererror == 1: # Some error occurred. Go back to defaults
 		config.set("main", "alternate_exiftool", str(False))
+		self.alternate_exiftool = False
 		config.set("main", "exiftooloption", "exiftool")
 	else:
 		if self.exiftooloption.text() in ("exiftool", ""):
@@ -152,12 +153,12 @@ def write_config(self, aftererror):
 			config.set("main", "exiftooloption", self.exiftooloption.text())
 	userpath = os.path.expanduser('~')
 	try:
-		fldr = os.mkdir(userpath + "/.pyexiftoolgui")
+		fldr = os.mkdir(os.path.join(userpath, '.pyexiftoolgui'))
 		#print "fldr gives: " + fldr
 	except:
 		print "config folder already exists: no problem"
 	try:
-		with open(userpath + "/.pyexiftoolgui/config.cfg", 'wb') as configfile:
+		with open(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg'), 'wb') as configfile:
 			config.write(configfile)
 	except:
 		print "couln't write configfile"
@@ -165,7 +166,8 @@ def write_config(self, aftererror):
 def error_reading_configparameter(self):
 	message = ("Somehow I encountered an error reading the config file.\n"
 		   "This can happen when:\n- an updated version added or removed a parameter\n"
-		   "- or when the config file somehow got damaged.\n\n"
+		   "- when the config file somehow got damaged.\n"
+                   "- when this is the very first program start.\n\n"
 		   "I will simply create a new config file. Please "
 		   "check your preferences.")
 	ret = QMessageBox.warning(self, "error reading config", message) 
@@ -188,12 +190,15 @@ def read_config(self):
 	# Here we write to our pyexiftoolgui config file
 	#print "Reading our config file"
 	userpath = os.path.expanduser('~')
+	print userpath
+	print os.path.join(userpath, '.pyexiftoolgui', 'config.cfg')
 	# First we check in the safe way for the existence of the config file
-	try:
-   		with open(userpath + "/.pyexiftoolgui/config.cfg") as f: pass
+	if os.path.isfile(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg')):
+	   try:
+   		with open(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg')) as f: pass
 		# If no error we can continue
 		#print "no error on config check, continue"
-		config.read(userpath + "/.pyexiftoolgui/config.cfg")
+		config.read(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg'))
 		try: 
 			self.alternate_exiftool = config.getboolean("main", "alternate_exiftool")
 		except:
@@ -203,8 +208,10 @@ def read_config(self):
 		except:
 			error_reading_configparameter(self)
 		
-	except IOError as e: # error reading the config file itself
+	   except IOError as e: # error reading the config file itself
    		print "Very first program start, updated pyexiftoolgui with added/removed setting or user deleted the config file"
+   	else:
+           error_reading_configparameter(self)
 
 ###################################################################################################################
 # End of Startup checks and configuration
