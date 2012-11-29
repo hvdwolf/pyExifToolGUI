@@ -36,6 +36,7 @@ def darwin_install():
     print "\nYou will find a pyExifToolGui.app in your Applications folder."
     print "This app only contains the scripts for the application itself."
     print "Make sure that you install QT4 and pyside on your system.\n"
+    sys.exit()
 
 def windows_install():
     print "\nSorry. There is no installation script available yet"
