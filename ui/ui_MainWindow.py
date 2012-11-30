@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Thu Nov 29 21:49:28 2012
+# Created: Fri Nov 30 07:42:31 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1182,16 +1182,16 @@ class Ui_MainWindow(object):
         self.btn_resetgpano.setText(QtGui.QApplication.translate("MainWindow", "Reset fields", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_gpanohelp.setToolTip(QtGui.QApplication.translate("MainWindow", "Opens a popup with some additional info on this screen", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_gpanohelp.setText(QtGui.QApplication.translate("MainWindow", "Help", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_28.setText(QtGui.QApplication.translate("MainWindow", "ProjectionType", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_11.setText(QtGui.QApplication.translate("MainWindow", "CroppedAreaImageHeightPixels", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_22.setText(QtGui.QApplication.translate("MainWindow", "CroppedAreaImageWidthPixels", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_47.setText(QtGui.QApplication.translate("MainWindow", "UsePanoramaViewer", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_29.setText(QtGui.QApplication.translate("MainWindow", "FullPanoHeightPixels", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_46.setText(QtGui.QApplication.translate("MainWindow", "FullPanoWidthPixels", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_28.setText(QtGui.QApplication.translate("MainWindow", "Projection Type", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_11.setText(QtGui.QApplication.translate("MainWindow", "Cropped Area Image Height Pixels", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_22.setText(QtGui.QApplication.translate("MainWindow", "Cropped Area Image Width Pixels", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_47.setText(QtGui.QApplication.translate("MainWindow", "Use Panorama Viewer", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_29.setText(QtGui.QApplication.translate("MainWindow", "Full Pano Height Pixels", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_46.setText(QtGui.QApplication.translate("MainWindow", "Full Pano Width Pixels", None, QtGui.QApplication.UnicodeUTF8))
         self.label_50.setText(QtGui.QApplication.translate("MainWindow", "Save", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_27.setText(QtGui.QApplication.translate("MainWindow", "CroppedAreaTopPixels", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_26.setText(QtGui.QApplication.translate("MainWindow", "CroppedAreaLeftPixels", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_48.setText(QtGui.QApplication.translate("MainWindow", "PoseHeadingDegrees", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_27.setText(QtGui.QApplication.translate("MainWindow", "Cropped Area Top Pixels", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_26.setText(QtGui.QApplication.translate("MainWindow", "Cropped Area Left Pixels", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_48.setText(QtGui.QApplication.translate("MainWindow", "Pose Heading Degrees", None, QtGui.QApplication.UnicodeUTF8))
         self.xmp_ProjectionType.setItemText(0, QtGui.QApplication.translate("MainWindow", "equirectangular", None, QtGui.QApplication.UnicodeUTF8))
         self.xmp_ProjectionType.setItemText(1, QtGui.QApplication.translate("MainWindow", "cylindrical", None, QtGui.QApplication.UnicodeUTF8))
         self.xmp_ProjectionType.setItemText(2, QtGui.QApplication.translate("MainWindow", "rectilinear", None, QtGui.QApplication.UnicodeUTF8))
