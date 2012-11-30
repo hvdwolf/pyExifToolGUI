@@ -114,7 +114,7 @@ ul.toc {}
 --></style>
 </head>
 <body>
-<h1 class="settitle">pyExifToolGUI: a cross-platform python pyside gui for exiftool</h1>
+<img src="pyexiftoolgui.png" alt="pyexiftoolgui.png" title="pyexiftoolgui.png"><h1 class="settitle">pyExifToolGUI: a cross-platform python pyside gui for exiftool</h1>
    <div class="contents">
 <h2>Table of Contents</h2>
 <ul>
@@ -152,7 +152,7 @@ ul.toc {}
 
 <p>This manual is for pyExifToolGUI (version 0.2.x, December 2011).
 pyExifToolGui is a python pySide QT4 script program that reads and writes
-exif, xmp and IPTC tags from/to image files. It can use areference" image as source image to
+exif, xmp and IPTC tags from/to image files. It can use a "reference" image as source image to
 copy data from. A strong point of this software is the ability to write the data,
 copied or not from a source image, to multiple images at once.
 
@@ -164,7 +164,7 @@ copied or not from a source image, to multiple images at once.
 <!-- Undo the roman page numbering we used for the Table-of-Contents, -->
 <!-- the List-of-Tables, and the List-of-Figures. -->
 <p>pyExifToolGui is a python pySide QT4 script program that reads and writes
-exif, xmp and IPTC tags from/to image files using exiftool. It can use a 
+exif, xmp and IPTC tags from/to image files using exiftool. It can use a  
 "reference" image as source image to copy data from. 
 A strong point of this software is the ability to write the data,
 copied or not from a source image, to multiple images at once.
@@ -183,7 +183,7 @@ and decided to write my own.
 "By accident" it contains more functions as ExifTool is a powerful tool
 and once you have written the basic program Gui skeleton it is relatively easy
 to add extra functionality, which is basically to add more exif/xmp/iptc tags and
-add them to thewrite to image" function. This is a time consuming process but not a 
+add them to the "write to image" function. This is a time consuming process but not a 
 difficult one.
 <p>This program is completely free, but you can donate any amount to me to show
 your appreciation. See the Help menu in the program or 
@@ -198,21 +198,18 @@ your appreciation. See the Help menu in the program or
 You select an image on the left side and click the radiobutton on the right side to see all or a selected 
 set of data of the photo.
 As ExifTool supports a large number of image formats, but also movie formats, all available metadata that
-ExifTool can read, can be displayed by pyExifToolGUI. Note that some of the data or subsets of data is simply
-not available in the non-image formats.</p>
+ExifTool can read, can be displayed by pyExifToolGUI as well. Note that some of the data or subsets of data 
+is simply not available in the non-image formats.<br>
+pyExifToolGUI will try to make a preview (thumbnail) of the image, but will not always succeed.</p>
 <img src="viewdatatab.jpg" alt="viewdatatab.jpg" title="The View Data tab" width="900">
 
-<p class="noindent">View
-
-<p class="noindent">Print
-
-<p class="noindent">Enjoy
+<p>
 
 <p><a name="EditData"></a>
 
 <h2 class="chapter">3 Edit Data</h2>
 
-<p>The application is a so calledtabbed" application. TheEdit Data" tab is the (obvious) tab
+<p>The application is a so called "tabbed" application. The "Edit Data" tab is the (obvious) tab
 that contains the sub tabs with all the edit options. Currently a moderate set of tabs have been 
 defined but the order, number and even content can change during the development cycle of this application.
 
@@ -249,16 +246,47 @@ the selected image into the input fields.</li>
 <p>As you can see the options all have a <b>Save</b> checkbox behind their input fields.
 It means that this option will be saved when checked, even when the field is empty.
 This also means that you can:
-<ul><li>overwrite existing data with empty data "by accident".</li>
+<ul><li>overwrite existing data with empty databy accident".</li>
 <li>deliberately overwrite existing data with data from empty fields.</li></ul>
 <ul><li><h3>Available buttons:</h3>
 <ul><li><b>Copy from selected image</b>: This will copy all the (available) exif data from
 the selected image into the input fields.</li>
 <li><b>Save to selected image(s)</b>: This will save the \"checked\" exif data to your selected image(s).</li>
-<li><b>Reset fields</b>: This will empty all fields and set checkboxes to their defaults.</li>
-<li><b>Help</b>: This button opens the popup you are currently looking at.</li></ul></ul>
+<li><b>Reset fields</b>: This will empty all fields and set checkboxes to their defaults.</li></ul>
+
+<p><a name="EditgpanoData"></a>
+<h3 class="section">3.5 Edit GPano (Google Photosphere) data</h3>
+
+<p>This tab is used to add GPano Google PhotoSphere data to your selected image(s).</p>
+<img src="editgpanotab.jpg" alt="editgpanotab.jpg" title="The GPano Google PhotoSphere tab" width="900">
+<p>This functionality is only available if you have exiftool 9.07 or newer. You can always download
+the latest <a href='http://www.sno.phy.queensu.ca/~phil/exiftool/'>exiftool</a> version.
+On Windows and Mac OS X simply install it. On Linux you simply unpack the tar.gz to some
+ folder. After the install/unpack you can use the Preferences tab to select that version.</p>
+<p><b>Things to take into account!</b></p>
+As you can see the options all have a <b>Save</b> checkbox behind their input fields
+It means that this option will be saved when checked, even when the field is empty.
+This also means that you can:
+<ul><li>overwrite existing data with empty databy accident".</li>
+<li>deliberately overwrite existing data with data from empty fields.</li></ul>
+<ul><li><h3>Available buttons:</h3>
+<ul><li><b>Copy from selected image</b>: This will copy all the (available) exif data from
+the selected image into the input fields.</li>
+<li><b>Save to selected image(s)</b>: This will save the \"checked\" exif data to your selected image(s).</li>
+<li><b>Reset fields</b>: This will empty all fields and set checkboxes to their defaults.</li></ul>
+<p>
 
 
+<p><a name="Preferences"></a>
+
+<h2 class="chapter">4 Preferences</h2>
+
+<p>The Preferences tab gives you the option to select some defaults for this application like 
+selecting the proper exiftool on your system (windows and Mac OS X) or selecting another exiftool 
+than standard available on your system (Linux).
+<img src="preferencestab.jpg" alt="preferencestab.jpg" title="Preferences tab" width="900">
+<p>
+<p>
 
 <Hr>
 <p><a name="FDL"></a>
