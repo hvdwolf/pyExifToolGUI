@@ -1,0 +1,981 @@
+<html lang="en">
+<head>
+<title>pyexiftoolgui: a cross-platform python pyside gui for exiftool</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="pyexiftoolgui: a cross-platform python pyside gui for exiftool"><meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+
+<!--
+This manual is for pyexiftoolgui (version 0.2.x, December 2011).
+pyExifToolGui is a python pySide QT4 script program that reads and writes
+exif, xmp and IPTC tags from/to image files. It can use areference" image as source image to
+copy data from. A strong point of this software is the ability to write the data,
+copied or not from a source image, to multiple images at once.
+
+Copyright (C) 2012 Harry van der Wolf.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts and no
+     Back-Cover Texts.  A copy of the license is included in the section
+     entitledGNU Free Documentation License".
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+    margin-left: 6%;
+    margin-right: 6%
+}
+h1, h2, h3, h4, h5, h6 {margin-left: -4%}
+
+dl, h1, h2, h3, h4, h5, h6, ol, p, table, ul {font-family: sans-serif}
+code, pre {font-family: monospace; font-size: 110%}
+var {
+    font-family: sans-serif;
+    font-style: italic
+}
+
+/* Class- and attibute based settings */
+div.contents {}
+div.float {
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+}
+
+dl.compact {}
+dl.listoffloats {}
+
+h1.chapter {}
+h1.settitle {}
+h1.unnumbered {}
+h2.section {}
+h3.subsection {}
+h4.subsubsection {}
+
+hr.small {
+    background-color: black;
+    color: black;
+    height: 1px;
+    width: 113%
+}
+hr.middle {
+    background-color: black;
+    color: black;
+    height: 2px;
+    width: 113%
+}
+hr.big {
+    background-color: black;
+    color: black;
+    height: 4px;
+    width: 113%
+}
+
+math {display: block}
+math[display=inline] {display: inline}
+
+pre.example {}
+pre.display {font-family: sans-serif}
+pre.menu-comment {
+    font-family: sans-serif;
+    font-size: 110%;
+    font-weight: bold;
+    margin-top: 2ex;
+}
+
+small.enddots {}
+
+span.option {font-size: 110%}
+span.samp {font-size: 110%}
+
+strong {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+table.index-cp {}
+table.index-op {}
+table.index-pg {}
+table.menu {}
+
+tt {font-size: 110%}
+
+ul.toc {}
+--></style>
+</head>
+<body>
+<h1 class="settitle">pyExifToolGUI: a cross-platform python pyside gui for exiftool</h1>
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">pyExifToolGUI</a>
+<li><a name="toc_Overview" href="#Overview">1 Overview</a>
+<li><a name="toc_ViewData" href="#ViewData">2 View Data</a>
+<li><a name="toc_EditData" href="#EditData">3 Edit Data</a>
+<ul>
+<li><a href="#EditgpsData">3.1 Edit GPS data</a>
+<li><a href="#EditexifData">3.2 Edit exif data</a>
+<li><a href="#EditxmpData">3.3 Edit xmp data</a>
+<li><a href="#EditiptcData">3.4 Edit IPTC data</a>
+<li><a href="#EditgpanoData">3.5 Edit GPano (Google Photosphere) data</a>
+</li></ul>
+<li><a name="toc_Preferecnes" href="#Preferences">4 Preferences</a>
+<li><a name="toc_Bug-Reports" href="#Bug-Reports">Appendix A Bug Reports</a>
+<ul>
+<li><a href="#Bug-Reports">A.1 Have You Really Found a Bug?</a>
+<li><a href="#Bug-Reports">A.2 How to Report Bugs</a>
+<li><a href="#Bug-Reports">A.3 Sending Patches for pyExifToolGUI</a>
+</li></ul>
+<li><a name="toc_FDL" href="#FDL">Appendix B <acronym>GNU</acronym> Free Documentation License</a>
+</li></ul>
+</div>
+
+
+
+<!-- For the TeX output the List-of-Tables and List-of-Figures appear -->
+<!-- right after the Table-of-Contents.  In all other formats they go -->
+<!-- right before the indices. -->
+<!-- ``Top'' Node and Master Menu -->
+<p><a name="Top"></a>
+
+<h2 class="unnumbered">pyExifToolGUI</h2>
+
+<p>This manual is for pyExifToolGUI (version 0.2.x, December 2011).
+pyExifToolGui is a python pySide QT4 script program that reads and writes
+exif, xmp and IPTC tags from/to image files. It can use areference" image as source image to
+copy data from. A strong point of this software is the ability to write the data,
+copied or not from a source image, to multiple images at once.
+
+<!-- Document Body -->
+<p><a name="Overview"></a>
+
+<h2 class="chapter">1 Overview</h2>
+
+<!-- Undo the roman page numbering we used for the Table-of-Contents, -->
+<!-- the List-of-Tables, and the List-of-Figures. -->
+<p>pyExifToolGui is a python pySide QT4 script program that reads and writes
+exif, xmp and IPTC tags from/to image files using exiftool. It can use a 
+"reference" image as source image to copy data from. 
+A strong point of this software is the ability to write the data,
+copied or not from a source image, to multiple images at once.
+The main goal for this tool was the ability to write gps data to my images as I 
+photograph a lot in buildings like Churches/Cathedrals and Musea (when allowed), 
+which means that the gps functionality of the camera doesn't function.
+Next to the gps functionality pyExifToolGUI will slowly grow into a general exiftool Gui and will
+also write other tags to your images.
+This pyExifToolGUI tool is NOT a geotagging tool!
+
+<p>pyExifToolGui is a graphical frontend for the excellent open source
+command line tool <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/" target="_blank">ExifTool</a> by Phil Harvey.
+pyExifToolGui is not a complete ExifTool Gui, far from that.
+I needed a tool to add gps data to my images and couldn't find one
+and decided to write my own. 
+"By accident" it contains more functions as ExifTool is a powerful tool
+and once you have written the basic program Gui skeleton it is relatively easy
+to add extra functionality, which is basically to add more exif/xmp/iptc tags and
+add them to thewrite to image" function. This is a time consuming process but not a 
+difficult one.
+<p>This program is completely free, but you can donate any amount to me to show
+your appreciation. See the Help menu in the program or 
+<a href="http://members.home.nl/harryvanderwolf/pyexiftoolgui/donate.html" target="_blank">this</a> link.
+
+
+<p><a name="ViewData"></a>
+
+<h2 class="chapter">2 View Data</h2>
+
+<p>The "View Data" tab gives you the option to display all available meta data from a photo (image).
+You select an image on the left side and click the radiobutton on the right side to see all or a selected 
+set of data of the photo.
+As ExifTool supports a large number of image formats, but also movie formats, all available metadata that
+ExifTool can read, can be displayed by pyExifToolGUI. Note that some of the data or subsets of data is simply
+not available in the non-image formats.</p>
+<img src="viewdatatab.jpg" alt="viewdatatab.jpg" title="The View Data tab" width="900">
+
+<p class="noindent">View
+
+<p class="noindent">Print
+
+<p class="noindent">Enjoy
+
+<p><a name="EditData"></a>
+
+<h2 class="chapter">3 Edit Data</h2>
+
+<p>The application is a so calledtabbed" application. TheEdit Data" tab is the (obvious) tab
+that contains the sub tabs with all the edit options. Currently a moderate set of tabs have been 
+defined but the order, number and even content can change during the development cycle of this application.
+
+<p><a name="EditgpsData"></a>
+
+<h3 class="section">3.1 Edit gps Data</h3>
+
+<p>This tab is used to add GPS data to your images. This tab works on a combination of
+exif, xmp and iptc gps data as latitude, longitude and altitude are covered in the exif (primarily) and
+in the xmp metadata structure. The Location metadata details (Country, Province/State, city, Location) 
+are covered by xmp and IPTC. This tab simply tries to make your data as complete as possible in the 
+several tag categories.</p>
+<img src="editgpstab.jpg" alt="editgpstab.jpg" title="The Edit gps tab" width="900">
+<ul><li><h3>Buttons working on image(s):</h3>
+<ul><li><b>Copy from selected image</b>: This will copy all the (available) gps data from
+the selected image into the input fields.</li>
+<li><b>Save to selected image(s)</b>: This will save the gps data to your selected image(s).</li></ul></ul>
+<ul><li><h3>General buttons:</h3>
+<ul><li><b>Reset fields</b>: This will empty all fields and set radiobuttons and checkboxes to their defaults.</li>
+<li><b>Help</b>: This button opens the popup you are currently looking at.</li></ul></ul>
+<ul><li><h3>Calculator buttons:</h3>
+<ul><li><b>Copy to input fields</b>: This copies the calculated values (bottom half) to the input fields (top half).</li>
+<li><b>Decimal to Minutes-Seconds</b>: Convert decimal longitude/latitude values to deg-min-sec.</li>
+<li><b>Minutes-Seconds to Decimal</b>: Convert deg-min-sec to decimal latitude/longitude (necessary for input).</li></ul>
+</ul>
+
+
+<p><a name="EditexifData"></a>
+<h3 class="section">3.2 Edit exif Data</h3>
+
+<p>This tab is used to add (a limited amount of) exif data to your selected image(s).</p>
+<img src="editexiftab.jpg" alt="editexiftab.jpg" title="The Edit exif tab" width="900">
+<p><b>Things to take into account!</b></p>
+<p>As you can see the options all have a <b>Save</b> checkbox behind their input fields.
+It means that this option will be saved when checked, even when the field is empty.
+This also means that you can:
+<ul><li>overwrite existing data with empty data "by accident".</li>
+<li>deliberately overwrite existing data with data from empty fields.</li></ul>
+<ul><li><h3>Available buttons:</h3>
+<ul><li><b>Copy from selected image</b>: This will copy all the (available) exif data from
+the selected image into the input fields.</li>
+<li><b>Save to selected image(s)</b>: This will save the \"checked\" exif data to your selected image(s).</li>
+<li><b>Reset fields</b>: This will empty all fields and set checkboxes to their defaults.</li>
+<li><b>Help</b>: This button opens the popup you are currently looking at.</li></ul></ul>
+
+
+
+<Hr>
+<p><a name="FDL"></a>
+
+<h2 class="appendix">Appendix C <acronym>GNU</acronym> Free Documentation License</h2>
+
+<p><a name="index-free-documentation-license-_0028_0040acronym_007bFDL_007d_0029-265"></a><a name="index-g_t_0040acronym_007bGNU_007d-free-documentation-license-266"></a>
+
+<!-- The GNU Free Documentation License. -->
+   <p>Version 1.2, November 2002
+
+<!-- This file is intended to be included within another document, -->
+<!-- hence no sectioning command or @node. -->
+<pre class="display">     Copyright &copy; 2000, 2001, 2002 Free Software Foundation, Inc.
+     51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA
+     
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+</pre>
+     <ol type=1 start=0>
+<li>PREAMBLE
+
+     <p>The purpose of this License is to make a manual, textbook, or other
+functional and useful document <dfn>free</dfn> in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially. 
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.
+
+     <p>This License is a kind of &ldquo;copyleft&rdquo;, which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the <acronym>GNU</acronym> General Public License, which is a
+copyleft license designed for free software.
+
+     <p>We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+
+     <li>APPLICABILITY AND DEFINITIONS
+
+     <p>This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The &ldquo;Document&rdquo;, below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as &ldquo;you&rdquo;.  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.
+
+     <p>A &ldquo;Modified Version&rdquo; of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+
+     <p>A &ldquo;Secondary Section&rdquo; is a named appendix or a front-matter section
+of the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document's overall
+subject (or to related matters) and contains nothing that could fall
+directly within that overall subject.  (Thus, if the Document is in
+part a textbook of mathematics, a Secondary Section may not explain
+any mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+
+     <p>The &ldquo;Invariant Sections&rdquo; are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.
+
+     <p>The &ldquo;Cover Texts&rdquo; are certain short passages of text that are
+listed, as Front-Cover Texts or Back-Cover Texts, in the notice that
+says that the Document is released under this License.  A Front-Cover
+Text may be at most 5 words, and a Back-Cover Text may be at most 25
+words.
+
+     <p>A &ldquo;Transparent&rdquo; copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent. 
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not &ldquo;Transparent&rdquo; is called &ldquo;Opaque&rdquo;.
+
+     <p>Examples of suitable formats for Transparent copies include plain
+<span class="sc">ascii</span> without markup, Texinfo input format, LaTeX input
+format, <acronym>SGML</acronym> or <acronym>XML</acronym> using a publicly available
+<acronym>DTD</acronym>, and standard-conforming simple <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> designed for human modification.  Examples
+of transparent image formats include <acronym>PNG</acronym>, <acronym>XCF</acronym> and
+<acronym>JPG</acronym>.  Opaque formats include proprietary formats that can be
+read and edited only by proprietary word processors, <acronym>SGML</acronym> or
+<acronym>XML</acronym> for which the <acronym>DTD</acronym> and/or processing tools are
+not generally available, and the machine-generated <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> produced by some word processors for
+output purposes only.
+
+     <p>The &ldquo;Title Page&rdquo; means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, &ldquo;Title Page&rdquo; means
+the text near the most prominent appearance of the work's title,
+preceding the beginning of the body of the text.
+
+     <p>A section &ldquo;Entitled XYZ&rdquo; means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, &ldquo;Endorsements&rdquo;, or &ldquo;History&rdquo;.)  To &ldquo;Preserve the
+Title&rdquo; of such a section when you modify the Document means that it
+remains a section &ldquo;Entitled XYZ&rdquo; according to this definition.
+
+     <p>The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.
+
+     <li>VERBATIM COPYING
+
+     <p>You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no
+other conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+
+     <p>You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+
+     <li>COPYING IN QUANTITY
+
+     <p>If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document's license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition. 
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+
+     <p>If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+
+     <p>If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material. 
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+
+     <p>It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to
+give them a chance to provide you with an updated version of the
+Document.
+
+     <li>MODIFICATIONS
+
+     <p>You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+
+          <ol type=A start=1>
+<li>Use in the Title Page (and on the covers, if any) a title distinct
+from that of the Document, and from those of previous versions (which
+should, if there were any, be listed in the History section of the
+Document).  You may use the same title as a previous version if the
+original publisher of that version gives permission.
+
+          <li>List on the Title Page, as authors, one or more persons or entities
+responsible for authorship of the modifications in the Modified
+Version, together with at least five of the principal authors of the
+Document (all of its principal authors, if it has fewer than five),
+unless they release you from this requirement.
+
+          <li>State on the Title page the name of the publisher of the Modified
+Version, as the publisher.
+
+          <li>Preserve all the copyright notices of the Document.
+
+          <li>Add an appropriate copyright notice for your modifications adjacent to
+the other copyright notices.
+
+          <li>Include, immediately after the copyright notices, a license notice
+giving the public permission to use the Modified Version under the
+terms of this License, in the form shown in the Addendum below.
+
+          <li>Preserve in that license notice the full lists of Invariant Sections
+and required Cover Texts given in the Document's license notice.
+
+          <li>Include an unaltered copy of this License.
+
+          <li>Preserve the section Entitled &ldquo;History&rdquo;, Preserve its Title, and add
+to it an item stating at least the title, year, new authors, and
+publisher of the Modified Version as given on the Title Page.  If
+there is no section Entitled &ldquo;History&rdquo; in the Document, create one
+stating the title, year, authors, and publisher of the Document as
+given on its Title Page, then add an item describing the Modified
+Version as stated in the previous sentence.
+
+          <li>Preserve the network location, if any, given in the Document for
+public access to a Transparent copy of the Document, and likewise the
+network locations given in the Document for previous versions it was
+based on.  These may be placed in the &ldquo;History&rdquo; section.  You may
+omit a network location for a work that was published at least four
+years before the Document itself, or if the original publisher of the
+version it refers to gives permission.
+
+          <li>For any section Entitled &ldquo;Acknowledgements&rdquo; or &ldquo;Dedications&rdquo;,
+Preserve the Title of the section, and preserve in the section all the
+substance and tone of each of the contributor acknowledgements and/or
+dedications given therein.
+
+          <li>Preserve all the Invariant Sections of the Document, unaltered in
+their text and in their titles.  Section numbers or the equivalent are
+not considered part of the section titles.
+
+          <li>Delete any section Entitled &ldquo;Endorsements&rdquo;.  Such a section may not
+be included in the Modified Version.
+
+          <li>Do not retitle any existing section to be Entitled &ldquo;Endorsements&rdquo; or
+to conflict in title with any Invariant Section.
+
+          <li>Preserve any Warranty Disclaimers.
+          </ol>
+
+     <p>If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version's license notice. 
+These titles must be distinct from any other section titles.
+
+     <p>You may add a section Entitled &ldquo;Endorsements&rdquo;, provided it contains
+nothing but endorsements of your Modified Version by various
+parties&mdash;for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+
+     <p>You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+
+     <p>The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+
+     <li>COMBINING DOCUMENTS
+
+     <p>You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.
+
+     <p>The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number. 
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+
+     <p>In the combination, you must combine any sections Entitled &ldquo;History&rdquo;
+in the various original documents, forming one section Entitled
+&ldquo;History&rdquo;; likewise combine any sections Entitled
+&ldquo;Acknowledgements&rdquo;, and any sections Entitled &ldquo;Dedications&rdquo;.  You
+must delete all sections Entitled &ldquo;Endorsements.&rdquo;
+
+     <li>COLLECTIONS OF DOCUMENTS
+
+     <p>You may make a collection consisting of the Document and other
+documents released under this License, and replace the individual
+copies of this License in the various documents with a single copy
+that is included in the collection, provided that you follow the rules
+of this License for verbatim copying of each of the documents in all
+other respects.
+
+     <p>You may extract a single document from such a collection, and
+distribute it individually under this License, provided you insert a
+copy of this License into the extracted document, and follow this
+License in all other respects regarding verbatim copying of that
+document.
+
+     <li>AGGREGATION WITH INDEPENDENT WORKS
+
+     <p>A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an &ldquo;aggregate&rdquo; if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation's users beyond what the individual works permit. 
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+
+     <p>If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document's Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form. 
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.
+
+     <li>TRANSLATION
+
+     <p>Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4. 
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.
+
+     <p>If a section in the Document is Entitled &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, or &ldquo;History&rdquo;, the requirement (section 4) to
+Preserve its Title (section 1) will typically require changing the
+actual title.
+
+     <li>TERMINATION
+
+     <p>You may not copy, modify, sublicense, or distribute the Document
+except as expressly provided for under this License.  Any other
+attempt to copy, modify, sublicense or distribute the Document is
+void, and will automatically terminate your rights under this License. 
+However, parties who have received copies, or rights, from you under
+this License will not have their licenses terminated so long as such
+parties remain in full compliance.
+
+     <li>FUTURE REVISIONS OF THIS LICENSE
+
+     <p>The Free Software Foundation may publish new, revised versions of the
+<acronym>GNU</acronym> Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+<a href="http://www.gnu.org/copyleft/">http://www.gnu.org/copyleft/</a>.
+
+     <p>Each version of the License is given a distinguishing version number. 
+If the Document specifies that a particular numbered version of this
+License &ldquo;or any later version&rdquo; applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.
+        </ol>
+
+<!-- End of Document -->
+<p><a name="Program-Index"></a>
+
+<h2 class="unnumbered">Program Index</h2>
+
+<p><a name="index-program-index-267"></a><a name="index-index_002c-program-268"></a>
+
+<ul class="index-pg" compact>
+<li><a href="#index-ale-229"><code>ale</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-align_005fimage_005fstack-_0040r_007b_0028Hugin_0029_007d-232"><code>align_image_stack </code><span class="roman">(Hugin)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-cinepaint-236"><code>cinepaint</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-cinepaint-129"><code>cinepaint</code></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-convert-_0040r_007b_0028ImageMagick_0029_007d-238"><code>convert </code><span class="roman">(ImageMagick)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-dcraw-226"><code>dcraw</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-dcraw-18"><code>dcraw</code></a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-display-_0040r_007b_0028ImageMagick_0029_007d-239"><code>display </code><span class="roman">(ImageMagick)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-exiftool-253"><code>exiftool</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-exrdisplay-_0040r_007b_0028OpenEXR_0029_007d-243"><code>exrdisplay </code><span class="roman">(OpenEXR)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-fulla-_0040r_007b_0028Hugin_0029_007d-233"><code>fulla </code><span class="roman">(Hugin)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-gimp-128"><code>gimp</code></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-gimp-237"><code>gimp</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-gimp-22"><code>gimp</code></a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-gm-_0040r_007b_0028GraphicsMagick_0029_007d-242"><code>gm </code><span class="roman">(GraphicsMagick)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-hugin-5"><code>hugin</code></a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-hugin-230"><code>hugin</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-hugin-125"><code>hugin</code></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-hugin-20"><code>hugin</code></a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-identify-_0040r_007b_0028ImageMagick_0029_007d-212"><code>identify </code><span class="roman">(ImageMagick)</span></a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
+<li><a href="#index-identify-_0040r_007b_0028ImageMagick_0029_007d-240"><code>identify </code><span class="roman">(ImageMagick)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-montage-_0040r_007b_0028ImageMagick_0029_007d-241"><code>montage </code><span class="roman">(ImageMagick)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-nona-_0040r_007b_0028Hugin_0029_007d-124"><code>nona </code><span class="roman">(Hugin)</span></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-nona-_0040r_007b_0028Hugin_0029_007d-231"><code>nona </code><span class="roman">(Hugin)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-PanoTools-6"><code>PanoTools</code></a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-PanoTools-21"><code>PanoTools</code></a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-pfshdrcalibrate-_0040r_007b_0028PFScalibration_0029_007d-247"><code>pfshdrcalibrate </code><span class="roman">(PFScalibration)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-pfsin-_0040r_007b_0028PFSTools_0029_007d-244"><code>pfsin </code><span class="roman">(PFSTools)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-pfsout-_0040r_007b_0028PFSTools_0029_007d-245"><code>pfsout </code><span class="roman">(PFSTools)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-pfstmo_005f_002a-_0040r_007b_0028PFStmo_0029_007d-248"><code>pfstmo_* </code><span class="roman">(PFStmo)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-pfsview-_0040r_007b_0028PFSTools_0029_007d-246"><code>pfsview </code><span class="roman">(PFSTools)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-PTmender-_0040r_007b_0028PanoTools_0029_007d-235"><code>PTmender </code><span class="roman">(PanoTools)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-PTOptimizer-_0040r_007b_0028PanoTools_0029_007d-234"><code>PTOptimizer </code><span class="roman">(PanoTools)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-tifficc-_0040r_007b_0028LittleCMS_0029_007d-254"><code>tifficc </code><span class="roman">(LittleCMS)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-tiffinfo-_0040r_007b_0028libtiff_0029_007d-213"><code>tiffinfo </code><span class="roman">(libtiff)</span></a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
+<li><a href="#index-tiffinfo-_0040r_007b_0028libtiff_0029_007d-252"><code>tiffinfo </code><span class="roman">(libtiff)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-ufraw-19"><code>ufraw</code></a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-ufraw-227"><code>ufraw</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-ufraw_002dbatch-228"><code>ufraw-batch</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+   </ul><p><a name="Syntactic-Comment-Index"></a>
+<a name="Syntactic_002dComment-Index"></a>
+
+<h2 class="unnumbered">Syntactic-Comment Index</h2>
+
+<p><a name="index-syntactic_002dcomment-index-269"></a><a name="index-index_002c-syntactic_002dcomment-270"></a>
+
+
+
+<ul class="index-sc" compact>
+<li><a href="#index-enblend_002dresponse_002dfile-47"><code>enblend-response-file</code></a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-enfuse_002dresponse_002dfile-48"><code>enfuse-response-file</code></a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-filename_002dglobbing-57"><code>filename-globbing</code></a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-glob-55"><code>glob</code></a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-globbing-56"><code>globbing</code></a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-response_002dfile-46"><code>response-file</code></a>: <a href="#Response-Files">Response Files</a></li>
+   </ul><p><a name="Option-Index"></a>
+
+<h2 class="unnumbered">Option Index</h2>
+
+<p><a name="index-option-index-271"></a><a name="index-index_002c-option-272"></a>
+
+
+
+<ul class="index-op" compact>
+<li><a href="#index-g_t_002d_002danneal-136"><code>--anneal</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_002d_002dcoarse_002dmask-141"><code>--coarse-mask</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_002d_002dcompression-70"><code>--compression</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002d_002ddepth-112"><code>--depth</code></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-g_t_002d_002ddijkstra-146"><code>--dijkstra</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_002d_002dfine_002dmask-149"><code>--fine-mask</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_002d_002dgpu-130"><code>--gpu</code></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-g_t_002d_002dhelp-82"><code>--help</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002d_002dlevels-84"><code>--levels</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002d_002dload_002dmasks-152"><code>--load-masks</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_002d_002dmask_002dvectorize-155"><code>--mask-vectorize</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_002d_002dno_002doptimize-159"><code>--no-optimize</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_002d_002doptimize-163"><code>--optimize</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_002d_002doptimizer_002dweights-167"><code>--optimizer-weights</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_002d_002doutput-88"><code>--output</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002d_002dsave_002dmasks-171"><code>--save-masks</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_002d_002dsmooth_002ddifference-174"><code>--smooth-difference</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_002d_002dverbose-93"><code>--verbose</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002d_002dversion-95"><code>--version</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002d_002dvisualize-177"><code>--visualize</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_002d_002dwrap-97"><code>--wrap</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002da-69"><code>-a</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002db-217"><code>-b</code></a>: <a href="#Tuning-Memory-Usage">Tuning Memory Usage</a></li>
+<li><a href="#index-g_t_002db-102"><code>-b</code></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-g_t_002dc-104"><code>-c</code></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-g_t_002dd-111"><code>-d</code></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-g_t_002df-122"><code>-f</code></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-g_t_002dg-126"><code>-g</code></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-g_t_002dh-81"><code>-h</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002dl-83"><code>-l</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002dm-222"><code>-m</code></a>: <a href="#Tuning-Memory-Usage">Tuning Memory Usage</a></li>
+<li><a href="#index-g_t_002dm-133"><code>-m</code></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-g_t_002do-87"><code>-o</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002dv-92"><code>-v</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002dV-94"><code>-V</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002dw-96"><code>-w</code></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_002dx-100"><code>-x</code></a>: <a href="#Common-Options">Common Options</a></li>
+   </ul><p><a name="General-Index"></a>
+
+<h2 class="unnumbered">General Index</h2>
+
+<p><a name="index-general-index-273"></a><a name="index-index_002c-general-274"></a>
+
+
+
+<ul class="index-cp" compact>
+<li><a href="#index-g_t_0040samp_007b_0023_007d-_0028response-file-comment_0029-41">&lsquo;<samp><span class="samp">#</span></samp>&rsquo; (response file comment)</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-g_t360_0040textdegree_007b_007d-panoramas-98">360&deg; panoramas</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_0040samp_007b_0040_0040_007d-_0028response-file-prefix_0029-36">&lsquo;<samp><span class="samp">@</span></samp>&rsquo; (response file prefix)</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-g_t_0040file_007b_0040value_007bsrc_003a_003adefault_002doutput_002dfilename_007d_007d-89"><samp><span class="file">a.tif</span></samp></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-affine-transformation-25">affine transformation</a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-algorithms_002c-globbing-54">algorithms, globbing</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-alpha-channel-3">alpha channel</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-alpha-channel-30">alpha channel</a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-alpha-channel_002c-associated-127">alpha channel, associated</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-anneal-parameters-138">anneal parameters</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-authors_002c-list-of-264">authors, list of</a>: <a href="#Authors">Authors</a></li>
+<li><a href="#index-binary-mask-206">binary mask</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
+<li><a href="#index-bits-per-channel-113">bits per channel</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-blur-difference-image-176">blur difference image</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-bug-reports-257">bug reports</a>: <a href="#Bug-Reports">Bug Reports</a></li>
+<li><a href="#index-Burt_002dAdelson-multiresolution-spline-2">Burt-Adelson multiresolution spline</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-channel-width-114">channel width</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-channel_002c-alpha-4">channel, alpha</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-g_t_0040acronym_007bCIECAM02_007d-106"><acronym>CIECAM02</acronym></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-coarse-mask-143">coarse mask</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-color-appearance-model-105">color appearance model</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-color-space_002c-_0040acronym_007bsRGB_007d-110">color space, <acronym>sRGB</acronym></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-colors_002c-visualization-image-189">colors, visualization image</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-compression-72">compression</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-compression_002c-deflate-76">compression, deflate</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-compression_002c-_0040acronym_007bJPEG_007d-74">compression, <acronym>JPEG</acronym></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-compression_002c-_0040acronym_007bLZW_007d-78">compression, <acronym>LZW</acronym></a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-compression_002c-packbits-80">compression, packbits</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-conversion_002c-raw-24">conversion, raw</a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-default-output-filename-90">default output filename</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-deflate-compression-75">deflate compression</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-g_t_0040sc_007bDijkstra_007d-radius-182"><span class="sc">Dijkstra</span> radius</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-double-precision-float_002c-_0040acronym_007bIEEE754_007d-118">double precision float, <acronym>IEEE754</acronym></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-feathering_002c-detrimental-effect-of-7">feathering, detrimental effect of</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-filename_002c-literal-33">filename, literal</a>: <a href="#Invocation">Invocation</a></li>
+<li><a href="#index-fine-mask-151">fine mask</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-format-of-response-file-40">format of response file</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-free-documentation-license-_0028_0040acronym_007bFDL_007d_0029-265">free documentation license (<acronym>FDL</acronym>)</a>: <a href="#FDL">FDL</a></li>
+<li><a href="#index-frozen-seam_002dline-endpoint-185">frozen seam-line endpoint</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-general-index-273">general index</a>: <a href="#General-Index">General Index</a></li>
+<li><a href="#index-glob_00287_0029-62">glob(7)</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-globbing-algorithm-_0040samp_007bliteral_007d-60">globbing algorithm &lsquo;<samp><span class="samp">literal</span></samp>&rsquo;</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-globbing-algorithm-_0040samp_007bnone_007d-63">globbing algorithm &lsquo;<samp><span class="samp">none</span></samp>&rsquo;</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-globbing-algorithm-_0040samp_007bsh_007d-65">globbing algorithm &lsquo;<samp><span class="samp">sh</span></samp>&rsquo;</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-globbing-algorithm-_0040samp_007bshell_007d-64">globbing algorithm &lsquo;<samp><span class="samp">shell</span></samp>&rsquo;</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-globbing-algorithm-_0040samp_007bwildcard_007d-61">globbing algorithm &lsquo;<samp><span class="samp">wildcard</span></samp>&rsquo;</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-globbing-algorithms-66">globbing algorithms</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-g_t_0040acronym_007bGNU_007d-free-documentation-license-266"><acronym>GNU</acronym> free documentation license</a>: <a href="#FDL">FDL</a></li>
+<li><a href="#index-g_t_0040acronym_007bGPU_007d-_0028Graphics-Processing-Unit_0029-132"><acronym>GPU</acronym> (Graphics Processing Unit)</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-grammar_002c-response-file-44">grammar, response file</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-grammar_002c-syntactic-comment-52">grammar, syntactic comment</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-graphics-processing-unit-131">graphics processing unit</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-half-precision-float_002c-_0040acronym_007bOpenEXR_007d-121">half precision float, <acronym>OpenEXR</acronym></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-helpful-programs-224">helpful programs</a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-Hugin-262">Hugin</a>: <a href="#Bug-Reports">Bug Reports</a></li>
+<li><a href="#index-g_t_0040acronym_007bICC_007d-profile-107"><acronym>ICC</acronym> profile</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-g_t_0040acronym_007bIEEE754_007d-double-precision-float-117"><acronym>IEEE754</acronym> double precision float</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-g_t_0040acronym_007bIEEE754_007d-single-precision-float-115"><acronym>IEEE754</acronym> single precision float</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-image-cache-219">image cache</a>: <a href="#Tuning-Memory-Usage">Tuning Memory Usage</a></li>
+<li><a href="#index-image-cache_002c-block-size-103">image cache, block size</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-image-cache_002c-cache-size-134">image cache, cache size</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-image-cache_002c-location-220">image cache, location</a>: <a href="#Tuning-Memory-Usage">Tuning Memory Usage</a></li>
+<li><a href="#index-image-colors_002c-visualization-188">image colors, visualization</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-image_002c-multi_002dlayer-9">image, multi-layer</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-image_002c-visualization-181">image, visualization</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-index_002c-general-274">index, general</a>: <a href="#General-Index">General Index</a></li>
+<li><a href="#index-index_002c-option-272">index, option</a>: <a href="#Option-Index">Option Index</a></li>
+<li><a href="#index-index_002c-program-268">index, program</a>: <a href="#Program-Index">Program Index</a></li>
+<li><a href="#index-index_002c-syntactic_002dcomment-270">index, syntactic-comment</a>: <a href="#Syntactic_002dComment-Index">Syntactic-Comment Index</a></li>
+<li><a href="#index-input-mask-211">input mask</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
+<li><a href="#index-invocation-31">invocation</a>: <a href="#Invocation">Invocation</a></li>
+<li><a href="#index-g_t_0040acronym_007bJPEG_007d-compression-73"><acronym>JPEG</acronym> compression</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-KImageFuser-263">KImageFuser</a>: <a href="#Bug-Reports">Bug Reports</a></li>
+<li><a href="#index-lens-distortion_002c-correction-of-27">lens distortion, correction of</a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-levels_002c-pyramid-86">levels, pyramid</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-LibJPEG-249">LibJPEG</a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-LibPNG-250">LibPNG</a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-LibTiff-251">LibTiff</a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-literal-filename-32">literal filename</a>: <a href="#Invocation">Invocation</a></li>
+<li><a href="#index-load-mask-154">load mask</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-loops-in-seam-line-158">loops in seam line</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-g_t_0040acronym_007bLZW_007d-compression-77"><acronym>LZW</acronym> compression</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007b_0025_007d-191">mask template character, &lsquo;<samp><span class="samp">%</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007bb_007d-198">mask template character, &lsquo;<samp><span class="samp">b</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007bB_007d-199">mask template character, &lsquo;<samp><span class="samp">B</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007bd_007d-196">mask template character, &lsquo;<samp><span class="samp">d</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007bD_007d-197">mask template character, &lsquo;<samp><span class="samp">D</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007be_007d-202">mask template character, &lsquo;<samp><span class="samp">e</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007bE_007d-203">mask template character, &lsquo;<samp><span class="samp">E</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007bf_007d-200">mask template character, &lsquo;<samp><span class="samp">f</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007bF_007d-201">mask template character, &lsquo;<samp><span class="samp">F</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007bi_007d-192">mask template character, &lsquo;<samp><span class="samp">i</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007bn_007d-193">mask template character, &lsquo;<samp><span class="samp">n</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007bP_007d-195">mask template character, &lsquo;<samp><span class="samp">P</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-character_002c-_0040samp_007bp_007d-194">mask template character, &lsquo;<samp><span class="samp">p</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask-template-characters_002c-table-of-190">mask template characters, table of</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask_002c-binary-207">mask, binary</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
+<li><a href="#index-mask_002c-coarse-142">mask, coarse</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask_002c-fine-150">mask, fine</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask_002c-generation-145">mask, generation</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask_002c-input-files-210">mask, input files</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
+<li><a href="#index-mask_002c-load-153">mask, load</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask_002c-optimization-visualization-178">mask, optimization visualization</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask_002c-save-172">mask, save</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask_002c-vectorization-distance-156">mask, vectorization distance</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-mask_002c-weight-209">mask, weight</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
+<li><a href="#index-masks_002c-understanding-205">masks, understanding</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
+<li><a href="#index-memory_002c-tuning-usage-of-216">memory, tuning usage of</a>: <a href="#Tuning-Memory-Usage">Tuning Memory Usage</a></li>
+<li><a href="#index-multi_002ddirectory-_0040acronym_007bTIFF_007d-10">multi-directory <acronym>TIFF</acronym></a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-multi_002dlayer-image-8">multi-layer image</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-nearest_002dfeature-transform-_0028_0040acronym_007bNFT_007d_0029-184">nearest-feature transform (<acronym>NFT</acronym>)</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-Octave-256">Octave</a>: <a href="#Bug-Reports">Bug Reports</a></li>
+<li><a href="#index-g_t_0040acronym_007bOpenEXR_007d_002c-data-format-119"><acronym>OpenEXR</acronym>, data format</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-g_t_0040acronym_007bOpenEXR_007d_002c-half-precision-float-120"><acronym>OpenEXR</acronym>, half precision float</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-optimize-seam-160">optimize seam</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-optimize-strategy-166">optimize strategy</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-optimize_002c-anneal-parameters-137">optimize, anneal parameters</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-optimizer-weights-168">optimizer weights</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-optimizer_002c-simulated-annealing-140">optimizer, simulated annealing</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-option-index-271">option index</a>: <a href="#Option-Index">Option Index</a></li>
+<li><a href="#index-options_002c-common-68">options, common</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-options_002c-extended-101">options, extended</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-options_002c-mask-generation-135">options, mask generation</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-order_002c-of-processing-38">order, of processing</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-output-file-compression-71">output file compression</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-output-filename_002c-default-91">output filename, default</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-output-image_002c-set-size-of-123">output image, set size of</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-overview-1">overview</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-packbits-compression-79">packbits compression</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-parallax-error-29">parallax error</a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-photometric-alignment-28">photometric alignment</a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-problem-reports-258">problem reports</a>: <a href="#Bug-Reports">Bug Reports</a></li>
+<li><a href="#index-processing-order-37">processing order</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-profile_002c-_0040acronym_007bICC_007d-108">profile, <acronym>ICC</acronym></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-program-index-267">program index</a>: <a href="#Program-Index">Program Index</a></li>
+<li><a href="#index-programs_002c-helpful-additional-225">programs, helpful additional</a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
+<li><a href="#index-pyramid-levels-85">pyramid levels</a>: <a href="#Common-Options">Common Options</a></li>
+<li><a href="#index-radius_002c-_0040sc_007bDijkstra_007d-148">radius, <span class="sc">Dijkstra</span></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-raw-conversion-23">raw conversion</a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-response-file-35">response file</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-response-file-34">response file</a>: <a href="#Invocation">Invocation</a></li>
+<li><a href="#index-response-file_002c-comment-_0028_0040samp_007b_0023_007d_0029-42">response file, comment (&lsquo;<samp><span class="samp">#</span></samp>&rsquo;)</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-response-file_002c-force-recognition-of-45">response file, force recognition of</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-response-file_002c-format-39">response file, format</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-response-file_002c-grammar-43">response file, grammar</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-response-file_002c-syntactic-comment-49">response file, syntactic comment</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-save-mask-173">save mask</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-seam-line_002c-loops-157">seam line, loops</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-seam-optimization-170">seam optimization</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-seam_002dline-endpoint_002c-frozen-186">seam-line endpoint, frozen</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-simulated-annealing-optimizer-139">simulated annealing optimizer</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-single-precision-float_002c-_0040acronym_007bIEEE754_007d-116">single precision float, <acronym>IEEE754</acronym></a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-smooth-difference-image-175">smooth difference image</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-SourceForge-14">SourceForge</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-SourceForge-259">SourceForge</a>: <a href="#Bug-Reports">Bug Reports</a></li>
+<li><a href="#index-SourceForge_002c-tracker-261">SourceForge, tracker</a>: <a href="#Bug-Reports">Bug Reports</a></li>
+<li><a href="#index-g_t_0040acronym_007bsRGB_007d-color-space-109"><acronym>sRGB</acronym> color space</a>: <a href="#Extended-Options">Extended Options</a></li>
+<li><a href="#index-syntactic-comment_002c-grammar-51">syntactic comment, grammar</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-syntactic-comment_002c-response-file-50">syntactic comment, response file</a>: <a href="#Response-Files">Response Files</a></li>
+<li><a href="#index-syntactic_002dcomment-index-269">syntactic-comment index</a>: <a href="#Syntactic_002dComment-Index">Syntactic-Comment Index</a></li>
+<li><a href="#index-g_t_0040acronym_007bTIFF_007d_002c-multi_002ddirectory-11"><acronym>TIFF</acronym>, multi-directory</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-g_t_0040command_007btiffcopy_007d-12"><samp><span class="command">tiffcopy</span></samp></a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-g_t_0040command_007btiffsplit_007d-13"><samp><span class="command">tiffsplit</span></samp></a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-g_t_0040env_007bTMPDIR_007d-221"><samp><span class="env">TMPDIR</span></samp></a>: <a href="#Tuning-Memory-Usage">Tuning Memory Usage</a></li>
+<li><a href="#index-tracker_002c-SourceForge-260">tracker, SourceForge</a>: <a href="#Bug-Reports">Bug Reports</a></li>
+<li><a href="#index-transformation_002c-affine-26">transformation, affine</a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-understanding-masks-204">understanding masks</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
+<li><a href="#index-visualization-image-180">visualization image</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-visualization-image-colors-187">visualization image colors</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-visualization-of-mask-optimization-179">visualization of mask optimization</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-weight-mask-215">weight mask</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
+<li><a href="#index-weights_002c-optimizer-169">weights, optimizer</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
+<li><a href="#index-workflow-15">workflow</a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-workflow-with-Enblend-16">workflow with Enblend</a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-workflow-with-Enfuse-17">workflow with Enfuse</a>: <a href="#Workflow">Workflow</a></li>
+<li><a href="#index-wrap-around-99">wrap around</a>: <a href="#Common-Options">Common Options</a></li>
+   </ul>   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Voetnoten</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> <span class="sc">Peter J. Burt</span> and <span class="sc">Edward H. Adelson</span>, &ldquo;A
+Multiresolution Spline With Application to Image Mosaics&rdquo;,
+<acronym>ACM</acronym> Transactions on Graphics, <abbr>Vol.</abbr> 2, <abbr>No.</abbr> 4,
+October 1983, pages 217&ndash;236.</p>
+
+   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> Use utilities like,
+e.g., <samp><span class="command">tiffcopy</span></samp> and <samp><span class="command">tiffsplit</span></samp> of LibTIFF to
+manipulate multi-directory <acronym>TIFF</acronym> images.  See <a href="#Helpful-Programs">Helpful Programs</a>.</p>
+
+   <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> As
+Dr.&nbsp;Daniel Jackson correctly
+<a href="http://stargate.wikia.com/wiki/The_Tomb">noted</a>, actually,
+it is not a pyramid: &ldquo;Ziggaurat, it's a
+<a href="http://en.wikipedia.org/wiki/Ziggaurat">Ziggaurat</a>.&rdquo;</p>
+
+   <p class="footnote"><small>[<a name="fn-4" href="#fnd-4">4</a>]</small> Solid-state physicists will be
+reminded of the
+<a href="http://en.wikipedia.org/wiki/Born-von_Karman_boundary_condition">http://en.wikipedia.org/wiki/Born-von_Karman_boundary_condition</a>,
+<span class="sc">Born</span>-<span class="sc">von K&aacute;rm&aacute;n</span> boundary condition.</p>
+
+   <p class="footnote"><small>[<a name="fn-5" href="#fnd-5">5</a>]</small> <span class="sc">Muhammad
+H. Alsuwaiyel</span> and <span class="sc">Marina Gavrilova</span>, &ldquo;On the Distance Transform
+of Binary Images&rdquo;, Proceedings of the International Conference on
+Imaging Science, Systems, and Technology, June 2000, <abbr>Vols.</abbr> I
+and II, pages 83&ndash;86.</p>
+
+   <p class="footnote"><small>[<a name="fn-6" href="#fnd-6">6</a>]</small> Images of a size less than
+1500&times;1000 pixels qualify as small.</p>
+
+   <hr></div>
+
+</body></html>
+

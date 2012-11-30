@@ -1,23 +1,25 @@
 pyExifToolGui is a python pySide QT4 script program that reads and writes
-gps tags from/to image files. It can use a "reference" image as source image to
-copy data from. A strong point of this software is the ability to write the data,
+exif, xmp and IPTC tags from/to image files using exiftool. It can use a 
+"reference" image as source image to copy data from. 
+A strong point of this software is the ability to write the data,
 copied or not from a source image, to multiple images at once.
-My main goal is a tool to write gps data to my images as I photograph a lot in buildings
-like Churches/Cathedrals and Musea (when allowed), which means that the gps functionality
-of my camera doesn't function.
-Next to the gps functionality it will slowly grow into a general exiftool Gui and will
+The main goal for this tool was the ability to write gps data to my images as I 
+photograph a lot in buildings like Churches/Cathedrals and Musea (when allowed), 
+which means that the gps functionality of the camera doesn't function.
+Next to the gps functionality pyExifToolGUI will slowly grow into a general exiftool Gui and will
 also write other tags to your images.
 This pyExifToolGUI tool is NOT a geotagging tool!
 
 pyExifToolGui is a graphical frontend for the excellent open source
-command line tool ExifTool(1) by Phil Harvey."
+command line tool ExifTool(1) by Phil Harvey.
 pyExifToolGui is not a complete ExifTool Gui, far from that.
 I needed a tool to add gps data to my images and couldn't find one
 and decided to write my own. 
-"By accident" it contains more functions as ExifTool is such a powerful tool
+"By accident" it contains more functions as ExifTool is a powerful tool
 and once you have written the basic program Gui skeleton it is relatively easy
 to add extra functionality, which is basically to add more exif/xmp/iptc tags and
-add them to the "write to image" function.
+add them to the "write to image" function. This is a time consuming process but not a 
+difficult one.
 
 This program is completely free, but you can donate any amount to me to show
 your appreciation. See the Help menu in the program or the link below (2).
