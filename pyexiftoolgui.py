@@ -240,13 +240,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #------------------------------------------------------------------------
 # Help message boxes
     def gps_help(self):
-        petgfunctions.help_mbox(self, "Help on Edit -> Gps tab", programstrings.GPSHELP)
+        #petgfunctions.help_mbox(self, "Help on Edit -> Gps tab", programstrings.GPSHELP)
+	try:
+                print "file://" + os.path.join(self.realfile_dir, "manual", "pyexiftoolgui.html#EditgpsData")
+		webbrowser.open(os.path.join(self.realfile_dir, "manual", "pyexiftoolgui.html#EditgpsData"))
+	except:
+		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
 
     def exif_help(self):
-        petgfunctions.help_mbox(self, "Help on Edit -> Exif tab", programstrings.EXIFHELP)
+        #petgfunctions.help_mbox(self, "Help on Edit -> Exif tab", programstrings.EXIFHELP)
+	try:
+                print "file://" + os.path.join(self.realfile_dir, "manual", "pyexiftoolgui.html#EditexifData")
+		webbrowser.open(os.path.join(self.realfile_dir, "manual", "pyexiftoolgui.html#EditexifData"))
+	except:
+		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
 
     def gpano_help(self):
-        petgfunctions.help_mbox(self, "Help on Edit -> GPano tab", programstrings.GPANOHELP)
+        #petgfunctions.help_mbox(self, "Help on Edit -> GPano tab", programstrings.GPANOHELP)
+	try:
+                print "file://" + os.path.join(self.realfile_dir, "manual", "pyexiftoolgui.html#EditgpanoData")
+		webbrowser.open(os.path.join(self.realfile_dir, "manual", "pyexiftoolgui.html#EditgpanoData"))
+	except:
+		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
 
 #------------------------------------------------------------------------
 # Image table actions
