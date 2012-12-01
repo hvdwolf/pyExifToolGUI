@@ -1780,7 +1780,7 @@ to convert the data.</string>
          <rect>
           <x>30</x>
           <y>480</y>
-          <width>655</width>
+          <width>674</width>
           <height>29</height>
          </rect>
         </property>
@@ -2091,7 +2091,7 @@ to convert the data.</string>
          <rect>
           <x>11</x>
           <y>470</y>
-          <width>655</width>
+          <width>674</width>
           <height>29</height>
          </rect>
         </property>
@@ -2676,7 +2676,7 @@ to convert the data.</string>
      <x>0</x>
      <y>0</y>
      <width>1120</width>
-     <height>24</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -2691,11 +2691,8 @@ to convert the data.</string>
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="mnu_action_pyexiftoolgui_home"/>
     <addaction name="mnu_action_exiftool"/>
-    <addaction name="mnu_action_EXIF_tags"/>
-    <addaction name="mnu_action_XMP_tags"/>
-    <addaction name="mnu_action_IPTC_tags"/>
-    <addaction name="mnu_action_Maker_tags"/>
     <addaction name="mnu_action_mapcoordinates_tab"/>
     <addaction name="separator"/>
     <addaction name="mnu_action_Donate"/>
@@ -2773,6 +2770,11 @@ to convert the data.</string>
   <action name="mnu_action_mapcoordinates_tab">
    <property name="text">
     <string>MapCoordinates.net tab</string>
+   </property>
+  </action>
+  <action name="mnu_action_pyexiftoolgui_home">
+   <property name="text">
+    <string>pyExifToolGUI homepage</string>
    </property>
   </action>
  </widget>

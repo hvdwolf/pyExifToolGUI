@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sat Dec  1 19:05:56 2012
+# Created: Sat Dec  1 20:15:17 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -762,7 +762,7 @@ class Ui_MainWindow(object):
         self.label_43.setObjectName("label_43")
         self.gridLayout_2.addWidget(self.label_43, 8, 0, 1, 1)
         self.verticalLayoutWidget_2 = QtGui.QWidget(self.editexiftab)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(30, 480, 655, 29))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(30, 480, 674, 29))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.horizontalLayout_9 = QtGui.QHBoxLayout(self.verticalLayoutWidget_2)
         self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
@@ -908,7 +908,7 @@ class Ui_MainWindow(object):
         self.chk_xmp_person.setObjectName("chk_xmp_person")
         self.gridLayout_6.addWidget(self.chk_xmp_person, 8, 3, 1, 1)
         self.verticalLayoutWidget_5 = QtGui.QWidget(self.editxmptab)
-        self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(11, 470, 655, 29))
+        self.verticalLayoutWidget_5.setGeometry(QtCore.QRect(11, 470, 674, 29))
         self.verticalLayoutWidget_5.setObjectName("verticalLayoutWidget_5")
         self.horizontalLayout_13 = QtGui.QHBoxLayout(self.verticalLayoutWidget_5)
         self.horizontalLayout_13.setContentsMargins(0, 0, 0, 0)
@@ -1171,7 +1171,7 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.preferencestab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 26))
         self.menubar.setObjectName("menubar")
         self.menu_File = QtGui.QMenu(self.menubar)
         self.menu_File.setObjectName("menu_File")
@@ -1207,14 +1207,13 @@ class Ui_MainWindow(object):
         self.mnu_action_Maker_tags.setObjectName("mnu_action_Maker_tags")
         self.mnu_action_mapcoordinates_tab = QtGui.QAction(MainWindow)
         self.mnu_action_mapcoordinates_tab.setObjectName("mnu_action_mapcoordinates_tab")
+        self.mnu_action_pyexiftoolgui_home = QtGui.QAction(MainWindow)
+        self.mnu_action_pyexiftoolgui_home.setObjectName("mnu_action_pyexiftoolgui_home")
         self.menu_File.addAction(self.mnu_action_load_images)
         self.menu_File.addSeparator()
         self.menu_File.addAction(self.action_Quit)
+        self.menuHelp.addAction(self.mnu_action_pyexiftoolgui_home)
         self.menuHelp.addAction(self.mnu_action_exiftool)
-        self.menuHelp.addAction(self.mnu_action_EXIF_tags)
-        self.menuHelp.addAction(self.mnu_action_XMP_tags)
-        self.menuHelp.addAction(self.mnu_action_IPTC_tags)
-        self.menuHelp.addAction(self.mnu_action_Maker_tags)
         self.menuHelp.addAction(self.mnu_action_mapcoordinates_tab)
         self.menuHelp.addSeparator()
         self.menuHelp.addAction(self.mnu_action_Donate)
@@ -1443,5 +1442,6 @@ class Ui_MainWindow(object):
         self.mnu_action_IPTC_tags.setText(QtGui.QApplication.translate("MainWindow", "IPTC tags", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_Maker_tags.setText(QtGui.QApplication.translate("MainWindow", "Maker tags", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_mapcoordinates_tab.setText(QtGui.QApplication.translate("MainWindow", "MapCoordinates.net tab", None, QtGui.QApplication.UnicodeUTF8))
+        self.mnu_action_pyexiftoolgui_home.setText(QtGui.QApplication.translate("MainWindow", "pyExifToolGUI homepage", None, QtGui.QApplication.UnicodeUTF8))
 
 from PySide import QtWebKit

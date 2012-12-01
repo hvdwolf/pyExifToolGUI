@@ -69,6 +69,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	self.mnu_action_load_images.triggered.connect(self.loadimages)
 	self.action_Quit.triggered.connect(self.quit_application)
 	app.aboutToQuit.connect(self.quit_application)
+        self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
 	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
 	self.mnu_action_EXIF_tags.triggered.connect(self.open_exiftool_exiftags)
 	self.mnu_action_XMP_tags.triggered.connect(self.open_exiftool_xmptags)
@@ -216,6 +217,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #        myprocess = QProcess(self)
 #        myprocess.start(command_line, ["license"])
 
+    def open_pyexiftoolgui_homepage(self):
+        try:
+                webbrowser.open("http://panorama.dyndns.org/index.php?lang=en&subject=pyExifToolGUI&texttag=pyExifToolGUI")
+        except:
+		QMessageBox.critical(self, "Error!", "Unable to open the pyExifToolGUI homepage" )
 
     def open_exiftool_homepage(self):
 	try:
