@@ -56,3 +56,9 @@ EXIF
 
 GPano Google Photosphere
 exiftool -overwrite_original_in_place -xmp:CroppedAreaImageHeightPixels="300" -xmp:CroppedAreaImageWidthPixels="800" -xmp:CroppedAreaLeftPixels="20" -xmp:CroppedAreaTopPixels="20" -xmp:FullPanoHeightPixels="1024" -xmp:FullPanoWidthPixels="8000" -xmp:ProjectionType="equirectangular" -xmp:UsePanoramaViewer=1 -xmp:PoseHeadingDegrees="120" 
+
+Name tags:
+-xmp   Region Person Display Name      : Carlos 2011-, Maria   (Person, PersonInImage)
+-iptc  Keywords                        : Arnaldur 2008-, John
+
+exiftool -overwrite_original_in_place -xmp:Person="Piet, Jan" -xmp:PersonInImage="Piet, Jan" -iptc:Keywords="Piet, Jan" 20121114-050.jpg

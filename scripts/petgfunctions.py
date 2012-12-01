@@ -144,18 +144,23 @@ def write_config(self, aftererror):
 	#print "Writing our config file"
 
 	# Create our config
-	config.add_section("main")
+	config.add_section("preferences")
 	if aftererror == 1: # Some error occurred. Go back to defaults
-		config.set("main", "alternate_exiftool", str(False))
+		config.set("preferences", "alternate_exiftool", str(False))
 		self.alternate_exiftool = False
-		config.set("main", "exiftooloption", "exiftool")
+		config.set("preferences", "exiftooloption", "exiftool")
+		config.set("preferences", "def_creator", "")
+		config.set("preferences", "def_copyright", "")
 	else:
 		if self.exiftooloption.text() in ("exiftool", ""):
-			config.set("main", "alternate_exiftool", str(False))
-			config.set("main", "exiftooloption", "exiftool")
+			config.set("preferences", "alternate_exiftool", str(False))
+			config.set("preferences", "exiftooloption", "exiftool")
 		else: # user has changed it
-			config.set("main", "alternate_exiftool", str(True))
-			config.set("main", "exiftooloption", self.exiftooloption.text())
+			config.set("preferences", "alternate_exiftool", str(True))
+			config.set("preferences", "exiftooloption", self.exiftooloption.text())
+		config.set("preferences", "def_creator", self.def_creator.text())
+		config.set("preferences", "def_copyright", self.def_copyright.text())
+
 	userpath = os.path.expanduser('~')
 	try:
 		fldr = os.mkdir(os.path.join(userpath, '.pyexiftoolgui'))
@@ -205,11 +210,19 @@ def read_config(self):
 		#print "no error on config check, continue"
 		config.read(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg'))
 		try: 
-			self.alternate_exiftool = config.getboolean("main", "alternate_exiftool")
+			self.alternate_exiftool = config.getboolean("preferences", "alternate_exiftool")
 		except:
 			error_reading_configparameter(self)  
 		try:
-			self.exiftooloption.setText(config.get("main", "exiftooloption"))
+			self.exiftooloption.setText(config.get("preferences", "exiftooloption"))
+		except:
+			error_reading_configparameter(self)
+		try:
+			self.def_creator.setText(config.get("preferences", "def_creator"))
+		except:
+			error_reading_configparameter(self)
+		try:
+			self.def_copyright.setText(config.get("preferences", "def_copyright"))
 		except:
 			error_reading_configparameter(self)
 		
@@ -327,6 +340,8 @@ def loadimages(self,loadedimages, loadedimagesstring,qApp):
                 if float(self.exiftoolversion) > 9.06:
                    self.btn_gpano_copyfrom.setEnabled(True)
                    self.btn_savegpano.setEnabled(True)
+                self.btn_xmp_copyfrom.setEnabled(True)
+                self.btn_savexmp.setEnabled(True)
         	self.progressbar.hide()
                 self.lbl_progress.setText("Click thumb or filename to display the image info")
                 # Set proper events
@@ -413,7 +428,16 @@ def imageinfo(self, qApp):
             except:
                print "always the last line that doesn't work"
 
-
+def copy_defaults(self, qApp, category):
+    if category == "exif":
+       self.exif_Artist.setText(self.def_creator.text())
+       self.exif_Copyright.setText(self.def_copyright.text())
+    elif category == "xmp":
+       self.xmp_creator.setText(self.def_creator.text())
+       self.xmp_rights.setText(self.def_copyright.text())
+    elif category == "iptc":
+       self.iptc_creator.setText(self.def_creator.text())
+       self.iptc_rights.setText(self.def_copyright.text())
 
 #------------------------------------------------------------------------
 # Edit -> Gps tab and actions
@@ -593,7 +617,7 @@ def copygpsfromselected(self,qApp):
         clear_gps_fields(self)
         exiftool_params = ' -e -n -a -gps:all -xmp:Location -xmp:Country -xmp:State -xmp:City -xmp:GPSLatitude -xmp:GPSLongitude '
         data = True
-        p = read_exif_info(self, exiftool_params)
+        p = read_image_info(self, exiftool_params)
         if len(p) == 0:
            data = False
            message = ("<p>You are trying to copy the gps/location info from your source image, but your source image "
@@ -744,7 +768,7 @@ def savegpsdata(self, qApp):
                exiftool_params +=  '-exif:GPSMapDatum="' + self.gps_mapdatum.text() + '" '
         print exiftool_params
         # Now write the data to the photo(s)
-        write_exif_info(self, exiftool_params, qApp)
+        write_image_info(self, exiftool_params, qApp)
 
 #------------------------------------------------------------------------
 # Edit -> Exif tab and actions
@@ -773,7 +797,7 @@ def copyexiffromselected(self,qApp):
         # First clean input fields
         clear_exif_fields(self)
         exiftool_params = ' -e -n -exif:Make -exif:Model -exif:ModifyDate -exif:DateTimeOriginal -exif:CreateDate -exif:Artist -exif:Copyright -exif:UserComment -exif:ImageDescription '
-        p = read_exif_info(self, exiftool_params)
+        p = read_image_info(self, exiftool_params)
         if len(p) == 0:
            data = False
            message = ("<p>You are trying to copy exif info from your source image, but your source image "
@@ -833,7 +857,112 @@ def saveexifdata(self, qApp):
                ImgDescr = self.exif_ImageDescription.toPlainText()
                exiftool_params +=  '-exif:ImageDescription="' + ImgDescr + '" '
 
-        write_exif_info(self, exiftool_params, qApp)
+        write_image_info(self, exiftool_params, qApp)
+               
+#------------------------------------------------------------------------
+# Edit -> xmp tab and actions
+def clear_xmp_fields(self):
+        self.xmp_creator.setText("")
+        self.xmp_rights.setText("")
+        self.xmp_label.setText("")
+        self.xmp_subject.setText("")
+        self.xmp_title.setText("")
+        self.xmp_rating1.setChecked(1)
+        self.xmp_description.clear()
+        self.xmp_person.setText("")
+
+        self.chk_xmp_creator.setChecked(1)
+        self.chk_xmp_rights.setChecked(1)
+        self.chk_xmp_label.setChecked(1)
+        self.chk_xmp_subject.setChecked(1)
+        self.chk_xmp_title.setChecked(1)
+        self.chk_xmp_rating.setChecked(1)
+        self.chk_xmp_description.setChecked(1)
+        self.chk_xmp_person.setChecked(1)
+
+def copyxmpfromselected(self,qApp):
+        # First clean input fields
+        clear_xmp_fields(self)
+        xmptool_params = ' -e -n -xmp:Creator -xmp:Rights -xmp:Label -xmp:Subject -xmp:Title -xmp:Rating -xmp:Description -xmp:Person -xmp:PersonInImage '
+        p = read_image_info(self, xmptool_params)
+        if len(p) == 0:
+           data = False
+           message = ("<p>You are trying to copy xmp info from your source image, but your source image "
+                      "doesn't contain the specified xmp data or doesn't seem to contain any xmp data (or you didn't select an image).</p>")
+           ret = QMessageBox.warning(self, "Error copying xmp info from source image", message)
+        else:
+           # remove last character which is the final ending \n (where \ is only the escape character)        
+           p = p[:-1]
+           p_lines = re.split('\n',p)
+           rowcounter = 0
+           for line in p_lines:
+            #try: 
+               descriptor, description = re.split(':', line,1)
+               descriptor = descriptor.strip()
+               description = description.strip()
+               gpslat = 0
+               gpslon = 0
+               if descriptor == "Creator":
+                     self.xmp_creator.setText(description)
+               if descriptor == "Rights":
+                     self.xmp_rights.setText(description)
+               if descriptor == "Label":
+                     self.xmp_label.setText(description)
+               if descriptor == "Subject":
+                      self.xmp_subject.setText(description)
+               if descriptor == "Title":
+                     self.xmp_title.setText(description)
+               if descriptor == "Rating":
+                     if description == "1":
+                        self.xmp_rating1.setChecked(1)
+                     elif description == "2":
+                        self.xmp_rating2.setChecked(2)
+                     elif description == "3":
+                        self.xmp_rating3.setChecked(3)
+                     elif description == "4":
+                        self.xmp_rating4.setChecked(4)
+                     elif description == "5":
+                        self.xmp_rating5.setChecked(5)
+               if descriptor == "Description":
+                     self.xmp_description.insertPlainText(description)
+               if descriptor == "Person":
+                     self.xmp_person.setText(description)
+               if descriptor == "Person In Image":
+                     self.xmp_person.setText(description)
+               #print "rowcounter " + str(rowcounter) + " descriptor " + descriptor + " ;description " + description
+               rowcounter += 1
+
+def savexmpdata(self, qApp):
+        if self.chk_xmp_creator.isChecked():
+               xmptool_params =  ' -xmp:Creator="' + self.xmp_creator.text() + '" '
+        if self.chk_xmp_rights.isChecked():
+               xmptool_params +=  '-xmp:Rights="' + self.xmp_rights.text() + '" '
+        if self.chk_xmp_label.isChecked():
+               xmptool_params +=  '-xmp:Label="' + self.xmp_label.text() + '" '
+        if self.chk_xmp_subject.isChecked():
+               xmptool_params +=  '-xmp:Subject="' + self.xmp_subject.text() + '" '
+        if self.chk_xmp_title.isChecked():
+               xmptool_params +=  '-xmp:Title="' + self.xmp_title.text() + '" '
+        if self.chk_xmp_rating.isChecked():
+               if self.xmp_rating1.isChecked():
+                  rating = "1"
+               elif self.xmp_rating2.isChecked():
+                  rating = "2"
+               elif self.xmp_rating3.isChecked():
+                  rating = "3"
+               elif self.xmp_rating4.isChecked():
+                  rating = "4"
+               else:
+                  rating = "5"
+               xmptool_params +=  '-xmp:Rating="' + rating + '" '
+        if self.chk_xmp_description.isChecked():
+               Descr = self.xmp_description.toPlainText()
+               xmptool_params +=  '-xmp:Description="' + Descr + '" '
+        if self.chk_xmp_person.isChecked():
+               xmptool_params +=  '-xmp:Person="' + self.xmp_person.text() + '" '
+               xmptool_params +=  '-xmp:PersonInImage="' + self.xmp_person.text() + '" '
+
+        write_image_info(self, xmptool_params, qApp)
                
 #------------------------------------------------------------------------
 # Edit -> GPano tab and actions
@@ -862,7 +991,7 @@ def copygpanofromselected(self,qApp):
         # First clean input fields
         clear_exif_fields(self)
         exiftool_params = ' -e -n -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees '
-        p = read_exif_info(self, exiftool_params)
+        p = read_image_info(self, exiftool_params)
         if len(p) == 0:
            data = False
            message = ("<p>You are trying to copy GPano (Google Photosphere) info from your source image, but your source image "
@@ -937,12 +1066,12 @@ def savegpanodata(self, qApp):
         if self.chk_xmp_PoseHeadingDegrees.isChecked():
                exiftool_params +=  '-xmp:PoseHeadingDegrees="' + self.xmp_PoseHeadingDegrees.text() + '" '
 
-        write_exif_info(self, exiftool_params, qApp)
+        write_image_info(self, exiftool_params, qApp)
 
 
 #------------------------------------------------------------------------
 # Real exiftool read/write functions
-def read_exif_info(self, exiftool_params):
+def read_image_info(self, exiftool_params):
         self.lbl_progress.setText("")
 	selected_row = self.MaintableWidget.currentRow()
 	selected_image = "\"" + self.fileNames[selected_row] + "\""
@@ -955,7 +1084,7 @@ def read_exif_info(self, exiftool_params):
         p = subprocess.check_output(args, universal_newlines=True)
         return p
 
-def write_exif_info(self, exiftoolparams, qApp):
+def write_image_info(self, exiftoolparams, qApp):
         mysoftware = programinfo.NAME + " " + programinfo.VERSION
         exiftoolparams = ' -overwrite_original_in_place -ProcessingSoftware="' + mysoftware + '" ' + exiftoolparams
 

@@ -129,7 +129,7 @@ ul.toc {}
 <li><a href="#EditiptcData">3.4 Edit IPTC data</a>
 <li><a href="#EditgpanoData">3.5 Edit GPano (Google Photosphere) data</a>
 </li></ul>
-<li><a name="toc_Preferecnes" href="#Preferences">4 Preferences</a>
+<li><a name="toc_Preferences" href="#Preferences">4 Preferences</a>
 <li><a name="toc_Bug-Reports" href="#Bug-Reports">Appendix A Bug Reports</a>
 <ul>
 <li><a href="#Bug-Reports">A.1 Have You Really Found a Bug?</a>
@@ -201,7 +201,7 @@ As ExifTool supports a large number of image formats, but also movie formats, al
 ExifTool can read, can be displayed by pyExifToolGUI as well. Note that some of the data or subsets of data 
 is simply not available in the non-image formats.<br>
 pyExifToolGUI will try to make a preview (thumbnail) of the image, but will not always succeed.</p>
-<img src="viewdatatab.jpg" alt="viewdatatab.jpg" title="The View Data tab" width="900">
+<img src="viewdatatab.jpg" alt="viewdatatab.jpg" title="The View Data tab" width="1100">
 
 <p>
 
@@ -222,14 +222,14 @@ exif, xmp and iptc gps data as latitude, longitude and altitude are covered in t
 in the xmp metadata structure. The Location metadata details (Country, Province/State, city, Location) 
 are covered by xmp and IPTC. This tab simply tries to make your data as complete as possible in the 
 several tag categories.</p>
-<img src="editgpstab.jpg" alt="editgpstab.jpg" title="The Edit gps tab" width="900">
+<img src="editgpstab.jpg" alt="editgpstab.jpg" title="The Edit gps tab" width="1100">
 <ul><li><h3>Buttons working on image(s):</h3>
 <ul><li><b>Copy from selected image</b>: This will copy all the (available) gps data from
 the selected image into the input fields.</li>
 <li><b>Save to selected image(s)</b>: This will save the gps data to your selected image(s).</li></ul></ul>
 <ul><li><h3>General buttons:</h3>
 <ul><li><b>Reset fields</b>: This will empty all fields and set radiobuttons and checkboxes to their defaults.</li>
-<li><b>Help</b>: This button opens the popup you are currently looking at.</li></ul></ul>
+<li><b>Help</b>: This button opens the manual you are currently reading.</li></ul></ul>
 <ul><li><h3>Calculator buttons:</h3>
 <ul><li><b>Copy to input fields</b>: This copies the calculated values (bottom half) to the input fields (top half).</li>
 <li><b>Decimal to Minutes-Seconds</b>: Convert decimal longitude/latitude values to deg-min-sec.</li>
@@ -241,7 +241,7 @@ the selected image into the input fields.</li>
 <h3 class="section">3.2 Edit exif Data</h3>
 
 <p>This tab is used to add (a limited amount of) exif data to your selected image(s).</p>
-<img src="editexiftab.jpg" alt="editexiftab.jpg" title="The Edit exif tab" width="900">
+<img src="editexiftab.jpg" alt="editexiftab.jpg" title="The Edit exif tab" width="1100">
 <p><b>Things to take into account!</b></p>
 <p>As you can see the options all have a <b>Save</b> checkbox behind their input fields.
 It means that this option will be saved when checked, even when the field is empty.
@@ -252,13 +252,16 @@ This also means that you can:
 <ul><li><b>Copy from selected image</b>: This will copy all the (available) exif data from
 the selected image into the input fields.</li>
 <li><b>Save to selected image(s)</b>: This will save the \"checked\" exif data to your selected image(s).</li>
-<li><b>Reset fields</b>: This will empty all fields and set checkboxes to their defaults.</li></ul>
+<li><b>Reset fields</b>: This will empty all fields and set checkboxes to their defaults.</li>
+<li><b>Help</b>: This button opens the manual you are currently reading.</li></ul>
 
 <p><a name="EditgpanoData"></a>
 <h3 class="section">3.5 Edit GPano (Google Photosphere) data</h3>
 
 <p>This tab is used to add GPano Google PhotoSphere data to your selected image(s).</p>
-<img src="editgpanotab.jpg" alt="editgpanotab.jpg" title="The GPano Google PhotoSphere tab" width="900">
+<p>The Google PhotoSphere functionality has been added in November 2012 to PicasaWeb and Google+ to enable the use
+of auto-rotating panoramic photos inside these products.
+<p><img src="editgpanotab.jpg" alt="editgpanotab.jpg" title="The GPano Google PhotoSphere tab" width="1100">
 <p>This functionality is only available if you have exiftool 9.07 or newer. You can always download
 the latest <a href='http://www.sno.phy.queensu.ca/~phil/exiftool/'>exiftool</a> version.
 On Windows and Mac OS X simply install it. On Linux you simply unpack the tar.gz to some
@@ -273,7 +276,8 @@ This also means that you can:
 <ul><li><b>Copy from selected image</b>: This will copy all the (available) exif data from
 the selected image into the input fields.</li>
 <li><b>Save to selected image(s)</b>: This will save the \"checked\" exif data to your selected image(s).</li>
-<li><b>Reset fields</b>: This will empty all fields and set checkboxes to their defaults.</li></ul>
+<li><b>Reset fields</b>: This will empty all fields and set checkboxes to their defaults.</li>
+<li><b>Help</b>: This button opens the manual you are currently reading.</li></ul>
 <p>
 
 
@@ -281,10 +285,19 @@ the selected image into the input fields.</li>
 
 <h2 class="chapter">4 Preferences</h2>
 
-<p>The Preferences tab gives you the option to select some defaults for this application like 
-selecting the proper exiftool on your system (windows and Mac OS X) or selecting another exiftool 
-than standard available on your system (Linux).
-<img src="preferencestab.jpg" alt="preferencestab.jpg" title="Preferences tab" width="900">
+<p>The Preferences tab gives you the option to select some defaults for this application.
+<p><h3>ExifTool:</h3>
+<ul><li><b>Windows:</b>  You always have to specify where exiftool.exe is. Please rename exiftool(-k).exe to exiftool.exe. 
+If you stick to exiftool(-k).exe the program will halt on the most peculiar moments.</li>
+<li><b>Linux and Mac OS X:</b>  The program will check for an installed exiftool in the standard program folders. 
+If not found you have to specify where exiftool is. You can also use this option to specify a newer exiftool version 
+then standard available for your distribution. At this moment most distribution ship with some 8.xy exiftool version.
+For the Gpano functionality you really need a version equal or newer then 9.07. 
+See also <a href="#EditgpanoData">"3.5 Edit GPano (Google Photosphere) data"</a>.</li></ul>
+<p><h3>Default values:</h3>
+These fields give you the option to specify your name (for example) and some copyright notice (for example: Spiderman (c) 2012).
+They can be copied into the relevant exif, xmp and iptc fields for these values.
+<p><img src="preferencestab.jpg" alt="preferencestab.jpg" title="Preferences tab" width="1100">
 <p>
 <p>
 

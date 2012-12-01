@@ -100,6 +100,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_saveexif.clicked.connect(self.saveexifdata)
         self.btn_saveexif.setEnabled(False)
         self.btn_resetexif.clicked.connect(self.clear_exif_fields)
+        self.btn_copy_exif_defaults.clicked.connect(self.exif_defaults)
+# Load several buttons from the Edit -> xmp tab
+        self.btn_xmphelp.clicked.connect(self.xmp_help)
+        self.btn_xmp_copyfrom.clicked.connect(self.copyxmpfromselected)
+        self.btn_xmp_copyfrom.setEnabled(False)
+        self.btn_savexmp.clicked.connect(self.savexmpdata)
+        self.btn_savexmp.setEnabled(False)
+        self.btn_resetxmp.clicked.connect(self.clear_xmp_fields)
+        self.btn_copy_xmp_defaults.clicked.connect(self.xmp_defaults)
 # Load several buttons from the Edit -> GPano tab
         self.btn_gpanohelp.clicked.connect(self.gpano_help)
         self.btn_gpano_copyfrom.clicked.connect(self.copygpanofromselected)
@@ -108,6 +117,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_savegpano.setEnabled(False)
         self.btn_resetgpano.clicked.connect(self.clear_gpano_fields)
 # Load several buttons from the Preferences tab
+        self.btn_preferences_save.clicked.connect(self.preferences_save)
+	self.btn_preferenceshelp.clicked.connect(self.preferences_help)
 	self.btn_choose_exiftool.clicked.connect(self.select_exiftool)
 
 #------------------------------------------------------------------------
@@ -238,7 +249,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
 #------------------------------------------------------------------------
-# Help message boxes
+# Help functions leading to html manual
     def gps_help(self):
         #petgfunctions.help_mbox(self, "Help on Edit -> Gps tab", programstrings.GPSHELP)
 	try:
@@ -254,10 +265,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	except:
 		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
 
+    def xmp_help(self):
+	try:
+		webbrowser.open("file://" + os.path.join(self.realfile_dir, "manual", "pyexiftoolgui.html#EditxmpData"))
+	except:
+		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
+
     def gpano_help(self):
         #petgfunctions.help_mbox(self, "Help on Edit -> GPano tab", programstrings.GPANOHELP)
 	try:
 		webbrowser.open("file://" + os.path.join(self.realfile_dir, "manual", "pyexiftoolgui.html#EditgpanoData"))
+	except:
+		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
+
+    def preferences_help(self):
+ 	try:
+		webbrowser.open("file://" + os.path.join(self.realfile_dir, "manual", "pyexiftoolgui.html#Preferences"))
 	except:
 		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
 
@@ -306,8 +329,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def copyexiffromselected(self):
         petgfunctions.copyexiffromselected(self,qApp)
 
+    def exif_defaults(self):
+        petgfunctions.copy_defaults(self, qApp, "exif")
+
     def saveexifdata(self):
         petgfunctions.saveexifdata(self, qApp)
+
+# Edit -> xmp tab
+    def clear_xmp_fields(self):
+        petgfunctions.clear_xmp_fields(self)
+
+    def copyxmpfromselected(self):
+        petgfunctions.copyxmpfromselected(self,qApp)
+
+    def xmp_defaults(self):
+        petgfunctions.copy_defaults(self, qApp, "xmp")
+
+    def savexmpdata(self):
+        petgfunctions.savexmpdata(self, qApp)
 
 # Edit -> GPano tab
     def clear_gpano_fields(self):
@@ -334,6 +373,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
            # user canceled
            self.lbl_progress.setText("you canceled the exiftool selection.")
            return ""
+
+    def preferences_save(self):
+        petgfunctions.write_config(self, 0)
 
 #------------------------------------------------------------------------
 #------------------------------------------------------------------------

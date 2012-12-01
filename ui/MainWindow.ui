@@ -1780,7 +1780,7 @@ to convert the data.</string>
          <rect>
           <x>30</x>
           <y>480</y>
-          <width>562</width>
+          <width>655</width>
           <height>29</height>
          </rect>
         </property>
@@ -1802,6 +1802,16 @@ to convert the data.</string>
            </property>
            <property name="text">
             <string>Save to selected image(s)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_copy_exif_defaults">
+           <property name="toolTip">
+            <string>Copies the default Artist and Copyright from Preferences</string>
+           </property>
+           <property name="text">
+            <string>Copy Defaults</string>
            </property>
           </widget>
          </item>
@@ -1924,7 +1934,7 @@ to convert the data.</string>
           </layout>
          </item>
          <item row="1" column="3">
-          <widget class="QCheckBox" name="checkBox_2">
+          <widget class="QCheckBox" name="chk_xmp_creator">
            <property name="text">
             <string/>
            </property>
@@ -1975,7 +1985,7 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="2" column="3">
-          <widget class="QCheckBox" name="checkBox">
+          <widget class="QCheckBox" name="chk_xmp_rights">
            <property name="text">
             <string/>
            </property>
@@ -1998,7 +2008,7 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="3" column="3">
-          <widget class="QCheckBox" name="checkBox_3">
+          <widget class="QCheckBox" name="chk_xmp_description">
            <property name="text">
             <string/>
            </property>
@@ -2008,7 +2018,7 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="4" column="3">
-          <widget class="QCheckBox" name="checkBox_4">
+          <widget class="QCheckBox" name="chk_xmp_label">
            <property name="text">
             <string/>
            </property>
@@ -2018,7 +2028,7 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="5" column="3">
-          <widget class="QCheckBox" name="checkBox_5">
+          <widget class="QCheckBox" name="chk_xmp_subject">
            <property name="text">
             <string/>
            </property>
@@ -2028,7 +2038,7 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="6" column="3">
-          <widget class="QCheckBox" name="checkBox_6">
+          <widget class="QCheckBox" name="chk_xmp_title">
            <property name="text">
             <string/>
            </property>
@@ -2038,7 +2048,34 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="7" column="3">
-          <widget class="QCheckBox" name="checkBox_7">
+          <widget class="QCheckBox" name="chk_xmp_rating">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_62">
+           <property name="toolTip">
+            <string>This field is actually two xmp tags: &quot;Person&quot; and &quot;Person in Image&quot;, and is used by many &quot;face recognition&quot; programs</string>
+           </property>
+           <property name="text">
+            <string>Person (In Image)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="2">
+          <widget class="QLineEdit" name="xmp_person">
+           <property name="toolTip">
+            <string>This field is actually two xmp tags: &quot;Person&quot; and &quot;Person in Image&quot;, and is used by many &quot;face recognition&quot; programs</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="3">
+          <widget class="QCheckBox" name="chk_xmp_person">
            <property name="text">
             <string/>
            </property>
@@ -2052,9 +2089,9 @@ to convert the data.</string>
        <widget class="QWidget" name="verticalLayoutWidget_5">
         <property name="geometry">
          <rect>
-          <x>80</x>
+          <x>11</x>
           <y>470</y>
-          <width>562</width>
+          <width>655</width>
           <height>29</height>
          </rect>
         </property>
@@ -2076,6 +2113,16 @@ to convert the data.</string>
            </property>
            <property name="text">
             <string>Save to selected image(s)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_copy_xmp_defaults">
+           <property name="toolTip">
+            <string>Copies the default Creator and Rights from Preferences</string>
+           </property>
+           <property name="text">
+            <string>Copy Defaults</string>
            </property>
           </widget>
          </item>
@@ -2184,7 +2231,7 @@ to convert the data.</string>
           <x>30</x>
           <y>100</y>
           <width>611</width>
-          <height>294</height>
+          <height>296</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
@@ -2590,6 +2637,35 @@ to convert the data.</string>
         </item>
        </layout>
       </widget>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>520</y>
+        <width>291</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_14">
+       <item>
+        <widget class="QPushButton" name="btn_preferences_save">
+         <property name="toolTip">
+          <string>Preferences are always automatically saved on exit. In case you want to make an intermediate save you can use this button</string>
+         </property>
+         <property name="text">
+          <string>Save</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_preferenceshelp">
+         <property name="text">
+          <string>Help</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>
