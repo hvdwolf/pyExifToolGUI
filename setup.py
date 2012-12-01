@@ -32,7 +32,7 @@ def print_usage():
 
 def darwin_install():
     copyapp = os.system('cp -a MacOSX/pyExifToolGUI.app /Applications')
-    copyrest = os.system('cp -a pyexiftoolgui.py COPYING scripts ui /Applications/pyExifToolGUI.app/Contents/MacOS/')
+    copyrest = os.system('cp -a pyexiftoolgui.py COPYING scripts ui manual /Applications/pyExifToolGUI.app/Contents/MacOS/')
     print "\nYou will find a pyExifToolGui.app in your Applications folder."
     print "This app only contains the scripts for the application itself."
     print "Make sure that you install QT4 and pyside on your system.\n"
@@ -70,7 +70,7 @@ elif len(sys.argv) == 2:
             fldr = os.system('mkdir -p ' + pyexiftoolgui_path)
          except:
             print "Could not create " + pyexiftoolgui_path
-      copyfolders = os.system('cp -a scripts ui ' + pyexiftoolgui_path)
+      copyfolders = os.system('cp -a scripts ui manual ' + pyexiftoolgui_path)
       copyfiles = os.system('cp -a pyexiftoolgui.py COPYING ' + pyexiftoolgui_path)
       copylauncher = os.system('cp -a bin/pyexiftoolgui /usr/bin')
       copydesktop = os.system('cp -a xdg/pyexiftoolgui.desktop ' + os.path.join(usr_share_path, 'applications'))
