@@ -31,6 +31,7 @@ def print_usage():
     sys.exit()
 
 def darwin_install():
+    os.system('rm -f scripts/*.pyc scripts/*~ ui/*.pyc ui/*~')
     copyapp = os.system('cp -a MacOSX/pyExifToolGUI.app /Applications')
     copyrest = os.system('cp -a COPYING scripts manual /Applications/pyExifToolGUI.app/Contents/Resources/')
     print "\nYou will find a pyExifToolGui.app in your Applications folder."
@@ -70,6 +71,8 @@ elif len(sys.argv) == 2:
             fldr = os.system('mkdir -p ' + pyexiftoolgui_path)
          except:
             print "Could not create " + pyexiftoolgui_path
+      # First a bit of clean up in case users ran pyexiftoolgui already or modified some stuff
+      os.system('rm -f scripts/*.pyc scripts/*~ ui/*.pyc ui/*~')
       copyfolders = os.system('cp -a scripts manual ' + pyexiftoolgui_path)
       copyfiles = os.system('cp -a COPYING ' + pyexiftoolgui_path)
       copylauncher = os.system('cp -a bin/pyexiftoolgui /usr/bin')
