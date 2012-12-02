@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sat Dec  1 20:15:17 2012
+# Created: Sun Dec  2 08:54:32 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         self.progressbar.setObjectName("progressbar")
         self.lbl_progress = QtGui.QLabel(self.centralwidget)
         self.lbl_progress.setEnabled(True)
-        self.lbl_progress.setGeometry(QtCore.QRect(390, 630, 481, 24))
+        self.lbl_progress.setGeometry(QtCore.QRect(370, 630, 501, 24))
         font = QtGui.QFont()
         font.setWeight(50)
         font.setItalic(True)
@@ -138,7 +138,7 @@ class Ui_MainWindow(object):
         self.editgpstab = QtGui.QWidget()
         self.editgpstab.setObjectName("editgpstab")
         self.verticalLayoutWidget = QtGui.QWidget(self.editgpstab)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(430, 160, 251, 171))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(430, 160, 251, 201))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -152,6 +152,9 @@ class Ui_MainWindow(object):
         self.btn_resetgps = QtGui.QPushButton(self.verticalLayoutWidget)
         self.btn_resetgps.setObjectName("btn_resetgps")
         self.verticalLayout.addWidget(self.btn_resetgps)
+        self.btn_mapcoordinates = QtGui.QPushButton(self.verticalLayoutWidget)
+        self.btn_mapcoordinates.setObjectName("btn_mapcoordinates")
+        self.verticalLayout.addWidget(self.btn_mapcoordinates)
         self.btn_gpshelp = QtGui.QPushButton(self.verticalLayoutWidget)
         font = QtGui.QFont()
         font.setWeight(50)
@@ -1096,13 +1099,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.lbl_exiftool_to_low_2)
         self.tabWidget_2.addTab(self.editgpanotab, "")
         self.tabWidget.addTab(self.edittab, "")
-        self.tab = QtGui.QWidget()
-        self.tab.setObjectName("tab")
-        self.webView = QtWebKit.QWebView(self.tab)
-        self.webView.setGeometry(QtCore.QRect(-1, -1, 711, 571))
-        self.webView.setUrl(QtCore.QUrl("http://www.mapcoordinates.net/en"))
-        self.webView.setObjectName("webView")
-        self.tabWidget.addTab(self.tab, "")
         self.preferencestab = QtGui.QWidget()
         self.preferencestab.setObjectName("preferencestab")
         self.frame_2 = QtGui.QFrame(self.preferencestab)
@@ -1263,6 +1259,8 @@ class Ui_MainWindow(object):
         self.btn_savegps.setText(QtGui.QApplication.translate("MainWindow", "Save to selected image(s)", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_resetgps.setToolTip(QtGui.QApplication.translate("MainWindow", "Empties all fields", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_resetgps.setText(QtGui.QApplication.translate("MainWindow", "Reset fields", None, QtGui.QApplication.UnicodeUTF8))
+        self.btn_mapcoordinates.setToolTip(QtGui.QApplication.translate("MainWindow", "This will open the mapcoordinates.net website enabling you to get and copy  lat/lon/alt data for your photo(s)", None, QtGui.QApplication.UnicodeUTF8))
+        self.btn_mapcoordinates.setText(QtGui.QApplication.translate("MainWindow", "Open MapCoordinates.net", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_gpshelp.setToolTip(QtGui.QApplication.translate("MainWindow", "Opens a popup with some additional info on this screen", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_gpshelp.setText(QtGui.QApplication.translate("MainWindow", "Help", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_copy_calc_to_gps.setToolTip(QtGui.QApplication.translate("MainWindow", "Copy the values from the calculator to the input fields", None, QtGui.QApplication.UnicodeUTF8))
@@ -1413,7 +1411,6 @@ class Ui_MainWindow(object):
         self.label_10.setText(QtGui.QApplication.translate("MainWindow", "Panorama tags for Google Photosphere. Requires exiftool 9.07 or newer", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.editgpanotab), QtGui.QApplication.translate("MainWindow", "GPano", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.edittab), QtGui.QApplication.translate("MainWindow", "Edit Data", None, QtGui.QApplication.UnicodeUTF8))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("MainWindow", "MapCoordinates.net", None, QtGui.QApplication.UnicodeUTF8))
         self.frame_2.setToolTip(QtGui.QApplication.translate("MainWindow", "The program will go for the default exiftool version. Here you can specify another version.", None, QtGui.QApplication.UnicodeUTF8))
         self.label_8.setToolTip(QtGui.QApplication.translate("MainWindow", "The program will go for the default exiftool version. Here you can specify another version.", None, QtGui.QApplication.UnicodeUTF8))
         self.label_8.setText(QtGui.QApplication.translate("MainWindow", "Exiftool", None, QtGui.QApplication.UnicodeUTF8))
@@ -1444,4 +1441,3 @@ class Ui_MainWindow(object):
         self.mnu_action_mapcoordinates_tab.setText(QtGui.QApplication.translate("MainWindow", "MapCoordinates.net tab", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_pyexiftoolgui_home.setText(QtGui.QApplication.translate("MainWindow", "pyExifToolGUI homepage", None, QtGui.QApplication.UnicodeUTF8))
 
-from PySide import QtWebKit

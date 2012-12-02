@@ -57,9 +57,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>370</x>
       <y>630</y>
-      <width>481</width>
+      <width>501</width>
       <height>24</height>
      </rect>
     </property>
@@ -349,7 +349,7 @@
           <x>430</x>
           <y>160</y>
           <width>251</width>
-          <height>171</height>
+          <height>201</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
@@ -380,6 +380,16 @@
            </property>
            <property name="text">
             <string>Reset fields</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_mapcoordinates">
+           <property name="toolTip">
+            <string>This will open the mapcoordinates.net website enabling you to get and copy  lat/lon/alt data for your photo(s)</string>
+           </property>
+           <property name="text">
+            <string>Open MapCoordinates.net</string>
            </property>
           </widget>
          </item>
@@ -2492,26 +2502,6 @@ to convert the data.</string>
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>MapCoordinates.net</string>
-     </attribute>
-     <widget class="QWebView" name="webView">
-      <property name="geometry">
-       <rect>
-        <x>-1</x>
-        <y>-1</y>
-        <width>711</width>
-        <height>571</height>
-       </rect>
-      </property>
-      <property name="url">
-       <url>
-        <string>http://www.mapcoordinates.net/en</string>
-       </url>
-      </property>
-     </widget>
-    </widget>
     <widget class="QWidget" name="preferencestab">
      <attribute name="title">
       <string>Preferences</string>
@@ -2778,13 +2768,6 @@ to convert the data.</string>
    </property>
   </action>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QWebView</class>
-   <extends>QWidget</extends>
-   <header>QtWebKit/QWebView</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

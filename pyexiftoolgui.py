@@ -94,6 +94,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_gps_copyfrom.setEnabled(False)
         self.btn_savegps.clicked.connect(self.savegpsdata)
         self.btn_savegps.setEnabled(False)
+        self.btn_mapcoordinates.clicked.connect(self.open_mapcoordinates)
 # Load several buttons from the Edit -> EXIF tab
         self.btn_exifhelp.clicked.connect(self.exif_help)
         self.btn_exif_copyfrom.clicked.connect(self.copyexiffromselected)
@@ -327,6 +328,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def savegpsdata(self):
         petgfunctions.savegpsdata(self, qApp)
+
+    def open_mapcoordinates(self):
+	try:
+		webbrowser.open("http://www.mapcoordinates.net/en")
+	except:
+		QMessageBox.critical(self, "Error!", "Unable to open the MapCoordinates.net website" )
 
 # Edit -> EXIF tab
     def clear_exif_fields(self):
