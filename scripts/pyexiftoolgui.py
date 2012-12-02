@@ -48,7 +48,7 @@ if sys.path.count(realfile_dir) == 0:
 else:
         sys.path.append(realfile_dir)
 # Add subfolders
-sys.path.append( realfile_dir + "/scripts" )
+#sys.path.append( realfile_dir + "/scripts" )
 sys.path.append( realfile_dir + "/ui")
 
 
@@ -144,8 +144,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #------------------------------------------------------------------------
 # Initialize file paths
 	self.realfile_dir  = os.path.dirname(os.path.abspath(__file__))
-	self.script_dir    = os.path.join(self.realfile_dir, "scripts")
-	self.image_dir     = os.path.join(self.realfile_dir, "images")
+#	self.script_dir    = os.path.join(self.realfile_dir, "scripts")
+#	self.image_dir     = os.path.join(self.realfile_dir, "images")
 	self.ui_dir        = os.path.join(self.realfile_dir, "ui")
 
 #------------------------------------------------------------------------
@@ -203,8 +203,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         petgfunctions.help_mbox(self,"Help on Integrated Mapcoordinates.net", programstrings.MAPCOORDINATESHELP)
 	
     def show_license(self):
-	command_line = os.path.join(self.script_dir, "info_window.py") + " license"
-#	command_line = os.path.join(self.script_dir, "info_window.py")
+	command_line = os.path.join(self.realfile_dir, "info_window.py") + " license"
+#	command_line = os.path.join(self.script_dir, "info_window.py") + " license"
         if self.OSplatform == "Windows":
                 python_exe = sys.executable
                 command_line = python_exe + " " + command_line

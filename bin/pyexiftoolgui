@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env python
 
 # Copyright (c) 2012 Harry van der Wolf. All rights reserved.
 # This program or module is free software: you can redistribute it and/or
@@ -20,5 +20,39 @@
 # a complete exiftool gui: not at all.
 
 
-# execute real script file
-/usr/share/pyexiftoolgui/pyexiftoolgui.py "$@"
+import sys, os, platform
+
+# get the real location of this launcher file (not the link location)
+realfile = os.path.realpath(__file__)
+realfile_dir = os.path.dirname(os.path.abspath(realfile))
+print "Real folder where this launcher was started from: " + realfile_dir
+
+# determine if we are running from the /pyexiftoolgui-<something>/bin folder
+parent_folder_path = os.path.dirname(realfile_dir)
+scripts_path = os.path.join(parent_folder_path, 'scripts')
+if os.path.exists(scripts_path):
+	# insert this path into the Python path
+	sys.path.insert(0, scripts_path)
+	print "Added %s to system path" % scripts_path
+        if (platform.system()) == "Windows":
+		print "starting pyexiftoolgui using: python " + os.path.join(scripts_path, 'pyexiftoolgui.py')
+		os.system('python  ' + os.path.join(scripts_path, 'pyexiftoolgui.py'))
+	else:
+		print "starting pyexiftoolgui using: /usr/bin/env python " + os.path.join(scripts_path, 'pyexiftoolgui.py')
+		os.system('/usr/bin/env python  ' + os.path.join(scripts_path, 'pyexiftoolgui.py'))
+
+else:	
+	# determine if we are running from the /usr/bin folder (on Linux and MacOSX)
+        print "We are not running from our source folder. Are we running from /usr/bin?"
+	usr_bin_pyexiftoolgui = os.path.join('/', 'usr', 'bin', 'pyexiftoolgui')
+	if os.path.isfile(usr_bin_pyexiftoolgui):
+		print "Yes we are running from /usr/bin \n"
+		# This means that we are installed and that "the rest" is in /usr/share/pyexiftoolgui
+		# but test anyway
+		usr_share_path = os.path.join('/', 'usr', 'share', 'pyexiftoolgui', 'scripts', 'pyexiftoolgui.py')
+                print 'usr_share_path ' + usr_share_path + '\n\n'
+		if os.path.isfile(usr_share_path):
+			print "starting pyexiftoolgui using: /usr/bin/env python " + usr_share_path
+			os.system('/usr/bin/env python  ' + usr_share_path)
+
+

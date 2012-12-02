@@ -69,7 +69,12 @@ class MainWindow(QMainWindow):
 	elif passed_args.parsed_option == "license":
 		self.setWindowTitle(programinfo.NAME + " " + programinfo.VERSION + " license")
         	self.textEdit.wordWrapMode()
-		self.textEdit.setText(open('COPYING').read())
+		realfile = os.path.realpath(__file__)
+		realfile_dir = os.path.dirname(os.path.abspath(realfile))
+		parent_folder_path = os.path.dirname(realfile_dir)
+		print 'pfp is ' + parent_folder_path
+		license_file = os.path.join(parent_folder_path, 'COPYING')
+		self.textEdit.setText(open(license_file).read())
 	else: # image
         	command_line = "exiftool \"" + passed_args.parsed_option + "\""
         	args = shlex.split(command_line)

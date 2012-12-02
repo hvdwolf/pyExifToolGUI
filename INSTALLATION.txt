@@ -12,6 +12,19 @@ I simply wrote a "setup" and "remove" script. Currently it only works on
 Linux and Mac OS X. Windows is not my target but eventually it will get it's
 own python executable.
 
+Run pyexiftoolgui from this folder (No Installation)
+====================================================
+You can run pyexiftoolgui without installing it. 
+
+- Linux/MacOSX
+-- Make sure you have the dependecies installed as described below in the subsections.
+-- From this folder, start in a terminal: $ ./bin/pyexiftoolgui
+
+- Windows
+-- Make sure you have the dependecies installed as described below in the subsections.
+-- From this folder, start in a command-box (dos-box): python bin/pyexiftoolgui
+   (If python is not in your path, provide the full path to it)
+
 Installation on Linux
 =====================
 Dependencies (Meaning that you need to install them yourself):
