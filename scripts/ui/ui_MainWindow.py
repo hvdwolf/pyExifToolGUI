@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sun Dec  2 08:54:32 2012
+# Created: Sun Dec  2 12:39:47 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1167,7 +1167,7 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.preferencestab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 24))
         self.menubar.setObjectName("menubar")
         self.menu_File = QtGui.QMenu(self.menubar)
         self.menu_File.setObjectName("menu_File")
@@ -1236,7 +1236,7 @@ class Ui_MainWindow(object):
         self.btn_loadimages.setToolTip(QtGui.QApplication.translate("MainWindow", "Load images for which you want to view or modify metadata", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_loadimages.setText(QtGui.QApplication.translate("MainWindow", "Load Images", None, QtGui.QApplication.UnicodeUTF8))
         self.showimagebutton.setToolTip(QtGui.QApplication.translate("MainWindow", "Display the selected image in the default image viewer (if supported movies will play in the default movie player)", None, QtGui.QApplication.UnicodeUTF8))
-        self.showimagebutton.setText(QtGui.QApplication.translate("MainWindow", "display Image", None, QtGui.QApplication.UnicodeUTF8))
+        self.showimagebutton.setText(QtGui.QApplication.translate("MainWindow", "Display Image", None, QtGui.QApplication.UnicodeUTF8))
         self.exiftableWidget.horizontalHeaderItem(0).setText(QtGui.QApplication.translate("MainWindow", "Descriptor", None, QtGui.QApplication.UnicodeUTF8))
         self.exiftableWidget.horizontalHeaderItem(1).setText(QtGui.QApplication.translate("MainWindow", "Description", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButton_all.setText(QtGui.QApplication.translate("MainWindow", "All", None, QtGui.QApplication.UnicodeUTF8))

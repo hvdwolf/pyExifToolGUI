@@ -170,7 +170,7 @@
          <string>Display the selected image in the default image viewer (if supported movies will play in the default movie player)</string>
         </property>
         <property name="text">
-         <string>display Image</string>
+         <string>Display Image</string>
         </property>
        </widget>
       </item>
@@ -2666,7 +2666,7 @@ to convert the data.</string>
      <x>0</x>
      <y>0</y>
      <width>1120</width>
-     <height>26</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

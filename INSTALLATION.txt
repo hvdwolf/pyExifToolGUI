@@ -3,27 +3,21 @@ Introduction
 
 I'm on Linux so this tool is written on Linux and primarily aimed at Linux.
 However, it runs fine and functions fine on Mac OS X and Windows as well.
-It is currently not part of any Linux distribution and I'm currently lacking
-the skills to write a good automake/configure script to package it for
-Ubuntu (or any other Debian based linux), or (Open)Suse or Fedora/Redhat.
+It is currently not part of any Linux distribution and I'm currently lacking 
+the skills to write a distutils or exportutils (or good automake/configure) 
+script to package it for Ubuntu (or any other Debian based linux), 
+or (Open)Suse or Fedora/Redhat.
 This also means that it doesn't do any dependency checks for necessary
 libraries and so on. 
-I simply wrote a "setup" and "remove" script. Currently it only works on
-Linux and Mac OS X. Windows is not my target but eventually it will get it's
-own python executable.
+I simply wrote a "setup" script that takes care of installation and removal. 
+Currently it only works on Linux and Mac OS X. Windows is not my target but 
+eventually it will get it's own python executable.
 
 Run pyexiftoolgui from this folder (No Installation)
 ====================================================
-You can run pyexiftoolgui without installing it. 
+You can run pyexiftoolgui without installing it: see the paragraph below the
+installation instructions. 
 
-- Linux/MacOSX
--- Make sure you have the dependecies installed as described below in the subsections.
--- From this folder, start in a terminal: $ ./bin/pyexiftoolgui
-
-- Windows
--- Make sure you have the dependecies installed as described below in the subsections.
--- From this folder, start in a command-box (dos-box): python bin/pyexiftoolgui
-   (If python is not in your path, provide the full path to it)
 
 Installation on Linux
 =====================
@@ -69,6 +63,19 @@ But if you want to try I will provide some basic instructions.
 - Download pyExifToolGUI-x.y.tgz and unpack it to some folder.
 - Start from a dos/command box with: <drive:\path\to\python\executable drive:\path\to\pyexiftoolgui.py>
 
+
+Run pyexiftoolgui from this folder (No Installation)
+====================================================
+You can run pyexiftoolgui without installing it. 
+
+- Linux/MacOSX
+-- Make sure you have the dependecies installed as described above in the subsections.
+-- From this folder, start in a terminal: $ ./bin/pyexiftoolgui
+
+- Windows
+-- Make sure you have the dependecies installed as described above in the Windows subsection.
+-- From this folder, start in a command-box (dos-box): python bin/pyexiftoolgui
+   (If python is not in your path, provide the full path to it)
 
 
 Uninstall / Removal

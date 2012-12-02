@@ -120,14 +120,22 @@ ul.toc {}
 <ul>
 <li><a name="toc_Top" href="#Top">pyExifToolGUI</a>
 <li><a name="toc_Overview" href="#Overview">1 Overview</a>
-<li><a name="toc_ViewData" href="#ViewData">2 View Data</a>
-<li><a name="toc_EditData" href="#EditData">3 Edit Data</a>
+<li><a name="toc_Installation" href="#Installation">2 Installation</a>
 <ul>
-<li><a href="#EditgpsData">3.1 Edit GPS data</a>
-<li><a href="#EditexifData">3.2 Edit exif data</a>
-<li><a href="#EditxmpData">3.3 Edit xmp data</a>
-<li><a href="#EditiptcData">3.4 Edit IPTC data</a>
-<li><a href="#EditgpanoData">3.5 Edit GPano (Google Photosphere) data</a>
+<li><a href="#InstallLinux">2.1 Installation on Linux</a>
+<li><a href="#InstallMacOSX">2.2 Installation on Mac OS X</a>
+<li><a href="#InstallWindows">2.3 Installation on Windows</a>
+<li><a href="#NoInstall">2.4 Run pyexiftoolgui from download folder (No Installation)</a>
+<li><a href="#UnInstall">2.5 Uninstall / Removal</a>
+</li></ul>
+<li><a name="toc_ViewData" href="#ViewData">3 View Data</a>
+<li><a name="toc_EditData" href="#EditData">4 Edit Data</a>
+<ul>
+<li><a href="#EditgpsData">4.1 Edit GPS data</a>
+<li><a href="#EditexifData">4.2 Edit exif data</a>
+<li><a href="#EditxmpData">4.3 Edit xmp data</a>
+<li><a href="#EditiptcData">4.4 Edit IPTC data</a>
+<li><a href="#EditgpanoData">4.5 Edit GPano (Google Photosphere) data</a>
 </li></ul>
 <li><a name="toc_Preferences" href="#Preferences">4 Preferences</a>
 <li><a name="toc_Bug-Reports" href="#Bug-Reports">Appendix A Bug Reports</a>
@@ -190,24 +198,121 @@ your appreciation. See the Help menu in the program or
 <a href="http://members.home.nl/harryvanderwolf/pyexiftoolgui/donate.html" target="_blank">this</a> link.
 
 
+<p><a name="Installation"></a>
+
+<h2 class="chapter">2 Installation</h2>
+
+<p>This tool is written for Linux and primarily aimed at Linux.
+However, it runs fine and functions fine on Mac OS X and Windows as well.
+It is currently not part of any Linux distribution and I'm currently lacking 
+the skills to write a distutils or exportutils (or good automake/configure) 
+script to package it for Ubuntu (or any other Debian based linux), 
+or (Open)Suse or Fedora/Redhat.
+This also means that it doesn't do any dependency checks for necessary
+libraries and so on. 
+I simply wrote a "setup" script that takes care of installation and removal. 
+Currently it only works on Linux and Mac OS X. Windows is not my target but 
+eventually it will get it's own python executable.
+
+<p>You can run pyexiftoolgui without installing it: see the paragraph below the
+installation instructions. 
+
+
+<p><a name="InstallLinux"></a>
+
+<h3 class="section">2.1 Installation on Linux</h3>
+Dependencies (Meaning that you need to install them yourself):
+<ul><li>python: part of every linux system, so always available, but >=2.6 required.
+<li>pyside: Install via your distribution's package manager. Otherwise download it from www.pyside.org
+<li>python-pyside (qtcore and qtgui are required): Install via your distribution's package manager. 
+  <br>Otherwise download it from www.pyside.org
+<li>ExifTool: Install via your distribution's package manager.</li></ul>
+
+Installation:
+<ul><li>Untar the package to some folder (You obviously did that already if you are reading this).
+<li>Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
+<li>Run the setup script from the command line with <PRE>sudo ./setup.py install</PRE>.
+<li>pyExifToolGUI will be installed and you should have an icon in you Graphics menu or in your Dash (Ubuntu).
+<li>Start and enjoy.</li></ul>
+
+<p><a name="InstallMacOSX"></a>
+
+<h3 class="section">2.2 Installation on Mac OS X</h3>
+
+<ul><li>python: part of every linux system, so always available, but 2.7 required.
+  <ul><li>(Snow) Leopard: Download python 2.7 from python.org and install. Then run
+     Update Shell Profile.command from /Applications/Python 2.7
+  <li>(Mountain) Lion comes with python 2.7</li></ul>
+<li>pyside: Download it from www.pyside.org. (You can also install it from MacPorts but this will give issues most of the time.)
+<li>pyX.Y-pyside: Install via MacPorts. (XY needs to be 2.7).
+<li>ExifTool: Download the DMG from the ExifTool website (highly preferred) or install via MacPorts.</li></ul>
+
+Installation:
+<ul><li>Untar the package to some folder (You obviously did that already if you are reading this).
+<li>Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
+<li>Run the setup script from the command line with <PRE>sudo ./setup.py install</PRE>.
+<li>The script will install a "bare bones" pyExifToolGUI.app in your Applications folder.
+  Note that the pyExifToolGUI.app is NOT a complete self contained application. It needs the mentioned dependencies.
+<li>Start and enjoy.</li></ul>
+
+
+<p><a name="InstallWindows"></a>
+
+<h3 class="section">2.3 Installation on Windows</h3>
+
+I'm working on a windows python executable, but currently you are on your own here.
+But if you want to try I will provide some basic instructions.
+<ul><li>Install python on your system. Download it from www.python.org
+<li>Install pyside on your system. Download it from www.pyside.org (pay attention to the possible combinations)
+<li>Download pyExifToolGUI-x.y.tgz and unpack it to some folder.
+<li>Start from a dos/command box with: <PRE>drive:\path\to\python\executable drive:\path\to\pyexiftoolgui.py</PRE></li></ul>
+
+
+<p><a name="NoInstall"></a>
+
+<h3 class="section">2.4 Run pyexiftoolgui from download folder (No Installation)</h3>
+
+You can run pyexiftoolgui without installing it. 
+
+<p>- Linux/MacOSX
+<ul><li> Make sure you have the dependecies installed as described above in the subsections.
+<li>From this folder, start in a terminal: <PRE>$ ./bin/pyexiftoolgui</PRE></li></ul>
+
+- Windows
+<ul><li>Make sure you have the dependecies installed as described above in the Windows subsection.
+<li>From this folder, start in a command-box (dos-box): python bin/pyexiftoolgui
+   (If python is not in your path, provide the full path to it)</li></ul>
+
+
+<p><a name="UnInstall"></a>
+
+<h3 class="section">Uninstall / Removal</h3>
+<ul><li>Open a terminal
+<li>Move into the folder where you untarred the pyExifToolGUI tgz (You might need to download again if your removed everything).
+<li>run the setup script from the command line with <PRE>$ sudo ./setup.py remove</PRE>.
+<li>On Mac OS X simply remove pyExifToolGUI.app from /Applications
+
+
 <p><a name="ViewData"></a>
 
-<h2 class="chapter">2 View Data</h2>
+<h2 class="chapter">3 View Data</h2>
 
 <p>The "View Data" tab gives you the option to display all available meta data from a photo (image).
 You select an image on the left side and click the radiobutton on the right side to see all or a selected 
 set of data of the photo.
 As ExifTool supports a large number of image formats, but also movie formats, all available metadata that
-ExifTool can read, can be displayed by pyExifToolGUI as well. Note that some of the data or subsets of data 
+ExifTool can read, can be displayed by pyExifToolGUI as well. Note that some of the data, or subsets of data, 
 is simply not available in the non-image formats.<br>
-pyExifToolGUI will try to make a preview (thumbnail) of the image, but will not always succeed.</p>
+pyExifToolGUI will try to make a preview (thumbnail) of the image, but will not always succeed. In case of other
+ formats like movies and so on, the creation of a preview will most likely not function.</p>
 <img src="viewdatatab.jpg" alt="viewdatatab.jpg" title="The View Data tab" width="1100">
-
+<p>Note that the "Display Image" button will display the selected image in the default image viewer. If this "image" 
+happens to be a movie, the movie will be displayed in the default movie/media viewer if the format is supported.
 <p>
 
 <p><a name="EditData"></a>
 
-<h2 class="chapter">3 Edit Data</h2>
+<h2 class="chapter">4 Edit Data</h2>
 
 <p>The application is a so called "tabbed" application. The "Edit Data" tab is the (obvious) tab
 that contains the sub tabs with all the edit options. Currently a moderate set of tabs have been 
@@ -215,7 +320,7 @@ defined but the order, number and even content can change during the development
 
 <p><a name="EditgpsData"></a>
 
-<h3 class="section">3.1 Edit gps Data</h3>
+<h3 class="section">4.1 Edit gps Data</h3>
 
 <p>This tab is used to add GPS data to your images. This tab works on a combination of
 exif, xmp and iptc gps data as latitude, longitude and altitude are covered in the exif (primarily) and
@@ -240,7 +345,7 @@ the selected image into the input fields.</li>
 
 
 <p><a name="EditexifData"></a>
-<h3 class="section">3.2 Edit exif Data</h3>
+<h3 class="section">4.2 Edit exif Data</h3>
 
 <p>This tab is used to add (a limited amount of) exif data to your selected image(s).</p>
 <img src="editexiftab.jpg" alt="editexiftab.jpg" title="The Edit exif tab" width="1100">
@@ -261,7 +366,7 @@ the selected image into the input fields.</li>
 <p>
 
 <p><a name="EditxmpData"></a>
-<h3 class="section">3.3 Edit xmp Data</h3>
+<h3 class="section">4.3 Edit xmp Data</h3>
 
 <p>This tab is used to add (a limited amount of) xmp data to your selected image(s).</p>
 <img src="editxmptab.jpg" alt="editxmptab.jpg" title="The Edit xmp tab" width="1100">
@@ -281,7 +386,7 @@ the selected image into the input fields.</li>
 
 
 <p><a name="EditgpanoData"></a>
-<h3 class="section">3.5 Edit GPano (Google Photosphere) data</h3>
+<h3 class="section">4.5 Edit GPano (Google Photosphere) data</h3>
 
 <p>This tab is used to add GPano Google PhotoSphere data to your selected image(s).</p>
 <p>The Google PhotoSphere functionality has been added in November 2012 to PicasaWeb and Google+ to enable the use
@@ -318,7 +423,7 @@ If you stick to exiftool(-k).exe the program will halt on the most peculiar mome
 If not found you have to specify where exiftool is. You can also use this option to specify a newer exiftool version 
 then standard available for your distribution. At this moment most distribution ship with some 8.xy exiftool version.
 For the Gpano functionality you really need a version equal or newer then 9.07. 
-See also <a href="#EditgpanoData">"3.5 Edit GPano (Google Photosphere) data"</a>.</li></ul>
+See also <a href="#EditgpanoData">"4.5 Edit GPano (Google Photosphere) data"</a>.</li></ul>
 <p><h3>Default values:</h3>
 These fields give you the option to specify your name (for example) and some copyright notice (for example: Spiderman (c) 2012).
 They can be copied into the relevant exif, xmp and iptc fields for these values.
@@ -716,332 +821,7 @@ number of this License, you may choose any version ever published (not
 as a draft) by the Free Software Foundation.
         </ol>
 
+<p>
 <!-- End of Document -->
-<p><a name="Program-Index"></a>
-
-<h2 class="unnumbered">Program Index</h2>
-
-<p><a name="index-program-index-267"></a><a name="index-index_002c-program-268"></a>
-
-<ul class="index-pg" compact>
-<li><a href="#index-ale-229"><code>ale</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-align_005fimage_005fstack-_0040r_007b_0028Hugin_0029_007d-232"><code>align_image_stack </code><span class="roman">(Hugin)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-cinepaint-236"><code>cinepaint</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-cinepaint-129"><code>cinepaint</code></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-convert-_0040r_007b_0028ImageMagick_0029_007d-238"><code>convert </code><span class="roman">(ImageMagick)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-dcraw-226"><code>dcraw</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-dcraw-18"><code>dcraw</code></a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-display-_0040r_007b_0028ImageMagick_0029_007d-239"><code>display </code><span class="roman">(ImageMagick)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-exiftool-253"><code>exiftool</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-exrdisplay-_0040r_007b_0028OpenEXR_0029_007d-243"><code>exrdisplay </code><span class="roman">(OpenEXR)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-fulla-_0040r_007b_0028Hugin_0029_007d-233"><code>fulla </code><span class="roman">(Hugin)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-gimp-128"><code>gimp</code></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-gimp-237"><code>gimp</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-gimp-22"><code>gimp</code></a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-gm-_0040r_007b_0028GraphicsMagick_0029_007d-242"><code>gm </code><span class="roman">(GraphicsMagick)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-hugin-5"><code>hugin</code></a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-hugin-230"><code>hugin</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-hugin-125"><code>hugin</code></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-hugin-20"><code>hugin</code></a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-identify-_0040r_007b_0028ImageMagick_0029_007d-212"><code>identify </code><span class="roman">(ImageMagick)</span></a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
-<li><a href="#index-identify-_0040r_007b_0028ImageMagick_0029_007d-240"><code>identify </code><span class="roman">(ImageMagick)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-montage-_0040r_007b_0028ImageMagick_0029_007d-241"><code>montage </code><span class="roman">(ImageMagick)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-nona-_0040r_007b_0028Hugin_0029_007d-124"><code>nona </code><span class="roman">(Hugin)</span></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-nona-_0040r_007b_0028Hugin_0029_007d-231"><code>nona </code><span class="roman">(Hugin)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-PanoTools-6"><code>PanoTools</code></a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-PanoTools-21"><code>PanoTools</code></a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-pfshdrcalibrate-_0040r_007b_0028PFScalibration_0029_007d-247"><code>pfshdrcalibrate </code><span class="roman">(PFScalibration)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-pfsin-_0040r_007b_0028PFSTools_0029_007d-244"><code>pfsin </code><span class="roman">(PFSTools)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-pfsout-_0040r_007b_0028PFSTools_0029_007d-245"><code>pfsout </code><span class="roman">(PFSTools)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-pfstmo_005f_002a-_0040r_007b_0028PFStmo_0029_007d-248"><code>pfstmo_* </code><span class="roman">(PFStmo)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-pfsview-_0040r_007b_0028PFSTools_0029_007d-246"><code>pfsview </code><span class="roman">(PFSTools)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-PTmender-_0040r_007b_0028PanoTools_0029_007d-235"><code>PTmender </code><span class="roman">(PanoTools)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-PTOptimizer-_0040r_007b_0028PanoTools_0029_007d-234"><code>PTOptimizer </code><span class="roman">(PanoTools)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-tifficc-_0040r_007b_0028LittleCMS_0029_007d-254"><code>tifficc </code><span class="roman">(LittleCMS)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-tiffinfo-_0040r_007b_0028libtiff_0029_007d-213"><code>tiffinfo </code><span class="roman">(libtiff)</span></a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
-<li><a href="#index-tiffinfo-_0040r_007b_0028libtiff_0029_007d-252"><code>tiffinfo </code><span class="roman">(libtiff)</span></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-ufraw-19"><code>ufraw</code></a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-ufraw-227"><code>ufraw</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-ufraw_002dbatch-228"><code>ufraw-batch</code></a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-   </ul><p><a name="Syntactic-Comment-Index"></a>
-<a name="Syntactic_002dComment-Index"></a>
-
-<h2 class="unnumbered">Syntactic-Comment Index</h2>
-
-<p><a name="index-syntactic_002dcomment-index-269"></a><a name="index-index_002c-syntactic_002dcomment-270"></a>
-
-
-
-<ul class="index-sc" compact>
-<li><a href="#index-enblend_002dresponse_002dfile-47"><code>enblend-response-file</code></a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-enfuse_002dresponse_002dfile-48"><code>enfuse-response-file</code></a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-filename_002dglobbing-57"><code>filename-globbing</code></a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-glob-55"><code>glob</code></a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-globbing-56"><code>globbing</code></a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-response_002dfile-46"><code>response-file</code></a>: <a href="#Response-Files">Response Files</a></li>
-   </ul><p><a name="Option-Index"></a>
-
-<h2 class="unnumbered">Option Index</h2>
-
-<p><a name="index-option-index-271"></a><a name="index-index_002c-option-272"></a>
-
-
-
-<ul class="index-op" compact>
-<li><a href="#index-g_t_002d_002danneal-136"><code>--anneal</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_002d_002dcoarse_002dmask-141"><code>--coarse-mask</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_002d_002dcompression-70"><code>--compression</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002d_002ddepth-112"><code>--depth</code></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-g_t_002d_002ddijkstra-146"><code>--dijkstra</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_002d_002dfine_002dmask-149"><code>--fine-mask</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_002d_002dgpu-130"><code>--gpu</code></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-g_t_002d_002dhelp-82"><code>--help</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002d_002dlevels-84"><code>--levels</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002d_002dload_002dmasks-152"><code>--load-masks</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_002d_002dmask_002dvectorize-155"><code>--mask-vectorize</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_002d_002dno_002doptimize-159"><code>--no-optimize</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_002d_002doptimize-163"><code>--optimize</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_002d_002doptimizer_002dweights-167"><code>--optimizer-weights</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_002d_002doutput-88"><code>--output</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002d_002dsave_002dmasks-171"><code>--save-masks</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_002d_002dsmooth_002ddifference-174"><code>--smooth-difference</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_002d_002dverbose-93"><code>--verbose</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002d_002dversion-95"><code>--version</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002d_002dvisualize-177"><code>--visualize</code></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_002d_002dwrap-97"><code>--wrap</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002da-69"><code>-a</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002db-217"><code>-b</code></a>: <a href="#Tuning-Memory-Usage">Tuning Memory Usage</a></li>
-<li><a href="#index-g_t_002db-102"><code>-b</code></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-g_t_002dc-104"><code>-c</code></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-g_t_002dd-111"><code>-d</code></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-g_t_002df-122"><code>-f</code></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-g_t_002dg-126"><code>-g</code></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-g_t_002dh-81"><code>-h</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002dl-83"><code>-l</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002dm-222"><code>-m</code></a>: <a href="#Tuning-Memory-Usage">Tuning Memory Usage</a></li>
-<li><a href="#index-g_t_002dm-133"><code>-m</code></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-g_t_002do-87"><code>-o</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002dv-92"><code>-v</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002dV-94"><code>-V</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002dw-96"><code>-w</code></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_002dx-100"><code>-x</code></a>: <a href="#Common-Options">Common Options</a></li>
-   </ul><p><a name="General-Index"></a>
-
-<h2 class="unnumbered">General Index</h2>
-
-<p><a name="index-general-index-273"></a><a name="index-index_002c-general-274"></a>
-
-
-
-<ul class="index-cp" compact>
-<li><a href="#index-g_t_0040samp_007b_0023_007d-_0028response-file-comment_0029-41">&lsquo;<samp><span class="samp">#</span></samp>&rsquo; (response file comment)</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-g_t360_0040textdegree_007b_007d-panoramas-98">360&deg; panoramas</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_0040samp_007b_0040_0040_007d-_0028response-file-prefix_0029-36">&lsquo;<samp><span class="samp">@</span></samp>&rsquo; (response file prefix)</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-g_t_0040file_007b_0040value_007bsrc_003a_003adefault_002doutput_002dfilename_007d_007d-89"><samp><span class="file">a.tif</span></samp></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-affine-transformation-25">affine transformation</a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-algorithms_002c-globbing-54">algorithms, globbing</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-alpha-channel-3">alpha channel</a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-alpha-channel-30">alpha channel</a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-alpha-channel_002c-associated-127">alpha channel, associated</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-anneal-parameters-138">anneal parameters</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-authors_002c-list-of-264">authors, list of</a>: <a href="#Authors">Authors</a></li>
-<li><a href="#index-binary-mask-206">binary mask</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
-<li><a href="#index-bits-per-channel-113">bits per channel</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-blur-difference-image-176">blur difference image</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-bug-reports-257">bug reports</a>: <a href="#Bug-Reports">Bug Reports</a></li>
-<li><a href="#index-Burt_002dAdelson-multiresolution-spline-2">Burt-Adelson multiresolution spline</a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-channel-width-114">channel width</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-channel_002c-alpha-4">channel, alpha</a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-g_t_0040acronym_007bCIECAM02_007d-106"><acronym>CIECAM02</acronym></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-coarse-mask-143">coarse mask</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-color-appearance-model-105">color appearance model</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-color-space_002c-_0040acronym_007bsRGB_007d-110">color space, <acronym>sRGB</acronym></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-colors_002c-visualization-image-189">colors, visualization image</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-compression-72">compression</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-compression_002c-deflate-76">compression, deflate</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-compression_002c-_0040acronym_007bJPEG_007d-74">compression, <acronym>JPEG</acronym></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-compression_002c-_0040acronym_007bLZW_007d-78">compression, <acronym>LZW</acronym></a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-compression_002c-packbits-80">compression, packbits</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-conversion_002c-raw-24">conversion, raw</a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-default-output-filename-90">default output filename</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-deflate-compression-75">deflate compression</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-g_t_0040sc_007bDijkstra_007d-radius-182"><span class="sc">Dijkstra</span> radius</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-double-precision-float_002c-_0040acronym_007bIEEE754_007d-118">double precision float, <acronym>IEEE754</acronym></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-feathering_002c-detrimental-effect-of-7">feathering, detrimental effect of</a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-filename_002c-literal-33">filename, literal</a>: <a href="#Invocation">Invocation</a></li>
-<li><a href="#index-fine-mask-151">fine mask</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-format-of-response-file-40">format of response file</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-free-documentation-license-_0028_0040acronym_007bFDL_007d_0029-265">free documentation license (<acronym>FDL</acronym>)</a>: <a href="#FDL">FDL</a></li>
-<li><a href="#index-frozen-seam_002dline-endpoint-185">frozen seam-line endpoint</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-general-index-273">general index</a>: <a href="#General-Index">General Index</a></li>
-<li><a href="#index-glob_00287_0029-62">glob(7)</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-globbing-algorithm-_0040samp_007bliteral_007d-60">globbing algorithm &lsquo;<samp><span class="samp">literal</span></samp>&rsquo;</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-globbing-algorithm-_0040samp_007bnone_007d-63">globbing algorithm &lsquo;<samp><span class="samp">none</span></samp>&rsquo;</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-globbing-algorithm-_0040samp_007bsh_007d-65">globbing algorithm &lsquo;<samp><span class="samp">sh</span></samp>&rsquo;</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-globbing-algorithm-_0040samp_007bshell_007d-64">globbing algorithm &lsquo;<samp><span class="samp">shell</span></samp>&rsquo;</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-globbing-algorithm-_0040samp_007bwildcard_007d-61">globbing algorithm &lsquo;<samp><span class="samp">wildcard</span></samp>&rsquo;</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-globbing-algorithms-66">globbing algorithms</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-g_t_0040acronym_007bGNU_007d-free-documentation-license-266"><acronym>GNU</acronym> free documentation license</a>: <a href="#FDL">FDL</a></li>
-<li><a href="#index-g_t_0040acronym_007bGPU_007d-_0028Graphics-Processing-Unit_0029-132"><acronym>GPU</acronym> (Graphics Processing Unit)</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-grammar_002c-response-file-44">grammar, response file</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-grammar_002c-syntactic-comment-52">grammar, syntactic comment</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-graphics-processing-unit-131">graphics processing unit</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-half-precision-float_002c-_0040acronym_007bOpenEXR_007d-121">half precision float, <acronym>OpenEXR</acronym></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-helpful-programs-224">helpful programs</a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-Hugin-262">Hugin</a>: <a href="#Bug-Reports">Bug Reports</a></li>
-<li><a href="#index-g_t_0040acronym_007bICC_007d-profile-107"><acronym>ICC</acronym> profile</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-g_t_0040acronym_007bIEEE754_007d-double-precision-float-117"><acronym>IEEE754</acronym> double precision float</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-g_t_0040acronym_007bIEEE754_007d-single-precision-float-115"><acronym>IEEE754</acronym> single precision float</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-image-cache-219">image cache</a>: <a href="#Tuning-Memory-Usage">Tuning Memory Usage</a></li>
-<li><a href="#index-image-cache_002c-block-size-103">image cache, block size</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-image-cache_002c-cache-size-134">image cache, cache size</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-image-cache_002c-location-220">image cache, location</a>: <a href="#Tuning-Memory-Usage">Tuning Memory Usage</a></li>
-<li><a href="#index-image-colors_002c-visualization-188">image colors, visualization</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-image_002c-multi_002dlayer-9">image, multi-layer</a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-image_002c-visualization-181">image, visualization</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-index_002c-general-274">index, general</a>: <a href="#General-Index">General Index</a></li>
-<li><a href="#index-index_002c-option-272">index, option</a>: <a href="#Option-Index">Option Index</a></li>
-<li><a href="#index-index_002c-program-268">index, program</a>: <a href="#Program-Index">Program Index</a></li>
-<li><a href="#index-index_002c-syntactic_002dcomment-270">index, syntactic-comment</a>: <a href="#Syntactic_002dComment-Index">Syntactic-Comment Index</a></li>
-<li><a href="#index-input-mask-211">input mask</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
-<li><a href="#index-invocation-31">invocation</a>: <a href="#Invocation">Invocation</a></li>
-<li><a href="#index-g_t_0040acronym_007bJPEG_007d-compression-73"><acronym>JPEG</acronym> compression</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-KImageFuser-263">KImageFuser</a>: <a href="#Bug-Reports">Bug Reports</a></li>
-<li><a href="#index-lens-distortion_002c-correction-of-27">lens distortion, correction of</a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-levels_002c-pyramid-86">levels, pyramid</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-LibJPEG-249">LibJPEG</a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-LibPNG-250">LibPNG</a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-LibTiff-251">LibTiff</a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-literal-filename-32">literal filename</a>: <a href="#Invocation">Invocation</a></li>
-<li><a href="#index-load-mask-154">load mask</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-loops-in-seam-line-158">loops in seam line</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-g_t_0040acronym_007bLZW_007d-compression-77"><acronym>LZW</acronym> compression</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007b_0025_007d-191">mask template character, &lsquo;<samp><span class="samp">%</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007bb_007d-198">mask template character, &lsquo;<samp><span class="samp">b</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007bB_007d-199">mask template character, &lsquo;<samp><span class="samp">B</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007bd_007d-196">mask template character, &lsquo;<samp><span class="samp">d</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007bD_007d-197">mask template character, &lsquo;<samp><span class="samp">D</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007be_007d-202">mask template character, &lsquo;<samp><span class="samp">e</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007bE_007d-203">mask template character, &lsquo;<samp><span class="samp">E</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007bf_007d-200">mask template character, &lsquo;<samp><span class="samp">f</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007bF_007d-201">mask template character, &lsquo;<samp><span class="samp">F</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007bi_007d-192">mask template character, &lsquo;<samp><span class="samp">i</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007bn_007d-193">mask template character, &lsquo;<samp><span class="samp">n</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007bP_007d-195">mask template character, &lsquo;<samp><span class="samp">P</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-character_002c-_0040samp_007bp_007d-194">mask template character, &lsquo;<samp><span class="samp">p</span></samp>&rsquo;</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask-template-characters_002c-table-of-190">mask template characters, table of</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask_002c-binary-207">mask, binary</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
-<li><a href="#index-mask_002c-coarse-142">mask, coarse</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask_002c-fine-150">mask, fine</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask_002c-generation-145">mask, generation</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask_002c-input-files-210">mask, input files</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
-<li><a href="#index-mask_002c-load-153">mask, load</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask_002c-optimization-visualization-178">mask, optimization visualization</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask_002c-save-172">mask, save</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask_002c-vectorization-distance-156">mask, vectorization distance</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-mask_002c-weight-209">mask, weight</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
-<li><a href="#index-masks_002c-understanding-205">masks, understanding</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
-<li><a href="#index-memory_002c-tuning-usage-of-216">memory, tuning usage of</a>: <a href="#Tuning-Memory-Usage">Tuning Memory Usage</a></li>
-<li><a href="#index-multi_002ddirectory-_0040acronym_007bTIFF_007d-10">multi-directory <acronym>TIFF</acronym></a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-multi_002dlayer-image-8">multi-layer image</a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-nearest_002dfeature-transform-_0028_0040acronym_007bNFT_007d_0029-184">nearest-feature transform (<acronym>NFT</acronym>)</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-Octave-256">Octave</a>: <a href="#Bug-Reports">Bug Reports</a></li>
-<li><a href="#index-g_t_0040acronym_007bOpenEXR_007d_002c-data-format-119"><acronym>OpenEXR</acronym>, data format</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-g_t_0040acronym_007bOpenEXR_007d_002c-half-precision-float-120"><acronym>OpenEXR</acronym>, half precision float</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-optimize-seam-160">optimize seam</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-optimize-strategy-166">optimize strategy</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-optimize_002c-anneal-parameters-137">optimize, anneal parameters</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-optimizer-weights-168">optimizer weights</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-optimizer_002c-simulated-annealing-140">optimizer, simulated annealing</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-option-index-271">option index</a>: <a href="#Option-Index">Option Index</a></li>
-<li><a href="#index-options_002c-common-68">options, common</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-options_002c-extended-101">options, extended</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-options_002c-mask-generation-135">options, mask generation</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-order_002c-of-processing-38">order, of processing</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-output-file-compression-71">output file compression</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-output-filename_002c-default-91">output filename, default</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-output-image_002c-set-size-of-123">output image, set size of</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-overview-1">overview</a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-packbits-compression-79">packbits compression</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-parallax-error-29">parallax error</a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-photometric-alignment-28">photometric alignment</a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-problem-reports-258">problem reports</a>: <a href="#Bug-Reports">Bug Reports</a></li>
-<li><a href="#index-processing-order-37">processing order</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-profile_002c-_0040acronym_007bICC_007d-108">profile, <acronym>ICC</acronym></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-program-index-267">program index</a>: <a href="#Program-Index">Program Index</a></li>
-<li><a href="#index-programs_002c-helpful-additional-225">programs, helpful additional</a>: <a href="#Helpful-Programs">Helpful Programs</a></li>
-<li><a href="#index-pyramid-levels-85">pyramid levels</a>: <a href="#Common-Options">Common Options</a></li>
-<li><a href="#index-radius_002c-_0040sc_007bDijkstra_007d-148">radius, <span class="sc">Dijkstra</span></a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-raw-conversion-23">raw conversion</a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-response-file-35">response file</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-response-file-34">response file</a>: <a href="#Invocation">Invocation</a></li>
-<li><a href="#index-response-file_002c-comment-_0028_0040samp_007b_0023_007d_0029-42">response file, comment (&lsquo;<samp><span class="samp">#</span></samp>&rsquo;)</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-response-file_002c-force-recognition-of-45">response file, force recognition of</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-response-file_002c-format-39">response file, format</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-response-file_002c-grammar-43">response file, grammar</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-response-file_002c-syntactic-comment-49">response file, syntactic comment</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-save-mask-173">save mask</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-seam-line_002c-loops-157">seam line, loops</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-seam-optimization-170">seam optimization</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-seam_002dline-endpoint_002c-frozen-186">seam-line endpoint, frozen</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-simulated-annealing-optimizer-139">simulated annealing optimizer</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-single-precision-float_002c-_0040acronym_007bIEEE754_007d-116">single precision float, <acronym>IEEE754</acronym></a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-smooth-difference-image-175">smooth difference image</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-SourceForge-14">SourceForge</a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-SourceForge-259">SourceForge</a>: <a href="#Bug-Reports">Bug Reports</a></li>
-<li><a href="#index-SourceForge_002c-tracker-261">SourceForge, tracker</a>: <a href="#Bug-Reports">Bug Reports</a></li>
-<li><a href="#index-g_t_0040acronym_007bsRGB_007d-color-space-109"><acronym>sRGB</acronym> color space</a>: <a href="#Extended-Options">Extended Options</a></li>
-<li><a href="#index-syntactic-comment_002c-grammar-51">syntactic comment, grammar</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-syntactic-comment_002c-response-file-50">syntactic comment, response file</a>: <a href="#Response-Files">Response Files</a></li>
-<li><a href="#index-syntactic_002dcomment-index-269">syntactic-comment index</a>: <a href="#Syntactic_002dComment-Index">Syntactic-Comment Index</a></li>
-<li><a href="#index-g_t_0040acronym_007bTIFF_007d_002c-multi_002ddirectory-11"><acronym>TIFF</acronym>, multi-directory</a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-g_t_0040command_007btiffcopy_007d-12"><samp><span class="command">tiffcopy</span></samp></a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-g_t_0040command_007btiffsplit_007d-13"><samp><span class="command">tiffsplit</span></samp></a>: <a href="#Overview">Overview</a></li>
-<li><a href="#index-g_t_0040env_007bTMPDIR_007d-221"><samp><span class="env">TMPDIR</span></samp></a>: <a href="#Tuning-Memory-Usage">Tuning Memory Usage</a></li>
-<li><a href="#index-tracker_002c-SourceForge-260">tracker, SourceForge</a>: <a href="#Bug-Reports">Bug Reports</a></li>
-<li><a href="#index-transformation_002c-affine-26">transformation, affine</a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-understanding-masks-204">understanding masks</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
-<li><a href="#index-visualization-image-180">visualization image</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-visualization-image-colors-187">visualization image colors</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-visualization-of-mask-optimization-179">visualization of mask optimization</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-weight-mask-215">weight mask</a>: <a href="#Understanding-Masks">Understanding Masks</a></li>
-<li><a href="#index-weights_002c-optimizer-169">weights, optimizer</a>: <a href="#Mask-Generation-Options">Mask Generation Options</a></li>
-<li><a href="#index-workflow-15">workflow</a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-workflow-with-Enblend-16">workflow with Enblend</a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-workflow-with-Enfuse-17">workflow with Enfuse</a>: <a href="#Workflow">Workflow</a></li>
-<li><a href="#index-wrap-around-99">wrap around</a>: <a href="#Common-Options">Common Options</a></li>
-   </ul>   <div class="footnote">
-<hr>
-<a name="texinfo-footnotes-in-document"></a><h4>Voetnoten</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> <span class="sc">Peter J. Burt</span> and <span class="sc">Edward H. Adelson</span>, &ldquo;A
-Multiresolution Spline With Application to Image Mosaics&rdquo;,
-<acronym>ACM</acronym> Transactions on Graphics, <abbr>Vol.</abbr> 2, <abbr>No.</abbr> 4,
-October 1983, pages 217&ndash;236.</p>
-
-   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> Use utilities like,
-e.g., <samp><span class="command">tiffcopy</span></samp> and <samp><span class="command">tiffsplit</span></samp> of LibTIFF to
-manipulate multi-directory <acronym>TIFF</acronym> images.  See <a href="#Helpful-Programs">Helpful Programs</a>.</p>
-
-   <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> As
-Dr.&nbsp;Daniel Jackson correctly
-<a href="http://stargate.wikia.com/wiki/The_Tomb">noted</a>, actually,
-it is not a pyramid: &ldquo;Ziggaurat, it's a
-<a href="http://en.wikipedia.org/wiki/Ziggaurat">Ziggaurat</a>.&rdquo;</p>
-
-   <p class="footnote"><small>[<a name="fn-4" href="#fnd-4">4</a>]</small> Solid-state physicists will be
-reminded of the
-<a href="http://en.wikipedia.org/wiki/Born-von_Karman_boundary_condition">http://en.wikipedia.org/wiki/Born-von_Karman_boundary_condition</a>,
-<span class="sc">Born</span>-<span class="sc">von K&aacute;rm&aacute;n</span> boundary condition.</p>
-
-   <p class="footnote"><small>[<a name="fn-5" href="#fnd-5">5</a>]</small> <span class="sc">Muhammad
-H. Alsuwaiyel</span> and <span class="sc">Marina Gavrilova</span>, &ldquo;On the Distance Transform
-of Binary Images&rdquo;, Proceedings of the International Conference on
-Imaging Science, Systems, and Technology, June 2000, <abbr>Vols.</abbr> I
-and II, pages 83&ndash;86.</p>
-
-   <p class="footnote"><small>[<a name="fn-6" href="#fnd-6">6</a>]</small> Images of a size less than
-1500&times;1000 pixels qualify as small.</p>
-
-   <hr></div>
-
 </body></html>
 
