@@ -91,7 +91,10 @@ def tool_check( self ):
                 self.exiftool_dir = os.path.join(self.realfile_dir, "exiftool", "exiftool.exe")
                 #self.exiftoolprog = self.exiftool_dir + "\exiftool.exe"
                 if not os.path.isfile(self.exiftoolprog):
-                       ret = QMessageBox.critical(self, "exiftool is missing or incorrectly configured", "exiftool is missing or incorrectly configured in Preferences!\nThis tool is an absolute must have!\nPlease set the correct location or install exiftool first.")
+                       configure_message = "exiftool is missing or incorrectly configured in Preferences!\n"
+                       configure_message += "This tool is an absolute must have!\nPlease set the correct location or install exiftool first.\n\n"
+                       configure_message += "If your exiftool is named \"exiftool(-k).exe\", rename it to \"exiftool.exe\""
+                       ret = QMessageBox.critical(self, "exiftool is missing or incorrectly configured", configure_message)
                        result = self.select_exiftool()
                        print str(result)
                        if result == "":
