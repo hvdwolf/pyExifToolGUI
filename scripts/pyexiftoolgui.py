@@ -207,6 +207,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     	        args = shlex.split(command_line)
     	        p = subprocess.call(args)
 
+    def RemoveMetaData(self): 
+        ReallyRemove = "If you press Yes ALL imagedata will be removed from the selected image(s)!\n"
+        ReallyRemove += "Do you really want to do that?\n\n"
+        reply = QMessageBox.question(self, "Really remove all data?",
+                ReallyRemove,
+                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel)
+        if reply == QMessageBox.Yes:
+            self.questionLabel.setText("Yes")
+        elif reply == QMessageBox.No:
+            self.questionLabel.setText("No")
+        else:
+            self.questionLabel.setText("Cancel")
+
+
     def open_pyexiftoolgui_homepage(self):
         try:
                 webbrowser.open("http://panorama.dyndns.org/index.php?lang=en&subject=pyExifToolGUI&texttag=pyExifToolGUI")

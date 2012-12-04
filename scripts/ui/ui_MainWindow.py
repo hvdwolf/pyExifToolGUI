@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sun Dec  2 12:39:47 2012
+# Created: Tue Dec  4 20:18:32 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -936,9 +936,6 @@ class Ui_MainWindow(object):
         self.btn_xmphelp.setObjectName("btn_xmphelp")
         self.horizontalLayout_13.addWidget(self.btn_xmphelp)
         self.tabWidget_2.addTab(self.editxmptab, "")
-        self.editiptctab = QtGui.QWidget()
-        self.editiptctab.setObjectName("editiptctab")
-        self.tabWidget_2.addTab(self.editiptctab, "")
         self.editgpanotab = QtGui.QWidget()
         self.editgpanotab.setObjectName("editgpanotab")
         self.verticalLayoutWidget_3 = QtGui.QWidget(self.editgpanotab)
@@ -1098,6 +1095,12 @@ class Ui_MainWindow(object):
         self.lbl_exiftool_to_low_2.setObjectName("lbl_exiftool_to_low_2")
         self.verticalLayout_2.addWidget(self.lbl_exiftool_to_low_2)
         self.tabWidget_2.addTab(self.editgpanotab, "")
+        self.editiptctab = QtGui.QWidget()
+        self.editiptctab.setObjectName("editiptctab")
+        self.label_63 = QtGui.QLabel(self.editiptctab)
+        self.label_63.setGeometry(QtCore.QRect(90, 100, 561, 181))
+        self.label_63.setObjectName("label_63")
+        self.tabWidget_2.addTab(self.editiptctab, "")
         self.tabWidget.addTab(self.edittab, "")
         self.preferencestab = QtGui.QWidget()
         self.preferencestab.setObjectName("preferencestab")
@@ -1386,7 +1389,6 @@ class Ui_MainWindow(object):
         self.btn_xmphelp.setToolTip(QtGui.QApplication.translate("MainWindow", "Opens a popup with some additional info on this screen", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_xmphelp.setText(QtGui.QApplication.translate("MainWindow", "Help", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.editxmptab), QtGui.QApplication.translate("MainWindow", "Xmp", None, QtGui.QApplication.UnicodeUTF8))
-        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.editiptctab), QtGui.QApplication.translate("MainWindow", "IPTC", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_gpano_copyfrom.setToolTip(QtGui.QApplication.translate("MainWindow", "This button will copy all the (available) gps/location info from the selected image to the internal \"clipboard\"", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_gpano_copyfrom.setText(QtGui.QApplication.translate("MainWindow", "Copy from selected image", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_savegpano.setToolTip(QtGui.QApplication.translate("MainWindow", "Save the gps and xmp data to the image file", None, QtGui.QApplication.UnicodeUTF8))
@@ -1410,6 +1412,14 @@ class Ui_MainWindow(object):
         self.xmp_ProjectionType.setItemText(2, QtGui.QApplication.translate("MainWindow", "rectilinear", None, QtGui.QApplication.UnicodeUTF8))
         self.label_10.setText(QtGui.QApplication.translate("MainWindow", "Panorama tags for Google Photosphere. Requires exiftool 9.07 or newer", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.editgpanotab), QtGui.QApplication.translate("MainWindow", "GPano", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_63.setText(QtGui.QApplication.translate("MainWindow", "IPTC is an older metadata information standard.\n"
+"It stands for \"International Press Telecommunications Council\".\n"
+"This already shows the primary goal of this standard which is\n"
+"perhaps not what an amateur photograph is aiming for.\n"
+"Next to that: IPTC is being phased out in favor of XMP.\n"
+"\n"
+"Currently I have no intent to add functionality to this standard, maybe later.", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.editiptctab), QtGui.QApplication.translate("MainWindow", "IPTC", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.edittab), QtGui.QApplication.translate("MainWindow", "Edit Data", None, QtGui.QApplication.UnicodeUTF8))
         self.frame_2.setToolTip(QtGui.QApplication.translate("MainWindow", "The program will go for the default exiftool version. Here you can specify another version.", None, QtGui.QApplication.UnicodeUTF8))
         self.label_8.setToolTip(QtGui.QApplication.translate("MainWindow", "The program will go for the default exiftool version. Here you can specify another version.", None, QtGui.QApplication.UnicodeUTF8))

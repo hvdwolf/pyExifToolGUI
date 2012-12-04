@@ -2165,11 +2165,6 @@ to convert the data.</string>
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="editiptctab">
-       <attribute name="title">
-        <string>IPTC</string>
-       </attribute>
-      </widget>
       <widget class="QWidget" name="editgpanotab">
        <attribute name="title">
         <string>GPano</string>
@@ -2498,6 +2493,30 @@ to convert the data.</string>
           </widget>
          </item>
         </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="editiptctab">
+       <attribute name="title">
+        <string>IPTC</string>
+       </attribute>
+       <widget class="QLabel" name="label_63">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>100</y>
+          <width>561</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>IPTC is an older metadata information standard.
+It stands for &quot;International Press Telecommunications Council&quot;.
+This already shows the primary goal of this standard which is
+perhaps not what an amateur photograph is aiming for.
+Next to that: IPTC is being phased out in favor of XMP.
+
+Currently I have no intent to add functionality to this standard, maybe later.</string>
+        </property>
        </widget>
       </widget>
      </widget>
