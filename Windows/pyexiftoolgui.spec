@@ -17,6 +17,7 @@ coll = COLLECT(exe,
                [('petgfunctions.py', '..\\pyside\\pyexiftoolgui-hg\\scripts\\petgfunctions.py', 'PYSOURCE')] +
                [('programstrings.py', '..\\pyside\\pyexiftoolgui-hg\\scripts\\programstrings.py', 'PYSOURCE')] +
                [('programinfo.py', '..\\pyside\\pyexiftoolgui-hg\\scripts\\programinfo.py', 'PYSOURCE')] +
+               [('info_window.py', '..\\pyside\\pyexiftoolgui-hg\\scripts\\info_window.py', 'PYSOURCE')] +
                [('ui_MainWindow.py', '..\\pyside\\pyexiftoolgui-hg\\scripts\\ui\\ui_MainWindow.py', 'PYSOURCE')] +
                [('qt.conf', '..\\pyside\\pyexiftoolgui-hg\\Windows\\qt.conf', 'DATA')] +
                [('plugins\\imageformats\\qjpeg4.dll', 'D:\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qjpeg4.dll', 'DATA')] +
@@ -24,7 +25,8 @@ coll = COLLECT(exe,
                [('plugins\\imageformats\\qmng4.dll', 'D:\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qmng4.dll', 'DATA')] +
                [('plugins\\imageformats\\qsvgg4.dll', 'D:\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qsvg4.dll', 'DATA')] +
                [('plugins\\imageformats\\qtiff4.dll', 'D:\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qtiff4.dll', 'DATA')] +
-               [('plugins\\imageformats\\qico4.dll', 'D:\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qico4.dll', 'DATA')] ,
+               [('plugins\\imageformats\\qico4.dll', 'D:\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qico4.dll', 'DATA')] +
+               [('COPYING.txt', '..\\pyside\\pyexiftoolgui-hg\\COPYING', 'DATA')] ,
                a.zipfiles,
                a.datas,
                strip=None,

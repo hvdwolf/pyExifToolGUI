@@ -198,13 +198,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	
     def show_license(self):
 	command_line = os.path.join(self.realfile_dir, "info_window.py") + " license"
-#	command_line = os.path.join(self.script_dir, "info_window.py") + " license"
         if self.OSplatform == "Windows":
-                python_exe = sys.executable
-                command_line = python_exe + " " + command_line
-                command_line = command_line.replace("/", "\\")
-                p = subprocess.call(command_line)
-        else: 
+                # do it differently on windows. This works better and makes packaging
+                # a windows python executable so much easier
+                p = subprocess.call("notepad.exe COPYING.txt")
+        else:
+                command_line = os.path.join(self.realfile_dir, "info_window.py") + " license"
     	        args = shlex.split(command_line)
     	        p = subprocess.call(args)
 
