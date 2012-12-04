@@ -185,9 +185,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	
 	self.licenselabel = QLabel()
 	self.licensebutton = self.aboutbox.addButton(self.tr("License"), QMessageBox.ActionRole)
+	self.donatelabel = QLabel()
+	self.donatebutton = self.aboutbox.addButton(self.tr("Donate"), QMessageBox.ActionRole)
+
 	closebutton = self.aboutbox.addButton(QMessageBox.Close)
 
 	self.licensebutton.clicked.connect(self.show_license)
+        self.donatebutton.clicked.connect(self.open_donate_page)
 	self.aboutbox.setWindowTitle("About pyexiftoolgui " + programinfo.VERSION)
 	self.aboutbox.setText(programinfo.ABOUTMESSAGE)
 	ret = self.aboutbox.exec_()
