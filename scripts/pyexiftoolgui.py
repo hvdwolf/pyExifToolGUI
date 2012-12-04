@@ -232,7 +232,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def gps_help(self):
 	try:
              if self.OSplatform == "Windows":
-                webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
+                if os.path.isfile(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html")): # from python exectuable
+                     webbrowser.open(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html"))
+                elif os.path.isfile(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html")): # Started from script
+                     webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
              else:
 		webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", "pyexiftoolgui.html#EditgpsData"))
 	except:
@@ -241,7 +244,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def exif_help(self):
 	try:
              if self.OSplatform == "Windows":
-                webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
+                if os.path.isfile(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html")): # from python exectuable
+                     webbrowser.open(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html"))
+                elif os.path.isfile(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html")): # Started from script
+                     webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
              else:
 		webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", "pyexiftoolgui.html#EditexifData"))
 	except:
@@ -250,7 +256,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def xmp_help(self):
 	try:
              if self.OSplatform == "Windows":
-                webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
+                if os.path.isfile(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html")): # from python exectuable
+                     webbrowser.open(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html"))
+                elif os.path.isfile(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html")): # Started from script
+                     webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
              else:
 		webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", "pyexiftoolgui.html#EditxmpData"))
 	except:
@@ -260,18 +269,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #petgfunctions.help_mbox(self, "Help on Edit -> GPano tab", programstrings.GPANOHELP)
 	try:
              if self.OSplatform == "Windows":
-                webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
-             else:
-		webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", "pyexiftoolgui.html#EditgpanoData"))
+                if os.path.isfile(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html")): # from python exectuable
+                     webbrowser.open(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html"))
+                elif os.path.isfile(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html")): # Started from script
+                     webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
 	except:
 		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
 
     def preferences_help(self):
  	try:
              if self.OSplatform == "Windows":
-                webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
-             else:
-		webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", "pyexiftoolgui.html#Preferences"))
+                if os.path.isfile(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html")): # from python exectuable
+                     webbrowser.open(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html"))
+                elif os.path.isfile(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html")): # Started from script
+                     webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
 	except:
 		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
 
