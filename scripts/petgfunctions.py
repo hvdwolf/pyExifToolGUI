@@ -1055,11 +1055,13 @@ def savegpanodata(self, qApp):
         if self.chk_xmp_FullPanoWidthPixels.isChecked():
                exiftool_params +=  '-xmp:FullPanoWidthPixels="' + self.xmp_FullPanoWidthPixels.text() + '" '
         if self.chk_xmp_ProjectionType.isChecked():
-               if self.xmp_ProjectionType.currentIndex == 0:
+               #print "projectiontype " + str(self.xmp_ProjectionType.currentIndex())
+               #print "projectiontype " + str(self.xmp_ProjectionType.currentText())
+               if self.xmp_ProjectionType.currentIndex() == 0:
                   exiftool_params +=  '-xmp:ProjectionType="equirectangular" '
-               elif self.xmp_ProjectionType.currentIndex == 1:
+               elif self.xmp_ProjectionType.currentIndex() == 1:
                   exiftool_params +=  '-xmp:ProjectionType="cylindrical" '
-               elif self.xmp_ProjectionType.currentIndex == 2:
+               elif self.xmp_ProjectionType.currentIndex() == 2:
                   exiftool_params +=  '-xmp:ProjectionType="rectangular" '
         if self.chk_xmp_UsePanoramaViewer.isChecked(): 
                if self.xmp_UsePanoramaViewer.isChecked():
