@@ -120,6 +120,9 @@ ul.toc {}
 <ul>
 <li><a name="toc_Top" href="#Top">pyExifToolGUI</a>
 <li><a name="toc_Overview" href="#Overview">1 Overview</a>
+<ul>
+<li><a href="#manual_version">1.1 This manual and the pyExifToolGUI version</a>
+</li></ul>
 <li><a name="toc_Installation" href="#Installation">2 Installation</a>
 <ul>
 <li><a href="#InstallLinux">2.1 Installation on Linux</a>
@@ -136,6 +139,7 @@ ul.toc {}
 <li><a href="#EditxmpData">4.3 Edit xmp data</a>
 <li><a href="#EditgpanoData">4.4 Edit GPano (Google Photosphere) data</a>
 <li><a href="#EditiptcData">4.5 IPTC data (not directly supported)</a>
+<li><a href="#workflow">4.5 Example workflow</a>
 </li></ul>
 <li><a name="toc_Preferences" href="#Preferences">5 Preferences</a>
 <li><a name="toc_FDL" href="#FDL">Appendix A <acronym>GNU</acronym> Free Documentation License</a>
@@ -194,6 +198,14 @@ your appreciation. See the Help menu in the program or the donate button below.
 <img alt="" border="0" src="https://www.paypalobjects.com/nl_NL/i/scr/pixel.gif" width="1" height="1">
 </form>
 
+<p><a name="manual_version"></a>
+
+<h3 class="section">1.1 This manual and the pyExifToolGUI version</h3>
+
+<p>This manual and the pyExifToolGUI version might not always run synchronously. If new functionality 
+is added to the program and requires a new chapter or paragraph, the manual will be updated.
+Not all parts of the manual will be updated which might lead to older program screens in the manual that might 
+slightly deviate from the program you will be working with.
 
 <p><a name="Installation"></a>
 
@@ -429,7 +441,58 @@ combination with the Newspaper Association of America (NAA) Information Intercha
 This already shows the primary goal of this standard which is perhaps not what 
 an amateur photograph is aiming for.
 Next to that: IPTC is being phased out in favor of XMP.
+<p> </p>
+<p>
 
+
+
+<p><a name="workflow"></a>
+<h3 class="section">4.5 Example workflow</h3>
+
+<p>Below you'll find an example of how you can use the program.
+Click the images for a full size version.
+<table border="0" width="900" cellpadding="10">
+<tbody>
+<tr>
+<td><a href="01-workflow-pyexiftoolgui.jpg"><img title="select an image; Click for a full size version" src="01-workflow-pyexiftoolgui.jpg" alt="Select an image" width="500"></a></td>
+<td>Load your image(s) via "File -&gt; Load Images" or via the "Load Images" button.
+<p>Go to the "Edit -&gt; Gps" tag.</p>
+<p>If one of your images contains the info you need for your other image(s), select that image. Use the "Copy from selected image".</p>
+<p>The available gps information will be copied into the relevant input fields.</p>
+</td>
+</tr>
+<tr>
+<td><a href="02-workflow-pyexiftoolgui.jpg"><img title="Copy the selected info; Click for a full size version" src="02-workflow-pyexiftoolgui.jpg" alt="Copy the selected info" width="500"></a></td>
+<td><p>The xmp/iptc location info (location, country, state, city) is hardly ever available, but you can add the info yourself.</p>
+<p>In case your images don't contain any information at all, but you do know the location, you can click the "Open 
+MapCoordinates.net" button. This will open the mapcoordinates.net website in your default webbrowser. mapcoordinates.net 
+is based on google maps and you can search for the location and landmarks, like "Eiffel tower" (in Paris) or "machu picchu" (Peru). 
+The website will display a popup with the decimal altitude and longitude coordinates and the altitude. 
+<p>Note that this altitude is mostly correct, but sometimes completely wrong.
+</td>
+</tr>
+<tr>
+<td><a href="03-workflow-pyexiftoolgui.jpg"><img title="Possibly alter or extend the info; Click for a full size version" src="03-workflow-pyexiftoolgui.jpg" alt="Possibly alter or extend the info" width="500"></a></td>
+<td><p>After you have added or altered the information, you need to pay attention to which information you want to save to your image(s).
+<p>The <b>Save</b> checkboxes determine which information will be stored upon saving. Note that when an input field is empty, 
+you can by accident, or deliberately write "clean" the data in your images for the relevant tags.
+</td>
+</tr>
+<tr>
+<td><a href="04-workflow-pyexiftoolgui.jpg"><img title="Select the photos you want to save the information to; Click for a full size version" src="04-workflow-pyexiftoolgui.jpg" alt="Select the photos you want to save the information to" width="500"></a></td>
+<td><p>Now select the photos on the left side where you want the information to be saved into. Note that Shift and Control works in selecting 
+the photos.
+<p>Once you have selected the images click the "Save to selected images" button.
+</td>
+</tr>
+<tr>
+<td><a href="05-workflow-pyexiftoolgui.jpg"><img title="Saving the information to the photos; Click for a full size version" src="05-workflow-pyexiftoolgui.jpg" alt="Saving the information to the photos" width="500"></a></td>
+<td><p>Once the button "Save to selected images" has been clicked you will see a message displayed describing which image is 
+processed and a progress bar displaying the complete progress.
+</td>
+</tr>
+</table>
+<p> </p>
 <p><a name="Preferences"></a>
 
 <h2 class="chapter">5 Preferences</h2>
