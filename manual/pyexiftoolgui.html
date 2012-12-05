@@ -135,6 +135,7 @@ ul.toc {}
 <li><a href="#EditexifData">4.2 Edit exif data</a>
 <li><a href="#EditxmpData">4.3 Edit xmp data</a>
 <li><a href="#EditgpanoData">4.4 Edit GPano (Google Photosphere) data</a>
+<li><a href="#EditiptcData">4.5 IPTC data (not directly supported)</a>
 </li></ul>
 <li><a name="toc_Preferences" href="#Preferences">5 Preferences</a>
 <li><a name="toc_FDL" href="#FDL">Appendix A <acronym>GNU</acronym> Free Documentation License</a>
@@ -143,17 +144,13 @@ ul.toc {}
 
 
 
-<!-- For the TeX output the List-of-Tables and List-of-Figures appear -->
-<!-- right after the Table-of-Contents.  In all other formats they go -->
-<!-- right before the indices. -->
-<!-- ``Top'' Node and Master Menu -->
 <p><a name="Top"></a>
 
 <h2 class="unnumbered">pyExifToolGUI</h2>
 
-<p>This manual is for pyExifToolGUI (version 0.2.x, December 2011).
+<p>This manual is for pyExifToolGUI (version 0.2.x, December 2012).
 pyExifToolGui is a python pySide QT4 script program that reads and writes
-exif, xmp and IPTC tags from/to image files. It can use a "reference" image as source image to
+exif, xmp (and IPTC) tags from/to image files. It can use a "reference" image as source image to
 copy data from. A strong point of this software is the ability to write the data,
 copied or not from a source image, to multiple images at once.
 
@@ -165,16 +162,16 @@ copied or not from a source image, to multiple images at once.
 <!-- Undo the roman page numbering we used for the Table-of-Contents, -->
 <!-- the List-of-Tables, and the List-of-Figures. -->
 <p>pyExifToolGui is a python pySide QT4 script program that reads and writes
-exif, xmp and IPTC tags from/to image files using exiftool. It can use a  
+exif, xmp (and a very limited set of IPTC) tags from/to image files using exiftool. It can use a  
 "reference" image as source image to copy data from. 
 A strong point of this software is the ability to write the data,
 copied or not from a source image, to multiple images at once.
-The main goal for this tool was the ability to write gps data to my images as I 
+The main goal for this tool was the ability to write gps data to images as I 
 photograph a lot in buildings like Churches/Cathedrals and Musea (when allowed), 
 which means that the gps functionality of the camera doesn't function.
-Next to the gps functionality pyExifToolGUI will slowly grow into a general exiftool Gui and will
-also write other tags to your images.
-This pyExifToolGUI tool is NOT a geotagging tool!
+Next to the gps functionality pyExifToolGUI also supports a limited set of exif and xmp tags but 
+will slowly grow into a general exiftool Gui and will also write other tags to your images.
+<p>This pyExifToolGUI tool is NOT a geotagging tool!
 
 <p>pyExifToolGui is a graphical frontend for the excellent open source
 command line tool <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/" target="_blank">ExifTool</a> by Phil Harvey.
@@ -184,8 +181,10 @@ and decided to write my own.
 "By accident" it contains more functions as ExifTool is a powerful tool
 and once you have written the basic program Gui skeleton it is relatively easy
 to add extra functionality, which is basically to add more exif/xmp/iptc tags and
-add them to the "write to image" function. This is a time consuming process but not a 
+add them to the "write to image" functions. This is a really time consuming process but not a 
 difficult one.
+<p>IPTC tags are only partly supported. IPTC is an older and slowly deminishing metadata standard being replaced by xmp. Where
+applicable, e.g. redundant tags in xmp, the iptc tags will be updated simultaneously.
 <p>This program is Open Source and completely free and will always stay that way, but you can donate any amount to me to show
 your appreciation. See the Help menu in the program or the donate button below.
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -208,9 +207,14 @@ script to package it for Ubuntu (or any other Debian based linux),
 or (Open)Suse or Fedora/Redhat.
 This also means that it doesn't do any dependency checks for necessary
 libraries and so on. 
-I simply wrote a "setup" script that takes care of installation and removal. 
-Currently it only works on Linux and Mac OS X. Windows is not my target but 
-eventually it will get it's own python executable.
+I wrote a simple "setup" script that takes care of installation and removal. 
+Currently this setup script only works on Linux and Mac OS X. For Windows a 
+python executable has been created (Note to Windows users: Currently there is the 
+closed sourced but free exiftoolgui for windows. pyexiftoolgui contains the functionality 
+of applying your changes to a selected set of images at once, exiftoolgui only has 
+this on a limited set of tags. The total "functionality set" of exiftoolgui is currently
+much more then that of pyexiftoolgui, but it misses the new GPano functionality 
+(see ><a href="#EditgpanoData">paragraph 4.4</a>).
 
 <p>You can run pyexiftoolgui without installing it: see the paragraph below the
 installation instructions. 
@@ -227,10 +231,11 @@ installation instructions.
 <li>ExifTool: Install via your distribution's package manager.</li></ul>
 
 <p>Installation:
-<ul><li>Untar the package to some folder (You obviously did that already if you are reading this).
+<ul><li>Untar the package to some folder.
 <li>Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
 <li>Run the setup script from the command line with <PRE>sudo ./setup.py install</PRE>.
-<li>pyExifToolGUI will be installed and you should have an icon in you Graphics menu or in your Dash (Ubuntu).
+<li>pyExifToolGUI will be installed and you should have an icon in your menu under the Graphics sub menu
+ or in your Dash (Ubuntu).
 <li>Start and enjoy.</li></ul>
 
 <p><a name="InstallMacOSX"></a>
@@ -247,7 +252,7 @@ installation instructions.
 <li>ExifTool: Download the DMG from the ExifTool website (highly preferred) or install via MacPorts.</li></ul>
 
 <p>Installation:
-<ul><li>Untar the package to some folder (You obviously did that already if you are reading this).
+<ul><li>Untar the package to some folder.
 <li>Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
 <li>Run the setup script from the command line with <PRE>sudo ./setup.py install</PRE>.
 <li>The script will install a "bare bones" pyExifToolGUI.app in your Applications folder.
@@ -259,12 +264,10 @@ installation instructions.
 
 <h3 class="section">2.3 Installation on Windows</h3>
 
-<p>I'm working on a windows python executable, but currently you are on your own here.
-But if you want to try I will provide some basic instructions.
-<ul><li>Install python on your system. Download it from www.python.org
-<li>Install pyside on your system. Download it from www.pyside.org (pay attention to the possible combinations)
-<li>Download pyExifToolGUI-x.y.tgz and unpack it to some folder.
-<li>Start from a dos/command box with: <PRE>drive:\path\to\python\executable drive:\path\to\pyexiftoolgui.py</PRE></li></ul>
+<p>For windows an executable has been created. This could be easily packaged with some
+open source installer like INNOsetup, but for the moment it is simply packaged in a 
+zip file. Unzip the zip archive to some folder of your liking and start it. This also means
+that the package does not create registry entries.
 
 
 <p><a name="NoInstall"></a>
@@ -289,7 +292,8 @@ But if you want to try I will provide some basic instructions.
 <ul><li>Open a terminal
 <li>Move into the folder where you untarred the pyExifToolGUI tgz (You might need to download again if your removed everything).
 <li>run the setup script from the command line with <PRE>$ sudo ./setup.py remove</PRE>.
-<li>On Mac OS X simply remove pyExifToolGUI.app from /Applications</li></ul>
+<li>On Mac OS X simply remove pyExifToolGUI.app from /Applications</li>
+<li>On Windows simply remove the folder containing the pyexiftoolgui.exe application.</ul>
 
 
 <p><a name="ViewData"></a>
@@ -300,13 +304,17 @@ But if you want to try I will provide some basic instructions.
 You select an image on the left side and click the radiobutton on the right side to see all or a selected 
 set of data of the photo.
 As ExifTool supports a large number of image formats, but also movie formats, all available metadata that
-ExifTool can read, can be displayed by pyExifToolGUI as well. Note that some of the data, or subsets of data, 
-is simply not available in the non-image formats.<br>
+ExifTool can read, can be displayed by pyExifToolGUI as well. The file filter, used to select files from the file dialog, 
+is not only set to images, but to the total set of file extensions that exiftool supports. Note that some of the data, 
+or subsets of data, is simply not available in the non-image formats.<br>
 pyExifToolGUI will try to make a preview (thumbnail) of the image, but will not always succeed. In case of other
  formats like movies and so on, the creation of a preview will most likely not function.</p>
 <img src="viewdatatab.jpg" alt="viewdatatab.jpg" title="The View Data tab" width="1100">
 <p>Note that the "Display Image" button will display the selected image in the default image viewer. If this "image" 
 happens to be a movie, the movie will be displayed in the default movie/media viewer if the format is supported.
+<p>Image rotation is not always correctly "interpreted" by the underlying QT image plugins that create the 
+preview thumbnails. If you think it is not correct you can simply select the image, click on the "Display Image" button 
+and see whether your "normal" image viewer displays it correctly, meaning that your image has the correct setting.
 <p>
 
 <p><a name="EditData"></a>
@@ -315,22 +323,24 @@ happens to be a movie, the movie will be displayed in the default movie/media vi
 
 <p>The application is a so called "tabbed" application. The "Edit Data" tab is the (obvious) tab
 that contains the sub tabs with all the edit options. Currently a moderate set of tabs have been 
-defined but the order, number and even content can change during the development cycle of this application.
+defined but the order, number and even content can change during the further development of this application.
 
 <p><a name="EditgpsData"></a>
 
 <h3 class="section">4.1 Edit gps Data</h3>
 
 <p>This tab is used to add GPS data to your images. This tab works on a combination of
-exif, xmp and iptc gps data as latitude, longitude and altitude are covered in the exif (primarily) and
+exif, xmp and iptc gps data as latitude, longitude and altitude are covered in both the exif and
 in the xmp metadata structure. The Location metadata details (Country, Province/State, city, Location) 
-are covered by xmp and IPTC. This tab simply tries to make your data as complete as possible in the 
+are covered by xmp and IPTC. This tab therefore acts on multiple tag categories (exif, xmp and iptc) at once 
+and simply tries to make your gps/location data as complete as possible in the 
 several tag categories.</p>
 <img src="editgpstab.jpg" alt="editgpstab.jpg" title="The Edit gps tab" width="1100">
 <ul><li><h3>Buttons working on image(s):</h3>
 <ul><li><b>Copy from selected image</b>: This will copy all the (available) gps data from
 the selected image into the input fields.</li>
 <li><b>Save to selected image(s)</b>: This will save the gps data to your selected image(s).</li></ul></ul>
+<p><b>Note:</b> When the "Save" checkbox is enabled, empty fields will write empty values to your image(s). Take this into account!
 <ul><li><h3>General buttons:</h3>
 <ul><li><b>Reset fields</b>: This will empty all fields and set radiobuttons and checkboxes to their defaults.</li>
 <li><b>Open MapCoordinates.net</b>: This will open the mapcoordinates.net website enabling you to get and copy latitude, longitude and altitude data
@@ -395,9 +405,9 @@ of auto-rotating panoramic photos inside these products.
 <p>This functionality is only available if you have exiftool 9.07 or newer. You can always download
 the latest <a href='http://www.sno.phy.queensu.ca/~phil/exiftool/'>exiftool</a> version.
 On Windows and Mac OS X simply install it. On Linux you simply unpack the tar.gz to some
- folder. After the install/unpack you can use the Preferences tab to select that version.</p>
+ folder. After the install/unpack you can use the Preferences tab to select that untarred version.</p>
 <p><b>Things to take into account!</b></p>
-As you can see the options all have a <b>Save</b> checkbox behind their input fields
+<p>As you can see the options all have a <b>Save</b> checkbox behind their input fields
 It means that this option will be saved when checked, even when the field is empty.
 This also means that you can:
 <ul><li>overwrite existing data with empty databy accident".</li>
@@ -411,6 +421,15 @@ the selected image into the input fields.</li>
 <p>
 
 
+<p><a name="EditiptcData"></a>
+<h3 class="section">4.5 IPTC data (not directly supported)</h3>
+<p>IPTC is an older metadata information standard.
+It stands for "International Press Telecommunications Council", also with a 
+combination with the Newspaper Association of America (NAA) Information Interchange Model (IIM).
+This already shows the primary goal of this standard which is perhaps not what 
+an amateur photograph is aiming for.
+Next to that: IPTC is being phased out in favor of XMP.
+
 <p><a name="Preferences"></a>
 
 <h2 class="chapter">5 Preferences</h2>
@@ -423,10 +442,10 @@ If you stick to exiftool(-k).exe the program will halt on the most peculiar mome
 If not found you have to specify where exiftool is. You can also use this option to specify a newer exiftool version 
 then standard available for your distribution. At this moment most Linux distributions ship with some 8.xy exiftool version.
 </li></ul>
-For the Gpano functionality you really need a version equal or newer then 9.07. 
-See also <a href="#EditgpanoData">"4.4 Edit GPano (Google Photosphere) data"</a>.
+<p>For the Gpano functionality you really need a version equal or newer then 9.07. 
+See also "<a href="#EditgpanoData">4.4 Edit GPano (Google Photosphere) data</a>".
 <p><h3>Default values:</h3>
-These fields give you the option to specify your name (for example) and some copyright notice (for example: Spiderman (c) 2012).
+<p>These fields give you the option to specify your name (for example) and some copyright notice (for example: Spiderman (c) 2012).
 They can be copied into the relevant exif, xmp and iptc fields for these values.</li></ul>
 <p><img src="preferencestab.jpg" alt="preferencestab.jpg" title="Preferences tab" width="1100">
 <p>
