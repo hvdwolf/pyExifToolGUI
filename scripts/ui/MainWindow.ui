@@ -2698,11 +2698,10 @@ Currently I have no intent to add functionality to this standard, maybe later.</
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>Help</string>
+     <string>&amp;Help</string>
     </property>
     <addaction name="mnu_action_pyexiftoolgui_home"/>
     <addaction name="mnu_action_exiftool"/>
-    <addaction name="mnu_action_mapcoordinates_tab"/>
     <addaction name="separator"/>
     <addaction name="mnu_action_Donate"/>
     <addaction name="separator"/>
@@ -2723,7 +2722,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   </action>
   <action name="mnu_action_About">
    <property name="text">
-    <string>&amp;About</string>
+    <string>Program Info</string>
    </property>
   </action>
   <action name="mnu_action_exiftool">
@@ -2748,7 +2747,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   </action>
   <action name="mnu_action_load_images">
    <property name="text">
-    <string>Load Images</string>
+    <string>&amp;Load Images</string>
    </property>
   </action>
   <action name="mnu_action_license">

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Tue Dec  4 20:18:32 2012
+# Created: Fri Dec  7 17:48:11 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1213,7 +1213,6 @@ class Ui_MainWindow(object):
         self.menu_File.addAction(self.action_Quit)
         self.menuHelp.addAction(self.mnu_action_pyexiftoolgui_home)
         self.menuHelp.addAction(self.mnu_action_exiftool)
-        self.menuHelp.addAction(self.mnu_action_mapcoordinates_tab)
         self.menuHelp.addSeparator()
         self.menuHelp.addAction(self.mnu_action_Donate)
         self.menuHelp.addSeparator()
@@ -1435,14 +1434,14 @@ class Ui_MainWindow(object):
         self.btn_preferenceshelp.setText(QtGui.QApplication.translate("MainWindow", "Help", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.preferencestab), QtGui.QApplication.translate("MainWindow", "Preferences", None, QtGui.QApplication.UnicodeUTF8))
         self.menu_File.setTitle(QtGui.QApplication.translate("MainWindow", "&File", None, QtGui.QApplication.UnicodeUTF8))
-        self.menuHelp.setTitle(QtGui.QApplication.translate("MainWindow", "Help", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuHelp.setTitle(QtGui.QApplication.translate("MainWindow", "&Help", None, QtGui.QApplication.UnicodeUTF8))
         self.action_Quit.setText(QtGui.QApplication.translate("MainWindow", "&Quit", None, QtGui.QApplication.UnicodeUTF8))
-        self.mnu_action_About.setText(QtGui.QApplication.translate("MainWindow", "&About", None, QtGui.QApplication.UnicodeUTF8))
+        self.mnu_action_About.setText(QtGui.QApplication.translate("MainWindow", "Program Info", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_exiftool.setText(QtGui.QApplication.translate("MainWindow", "ExifTool homepage", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_ais.setText(QtGui.QApplication.translate("MainWindow", "Align_image_stack wiki page", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_enfuse_reference.setText(QtGui.QApplication.translate("MainWindow", "Enfuse reference manual", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_Donate.setText(QtGui.QApplication.translate("MainWindow", "Donate", None, QtGui.QApplication.UnicodeUTF8))
-        self.mnu_action_load_images.setText(QtGui.QApplication.translate("MainWindow", "Load Images", None, QtGui.QApplication.UnicodeUTF8))
+        self.mnu_action_load_images.setText(QtGui.QApplication.translate("MainWindow", "&Load Images", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_license.setText(QtGui.QApplication.translate("MainWindow", "License", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_EXIF_tags.setText(QtGui.QApplication.translate("MainWindow", "EXIF tags", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_XMP_tags.setText(QtGui.QApplication.translate("MainWindow", "XMP tags", None, QtGui.QApplication.UnicodeUTF8))

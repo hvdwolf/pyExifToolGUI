@@ -63,13 +63,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
+        #self.createFileMenu()
+        #self.unifiedTitleAndToolBarOnMac(True)
 # First set the menu actions
 	self.mnu_action_load_images.triggered.connect(self.loadimages)
 	self.action_Quit.triggered.connect(self.quit_application)
 	app.aboutToQuit.connect(self.quit_application)
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
 	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
-        self.mnu_action_mapcoordinates_tab.triggered.connect(self.mapcoordinates_help)
+        #self.mnu_action_mapcoordinates_tab.triggered.connect(self.mapcoordinates_help)
 	self.mnu_action_license.triggered.connect(self.show_license)
 	self.mnu_action_Donate.triggered.connect(self.open_donate_page)
         self.mnu_action_About.triggered.connect(self.show_about_window)
@@ -196,9 +198,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	self.aboutbox.setText(programinfo.ABOUTMESSAGE)
 	ret = self.aboutbox.exec_()
 	
-    def mapcoordinates_help(self):
-        helptext = programstrings.MAPCOORDINATESHELP
-        petgfunctions.help_mbox(self,"Help on Integrated Mapcoordinates.net", programstrings.MAPCOORDINATESHELP)
+#    def mapcoordinates_help(self):
+        #helptext = programstrings.MAPCOORDINATESHELP
+        #petgfunctions.help_mbox(self,"Help on Integrated Mapcoordinates.net", programstrings.MAPCOORDINATESHELP)
+#        petgfunctions.handleNewWindow(self)
 	
     def show_license(self):
 	command_line = os.path.join(self.realfile_dir, "info_window.py") + " license"
