@@ -204,15 +204,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #        petgfunctions.handleNewWindow(self)
 	
     def show_license(self):
-	command_line = os.path.join(self.realfile_dir, "info_window.py") + " license"
-        if self.OSplatform == "Windows":
-                # do it differently on windows. This works better and makes packaging
-                # a windows python executable so much easier
-                p = subprocess.call("notepad.exe COPYING.txt")
-        else:
-                command_line = os.path.join(self.realfile_dir, "info_window.py") + " license"
-    	        args = shlex.split(command_line)
-    	        p = subprocess.call(args)
+        petgfunctions.info_window(self)
 
     def RemoveMetaData(self): 
         ReallyRemove = "If you press Yes ALL imagedata will be removed from the selected image(s)!\n"
@@ -241,6 +233,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		QMessageBox.critical(self, "Error!", "Unable to open the ExifTool homepage" )
 
     def open_donate_page(self):
+        petgfunctions.remove_metadata(self)
 	try:
 		webbrowser.open("http://members.home.nl/harryvanderwolf/pyexiftoolgui/donate.html")
 	except:
@@ -406,6 +399,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def preferences_save(self):
         petgfunctions.write_config(self, 0)
 
+#------------------------------------------------------------------------
+# This is where we define some "empty" functions called from another script
+# which need to be "self enabled". These are for the new popup windows.
+    def check_remove_metadata_boxes(self):
+        petgfunctions.check_remove_metadata_boxes(self)
 #------------------------------------------------------------------------
 #------------------------------------------------------------------------
 # This is where the main app is started

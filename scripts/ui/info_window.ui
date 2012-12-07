@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>info_window</class>
+ <widget class="QDialog" name="info_window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>640</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>License</string>
+  </property>
+  <widget class="QTextEdit" name="info_window_text">
+   <property name="geometry">
+    <rect>
+     <x>3</x>
+     <y>11</y>
+     <width>491</width>
+     <height>591</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>610</y>
+     <width>176</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Close</set>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>clicked(QAbstractButton*)</signal>
+   <receiver>info_window</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>387</x>
+     <y>623</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>239</x>
+     <y>319</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

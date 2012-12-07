@@ -26,6 +26,7 @@ import os, sys, platform, shlex, subprocess, time, re, string
 import PySide
 from PySide.QtCore import *
 from PySide.QtGui import *
+from PySide.QtUiTools import *
 
 import programinfo
 import programstrings
@@ -1137,4 +1138,45 @@ def write_image_info(self, exiftoolparams, qApp):
         self.lbl_progress.setText("Done writing the info to the selected image(s)")
 
 #------------------------------------------------------------------------
+# Other dialogs and windows and their related functions
+def info_window(self):
+    license_file = os.path.join(self.parent_dir, 'COPYING')
+    ui = os.path.join(self.ui_dir, "info_window.ui")
+    #print ui
+    loader = QUiLoader()
+    uifile = QFile(ui)
+    uifile.open(QFile.ReadOnly)
+    self.info_window_dialog = loader.load(uifile, self)
+    uifile.close()
+    self.info_window_dialog.adjustSize()
+    self.info_window_dialog.info_window_text.setText(open(license_file).read())
+    self.info_window_dialog.exec_()
+
+
+def check_remove_metadata_boxes(self):
+    if self.rem_metadata_dialog.chk_rem_all_metadata.isChecked():
+        self.rem_metadata_dialog.chk_rem_exif_data.setChecked(1)
+        self.rem_metadata_dialog.chk_rem_xmp_data.setChecked(1)
+        self.rem_metadata_dialog.chk_rem_iptc_data.setChecked(1)
+      
+def remove_metadata(self):    
+    ui = os.path.join(self.ui_dir, "remove_metatada.ui")
+    loader = QUiLoader()
+    uifile = QFile(ui)
+    uifile.open(QFile.ReadOnly)
+    self.rem_metadata_dialog = loader.load(uifile, self)
+    uifile.close()
+    self.rem_metadata_dialog.adjustSize()
+
+    # Set proper event
+    self.rem_metadata_dialog.chk_rem_all_metadata.clicked.connect(self.check_remove_metadata_boxes)
+
+    if self.rem_metadata_dialog.exec_() == QDialog.Accepted:
+            print str(self.rem_metadata_dialog.chk_rem_all_metadata.isChecked())
+            print str(self.rem_metadata_dialog.chk_rem_exif_data.isChecked())
+            print str(self.rem_metadata_dialog.chk_rem_xmp_data.isChecked())
+            print str(self.rem_metadata_dialog.chk_rem_iptc_data.isChecked())
+    else:
+            print "you cancelled"    
+
 
