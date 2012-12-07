@@ -14,8 +14,20 @@ exe = EXE(pyz,
           console=False , icon='../pyside/pyexiftoolgui-hg/MacOSX/pyExifToolGUI.app/Contents/Resources/appIcon.icns' )
 coll = COLLECT(exe,
                a.binaries +
-               [('qt.conf', '../pyside/pyexiftoolgui-hg/Windows/qt.conf', 'DATA')] +
-               [('COPYING', '../pyside/pyexiftoolgui-hg/COPYING', 'DATA')] ,
+               [('../Resources/qt.conf', '../pyside/pyexiftoolgui-hg/MacOSX/qt.conf', 'DATA')] +
+               [('COPYING', '../pyside/pyexiftoolgui-hg/COPYING', 'DATA')] +
+               [('../Resources/appIcon.icns', '../pyside/pyexiftoolgui-hg/MacOSX/appIcon.icns', 'DATA')] +
+               [('../Info.plist', '../pyside/pyexiftoolgui-hg/MacOSX/Info.plist', 'DATA')] +
+               [('../Resources/qt_menu.nib/classes.nib', '/Library/Frameworks/QtGui.framework/Versions/Current/Resources/qt_menu.nib/classes.nib', 'DATA')] +
+               [('../Resources/qt_menu.nib/info.nib', '/Library/Frameworks/QtGui.framework/Versions/Current/Resources/qt_menu.nib/info.nib', 'DATA')] +
+               [('../Resources/qt_menu.nib/keyedobjects.nib', '/Library/Frameworks/QtGui.framework/Versions/Current/Resources/qt_menu.nib/keyedobjects.nib', 'DATA')] +
+               [('../plugins/imageformats/libqgif.dylib', '/Developer/Applications/Qt/plugins/imageformats/libqgif.dylib', 'DATA')] +
+               [('../plugins/imageformats/libqico.dylib', '/Developer/Applications/Qt/plugins/imageformats/libqico.dylib', 'DATA')] +
+               [('../plugins/imageformats/libqjpeg.dylib', '/Developer/Applications/Qt/plugins/imageformats/libqjpeg.dylib', 'DATA')] +
+               [('../plugins/imageformats/libqmng.dylib', '/Developer/Applications/Qt/plugins/imageformats/libqmng.dylib', 'DATA')] +
+               [('../plugins/imageformats/libqsvg.dylib', '/Developer/Applications/Qt/plugins/imageformats/libqsvg.dylib', 'DATA')] +
+               [('../plugins/imageformats/libqtga.dylib', '/Developer/Applications/Qt/plugins/imageformats/libqtga.dylib', 'DATA')] +
+               [('../plugins/imageformats/libqtiff.dylib', '/Developer/Applications/Qt/plugins/imageformats/libqtiff.dylib', 'DATA')], 
                a.zipfiles,
                a.datas,
                strip=None,
