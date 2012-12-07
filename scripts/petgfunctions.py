@@ -1149,6 +1149,7 @@ def info_window(self):
     self.info_window_dialog = loader.load(uifile, self)
     uifile.close()
     self.info_window_dialog.adjustSize()
+    self.info_window_dialog.setWindowTitle(programinfo.NAME + " " + programinfo.VERSION + " license")
     self.info_window_dialog.info_window_text.setText(open(license_file).read())
     self.info_window_dialog.exec_()
 

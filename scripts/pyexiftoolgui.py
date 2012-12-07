@@ -233,7 +233,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		QMessageBox.critical(self, "Error!", "Unable to open the ExifTool homepage" )
 
     def open_donate_page(self):
-        petgfunctions.remove_metadata(self)
+        # just a try out for a new function. remove later
+        #petgfunctions.remove_metadata(self)
 	try:
 		webbrowser.open("http://members.home.nl/harryvanderwolf/pyexiftoolgui/donate.html")
 	except:
