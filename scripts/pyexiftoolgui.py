@@ -83,6 +83,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.showimagebutton.clicked.connect(self.showimage)
         self.showimagebutton.setEnabled(False)
         self.lbl_progress.setText("")
+        self.statusbar.showMessage("")
 	self.progressbar.hide()
 # Load several buttons from the Edit -> GPS tab
         self.dec2dmsbutton.clicked.connect(self.convertd2dms)
@@ -404,6 +405,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
            # user canceled
            self.lbl_progress.setText("you canceled the exiftool selection.")
+           self.statusbar.showMessage("you canceled the exiftool selection.")
            return ""
 
     def preferences_save(self):
