@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Fri Dec  7 21:43:20 2012
+# Created: Sat Dec  8 15:23:22 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1495,7 +1495,7 @@ class Ui_MainWindow(object):
         self.menu_File.setTitle(QtGui.QApplication.translate("MainWindow", "&File", None, QtGui.QApplication.UnicodeUTF8))
         self.menuHelp.setTitle(QtGui.QApplication.translate("MainWindow", "&Help", None, QtGui.QApplication.UnicodeUTF8))
         self.action_Quit.setText(QtGui.QApplication.translate("MainWindow", "&Quit", None, QtGui.QApplication.UnicodeUTF8))
-        self.mnu_action_About.setText(QtGui.QApplication.translate("MainWindow", "Program Info", None, QtGui.QApplication.UnicodeUTF8))
+        self.mnu_action_About.setText(QtGui.QApplication.translate("MainWindow", "&About", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_exiftool.setText(QtGui.QApplication.translate("MainWindow", "ExifTool homepage", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_ais.setText(QtGui.QApplication.translate("MainWindow", "Align_image_stack wiki page", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_enfuse_reference.setText(QtGui.QApplication.translate("MainWindow", "Enfuse reference manual", None, QtGui.QApplication.UnicodeUTF8))

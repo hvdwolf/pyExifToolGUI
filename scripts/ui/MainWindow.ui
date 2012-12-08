@@ -2819,7 +2819,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   </action>
   <action name="mnu_action_About">
    <property name="text">
-    <string>Program Info</string>
+    <string>&amp;About</string>
    </property>
   </action>
   <action name="mnu_action_exiftool">
