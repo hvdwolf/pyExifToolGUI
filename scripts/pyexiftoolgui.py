@@ -130,6 +130,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.OSplatform = platform.system()
 	petgfunctions.read_config(self)
+# Stupid "Menu" tab on OS X
+        if self.OSplatform == "Darwin":
+           self.help_combobox.activated.connect(self.helpcombobox)
+        else:
+           self.tabWidget.removeTab(3)
+
 	# First clean up and recreate our temporary workspace
 #	petgfunctions.remove_workspace( self )
 #	try:
@@ -399,6 +405,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def preferences_save(self):
         petgfunctions.write_config(self, 0)
+
+# "Menu" tab. Only visible on Mac OS X due to horrible menu behavior of OS X.
+    def helpcombobox(self):
+        #print "pipo"
+        if self.help_combobox.currentText() == "pyExifToolGUI homepage":
+           self.open_pyexiftoolgui_homepage()
+        elif self.help_combobox.currentText() == "ExifTool homepage":
+           self.open_exiftool_homepage()
+        elif self.help_combobox.currentText() == "License":
+           self.show_license()
+        elif self.help_combobox.currentText() == "Donate":
+           self.open_donate_page()
+        elif self.help_combobox.currentText() == "About":
+           self.show_about_window()
 
 #------------------------------------------------------------------------
 # This is where we define some "empty" functions called from another script

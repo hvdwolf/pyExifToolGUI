@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sat Dec  8 15:23:22 2012
+# Created: Sat Dec  8 16:23:37 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1222,6 +1222,21 @@ class Ui_MainWindow(object):
         self.btn_preferenceshelp.setObjectName("btn_preferenceshelp")
         self.horizontalLayout_14.addWidget(self.btn_preferenceshelp)
         self.tabWidget.addTab(self.preferencestab, "")
+        self.menutab = QtGui.QWidget()
+        self.menutab.setObjectName("menutab")
+        self.label_69 = QtGui.QLabel(self.menutab)
+        self.label_69.setGeometry(QtCore.QRect(20, 30, 631, 71))
+        self.label_69.setObjectName("label_69")
+        self.help_combobox = QtGui.QComboBox(self.menutab)
+        self.help_combobox.setGeometry(QtCore.QRect(200, 130, 211, 26))
+        self.help_combobox.setObjectName("help_combobox")
+        self.help_combobox.addItem("")
+        self.help_combobox.addItem("")
+        self.help_combobox.addItem("")
+        self.help_combobox.addItem("")
+        self.help_combobox.addItem("")
+        self.help_combobox.addItem("")
+        self.tabWidget.addTab(self.menutab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 24))
@@ -1492,6 +1507,17 @@ class Ui_MainWindow(object):
         self.btn_preferences_save.setText(QtGui.QApplication.translate("MainWindow", "Save", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_preferenceshelp.setText(QtGui.QApplication.translate("MainWindow", "Help", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.preferencestab), QtGui.QApplication.translate("MainWindow", "Preferences", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_69.setText(QtGui.QApplication.translate("MainWindow", "This is a very rough cut patch for Mac OS X. Mac OS X has a terrible behaviour when\n"
+"it comes to menus in Qt and python and therefore in both PySide and PyQt.\n"
+"This tab mimics the help and Modify menu until I have found a solution.\n"
+"(This tab is not visible on Linux and Windows)", None, QtGui.QApplication.UnicodeUTF8))
+        self.help_combobox.setItemText(0, QtGui.QApplication.translate("MainWindow", "Help \"menu\"", None, QtGui.QApplication.UnicodeUTF8))
+        self.help_combobox.setItemText(1, QtGui.QApplication.translate("MainWindow", "pyExifToolGUI homepage", None, QtGui.QApplication.UnicodeUTF8))
+        self.help_combobox.setItemText(2, QtGui.QApplication.translate("MainWindow", "ExifTool homepage", None, QtGui.QApplication.UnicodeUTF8))
+        self.help_combobox.setItemText(3, QtGui.QApplication.translate("MainWindow", "Donate", None, QtGui.QApplication.UnicodeUTF8))
+        self.help_combobox.setItemText(4, QtGui.QApplication.translate("MainWindow", "License", None, QtGui.QApplication.UnicodeUTF8))
+        self.help_combobox.setItemText(5, QtGui.QApplication.translate("MainWindow", "About", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.menutab), QtGui.QApplication.translate("MainWindow", "\"Menu\"", None, QtGui.QApplication.UnicodeUTF8))
         self.menu_File.setTitle(QtGui.QApplication.translate("MainWindow", "&File", None, QtGui.QApplication.UnicodeUTF8))
         self.menuHelp.setTitle(QtGui.QApplication.translate("MainWindow", "&Help", None, QtGui.QApplication.UnicodeUTF8))
         self.action_Quit.setText(QtGui.QApplication.translate("MainWindow", "&Quit", None, QtGui.QApplication.UnicodeUTF8))
