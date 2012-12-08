@@ -971,6 +971,7 @@ def savexmpdata(self, qApp):
 #------------------------------------------------------------------------
 # Edit -> GPano tab and actions
 def clear_gpano_fields(self):
+        self.xmp_StitchingSoftware.setText("")
         self.xmp_CroppedAreaImageHeightPixels.setText("")
         self.xmp_CroppedAreaImageWidthPixels.setText("")
         self.xmp_CroppedAreaLeftPixels.setText("")
@@ -980,7 +981,12 @@ def clear_gpano_fields(self):
         self.xmp_ProjectionType.setCurrentIndex(0)
         self.xmp_UsePanoramaViewer.setChecked(1)
         self.xmp_PoseHeadingDegrees.setText("")
+        self.xmp_InitialViewHeadingDegrees.setText("")
+        self.xmp_InitialViewPitchDegrees.setText("")
+        self.xmp_InitialViewRollDegrees.setText("")
+        self.xmp_InitialHorizontalFOVDegrees.setText("")
 
+        self.chk_xmp_StitchingSoftware.setChecked(1)
         self.chk_xmp_CroppedAreaImageHeightPixels.setChecked(1)
         self.chk_xmp_CroppedAreaImageWidthPixels.setChecked(1)
         self.chk_xmp_CroppedAreaLeftPixels.setChecked(1)
@@ -990,11 +996,15 @@ def clear_gpano_fields(self):
         self.chk_xmp_ProjectionType.setChecked(1)
         self.chk_xmp_UsePanoramaViewer.setChecked(1)
         self.chk_xmp_PoseHeadingDegrees.setChecked(1)
+        self.chk_xmp_InitialViewHeadingDegrees.setChecked(1)
+        self.chk_xmp_InitialViewPitchDegrees.setChecked(1)
+        self.chk_xmp_InitialViewRollDegrees.setChecked(1)
+        self.chk_xmp_InitialHorizontalFOVDegrees.setChecked(1)
 
 def copygpanofromselected(self,qApp):
         # First clean input fields
         clear_exif_fields(self)
-        exiftool_params = ' -e -n -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees '
+        exiftool_params = ' -e -n -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewRollDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:xmp_InitialHorizontalFOVDegrees '
         p = read_image_info(self, exiftool_params)
         if len(p) == 0:
            data = False
@@ -1039,6 +1049,16 @@ def copygpanofromselected(self,qApp):
                         self.xmp_UsePanoramaViewer.setChecked(0)
                if descriptor == "Pose Heading Degrees":
                      self.xmp_PoseHeadingDegrees.setText(description)
+               if descriptor == "Initial View Heading Degrees":
+                     self.xmp_InitialViewHeadingDegrees.setText(description)
+               if descriptor == "Initial View Pitch Degrees":
+                     self.xmp_InitialViewPitchDegrees.setText(description)
+               if descriptor == "Initial View Roll Degrees":
+                     self.xmp_InitialViewRollDegrees.setText(description)
+               if descriptor == "Stitching Software":
+                     self.xmp_StitchingSoftware.setText(description)
+               if descriptor == "Initial Horizontal FOV Degrees":
+                     self.xmp_InitialHorizontalFOVDegrees.setText(description)
                #print "rowcounter " + str(rowcounter) + " descriptor " + descriptor + " ;description " + description
                rowcounter += 1
 
@@ -1071,6 +1091,16 @@ def savegpanodata(self, qApp):
                   exiftool_params +=  '-xmp:UsePanoramaViewer=0 '
         if self.chk_xmp_PoseHeadingDegrees.isChecked():
                exiftool_params +=  '-xmp:PoseHeadingDegrees="' + self.xmp_PoseHeadingDegrees.text() + '" '
+        if self.chk_xmp_InitialViewHeadingDegrees.isChecked():
+               exiftool_params +=  '-xmp:InitialViewHeadingDegrees="' + self.xmp_InitialViewHeadingDegrees.text() + '" '
+        if self.chk_xmp_InitialViewPitchDegrees.isChecked():
+               exiftool_params +=  '-xmp:InitialViewPitchDegrees="' + self.xmp_InitialViewPitchDegrees.text() + '" '
+        if self.chk_xmp_InitialViewRollDegrees.isChecked():
+               exiftool_params +=  '-xmp:InitialViewRollDegrees="' + self.xmp_InitialViewRollDegrees.text() + '" '
+        if self.chk_xmp_StitchingSoftware.isChecked():
+               exiftool_params +=  '-xmp:StitchingSoftware="' + self.xmp_StitchingSoftware.text() + '" '
+        if self.chk_xmp_InitialHorizontalFOVDegrees.isChecked():
+               exiftool_params +=  '-xmp:InitialHorizontalFOVDegrees="' + self.xmp_InitialHorizontalFOVDegrees.text() + '" '
 
         write_image_info(self, exiftool_params, qApp)
 

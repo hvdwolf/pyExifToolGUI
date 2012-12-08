@@ -2173,7 +2173,7 @@ to convert the data.</string>
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>420</y>
+          <y>500</y>
           <width>571</width>
           <height>41</height>
          </rect>
@@ -2234,67 +2234,94 @@ to convert the data.</string>
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>100</y>
+          <y>60</y>
           <width>611</width>
-          <height>296</height>
+          <height>441</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
          <property name="leftMargin">
           <number>10</number>
          </property>
-         <item row="7" column="0">
+         <item row="12" column="0">
+          <widget class="QLabel" name="label_66">
+           <property name="text">
+            <string>Initial View Pitch Degrees</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="0">
+          <widget class="QLabel" name="label_67">
+           <property name="text">
+            <string>Initial Horizontal FOV Degrees</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLineEdit" name="xmp_StitchingSoftware"/>
+         </item>
+         <item row="4" column="3">
+          <widget class="QCheckBox" name="chk_xmp_CroppedAreaLeftPixels">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
           <widget class="QLabel" name="label_28">
            <property name="text">
             <string>Projection Type</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
+         <item row="2" column="0">
           <widget class="QLabel" name="label_11">
            <property name="text">
             <string>Cropped Area Image Height Pixels</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
+         <item row="3" column="0">
           <widget class="QLabel" name="label_22">
            <property name="text">
             <string>Cropped Area Image Width Pixels</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="2">
+         <item row="5" column="2">
           <widget class="QLineEdit" name="xmp_CroppedAreaTopPixels"/>
          </item>
-         <item row="6" column="2">
+         <item row="7" column="2">
           <widget class="QLineEdit" name="xmp_FullPanoWidthPixels"/>
          </item>
-         <item row="8" column="0">
+         <item row="9" column="0">
           <widget class="QLabel" name="label_47">
            <property name="text">
             <string>Use Panorama Viewer</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="0">
+         <item row="6" column="0">
           <widget class="QLabel" name="label_29">
            <property name="text">
             <string>Full Pano Height Pixels</string>
            </property>
           </widget>
          </item>
-         <item row="6" column="0">
+         <item row="7" column="0">
           <widget class="QLabel" name="label_46">
            <property name="text">
             <string>Full Pano Width Pixels</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="2">
+         <item row="3" column="2">
           <widget class="QLineEdit" name="xmp_CroppedAreaImageWidthPixels"/>
          </item>
-         <item row="8" column="2">
+         <item row="9" column="2">
           <widget class="QCheckBox" name="xmp_UsePanoramaViewer">
            <property name="text">
             <string/>
@@ -2304,10 +2331,10 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="2">
+         <item row="2" column="2">
           <widget class="QLineEdit" name="xmp_CroppedAreaImageHeightPixels"/>
          </item>
-         <item row="4" column="3">
+         <item row="5" column="3">
           <widget class="QCheckBox" name="chk_xmp_CroppedAreaTopPixels">
            <property name="text">
             <string/>
@@ -2317,7 +2344,7 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="2">
+         <item row="6" column="2">
           <widget class="QLineEdit" name="xmp_FullPanoHeightPixels"/>
          </item>
          <item row="0" column="3">
@@ -2333,7 +2360,14 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="3">
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_64">
+           <property name="text">
+            <string>Stitching Software</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="3">
           <widget class="QCheckBox" name="chk_xmp_CroppedAreaImageWidthPixels">
            <property name="text">
             <string/>
@@ -2343,7 +2377,7 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="3">
+         <item row="2" column="3">
           <widget class="QCheckBox" name="chk_xmp_CroppedAreaImageHeightPixels">
            <property name="text">
             <string/>
@@ -2353,7 +2387,7 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item row="6" column="3">
+         <item row="7" column="3">
           <widget class="QCheckBox" name="chk_xmp_FullPanoWidthPixels">
            <property name="text">
             <string/>
@@ -2363,17 +2397,7 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="3">
-          <widget class="QCheckBox" name="chk_xmp_CroppedAreaLeftPixels">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="3">
+         <item row="6" column="3">
           <widget class="QCheckBox" name="chk_xmp_FullPanoHeightPixels">
            <property name="text">
             <string/>
@@ -2383,24 +2407,24 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
+         <item row="5" column="0">
           <widget class="QLabel" name="label_27">
            <property name="text">
             <string>Cropped Area Top Pixels</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
+         <item row="4" column="0">
           <widget class="QLabel" name="label_26">
            <property name="text">
             <string>Cropped Area Left Pixels</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="2">
+         <item row="4" column="2">
           <widget class="QLineEdit" name="xmp_CroppedAreaLeftPixels"/>
          </item>
-         <item row="7" column="3">
+         <item row="8" column="3">
           <widget class="QCheckBox" name="chk_xmp_ProjectionType">
            <property name="text">
             <string/>
@@ -2410,7 +2434,7 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item row="8" column="3">
+         <item row="9" column="3">
           <widget class="QCheckBox" name="chk_xmp_UsePanoramaViewer">
            <property name="text">
             <string/>
@@ -2420,17 +2444,17 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item row="9" column="0">
+         <item row="10" column="0">
           <widget class="QLabel" name="label_48">
            <property name="text">
             <string>Pose Heading Degrees</string>
            </property>
           </widget>
          </item>
-         <item row="9" column="2">
+         <item row="10" column="2">
           <widget class="QLineEdit" name="xmp_PoseHeadingDegrees"/>
          </item>
-         <item row="9" column="3">
+         <item row="10" column="3">
           <widget class="QCheckBox" name="chk_xmp_PoseHeadingDegrees">
            <property name="text">
             <string/>
@@ -2440,7 +2464,7 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item row="7" column="2">
+         <item row="8" column="2">
           <widget class="QComboBox" name="xmp_ProjectionType">
            <item>
             <property name="text">
@@ -2459,15 +2483,88 @@ to convert the data.</string>
            </item>
           </widget>
          </item>
+         <item row="11" column="0">
+          <widget class="QLabel" name="label_65">
+           <property name="text">
+            <string>Initial View Heading Degrees</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="2">
+          <widget class="QLineEdit" name="xmp_InitialViewHeadingDegrees"/>
+         </item>
+         <item row="1" column="3">
+          <widget class="QCheckBox" name="chk_xmp_StitchingSoftware">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="2">
+          <widget class="QLineEdit" name="xmp_InitialHorizontalFOVDegrees"/>
+         </item>
+         <item row="12" column="2">
+          <widget class="QLineEdit" name="xmp_InitialViewPitchDegrees"/>
+         </item>
+         <item row="14" column="3">
+          <widget class="QCheckBox" name="chk_xmp_InitialHorizontalFOVDegrees">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="3">
+          <widget class="QCheckBox" name="chk_xmp_InitialViewPitchDegrees">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="3">
+          <widget class="QCheckBox" name="chk_xmp_InitialViewHeadingDegrees">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="0">
+          <widget class="QLabel" name="label_68">
+           <property name="text">
+            <string>Initial View Roll Degrees</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="2">
+          <widget class="QLineEdit" name="xmp_InitialViewRollDegrees"/>
+         </item>
+         <item row="13" column="3">
+          <widget class="QCheckBox" name="chk_xmp_InitialViewRollDegrees">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
        <widget class="QWidget" name="verticalLayoutWidget_4">
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>10</y>
+          <y>0</y>
           <width>661</width>
-          <height>71</height>
+          <height>61</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
