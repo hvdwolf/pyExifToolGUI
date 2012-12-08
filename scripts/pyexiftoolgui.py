@@ -207,13 +207,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	self.aboutbox.setWindowTitle("About pyexiftoolgui " + programinfo.VERSION)
 	self.aboutbox.setText(programinfo.ABOUTMESSAGE)
 	ret = self.aboutbox.exec_()
-	
-#    def mapcoordinates_help(self):
-        #helptext = programstrings.MAPCOORDINATESHELP
-        #petgfunctions.help_mbox(self,"Help on Integrated Mapcoordinates.net", programstrings.MAPCOORDINATESHELP)
-#        petgfunctions.handleNewWindow(self)
-	
+		
     def show_license(self):
+        # The next line is just a placeholder for new functionality
+        #petgfunctions.remove_metadata(self)
         petgfunctions.info_window(self)
 
     def RemoveMetaData(self): 

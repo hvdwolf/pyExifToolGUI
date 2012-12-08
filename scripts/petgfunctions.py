@@ -1198,6 +1198,11 @@ def check_remove_metadata_boxes(self):
         self.rem_metadata_dialog.chk_rem_exif_data.setChecked(1)
         self.rem_metadata_dialog.chk_rem_xmp_data.setChecked(1)
         self.rem_metadata_dialog.chk_rem_iptc_data.setChecked(1)
+    else:
+        self.rem_metadata_dialog.chk_rem_exif_data.setChecked(0)
+        self.rem_metadata_dialog.chk_rem_xmp_data.setChecked(0)
+        self.rem_metadata_dialog.chk_rem_iptc_data.setChecked(0)
+
       
 def remove_metadata(self):    
     ui = os.path.join(self.ui_dir, "remove_metatada.ui")
