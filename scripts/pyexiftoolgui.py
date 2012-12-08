@@ -82,7 +82,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_loadimages.clicked.connect(self.loadimages)
         self.showimagebutton.clicked.connect(self.showimage)
         self.showimagebutton.setEnabled(False)
-        self.lbl_progress.setText("")
+        #self.lbl_progress.setText("")
         self.statusbar.showMessage("")
 	self.progressbar.hide()
 # Load several buttons from the Edit -> GPS tab
@@ -404,7 +404,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
            return files_list[0]
         else:
            # user canceled
-           self.lbl_progress.setText("you canceled the exiftool selection.")
+           #self.lbl_progress.setText("you canceled the exiftool selection.")
            self.statusbar.showMessage("you canceled the exiftool selection.")
            return ""
 

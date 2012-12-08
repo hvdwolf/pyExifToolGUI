@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sat Dec  8 16:23:37 2012
+# Created: Sat Dec  8 19:17:32 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -24,19 +24,9 @@ class Ui_MainWindow(object):
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.progressbar = QtGui.QProgressBar(self.centralwidget)
-        self.progressbar.setGeometry(QtCore.QRect(880, 631, 211, 20))
+        self.progressbar.setGeometry(QtCore.QRect(790, 631, 301, 20))
         self.progressbar.setProperty("value", 24)
         self.progressbar.setObjectName("progressbar")
-        self.lbl_progress = QtGui.QLabel(self.centralwidget)
-        self.lbl_progress.setEnabled(True)
-        self.lbl_progress.setGeometry(QtCore.QRect(370, 630, 501, 24))
-        font = QtGui.QFont()
-        font.setWeight(50)
-        font.setItalic(True)
-        font.setBold(False)
-        self.lbl_progress.setFont(font)
-        self.lbl_progress.setText("")
-        self.lbl_progress.setObjectName("lbl_progress")
         self.groupBox = QtGui.QGroupBox(self.centralwidget)
         self.groupBox.setGeometry(QtCore.QRect(10, 10, 351, 641))
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Preferred)
