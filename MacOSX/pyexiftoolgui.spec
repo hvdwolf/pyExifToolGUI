@@ -14,10 +14,13 @@ exe = EXE(pyz,
           console=False , icon='../pyside/pyexiftoolgui-hg/MacOSX/pyExifToolGUI.app/Contents/Resources/appIcon.icns' )
 coll = COLLECT(exe,
                a.binaries +
+               [('libpyside-python2.7.1.1.dylib', '/usr/lib/libpyside-python2.7.1.1.dylib', 'DATA')] +
+               [('libshiboken-python2.7.1.1.dylib', '/usr/lib/libshiboken-python2.7.1.1.dylib', 'DATA')] +
                [('../Resources/qt.conf', '../pyside/pyexiftoolgui-hg/MacOSX/qt.conf', 'DATA')] +
                [('COPYING', '../pyside/pyexiftoolgui-hg/COPYING', 'DATA')] +
                [('../Resources/appIcon.icns', '../pyside/pyexiftoolgui-hg/MacOSX/appIcon.icns', 'DATA')] +
                [('../Info.plist', '../pyside/pyexiftoolgui-hg/MacOSX/Info.plist', 'DATA')] +
+               [('../PkgInfo', '../pyside/pyexiftoolgui-hg/MacOSX/PkgInfo', 'DATA')] +
                [('../Resources/qt_menu.nib/classes.nib', '/Library/Frameworks/QtGui.framework/Versions/Current/Resources/qt_menu.nib/classes.nib', 'DATA')] +
                [('../Resources/qt_menu.nib/info.nib', '/Library/Frameworks/QtGui.framework/Versions/Current/Resources/qt_menu.nib/info.nib', 'DATA')] +
                [('../Resources/qt_menu.nib/keyedobjects.nib', '/Library/Frameworks/QtGui.framework/Versions/Current/Resources/qt_menu.nib/keyedobjects.nib', 'DATA')] +

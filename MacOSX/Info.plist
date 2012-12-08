@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleShortVersionString</key>
+	<string>0.2.0</string>
+	<key>CFBundleExecutable</key>
+	<string>MacOS/pyexiftoolgui</string>
+	<key>CFBundleName</key>
+	<string>pyexiftoolgui</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>pyexiftoolgui</string>
+	<key>CFBundleIconFile</key>
+	<string>appIcon.icns</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>HvdW</string>
+	<key>LSBackgroundOnly</key>
+	<string>0</string>
+</dict>
+</plist>
