@@ -84,7 +84,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_loadimages.clicked.connect(self.loadimages)
         self.showimagebutton.clicked.connect(self.showimage)
         self.showimagebutton.setEnabled(False)
-        #self.lbl_progress.setText("")
         self.statusbar.showMessage("")
 	self.progressbar.hide()
 # Load several buttons from the Edit -> GPS tab
@@ -214,7 +213,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         petgfunctions.info_window(self)
 
     def remove_metadata(self):
-        petgfunctions.remove_metadata(self, qApp)
+        try:
+            if len(self.fileNames) == 0:
+               QMessageBox.information(self,"No photos loaded yet","You did not load any photos.")
+            else:
+               petgfunctions.remove_metadata(self, qApp)
+        except:
+            QMessageBox.information(self,"No photos loaded yet","No photos loaded yet")
 
 
     def open_pyexiftoolgui_homepage(self):
@@ -402,7 +407,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
            return files_list[0]
         else:
            # user canceled
-           #self.lbl_progress.setText("you canceled the exiftool selection.")
            self.statusbar.showMessage("you canceled the exiftool selection.")
            return ""
 
@@ -429,6 +433,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # which need to be "self enabled". These are for the new popup windows.
     def check_remove_metadata_boxes(self):
         petgfunctions.check_remove_metadata_boxes(self)
+
 #------------------------------------------------------------------------
 #------------------------------------------------------------------------
 # This is where the main app is started

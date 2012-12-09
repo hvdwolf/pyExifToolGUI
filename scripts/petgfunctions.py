@@ -271,7 +271,6 @@ def images_dialog(self, qApp):
             loadedimages.setDirectory(os.path.expanduser('~/My Pictures'))
 
     qApp.processEvents()
-    #self.lbl_progress.setText("Loading images")
     self.statusbar.showMessage("Loading images")
     qApp.processEvents()
 #    loadedimages.setNameFilter("image files (*.jpg *.tif *.tiff *.png)\nAll Files (*.*)")
@@ -292,7 +291,6 @@ def images_dialog(self, qApp):
         self.filenamesstring = filenamesstring
     else:
 	# user canceled
-	#self.lbl_progress.setText("you canceled loading the images.")
         self.statusbar.showMessage("you canceled loading the images.")
 	fileNames = ""
     return (fileNames, filenamesstring)
@@ -341,7 +339,6 @@ def loadimages(self,loadedimages, loadedimagesstring,qApp):
                     self.MaintableWidget.setToolTip('image(s) folder: ' + folder)
         	    rowcounter += 1
         	    self.progressbar.setValue(rowcounter) 
-        	    #self.lbl_progress.setText("Creating thumbnail of: " + os.path.basename(loadedimage))
                     self.statusbar.showMessage("Creating thumbnail of: " + os.path.basename(loadedimage))
         	    qApp.processEvents()
         	    imagestring += loadedimage + " "
@@ -361,7 +358,6 @@ def loadimages(self,loadedimages, loadedimagesstring,qApp):
                 self.btn_xmp_copyfrom.setEnabled(True)
                 self.btn_savexmp.setEnabled(True)
         	self.progressbar.hide()
-                #self.lbl_progress.setText("Click thumb or filename to display the image info")
                 self.statusbar.showMessage("Click thumb or filename to display the image info")
                 # Set proper events
                 self.MaintableWidget.cellClicked.connect(self.imageinfo)
@@ -377,7 +373,6 @@ def loadimages(self,loadedimages, loadedimagesstring,qApp):
 
 
 def imageinfo(self, qApp):
-        #self.lbl_progress.setText("")
         self.statusbar.showMessage("")
 	selected_row = self.MaintableWidget.currentRow()
 	selected_image = "\"" + self.fileNames[selected_row] + "\""
@@ -405,7 +400,6 @@ def imageinfo(self, qApp):
         if self.radioButton_makernotes.isChecked():
             exiftool_params = "-makernotes:all"
             header = "makernotes tags"
-        #self.lbl_progress.setText("image info of: " + selected_image)
         if self.OSplatform == "Windows":
                 selected_image = selected_image.replace("/", "\\")
                 args = self.exiftoolprog + " -a " + exiftool_params + " " + selected_image
@@ -1124,7 +1118,6 @@ def savegpanodata(self, qApp):
 #------------------------------------------------------------------------
 # Real exiftool read/write functions
 def read_image_info(self, exiftool_params):
-        #self.lbl_progress.setText("")
         self.statusbar.showMessage("")
 	selected_row = self.MaintableWidget.currentRow()
 	selected_image = "\"" + self.fileNames[selected_row] + "\""
@@ -1162,7 +1155,6 @@ def write_image_info(self, exiftoolparams, qApp):
                         print 'exiftool "-FileModifyDate<DateTimeOriginal" ' + selected_image
         	        rowcounter += 1
         	        self.progressbar.setValue(rowcounter) 
-        	        #self.lbl_progress.setText("Writing information to: " + os.path.basename(selected_image))
         	        self.statusbar.showMessage("Writing information to: " + os.path.basename(selected_image))
         	        qApp.processEvents()
                         if self.OSplatform in ("Windows", "win32"):
@@ -1183,7 +1175,6 @@ def write_image_info(self, exiftoolparams, qApp):
                            args = shlex.split(command_line)
                            p = subprocess.call(args)
         self.progressbar.hide()
-        #self.lbl_progress.setText("Done writing the info to the selected image(s)")
         self.statusbar.showMessage("Done writing the info to the selected image(s)")
 #------------------------------------------------------------------------
 # Other dialogs and windows and their related functions
