@@ -288,13 +288,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
 
     def gpano_help(self):
-        #petgfunctions.help_mbox(self, "Help on Edit -> GPano tab", programstrings.GPANOHELP)
 	try:
              if self.OSplatform == "Windows":
                 if os.path.isfile(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html")): # from python exectuable
                      webbrowser.open(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html"))
                 elif os.path.isfile(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html")): # Started from script
                      webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
+             else:
+		webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", "pyexiftoolgui.html#EditgpanoData"))
 	except:
 		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
 
@@ -407,6 +408,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def preferences_save(self):
         petgfunctions.write_config(self, 0)
+        petgfunctions.tool_check(self)
 
 # "Menu" tab. Only visible on Mac OS X due to horrible menu behavior of OS X.
     def helpcombobox(self):

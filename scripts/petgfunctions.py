@@ -77,6 +77,24 @@ def check_for_program(program):
 	return exists
 # End of function check_for_program and is_executable (mini sub for check_for_program)
 
+def exiftool_version_level_text(self):
+        if float(self.exiftoolversion) < 9.07:
+           self.statusbar.showMessage("I will disable the GPano options as exiftool >=9.07 is required. You have " + self.exiftoolversion)
+           exiftoolleveltext = "Your exiftool version is " + self.exiftoolversion + " . You need >=9.07 to write to images.\n"
+           exiftoolleveltext += "Exiftool and therefore pyExifToolGUI can read the tags. See the View Data tab."
+           self.lbl_exiftool_leveltext.setText(exiftoolleveltext)
+        elif float(self.exiftoolversion) < 9.09:
+           exiftoolleveltext = "Your exiftool version is " + self.exiftoolversion + " . Tags marked with * are obligatory. " 
+           exiftoolleveltext += "You need >=9.09 to write the *** tags to images. \"Pose Heading Degrees\" is necessary to make it also function in Google Maps."
+           self.lbl_exiftool_leveltext.setText(exiftoolleveltext)
+           self.statusbar.showMessage("Your exiftoolversion is " + self.exiftoolversion)
+        else:
+           exiftoolleveltext = "Your exiftool version is " + self.exiftoolversion + " . Tags marked with * are obligatory. " 
+           exiftoolleveltext += "\"Pose Heading Degrees\" is necessary to make it also function in Google Maps. Tags marked with *** are only writable with exiftool >= 9.09"
+           self.lbl_exiftool_leveltext.setText(exiftoolleveltext)
+           self.statusbar.showMessage("Your exiftoolversion is " + self.exiftoolversion)
+        #print "exiftoolversion : " + self.exiftoolversion
+
 
 def tool_check( self ):
 	# We need this startup check as long as we don't have a package
@@ -122,16 +140,7 @@ def tool_check( self ):
         self.exiftoolversion = subprocess.check_output(args)
         # remove last character which is the final ending \n (where \ is only the escape character)        
         self.exiftoolversion = self.exiftoolversion[:-1]
-
-        if float(self.exiftoolversion) < 9.07:
-           #self.lbl_progress.setText("I will disable the GPano options as exiftool >=9.07 is required. You have " + self.exiftoolversion)
-           self.statusbar.showMessage("I will disable the GPano options as exiftool >=9.07 is required. You have " + self.exiftoolversion)
-           self.lbl_exiftool_to_low.setText("Your exiftool version is " + self.exiftoolversion + " . You need >=9.07 to write to images.")
-           self.lbl_exiftool_to_low_2.setText("Exiftool and therefore pyExifToolGUI can read the tags. See the View Data tab.")
-        else:
-           #self.lbl_progress.setText("Your exiftoolversion is " + self.exiftoolversion)
-           self.statusbar.showMessage("Your exiftoolversion is " + self.exiftoolversion)
-        #print "exiftoolversion : " + self.exiftoolversion
+        exiftool_version_level_text(self)
 # End of function tool_check
 
 def write_config(self, aftererror):

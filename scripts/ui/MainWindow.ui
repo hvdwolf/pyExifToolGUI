@@ -335,6 +335,9 @@
            <property name="toolTip">
             <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
+           <property name="statusTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
            <property name="text">
             <string>Copy from selected image</string>
            </property>
@@ -343,6 +346,9 @@
          <item>
           <widget class="QPushButton" name="btn_savegps">
            <property name="toolTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="statusTip">
             <string>Save the gps and xmp data to the image file</string>
            </property>
            <property name="text">
@@ -355,6 +361,9 @@
            <property name="toolTip">
             <string>Empties all fields</string>
            </property>
+           <property name="statusTip">
+            <string>Empties all fields</string>
+           </property>
            <property name="text">
             <string>Reset fields</string>
            </property>
@@ -363,6 +372,9 @@
          <item>
           <widget class="QPushButton" name="btn_mapcoordinates">
            <property name="toolTip">
+            <string>This will open the mapcoordinates.net website enabling you to get and copy  lat/lon/alt data for your photo(s)</string>
+           </property>
+           <property name="statusTip">
             <string>This will open the mapcoordinates.net website enabling you to get and copy  lat/lon/alt data for your photo(s)</string>
            </property>
            <property name="text">
@@ -379,7 +391,10 @@
             </font>
            </property>
            <property name="toolTip">
-            <string>Opens a popup with some additional info on this screen</string>
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="statusTip">
+            <string>Opens the manual with some additional info on this screen</string>
            </property>
            <property name="text">
             <string>Help</string>
@@ -399,6 +414,9 @@
         </property>
         <property name="toolTip">
          <string>Copy the values from the calculator to the input fields</string>
+        </property>
+        <property name="statusTip">
+         <string>Opens a popup with some additional info on this screen</string>
         </property>
         <property name="text">
          <string>Copy to input fields</string>
@@ -458,6 +476,12 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="toolTip">
+              <string>This is the decimal value of latitutde. Note that South latitudes are negative</string>
+             </property>
+             <property name="statusTip">
+              <string>This is the decimal value of latitutde. Note that South latitudes are negative</string>
+             </property>
             </widget>
            </item>
            <item row="2" column="1">
@@ -467,6 +491,12 @@
                <width>100</width>
                <height>16777215</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>This is the decimal value of longitude. Note that West longitudes are negative</string>
+             </property>
+             <property name="statusTip">
+              <string>This is the decimal value of longitude. Note that West longitudes are negative</string>
              </property>
             </widget>
            </item>
@@ -573,6 +603,12 @@
                <width>75</width>
                <height>16777215</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>This is height (or depth) in meters.</string>
+             </property>
+             <property name="statusTip">
+              <string>This is the decimal value of longitude. Note that West longitudes are negative</string>
              </property>
             </widget>
            </item>
@@ -810,7 +846,7 @@
        <widget class="QLabel" name="label_6">
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>10</x>
           <y>380</y>
           <width>191</width>
           <height>121</height>
@@ -1168,7 +1204,14 @@ to convert the data.</string>
            <number>10</number>
           </property>
           <item row="3" column="1">
-           <widget class="QLineEdit" name="gps_timestamp"/>
+           <widget class="QLineEdit" name="gps_timestamp">
+            <property name="toolTip">
+             <string>Time in HH:MM:SS (24 hrs)</string>
+            </property>
+            <property name="statusTip">
+             <string>Time in HH:MM:SS (24 hrs)</string>
+            </property>
+           </widget>
           </item>
           <item row="4" column="0">
            <widget class="QLabel" name="label_77">
@@ -1239,7 +1282,14 @@ to convert the data.</string>
            </widget>
           </item>
           <item row="4" column="1">
-           <widget class="QLineEdit" name="gps_datestamp"/>
+           <widget class="QLineEdit" name="gps_datestamp">
+            <property name="toolTip">
+             <string>Date in YYYY:MM:DD</string>
+            </property>
+            <property name="statusTip">
+             <string>Date in YYYY:MM:DD</string>
+            </property>
+           </widget>
           </item>
           <item row="1" column="2">
            <widget class="QLabel" name="label_81">
@@ -1370,7 +1420,14 @@ to convert the data.</string>
            <widget class="QLineEdit" name="xmp_city"/>
           </item>
           <item row="1" column="1">
-           <widget class="QLineEdit" name="xmp_location"/>
+           <widget class="QLineEdit" name="xmp_location">
+            <property name="toolTip">
+             <string>Location can be either a self-chosen description or a landmark like &quot;Eiffel tower&quot;</string>
+            </property>
+            <property name="statusTip">
+             <string>Location can be either a self-chosen description or a landmark like &quot;Eiffel tower&quot;</string>
+            </property>
+           </widget>
           </item>
           <item row="1" column="2">
            <widget class="QCheckBox" name="chk_xmp_location">
@@ -1765,7 +1822,7 @@ to convert the data.</string>
        <widget class="QWidget" name="verticalLayoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>20</x>
           <y>480</y>
           <width>674</width>
           <height>29</height>
@@ -1775,6 +1832,9 @@ to convert the data.</string>
          <item>
           <widget class="QPushButton" name="btn_exif_copyfrom">
            <property name="toolTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="statusTip">
             <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="text">
@@ -1787,6 +1847,9 @@ to convert the data.</string>
            <property name="toolTip">
             <string>Save the gps and xmp data to the image file</string>
            </property>
+           <property name="statusTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
            <property name="text">
             <string>Save to selected image(s)</string>
            </property>
@@ -1797,6 +1860,9 @@ to convert the data.</string>
            <property name="toolTip">
             <string>Copies the default Artist and Copyright from Preferences</string>
            </property>
+           <property name="statusTip">
+            <string>Copies the default Artist and Copyright from Preferences</string>
+           </property>
            <property name="text">
             <string>Copy Defaults</string>
            </property>
@@ -1805,6 +1871,9 @@ to convert the data.</string>
          <item>
           <widget class="QPushButton" name="btn_resetexif">
            <property name="toolTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="statusTip">
             <string>Empties all fields</string>
            </property>
            <property name="text">
@@ -1821,7 +1890,10 @@ to convert the data.</string>
             </font>
            </property>
            <property name="toolTip">
-            <string>Opens a popup with some additional info on this screen</string>
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="statusTip">
+            <string>Opens the manual with some additional info on this screen</string>
            </property>
            <property name="text">
             <string>Help</string>
@@ -2059,6 +2131,9 @@ to convert the data.</string>
            <property name="toolTip">
             <string>This field is actually two xmp tags: &quot;Person&quot; and &quot;Person in Image&quot;, and is used by many &quot;face recognition&quot; programs</string>
            </property>
+           <property name="statusTip">
+            <string>This field is actually two xmp tags: &quot;Person&quot; and &quot;Person in Image&quot;, and is used by many &quot;face recognition&quot; programs</string>
+           </property>
           </widget>
          </item>
          <item row="8" column="3">
@@ -2088,6 +2163,9 @@ to convert the data.</string>
            <property name="toolTip">
             <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
+           <property name="statusTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
            <property name="text">
             <string>Copy from selected image</string>
            </property>
@@ -2096,6 +2174,9 @@ to convert the data.</string>
          <item>
           <widget class="QPushButton" name="btn_savexmp">
            <property name="toolTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="statusTip">
             <string>Save the gps and xmp data to the image file</string>
            </property>
            <property name="text">
@@ -2108,6 +2189,9 @@ to convert the data.</string>
            <property name="toolTip">
             <string>Copies the default Creator and Rights from Preferences</string>
            </property>
+           <property name="statusTip">
+            <string>Copies the default Creator and Rights from Preferences</string>
+           </property>
            <property name="text">
             <string>Copy Defaults</string>
            </property>
@@ -2116,6 +2200,9 @@ to convert the data.</string>
          <item>
           <widget class="QPushButton" name="btn_resetxmp">
            <property name="toolTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="statusTip">
             <string>Empties all fields</string>
            </property>
            <property name="text">
@@ -2132,7 +2219,10 @@ to convert the data.</string>
             </font>
            </property>
            <property name="toolTip">
-            <string>Opens a popup with some additional info on this screen</string>
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="statusTip">
+            <string>Opens the manual with some additional info on this screen</string>
            </property>
            <property name="text">
             <string>Help</string>
@@ -2164,6 +2254,9 @@ to convert the data.</string>
            <property name="toolTip">
             <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
+           <property name="statusTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
            <property name="text">
             <string>Copy from selected image</string>
            </property>
@@ -2174,6 +2267,9 @@ to convert the data.</string>
            <property name="toolTip">
             <string>Save the gps and xmp data to the image file</string>
            </property>
+           <property name="statusTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
            <property name="text">
             <string>Save to selected image(s)</string>
            </property>
@@ -2182,6 +2278,9 @@ to convert the data.</string>
          <item>
           <widget class="QPushButton" name="btn_resetgpano">
            <property name="toolTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="statusTip">
             <string>Empties all fields</string>
            </property>
            <property name="text">
@@ -2198,7 +2297,10 @@ to convert the data.</string>
             </font>
            </property>
            <property name="toolTip">
-            <string>Opens a popup with some additional info on this screen</string>
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="statusTip">
+            <string>Opens the manual with some additional info on this screen</string>
            </property>
            <property name="text">
             <string>Help</string>
@@ -2235,7 +2337,11 @@ to convert the data.</string>
           </widget>
          </item>
          <item row="1" column="2">
-          <widget class="QLineEdit" name="xmp_StitchingSoftware"/>
+          <widget class="QLineEdit" name="xmp_StitchingSoftware">
+           <property name="toolTip">
+            <string/>
+           </property>
+          </widget>
          </item>
          <item row="4" column="3">
           <widget class="QCheckBox" name="chk_xmp_CroppedAreaLeftPixels">
@@ -2424,7 +2530,7 @@ to convert the data.</string>
          <item row="10" column="0">
           <widget class="QLabel" name="label_48">
            <property name="text">
-            <string>Pose Heading Degrees</string>
+            <string>Pose Heading Degrees ( for Google Maps)</string>
            </property>
           </widget>
          </item>
@@ -2443,6 +2549,12 @@ to convert the data.</string>
          </item>
          <item row="8" column="2">
           <widget class="QComboBox" name="xmp_ProjectionType">
+           <property name="toolTip">
+            <string>Google only supports equirectangular at this moment</string>
+           </property>
+           <property name="statusTip">
+            <string>Google only supports equirectangular at this moment</string>
+           </property>
            <item>
             <property name="text">
              <string>equirectangular</string>
@@ -2531,6 +2643,107 @@ to convert the data.</string>
            <property name="text">
             <string/>
            </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="label_71">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLabel" name="label_72">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLabel" name="label_73">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLabel" name="label_74">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLabel" name="label_75">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QLabel" name="label_76">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="1">
+          <widget class="QLabel" name="label_82">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="1">
+          <widget class="QLabel" name="label_70">
+           <property name="text">
+            <string>**</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="1">
+          <widget class="QLabel" name="label_83">
+           <property name="text">
+            <string>***</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="1">
+          <widget class="QLabel" name="label_84">
+           <property name="text">
+            <string>***</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="1">
+          <widget class="QLabel" name="label_85">
+           <property name="text">
+            <string>***</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="1">
+          <widget class="QLabel" name="label_86">
+           <property name="text">
+            <string>***</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="label_87">
+           <property name="text">
+            <string>***</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -2546,23 +2759,12 @@ to convert the data.</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QLabel" name="label_10">
-           <property name="text">
-            <string>Panorama tags for Google Photosphere. Requires exiftool 9.07 or newer</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="lbl_exiftool_to_low">
+          <widget class="QLabel" name="lbl_exiftool_leveltext">
            <property name="text">
             <string/>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="lbl_exiftool_to_low_2">
-           <property name="text">
-            <string/>
+           <property name="wordWrap">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -2645,6 +2847,9 @@ Currently I have no intent to add functionality to this standard, maybe later.</
           <property name="toolTip">
            <string>The program will go for the default exiftool version. Here you can specify another version.</string>
           </property>
+          <property name="statusTip">
+           <string>The program will go for the default exiftool version. Here you can specify another version.</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -2700,10 +2905,24 @@ Currently I have no intent to add functionality to this standard, maybe later.</
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLineEdit" name="def_creator"/>
+         <widget class="QLineEdit" name="def_creator">
+          <property name="toolTip">
+           <string>exif, xmp (and iptc) have tags for creator and (copy)rights. These two fileds can be used to set defautls to be copied into your photos.</string>
+          </property>
+          <property name="statusTip">
+           <string>exif, xmp (and iptc) have tags for creator and (copy)rights. These two fileds can be used to set defautls to be copied into your photos.</string>
+          </property>
+         </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QLineEdit" name="def_copyright"/>
+         <widget class="QLineEdit" name="def_copyright">
+          <property name="toolTip">
+           <string>exif, xmp (and iptc) have tags for creator and (copy)rights. These two fileds can be used to set defautls to be copied into your photos.</string>
+          </property>
+          <property name="statusTip">
+           <string>exif, xmp (and iptc) have tags for creator and (copy)rights. These two fileds can be used to set defautls to be copied into your photos.</string>
+          </property>
+         </widget>
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label_61">
@@ -2736,6 +2955,9 @@ Currently I have no intent to add functionality to this standard, maybe later.</
          <property name="toolTip">
           <string>Preferences are always automatically saved on exit. In case you want to make an intermediate save you can use this button</string>
          </property>
+         <property name="statusTip">
+          <string>Preferences are always automatically saved on exit. In case you want to make an intermediate save you can use this button</string>
+         </property>
          <property name="text">
           <string>Save</string>
          </property>
@@ -2765,7 +2987,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
        </rect>
       </property>
       <property name="text">
-       <string>This is a very rough cut patch for Mac OS X. Mac OS X has a terrible behaviour when
+       <string>This is a very rough patch for Mac OS X. Mac OS X has a terrible behaviour when
 it comes to menus in Qt and python and therefore in both PySide and PyQt.
 This tab mimics the help and Modify menu until I have found a solution.
 (This tab is not visible on Linux and Windows)</string>
@@ -2820,7 +3042,7 @@ This tab mimics the help and Modify menu until I have found a solution.
      <x>0</x>
      <y>0</y>
      <width>1120</width>
-     <height>24</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
