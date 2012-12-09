@@ -72,8 +72,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	self.mnu_action_load_images.triggered.connect(self.loadimages)
 	self.action_Quit.triggered.connect(self.quit_application)
 	app.aboutToQuit.connect(self.quit_application)
+        self.mnu_action_remove_metadata.triggered.connect(self.remove_metadata)
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
 	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
+        self.mnu_action_manual.triggered.connect(self.open_manual)
         #self.mnu_action_mapcoordinates_tab.triggered.connect(self.mapcoordinates_help)
 	self.mnu_action_license.triggered.connect(self.show_license)
 	self.mnu_action_Donate.triggered.connect(self.open_donate_page)
@@ -209,22 +211,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	ret = self.aboutbox.exec_()
 		
     def show_license(self):
-        # The next line is just a placeholder for new functionality
-        #petgfunctions.remove_metadata(self)
         petgfunctions.info_window(self)
 
-    def RemoveMetaData(self): 
-        ReallyRemove = "If you press Yes ALL imagedata will be removed from the selected image(s)!\n"
-        ReallyRemove += "Do you really want to do that?\n\n"
-        reply = QMessageBox.question(self, "Really remove all data?",
-                ReallyRemove,
-                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel)
-        if reply == QMessageBox.Yes:
-            self.questionLabel.setText("Yes")
-        elif reply == QMessageBox.No:
-            self.questionLabel.setText("No")
-        else:
-            self.questionLabel.setText("Cancel")
+    def remove_metadata(self):
+        petgfunctions.remove_metadata(self, qApp)
 
 
     def open_pyexiftoolgui_homepage(self):
@@ -240,8 +230,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		QMessageBox.critical(self, "Error!", "Unable to open the ExifTool homepage" )
 
     def open_donate_page(self):
-        # just a try out for a new function. remove later
-        #petgfunctions.remove_metadata(self)
 	try:
 		webbrowser.open("http://members.home.nl/harryvanderwolf/pyexiftoolgui/donate.html")
 	except:
@@ -251,6 +239,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #------------------------------------------------------------------------
 # Help functions leading to html manual
 # Stupid windows doesn't recognise Anchors when starting a html file from disk
+    def open_manual(self):
+	try:
+             if self.OSplatform == "Windows":
+                if os.path.isfile(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html")): # from python exectuable
+                     webbrowser.open(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html"))
+                elif os.path.isfile(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html")): # Started from script
+                     webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
+             else:
+		webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", "pyexiftoolgui.html"))
+	except:
+		QMessageBox.critical(self, "Error!", "Unable to open the manual" )
+
     def gps_help(self):
 	try:
              if self.OSplatform == "Windows":

@@ -1206,14 +1206,16 @@ def check_remove_metadata_boxes(self):
     if self.rem_metadata_dialog.chk_rem_all_metadata.isChecked():
         self.rem_metadata_dialog.chk_rem_exif_data.setChecked(1)
         self.rem_metadata_dialog.chk_rem_xmp_data.setChecked(1)
+        self.rem_metadata_dialog.chk_rem_gps_data.setChecked(1)
         self.rem_metadata_dialog.chk_rem_iptc_data.setChecked(1)
     else:
         self.rem_metadata_dialog.chk_rem_exif_data.setChecked(0)
         self.rem_metadata_dialog.chk_rem_xmp_data.setChecked(0)
+        self.rem_metadata_dialog.chk_rem_gps_data.setChecked(0)
         self.rem_metadata_dialog.chk_rem_iptc_data.setChecked(0)
 
       
-def remove_metadata(self):    
+def remove_metadata(self, qApp):    
     ui = os.path.join(self.ui_dir, "remove_metatada.ui")
     loader = QUiLoader()
     uifile = QFile(ui)
@@ -1226,11 +1228,48 @@ def remove_metadata(self):
     self.rem_metadata_dialog.chk_rem_all_metadata.clicked.connect(self.check_remove_metadata_boxes)
 
     if self.rem_metadata_dialog.exec_() == QDialog.Accepted:
-            print str(self.rem_metadata_dialog.chk_rem_all_metadata.isChecked())
-            print str(self.rem_metadata_dialog.chk_rem_exif_data.isChecked())
-            print str(self.rem_metadata_dialog.chk_rem_xmp_data.isChecked())
-            print str(self.rem_metadata_dialog.chk_rem_iptc_data.isChecked())
+            message = "You selected:\n\n"
+            empty_selection = 0
+            if self.rem_metadata_dialog.chk_rem_all_metadata.isChecked():
+               print "Remove all metadata"
+               message += "- Remove all metadata\n"
+               et_param = " -all= "
+            else:
+               empty_selection = 1
+               et_param = ""
+               if self.rem_metadata_dialog.chk_rem_exif_data.isChecked():
+                  print "Remove exif data"
+                  message += "- Remove exif data\n"
+                  et_param += " -exif:all= "
+                  empty_selection = 0
+               if self.rem_metadata_dialog.chk_rem_xmp_data.isChecked():
+                  print "Remove xmp data"
+                  message += "- Remove xmp data\n"
+                  et_param += " -xmp:all= "
+                  empty_selection = 0
+               if self.rem_metadata_dialog.chk_rem_gps_data.isChecked():
+                  print "Remove gps data"
+                  message += "- Remove gps data\n"
+                  et_param += " -gps:all= "
+                  empty_selection = 0
+               if self.rem_metadata_dialog.chk_rem_iptc_data.isChecked():
+                  print "Remove iptc data"
+                  message += "- Remove iptc data\n"
+                  et_param += " -iptc:all= "
+                  empty_selection = 0                  
+            if empty_selection == 1:
+               QMessageBox.information(self,"Nothing selected", "You selected nothing. Cancel would have been the correct option.\nNothing will we done.")
+            else:
+               message += "\nAre you sure you want to remove the above metadata from the selected image(s)?"
+               ret = QMessageBox.question(self, "Remove metadata from image(s)", message, buttons=QMessageBox.Ok|QMessageBox.Cancel) 
+               if ret == QMessageBox.Ok:
+                  print "User wants to continue"
+                  print et_param
+                  write_image_info(self, et_param, qApp)
+               else:
+                  self.statusbar.showMessage("you canceled the \"Removal of metadata\" action")   
     else:
-            print "you cancelled"    
+            print "you cancelled" 
+            self.statusbar.showMessage("you canceled the \"Removal of metadata\" action")   
 
 

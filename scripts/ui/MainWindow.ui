@@ -3042,7 +3042,7 @@ This tab mimics the help and Modify menu until I have found a solution.
      <x>0</x>
      <y>0</y>
      <width>1120</width>
-     <height>26</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -3059,6 +3059,7 @@ This tab mimics the help and Modify menu until I have found a solution.
     </property>
     <addaction name="mnu_action_pyexiftoolgui_home"/>
     <addaction name="mnu_action_exiftool"/>
+    <addaction name="mnu_action_manual"/>
     <addaction name="separator"/>
     <addaction name="mnu_action_Donate"/>
     <addaction name="separator"/>
@@ -3068,7 +3069,14 @@ This tab mimics the help and Modify menu until I have found a solution.
     <addaction name="separator"/>
     <addaction name="separator"/>
    </widget>
+   <widget class="QMenu" name="menuExtra">
+    <property name="title">
+     <string>&amp;Extra</string>
+    </property>
+    <addaction name="mnu_action_remove_metadata"/>
+   </widget>
    <addaction name="menu_File"/>
+   <addaction name="menuExtra"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -3140,6 +3148,16 @@ This tab mimics the help and Modify menu until I have found a solution.
   <action name="mnu_action_pyexiftoolgui_home">
    <property name="text">
     <string>pyExifToolGUI homepage</string>
+   </property>
+  </action>
+  <action name="mnu_action_remove_metadata">
+   <property name="text">
+    <string>Remove metadata</string>
+   </property>
+  </action>
+  <action name="mnu_action_manual">
+   <property name="text">
+    <string>Manual</string>
    </property>
   </action>
  </widget>

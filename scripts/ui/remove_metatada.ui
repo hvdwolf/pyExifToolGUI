@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>390</width>
-    <height>368</height>
+    <width>384</width>
+    <height>402</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>330</y>
+     <y>360</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -33,9 +33,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>140</y>
+     <y>130</y>
      <width>351</width>
-     <height>181</height>
+     <height>191</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -68,10 +68,20 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
+     <item row="3" column="0">
       <widget class="QCheckBox" name="chk_rem_iptc_data">
        <property name="text">
         <string>Remove iptc data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QCheckBox" name="chk_rem_gps_data">
+       <property name="toolTip">
+        <string>gps data can be both in exif and xmp data</string>
+       </property>
+       <property name="text">
+        <string>Remove gps data</string>
        </property>
       </widget>
      </item>
@@ -86,6 +96,9 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>(Un)Check this value will (un)check all underlying values</string>
+    </property>
     <property name="text">
      <string>Remove all metadata</string>
     </property>
@@ -97,13 +110,13 @@
      <x>20</x>
      <y>10</y>
      <width>351</width>
-     <height>121</height>
+     <height>111</height>
     </rect>
    </property>
    <property name="text">
     <string>Which metadata do you want to remove from your selected image(s)?
 Note that this screen is meant to move all tags from a certain category from your selected images(s).
-By writing &quot;clean&quot; fields from the Edit tabs you can more specifically clean that metadata.</string>
+By writing &quot;clean empty&quot; fields from the Edit tabs you can more specifically clean that metadata.</string>
    </property>
    <property name="wordWrap">
     <bool>true</bool>

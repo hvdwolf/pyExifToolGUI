@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sun Dec  9 12:10:14 2012
+# Created: Sun Dec  9 14:55:10 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1267,12 +1267,14 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.menutab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 24))
         self.menubar.setObjectName("menubar")
         self.menu_File = QtGui.QMenu(self.menubar)
         self.menu_File.setObjectName("menu_File")
         self.menuHelp = QtGui.QMenu(self.menubar)
         self.menuHelp.setObjectName("menuHelp")
+        self.menuExtra = QtGui.QMenu(self.menubar)
+        self.menuExtra.setObjectName("menuExtra")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -1305,11 +1307,16 @@ class Ui_MainWindow(object):
         self.mnu_action_mapcoordinates_tab.setObjectName("mnu_action_mapcoordinates_tab")
         self.mnu_action_pyexiftoolgui_home = QtGui.QAction(MainWindow)
         self.mnu_action_pyexiftoolgui_home.setObjectName("mnu_action_pyexiftoolgui_home")
+        self.mnu_action_remove_metadata = QtGui.QAction(MainWindow)
+        self.mnu_action_remove_metadata.setObjectName("mnu_action_remove_metadata")
+        self.mnu_action_manual = QtGui.QAction(MainWindow)
+        self.mnu_action_manual.setObjectName("mnu_action_manual")
         self.menu_File.addAction(self.mnu_action_load_images)
         self.menu_File.addSeparator()
         self.menu_File.addAction(self.action_Quit)
         self.menuHelp.addAction(self.mnu_action_pyexiftoolgui_home)
         self.menuHelp.addAction(self.mnu_action_exiftool)
+        self.menuHelp.addAction(self.mnu_action_manual)
         self.menuHelp.addSeparator()
         self.menuHelp.addAction(self.mnu_action_Donate)
         self.menuHelp.addSeparator()
@@ -1318,7 +1325,9 @@ class Ui_MainWindow(object):
         self.menuHelp.addSeparator()
         self.menuHelp.addSeparator()
         self.menuHelp.addSeparator()
+        self.menuExtra.addAction(self.mnu_action_remove_metadata)
         self.menubar.addAction(self.menu_File.menuAction())
+        self.menubar.addAction(self.menuExtra.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
@@ -1602,6 +1611,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.menutab), QtGui.QApplication.translate("MainWindow", "\"Menu\"", None, QtGui.QApplication.UnicodeUTF8))
         self.menu_File.setTitle(QtGui.QApplication.translate("MainWindow", "&File", None, QtGui.QApplication.UnicodeUTF8))
         self.menuHelp.setTitle(QtGui.QApplication.translate("MainWindow", "&Help", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuExtra.setTitle(QtGui.QApplication.translate("MainWindow", "&Extra", None, QtGui.QApplication.UnicodeUTF8))
         self.action_Quit.setText(QtGui.QApplication.translate("MainWindow", "&Quit", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_About.setText(QtGui.QApplication.translate("MainWindow", "&About", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_exiftool.setText(QtGui.QApplication.translate("MainWindow", "ExifTool homepage", None, QtGui.QApplication.UnicodeUTF8))
@@ -1616,4 +1626,6 @@ class Ui_MainWindow(object):
         self.mnu_action_Maker_tags.setText(QtGui.QApplication.translate("MainWindow", "Maker tags", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_mapcoordinates_tab.setText(QtGui.QApplication.translate("MainWindow", "MapCoordinates.net tab", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_pyexiftoolgui_home.setText(QtGui.QApplication.translate("MainWindow", "pyExifToolGUI homepage", None, QtGui.QApplication.UnicodeUTF8))
+        self.mnu_action_remove_metadata.setText(QtGui.QApplication.translate("MainWindow", "Remove metadata", None, QtGui.QApplication.UnicodeUTF8))
+        self.mnu_action_manual.setText(QtGui.QApplication.translate("MainWindow", "Manual", None, QtGui.QApplication.UnicodeUTF8))
 
