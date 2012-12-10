@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Remove metadata</string>
   </property>
-  <widget class="QDialogButtonBox" name="dialogButtonBox">
+  <widget class="QDialogButtonBox" name="rmdd_dialogButtonBox">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -29,7 +29,7 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
+  <widget class="QFrame" name="rmdd_frame">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -53,7 +53,7 @@
       <height>121</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
+    <layout class="QGridLayout" name="rmdd_gridLayout">
      <item row="0" column="0">
       <widget class="QCheckBox" name="chk_rem_exif_data">
        <property name="text">
@@ -104,7 +104,7 @@
     </property>
    </widget>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="rmdd_lbl">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -126,7 +126,7 @@ By writing &quot;clean empty&quot; fields from the Edit tabs you can more specif
  <resources/>
  <connections>
   <connection>
-   <sender>dialogButtonBox</sender>
+   <sender>rmdd_dialogButtonBox</sender>
    <signal>accepted()</signal>
    <receiver>Dialog_remove_metadata</receiver>
    <slot>accept()</slot>
@@ -142,7 +142,7 @@ By writing &quot;clean empty&quot; fields from the Edit tabs you can more specif
    </hints>
   </connection>
   <connection>
-   <sender>dialogButtonBox</sender>
+   <sender>rmdd_dialogButtonBox</sender>
    <signal>rejected()</signal>
    <receiver>Dialog_remove_metadata</receiver>
    <slot>reject()</slot>
