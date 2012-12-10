@@ -1181,15 +1181,19 @@ def write_image_info(self, exiftoolparams, qApp):
 def info_window(self):
     license_file = os.path.join(self.parent_dir, 'COPYING')
     ui = os.path.join(self.ui_dir, "info_window.ui")
-    #print ui
-    loader = QUiLoader()
-    uifile = QFile(ui)
-    uifile.open(QFile.ReadOnly)
-    self.info_window_dialog = loader.load(uifile, self)
-    uifile.close()
-    self.info_window_dialog.adjustSize()
+    self.info_window_dialog = QDialog()
+    self.info_window_dialog.resize(500, 640)
+    self.info_window_text = QTextEdit(self.info_window_dialog)
+    self.info_window_text.setGeometry(QRect(3, 11, 491, 591))
+    self.info_window_text.setObjectName("info_window_text")
+    self.buttonBox = QDialogButtonBox(self.info_window_dialog)
+    self.buttonBox.setGeometry(QRect(300, 610, 176, 27))
+    self.buttonBox.setStandardButtons(QDialogButtonBox.Close)
+    self.buttonBox.setObjectName("buttonBox")
     self.info_window_dialog.setWindowTitle(programinfo.NAME + " " + programinfo.VERSION + " license")
-    self.info_window_dialog.info_window_text.setText(open(license_file).read())
+    self.info_window_text.setText(open(license_file).read())
+    QObject.connect(self.buttonBox, SIGNAL("clicked(QAbstractButton*)"), self.info_window_dialog.close)
+    QMetaObject.connectSlotsByName(self.info_window_dialog)
     self.info_window_dialog.exec_()
 
 
