@@ -1211,7 +1211,7 @@ def check_remove_metadata_boxes(self):
 
       
 def remove_metadata(self, qApp):    
-    ui = os.path.join(self.ui_dir, "remove_metatada.ui")
+    ui = os.path.join(self.ui_dir, "remove_metadata.ui")
     loader = QUiLoader()
     uifile = QFile(ui)
     uifile.open(QFile.ReadOnly)
