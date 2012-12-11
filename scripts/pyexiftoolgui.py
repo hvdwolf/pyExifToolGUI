@@ -26,9 +26,8 @@ import os, sys, platform, shlex, subprocess, webbrowser, re
 import PySide
 from PySide.QtCore import *
 from PySide.QtGui import *
-# Below two necessary when building bundle but they are called from petgfunctions anyway
-from PySide.QtUiTools import *
-from PySide.QtXml import *
+#from PySide.QtUiTools import *
+#from PySide.QtXml import *
 
 
 #-------------------------------------------------------------------------

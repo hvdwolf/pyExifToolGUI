@@ -21,7 +21,7 @@ coll = COLLECT(exe,
                [('plugins\\imageformats\\qsvgg4.dll', 'D:\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qsvg4.dll', 'DATA')] +
                [('plugins\\imageformats\\qtiff4.dll', 'D:\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qtiff4.dll', 'DATA')] +
                [('plugins\\imageformats\\qico4.dll', 'D:\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qico4.dll', 'DATA')] +
-               [('COPYING.txt', '..\\pyside\\pyexiftoolgui-hg\\COPYING', 'DATA')] ,
+               [('COPYING', '..\\pyside\\pyexiftoolgui-hg\\COPYING', 'DATA')] ,
                a.zipfiles,
                a.datas,
                strip=None,

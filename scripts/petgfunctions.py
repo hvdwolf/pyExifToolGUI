@@ -26,10 +26,12 @@ import os, sys, platform, shlex, subprocess, time, re, string
 import PySide
 from PySide.QtCore import *
 from PySide.QtGui import *
-from PySide.QtUiTools import *
+#from PySide.QtUiTools import *
 
 import programinfo
 import programstrings
+
+from ui_remove_metadata import Ui_Dialog_remove_metadata
      
 
 #------------------------------------------------------------------------
@@ -1179,8 +1181,17 @@ def write_image_info(self, exiftoolparams, qApp):
 #------------------------------------------------------------------------
 # Other dialogs and windows and their related functions
 def info_window(self):
-    license_file = os.path.join(self.parent_dir, 'COPYING')
-    ui = os.path.join(self.ui_dir, "info_window.ui")
+    if self.OSplatform == "Windows":
+            if os.path.isfile(os.path.join(self.parent_dir, 'COPYING')):
+               # started from python
+               license_file = os.path.join(self.parent_dir, 'COPYING')
+            elif os.path.isfile(os.path.join(self.realfile_dir, 'COPYING')):
+               # Started from the executable 
+               license_file = os.path.join(self.realfile_dir, 'COPYING')
+            else:
+               QMessageBox.critical(self, "Can't find the license file", "Please check www.gnu.org/license")
+    else:
+            license_file = os.path.join(self.parent_dir, 'COPYING')
     self.info_window_dialog = QDialog()
     self.info_window_dialog.resize(500, 640)
     self.info_window_text = QTextEdit(self.info_window_dialog)
@@ -1209,16 +1220,31 @@ def check_remove_metadata_boxes(self):
         self.rem_metadata_dialog.chk_rem_gps_data.setChecked(0)
         self.rem_metadata_dialog.chk_rem_iptc_data.setChecked(0)
 
+
+class dialog_remove_metadata(QDialog, Ui_Dialog_remove_metadata):
+    # This loads the py file created by pyside-uic from the ui.
+    # the Quiloader segfaults on windows after ending the function
+    def __init__(self, parent=None):
+        super(dialog_remove_metadata, self).__init__(parent)
+        self.setupUi(self)
+
       
 def remove_metadata(self, qApp):    
-    ui = os.path.join(self.ui_dir, "remove_metadata.ui")
-    loader = QUiLoader()
-    uifile = QFile(ui)
-    uifile.open(QFile.ReadOnly)
-    self.rem_metadata_dialog = loader.load(uifile, self)
-    uifile.close()
-    self.rem_metadata_dialog.adjustSize()
+#    ui = os.path.join(self.ui_dir, "remove_metadata.ui")
+#    loader = QUiLoader()
+#    if self.OSplatform == "Windows":
+#       #uifile = QFile ("scripts\\ui\\remove_metatada.ui")
+#       #file = QFile(":/forms/myform.ui")
+#       ui = ui.replace("/", "\\")
+#       print "ui " + ui
+#    uifile = QFile(ui)
+#    uifile.open(QFile.ReadOnly)
+#    self.rem_metadata_dialog = loader.load(uifile, self)
+#    uifile.close()
+#    self.rem_metadata_dialog.adjustSize()
 
+
+    self.rem_metadata_dialog = dialog_remove_metadata()
     # Set proper event
     self.rem_metadata_dialog.chk_rem_all_metadata.clicked.connect(self.check_remove_metadata_boxes)
 
@@ -1266,5 +1292,4 @@ def remove_metadata(self, qApp):
     else:
             print "you cancelled" 
             self.statusbar.showMessage("you canceled the \"Removal of metadata\" action")   
-
 
