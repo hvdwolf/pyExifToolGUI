@@ -85,16 +85,17 @@ def exiftool_version_level_text(self):
            exiftoolleveltext = "Your exiftool version is " + self.exiftoolversion + " . You need >=9.07 to write to images.\n"
            exiftoolleveltext += "Exiftool and therefore pyExifToolGUI can read the tags. See the View Data tab."
            self.lbl_exiftool_leveltext.setText(exiftoolleveltext)
-        elif float(self.exiftoolversion) < 9.09:
-           exiftoolleveltext = "Your exiftool version is " + self.exiftoolversion + " . Tags marked with * are obligatory. " 
-           exiftoolleveltext += "You need >=9.09 to write the *** tags to images. \"Pose Heading Degrees\" is necessary to make it also function in Google Maps."
-           self.lbl_exiftool_leveltext.setText(exiftoolleveltext)
-           self.statusbar.showMessage("Your exiftoolversion is " + self.exiftoolversion)
+#        elif float(self.exiftoolversion) < 9.09:
         else:
            exiftoolleveltext = "Your exiftool version is " + self.exiftoolversion + " . Tags marked with * are obligatory. " 
-           exiftoolleveltext += "\"Pose Heading Degrees\" is necessary to make it also function in Google Maps. Tags marked with *** are only writable with exiftool >= 9.09"
+           exiftoolleveltext += "\"Pose Heading Degrees\" is necessary to make it also function in Google Maps.\nExifTool currently doesn't support the disabled fields. As soon as exiftool supports them they will be enabled."
            self.lbl_exiftool_leveltext.setText(exiftoolleveltext)
            self.statusbar.showMessage("Your exiftoolversion is " + self.exiftoolversion)
+#        else:
+#           exiftoolleveltext = "Your exiftool version is " + self.exiftoolversion + " . Tags marked with * are obligatory. " 
+#           exiftoolleveltext += "\"Pose Heading Degrees\" is necessary to make it also function in Google Maps. Tags marked with *** are only writable with exiftool >= 9.09"
+#           self.lbl_exiftool_leveltext.setText(exiftoolleveltext)
+#           self.statusbar.showMessage("Your exiftoolversion is " + self.exiftoolversion)
         #print "exiftoolversion : " + self.exiftoolversion
 
 
