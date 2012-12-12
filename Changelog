@@ -1,17 +1,328 @@
+changeset:   64:0dd8e8e4a21f
+tag:         tip
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Wed Dec 12 15:32:01 2012 +0100
+summary:     Prepare for first 0.2 release
 
-= 0.16
-- Delete google maps tab and replace with mapcoordinates.net. This gives altitude as well.
-- Edit -> Exif tab writes info as well
-- Create simple setup.py script
+changeset:   63:9f134870ac51
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Wed Dec 12 14:43:12 2012 +0100
+summary:     [OSX] mac bundle now works as well
 
+changeset:   62:1ae542ba19d1
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Wed Dec 12 13:31:08 2012 +0100
+summary:     more modifications to gui parts
 
-= 0.15, 2012-11-24
-- Restyle gps tab by adding frames per subsection. Was very crowded, now slightly improved.
-- Progress bar now also for writing exif infor to many images as it can take some time.
+changeset:   61:fe4016a7756f
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Wed Dec 12 09:39:54 2012 +0100
+summary:     [OSX] As menu finally works on OSX, remove the stupid "menu" tab which was created for OS X
 
-= 0.14
-- Write gps data
+changeset:   60:aa3c23a3fff6
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Wed Dec 12 09:21:52 2012 +0100
+summary:     [OSX] some further instructions on post-proecessing a pyinstaller bundle
 
-- Older versions not logged
+changeset:   59:0f51feb7c688
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Wed Dec 12 09:16:53 2012 +0100
+summary:     [OSX] outcommented wrong line and mentioned that one in README
 
+changeset:   58:651e9db999ec
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Wed Dec 12 09:12:23 2012 +0100
+summary:     Forgot to add new ui and pyside-uic .py file
+
+changeset:   57:c037e9784cd5
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Wed Dec 12 09:03:13 2012 +0100
+summary:     Make menu on Mac finally work; Add some new functionality
+
+changeset:   56:5785fb00f7f7
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Tue Dec 11 18:28:00 2012 +0100
+summary:     disable a few Google Photosphere fields as exiftool does not support them yet
+
+changeset:   55:255eb0846d77
+user:        harryvanderWolf (hvdwolf@gmail.com)
+date:        Tue Dec 11 12:04:34 2012 +0100
+summary:     Stop using quiloader as it segfaults on windows, switch to pyside-uic "compiled" .py GUIs
+
+changeset:   54:caa058bcc441
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Mon Dec 10 21:31:40 2012 +0100
+summary:     minor changes to remove_metadata ui file
+
+changeset:   53:15155a09cb66
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Mon Dec 10 21:18:07 2012 +0100
+summary:     rename ui file from remove_metatada.ui to remove_metadata.ui
+
+changeset:   52:1d1f2c947520
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Mon Dec 10 19:47:55 2012 +0100
+summary:     simply embed info_window ui directly in code
+
+changeset:   51:ef4a049feec4
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sun Dec 09 17:12:17 2012 +0100
+summary:     Only enable "remove metadata" functionality with images loaded; some code cleanup
+
+changeset:   50:98525f5e781b
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sun Dec 09 15:03:01 2012 +0100
+summary:     Add sub menu "Extra" menu; Add "remove metadata" option ot "Extra" menu; a few more minor changes
+
+changeset:   49:a254bf57aa92
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sun Dec 09 12:12:27 2012 +0100
+summary:     All kind of minor changes, tooltips, statusbar tips, etc.
+
+changeset:   48:d7427a092b78
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sat Dec 08 19:39:41 2012 +0100
+summary:     First attempts for new functionality
+
+changeset:   47:b03ea5ee8292
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sat Dec 08 19:19:10 2012 +0100
+summary:     Switch from messages via progress label in bottom of screen to statusbar messages. part 2
+
+changeset:   46:7ad210da7920
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sat Dec 08 19:15:33 2012 +0100
+summary:     Switch from messages via progress label in bottom of screen to statusbar messages. Gives less formatting options but keeps the gui cleaner
+
+changeset:   45:34c6199d1a6d
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sat Dec 08 18:09:57 2012 +0100
+summary:     [OSX] Make more adjustments to spec file and final bundle
+
+changeset:   44:b2863267ecc8
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sat Dec 08 16:52:27 2012 +0100
+summary:     [OSX] Make a "Menu" tab in the gui for OS X platform as a rough cut patch as Mac has a terrible menu behaviour impacting QT applications
+
+changeset:   43:dc498d32255c
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sat Dec 08 15:25:18 2012 +0100
+summary:     [OSX] Change "Program Info" menu item back in "About" as it doesn't change anything on OSX
+
+changeset:   42:5b24f20c71a1
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sat Dec 08 14:48:37 2012 +0100
+summary:     add extended Google Photosphere functionality
+
+changeset:   41:2a55f828c343
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Fri Dec 07 20:35:39 2012 +0100
+summary:     minor change to new info_window
+
+changeset:   40:88b462c16337
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Fri Dec 07 20:23:23 2012 +0100
+summary:     Dynamically call ui files; adapt installation texts
+
+changeset:   39:30e0464f21e2
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Fri Dec 07 17:51:04 2012 +0100
+summary:     Modify menu
+
+changeset:   38:d0c7915de61e
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Fri Dec 07 07:27:28 2012 +0100
+summary:     [OSX] improved pyinstaller spec file but still not 100 pct correct
+
+changeset:   37:6f9a8c034162
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Thu Dec 06 10:29:09 2012 +0100
+summary:     add (currently not working) pyinstaller spec file
+
+changeset:   36:bf98a3b68826
+user:        harryvanderWolf (hvdwolf@gmail.com)
+date:        Thu Dec 06 10:21:01 2012 +0100
+summary:     Improve pyinstaller spec file for windows
+
+changeset:   35:a3a52b454dd6
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Wed Dec 05 22:45:56 2012 +0100
+summary:     correct stupid bug in gpano functionality
+
+changeset:   34:c1d848cc20cb
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Wed Dec 05 16:33:04 2012 +0100
+summary:     expand manual
+
+changeset:   33:828a83e5e93d
+user:        harryvanderWolf (hvdwolf@gmail.com)
+date:        Wed Dec 05 12:01:48 2012 +0100
+summary:     further changes to manual
+
+changeset:   32:3e49acc6324f
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Tue Dec 04 23:27:09 2012 +0100
+summary:     small changes and fixes to manual
+
+changeset:   31:8153f5aa5729
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Tue Dec 04 23:10:46 2012 +0100
+summary:     one image missing from manual
+
+changeset:   30:010cf34f5ccc
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Tue Dec 04 22:58:35 2012 +0100
+summary:     Add paypal donate button to manual and about popup
+
+changeset:   29:076f1bb2082a
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Tue Dec 04 20:20:18 2012 +0100
+summary:     Added tag 0.19 for changeset 0fc9083ab1af
+
+changeset:   28:0fc9083ab1af
+tag:         0.19
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Tue Dec 04 20:19:59 2012 +0100
+summary:     Make IPTC edit tab only a placeholder for some text; Do not add functionality at this moment for this old, deminishing standard
+
+changeset:   27:71bd8bab8949
+user:        harryvanderWolf (hvdwolf@gmail.com)
+date:        Tue Dec 04 13:58:56 2012 +0100
+summary:     manual path on windows differs when run as script or when run as python executable
+
+changeset:   26:45caa0d4064c
+user:        harryvanderWolf (hvdwolf@gmail.com)
+date:        Tue Dec 04 13:15:21 2012 +0100
+summary:     remove file from windows spec list
+
+changeset:   25:10e9446291e9
+user:        harryvanderWolf (hvdwolf@gmail.com)
+date:        Tue Dec 04 13:12:41 2012 +0100
+summary:     windows python executable now works; create COPYING.txt for windows sake
+
+changeset:   24:6e134ede56f5
+user:        harryvanderWolf (hvdwolf@gmail.com)
+date:        Tue Dec 04 10:19:29 2012 +0100
+summary:     Remove py2exe setup and replace with pyinstaller spec file
+
+changeset:   23:792b6508bfb1
+user:        harryvanderWolf (hvdwolf@gmail.com)
+date:        Mon Dec 03 16:36:35 2012 +0100
+summary:     Add windows program icon to repo
+
+changeset:   22:de66cf7c96bf
+user:        harryvanderWolf (hvdwolf@gmail.com)
+date:        Mon Dec 03 12:06:04 2012 +0100
+summary:     call to webpage on disk with anchor added does notwrok on windows; correct minor stylesheet errors in html manual
+
+changeset:   21:3319c8e45d3f
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sun Dec 02 17:10:52 2012 +0100
+summary:     Do some cleanup first before copying files during setup. Users might already have started the gui from the release folder
+
+changeset:   20:e151e72eca85
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sun Dec 02 16:56:56 2012 +0100
+summary:     Add new Mac OS X bare-bones pyExifToolGUI.app
+
+changeset:   19:b165f6ebd8e2
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sun Dec 02 16:49:02 2012 +0100
+summary:     Adapt setup.py for OSX; remove current app
+
+changeset:   18:2584ce7e107e
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sun Dec 02 14:25:19 2012 +0100
+summary:     Add installation to HTML manual
+
+changeset:   17:784dbb469d2f
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sun Dec 02 12:25:40 2012 +0100
+summary:     Restructure source folder itself and install to comply a bit more to a "standard" python way; Improve call to license file; Rewrite some texts
+
+changeset:   16:67dc8ceaea27
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sun Dec 02 08:55:57 2012 +0100
+summary:     Remove Mapcoordinates webview from application and make it a simple button in the GPS edit tab to open the mapcoordinates website
+
+changeset:   15:79505c2712d8
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sat Dec 01 21:38:31 2012 +0100
+summary:     add HTML manual stuff to setup.py
+
+changeset:   14:78ff614a0c9a
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sat Dec 01 20:16:32 2012 +0100
+summary:     Make some menu changes
+
+changeset:   13:4053237f0f8f
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Sat Dec 01 19:24:37 2012 +0100
+summary:     Add defaults for artist and copyrights to preferences; add copy defaults functionality; add xmp functionality; expand manual slightly
+
+changeset:   12:8a83d5400113
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Fri Nov 30 20:12:02 2012 +0100
+summary:     Expand gui; add defaults and start xmp
+
+changeset:   11:8e700418f140
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Fri Nov 30 19:38:56 2012 +0100
+summary:     expand html manual
+
+changeset:   10:cea5503cd680
+user:        harryvanderWolf (hvdwolf@gmail.com)
+date:        Fri Nov 30 15:10:04 2012 +0100
+summary:     reroute help calls to QMessageBoxes to html manual
+
+changeset:   9:3d6f13b518a8
+user:        harryvanderWolf (hvdwolf@gmail.com)
+date:        Fri Nov 30 13:40:33 2012 +0100
+summary:     Start writing HTML manual instead of using Messageboxes of help texts. this also allows for an online manual or a pfd manual
+
+changeset:   8:9f81c852d573
+user:        harryvanderWolf (hvdwolf@gmail.com)
+date:        Fri Nov 30 09:14:10 2012 +0100
+summary:     Add (still not working) py2exe setup to repo
+
+changeset:   7:4d7601e9a4a6
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Fri Nov 30 07:43:21 2012 +0100
+summary:     Use user friendly formatted gpano tags in gpano tab instead of exiftool internal variable names
+
+changeset:   6:70be6cc0f20d
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Thu Nov 29 22:54:10 2012 +0100
+summary:     previous comment was "add "read" functionality" but should be "write" functionality. This commit is only an update of version in the programinfo.py
+
+changeset:   5:d7fc49824dbb
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Thu Nov 29 21:55:23 2012 +0100
+summary:     Add gpano (Google Photosphere) "read" functionality to program and gui
+
+changeset:   4:e06545a98c02
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Thu Nov 29 20:22:30 2012 +0100
+summary:     Added tag 0.17 for changeset bc6095087229
+
+changeset:   3:bc6095087229
+tag:         0.17
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Thu Nov 29 20:20:39 2012 +0100
+summary:     Add gpano (Google Photosphere) "read" functionality to program and gui; Improve exiftool version check functionality
+
+changeset:   2:01443855ab4f
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Thu Nov 29 17:32:51 2012 +0100
+summary:     corrected Mac OS X install: ended with linux message
+
+changeset:   1:585404933b4c
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Thu Nov 29 16:40:30 2012 +0100
+summary:     exiftool  location test corrected
+
+changeset:   0:f48026609315
+user:        harryvanderwolf <hvdwolf@gmail.com>
+date:        Thu Nov 29 16:19:49 2012 +0100
+summary:     initial commit; add all files; equal to 0.17
 
