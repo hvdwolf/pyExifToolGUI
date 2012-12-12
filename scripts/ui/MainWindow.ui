@@ -3034,67 +3034,6 @@ Currently I have no intent to add functionality to this standard, maybe later.</
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="menutab">
-     <attribute name="title">
-      <string>&quot;Menu&quot;</string>
-     </attribute>
-     <widget class="QLabel" name="label_69">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>30</y>
-        <width>631</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>This is a very rough patch for Mac OS X. Mac OS X has a terrible behaviour when
-it comes to menus in Qt and python and therefore in both PySide and PyQt.
-This tab mimics the help and Modify menu until I have found a solution.
-(This tab is not visible on Linux and Windows)</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="help_combobox">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>130</y>
-        <width>211</width>
-        <height>26</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>Help &quot;menu&quot;</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>pyExifToolGUI homepage</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>ExifTool homepage</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Donate</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>License</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>About</string>
-       </property>
-      </item>
-     </widget>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
