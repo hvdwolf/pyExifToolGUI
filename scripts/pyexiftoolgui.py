@@ -424,6 +424,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def check_remove_metadata_boxes(self):
         petgfunctions.check_remove_metadata_boxes(self)
 
+    def moddialog_shift_clicked(self):
+        petgfunctions.qddt_shift_clicked(self)
+
 #------------------------------------------------------------------------
 #------------------------------------------------------------------------
 # This is where the main app is started

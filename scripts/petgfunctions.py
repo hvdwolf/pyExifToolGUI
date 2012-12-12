@@ -1135,7 +1135,7 @@ def read_image_info(self, exiftool_params):
 
 def write_image_info(self, exiftoolparams, qApp):
         mysoftware = programinfo.NAME + " " + programinfo.VERSION
-        exiftoolparams = ' -overwrite_original_in_place -ProcessingSoftware="' + mysoftware + '" ' + exiftoolparams
+        exiftoolparams = ' -P -overwrite_original_in_place -ProcessingSoftware="' + mysoftware + '" ' + exiftoolparams
 
         selected_rows = self.MaintableWidget.selectedIndexes()
         print 'number of rows ' + str(len(selected_rows))
@@ -1165,18 +1165,18 @@ def write_image_info(self, exiftoolparams, qApp):
                            selected_image = selected_image.replace("/", "\\")
                            args = self.exiftoolprog + exiftoolparams + selected_image
                            p = subprocess.call(args)
-                           # Now reset the file date
-                           args = self.exiftoolprog + ' "-FileModifyDate<DateTimeOriginal" ' + selected_image
-                           p = subprocess.call(args)
+                           ## Now reset the file date
+                           #args = self.exiftoolprog + ' "-FileModifyDate<DateTimeOriginal" ' + selected_image
+                           #p = subprocess.call(args)
                         else:
                            # First write the info
                            command_line = self.exiftoolprog + exiftoolparams + selected_image
                            args = shlex.split(command_line)
                            p = subprocess.call(args)
-                           # Now reset the file date
-                           command_line = self.exiftoolprog + ' "-FileModifyDate<DateTimeOriginal" ' + selected_image
-                           args = shlex.split(command_line)
-                           p = subprocess.call(args)
+                           ## Now reset the file date
+                           #command_line = self.exiftoolprog + ' "-FileModifyDate<DateTimeOriginal" ' + selected_image
+                           #args = shlex.split(command_line)
+                           #p = subprocess.call(args)
         self.progressbar.hide()
         self.statusbar.showMessage("Done writing the info to the selected image(s)")
 #------------------------------------------------------------------------
@@ -1209,6 +1209,17 @@ def info_window(self):
     self.info_window_dialog.exec_()
 
 
+def qddt_shift_clicked(self):
+    if self.modifydatetime_dialog.chk_qddt_shift.isChecked():
+       self.modifydatetime_dialog.qddt_modifydate.setEnabled(False)
+       self.modifydatetime_dialog.qddt_datetimeoriginal.setEnabled(False)
+       self.modifydatetime_dialog.qddt_createdate.setEnabled(False)
+    else:
+       self.modifydatetime_dialog.qddt_modifydate.setEnabled(True)
+       self.modifydatetime_dialog.qddt_datetimeoriginal.setEnabled(True)
+       self.modifydatetime_dialog.qddt_createdate.setEnabled(True)
+    
+
 class dialog_modifydatetime(QDialog, Ui_DateTimeDialog):
     # This loads the py file created by pyside-uic from the ui.
     # the Quiloader segfaults on windows after ending the function
@@ -1224,6 +1235,9 @@ def modifydatetime(self, qApp):
     self.modifydatetime_dialog.qddt_datetimeoriginal.setText(strnow)
     self.modifydatetime_dialog.qddt_createdate.setText(strnow)
     self.modifydatetime_dialog.qddt_shiftdatetime.setText("0000:00:00 00:00:00")
+    # Set proper event
+    self.modifydatetime_dialog.chk_qddt_shift.clicked.connect(self.moddialog_shift_clicked)
+
     if self.modifydatetime_dialog.exec_() == QDialog.Accepted:
        print "You selected Save"
        if self.modifydatetime_dialog.chk_qddt_modifydate.isChecked():

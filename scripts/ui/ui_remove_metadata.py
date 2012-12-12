@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'remove_metadata.ui'
 #
-# Created: Tue Dec 11 11:11:45 2012
-#      by: pyside-uic 0.2.12 running on PySide 1.0.5
+# Created: Wed Dec 12 13:28:52 2012
+#      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
 

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modifydatetime.ui'
 #
-# Created: Tue Dec 11 19:55:46 2012
+# Created: Wed Dec 12 13:28:52 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -88,7 +88,7 @@ class Ui_DateTimeDialog(object):
         self.frame.setFrameShadow(QtGui.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.gridLayoutWidget_2 = QtGui.QWidget(self.frame)
-        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(0, 10, 471, 61))
+        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(0, 10, 471, 62))
         self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
         self.gridLayout = QtGui.QGridLayout(self.gridLayoutWidget_2)
         self.gridLayout.setContentsMargins(10, 10, -1, -1)
@@ -100,12 +100,12 @@ class Ui_DateTimeDialog(object):
         self.qddt_shiftdatetime.setMaximumSize(QtCore.QSize(180, 16777215))
         self.qddt_shiftdatetime.setObjectName("qddt_shiftdatetime")
         self.gridLayout.addWidget(self.qddt_shiftdatetime, 1, 1, 1, 1)
-        self.qddt_shift = QtGui.QCheckBox(self.gridLayoutWidget_2)
-        self.qddt_shift.setObjectName("qddt_shift")
-        self.gridLayout.addWidget(self.qddt_shift, 1, 0, 1, 1)
+        self.chk_qddt_shift = QtGui.QCheckBox(self.gridLayoutWidget_2)
+        self.chk_qddt_shift.setObjectName("chk_qddt_shift")
+        self.gridLayout.addWidget(self.chk_qddt_shift, 0, 0, 1, 1)
         self.label_7 = QtGui.QLabel(self.gridLayoutWidget_2)
         self.label_7.setObjectName("label_7")
-        self.gridLayout.addWidget(self.label_7, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.label_7, 1, 0, 1, 1)
 
         self.retranslateUi(DateTimeDialog)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), DateTimeDialog.accept)
@@ -126,6 +126,6 @@ class Ui_DateTimeDialog(object):
         self.chk_qddt_forward.setText(QtGui.QApplication.translate("DateTimeDialog", "forward in time", None, QtGui.QApplication.UnicodeUTF8))
         self.qddt_shiftdatetime.setToolTip(QtGui.QApplication.translate("DateTimeDialog", "This field determines the shift in YYYY:MM:DD hh:mm:ss", None, QtGui.QApplication.UnicodeUTF8))
         self.qddt_shiftdatetime.setStatusTip(QtGui.QApplication.translate("DateTimeDialog", "This field determines the shift in YYYY:MM:DD hh:mm:ss", None, QtGui.QApplication.UnicodeUTF8))
-        self.qddt_shift.setText(QtGui.QApplication.translate("DateTimeDialog", "Shift ", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_qddt_shift.setText(QtGui.QApplication.translate("DateTimeDialog", "shift above date/times", None, QtGui.QApplication.UnicodeUTF8))
         self.label_7.setText(QtGui.QApplication.translate("DateTimeDialog", "shift value", None, QtGui.QApplication.UnicodeUTF8))
 

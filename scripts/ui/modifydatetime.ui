@@ -216,7 +216,7 @@ The corresponding xmp values can be updated at the same time.</string>
       <x>0</x>
       <y>10</y>
       <width>471</width>
-      <height>61</height>
+      <height>62</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -249,14 +249,14 @@ The corresponding xmp values can be updated at the same time.</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="QCheckBox" name="qddt_shift">
+     <item row="0" column="0">
+      <widget class="QCheckBox" name="chk_qddt_shift">
        <property name="text">
-        <string>Shift </string>
+        <string>shift above date/times</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
+     <item row="1" column="0">
       <widget class="QLabel" name="label_7">
        <property name="text">
         <string>shift value</string>
