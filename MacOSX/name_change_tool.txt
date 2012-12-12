@@ -1,0 +1,12 @@
+in plugins/imageformats
+for i in *.dylib; do install_name_tool -change QtGui.framework/Versions/4/QtGui ../../MacOS/QtGui $i; done
+for i in *.dylib; do install_name_tool -change QtCore.framework/Versions/4/QtCore ../../MacOS/QtCore $i; done
+for i in *.dylib; do install_name_tool -id @loader_path/$i $i; done
+in MacOS
+for i in *.dylib; do install_name_tool -change QtGui.framework/Versions/4/QtGui @loader_path/QtGui $i; done
+for i in *.dylib; do install_name_tool -change QtCore.framework/Versions/4/QtCore @loader_path/QtCore $i; done
+for i in *.dylib; do install_name_tool -change  libshiboken-python2.7.1.1.dylib @loader_path/libshiboken-python2.7.1.1.dylib $i; done
+for i in *.dylib; do install_name_tool -change  libpyside-python2.7.1.1.dylib @loader_path/libpyside-python2.7.1.1.dylib $i; done
+for i in *.dylib; do install_name_tool -id @loader_path/$i $i; done
+
+
