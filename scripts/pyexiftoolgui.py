@@ -70,7 +70,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	self.mnu_action_load_images.triggered.connect(self.loadimages)
 	self.action_Quit.triggered.connect(self.quit_application)
 	app.aboutToQuit.connect(self.quit_application)
-        self.mnu_action_modifydatetime.triggered.connect(self.modify_datetime)
+        # not in this 0.2 release, so disable action and hide menu item
+        #self.mnu_action_modifydatetime.triggered.connect(self.modify_datetime)
+        self.menuExtra.removeAction(self.mnu_action_modifydatetime)
+        
         self.mnu_action_remove_metadata.triggered.connect(self.remove_metadata)
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
 	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)

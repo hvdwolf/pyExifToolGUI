@@ -37,6 +37,14 @@ Installation:
 
 Installation on Mac OS X
 ========================
+The installation on Mac OS X can be in two ways:
+= Download the bundle
+= Run the simple version from the tar.gz
+
+= Bundle install
+Simple download the dmg containing the bundle and drag the bundle to a suitable place, most likely /Applications.
+
+= Simple bundle version from the tar.gz 
 - python: part of every linux system, so always available, but 2.7 required.
   -- (Snow) Leopard: Download python 2.7 from python.org and install. Then run
      Update Shell Profile.command from /Applications/Python 2.7
@@ -85,7 +93,7 @@ Uninstall / Removal
 - run the setup script from the command line with "sudo ./setup.py remove" (no double quotes).
 - On Mac OS X simply remove pyExifToolGUI.app from /Applications
 
-This file: Version 0.11, 2012-11-27, H. van der Wolf
+This file: Version 0.2, 2012-12-12, H. van der Wolf
 
 
 

@@ -127,6 +127,10 @@ ul.toc {}
 <ul>
 <li><a href="#InstallLinux">2.1 Installation on Linux</a>
 <li><a href="#InstallMacOSX">2.2 Installation on Mac OS X</a>
+<ul>
+<li><a href="#InstallMacOSXFullBundle">2.2.1 Full application bundle X</a>
+<li><a href="#InstallMacOSXSimpleBundle">2.2.2 Simple application bundle (install dependencies yourself)</a>
+</ul>
 <li><a href="#InstallWindows">2.3 Installation on Windows</a>
 <li><a href="#NoInstall">2.4 Run pyexiftoolgui from download folder (No Installation)</a>
 <li><a href="#UnInstall">2.5 Uninstall / Removal</a>
@@ -221,8 +225,10 @@ or (Open)Suse or Fedora/Redhat.
 This also means that it doesn't do any dependency checks for necessary
 libraries and so on. 
 I wrote a simple "setup" script that takes care of installation and removal. 
-Currently this setup script only works on Linux and Mac OS X. For Windows a 
-python executable has been created (Note to Windows users: Currently there is the 
+Currently this setup script only works on Linux and Mac OS X. 
+<p> For Mac OS X you can either run the simple bundle from the tar.gz and install the 
+dependencies yourself, or you can download the full bundle.
+<p>For Windows a python executable has been created (Note to Windows users: Currently there is the 
 closed sourced but free exiftoolgui for windows. pyexiftoolgui contains the functionality 
 of applying your changes to a selected set of images at once, exiftoolgui only has 
 this on a limited set of tags. The total "functionality set" of exiftoolgui is currently
@@ -254,6 +260,17 @@ installation instructions.
 <p><a name="InstallMacOSX"></a>
 
 <h3 class="section">2.2 Installation on Mac OS X</h3>
+
+<p>You have two options for install on Mac OS X
+
+<p><a name="InstallMacOSXFullBundle"></a>
+<h4 class="subsection">2.2.1 Full application bundle</h4>
+<p>Download the dmg with the full bundle. Open the dmg and copy the pyexiftoolgui.app to a place of 
+your liking where /Applications is of course the most suitable place.
+<p> </p>
+
+<p><a name="InstallMacOSXSimpleBundle"></a>
+<h4 class="subsection">2.2.2 Simple application bundle (install dependencies yourself)</h4>
 
 <p>Dependencies (Meaning that you need to install them yourself):
 <ul><li>python: part of every linux system, so always available, but 2.7 required.

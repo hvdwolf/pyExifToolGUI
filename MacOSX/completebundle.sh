@@ -44,3 +44,7 @@ do
   install_name_tool -change "@loader_path/$lib" "@executable_path/$lib" $exec_file
  done
 done
+
+# Finally copy the manual into the bundle
+cp -a "../$curpath" "$MacOSfolder"
+
