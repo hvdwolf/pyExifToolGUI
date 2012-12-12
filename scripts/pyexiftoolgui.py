@@ -26,8 +26,6 @@ import os, sys, platform, shlex, subprocess, webbrowser, re
 import PySide
 from PySide.QtCore import *
 from PySide.QtGui import *
-#from PySide.QtUiTools import *
-#from PySide.QtXml import *
 
 
 #-------------------------------------------------------------------------
@@ -58,19 +56,21 @@ import programinfo
 import programstrings
 
 #import image_resources.rc
-
-from ui_MainWindow import Ui_MainWindow
+if platform.system() == "Darwin":
+   from ui_MainWindowMAC import Ui_MainWindow
+else:
+   from ui_MainWindow import Ui_MainWindow
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
-        #self.createFileMenu()
-        #self.unifiedTitleAndToolBarOnMac(True)
+        #self.setUnifiedTitleAndToolBarOnMac(True)
 # First set the menu actions
 	self.mnu_action_load_images.triggered.connect(self.loadimages)
 	self.action_Quit.triggered.connect(self.quit_application)
 	app.aboutToQuit.connect(self.quit_application)
+        self.mnu_action_modifydatetime.triggered.connect(self.modify_datetime)
         self.mnu_action_remove_metadata.triggered.connect(self.remove_metadata)
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
 	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
@@ -78,7 +78,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #self.mnu_action_mapcoordinates_tab.triggered.connect(self.mapcoordinates_help)
 	self.mnu_action_license.triggered.connect(self.show_license)
 	self.mnu_action_Donate.triggered.connect(self.open_donate_page)
-        self.mnu_action_About.triggered.connect(self.show_about_window)
+        self.mnu_action_Info.triggered.connect(self.show_about_window)
 # Load several views, buttons, comboboxes, spinboxes and labels from main screen
         self.btn_loadimages.clicked.connect(self.loadimages)
         self.showimagebutton.clicked.connect(self.showimage)
@@ -217,6 +217,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                QMessageBox.information(self,"No photos loaded yet","You did not load any photos.")
             else:
                petgfunctions.remove_metadata(self, qApp)
+        except:
+            QMessageBox.information(self,"No photos loaded yet","No photos loaded yet")
+
+
+    def modify_datetime(self):
+        try:
+            if len(self.fileNames) == 0:
+               QMessageBox.information(self,"No photos loaded yet","You did not load any photos.")
+            else:
+               petgfunctions.modifydatetime(self, qApp)
         except:
             QMessageBox.information(self,"No photos loaded yet","No photos loaded yet")
 

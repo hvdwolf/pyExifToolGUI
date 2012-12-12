@@ -1285,7 +1285,7 @@ class Ui_MainWindow(object):
         self.help_combobox.addItem("")
         self.tabWidget.addTab(self.menutab, "")
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtGui.QMenuBar(MainWindow)
+        #self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 24))
         self.menubar.setObjectName("menubar")
         self.menu_File = QtGui.QMenu(self.menubar)

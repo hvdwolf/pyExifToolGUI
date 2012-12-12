@@ -21,7 +21,7 @@
 # command line tool exiftool by Phil Harvey, but it's not
 # a complete exiftool gui: not at all.
 
-import os, sys, platform, shlex, subprocess, time, re, string
+import os, sys, platform, shlex, subprocess, time, re, string, datetime
 
 import PySide
 from PySide.QtCore import *
@@ -32,7 +32,7 @@ import programinfo
 import programstrings
 
 from ui_remove_metadata import Ui_Dialog_remove_metadata
-     
+from ui_modifydatetime import Ui_DateTimeDialog    
 
 #------------------------------------------------------------------------
 # All kind of functions
@@ -1207,6 +1207,35 @@ def info_window(self):
     QObject.connect(self.buttonBox, SIGNAL("clicked(QAbstractButton*)"), self.info_window_dialog.close)
     QMetaObject.connectSlotsByName(self.info_window_dialog)
     self.info_window_dialog.exec_()
+
+
+class dialog_modifydatetime(QDialog, Ui_DateTimeDialog):
+    # This loads the py file created by pyside-uic from the ui.
+    # the Quiloader segfaults on windows after ending the function
+    def __init__(self, parent=None):
+        super(dialog_modifydatetime, self).__init__(parent)
+        self.setupUi(self)
+
+def modifydatetime(self, qApp):
+    self.modifydatetime_dialog = dialog_modifydatetime()
+    now = datetime.datetime.now()
+    strnow = now.strftime("%Y:%m:%d %H:%M:%S")
+    self.modifydatetime_dialog.qddt_modifydate.setText(strnow)
+    self.modifydatetime_dialog.qddt_datetimeoriginal.setText(strnow)
+    self.modifydatetime_dialog.qddt_createdate.setText(strnow)
+    self.modifydatetime_dialog.qddt_shiftdatetime.setText("0000:00:00 00:00:00")
+    if self.modifydatetime_dialog.exec_() == QDialog.Accepted:
+       print "You selected Save"
+       if self.modifydatetime_dialog.chk_qddt_modifydate.isChecked():
+          print self.modifydatetime_dialog.qddt_modifydate.text()
+       if self.modifydatetime_dialog.chk_qddt_datetimeoriginal.isChecked():
+          print self.modifydatetime_dialog.qddt_datetimeoriginal.text()
+       if self.modifydatetime_dialog.chk_qddt_createdate.isChecked():
+          print self.modifydatetime_dialog.qddt_createdate.text()
+    else:
+       print "you cancelled" 
+       self.statusbar.showMessage("you canceled the \"Modification of date/time\" action")   
+
 
 
 def check_remove_metadata_boxes(self):

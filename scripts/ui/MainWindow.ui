@@ -3125,7 +3125,7 @@ This tab mimics the help and Modify menu until I have found a solution.
     <addaction name="mnu_action_Donate"/>
     <addaction name="separator"/>
     <addaction name="mnu_action_license"/>
-    <addaction name="mnu_action_About"/>
+    <addaction name="mnu_action_Info"/>
     <addaction name="separator"/>
     <addaction name="separator"/>
     <addaction name="separator"/>
@@ -3134,6 +3134,7 @@ This tab mimics the help and Modify menu until I have found a solution.
     <property name="title">
      <string>&amp;Extra</string>
     </property>
+    <addaction name="mnu_action_modifydatetime"/>
     <addaction name="mnu_action_remove_metadata"/>
    </widget>
    <addaction name="menu_File"/>
@@ -3146,9 +3147,9 @@ This tab mimics the help and Modify menu until I have found a solution.
     <string>&amp;Quit</string>
    </property>
   </action>
-  <action name="mnu_action_About">
+  <action name="mnu_action_Info">
    <property name="text">
-    <string>&amp;About</string>
+    <string>&amp;Info</string>
    </property>
   </action>
   <action name="mnu_action_exiftool">
@@ -3219,6 +3220,11 @@ This tab mimics the help and Modify menu until I have found a solution.
   <action name="mnu_action_manual">
    <property name="text">
     <string>Manual</string>
+   </property>
+  </action>
+  <action name="mnu_action_modifydatetime">
+   <property name="text">
+    <string>Modify Date/time</string>
    </property>
   </action>
  </widget>
