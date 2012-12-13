@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog_export_metadata</class>
+ <widget class="QDialog" name="Dialog_export_metadata">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>384</width>
+    <height>402</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Export metadata</string>
+  </property>
+  <widget class="QDialogButtonBox" name="qdem_dialogButtonBox">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>360</y>
+     <width>341</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QFrame" name="qdem_frame">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>90</y>
+     <width>351</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>40</y>
+      <width>251</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="rmdd_gridLayout">
+     <item row="0" column="0">
+      <widget class="QCheckBox" name="qdem_chk_export_exif_data">
+       <property name="text">
+        <string>Export exif data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QCheckBox" name="qdem_chk_export_xmp_data">
+       <property name="text">
+        <string>Export xmp data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QCheckBox" name="qdem_chk_export_iptc_data">
+       <property name="text">
+        <string>Export iptc data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QCheckBox" name="qdem_chk_export_gps_data">
+       <property name="toolTip">
+        <string>gps data can be both in exif and xmp data</string>
+       </property>
+       <property name="text">
+        <string>Export gps data</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QCheckBox" name="qdem_chk_export_all_metadata">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>162</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>(Un)Check this value will (un)check all underlying values</string>
+    </property>
+    <property name="text">
+     <string>Export all metadata</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="qdem_lbl">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>351</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>This option gives you the possibility to export the metadata from your selected photo(s). A number of formats is supported.
+All formats give an export file per selected photo, apart from csv which will give you one (big) csv file for all selected photos.</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="qdem_lbl2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>280</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Export to:</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>300</y>
+     <width>351</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <item>
+     <widget class="QRadioButton" name="qdem_txt_radiobutton">
+      <property name="toolTip">
+       <string>This option will give you a simple text output per photo</string>
+      </property>
+      <property name="text">
+       <string>Txt</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="qdem_tab_radiobutton">
+      <property name="toolTip">
+       <string>This option will give you a tab separated text output per photo</string>
+      </property>
+      <property name="text">
+       <string>tab</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="qdem_xml_radiobutton">
+      <property name="toolTip">
+       <string>This option will give you an xml formatted output file per photo</string>
+      </property>
+      <property name="text">
+       <string>xml</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="qdem_html_radiobutton">
+      <property name="toolTip">
+       <string>This option will give you a table formatted html file per photo</string>
+      </property>
+      <property name="text">
+       <string>html</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="qdem_csv_radiobutton">
+      <property name="toolTip">
+       <string>This option will give you one csv file for the selected photos</string>
+      </property>
+      <property name="text">
+       <string>csv</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>qdem_dialogButtonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Dialog_export_metadata</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>qdem_dialogButtonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Dialog_export_metadata</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

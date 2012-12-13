@@ -3042,7 +3042,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
      <x>0</x>
      <y>0</y>
      <width>1120</width>
-     <height>24</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -3073,6 +3073,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
     <property name="title">
      <string>&amp;Extra</string>
     </property>
+    <addaction name="mnu_action_export_metadata"/>
     <addaction name="mnu_action_modifydatetime"/>
     <addaction name="mnu_action_remove_metadata"/>
    </widget>
@@ -3164,6 +3165,11 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <action name="mnu_action_modifydatetime">
    <property name="text">
     <string>Modify Date/time</string>
+   </property>
+  </action>
+  <action name="mnu_action_export_metadata">
+   <property name="text">
+    <string>Export metadata</string>
    </property>
   </action>
  </widget>

@@ -31,6 +31,7 @@ from PySide.QtGui import *
 import programinfo
 import programstrings
 
+from ui_export_metadata import Ui_Dialog_export_metadata
 from ui_remove_metadata import Ui_Dialog_remove_metadata
 from ui_modifydatetime import Ui_DateTimeDialog    
 
@@ -1135,7 +1136,13 @@ def read_image_info(self, exiftool_params):
 
 def write_image_info(self, exiftoolparams, qApp):
         mysoftware = programinfo.NAME + " " + programinfo.VERSION
-        exiftoolparams = ' -P -overwrite_original_in_place -ProcessingSoftware="' + mysoftware + '" ' + exiftoolparams
+        if " -w " in exiftoolparams:
+           # exporting metadata
+           print "exporting metadata"
+           #exiftoolparams += " -overwrite_original_in_place "
+        else:
+           # writing metadata info to photos
+           exiftoolparams = ' -P -overwrite_original_in_place -ProcessingSoftware="' + mysoftware + '" ' + exiftoolparams
 
         selected_rows = self.MaintableWidget.selectedIndexes()
         print 'number of rows ' + str(len(selected_rows))
@@ -1155,10 +1162,13 @@ def write_image_info(self, exiftoolparams, qApp):
                         rows.append(row)
                         selected_image = "\"" + self.fileNames[int(row)] + "\""
                         print 'exiftool ' + exiftoolparams + ' ' + selected_image
-                        print 'exiftool "-FileModifyDate<DateTimeOriginal" ' + selected_image
+                        #print 'exiftool "-FileModifyDate<DateTimeOriginal" ' + selected_image
         	        rowcounter += 1
-        	        self.progressbar.setValue(rowcounter) 
-        	        self.statusbar.showMessage("Writing information to: " + os.path.basename(selected_image))
+        	        self.progressbar.setValue(rowcounter)
+        	        if " -w " in exiftoolparams:
+                           self.statusbar.showMessage("Exporting information from: " + os.path.basename(selected_image) + " to chosen export format")
+                        else:
+        	           self.statusbar.showMessage("Writing information to: " + os.path.basename(selected_image))
         	        qApp.processEvents()
                         if self.OSplatform in ("Windows", "win32"):
                            # First write the info
@@ -1178,7 +1188,10 @@ def write_image_info(self, exiftoolparams, qApp):
                            #args = shlex.split(command_line)
                            #p = subprocess.call(args)
         self.progressbar.hide()
-        self.statusbar.showMessage("Done writing the info to the selected image(s)")
+        if " -w " in exiftoolparams:
+           self.statusbar.showMessage("Done exporting the metadata for the selected image(s)")
+        else:
+           self.statusbar.showMessage("Done writing the info to the selected image(s)")
 #------------------------------------------------------------------------
 # Other dialogs and windows and their related functions
 def info_window(self):
@@ -1208,7 +1221,7 @@ def info_window(self):
     QMetaObject.connectSlotsByName(self.info_window_dialog)
     self.info_window_dialog.exec_()
 
-
+#---
 def qddt_shift_clicked(self):
     if self.modifydatetime_dialog.chk_qddt_shift.isChecked():
        self.modifydatetime_dialog.qddt_modifydate.setEnabled(False)
@@ -1249,9 +1262,86 @@ def modifydatetime(self, qApp):
     else:
        print "you cancelled" 
        self.statusbar.showMessage("you canceled the \"Modification of date/time\" action")   
+#---
+def check_export_metadata_boxes(self):
+    if self.export_metadata_dialog.qdem_chk_export_all_metadata.isChecked():
+        self.export_metadata_dialog.qdem_chk_export_exif_data.setChecked(1)
+        self.export_metadata_dialog.qdem_chk_export_xmp_data.setChecked(1)
+        self.export_metadata_dialog.qdem_chk_export_gps_data.setChecked(1)
+        self.export_metadata_dialog.qdem_chk_export_iptc_data.setChecked(1)
+    else:
+        self.export_metadata_dialog.qdem_chk_export_exif_data.setChecked(0)
+        self.export_metadata_dialog.qdem_chk_export_xmp_data.setChecked(0)
+        self.export_metadata_dialog.qdem_chk_export_gps_data.setChecked(0)
+        self.export_metadata_dialog.qdem_chk_export_iptc_data.setChecked(0)
+
+class dialog_export_metadata(QDialog, Ui_Dialog_export_metadata):
+    # This loads the py file created by pyside-uic from the ui.
+    # the Quiloader segfaults on windows after ending the function
+    def __init__(self, parent=None):
+        super(dialog_export_metadata, self).__init__(parent)
+        self.setupUi(self)
+
+def export_metadata(self, qApp):    
+    self.export_metadata_dialog = dialog_export_metadata()
+    # Set proper event
+    self.export_metadata_dialog.qdem_chk_export_all_metadata.clicked.connect(self.check_export_metadata_boxes)
+
+    if self.export_metadata_dialog.exec_() == QDialog.Accepted:
+            message = "You selected:\n\n"
+            empty_selection = 0
+            if self.export_metadata_dialog.qdem_chk_export_all_metadata.isChecked():
+               print "export all metadata"
+               message += "- export all metadata\n"
+               et_param = " -a -all "
+            else:
+               empty_selection = 1
+               et_param = ""
+               if self.export_metadata_dialog.qdem_chk_export_exif_data.isChecked():
+                  print "export exif data"
+                  message += "- export exif data\n"
+                  et_param += " -a -exif:all "
+                  empty_selection = 0
+               if self.export_metadata_dialog.qdem_chk_export_xmp_data.isChecked():
+                  print "export xmp data"
+                  message += "- export xmp data\n"
+                  et_param += " -a -xmp:all "
+                  empty_selection = 0
+               if self.export_metadata_dialog.qdem_chk_export_gps_data.isChecked():
+                  print "export gps data"
+                  message += "- export gps data\n"
+                  et_param += " -a -gps:all "
+                  empty_selection = 0
+               if self.export_metadata_dialog.qdem_chk_export_iptc_data.isChecked():
+                  print "export iptc data"
+                  message += "- export iptc data\n"
+                  et_param += " -a -iptc:all "
+                  empty_selection = 0                  
+            if empty_selection == 1:
+               QMessageBox.information(self,"Nothing selected", "You selected nothing. Cancel would have been the correct option.\nNothing will we done.")
+            else:
+               message += "\nAre you sure you want to export the above metadata from the selected image(s)?"
+               ret = QMessageBox.question(self, "export metadata from image(s)", message, buttons=QMessageBox.Ok|QMessageBox.Cancel) 
+               if ret == QMessageBox.Ok:
+                  print "User wants to continue"
+                  print et_param
+                  if self.export_metadata_dialog.qdem_txt_radiobutton.isChecked():
+                          et_param += " -w txt "
+                  elif self.export_metadata_dialog.qdem_tab_radiobutton.isChecked():
+                          et_param += " -t -w txt "
+                  if self.export_metadata_dialog.qdem_xml_radiobutton.isChecked():
+                          et_param += " -X -w xml "
+                  if self.export_metadata_dialog.qdem_html_radiobutton.isChecked():
+                          et_param += " -h -w html "
+                  write_image_info(self, et_param, qApp)
+               else:
+                  self.statusbar.showMessage("you canceled the \"Export of metadata\" action")   
+    else:
+            print "you cancelled" 
+            self.statusbar.showMessage("you canceled the \"Export of metadata\" action")   
 
 
-
+#---
 def check_remove_metadata_boxes(self):
     if self.rem_metadata_dialog.chk_rem_all_metadata.isChecked():
         self.rem_metadata_dialog.chk_rem_exif_data.setChecked(1)

@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Wed Dec 12 13:28:52 2012
-#      by: pyside-uic 0.2.13 running on PySide 1.1.1
+# Created: Thu Dec 13 10:32:58 2012
+#      by: pyside-uic 0.2.12 running on PySide 1.0.5
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -1271,7 +1271,7 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.preferencestab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 20))
         self.menubar.setObjectName("menubar")
         self.menu_File = QtGui.QMenu(self.menubar)
         self.menu_File.setObjectName("menu_File")
@@ -1317,6 +1317,8 @@ class Ui_MainWindow(object):
         self.mnu_action_manual.setObjectName("mnu_action_manual")
         self.mnu_action_modifydatetime = QtGui.QAction(MainWindow)
         self.mnu_action_modifydatetime.setObjectName("mnu_action_modifydatetime")
+        self.mnu_action_export_metadata = QtGui.QAction(MainWindow)
+        self.mnu_action_export_metadata.setObjectName("mnu_action_export_metadata")
         self.menu_File.addAction(self.mnu_action_load_images)
         self.menu_File.addSeparator()
         self.menu_File.addAction(self.action_Quit)
@@ -1331,6 +1333,7 @@ class Ui_MainWindow(object):
         self.menuHelp.addSeparator()
         self.menuHelp.addSeparator()
         self.menuHelp.addSeparator()
+        self.menuExtra.addAction(self.mnu_action_export_metadata)
         self.menuExtra.addAction(self.mnu_action_modifydatetime)
         self.menuExtra.addAction(self.mnu_action_remove_metadata)
         self.menubar.addAction(self.menu_File.menuAction())
@@ -1625,4 +1628,5 @@ class Ui_MainWindow(object):
         self.mnu_action_remove_metadata.setText(QtGui.QApplication.translate("MainWindow", "Remove metadata", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_manual.setText(QtGui.QApplication.translate("MainWindow", "Manual", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_modifydatetime.setText(QtGui.QApplication.translate("MainWindow", "Modify Date/time", None, QtGui.QApplication.UnicodeUTF8))
+        self.mnu_action_export_metadata.setText(QtGui.QApplication.translate("MainWindow", "Export metadata", None, QtGui.QApplication.UnicodeUTF8))
 

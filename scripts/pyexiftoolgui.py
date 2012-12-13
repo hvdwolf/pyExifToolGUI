@@ -74,6 +74,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #self.mnu_action_modifydatetime.triggered.connect(self.modify_datetime)
         self.menuExtra.removeAction(self.mnu_action_modifydatetime)
         
+        self.mnu_action_export_metadata.triggered.connect(self.export_metadata)
         self.mnu_action_remove_metadata.triggered.connect(self.remove_metadata)
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
 	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
@@ -207,6 +208,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		
     def show_license(self):
         petgfunctions.info_window(self)
+
+    def export_metadata(self):
+        try:
+            if len(self.fileNames) == 0:
+               QMessageBox.information(self,"No photos loaded yet","You did not load any photos.")
+            else:
+               petgfunctions.export_metadata(self, qApp)
+        except:
+            QMessageBox.information(self,"No photos loaded yet","No photos loaded yet")
 
     def remove_metadata(self):
         try:
@@ -423,7 +433,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 #------------------------------------------------------------------------
 # This is where we define some "empty" functions called from another script
-# which need to be "self enabled". These are for the new popup windows.
+# which need to be "self enabled". These are for the new dialogs.
+    def check_export_metadata_boxes(self):
+        petgfunctions.check_export_metadata_boxes(self)
+
     def check_remove_metadata_boxes(self):
         petgfunctions.check_remove_metadata_boxes(self)
 
