@@ -62,3 +62,29 @@ Name tags:
 -iptc  Keywords                        : Arnaldur 2008-, John
 
 exiftool -overwrite_original_in_place -xmp:Person="Piet, Jan" -xmp:PersonInImage="Piet, Jan" -iptc:Keywords="Piet, Jan" 20121114-050.jpg
+
+
+exporting
+txt output
+for i in *.jpg; do exiftool -w txt -all $i ; done
+will write to text file like somephoto.jpg -> somephoto.txt
+Can also be done as: for i in *.jpg; do exiftool -all $i > $i.txt; done
+which will create somephoto.jpg.txt
+
+xml output
+for i in *.jpg; do exiftool -w xml -X -all $i; done
+
+tab separated
+for i in *.jpg; do exiftool -t -w txt -all $i; done
+
+in html (table) format
+for i in *.jpg; do exiftool -h -w htm -all $i; done
+
+One big csv file for a lot of images
+exiftool -csv -all *.jpg > pipo.csv
+
+
+
+
+
+

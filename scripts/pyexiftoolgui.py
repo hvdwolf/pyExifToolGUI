@@ -83,6 +83,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	self.mnu_action_license.triggered.connect(self.show_license)
 	self.mnu_action_Donate.triggered.connect(self.open_donate_page)
         self.mnu_action_Info.triggered.connect(self.show_about_window)
+        # Try action for context menu
+        self.imagereference = QAction("Select photo for reference for \"Extra\" menu", self, triggered = self.reference_image)
+        self.displayphoto = QAction("Display selected photo", self, triggered = self.showimage)
 # Load several views, buttons, comboboxes, spinboxes and labels from main screen
         self.btn_loadimages.clicked.connect(self.loadimages)
         self.showimagebutton.clicked.connect(self.showimage)
@@ -188,6 +191,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         petgfunctions.loadimages(self,loadedimages, loadedimagesstring,qApp)
         # If we alread did some copying or simply working on the GPS:edit tab we need to clean it after loading new images
         #petgfunctions.clear_gps_fields(self)
+#------------------------------------------------------------------------
+# Context menu
+    def contextMenuEvent(self, event):
+        cntxtmenu = QMenu(self)
+        cntxtmenu.addAction(self.imagereference)
+        cntxtmenu.addAction(self.displayphoto)
+        cntxtmenu.addAction(self.mnu_action_license)
+#        cntxtmenu.addAction(self.mnu_action_Donate)
+#        cntxtmenu.addAction(self.mnu_action_Info)
+        cntxtmenu.exec_(event.globalPos())
+
+    def reference_image(self):
+	selected_row = self.MaintableWidget.currentRow()
+	self.referenceimage = "\"" + self.fileNames[selected_row] + "\""
+        print str(self.referenceimage)
+
 #------------------------------------------------------------------------
 # Menu actions/functions
     def show_about_window(self):
