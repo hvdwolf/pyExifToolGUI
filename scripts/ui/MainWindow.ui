@@ -3073,6 +3073,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
     <property name="title">
      <string>&amp;Extra</string>
     </property>
+    <addaction name="mnu_action_create_args"/>
     <addaction name="mnu_action_export_metadata"/>
     <addaction name="mnu_action_modifydatetime"/>
     <addaction name="mnu_action_remove_metadata"/>
@@ -3170,6 +3171,11 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <action name="mnu_action_export_metadata">
    <property name="text">
     <string>Export metadata</string>
+   </property>
+  </action>
+  <action name="mnu_action_create_args">
+   <property name="text">
+    <string>Create args file(s)</string>
    </property>
   </action>
  </widget>

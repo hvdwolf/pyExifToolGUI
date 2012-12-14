@@ -74,6 +74,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #self.mnu_action_modifydatetime.triggered.connect(self.modify_datetime)
         self.menuExtra.removeAction(self.mnu_action_modifydatetime)
         
+        self.mnu_action_create_args.triggered.connect(self.create_args)
         self.mnu_action_export_metadata.triggered.connect(self.export_metadata)
         self.mnu_action_remove_metadata.triggered.connect(self.remove_metadata)
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
@@ -84,7 +85,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	self.mnu_action_Donate.triggered.connect(self.open_donate_page)
         self.mnu_action_Info.triggered.connect(self.show_about_window)
         # Try action for context menu
-        self.imagereference = QAction("Select photo for reference for \"Extra\" menu", self, triggered = self.reference_image)
+        self.imagereference = QAction("Select reference photo for \"Extra\" menu", self, triggered = self.reference_image)
         self.displayphoto = QAction("Display selected photo", self, triggered = self.showimage)
 # Load several views, buttons, comboboxes, spinboxes and labels from main screen
         self.btn_loadimages.clicked.connect(self.loadimages)
@@ -191,15 +192,48 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         petgfunctions.loadimages(self,loadedimages, loadedimagesstring,qApp)
         # If we alread did some copying or simply working on the GPS:edit tab we need to clean it after loading new images
         #petgfunctions.clear_gps_fields(self)
+
+
+    def activate_buttons_events(self):
+        # enable buttons that can only work once we have images loaded
+        self.showimagebutton.setEnabled(True)
+        self.btn_gps_copyfrom.setEnabled(True)
+        self.btn_savegps.setEnabled(True)
+        self.btn_exif_copyfrom.setEnabled(True)
+        self.btn_saveexif.setEnabled(True)
+        if float(self.exiftoolversion) > 9.06:
+           self.btn_gpano_copyfrom.setEnabled(True)
+           self.btn_savegpano.setEnabled(True)
+        self.btn_xmp_copyfrom.setEnabled(True)
+        self.btn_savexmp.setEnabled(True)
+        self.progressbar.hide()
+        self.statusbar.showMessage("Click thumb or filename to display the image info")
+        # Set proper events
+        self.MaintableWidget.cellClicked.connect(self.imageinfo)
+        self.radioButton_all.clicked.connect(self.imageinfo)
+        self.radioButton_exif.clicked.connect(self.imageinfo)
+        self.radioButton_iptc.clicked.connect(self.imageinfo)
+        self.radioButton_gpano.clicked.connect(self.imageinfo)
+        self.radioButton_makernotes.clicked.connect(self.imageinfo)
+
 #------------------------------------------------------------------------
 # Context menu
     def contextMenuEvent(self, event):
+        cntxtmenu = ""
         cntxtmenu = QMenu(self)
-        cntxtmenu.addAction(self.imagereference)
-        cntxtmenu.addAction(self.displayphoto)
-        cntxtmenu.addAction(self.mnu_action_license)
-#        cntxtmenu.addAction(self.mnu_action_Donate)
-#        cntxtmenu.addAction(self.mnu_action_Info)
+        try:
+          if len(self.fileNames) > 0:
+           cntxtmenu.addAction(self.mnu_action_load_images)
+           cntxtmenu.addAction(self.imagereference)
+           cntxtmenu.addAction(self.displayphoto)
+           cntxtmenu.addAction(self.mnu_action_create_args)
+           cntxtmenu.addAction(self.mnu_action_export_metadata)
+           cntxtmenu.addAction(self.mnu_action_remove_metadata)
+        except:
+           # no images loaded yet
+           cntxtmenu.addAction(self.mnu_action_load_images)
+           cntxtmenu.addAction(self.mnu_action_Info)
+           cntxtmenu.addAction(self.mnu_action_license)
         cntxtmenu.exec_(event.globalPos())
 
     def reference_image(self):
@@ -228,6 +262,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def show_license(self):
         petgfunctions.info_window(self)
 
+    def create_args(self):
+        try:
+            if len(self.fileNames) == 0:
+               QMessageBox.information(self,"No photos loaded yet","You did not load any photos.")
+            else:
+               petgfunctions.create_args(self, qApp)
+        except:
+            QMessageBox.information(self,"No photos loaded yet","No photos loaded yet")
+         
     def export_metadata(self):
         try:
             if len(self.fileNames) == 0:
@@ -453,6 +496,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #------------------------------------------------------------------------
 # This is where we define some "empty" functions called from another script
 # which need to be "self enabled". These are for the new dialogs.
+    def check_create_args_boxes(self):
+        petgfunctions.check_create_args_boxes(self)
+
     def check_export_metadata_boxes(self):
         petgfunctions.check_export_metadata_boxes(self)
 

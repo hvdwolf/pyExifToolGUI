@@ -31,6 +31,7 @@ from PySide.QtGui import *
 import programinfo
 import programstrings
 
+from ui_create_args import Ui_Dialog_create_args
 from ui_export_metadata import Ui_Dialog_export_metadata
 from ui_remove_metadata import Ui_Dialog_remove_metadata
 from ui_modifydatetime import Ui_DateTimeDialog    
@@ -350,29 +351,8 @@ def loadimages(self,loadedimages, loadedimagesstring,qApp):
         	    ret= QMessageBox.about(self, "file names", "images found \n %s" % loadedimagesstring)
         	    ret= QMessageBox.about(self, "file names", "images found 2 \n %s" % imagestring)
         	#self.imagesfolderlineitem.setText(folder)
-                # enable buttons that can only work once we have images loaded
-        	self.showimagebutton.setEnabled(True)
-                self.btn_gps_copyfrom.setEnabled(True)
-                self.btn_savegps.setEnabled(True)
-                self.btn_exif_copyfrom.setEnabled(True)
-                self.btn_saveexif.setEnabled(True)
-                if float(self.exiftoolversion) > 9.06:
-                   self.btn_gpano_copyfrom.setEnabled(True)
-                   self.btn_savegpano.setEnabled(True)
-                self.btn_xmp_copyfrom.setEnabled(True)
-                self.btn_savexmp.setEnabled(True)
-        	self.progressbar.hide()
-                self.statusbar.showMessage("Click thumb or filename to display the image info")
-                # Set proper events
-                self.MaintableWidget.cellClicked.connect(self.imageinfo)
-		self.radioButton_all.clicked.connect(self.imageinfo)
-		self.radioButton_exif.clicked.connect(self.imageinfo)
-		self.radioButton_xmp.clicked.connect(self.imageinfo)
-		self.radioButton_iptc.clicked.connect(self.imageinfo)
-		self.radioButton_gps.clicked.connect(self.imageinfo)
-		self.radioButton_gpano.clicked.connect(self.imageinfo)
-		self.radioButton_makernotes.clicked.connect(self.imageinfo)
-
+                # After loading the photos we will enable buttons and events
+                self.activate_buttons_events()
 
 
 
@@ -1136,10 +1116,14 @@ def read_image_info(self, exiftool_params):
 
 def write_image_info(self, exiftoolparams, qApp):
         mysoftware = programinfo.NAME + " " + programinfo.VERSION
+        # silly if/elif/else statement. improve later
         if " -w " in exiftoolparams:
            # exporting metadata
            print "exporting metadata"
            #exiftoolparams += " -overwrite_original_in_place "
+        elif " -args " in exiftoolparams:
+           # Create args file(s) from selected images(s)
+           print "Create args file(s) from selected images(s)"
         else:
            # writing metadata info to photos
            exiftoolparams = ' -P -overwrite_original_in_place -ProcessingSoftware="' + mysoftware + '" ' + exiftoolparams
@@ -1167,6 +1151,8 @@ def write_image_info(self, exiftoolparams, qApp):
         	        self.progressbar.setValue(rowcounter)
         	        if " -w " in exiftoolparams:
                            self.statusbar.showMessage("Exporting information from: " + os.path.basename(selected_image) + " to chosen export format")
+                        elif " -args " in exiftoolparams:
+                           self.statusbar.showMessage("Create args file from: " + os.path.basename(selected_image))
                         else:
         	           self.statusbar.showMessage("Writing information to: " + os.path.basename(selected_image))
         	        qApp.processEvents()
@@ -1190,6 +1176,8 @@ def write_image_info(self, exiftoolparams, qApp):
         self.progressbar.hide()
         if " -w " in exiftoolparams:
            self.statusbar.showMessage("Done exporting the metadata for the selected image(s)")
+        elif " -args " in exiftoolparams:
+           self.statusbar.showMessage("Done creating the args file(s) for the selected image(s)")
         else:
            self.statusbar.showMessage("Done writing the info to the selected image(s)")
 #------------------------------------------------------------------------
@@ -1262,6 +1250,81 @@ def modifydatetime(self, qApp):
     else:
        print "you cancelled" 
        self.statusbar.showMessage("you canceled the \"Modification of date/time\" action")   
+
+#---
+def check_create_args_boxes(self):
+    if self.create_args_dialog.qdca_chk_args_all_metadata.isChecked():
+        self.create_args_dialog.qdca_chk_args_exif_data.setChecked(1)
+        self.create_args_dialog.qdca_chk_args_xmp_data.setChecked(1)
+        self.create_args_dialog.qdca_chk_args_gps_data.setChecked(1)
+        self.create_args_dialog.qdca_chk_args_iptc_data.setChecked(1)
+    else:
+        self.create_args_dialog.qdca_chk_args_exif_data.setChecked(0)
+        self.create_args_dialog.qdca_chk_args_xmp_data.setChecked(0)
+        self.create_args_dialog.qdca_chk_args_gps_data.setChecked(0)
+        self.create_args_dialog.qdca_chk_args_iptc_data.setChecked(0)
+
+class dialog_create_args(QDialog, Ui_Dialog_create_args):
+    # This loads the py file created by pyside-uic from the ui.
+    # the Quiloader segfaults on windows after ending the function
+    def __init__(self, parent=None):
+        super(dialog_create_args, self).__init__(parent)
+        self.setupUi(self)
+
+    print "create arguments file(s) from selected image(s)"
+
+def create_args(self, qApp):    
+    self.create_args_dialog = dialog_create_args()
+    # Set proper event
+    self.create_args_dialog.qdca_chk_args_all_metadata.clicked.connect(self.check_create_args_boxes)
+
+    if self.create_args_dialog.exec_() == QDialog.Accepted:
+            message = "You selected:\n\n"
+            empty_selection = 0
+            if self.create_args_dialog.qdca_chk_args_all_metadata.isChecked():
+               print "Add all metadata to args file(s)"
+               message += "- Add all metadata\n"
+               et_param = " -a -all "
+            else:
+               empty_selection = 1
+               et_param = ""
+               if self.create_args_dialog.qdca_chk_args_exif_data.isChecked():
+                  print "Add exif data to args file(s)"
+                  message += "- Add exif data\n"
+                  et_param += " -a -exif:all "
+                  empty_selection = 0
+               if self.create_args_dialog.qdca_chk_args_xmp_data.isChecked():
+                  print "Add xmp data to args file(s)"
+                  message += "- Add xmp data\n"
+                  et_param += " -a -xmp:all "
+                  empty_selection = 0
+               if self.create_args_dialog.qdca_chk_args_gps_data.isChecked():
+                  print "Add gps data to args file(s)"
+                  message += "- Add gps data\n"
+                  et_param += " -a -gps:all "
+                  empty_selection = 0
+               if self.create_args_dialog.qdca_chk_args_iptc_data.isChecked():
+                  print "Add iptc data to args file(s)"
+                  message += "- Add iptc data\n"
+                  et_param += " -a -iptc:all "
+                  empty_selection = 0                  
+            if empty_selection == 1:
+               QMessageBox.information(self,"Nothing selected", "You selected nothing. Cancel would have been the correct option.\nNothing will we done.")
+            else:
+               message += "\nAre you sure you want to add the above metadata from the selected image(s) to your args file(s)?"
+               ret = QMessageBox.question(self, "Add metadata from image(s) to args file(s)", message, buttons=QMessageBox.Ok|QMessageBox.Cancel) 
+               if ret == QMessageBox.Ok:
+                  print "User wants to continue"
+                  et_param += " -args --filename --directory -w args "
+                  print et_param
+                  write_image_info(self, et_param, qApp)
+               else:
+                  self.statusbar.showMessage("you canceled the \"Export metadata to args file(s)\" action")   
+    else:
+            print "you cancelled" 
+            self.statusbar.showMessage("you canceled the \"Export metadata to args file(s)\" action")
+
+            
 #---
 def check_export_metadata_boxes(self):
     if self.export_metadata_dialog.qdem_chk_export_all_metadata.isChecked():
@@ -1281,6 +1344,8 @@ class dialog_export_metadata(QDialog, Ui_Dialog_export_metadata):
     def __init__(self, parent=None):
         super(dialog_export_metadata, self).__init__(parent)
         self.setupUi(self)
+
+    print "create arguments file(s) from selected image(s)"
 
 def export_metadata(self, qApp):    
     self.export_metadata_dialog = dialog_export_metadata()
