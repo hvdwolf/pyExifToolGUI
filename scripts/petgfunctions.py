@@ -1117,10 +1117,14 @@ def read_image_info(self, exiftool_params):
 def write_image_info(self, exiftoolparams, qApp):
         mysoftware = programinfo.NAME + " " + programinfo.VERSION
         # silly if/elif/else statement. improve later
-        if " -w " in exiftoolparams:
+        if " -w! " in exiftoolparams:
            # exporting metadata
            print "exporting metadata"
            #exiftoolparams += " -overwrite_original_in_place "
+        elif " -csv " in exiftoolparams:
+           # Create args file(s) from selected images(s)
+           print "Exporting metadata from selected images(s)to csv file"
+           images_to_csv = exiftoolparams + " "
         elif " -args " in exiftoolparams:
            # Create args file(s) from selected images(s)
            print "Create args file(s) from selected images(s)"
@@ -1149,35 +1153,58 @@ def write_image_info(self, exiftoolparams, qApp):
                         #print 'exiftool "-FileModifyDate<DateTimeOriginal" ' + selected_image
         	        rowcounter += 1
         	        self.progressbar.setValue(rowcounter)
-        	        if " -w " in exiftoolparams:
-                           self.statusbar.showMessage("Exporting information from: " + os.path.basename(selected_image) + " to chosen export format")
-                        elif " -args " in exiftoolparams:
-                           self.statusbar.showMessage("Create args file from: " + os.path.basename(selected_image))
-                        else:
-        	           self.statusbar.showMessage("Writing information to: " + os.path.basename(selected_image))
-        	        qApp.processEvents()
-                        if self.OSplatform in ("Windows", "win32"):
-                           # First write the info
-                           selected_image = selected_image.replace("/", "\\")
-                           args = self.exiftoolprog + exiftoolparams + selected_image
-                           p = subprocess.call(args)
-                           ## Now reset the file date
-                           #args = self.exiftoolprog + ' "-FileModifyDate<DateTimeOriginal" ' + selected_image
-                           #p = subprocess.call(args)
-                        else:
-                           # First write the info
-                           command_line = self.exiftoolprog + exiftoolparams + selected_image
-                           args = shlex.split(command_line)
-                           p = subprocess.call(args)
-                           ## Now reset the file date
-                           #command_line = self.exiftoolprog + ' "-FileModifyDate<DateTimeOriginal" ' + selected_image
-                           #args = shlex.split(command_line)
-                           #p = subprocess.call(args)
+        	        if " -csv " in exiftoolparams:
+                           # First collect images. Do not write yet
+                           images_to_csv += " " + selected_image + " "   
+                        else: 
+                           # All other actions are performed per image.
+                           if " -w " in exiftoolparams:
+                              self.statusbar.showMessage("Exporting information from: " + os.path.basename(selected_image) + " to chosen export format")
+                           elif " -args " in exiftoolparams:
+                              self.statusbar.showMessage("Create args file from: " + os.path.basename(selected_image))
+                           else:
+                              self.statusbar.showMessage("Writing information to: " + os.path.basename(selected_image))
+                           qApp.processEvents()
+                           if self.OSplatform in ("Windows", "win32"):
+                              # First write the info
+                              selected_image = selected_image.replace("/", "\\")
+                              args = self.exiftoolprog + exiftoolparams + selected_image
+                              p = subprocess.call(args)
+                              ## Now reset the file date
+                              #args = self.exiftoolprog + ' "-FileModifyDate<DateTimeOriginal" ' + selected_image
+                              #p = subprocess.call(args)
+                           else:
+                              # First write the info
+                              command_line = self.exiftoolprog + exiftoolparams + selected_image
+                              args = shlex.split(command_line)
+                              p = subprocess.call(args)
+                              ## Now reset the file date
+                              #command_line = self.exiftoolprog + ' "-FileModifyDate<DateTimeOriginal" ' + selected_image
+                              #args = shlex.split(command_line)
+                              #p = subprocess.call(args)
         self.progressbar.hide()
+        # csv option: After having collected the images
+        if " -csv " in exiftoolparams:
+           # Use self.image_folder from loading the images
+           if self.OSplatform in ("Windows", "win32"):
+              parameters = " " + images_to_csv + " > \"" + os.path.join(self.image_folder, 'output.csv') + "\""
+              #parameters = " " + images_to_csv + " > output.csv"
+              parameters = parameters.replace("/", "\\")
+              args = self.exiftoolprog + parameters
+              print args
+              p = subprocess.call(args)
+           else:
+              command_line = self.exiftoolprog + " " + images_to_csv + " > \"" + os.path.join(self.image_folder, 'output.csv') + "\""
+              args = shlex.split(command_line)
+              print args
+              p = subprocess.call(args)
+        # end of csv option
         if " -w " in exiftoolparams:
            self.statusbar.showMessage("Done exporting the metadata for the selected image(s)")
         elif " -args " in exiftoolparams:
            self.statusbar.showMessage("Done creating the args file(s) for the selected image(s)")
+        elif " -csv " in exiftoolparams:
+           self.statusbar.showMessage("Done creating the csv file for the selected image(s)")
         else:
            self.statusbar.showMessage("Done writing the info to the selected image(s)")
 #------------------------------------------------------------------------
@@ -1391,13 +1418,15 @@ def export_metadata(self, qApp):
                   print "User wants to continue"
                   print et_param
                   if self.export_metadata_dialog.qdem_txt_radiobutton.isChecked():
-                          et_param += " -w txt "
+                          et_param += " -w! txt "
                   elif self.export_metadata_dialog.qdem_tab_radiobutton.isChecked():
-                          et_param += " -t -w txt "
-                  if self.export_metadata_dialog.qdem_xml_radiobutton.isChecked():
-                          et_param += " -X -w xml "
-                  if self.export_metadata_dialog.qdem_html_radiobutton.isChecked():
-                          et_param += " -h -w html "
+                          et_param += " -t -w! txt "
+                  elif self.export_metadata_dialog.qdem_xml_radiobutton.isChecked():
+                          et_param += " -X -w! xml "
+                  elif self.export_metadata_dialog.qdem_html_radiobutton.isChecked():
+                          et_param += " -h -w! html "
+                  elif self.export_metadata_dialog.qdem_csv_radiobutton.isChecked():
+                          et_param += " -csv "
                   write_image_info(self, et_param, qApp)
                else:
                   self.statusbar.showMessage("you canceled the \"Export of metadata\" action")   
