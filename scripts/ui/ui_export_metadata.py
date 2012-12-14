@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'export_metadata.ui'
 #
-# Created: Thu Dec 13 10:50:28 2012
-#      by: pyside-uic 0.2.12 running on PySide 1.0.5
+# Created: Fri Dec 14 19:33:40 2012
+#      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,14 +12,14 @@ from PySide import QtCore, QtGui
 class Ui_Dialog_export_metadata(object):
     def setupUi(self, Dialog_export_metadata):
         Dialog_export_metadata.setObjectName("Dialog_export_metadata")
-        Dialog_export_metadata.resize(384, 402)
+        Dialog_export_metadata.resize(428, 438)
         self.qdem_dialogButtonBox = QtGui.QDialogButtonBox(Dialog_export_metadata)
-        self.qdem_dialogButtonBox.setGeometry(QtCore.QRect(30, 360, 341, 32))
+        self.qdem_dialogButtonBox.setGeometry(QtCore.QRect(70, 390, 341, 32))
         self.qdem_dialogButtonBox.setOrientation(QtCore.Qt.Horizontal)
         self.qdem_dialogButtonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.qdem_dialogButtonBox.setObjectName("qdem_dialogButtonBox")
         self.qdem_frame = QtGui.QFrame(Dialog_export_metadata)
-        self.qdem_frame.setGeometry(QtCore.QRect(20, 90, 351, 181))
+        self.qdem_frame.setGeometry(QtCore.QRect(20, 100, 351, 181))
         self.qdem_frame.setFrameShape(QtGui.QFrame.StyledPanel)
         self.qdem_frame.setFrameShadow(QtGui.QFrame.Raised)
         self.qdem_frame.setObjectName("qdem_frame")
@@ -45,14 +45,14 @@ class Ui_Dialog_export_metadata(object):
         self.qdem_chk_export_all_metadata.setGeometry(QtCore.QRect(20, 10, 162, 17))
         self.qdem_chk_export_all_metadata.setObjectName("qdem_chk_export_all_metadata")
         self.qdem_lbl = QtGui.QLabel(Dialog_export_metadata)
-        self.qdem_lbl.setGeometry(QtCore.QRect(20, 10, 351, 81))
+        self.qdem_lbl.setGeometry(QtCore.QRect(20, 10, 391, 81))
         self.qdem_lbl.setWordWrap(True)
         self.qdem_lbl.setObjectName("qdem_lbl")
         self.qdem_lbl2 = QtGui.QLabel(Dialog_export_metadata)
-        self.qdem_lbl2.setGeometry(QtCore.QRect(20, 280, 91, 16))
+        self.qdem_lbl2.setGeometry(QtCore.QRect(20, 310, 91, 16))
         self.qdem_lbl2.setObjectName("qdem_lbl2")
         self.horizontalLayoutWidget = QtGui.QWidget(Dialog_export_metadata)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(20, 300, 351, 41))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(10, 330, 401, 41))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtGui.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(10, -1, -1, -1)
@@ -70,7 +70,11 @@ class Ui_Dialog_export_metadata(object):
         self.qdem_html_radiobutton = QtGui.QRadioButton(self.horizontalLayoutWidget)
         self.qdem_html_radiobutton.setObjectName("qdem_html_radiobutton")
         self.horizontalLayout.addWidget(self.qdem_html_radiobutton)
+        self.qdem_xmp_radiobutton = QtGui.QRadioButton(self.horizontalLayoutWidget)
+        self.qdem_xmp_radiobutton.setObjectName("qdem_xmp_radiobutton")
+        self.horizontalLayout.addWidget(self.qdem_xmp_radiobutton)
         self.qdem_csv_radiobutton = QtGui.QRadioButton(self.horizontalLayoutWidget)
+        self.qdem_csv_radiobutton.setEnabled(False)
         self.qdem_csv_radiobutton.setObjectName("qdem_csv_radiobutton")
         self.horizontalLayout.addWidget(self.qdem_csv_radiobutton)
 
@@ -99,6 +103,8 @@ class Ui_Dialog_export_metadata(object):
         self.qdem_xml_radiobutton.setText(QtGui.QApplication.translate("Dialog_export_metadata", "xml", None, QtGui.QApplication.UnicodeUTF8))
         self.qdem_html_radiobutton.setToolTip(QtGui.QApplication.translate("Dialog_export_metadata", "This option will give you a table formatted html file per photo", None, QtGui.QApplication.UnicodeUTF8))
         self.qdem_html_radiobutton.setText(QtGui.QApplication.translate("Dialog_export_metadata", "html", None, QtGui.QApplication.UnicodeUTF8))
+        self.qdem_xmp_radiobutton.setToolTip(QtGui.QApplication.translate("Dialog_export_metadata", "This option will give you an xmp structured file per photo", None, QtGui.QApplication.UnicodeUTF8))
+        self.qdem_xmp_radiobutton.setText(QtGui.QApplication.translate("Dialog_export_metadata", "xmp", None, QtGui.QApplication.UnicodeUTF8))
         self.qdem_csv_radiobutton.setToolTip(QtGui.QApplication.translate("Dialog_export_metadata", "This option will give you one csv file for the selected photos", None, QtGui.QApplication.UnicodeUTF8))
         self.qdem_csv_radiobutton.setText(QtGui.QApplication.translate("Dialog_export_metadata", "csv", None, QtGui.QApplication.UnicodeUTF8))
 

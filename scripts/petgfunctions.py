@@ -1116,6 +1116,7 @@ def read_image_info(self, exiftool_params):
 
 def write_image_info(self, exiftoolparams, qApp):
         mysoftware = programinfo.NAME + " " + programinfo.VERSION
+        xmpexportparam = ""
         # silly if/elif/else statement. improve later
         if " -w! " in exiftoolparams:
            # exporting metadata
@@ -1128,6 +1129,11 @@ def write_image_info(self, exiftoolparams, qApp):
         elif " -args " in exiftoolparams:
            # Create args file(s) from selected images(s)
            print "Create args file(s) from selected images(s)"
+        elif " xmpexport " in exiftoolparams:
+           # Create xmp file(s) from selected images(s) only for xmp data
+           print "Create xmp file(s) from selected images(s) only for xmp data"
+           # create extra variable otherwise exiftoolparams ovewrites original xmpexport string, bit clumsy but it works
+           xmpexportparam = exiftoolparams
         else:
            # writing metadata info to photos
            exiftoolparams = ' -P -overwrite_original_in_place -ProcessingSoftware="' + mysoftware + '" ' + exiftoolparams
@@ -1155,7 +1161,8 @@ def write_image_info(self, exiftoolparams, qApp):
         	        self.progressbar.setValue(rowcounter)
         	        if " -csv " in exiftoolparams:
                            # First collect images. Do not write yet
-                           images_to_csv += " " + selected_image + " "   
+                           images_to_csv += " " + selected_image + " "
+                           #print images_to_csv
                         else: 
                            # All other actions are performed per image.
                            if " -w " in exiftoolparams:
@@ -1163,7 +1170,17 @@ def write_image_info(self, exiftoolparams, qApp):
                            elif " -args " in exiftoolparams:
                               self.statusbar.showMessage("Create args file from: " + os.path.basename(selected_image))
                            else:
-                              self.statusbar.showMessage("Writing information to: " + os.path.basename(selected_image))
+                              #check whether we do an xmp to xmp file export
+                              if xmpexportparam == "":
+                                 # no it's not an xmp to xmp file export
+                                 self.statusbar.showMessage("Writing information to: " + os.path.basename(selected_image))
+                              else:
+                                 # less frequent so put the xmp export to xmp here
+                                 self.statusbar.showMessage("Create xmp file from: " + os.path.basename(selected_image))
+                                 base = os.path.basename(selected_image)
+                                 basexmp = os.path.splitext(base)[0] + ".xmp"
+                                 #print "basexmp " + basexmp
+                                 exiftoolparams = " -o \"" + os.path.join(self.image_folder, basexmp) + "\" -xmp "
                            qApp.processEvents()
                            if self.OSplatform in ("Windows", "win32"):
                               # First write the info
@@ -1176,6 +1193,7 @@ def write_image_info(self, exiftoolparams, qApp):
                            else:
                               # First write the info
                               command_line = self.exiftoolprog + exiftoolparams + selected_image
+                              print command_line
                               args = shlex.split(command_line)
                               p = subprocess.call(args)
                               ## Now reset the file date
@@ -1196,8 +1214,8 @@ def write_image_info(self, exiftoolparams, qApp):
            else:
               command_line = self.exiftoolprog + " " + images_to_csv + " > \"" + os.path.join(self.image_folder, 'output.csv') + "\""
               args = shlex.split(command_line)
-              print args
-              p = subprocess.call(args)
+              print command_line
+              p = subprocess.call(args,shell=true)
         # end of csv option
         if " -w " in exiftoolparams:
            self.statusbar.showMessage("Done exporting the metadata for the selected image(s)")
@@ -1354,6 +1372,7 @@ def create_args(self, qApp):
             
 #---
 def check_export_metadata_boxes(self):
+# This one checks whether "export all" is checked
     if self.export_metadata_dialog.qdem_chk_export_all_metadata.isChecked():
         self.export_metadata_dialog.qdem_chk_export_exif_data.setChecked(1)
         self.export_metadata_dialog.qdem_chk_export_xmp_data.setChecked(1)
@@ -1364,6 +1383,26 @@ def check_export_metadata_boxes(self):
         self.export_metadata_dialog.qdem_chk_export_xmp_data.setChecked(0)
         self.export_metadata_dialog.qdem_chk_export_gps_data.setChecked(0)
         self.export_metadata_dialog.qdem_chk_export_iptc_data.setChecked(0)
+
+def check_xmpexport_metadata_boxes(self):
+# This one checks whether the xmp export file is checked
+    #print "in the check_xmpexport_metadata_boxes"
+    if self.export_metadata_dialog.qdem_xmp_radiobutton.isChecked():
+        self.export_metadata_dialog.qdem_chk_export_all_metadata.setChecked(0)
+        self.export_metadata_dialog.qdem_chk_export_exif_data.setChecked(0)
+        self.export_metadata_dialog.qdem_chk_export_xmp_data.setChecked(1)
+        self.export_metadata_dialog.qdem_chk_export_gps_data.setChecked(0)
+        self.export_metadata_dialog.qdem_chk_export_iptc_data.setChecked(0)
+        self.export_metadata_dialog.qdem_chk_export_all_metadata.setEnabled(False)
+        self.export_metadata_dialog.qdem_chk_export_exif_data.setEnabled(False)
+        self.export_metadata_dialog.qdem_chk_export_gps_data.setEnabled(False)
+        self.export_metadata_dialog.qdem_chk_export_iptc_data.setEnabled(False)
+    else:
+        self.export_metadata_dialog.qdem_chk_export_all_metadata.setEnabled(True)
+        self.export_metadata_dialog.qdem_chk_export_exif_data.setEnabled(True)
+        self.export_metadata_dialog.qdem_chk_export_xmp_data.setEnabled(True)
+        self.export_metadata_dialog.qdem_chk_export_gps_data.setEnabled(True)
+        self.export_metadata_dialog.qdem_chk_export_iptc_data.setEnabled(True)
 
 class dialog_export_metadata(QDialog, Ui_Dialog_export_metadata):
     # This loads the py file created by pyside-uic from the ui.
@@ -1376,8 +1415,13 @@ class dialog_export_metadata(QDialog, Ui_Dialog_export_metadata):
 
 def export_metadata(self, qApp):    
     self.export_metadata_dialog = dialog_export_metadata()
-    # Set proper event
+    # Set proper events
     self.export_metadata_dialog.qdem_chk_export_all_metadata.clicked.connect(self.check_export_metadata_boxes)
+    self.export_metadata_dialog.qdem_txt_radiobutton.clicked.connect(self.check_xmpexport_metadata_boxes)
+    self.export_metadata_dialog.qdem_tab_radiobutton.clicked.connect(self.check_xmpexport_metadata_boxes)
+    self.export_metadata_dialog.qdem_xml_radiobutton.clicked.connect(self.check_xmpexport_metadata_boxes)
+    self.export_metadata_dialog.qdem_html_radiobutton.clicked.connect(self.check_xmpexport_metadata_boxes)
+    self.export_metadata_dialog.qdem_xmp_radiobutton.clicked.connect(self.check_xmpexport_metadata_boxes)
 
     if self.export_metadata_dialog.exec_() == QDialog.Accepted:
             message = "You selected:\n\n"
@@ -1425,6 +1469,8 @@ def export_metadata(self, qApp):
                           et_param += " -X -w! xml "
                   elif self.export_metadata_dialog.qdem_html_radiobutton.isChecked():
                           et_param += " -h -w! html "
+                  elif self.export_metadata_dialog.qdem_xmp_radiobutton.isChecked():
+                          et_param = " xmpexport "
                   elif self.export_metadata_dialog.qdem_csv_radiobutton.isChecked():
                           et_param += " -csv "
                   write_image_info(self, et_param, qApp)

@@ -499,6 +499,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def check_create_args_boxes(self):
         petgfunctions.check_create_args_boxes(self)
 
+    def check_xmpexport_metadata_boxes(self):
+        petgfunctions.check_xmpexport_metadata_boxes(self)
+
     def check_export_metadata_boxes(self):
         petgfunctions.check_export_metadata_boxes(self)
 
