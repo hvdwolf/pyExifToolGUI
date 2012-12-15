@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'export_metadata.ui'
 #
-# Created: Sat Dec 15 12:36:16 2012
+# Created: Sat Dec 15 13:35:13 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -19,7 +19,7 @@ class Ui_Dialog_export_metadata(object):
         self.qdem_dialogButtonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.qdem_dialogButtonBox.setObjectName("qdem_dialogButtonBox")
         self.qdem_frame = QtGui.QFrame(Dialog_export_metadata)
-        self.qdem_frame.setGeometry(QtCore.QRect(20, 100, 351, 191))
+        self.qdem_frame.setGeometry(QtCore.QRect(20, 110, 351, 191))
         self.qdem_frame.setFrameShape(QtGui.QFrame.StyledPanel)
         self.qdem_frame.setFrameShadow(QtGui.QFrame.Raised)
         self.qdem_frame.setObjectName("qdem_frame")
@@ -48,7 +48,7 @@ class Ui_Dialog_export_metadata(object):
         self.qdem_chk_export_all_metadata.setGeometry(QtCore.QRect(20, 10, 162, 17))
         self.qdem_chk_export_all_metadata.setObjectName("qdem_chk_export_all_metadata")
         self.qdem_lbl = QtGui.QLabel(Dialog_export_metadata)
-        self.qdem_lbl.setGeometry(QtCore.QRect(20, 10, 391, 81))
+        self.qdem_lbl.setGeometry(QtCore.QRect(20, 10, 391, 101))
         self.qdem_lbl.setWordWrap(True)
         self.qdem_lbl.setObjectName("qdem_lbl")
         self.qdem_lbl2 = QtGui.QLabel(Dialog_export_metadata)
