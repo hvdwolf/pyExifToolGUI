@@ -35,7 +35,7 @@
      <x>20</x>
      <y>130</y>
      <width>351</width>
-     <height>191</height>
+     <height>211</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -50,10 +50,20 @@
       <x>90</x>
       <y>50</y>
       <width>251</width>
-      <height>121</height>
+      <height>141</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="rmdd_gridLayout">
+     <item row="2" column="0">
+      <widget class="QCheckBox" name="chk_rem_gps_data">
+       <property name="toolTip">
+        <string>gps data can be both in exif and xmp data</string>
+       </property>
+       <property name="text">
+        <string>Remove gps data</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="0">
       <widget class="QCheckBox" name="chk_rem_exif_data">
        <property name="text">
@@ -75,13 +85,10 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QCheckBox" name="chk_rem_gps_data">
-       <property name="toolTip">
-        <string>gps data can be both in exif and xmp data</string>
-       </property>
+     <item row="4" column="0">
+      <widget class="QCheckBox" name="chk_rem_iccprofile_data">
        <property name="text">
-        <string>Remove gps data</string>
+        <string>Remove  ICC profile data</string>
        </property>
       </widget>
      </item>

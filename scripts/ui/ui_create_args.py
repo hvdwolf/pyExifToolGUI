@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'create_args.ui'
 #
-# Created: Fri Dec 14 19:33:40 2012
+# Created: Sat Dec 15 12:36:16 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,19 +12,19 @@ from PySide import QtCore, QtGui
 class Ui_Dialog_create_args(object):
     def setupUi(self, Dialog_create_args):
         Dialog_create_args.setObjectName("Dialog_create_args")
-        Dialog_create_args.resize(389, 314)
+        Dialog_create_args.resize(392, 338)
         self.qdca_dialogButtonBox = QtGui.QDialogButtonBox(Dialog_create_args)
-        self.qdca_dialogButtonBox.setGeometry(QtCore.QRect(30, 270, 341, 32))
+        self.qdca_dialogButtonBox.setGeometry(QtCore.QRect(30, 290, 341, 32))
         self.qdca_dialogButtonBox.setOrientation(QtCore.Qt.Horizontal)
         self.qdca_dialogButtonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.qdca_dialogButtonBox.setObjectName("qdca_dialogButtonBox")
         self.rmdd_frame = QtGui.QFrame(Dialog_create_args)
-        self.rmdd_frame.setGeometry(QtCore.QRect(20, 60, 351, 191))
+        self.rmdd_frame.setGeometry(QtCore.QRect(20, 60, 351, 211))
         self.rmdd_frame.setFrameShape(QtGui.QFrame.StyledPanel)
         self.rmdd_frame.setFrameShadow(QtGui.QFrame.Raised)
         self.rmdd_frame.setObjectName("rmdd_frame")
         self.gridLayoutWidget = QtGui.QWidget(self.rmdd_frame)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(90, 50, 251, 121))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(70, 50, 271, 141))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.rmdd_gridLayout = QtGui.QGridLayout(self.gridLayoutWidget)
         self.rmdd_gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -41,6 +41,9 @@ class Ui_Dialog_create_args(object):
         self.qdca_chk_args_gps_data = QtGui.QCheckBox(self.gridLayoutWidget)
         self.qdca_chk_args_gps_data.setObjectName("qdca_chk_args_gps_data")
         self.rmdd_gridLayout.addWidget(self.qdca_chk_args_gps_data, 2, 0, 1, 1)
+        self.qdca_chk_args_iccprofile_data = QtGui.QCheckBox(self.gridLayoutWidget)
+        self.qdca_chk_args_iccprofile_data.setObjectName("qdca_chk_args_iccprofile_data")
+        self.rmdd_gridLayout.addWidget(self.qdca_chk_args_iccprofile_data, 4, 0, 1, 1)
         self.qdca_chk_args_all_metadata = QtGui.QCheckBox(self.rmdd_frame)
         self.qdca_chk_args_all_metadata.setGeometry(QtCore.QRect(20, 20, 201, 17))
         self.qdca_chk_args_all_metadata.setObjectName("qdca_chk_args_all_metadata")
@@ -61,6 +64,7 @@ class Ui_Dialog_create_args(object):
         self.qdca_chk_args_iptc_data.setText(QtGui.QApplication.translate("Dialog_create_args", "Add iptc data to args file(s)", None, QtGui.QApplication.UnicodeUTF8))
         self.qdca_chk_args_gps_data.setToolTip(QtGui.QApplication.translate("Dialog_create_args", "gps data can be both in exif and xmp data", None, QtGui.QApplication.UnicodeUTF8))
         self.qdca_chk_args_gps_data.setText(QtGui.QApplication.translate("Dialog_create_args", "Add gps data to args file(s)", None, QtGui.QApplication.UnicodeUTF8))
+        self.qdca_chk_args_iccprofile_data.setText(QtGui.QApplication.translate("Dialog_create_args", "Add ICC profile data to args file(s)", None, QtGui.QApplication.UnicodeUTF8))
         self.qdca_chk_args_all_metadata.setToolTip(QtGui.QApplication.translate("Dialog_create_args", "(Un)Check this value will (un)check all underlying values", None, QtGui.QApplication.UnicodeUTF8))
         self.qdca_chk_args_all_metadata.setText(QtGui.QApplication.translate("Dialog_create_args", "Add all metadata to args file(s)", None, QtGui.QApplication.UnicodeUTF8))
         self.qdca_lbl.setText(QtGui.QApplication.translate("Dialog_create_args", "Which metadata from your selected image(s) do you want to add to your args file(s)?\n"

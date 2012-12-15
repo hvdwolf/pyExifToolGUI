@@ -22,8 +22,33 @@
 # a complete exiftool gui: not at all.
 
 
-# SUPPORTEDIMAGES is the list of exiftool supported images. If a new format is added to exiftool, simply add it to this (alphabetical) list
-SUPPORTEDIMAGES     = ("*.3fr *.3g2 *.3gp2 *.3gp *.3gpp "
+# SUPPORTEDIMAGES is the list of exiftool supported images. If a new image format is added to exiftool, simply add it to this (alphabetical) list
+# This list should only contain images and not other formats like videos, music and so on
+SUPPORTEDIMAGES     = ("*.3fr "
+                       "*.acr *.ai *.ait .arw "
+                       "*.bmp *.dib *.btf "
+                       "*.cos *.cr2 *.crw *.ciff *.cs1 "
+                       "*.dcm *.dc3 *.dic *.dicm *.dcp *.dcr *.djvu *.djv *.dng "
+                       "*.eip *.erf *.exif *.exr "
+                       "*.fff *.fpx "
+                       "*.gif *.hdp *.wdp *.hdr "
+                       "*.icc *.icm *.idml *.iiq *.ind *.indd *.indt *.inx *.itc "
+                       "*.j2c *.jpc *.jp2 *.jpf *.j2k *.jpm *.jpx *.jpeg *.jpg "
+                       "*.k25 *.kdc "
+                       "*.mef *.mie *.miff *.mif "
+                       "*.mos *.mpo *.mrw *.mxf "
+                       "*.nef *.nrw "
+                       "*.orf "
+                       "*.pcd *.pdf *.pef *.pgf *.pict *.pct *.pmp *.png *.jng *.mng "
+                       "*.ppm *.pbm *.pgm *.psp *.pspimage "
+                       "*.qtif *.qti *.qif "
+                       "*.raf *.raw *.rw2 *.rwl *.rwz "
+                       "*.sr2 *.srf *.srw *.svg "
+                       "*.thm *.tiff *.tif "
+                       "*.webp "
+                       "*.x3f *.xcf *.xmp")
+# SUPPORTEDFORMATS is the list of exiftool supported formats. If a new format is added to exiftool, simply add it to this (alphabetical) list
+SUPPORTEDFORMATS     = ("*.3fr *.3g2 *.3gp2 *.3gp *.3gpp "
                        "*.acr *.afm *.acfm *.amfm *.ai *.ait *.aiff *.aif *.aifc *.ape *.arw *.asf *.avi "
                        "*.bmp *.dib *.btf "
                        "*.chm *.cos *.cr2 *.crw *.ciff *.cs1 "

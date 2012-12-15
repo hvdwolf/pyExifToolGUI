@@ -35,7 +35,7 @@
      <x>20</x>
      <y>100</y>
      <width>351</width>
-     <height>181</height>
+     <height>191</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -50,7 +50,7 @@
       <x>90</x>
       <y>40</y>
       <width>251</width>
-      <height>121</height>
+      <height>141</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="rmdd_gridLayout">
@@ -82,6 +82,13 @@
        </property>
        <property name="text">
         <string>Export gps data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QCheckBox" name="qdem_chk_export_iccprofile_data">
+       <property name="text">
+        <string>Export ICC profile</string>
        </property>
       </widget>
      </item>

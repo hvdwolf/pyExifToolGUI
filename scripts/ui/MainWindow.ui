@@ -287,6 +287,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QRadioButton" name="radioButton_iccprofile">
+          <property name="text">
+           <string>ICC_profile</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QRadioButton" name="radioButton_makernotes">
           <property name="toolTip">
            <string>Select to display all available Maker notes info</string>
@@ -3042,7 +3049,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
      <x>0</x>
      <y>0</y>
      <width>1120</width>
-     <height>20</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

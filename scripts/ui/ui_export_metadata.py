@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'export_metadata.ui'
 #
-# Created: Fri Dec 14 19:33:40 2012
+# Created: Sat Dec 15 12:36:16 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -19,12 +19,12 @@ class Ui_Dialog_export_metadata(object):
         self.qdem_dialogButtonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.qdem_dialogButtonBox.setObjectName("qdem_dialogButtonBox")
         self.qdem_frame = QtGui.QFrame(Dialog_export_metadata)
-        self.qdem_frame.setGeometry(QtCore.QRect(20, 100, 351, 181))
+        self.qdem_frame.setGeometry(QtCore.QRect(20, 100, 351, 191))
         self.qdem_frame.setFrameShape(QtGui.QFrame.StyledPanel)
         self.qdem_frame.setFrameShadow(QtGui.QFrame.Raised)
         self.qdem_frame.setObjectName("qdem_frame")
         self.gridLayoutWidget = QtGui.QWidget(self.qdem_frame)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(90, 40, 251, 121))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(90, 40, 251, 141))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.rmdd_gridLayout = QtGui.QGridLayout(self.gridLayoutWidget)
         self.rmdd_gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -41,6 +41,9 @@ class Ui_Dialog_export_metadata(object):
         self.qdem_chk_export_gps_data = QtGui.QCheckBox(self.gridLayoutWidget)
         self.qdem_chk_export_gps_data.setObjectName("qdem_chk_export_gps_data")
         self.rmdd_gridLayout.addWidget(self.qdem_chk_export_gps_data, 2, 0, 1, 1)
+        self.qdem_chk_export_iccprofile_data = QtGui.QCheckBox(self.gridLayoutWidget)
+        self.qdem_chk_export_iccprofile_data.setObjectName("qdem_chk_export_iccprofile_data")
+        self.rmdd_gridLayout.addWidget(self.qdem_chk_export_iccprofile_data, 4, 0, 1, 1)
         self.qdem_chk_export_all_metadata = QtGui.QCheckBox(self.qdem_frame)
         self.qdem_chk_export_all_metadata.setGeometry(QtCore.QRect(20, 10, 162, 17))
         self.qdem_chk_export_all_metadata.setObjectName("qdem_chk_export_all_metadata")
@@ -90,6 +93,7 @@ class Ui_Dialog_export_metadata(object):
         self.qdem_chk_export_iptc_data.setText(QtGui.QApplication.translate("Dialog_export_metadata", "Export iptc data", None, QtGui.QApplication.UnicodeUTF8))
         self.qdem_chk_export_gps_data.setToolTip(QtGui.QApplication.translate("Dialog_export_metadata", "gps data can be both in exif and xmp data", None, QtGui.QApplication.UnicodeUTF8))
         self.qdem_chk_export_gps_data.setText(QtGui.QApplication.translate("Dialog_export_metadata", "Export gps data", None, QtGui.QApplication.UnicodeUTF8))
+        self.qdem_chk_export_iccprofile_data.setText(QtGui.QApplication.translate("Dialog_export_metadata", "Export ICC profile", None, QtGui.QApplication.UnicodeUTF8))
         self.qdem_chk_export_all_metadata.setToolTip(QtGui.QApplication.translate("Dialog_export_metadata", "(Un)Check this value will (un)check all underlying values", None, QtGui.QApplication.UnicodeUTF8))
         self.qdem_chk_export_all_metadata.setText(QtGui.QApplication.translate("Dialog_export_metadata", "Export all metadata", None, QtGui.QApplication.UnicodeUTF8))
         self.qdem_lbl.setText(QtGui.QApplication.translate("Dialog_export_metadata", "This option gives you the possibility to export the metadata from your selected photo(s). A number of formats is supported.\n"

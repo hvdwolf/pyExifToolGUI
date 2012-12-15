@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Fri Dec 14 19:33:40 2012
+# Created: Sat Dec 15 12:36:16 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -116,6 +116,9 @@ class Ui_MainWindow(object):
         self.radioButton_gpano = QtGui.QRadioButton(self.horizontalLayoutWidget_3)
         self.radioButton_gpano.setObjectName("radioButton_gpano")
         self.horizontalLayout_2.addWidget(self.radioButton_gpano)
+        self.radioButton_iccprofile = QtGui.QRadioButton(self.horizontalLayoutWidget_3)
+        self.radioButton_iccprofile.setObjectName("radioButton_iccprofile")
+        self.horizontalLayout_2.addWidget(self.radioButton_iccprofile)
         self.radioButton_makernotes = QtGui.QRadioButton(self.horizontalLayoutWidget_3)
         self.radioButton_makernotes.setObjectName("radioButton_makernotes")
         self.horizontalLayout_2.addWidget(self.radioButton_makernotes)
@@ -1271,7 +1274,7 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.preferencestab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 20))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 24))
         self.menubar.setObjectName("menubar")
         self.menu_File = QtGui.QMenu(self.menubar)
         self.menu_File.setObjectName("menu_File")
@@ -1371,6 +1374,7 @@ class Ui_MainWindow(object):
         self.radioButton_gps.setText(QtGui.QApplication.translate("MainWindow", "GPS/Location", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButton_gpano.setToolTip(QtGui.QApplication.translate("MainWindow", "Select to display all available Google PhotoSphere info", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButton_gpano.setText(QtGui.QApplication.translate("MainWindow", "GPano", None, QtGui.QApplication.UnicodeUTF8))
+        self.radioButton_iccprofile.setText(QtGui.QApplication.translate("MainWindow", "ICC_profile", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButton_makernotes.setToolTip(QtGui.QApplication.translate("MainWindow", "Select to display all available Maker notes info", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButton_makernotes.setText(QtGui.QApplication.translate("MainWindow", "Makernotes", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.generaltab), QtGui.QApplication.translate("MainWindow", "View Data", None, QtGui.QApplication.UnicodeUTF8))

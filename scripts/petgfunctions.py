@@ -279,7 +279,7 @@ def images_dialog(self, qApp):
     self.statusbar.showMessage("Loading images")
     qApp.processEvents()
 #    loadedimages.setNameFilter("image files (*.jpg *.tif *.tiff *.png)\nAll Files (*.*)")
-    loadedimages.setNameFilter("image files (" + programstrings.SUPPORTEDIMAGES + ")\nAll Files (*.*)")
+    loadedimages.setNameFilter("image files (" + programstrings.SUPPORTEDIMAGES + ")\nsupported formats (" + programstrings.SUPPORTEDFORMATS + ")\nAll Files (*.*)")
     loadedimages.setViewMode(QFileDialog.Detail)
     filenamesstring = ""
     if loadedimages.exec_():
@@ -373,6 +373,9 @@ def imageinfo(self, qApp):
         if self.radioButton_iptc.isChecked():
             exiftool_params = "-iptc:all"
             header = "IPTC tags"
+        if self.radioButton_iccprofile.isChecked():
+            exiftool_params = "-icc_profile:all"
+            header = "ICC profile tags"
         if self.radioButton_gps.isChecked():
             exiftool_params = "-gps:all -xmp:GPSLatitude -xmp:GPSLongitude -xmp:Location -xmp:Country -xmp:State -xmp:City"
             arguments = " -a -gps:all -xmp:GPSLatitude -xmp:GPSLongitude -xmp:Location -xmp:Country -xmp:State -xmp:City"
@@ -1180,6 +1183,9 @@ def write_image_info(self, exiftoolparams, qApp):
                                  base = os.path.basename(selected_image)
                                  basexmp = os.path.splitext(base)[0] + ".xmp"
                                  #print "basexmp " + basexmp
+                                 if os.path.isfile(os.path.join(self.image_folder, basexmp)):
+                                    # remove xmp file first as exiftool doesn't overwrite
+                                    fls = os.remove(os.path.join(self.image_folder, basexmp))
                                  exiftoolparams = " -o \"" + os.path.join(self.image_folder, basexmp) + "\" -xmp "
                            qApp.processEvents()
                            if self.OSplatform in ("Windows", "win32"):
@@ -1303,11 +1309,13 @@ def check_create_args_boxes(self):
         self.create_args_dialog.qdca_chk_args_xmp_data.setChecked(1)
         self.create_args_dialog.qdca_chk_args_gps_data.setChecked(1)
         self.create_args_dialog.qdca_chk_args_iptc_data.setChecked(1)
+        self.create_args_dialog.qdca_chk_args_iccprofile_data.setChecked(1)
     else:
         self.create_args_dialog.qdca_chk_args_exif_data.setChecked(0)
         self.create_args_dialog.qdca_chk_args_xmp_data.setChecked(0)
         self.create_args_dialog.qdca_chk_args_gps_data.setChecked(0)
         self.create_args_dialog.qdca_chk_args_iptc_data.setChecked(0)
+        self.create_args_dialog.qdca_chk_args_iccprofile_data.setChecked(0)
 
 class dialog_create_args(QDialog, Ui_Dialog_create_args):
     # This loads the py file created by pyside-uic from the ui.
@@ -1353,6 +1361,11 @@ def create_args(self, qApp):
                   message += "- Add iptc data\n"
                   et_param += " -a -iptc:all "
                   empty_selection = 0                  
+               if self.create_args_dialog.qdca_chk_args_iccprofile_data.isChecked():
+                  print "Add icc profile data to args file(s)"
+                  message += "- Add icc profile data\n"
+                  et_param += " -a -icc_profile:all "
+                  empty_selection = 0                  
             if empty_selection == 1:
                QMessageBox.information(self,"Nothing selected", "You selected nothing. Cancel would have been the correct option.\nNothing will we done.")
             else:
@@ -1378,11 +1391,13 @@ def check_export_metadata_boxes(self):
         self.export_metadata_dialog.qdem_chk_export_xmp_data.setChecked(1)
         self.export_metadata_dialog.qdem_chk_export_gps_data.setChecked(1)
         self.export_metadata_dialog.qdem_chk_export_iptc_data.setChecked(1)
+        self.export_metadata_dialog.qdem_chk_export_iccprofile_data.setChecked(1)
     else:
         self.export_metadata_dialog.qdem_chk_export_exif_data.setChecked(0)
         self.export_metadata_dialog.qdem_chk_export_xmp_data.setChecked(0)
         self.export_metadata_dialog.qdem_chk_export_gps_data.setChecked(0)
         self.export_metadata_dialog.qdem_chk_export_iptc_data.setChecked(0)
+        self.export_metadata_dialog.qdem_chk_export_iccprofile_data.setChecked(0)
 
 def check_xmpexport_metadata_boxes(self):
 # This one checks whether the xmp export file is checked
@@ -1393,16 +1408,19 @@ def check_xmpexport_metadata_boxes(self):
         self.export_metadata_dialog.qdem_chk_export_xmp_data.setChecked(1)
         self.export_metadata_dialog.qdem_chk_export_gps_data.setChecked(0)
         self.export_metadata_dialog.qdem_chk_export_iptc_data.setChecked(0)
+        self.export_metadata_dialog.qdem_chk_export_iccprofile_data.setChecked(0)
         self.export_metadata_dialog.qdem_chk_export_all_metadata.setEnabled(False)
         self.export_metadata_dialog.qdem_chk_export_exif_data.setEnabled(False)
         self.export_metadata_dialog.qdem_chk_export_gps_data.setEnabled(False)
         self.export_metadata_dialog.qdem_chk_export_iptc_data.setEnabled(False)
+        self.export_metadata_dialog.qdem_chk_export_iccprofile_data.setEnabled(False)
     else:
         self.export_metadata_dialog.qdem_chk_export_all_metadata.setEnabled(True)
         self.export_metadata_dialog.qdem_chk_export_exif_data.setEnabled(True)
         self.export_metadata_dialog.qdem_chk_export_xmp_data.setEnabled(True)
         self.export_metadata_dialog.qdem_chk_export_gps_data.setEnabled(True)
         self.export_metadata_dialog.qdem_chk_export_iptc_data.setEnabled(True)
+        self.export_metadata_dialog.qdem_chk_export_iccprofile_data.setEnabled(True)
 
 class dialog_export_metadata(QDialog, Ui_Dialog_export_metadata):
     # This loads the py file created by pyside-uic from the ui.
@@ -1453,6 +1471,11 @@ def export_metadata(self, qApp):
                   message += "- export iptc data\n"
                   et_param += " -a -iptc:all "
                   empty_selection = 0                  
+               if self.export_metadata_dialog.qdem_chk_export_iccprofile_data.isChecked():
+                  print "export icc profile data"
+                  message += "- export icc profile data\n"
+                  et_param += " -a -icc_profile:all "
+                  empty_selection = 0                  
             if empty_selection == 1:
                QMessageBox.information(self,"Nothing selected", "You selected nothing. Cancel would have been the correct option.\nNothing will we done.")
             else:
@@ -1488,11 +1511,13 @@ def check_remove_metadata_boxes(self):
         self.rem_metadata_dialog.chk_rem_xmp_data.setChecked(1)
         self.rem_metadata_dialog.chk_rem_gps_data.setChecked(1)
         self.rem_metadata_dialog.chk_rem_iptc_data.setChecked(1)
+        self.rem_metadata_dialog.chk_rem_iccprofile_data.setChecked(1)
     else:
         self.rem_metadata_dialog.chk_rem_exif_data.setChecked(0)
         self.rem_metadata_dialog.chk_rem_xmp_data.setChecked(0)
         self.rem_metadata_dialog.chk_rem_gps_data.setChecked(0)
         self.rem_metadata_dialog.chk_rem_iptc_data.setChecked(0)
+        self.rem_metadata_dialog.chk_rem_iccprofile_data.setChecked(0)
 
 
 class dialog_remove_metadata(QDialog, Ui_Dialog_remove_metadata):
@@ -1551,6 +1576,11 @@ def remove_metadata(self, qApp):
                   print "Remove iptc data"
                   message += "- Remove iptc data\n"
                   et_param += " -iptc:all= "
+                  empty_selection = 0                  
+               if self.rem_metadata_dialog.chk_rem_iccprofile_data.isChecked():
+                  print "Remove icc profile data"
+                  message += "- Remove icc profile data\n"
+                  et_param += " -icc_profile:all= "
                   empty_selection = 0                  
             if empty_selection == 1:
                QMessageBox.information(self,"Nothing selected", "You selected nothing. Cancel would have been the correct option.\nNothing will we done.")
