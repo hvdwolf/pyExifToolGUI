@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'remove_metadata.ui'
 #
-# Created: Sat Dec 15 12:36:16 2012
+# Created: Sun Dec 16 20:28:18 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -56,6 +56,12 @@ class Ui_Dialog_remove_metadata(object):
         QtCore.QObject.connect(self.rmdd_dialogButtonBox, QtCore.SIGNAL("accepted()"), Dialog_remove_metadata.accept)
         QtCore.QObject.connect(self.rmdd_dialogButtonBox, QtCore.SIGNAL("rejected()"), Dialog_remove_metadata.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog_remove_metadata)
+        Dialog_remove_metadata.setTabOrder(self.chk_rem_all_metadata, self.chk_rem_exif_data)
+        Dialog_remove_metadata.setTabOrder(self.chk_rem_exif_data, self.chk_rem_xmp_data)
+        Dialog_remove_metadata.setTabOrder(self.chk_rem_xmp_data, self.chk_rem_gps_data)
+        Dialog_remove_metadata.setTabOrder(self.chk_rem_gps_data, self.chk_rem_iptc_data)
+        Dialog_remove_metadata.setTabOrder(self.chk_rem_iptc_data, self.chk_rem_iccprofile_data)
+        Dialog_remove_metadata.setTabOrder(self.chk_rem_iccprofile_data, self.rmdd_dialogButtonBox)
 
     def retranslateUi(self, Dialog_remove_metadata):
         Dialog_remove_metadata.setWindowTitle(QtGui.QApplication.translate("Dialog_remove_metadata", "Remove metadata", None, QtGui.QApplication.UnicodeUTF8))

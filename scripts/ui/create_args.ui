@@ -129,6 +129,15 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>qdca_chk_args_all_metadata</tabstop>
+  <tabstop>qdca_chk_args_exif_data</tabstop>
+  <tabstop>qdca_chk_args_xmp_data</tabstop>
+  <tabstop>qdca_chk_args_gps_data</tabstop>
+  <tabstop>qdca_chk_args_iptc_data</tabstop>
+  <tabstop>qdca_chk_args_iccprofile_data</tabstop>
+  <tabstop>qdca_dialogButtonBox</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

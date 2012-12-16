@@ -35,7 +35,7 @@
      <x>9</x>
      <y>120</y>
      <width>481</width>
-     <height>141</height>
+     <height>151</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -50,7 +50,7 @@
       <x>0</x>
       <y>10</y>
       <width>441</width>
-      <height>121</height>
+      <height>131</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="qddatetime_gridLayout">
@@ -89,6 +89,9 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="inputMask">
+        <string>9999:99:99 99:99:99; </string>
+       </property>
       </widget>
      </item>
      <item row="1" column="3">
@@ -109,6 +112,9 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="inputMask">
+        <string>9999:99:99 99:99:99; </string>
+       </property>
       </widget>
      </item>
      <item row="3" column="1">
@@ -118,6 +124,9 @@
          <width>180</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="inputMask">
+        <string>9999:99:99 99:99:99; </string>
        </property>
       </widget>
      </item>
@@ -183,7 +192,7 @@
      <x>12</x>
      <y>10</y>
      <width>471</width>
-     <height>91</height>
+     <height>101</height>
     </rect>
    </property>
    <property name="text">
@@ -216,7 +225,7 @@ The corresponding xmp values can be updated at the same time.</string>
       <x>0</x>
       <y>10</y>
       <width>471</width>
-      <height>62</height>
+      <height>71</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -246,6 +255,9 @@ The corresponding xmp values can be updated at the same time.</string>
        </property>
        <property name="statusTip">
         <string>This field determines the shift in YYYY:MM:DD hh:mm:ss</string>
+       </property>
+       <property name="inputMask">
+        <string>9999:99:99 99:99:99; </string>
        </property>
       </widget>
      </item>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'create_args.ui'
 #
-# Created: Sat Dec 15 12:36:16 2012
+# Created: Sun Dec 16 20:28:18 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -56,6 +56,12 @@ class Ui_Dialog_create_args(object):
         QtCore.QObject.connect(self.qdca_dialogButtonBox, QtCore.SIGNAL("accepted()"), Dialog_create_args.accept)
         QtCore.QObject.connect(self.qdca_dialogButtonBox, QtCore.SIGNAL("rejected()"), Dialog_create_args.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog_create_args)
+        Dialog_create_args.setTabOrder(self.qdca_chk_args_all_metadata, self.qdca_chk_args_exif_data)
+        Dialog_create_args.setTabOrder(self.qdca_chk_args_exif_data, self.qdca_chk_args_xmp_data)
+        Dialog_create_args.setTabOrder(self.qdca_chk_args_xmp_data, self.qdca_chk_args_gps_data)
+        Dialog_create_args.setTabOrder(self.qdca_chk_args_gps_data, self.qdca_chk_args_iptc_data)
+        Dialog_create_args.setTabOrder(self.qdca_chk_args_iptc_data, self.qdca_chk_args_iccprofile_data)
+        Dialog_create_args.setTabOrder(self.qdca_chk_args_iccprofile_data, self.qdca_dialogButtonBox)
 
     def retranslateUi(self, Dialog_create_args):
         Dialog_create_args.setWindowTitle(QtGui.QApplication.translate("Dialog_create_args", "Create args file(s) from selected image(s)", None, QtGui.QApplication.UnicodeUTF8))

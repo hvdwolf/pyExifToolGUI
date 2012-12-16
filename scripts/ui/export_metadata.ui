@@ -223,6 +223,21 @@ All formats give an export file per selected photo, apart from csv which will gi
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>qdem_chk_export_all_metadata</tabstop>
+  <tabstop>qdem_chk_export_exif_data</tabstop>
+  <tabstop>qdem_chk_export_xmp_data</tabstop>
+  <tabstop>qdem_chk_export_gps_data</tabstop>
+  <tabstop>qdem_chk_export_iptc_data</tabstop>
+  <tabstop>qdem_chk_export_iccprofile_data</tabstop>
+  <tabstop>qdem_txt_radiobutton</tabstop>
+  <tabstop>qdem_tab_radiobutton</tabstop>
+  <tabstop>qdem_xml_radiobutton</tabstop>
+  <tabstop>qdem_html_radiobutton</tabstop>
+  <tabstop>qdem_xmp_radiobutton</tabstop>
+  <tabstop>qdem_csv_radiobutton</tabstop>
+  <tabstop>qdem_dialogButtonBox</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

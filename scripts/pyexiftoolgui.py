@@ -213,6 +213,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.radioButton_all.clicked.connect(self.imageinfo)
         self.radioButton_exif.clicked.connect(self.imageinfo)
         self.radioButton_iptc.clicked.connect(self.imageinfo)
+        self.radioButton_gps.clicked.connect(self.imageinfo)
         self.radioButton_gpano.clicked.connect(self.imageinfo)
         self.radioButton_iccprofile.clicked.connect(self.imageinfo)
         self.radioButton_makernotes.clicked.connect(self.imageinfo)

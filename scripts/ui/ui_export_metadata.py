@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'export_metadata.ui'
 #
-# Created: Sat Dec 15 13:35:13 2012
+# Created: Sun Dec 16 20:28:18 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -85,6 +85,18 @@ class Ui_Dialog_export_metadata(object):
         QtCore.QObject.connect(self.qdem_dialogButtonBox, QtCore.SIGNAL("accepted()"), Dialog_export_metadata.accept)
         QtCore.QObject.connect(self.qdem_dialogButtonBox, QtCore.SIGNAL("rejected()"), Dialog_export_metadata.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog_export_metadata)
+        Dialog_export_metadata.setTabOrder(self.qdem_chk_export_all_metadata, self.qdem_chk_export_exif_data)
+        Dialog_export_metadata.setTabOrder(self.qdem_chk_export_exif_data, self.qdem_chk_export_xmp_data)
+        Dialog_export_metadata.setTabOrder(self.qdem_chk_export_xmp_data, self.qdem_chk_export_gps_data)
+        Dialog_export_metadata.setTabOrder(self.qdem_chk_export_gps_data, self.qdem_chk_export_iptc_data)
+        Dialog_export_metadata.setTabOrder(self.qdem_chk_export_iptc_data, self.qdem_chk_export_iccprofile_data)
+        Dialog_export_metadata.setTabOrder(self.qdem_chk_export_iccprofile_data, self.qdem_txt_radiobutton)
+        Dialog_export_metadata.setTabOrder(self.qdem_txt_radiobutton, self.qdem_tab_radiobutton)
+        Dialog_export_metadata.setTabOrder(self.qdem_tab_radiobutton, self.qdem_xml_radiobutton)
+        Dialog_export_metadata.setTabOrder(self.qdem_xml_radiobutton, self.qdem_html_radiobutton)
+        Dialog_export_metadata.setTabOrder(self.qdem_html_radiobutton, self.qdem_xmp_radiobutton)
+        Dialog_export_metadata.setTabOrder(self.qdem_xmp_radiobutton, self.qdem_csv_radiobutton)
+        Dialog_export_metadata.setTabOrder(self.qdem_csv_radiobutton, self.qdem_dialogButtonBox)
 
     def retranslateUi(self, Dialog_export_metadata):
         Dialog_export_metadata.setWindowTitle(QtGui.QApplication.translate("Dialog_export_metadata", "Export metadata", None, QtGui.QApplication.UnicodeUTF8))

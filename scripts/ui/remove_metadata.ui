@@ -130,6 +130,15 @@ By writing &quot;clean empty&quot; fields from the Edit tabs you can more specif
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>chk_rem_all_metadata</tabstop>
+  <tabstop>chk_rem_exif_data</tabstop>
+  <tabstop>chk_rem_xmp_data</tabstop>
+  <tabstop>chk_rem_gps_data</tabstop>
+  <tabstop>chk_rem_iptc_data</tabstop>
+  <tabstop>chk_rem_iccprofile_data</tabstop>
+  <tabstop>rmdd_dialogButtonBox</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
