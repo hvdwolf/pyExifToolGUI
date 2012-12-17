@@ -314,8 +314,8 @@
      <widget class="QTabWidget" name="tabWidget_2">
       <property name="geometry">
        <rect>
-        <x>5</x>
-        <y>5</y>
+        <x>20</x>
+        <y>0</y>
         <width>701</width>
         <height>571</height>
        </rect>
@@ -360,6 +360,13 @@
            </property>
            <property name="text">
             <string>Save to selected image(s)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="chk_gps_backuporiginals">
+           <property name="text">
+            <string>Make backup of originals</string>
            </property>
           </widget>
          </item>
@@ -1198,107 +1205,19 @@ to convert the data.</string>
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>1</y>
+           <y>0</y>
            <width>261</width>
-           <height>152</height>
+           <height>141</height>
           </rect>
          </property>
-         <layout class="QGridLayout" name="gridLayout_9">
+         <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0,0,0,0" rowminimumheight="0,0,0,0,0,0">
           <property name="leftMargin">
            <number>10</number>
           </property>
           <property name="topMargin">
            <number>10</number>
           </property>
-          <item row="3" column="1">
-           <widget class="QLineEdit" name="gps_timestamp">
-            <property name="toolTip">
-             <string>Time in HH:MM:SS (24 hrs)</string>
-            </property>
-            <property name="statusTip">
-             <string>Time in HH:MM:SS (24 hrs)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_77">
-            <property name="text">
-             <string>GPS Date Stamp</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="2">
-           <widget class="QCheckBox" name="chk_gps_datestamp">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QLineEdit" name="gps_mapdatum">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_78">
-            <property name="text">
-             <string>GPS Time Stamp</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="gps_versionid">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_79">
-            <property name="text">
-             <string>GPS Map Datum</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_80">
-            <property name="text">
-             <string>GPS Version ID</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="2">
-           <widget class="QCheckBox" name="chk_gps_timestamp">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLineEdit" name="gps_datestamp">
-            <property name="toolTip">
-             <string>Date in YYYY:MM:DD</string>
-            </property>
-            <property name="statusTip">
-             <string>Date in YYYY:MM:DD</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
+          <item row="0" column="2">
            <widget class="QLabel" name="label_81">
             <property name="font">
              <font>
@@ -1308,6 +1227,94 @@ to convert the data.</string>
             </property>
             <property name="text">
              <string>Save</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="gps_versionid">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_80">
+            <property name="text">
+             <string>GPS Version ID</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_78">
+            <property name="text">
+             <string>GPS Time Stamp</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="gps_timestamp">
+            <property name="toolTip">
+             <string>Time in HH:MM:SS (24 hrs)</string>
+            </property>
+            <property name="statusTip">
+             <string>Time in HH:MM:SS (24 hrs)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QCheckBox" name="chk_gps_timestamp">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_77">
+            <property name="text">
+             <string>GPS Date Stamp</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="gps_datestamp">
+            <property name="toolTip">
+             <string>Date in YYYY:MM:DD</string>
+            </property>
+            <property name="statusTip">
+             <string>Date in YYYY:MM:DD</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QCheckBox" name="chk_gps_datestamp">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_79">
+            <property name="text">
+             <string>GPS Map Datum</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="gps_mapdatum">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -1341,7 +1348,7 @@ to convert the data.</string>
           <x>0</x>
           <y>160</y>
           <width>411</width>
-          <height>181</height>
+          <height>171</height>
          </rect>
         </property>
         <property name="frameShape">
@@ -1826,30 +1833,17 @@ to convert the data.</string>
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="verticalLayoutWidget_2">
+       <widget class="QWidget" name="gridLayoutWidget_7">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>480</y>
-          <width>674</width>
-          <height>29</height>
+          <x>30</x>
+          <y>460</y>
+          <width>651</width>
+          <height>71</height>
          </rect>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_9">
-         <item>
-          <widget class="QPushButton" name="btn_exif_copyfrom">
-           <property name="toolTip">
-            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
-           </property>
-           <property name="statusTip">
-            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
-           </property>
-           <property name="text">
-            <string>Copy from selected image</string>
-           </property>
-          </widget>
-         </item>
-         <item>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <item row="0" column="1">
           <widget class="QPushButton" name="btn_saveexif">
            <property name="toolTip">
             <string>Save the gps and xmp data to the image file</string>
@@ -1862,20 +1856,20 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QPushButton" name="btn_copy_exif_defaults">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btn_exif_copyfrom">
            <property name="toolTip">
-            <string>Copies the default Artist and Copyright from Preferences</string>
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="statusTip">
-            <string>Copies the default Artist and Copyright from Preferences</string>
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="text">
-            <string>Copy Defaults</string>
+            <string>Copy from selected image</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item row="1" column="1">
           <widget class="QPushButton" name="btn_resetexif">
            <property name="toolTip">
             <string>Empties all fields</string>
@@ -1888,7 +1882,7 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item row="1" column="2">
           <widget class="QPushButton" name="btn_exifhelp">
            <property name="font">
             <font>
@@ -1904,6 +1898,26 @@ to convert the data.</string>
            </property>
            <property name="text">
             <string>Help</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="btn_copy_exif_defaults">
+           <property name="toolTip">
+            <string>Copies the default Artist and Copyright from Preferences</string>
+           </property>
+           <property name="statusTip">
+            <string>Copies the default Artist and Copyright from Preferences</string>
+           </property>
+           <property name="text">
+            <string>Copy Defaults</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="chk_exif_backuporiginals">
+           <property name="text">
+            <string>Make backup of originals</string>
            </property>
           </widget>
          </item>
@@ -2155,43 +2169,17 @@ to convert the data.</string>
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="verticalLayoutWidget_5">
+       <widget class="QWidget" name="gridLayoutWidget_8">
         <property name="geometry">
          <rect>
-          <x>11</x>
-          <y>470</y>
-          <width>674</width>
-          <height>29</height>
+          <x>40</x>
+          <y>430</y>
+          <width>611</width>
+          <height>80</height>
          </rect>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_13">
-         <item>
-          <widget class="QPushButton" name="btn_xmp_copyfrom">
-           <property name="toolTip">
-            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
-           </property>
-           <property name="statusTip">
-            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
-           </property>
-           <property name="text">
-            <string>Copy from selected image</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_savexmp">
-           <property name="toolTip">
-            <string>Save the gps and xmp data to the image file</string>
-           </property>
-           <property name="statusTip">
-            <string>Save the gps and xmp data to the image file</string>
-           </property>
-           <property name="text">
-            <string>Save to selected image(s)</string>
-           </property>
-          </widget>
-         </item>
-         <item>
+        <layout class="QGridLayout" name="gridLayout_8">
+         <item row="1" column="0">
           <widget class="QPushButton" name="btn_copy_xmp_defaults">
            <property name="toolTip">
             <string>Copies the default Creator and Rights from Preferences</string>
@@ -2204,7 +2192,20 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="btn_savexmp">
+           <property name="toolTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="statusTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="text">
+            <string>Save to selected image(s)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
           <widget class="QPushButton" name="btn_resetxmp">
            <property name="toolTip">
             <string>Empties all fields</string>
@@ -2217,7 +2218,20 @@ to convert the data.</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btn_xmp_copyfrom">
+           <property name="toolTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="statusTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="text">
+            <string>Copy from selected image</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
           <widget class="QPushButton" name="btn_xmphelp">
            <property name="font">
             <font>
@@ -2233,6 +2247,13 @@ to convert the data.</string>
            </property>
            <property name="text">
             <string>Help</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="chk_xmp_backuporiginals">
+           <property name="text">
+            <string>Make backup of originals</string>
            </property>
           </widget>
          </item>
@@ -3203,8 +3224,6 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <tabstop>xmp_country</tabstop>
   <tabstop>xmp_state</tabstop>
   <tabstop>xmp_city</tabstop>
-  <tabstop>gps_timestamp</tabstop>
-  <tabstop>gps_datestamp</tabstop>
   <tabstop>btn_gps_copyfrom</tabstop>
   <tabstop>btn_savegps</tabstop>
   <tabstop>btn_resetgps</tabstop>
@@ -3219,11 +3238,6 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <tabstop>exif_Copyright</tabstop>
   <tabstop>exif_UserComment</tabstop>
   <tabstop>exif_ImageDescription</tabstop>
-  <tabstop>btn_exif_copyfrom</tabstop>
-  <tabstop>btn_saveexif</tabstop>
-  <tabstop>btn_copy_exif_defaults</tabstop>
-  <tabstop>btn_resetexif</tabstop>
-  <tabstop>btn_exifhelp</tabstop>
   <tabstop>xmp_creator</tabstop>
   <tabstop>xmp_rights</tabstop>
   <tabstop>xmp_description</tabstop>
@@ -3236,11 +3250,6 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <tabstop>xmp_rating4</tabstop>
   <tabstop>xmp_rating5</tabstop>
   <tabstop>xmp_person</tabstop>
-  <tabstop>btn_xmp_copyfrom</tabstop>
-  <tabstop>btn_savexmp</tabstop>
-  <tabstop>btn_copy_xmp_defaults</tabstop>
-  <tabstop>btn_resetxmp</tabstop>
-  <tabstop>btn_xmphelp</tabstop>
   <tabstop>xmp_StitchingSoftware</tabstop>
   <tabstop>xmp_CroppedAreaImageHeightPixels</tabstop>
   <tabstop>xmp_CroppedAreaImageWidthPixels</tabstop>
@@ -3291,11 +3300,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <tabstop>chk_xmp_subject</tabstop>
   <tabstop>chk_xmp_title</tabstop>
   <tabstop>chk_xmp_rating</tabstop>
-  <tabstop>chk_gps_datestamp</tabstop>
   <tabstop>chk_xmp_person</tabstop>
-  <tabstop>gps_mapdatum</tabstop>
-  <tabstop>gps_versionid</tabstop>
-  <tabstop>chk_gps_timestamp</tabstop>
   <tabstop>gps_lat_deg</tabstop>
   <tabstop>tabWidget_2</tabstop>
   <tabstop>gps_lon_sec</tabstop>

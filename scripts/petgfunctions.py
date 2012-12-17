@@ -769,7 +769,11 @@ def savegpsdata(self, qApp):
                exiftool_params +=  '-exif:GPSMapDatum="' + self.gps_mapdatum.text() + '" '
         print exiftool_params
         # Now write the data to the photo(s)
-        write_image_info(self, exiftool_params, qApp)
+        if self.chk_gps_backuporiginals.isChecked():
+           write_image_info(self, exiftool_params, qApp, True)
+        else:
+           write_image_info(self, exiftool_params, qApp, False)
+
 
 #------------------------------------------------------------------------
 # Edit -> Exif tab and actions
@@ -858,7 +862,10 @@ def saveexifdata(self, qApp):
                ImgDescr = self.exif_ImageDescription.toPlainText()
                exiftool_params +=  '-exif:ImageDescription="' + ImgDescr + '" '
 
-        write_image_info(self, exiftool_params, qApp)
+        if self.chk_exif_backuporiginals.isChecked():
+           write_image_info(self, exiftool_params, qApp, True)
+        else:
+           write_image_info(self, exiftool_params, qApp, False)
                
 #------------------------------------------------------------------------
 # Edit -> xmp tab and actions
@@ -963,7 +970,10 @@ def savexmpdata(self, qApp):
                xmptool_params +=  '-xmp:Person="' + self.xmp_person.text() + '" '
                xmptool_params +=  '-xmp:PersonInImage="' + self.xmp_person.text() + '" '
 
-        write_image_info(self, xmptool_params, qApp)
+        if self.chk_xmp_backuporiginals.isChecked():
+           write_image_info(self, xmptool_params, qApp, True)
+        else:
+           write_image_info(self, xmptool_params, qApp, False)
                
 #------------------------------------------------------------------------
 # Edit -> GPano tab and actions
@@ -1099,7 +1109,7 @@ def savegpanodata(self, qApp):
         if self.chk_xmp_InitialHorizontalFOVDegrees.isChecked():
                exiftool_params +=  '-xmp:InitialHorizontalFOVDegrees="' + self.xmp_InitialHorizontalFOVDegrees.text() + '" '
 
-        write_image_info(self, exiftool_params, qApp)
+        write_image_info(self, exiftool_params, qApp, False)
 
 
 #------------------------------------------------------------------------
@@ -1117,7 +1127,7 @@ def read_image_info(self, exiftool_params):
         p = subprocess.check_output(args, universal_newlines=True)
         return p
 
-def write_image_info(self, exiftoolparams, qApp):
+def write_image_info(self, exiftoolparams, qApp, backup_originals):
         mysoftware = programinfo.NAME + " " + programinfo.VERSION
         xmpexportparam = ""
         # silly if/elif/else statement. improve later
@@ -1139,7 +1149,10 @@ def write_image_info(self, exiftoolparams, qApp):
            xmpexportparam = exiftoolparams
         else:
            # writing metadata info to photos
-           exiftoolparams = ' -P -overwrite_original_in_place -ProcessingSoftware="' + mysoftware + '" ' + exiftoolparams
+           if backup_originals == True:
+                exiftoolparams = ' -P -ProcessingSoftware="' + mysoftware + '" ' + exiftoolparams
+           else:
+                exiftoolparams = ' -P -overwrite_original_in_place -ProcessingSoftware="' + mysoftware + '" ' + exiftoolparams
 
         selected_rows = self.MaintableWidget.selectedIndexes()
         print 'number of rows ' + str(len(selected_rows))
@@ -1375,7 +1388,7 @@ def create_args(self, qApp):
                   print "User wants to continue"
                   et_param += " -args --filename --directory -w args "
                   print et_param
-                  write_image_info(self, et_param, qApp)
+                  write_image_info(self, et_param, qApp, False)
                else:
                   self.statusbar.showMessage("you canceled the \"Export metadata to args file(s)\" action")   
     else:
@@ -1496,7 +1509,7 @@ def export_metadata(self, qApp):
                           et_param = " xmpexport "
                   elif self.export_metadata_dialog.qdem_csv_radiobutton.isChecked():
                           et_param += " -csv "
-                  write_image_info(self, et_param, qApp)
+                  write_image_info(self, et_param, qApp, False)
                else:
                   self.statusbar.showMessage("you canceled the \"Export of metadata\" action")   
     else:
@@ -1590,7 +1603,11 @@ def remove_metadata(self, qApp):
                if ret == QMessageBox.Ok:
                   print "User wants to continue"
                   print et_param
-                  write_image_info(self, et_param, qApp)
+                  if self.rem_metadata_dialog.chk_rem_backuporiginals.isChecked():
+                     print "make backup of originals"
+                     write_image_info(self, et_param, qApp, True)
+                  else:
+                     write_image_info(self, et_param, qApp, False)
                else:
                   self.statusbar.showMessage("you canceled the \"Removal of metadata\" action")   
     else:

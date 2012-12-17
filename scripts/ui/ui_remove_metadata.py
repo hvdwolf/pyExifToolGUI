@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'remove_metadata.ui'
 #
-# Created: Sun Dec 16 20:28:18 2012
+# Created: Mon Dec 17 21:44:16 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,9 +12,9 @@ from PySide import QtCore, QtGui
 class Ui_Dialog_remove_metadata(object):
     def setupUi(self, Dialog_remove_metadata):
         Dialog_remove_metadata.setObjectName("Dialog_remove_metadata")
-        Dialog_remove_metadata.resize(384, 402)
+        Dialog_remove_metadata.resize(386, 463)
         self.rmdd_dialogButtonBox = QtGui.QDialogButtonBox(Dialog_remove_metadata)
-        self.rmdd_dialogButtonBox.setGeometry(QtCore.QRect(30, 360, 341, 32))
+        self.rmdd_dialogButtonBox.setGeometry(QtCore.QRect(30, 420, 341, 32))
         self.rmdd_dialogButtonBox.setOrientation(QtCore.Qt.Horizontal)
         self.rmdd_dialogButtonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.rmdd_dialogButtonBox.setObjectName("rmdd_dialogButtonBox")
@@ -51,6 +51,10 @@ class Ui_Dialog_remove_metadata(object):
         self.rmdd_lbl.setGeometry(QtCore.QRect(20, 10, 351, 111))
         self.rmdd_lbl.setWordWrap(True)
         self.rmdd_lbl.setObjectName("rmdd_lbl")
+        self.chk_rem_backuporiginals = QtGui.QCheckBox(Dialog_remove_metadata)
+        self.chk_rem_backuporiginals.setGeometry(QtCore.QRect(22, 360, 231, 21))
+        self.chk_rem_backuporiginals.setChecked(True)
+        self.chk_rem_backuporiginals.setObjectName("chk_rem_backuporiginals")
 
         self.retranslateUi(Dialog_remove_metadata)
         QtCore.QObject.connect(self.rmdd_dialogButtonBox, QtCore.SIGNAL("accepted()"), Dialog_remove_metadata.accept)
@@ -76,4 +80,5 @@ class Ui_Dialog_remove_metadata(object):
         self.rmdd_lbl.setText(QtGui.QApplication.translate("Dialog_remove_metadata", "Which metadata do you want to remove from your selected image(s)?\n"
 "Note that this screen is meant to move all tags from a certain category from your selected images(s).\n"
 "By writing \"clean empty\" fields from the Edit tabs you can more specifically clean that metadata.", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_rem_backuporiginals.setText(QtGui.QApplication.translate("Dialog_remove_metadata", "Make backup of originals", None, QtGui.QApplication.UnicodeUTF8))
 

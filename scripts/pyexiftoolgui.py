@@ -212,6 +212,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.MaintableWidget.cellClicked.connect(self.imageinfo)
         self.radioButton_all.clicked.connect(self.imageinfo)
         self.radioButton_exif.clicked.connect(self.imageinfo)
+        self.radioButton_xmp.clicked.connect(self.imageinfo)
         self.radioButton_iptc.clicked.connect(self.imageinfo)
         self.radioButton_gps.clicked.connect(self.imageinfo)
         self.radioButton_gpano.clicked.connect(self.imageinfo)
