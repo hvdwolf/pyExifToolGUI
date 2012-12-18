@@ -1162,6 +1162,9 @@ def qddt_shift_clicked(self):
        self.modifydatetime_dialog.qddt_modifydate.setEnabled(True)
        self.modifydatetime_dialog.qddt_datetimeoriginal.setEnabled(True)
        self.modifydatetime_dialog.qddt_createdate.setEnabled(True)
+
+def qddt_use_reference_image_data(self):
+    print "pipo"
     
 
 class dialog_modifydatetime(QDialog, Ui_DateTimeDialog):
@@ -1181,6 +1184,7 @@ def modifydatetime(self, qApp):
     self.modifydatetime_dialog.qddt_shiftdatetime.setText("0000:00:00 00:00:00")
     # Set proper event
     self.modifydatetime_dialog.chk_qddt_shift.clicked.connect(self.moddialog_shift_clicked)
+    self.modifydatetime_dialog.chk_qddt_use_referencedata.clicked.connect(self.moddialog_use_reference_image_data)
 
     if self.modifydatetime_dialog.exec_() == QDialog.Accepted:
        print "You selected Save"

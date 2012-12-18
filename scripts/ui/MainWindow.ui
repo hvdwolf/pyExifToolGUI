@@ -1207,7 +1207,7 @@ to convert the data.</string>
            <x>0</x>
            <y>0</y>
            <width>261</width>
-           <height>141</height>
+           <height>147</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0,0,0" rowminimumheight="0,0,0,0,0">
@@ -3070,7 +3070,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
      <x>0</x>
      <y>0</y>
      <width>1120</width>
-     <height>20</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -3105,8 +3105,10 @@ Currently I have no intent to add functionality to this standard, maybe later.</
     <addaction name="mnu_action_export_metadata"/>
     <addaction name="separator"/>
     <addaction name="mnu_action_modifydatetime"/>
-    <addaction name="mnu_action_remove_metadata"/>
     <addaction name="mnu_action_date_to_DateTimeOriginal"/>
+    <addaction name="mnu_action_repair_jpg"/>
+    <addaction name="separator"/>
+    <addaction name="mnu_action_remove_metadata"/>
    </widget>
    <addaction name="menu_File"/>
    <addaction name="menuExtra"/>
@@ -3211,6 +3213,11 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <action name="mnu_action_date_to_DateTimeOriginal">
    <property name="text">
     <string>Set file date to DateTimeOriginal</string>
+   </property>
+  </action>
+  <action name="mnu_action_repair_jpg">
+   <property name="text">
+    <string>Repair JPG(s) with corrupted metadata</string>
    </property>
   </action>
  </widget>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modifydatetime.ui'
 #
-# Created: Mon Dec 17 21:44:16 2012
+# Created: Tue Dec 18 14:30:59 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,19 +12,19 @@ from PySide import QtCore, QtGui
 class Ui_DateTimeDialog(object):
     def setupUi(self, DateTimeDialog):
         DateTimeDialog.setObjectName("DateTimeDialog")
-        DateTimeDialog.resize(509, 477)
+        DateTimeDialog.resize(510, 529)
         self.buttonBox = QtGui.QDialogButtonBox(DateTimeDialog)
-        self.buttonBox.setGeometry(QtCore.QRect(200, 440, 301, 32))
+        self.buttonBox.setGeometry(QtCore.QRect(200, 480, 301, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Save)
         self.buttonBox.setObjectName("buttonBox")
         self.qddatettime_frame = QtGui.QFrame(DateTimeDialog)
-        self.qddatettime_frame.setGeometry(QtCore.QRect(9, 150, 481, 151))
+        self.qddatettime_frame.setGeometry(QtCore.QRect(9, 190, 481, 151))
         self.qddatettime_frame.setFrameShape(QtGui.QFrame.StyledPanel)
         self.qddatettime_frame.setFrameShadow(QtGui.QFrame.Raised)
         self.qddatettime_frame.setObjectName("qddatettime_frame")
         self.gridLayoutWidget = QtGui.QWidget(self.qddatettime_frame)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(0, 10, 441, 131))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(0, 20, 441, 121))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.qddatetime_gridLayout = QtGui.QGridLayout(self.gridLayoutWidget)
         self.qddatetime_gridLayout.setContentsMargins(10, 10, -1, -1)
@@ -76,14 +76,14 @@ class Ui_DateTimeDialog(object):
         self.label_5.setObjectName("label_5")
         self.qddatetime_gridLayout.addWidget(self.label_5, 0, 3, 1, 1)
         self.chk_qddt_updatexmp = QtGui.QCheckBox(DateTimeDialog)
-        self.chk_qddt_updatexmp.setGeometry(QtCore.QRect(10, 420, 351, 17))
+        self.chk_qddt_updatexmp.setGeometry(QtCore.QRect(10, 460, 351, 17))
         self.chk_qddt_updatexmp.setObjectName("chk_qddt_updatexmp")
         self.qddt_lbl = QtGui.QLabel(DateTimeDialog)
         self.qddt_lbl.setGeometry(QtCore.QRect(12, 10, 471, 121))
         self.qddt_lbl.setWordWrap(True)
         self.qddt_lbl.setObjectName("qddt_lbl")
         self.frame = QtGui.QFrame(DateTimeDialog)
-        self.frame.setGeometry(QtCore.QRect(10, 320, 481, 91))
+        self.frame.setGeometry(QtCore.QRect(10, 360, 481, 91))
         self.frame.setFrameShape(QtGui.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtGui.QFrame.Raised)
         self.frame.setObjectName("frame")
@@ -106,6 +106,9 @@ class Ui_DateTimeDialog(object):
         self.label_7 = QtGui.QLabel(self.gridLayoutWidget_2)
         self.label_7.setObjectName("label_7")
         self.gridLayout.addWidget(self.label_7, 1, 0, 1, 1)
+        self.chk_qddt_use_referencedata = QtGui.QCheckBox(DateTimeDialog)
+        self.chk_qddt_use_referencedata.setGeometry(QtCore.QRect(10, 160, 391, 21))
+        self.chk_qddt_use_referencedata.setObjectName("chk_qddt_use_referencedata")
 
         self.retranslateUi(DateTimeDialog)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), DateTimeDialog.accept)
@@ -142,4 +145,5 @@ class Ui_DateTimeDialog(object):
         self.qddt_shiftdatetime.setInputMask(QtGui.QApplication.translate("DateTimeDialog", "9999:99:99 99:99:99; ", None, QtGui.QApplication.UnicodeUTF8))
         self.chk_qddt_shift.setText(QtGui.QApplication.translate("DateTimeDialog", "shift above date/times", None, QtGui.QApplication.UnicodeUTF8))
         self.label_7.setText(QtGui.QApplication.translate("DateTimeDialog", "shift value", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_qddt_use_referencedata.setText(QtGui.QApplication.translate("DateTimeDialog", "Use date and time from reference image", None, QtGui.QApplication.UnicodeUTF8))
 

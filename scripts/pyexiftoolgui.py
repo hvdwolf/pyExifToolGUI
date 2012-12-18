@@ -78,6 +78,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mnu_action_export_metadata.triggered.connect(self.export_metadata)
         self.mnu_action_remove_metadata.triggered.connect(self.remove_metadata)
         self.mnu_action_date_to_DateTimeOriginal.triggered.connect(self.date_to_datetimeoriginal)
+        self.mnu_action_repair_jpg.triggered.connect(self.repair_jpg_metadata)
         #--- help menu
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
 	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
@@ -332,6 +333,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		QMessageBox.critical(self, "Error!", "Unable to open the donation web page" )
 
 
+    def repair_jpg_metadata(self):
+        et_param = "-all= -tagsfromfile @ -all:all -unsafe -F "
+        message = "If exiftool can't write to your photo it might be due to corrupted metadata. Exiftool can fix this but only "
+        message += "for the tags that are still readible. In a jpeg the image data is separated from the meta data. If your "
+        message += "photo can't be displayed in an image viewer, your image data itself is corrupt. Exiftool can't repair that.\n\n"
+        message += "Do you want to continue and repair as much metadata as possible?"
+        reply = QMessageBox.question(self, "Set file dat/time to DateTimeOriginal?", message, QMessageBox.Yes | QMessageBox.No)
+        if reply == QMessageBox.Yes:
+           # Add true to write function: Always make a backup in this case
+           petgfunctions.write_image_info(self, et_param, qApp, True)
+
 #------------------------------------------------------------------------
 # Help functions leading to html manual
 # Stupid windows doesn't recognise Anchors when starting a html file from disk
@@ -421,6 +433,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def imageinfo(self):
         petgfunctions.imageinfo(self,qApp)
+
 #------------------------------------------------------------------------
 # This is where the minimal functions for the tabs are defined. Help functions are defined above
 
@@ -523,6 +536,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def moddialog_shift_clicked(self):
         petgfunctions.qddt_shift_clicked(self)
+
+    def moddialog_use_reference_image_data(self):
+        petgfunctions.qddt_use_reference_image_data(self)
 
 #------------------------------------------------------------------------
 #------------------------------------------------------------------------
