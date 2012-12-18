@@ -1210,7 +1210,7 @@ to convert the data.</string>
            <height>141</height>
           </rect>
          </property>
-         <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0,0,0,0" rowminimumheight="0,0,0,0,0,0">
+         <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0,0,0" rowminimumheight="0,0,0,0,0">
           <property name="leftMargin">
            <number>10</number>
           </property>
@@ -3070,7 +3070,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
      <x>0</x>
      <y>0</y>
      <width>1120</width>
-     <height>24</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -3103,8 +3103,10 @@ Currently I have no intent to add functionality to this standard, maybe later.</
     </property>
     <addaction name="mnu_action_create_args"/>
     <addaction name="mnu_action_export_metadata"/>
+    <addaction name="separator"/>
     <addaction name="mnu_action_modifydatetime"/>
     <addaction name="mnu_action_remove_metadata"/>
+    <addaction name="mnu_action_date_to_DateTimeOriginal"/>
    </widget>
    <addaction name="menu_File"/>
    <addaction name="menuExtra"/>
@@ -3204,6 +3206,11 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <action name="mnu_action_create_args">
    <property name="text">
     <string>Create args file(s)</string>
+   </property>
+  </action>
+  <action name="mnu_action_date_to_DateTimeOriginal">
+   <property name="text">
+    <string>Set file date to DateTimeOriginal</string>
    </property>
   </action>
  </widget>

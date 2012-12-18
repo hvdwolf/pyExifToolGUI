@@ -70,13 +70,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	self.mnu_action_load_images.triggered.connect(self.loadimages)
 	self.action_Quit.triggered.connect(self.quit_application)
 	app.aboutToQuit.connect(self.quit_application)
+        #--- Extra menu
         # not in this 0.2 release, so disable action and hide menu item
-        #self.mnu_action_modifydatetime.triggered.connect(self.modify_datetime)
-        self.menuExtra.removeAction(self.mnu_action_modifydatetime)
-        
+        self.mnu_action_modifydatetime.triggered.connect(self.modify_datetime)
+        #self.menuExtra.removeAction(self.mnu_action_modifydatetime)
         self.mnu_action_create_args.triggered.connect(self.create_args)
         self.mnu_action_export_metadata.triggered.connect(self.export_metadata)
         self.mnu_action_remove_metadata.triggered.connect(self.remove_metadata)
+        self.mnu_action_date_to_DateTimeOriginal.triggered.connect(self.date_to_datetimeoriginal)
+        #--- help menu
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
 	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
         self.mnu_action_manual.triggered.connect(self.open_manual)
@@ -84,7 +86,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	self.mnu_action_license.triggered.connect(self.show_license)
 	self.mnu_action_Donate.triggered.connect(self.open_donate_page)
         self.mnu_action_Info.triggered.connect(self.show_about_window)
-        # Try action for context menu
+        # Set extra actions for context menu (others taken from normal menu)
         self.imagereference = QAction("Select reference photo for \"Extra\" menu", self, triggered = self.reference_image)
         self.displayphoto = QAction("Display selected photo", self, triggered = self.showimage)
 # Load several views, buttons, comboboxes, spinboxes and labels from main screen
@@ -302,6 +304,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         except:
             QMessageBox.information(self,"No photos loaded yet","No photos loaded yet")
 
+    def date_to_datetimeoriginal(self):
+        try:
+            if len(self.fileNames) == 0:
+               QMessageBox.information(self,"No photos loaded yet","You did not load any photos.")
+            else:
+               petgfunctions.date_to_datetimeoriginal(self, qApp)
+        except:
+            QMessageBox.information(self,"No photos loaded yet","No photos loaded yet")
 
     def open_pyexiftoolgui_homepage(self):
         try:
