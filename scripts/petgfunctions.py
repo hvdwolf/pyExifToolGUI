@@ -1164,8 +1164,45 @@ def qddt_shift_clicked(self):
        self.modifydatetime_dialog.qddt_createdate.setEnabled(True)
 
 def qddt_use_reference_image_data(self):
-    print "pipo"
-    
+    if self.modifydatetime_dialog.chk_qddt_use_referencedata.isChecked():
+        exiftool_params = " -exif:ModifyDate -exif:DateTimeOriginal -exif:CreateDate "
+        if self.OSplatform == "Windows":
+                self.referenceimage = self.referenceimage.replace("/", "\\")
+                args = self.exiftoolprog + " -a " + exiftool_params + " " + self.referenceimage
+        else:
+                command_line = self.exiftoolprog + " -a " + exiftool_params + " " + self.referenceimage
+                args = shlex.split(command_line)
+        #print "command line is: " + command_line
+        #print "args are: " + args
+        p = subprocess.check_output(args, universal_newlines=True)
+        p = p[:-1]
+        p_lines = re.split('\n',p)
+        for line in p_lines:
+            try: 
+               descriptor, description = re.split(':', line,1)
+               descriptor = descriptor.strip()
+               description = description.strip()
+               if descriptor == "Modify Date":
+                  modifydate = description
+                  self.modifydatetime_dialog.qddt_modifydate.setText(modifydate)
+               if descriptor == "Date/Time Original":
+                  datetimeoriginal = description
+                  self.modifydatetime_dialog.qddt_datetimeoriginal.setText(datetimeoriginal)
+               if descriptor == "Create Date":
+                  createdate = description
+                  self.modifydatetime_dialog.qddt_createdate.setText(createdate)
+            except:
+               print "always the last line that doesn't work"
+
+       #self.referenceimage
+       #result = read_image_info(self, exiftool_params)
+    else:
+       now = datetime.datetime.now()
+       strnow = now.strftime("%Y:%m:%d %H:%M:%S")
+       self.modifydatetime_dialog.qddt_modifydate.setText(strnow)
+       self.modifydatetime_dialog.qddt_datetimeoriginal.setText(strnow)
+       self.modifydatetime_dialog.qddt_createdate.setText(strnow)
+
 
 class dialog_modifydatetime(QDialog, Ui_DateTimeDialog):
     # This loads the py file created by pyside-uic from the ui.
@@ -1194,11 +1231,30 @@ def modifydatetime(self, qApp):
              QMessageBox.information(self,"No shift value set", "You selected the shift function but you left the value at \"0000:00:00 00:00:00\".\nI can't do anything. ")
              # exit function
              return
-          else:
-             print "we are going to shift date and time"
-             print self.modifydatetime_dialog.qddt_shiftdatetime.text()             
+          else: 
+             print self.modifydatetime_dialog.qddt_shiftdatetime.text() 
+             # We will first build the parameter string and then check for forward or backward timeshift and simply use
+             # a string replace on the already created exiftool_parameters string
+             exiftool_params = ""
+             if self.modifydatetime_dialog.chk_qddt_datetimeoriginal.isChecked():
+                exiftool_params += " \"-exif:DateTimeOriginal-=" + self.modifydatetime_dialog.qddt_shiftdatetime.text() + "\" "
+                if self.modifydatetime_dialog.chk_qddt_updatexmp.isChecked():
+                   exiftool_params +=  " \"-xmp:DateTimeOriginal-=" + self.modifydatetime_dialog.qddt_shiftdatetime.text() + "\" "
+             if self.modifydatetime_dialog.chk_qddt_modifydate.isChecked():
+                exiftool_params += " \"-exif:ModifyDate-=" + self.modifydatetime_dialog.qddt_shiftdatetime.text() + "\" "
+                if self.modifydatetime_dialog.chk_qddt_updatexmp.isChecked():
+                   exiftool_params +=  " \"-xmp:ModifyDate-=" + self.modifydatetime_dialog.qddt_shiftdatetime.text() + "\" "
+             if self.modifydatetime_dialog.chk_qddt_createdate.isChecked():
+                exiftool_params += " \"-exif:CreateDate-=" + self.modifydatetime_dialog.qddt_shiftdatetime.text() + "\" "
+                if self.modifydatetime_dialog.chk_qddt_updatexmp.isChecked():
+                   exiftool_params +=  " \"-xmp:DateTimeDigitized-=" + self.modifydatetime_dialog.qddt_shiftdatetime.text() + "\" "
+
+             if self.modifydatetime_dialog.chk_qddt_forward.isChecked():
+                print "we are going to shift date and time forward"
+                exiftool_params = exiftool_params.replace("-=", "+=")
+             write_image_info(self, exiftool_params, qApp, False)
        else:
-          # Update the selected date time fields
+          # Update the selected date time fields, so no date/time shift
           if self.modifydatetime_dialog.chk_qddt_modifydate.isChecked():
              print "-exif:ModifyDate " + self.modifydatetime_dialog.qddt_modifydate.text()
              exiftool_params =  '-exif:ModifyDate="' + self.modifydatetime_dialog.qddt_modifydate.text() + '" '
@@ -1597,7 +1653,7 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
                            else:
                               #check whether we do an xmp to xmp file export
                               if xmpexportparam == "":
-                                 # no it's not an xmp to xmp file export
+                                 # no it's not an xmp to xmp file export, this means all other actions
                                  self.statusbar.showMessage("Writing information to: " + os.path.basename(selected_image))
                               else:
                                  # less frequent so put the xmp export to xmp here
