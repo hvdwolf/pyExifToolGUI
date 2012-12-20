@@ -87,17 +87,17 @@ def exiftool_version_level_text(self):
            exiftoolleveltext = "Your exiftool version is " + self.exiftoolversion + " . You need >=9.07 to write to images.\n"
            exiftoolleveltext += "Exiftool and therefore pyExifToolGUI can read the tags. See the View Data tab."
            self.lbl_exiftool_leveltext.setText(exiftoolleveltext)
-#        elif float(self.exiftoolversion) < 9.09:
-        else:
+        elif float(self.exiftoolversion) < 9.09:
+        #else:
            exiftoolleveltext = "Your exiftool version is " + self.exiftoolversion + " . Tags marked with * are obligatory. " 
-           exiftoolleveltext += "\"Pose Heading Degrees\" is necessary to make it also function in Google Maps.\nExifTool currently doesn't support the disabled fields. As soon as exiftool supports them they will be enabled."
+           exiftoolleveltext += "\"Pose Heading Degrees\" is necessary to make it also function in Google Maps.\n Tags marked with *** are only writable with exiftool >= 9.09"
            self.lbl_exiftool_leveltext.setText(exiftoolleveltext)
            self.statusbar.showMessage("Your exiftoolversion is " + self.exiftoolversion)
-#        else:
-#           exiftoolleveltext = "Your exiftool version is " + self.exiftoolversion + " . Tags marked with * are obligatory. " 
-#           exiftoolleveltext += "\"Pose Heading Degrees\" is necessary to make it also function in Google Maps. Tags marked with *** are only writable with exiftool >= 9.09"
-#           self.lbl_exiftool_leveltext.setText(exiftoolleveltext)
-#           self.statusbar.showMessage("Your exiftoolversion is " + self.exiftoolversion)
+        else:
+           exiftoolleveltext = "Your exiftool version is " + self.exiftoolversion + " . Tags marked with * are obligatory. " 
+           exiftoolleveltext += "\"Pose Heading Degrees\" is necessary to make it also function in Google Maps. Tags marked with *** are only writable with exiftool >= 9.09"
+           self.lbl_exiftool_leveltext.setText(exiftoolleveltext)
+           self.statusbar.showMessage("Your exiftoolversion is " + self.exiftoolversion)
         #print "exiftoolversion : " + self.exiftoolversion
 
 
@@ -381,8 +381,8 @@ def imageinfo(self, qApp):
             arguments = " -a -gps:all -xmp:GPSLatitude -xmp:GPSLongitude -xmp:Location -xmp:Country -xmp:State -xmp:City"
             header = "GPS tags"
         if self.radioButton_gpano.isChecked():
-            exiftool_params = "-xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees"
-            arguments = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees"
+            exiftool_params = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewPitchDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees"
+            arguments = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewPitchDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees"
             header = "GPano tags"
         if self.radioButton_makernotes.isChecked():
             exiftool_params = "-makernotes:all"
@@ -1011,7 +1011,7 @@ def clear_gpano_fields(self):
 def copygpanofromselected(self,qApp):
         # First clean input fields
         clear_exif_fields(self)
-        exiftool_params = ' -e -n -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewRollDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:xmp_InitialHorizontalFOVDegrees '
+        exiftool_params = ' -e -n -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewRollDegrees -xmp:InitialViewPitchDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees '
         p = read_image_info(self, exiftool_params)
         if len(p) == 0:
            data = False

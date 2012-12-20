@@ -2353,7 +2353,7 @@ to convert the data.</string>
          <item row="12" column="0">
           <widget class="QLabel" name="label_66">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string>Initial View Pitch Degrees</string>
@@ -2363,7 +2363,7 @@ to convert the data.</string>
          <item row="14" column="0">
           <widget class="QLabel" name="label_67">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string>Initial Horizontal FOV Degrees</string>
@@ -2373,7 +2373,7 @@ to convert the data.</string>
          <item row="1" column="2">
           <widget class="QLineEdit" name="xmp_StitchingSoftware">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="toolTip">
             <string/>
@@ -2483,7 +2483,7 @@ to convert the data.</string>
          <item row="1" column="0">
           <widget class="QLabel" name="label_64">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string>Stitching Software</string>
@@ -2615,7 +2615,7 @@ to convert the data.</string>
          <item row="11" column="0">
           <widget class="QLabel" name="label_65">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string>Initial View Heading Degrees</string>
@@ -2625,80 +2625,80 @@ to convert the data.</string>
          <item row="11" column="2">
           <widget class="QLineEdit" name="xmp_InitialViewHeadingDegrees">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item row="1" column="3">
           <widget class="QCheckBox" name="chk_xmp_StitchingSoftware">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="checked">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item row="14" column="2">
           <widget class="QLineEdit" name="xmp_InitialHorizontalFOVDegrees">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item row="12" column="2">
           <widget class="QLineEdit" name="xmp_InitialViewPitchDegrees">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item row="14" column="3">
           <widget class="QCheckBox" name="chk_xmp_InitialHorizontalFOVDegrees">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="checked">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item row="12" column="3">
           <widget class="QCheckBox" name="chk_xmp_InitialViewPitchDegrees">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="checked">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item row="11" column="3">
           <widget class="QCheckBox" name="chk_xmp_InitialViewHeadingDegrees">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="checked">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item row="13" column="0">
           <widget class="QLabel" name="label_68">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string>Initial View Roll Degrees</string>
@@ -2708,20 +2708,20 @@ to convert the data.</string>
          <item row="13" column="2">
           <widget class="QLineEdit" name="xmp_InitialViewRollDegrees">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item row="13" column="3">
           <widget class="QCheckBox" name="chk_xmp_InitialViewRollDegrees">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="checked">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -2791,7 +2791,7 @@ to convert the data.</string>
          <item row="11" column="1">
           <widget class="QLabel" name="label_83">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string>***</string>
@@ -2801,7 +2801,7 @@ to convert the data.</string>
          <item row="12" column="1">
           <widget class="QLabel" name="label_84">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string>***</string>
@@ -2811,7 +2811,7 @@ to convert the data.</string>
          <item row="13" column="1">
           <widget class="QLabel" name="label_85">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string>***</string>
@@ -2821,7 +2821,7 @@ to convert the data.</string>
          <item row="14" column="1">
           <widget class="QLabel" name="label_86">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string>***</string>
