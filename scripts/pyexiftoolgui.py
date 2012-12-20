@@ -88,7 +88,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	self.mnu_action_Donate.triggered.connect(self.open_donate_page)
         self.mnu_action_Info.triggered.connect(self.show_about_window)
         # Set extra actions for context menu (others taken from normal menu)
-        self.imagereference = QAction("Select reference photo for \"Extra\" menu", self, triggered = self.reference_image)
+        self.imagereference = QAction("Select photo as reference for \"Extra\" menu", self, triggered = self.reference_image)
         self.displayphoto = QAction("Display selected photo", self, triggered = self.showimage)
 # Load several views, buttons, comboboxes, spinboxes and labels from main screen
         self.btn_loadimages.clicked.connect(self.loadimages)
