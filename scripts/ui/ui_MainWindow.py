@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Thu Dec 20 22:09:02 2012
+# Created: Thu Dec 20 23:11:30 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -461,7 +461,7 @@ class Ui_MainWindow(object):
         self.frame_3.setLineWidth(2)
         self.frame_3.setObjectName("frame_3")
         self.gridLayoutWidget_9 = QtGui.QWidget(self.frame_3)
-        self.gridLayoutWidget_9.setGeometry(QtCore.QRect(0, 0, 261, 147))
+        self.gridLayoutWidget_9.setGeometry(QtCore.QRect(0, 0, 261, 152))
         self.gridLayoutWidget_9.setObjectName("gridLayoutWidget_9")
         self.gridLayout_9 = QtGui.QGridLayout(self.gridLayoutWidget_9)
         self.gridLayout_9.setContentsMargins(10, 10, -1, -1)
@@ -966,7 +966,7 @@ class Ui_MainWindow(object):
         self.btn_gpanohelp.setObjectName("btn_gpanohelp")
         self.horizontalLayout_12.addWidget(self.btn_gpanohelp)
         self.gridLayoutWidget_5 = QtGui.QWidget(self.editgpanotab)
-        self.gridLayoutWidget_5.setGeometry(QtCore.QRect(10, 60, 611, 431))
+        self.gridLayoutWidget_5.setGeometry(QtCore.QRect(10, 60, 611, 451))
         self.gridLayoutWidget_5.setObjectName("gridLayoutWidget_5")
         self.gridLayout_4 = QtGui.QGridLayout(self.gridLayoutWidget_5)
         self.gridLayout_4.setContentsMargins(10, -1, -1, -1)
@@ -1286,7 +1286,7 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.preferencestab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 26))
         self.menubar.setObjectName("menubar")
         self.menu_File = QtGui.QMenu(self.menubar)
         self.menu_File.setObjectName("menu_File")
