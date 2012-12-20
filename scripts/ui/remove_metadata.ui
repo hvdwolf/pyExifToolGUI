@@ -138,6 +138,12 @@ By writing &quot;clean empty&quot; fields from the Edit tabs you can more specif
      <height>21</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>Overwrite your image or make a backup first</string>
+   </property>
+   <property name="statusTip">
+    <string>Overwrite your image or make a backup first</string>
+   </property>
    <property name="text">
     <string>Make backup of originals</string>
    </property>

@@ -365,6 +365,12 @@
          </item>
          <item>
           <widget class="QCheckBox" name="chk_gps_backuporiginals">
+           <property name="toolTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="statusTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
            <property name="text">
             <string>Make backup of originals</string>
            </property>
@@ -1916,6 +1922,12 @@ to convert the data.</string>
          </item>
          <item row="0" column="2">
           <widget class="QCheckBox" name="chk_exif_backuporiginals">
+           <property name="toolTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="statusTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
            <property name="text">
             <string>Make backup of originals</string>
            </property>
@@ -2252,6 +2264,12 @@ to convert the data.</string>
          </item>
          <item row="0" column="2">
           <widget class="QCheckBox" name="chk_xmp_backuporiginals">
+           <property name="toolTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="statusTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
            <property name="text">
             <string>Make backup of originals</string>
            </property>
@@ -2267,10 +2285,10 @@ to convert the data.</string>
        <widget class="QWidget" name="verticalLayoutWidget_3">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>500</y>
-          <width>571</width>
-          <height>41</height>
+          <x>10</x>
+          <y>490</y>
+          <width>681</width>
+          <height>51</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_12">
@@ -2300,6 +2318,20 @@ to convert the data.</string>
            </property>
            <property name="text">
             <string>Save to selected image(s)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="chk_gpano_backuporiginals">
+           <property name="toolTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="statusTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="text">
+            <string>Backup
+Originals</string>
            </property>
           </widget>
          </item>
@@ -2340,10 +2372,10 @@ to convert the data.</string>
        <widget class="QWidget" name="gridLayoutWidget_5">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>10</x>
           <y>60</y>
           <width>611</width>
-          <height>441</height>
+          <height>431</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
@@ -2840,9 +2872,9 @@ to convert the data.</string>
        <widget class="QWidget" name="verticalLayoutWidget_4">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>10</x>
           <y>0</y>
-          <width>661</width>
+          <width>681</width>
           <height>61</height>
          </rect>
         </property>

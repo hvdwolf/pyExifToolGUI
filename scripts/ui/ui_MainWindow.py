@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Thu Dec 20 21:22:03 2012
+# Created: Thu Dec 20 22:09:02 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -941,7 +941,7 @@ class Ui_MainWindow(object):
         self.editgpanotab = QtGui.QWidget()
         self.editgpanotab.setObjectName("editgpanotab")
         self.verticalLayoutWidget_3 = QtGui.QWidget(self.editgpanotab)
-        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(30, 500, 571, 41))
+        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(10, 490, 681, 51))
         self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
         self.horizontalLayout_12 = QtGui.QHBoxLayout(self.verticalLayoutWidget_3)
         self.horizontalLayout_12.setContentsMargins(10, -1, -1, -1)
@@ -952,6 +952,9 @@ class Ui_MainWindow(object):
         self.btn_savegpano = QtGui.QPushButton(self.verticalLayoutWidget_3)
         self.btn_savegpano.setObjectName("btn_savegpano")
         self.horizontalLayout_12.addWidget(self.btn_savegpano)
+        self.chk_gpano_backuporiginals = QtGui.QCheckBox(self.verticalLayoutWidget_3)
+        self.chk_gpano_backuporiginals.setObjectName("chk_gpano_backuporiginals")
+        self.horizontalLayout_12.addWidget(self.chk_gpano_backuporiginals)
         self.btn_resetgpano = QtGui.QPushButton(self.verticalLayoutWidget_3)
         self.btn_resetgpano.setObjectName("btn_resetgpano")
         self.horizontalLayout_12.addWidget(self.btn_resetgpano)
@@ -963,7 +966,7 @@ class Ui_MainWindow(object):
         self.btn_gpanohelp.setObjectName("btn_gpanohelp")
         self.horizontalLayout_12.addWidget(self.btn_gpanohelp)
         self.gridLayoutWidget_5 = QtGui.QWidget(self.editgpanotab)
-        self.gridLayoutWidget_5.setGeometry(QtCore.QRect(30, 60, 611, 441))
+        self.gridLayoutWidget_5.setGeometry(QtCore.QRect(10, 60, 611, 431))
         self.gridLayoutWidget_5.setObjectName("gridLayoutWidget_5")
         self.gridLayout_4 = QtGui.QGridLayout(self.gridLayoutWidget_5)
         self.gridLayout_4.setContentsMargins(10, -1, -1, -1)
@@ -1197,7 +1200,7 @@ class Ui_MainWindow(object):
         self.label_87.setObjectName("label_87")
         self.gridLayout_4.addWidget(self.label_87, 1, 1, 1, 1)
         self.verticalLayoutWidget_4 = QtGui.QWidget(self.editgpanotab)
-        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(30, 0, 661, 61))
+        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(10, 0, 681, 61))
         self.verticalLayoutWidget_4.setObjectName("verticalLayoutWidget_4")
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.verticalLayoutWidget_4)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -1533,6 +1536,8 @@ class Ui_MainWindow(object):
         self.btn_savegps.setToolTip(QtGui.QApplication.translate("MainWindow", "Save the gps and xmp data to the image file", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_savegps.setStatusTip(QtGui.QApplication.translate("MainWindow", "Save the gps and xmp data to the image file", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_savegps.setText(QtGui.QApplication.translate("MainWindow", "Save to selected image(s)", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_gps_backuporiginals.setToolTip(QtGui.QApplication.translate("MainWindow", "Overwrite your image or make a backup first", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_gps_backuporiginals.setStatusTip(QtGui.QApplication.translate("MainWindow", "Overwrite your image or make a backup first", None, QtGui.QApplication.UnicodeUTF8))
         self.chk_gps_backuporiginals.setText(QtGui.QApplication.translate("MainWindow", "Make backup of originals", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_resetgps.setToolTip(QtGui.QApplication.translate("MainWindow", "Empties all fields", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_resetgps.setStatusTip(QtGui.QApplication.translate("MainWindow", "Empties all fields", None, QtGui.QApplication.UnicodeUTF8))
@@ -1656,6 +1661,8 @@ class Ui_MainWindow(object):
         self.btn_copy_exif_defaults.setToolTip(QtGui.QApplication.translate("MainWindow", "Copies the default Artist and Copyright from Preferences", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_copy_exif_defaults.setStatusTip(QtGui.QApplication.translate("MainWindow", "Copies the default Artist and Copyright from Preferences", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_copy_exif_defaults.setText(QtGui.QApplication.translate("MainWindow", "Copy Defaults", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_exif_backuporiginals.setToolTip(QtGui.QApplication.translate("MainWindow", "Overwrite your image or make a backup first", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_exif_backuporiginals.setStatusTip(QtGui.QApplication.translate("MainWindow", "Overwrite your image or make a backup first", None, QtGui.QApplication.UnicodeUTF8))
         self.chk_exif_backuporiginals.setText(QtGui.QApplication.translate("MainWindow", "Make backup of originals", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.editexiftab), QtGui.QApplication.translate("MainWindow", "Exif", None, QtGui.QApplication.UnicodeUTF8))
         self.label_56.setText(QtGui.QApplication.translate("MainWindow", "Rating", None, QtGui.QApplication.UnicodeUTF8))
@@ -1690,6 +1697,8 @@ class Ui_MainWindow(object):
         self.btn_xmphelp.setToolTip(QtGui.QApplication.translate("MainWindow", "Opens the manual with some additional info on this screen", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_xmphelp.setStatusTip(QtGui.QApplication.translate("MainWindow", "Opens the manual with some additional info on this screen", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_xmphelp.setText(QtGui.QApplication.translate("MainWindow", "Help", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_xmp_backuporiginals.setToolTip(QtGui.QApplication.translate("MainWindow", "Overwrite your image or make a backup first", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_xmp_backuporiginals.setStatusTip(QtGui.QApplication.translate("MainWindow", "Overwrite your image or make a backup first", None, QtGui.QApplication.UnicodeUTF8))
         self.chk_xmp_backuporiginals.setText(QtGui.QApplication.translate("MainWindow", "Make backup of originals", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.editxmptab), QtGui.QApplication.translate("MainWindow", "Xmp", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_gpano_copyfrom.setToolTip(QtGui.QApplication.translate("MainWindow", "This button will copy all the (available) gps/location info from the selected image to the internal \"clipboard\"", None, QtGui.QApplication.UnicodeUTF8))
@@ -1698,6 +1707,10 @@ class Ui_MainWindow(object):
         self.btn_savegpano.setToolTip(QtGui.QApplication.translate("MainWindow", "Save the gps and xmp data to the image file", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_savegpano.setStatusTip(QtGui.QApplication.translate("MainWindow", "Save the gps and xmp data to the image file", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_savegpano.setText(QtGui.QApplication.translate("MainWindow", "Save to selected image(s)", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_gpano_backuporiginals.setToolTip(QtGui.QApplication.translate("MainWindow", "Overwrite your image or make a backup first", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_gpano_backuporiginals.setStatusTip(QtGui.QApplication.translate("MainWindow", "Overwrite your image or make a backup first", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_gpano_backuporiginals.setText(QtGui.QApplication.translate("MainWindow", "Backup\n"
+"Originals", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_resetgpano.setToolTip(QtGui.QApplication.translate("MainWindow", "Empties all fields", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_resetgpano.setStatusTip(QtGui.QApplication.translate("MainWindow", "Empties all fields", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_resetgpano.setText(QtGui.QApplication.translate("MainWindow", "Reset fields", None, QtGui.QApplication.UnicodeUTF8))

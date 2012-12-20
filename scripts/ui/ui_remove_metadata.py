@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'remove_metadata.ui'
 #
-# Created: Wed Dec 19 22:54:02 2012
+# Created: Thu Dec 20 21:47:46 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -80,5 +80,7 @@ class Ui_Dialog_remove_metadata(object):
         self.rmdd_lbl.setText(QtGui.QApplication.translate("Dialog_remove_metadata", "Which metadata do you want to remove from your selected image(s)?\n"
 "Note that this screen is meant to move all tags from a certain category from your selected images(s).\n"
 "By writing \"clean empty\" fields from the Edit tabs you can more specifically clean that metadata.", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_rem_backuporiginals.setToolTip(QtGui.QApplication.translate("Dialog_remove_metadata", "Overwrite your image or make a backup first", None, QtGui.QApplication.UnicodeUTF8))
+        self.chk_rem_backuporiginals.setStatusTip(QtGui.QApplication.translate("Dialog_remove_metadata", "Overwrite your image or make a backup first", None, QtGui.QApplication.UnicodeUTF8))
         self.chk_rem_backuporiginals.setText(QtGui.QApplication.translate("Dialog_remove_metadata", "Make backup of originals", None, QtGui.QApplication.UnicodeUTF8))
 

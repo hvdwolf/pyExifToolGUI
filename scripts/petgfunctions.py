@@ -381,8 +381,8 @@ def imageinfo(self, qApp):
             arguments = " -a -gps:all -xmp:GPSLatitude -xmp:GPSLongitude -xmp:Location -xmp:Country -xmp:State -xmp:City"
             header = "GPS tags"
         if self.radioButton_gpano.isChecked():
-            exiftool_params = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewPitchDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees"
-            arguments = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewPitchDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees"
+            exiftool_params = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewPitchDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees"
+            arguments = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewPitchDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees"
             header = "GPano tags"
         if self.radioButton_makernotes.isChecked():
             exiftool_params = "-makernotes:all"
@@ -1109,8 +1109,12 @@ def savegpanodata(self, qApp):
         if self.chk_xmp_InitialHorizontalFOVDegrees.isChecked():
                exiftool_params +=  '-xmp:InitialHorizontalFOVDegrees="' + self.xmp_InitialHorizontalFOVDegrees.text() + '" '
 
-        write_image_info(self, exiftool_params, qApp, False)
+        if self.chk_gpano_backuporiginals.isChecked():
+           write_image_info(self, exiftool_params, qApp, True)
+        else:
+           write_image_info(self, exiftool_params, qApp, False)
 
+#---
 def date_to_datetimeoriginal(self, qApp):
     exiftool_params = " -FileModifyDate<DateTimeOriginal "
     message = "If you have modified your images or copied them around or whatever other action(s), the file "
