@@ -234,6 +234,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
            cntxtmenu.addAction(self.displayphoto)
            cntxtmenu.addAction(self.mnu_action_create_args)
            cntxtmenu.addAction(self.mnu_action_export_metadata)
+           cntxtmenu.addAction(self.mnu_action_modifydatetime)
+           cntxtmenu.addAction(self.mnu_action_date_to_DateTimeOriginal)
+           cntxtmenu.addAction(self.mnu_action_repair_jpg)
            cntxtmenu.addAction(self.mnu_action_remove_metadata)
         except:
            # no images loaded yet

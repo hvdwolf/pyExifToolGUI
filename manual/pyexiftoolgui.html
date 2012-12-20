@@ -135,17 +135,20 @@ ul.toc {}
 <li><a href="#NoInstall">2.4 Run pyexiftoolgui from download folder (No Installation)</a>
 <li><a href="#UnInstall">2.5 Uninstall / Removal</a>
 </li></ul>
-<li><a name="toc_ViewData" href="#ViewData">3 View Data</a>
-<li><a name="toc_EditData" href="#EditData">4 Edit Data</a>
+<li><a name="toc_GeneralUsage" href="#contextmenu">3 General usage</a>
 <ul>
-<li><a href="#EditgpsData">4.1 Edit GPS data</a>
-<li><a href="#EditexifData">4.2 Edit exif data</a>
-<li><a href="#EditxmpData">4.3 Edit xmp data</a>
-<li><a href="#EditgpanoData">4.4 Edit GPano (Google Photosphere) data</a>
-<li><a href="#EditiptcData">4.5 IPTC data (not directly supported)</a>
-<li><a href="#workflow">4.5 Example workflow</a>
+<li><li><a name="toc_Contextmenu" href="#contextmenu">3.1 Context menu</a>
 </li></ul>
-<li><a name="toc_Contextmenu" href="#contextmenu">5 Context menu</a>
+<li><a name="toc_ViewData" href="#ViewData">4 View Data</a>
+<li><a name="toc_EditData" href="#EditData">5 Edit Data</a>
+<ul>
+<li><a href="#EditgpsData">5.1 Edit GPS data</a>
+<li><a href="#EditexifData">5.2 Edit exif data</a>
+<li><a href="#EditxmpData">5.3 Edit xmp data</a>
+<li><a href="#EditgpanoData">5.4 Edit GPano (Google Photosphere) data</a>
+<li><a href="#EditiptcData">5.5 IPTC data (not directly supported)</a>
+<li><a href="#workflow">5.5 Example workflow</a>
+</li></ul>
 <li><a name="toc_Preferences" href="#Preferences">6 Preferences</a>
 <li><a name="toc_FDL" href="#FDL">Appendix A <acronym>GNU</acronym> Free Documentation License</a>
 </li></ul>
@@ -226,15 +229,15 @@ or (Open)Suse or Fedora/Redhat.
 This also means that it doesn't do any dependency checks for necessary
 libraries and so on. 
 I wrote a simple "setup" script that takes care of installation and removal. 
-Currently this setup script only works on Linux and Mac OS X. 
-<p> For Mac OS X you can either run the simple bundle from the tar.gz and install the 
+This setup script is for Linux but can also be used on Mac OS X. 
+<p> For Mac OS X you can either run the simple bundle (via the setup script) from the tar.gz and install the 
 dependencies yourself, or you can download the full bundle.
 <p>For Windows a python executable has been created (Note to Windows users: Currently there is the 
 closed sourced but free exiftoolgui for windows. pyexiftoolgui contains the functionality 
 of applying your changes to a selected set of images at once, exiftoolgui only has 
 this on a limited set of tags. The total "functionality set" of exiftoolgui is currently
 much more then that of pyexiftoolgui, but it misses the new GPano functionality 
-(see ><a href="#EditgpanoData">paragraph 4.4</a>).
+(see <a href="#EditgpanoData">paragraph 5.4</a>).
 
 <p>You can run pyexiftoolgui without installing it: see the paragraph below the
 installation instructions. 
@@ -325,24 +328,62 @@ that the package does not create registry entries.
 <li>run the setup script from the command line with <PRE>$ sudo ./setup.py remove</PRE>.
 <li>On Mac OS X simply remove pyExifToolGUI.app from /Applications</li>
 <li>On Windows simply remove the folder containing the pyexiftoolgui.exe application.</ul>
+<p> <br></p>
+
+
+
+<p><a name="GeneralUsage"></a>
+
+<h2 class="chapter">3 General Usage</h2>
+
+<p>The program consists of a left pane containing your photos, and a right pane which consists of a set of tabs. One of these tabs contains a subset of tabs.
+A number of buttons and functions will not work, and are disabled, untill you have loaded at least one photo.
+All actions (apart from the Preferences) in the right tab work after having selected one or more of the loaded photos. 
+<h4>View data</h4>
+<p>Select an image and simply click one of the radiobuttons. If you have multiple images selected, the metadata for the last selected image will be displayed.
+
+<h4>Edit data</h4>
+<p>Here as well: All actions (apart from the Preferences) in the right tab work after having selected one or more of the loaded photos.
+<ul>
+<li>You can select one image and modify the data for it.
+<li>You can select multiple images at once and modify the data for all these images at once.
+<li>You can select one image, copy data from it, then select multiple images, and paste the (copied) data to these multiple images at once.
+</ul>
+
+<h4>"Extra" menu</h4>
+<p>This is not a tab, but a sub-menu from the menu. A few options can only be used in conjunction with the Context menu.
+<p><img title="Extra menu" src="extramenu.jpg" alt="Extra menu">
+
+<p><a name="Contextmenu"></a>
+
+<h2 class="section">3.1 Context menu</h2>
+
+<p>The program also contains "context menu" functionality, which is more generally known as "right-click" functionality. This functionality is rather limited 
+but can be very handy in some situations as it reduces mouse (kilo)meters.
+Without photos loaded, you will have a "mini" menu. With photos loaded you will get a larger context menu containing image related functions.<br>
+<img title="Context menu without photos loaded" src="contextmenu1.jpg" alt="Context menu without photos loaded"><br>
+Context menu without photos loaded.
+<p><img title="Context menu with photos loaded" src="contextmenu2.jpg" alt="Context menu with photos loaded"><br>
+Context menu with photos loaded.
+
 
 
 <p><a name="ViewData"></a>
 
-<h2 class="chapter">3 View Data</h2>
+<h2 class="chapter">4 View Data</h2>
 
 <p>The "View Data" tab gives you the option to display all available meta data from a photo (image).
-You select an image on the left side and click the radiobutton on the right side to see all or a selected 
+You select a photo on the left side and click the radiobutton on the right side to see all or a selected 
 set of data of the photo.
 As ExifTool supports a large number of image formats, but also movie formats, all available metadata that
 ExifTool can read, can be displayed by pyExifToolGUI as well. The file filter, used to select files from the file dialog, 
-is not only set to images, but to the total set of file extensions that exiftool supports. Note that some of the data, 
+is by default set to all image types pexiftool supports, but can also be set to the total set of file extensions that exiftool supports (and simply to "All files (*.*)"). Note that some of the data, 
 or subsets of data, is simply not available in the non-image formats.<br>
-pyExifToolGUI will try to make a preview (thumbnail) of the image, but will not always succeed. In case of other
- formats like movies and so on, the creation of a preview will most likely not function.</p>
+pyExifToolGUI will try to make a preview (thumbnail) of the image, but will not always succeed as most RAW formats are not supported. In case of other
+ formats like movies and so on, the creation of a preview will almost certain not function.</p>
 <img src="viewdatatab.jpg" alt="viewdatatab.jpg" title="The View Data tab" width="1100">
 <p>Note that the "Display Image" button will display the selected image in the default image viewer. If this "image" 
-happens to be a movie, the movie will be displayed in the default movie/media viewer if the format is supported.
+happens to be a movie, the movie will be displayed in the default movie/media viewer if the format is supported. (Right-click ->Display image works as well).
 <p>Image rotation is not always correctly "interpreted" by the underlying QT image plugins that create the 
 preview thumbnails. If you think it is not correct you can simply select the image, click on the "Display Image" button 
 and see whether your "normal" image viewer displays it correctly, meaning that your image has the correct setting.
@@ -350,7 +391,7 @@ and see whether your "normal" image viewer displays it correctly, meaning that y
 
 <p><a name="EditData"></a>
 
-<h2 class="chapter">4 Edit Data</h2>
+<h2 class="chapter">5 Edit Data</h2>
 
 <p>The application is a so called "tabbed" application. The "Edit Data" tab is the (obvious) tab
 that contains the sub tabs with all the edit options. Currently a moderate set of tabs have been 
@@ -358,7 +399,7 @@ defined but the order, number and even content can change during the further dev
 
 <p><a name="EditgpsData"></a>
 
-<h3 class="section">4.1 Edit gps Data</h3>
+<h3 class="section">5.1 Edit gps Data</h3>
 
 <p>This tab is used to add GPS data to your images. This tab works on a combination of
 exif, xmp and iptc gps data as latitude, longitude and altitude are covered in both the exif and
@@ -385,7 +426,7 @@ the selected image into the input fields.</li>
 
 
 <p><a name="EditexifData"></a>
-<h3 class="section">4.2 Edit exif Data</h3>
+<h3 class="section">5.2 Edit exif Data</h3>
 
 <p>This tab is used to add (a limited amount of) exif data to your selected image(s).</p>
 <img src="editexiftab.jpg" alt="editexiftab.jpg" title="The Edit exif tab" width="1100">
@@ -393,7 +434,7 @@ the selected image into the input fields.</li>
 <p>As you can see the options all have a <b>Save</b> checkbox behind their input fields.
 It means that this option will be saved when checked, even when the field is empty.
 This also means that you can:
-<ul><li>overwrite existing data with empty databy accident".</li>
+<ul><li>overwrite existing data with empty data "by accident".</li>
 <li>deliberately overwrite existing data with data from empty fields.</li></ul>
 <ul><li><h3>Available buttons:</h3>
 <ul><li><b>Copy from selected image</b>: This will copy all the (available) exif data from
@@ -406,7 +447,7 @@ the selected image into the input fields.</li>
 <p>
 
 <p><a name="EditxmpData"></a>
-<h3 class="section">4.3 Edit xmp Data</h3>
+<h3 class="section">5.3 Edit xmp Data</h3>
 
 <p>This tab is used to add (a limited amount of) xmp data to your selected image(s).</p>
 <img src="editxmptab.jpg" alt="editxmptab.jpg" title="The Edit xmp tab" width="1100">
@@ -414,7 +455,7 @@ the selected image into the input fields.</li>
 <p>As you can see the options all have a <b>Save</b> checkbox behind their input fields.
 It means that this option will be saved when checked, even when the field is empty.
 This also means that you can:
-<ul><li>overwrite existing data with empty databy accident".</li>
+<ul><li>overwrite existing data with empty data "by accident".</li>
 <li>deliberately overwrite existing data with data from empty fields.</li></ul>
 <ul><li><h3>Available buttons:</h3>
 <ul><li><b>Copy from selected image</b>: This will copy all the (available) xmp data from
@@ -427,7 +468,7 @@ the selected image into the input fields.</li>
 
 
 <p><a name="EditgpanoData"></a>
-<h3 class="section">4.4 Edit GPano (Google Photosphere) data</h3>
+<h3 class="section">5.4 Edit GPano (Google Photosphere) data</h3>
 
 <p>This tab is used to add GPano Google PhotoSphere data to your selected image(s).</p>
 <p>The Google PhotoSphere functionality has been added in November 2012 to PicasaWeb and Google+ to enable the use
@@ -442,7 +483,7 @@ On Windows and Mac OS X simply install it. On Linux you simply unpack the tar.gz
 <p>As you can see the options all have a <b>Save</b> checkbox behind their input fields
 It means that this option will be saved when checked, even when the field is empty.
 This also means that you can:
-<ul><li>overwrite existing data with empty databy accident".</li>
+<ul><li>overwrite existing data with empty data "by accident".</li>
 <li>deliberately overwrite existing data with data from empty fields.</li></ul>
 <ul><li><h3>Available buttons:</h3>
 <ul><li><b>Copy from selected image</b>: This will copy all the (available) exif data from
@@ -454,7 +495,7 @@ the selected image into the input fields.</li>
 
 
 <p><a name="EditiptcData"></a>
-<h3 class="section">4.5 IPTC data (not directly supported)</h3>
+<h3 class="section">5.5 IPTC data (not directly supported)</h3>
 <p>IPTC is an older metadata information standard.
 It stands for "International Press Telecommunications Council", also with a 
 combination with the Newspaper Association of America (NAA) Information Interchange Model (IIM).
@@ -467,7 +508,7 @@ Next to that: IPTC is being phased out in favor of XMP.
 
 
 <p><a name="workflow"></a>
-<h3 class="section">4.5 Example workflow</h3>
+<h3 class="section">5.5 Example workflow</h3>
 
 <p>Below you'll find an example of how you can use the program.
 Click the images for a full size version.
@@ -515,17 +556,6 @@ processed and a progress bar displaying the complete progress.
 <p> </p>
 
 
-<p><a name="Contextmenu"></a>
-
-<h2 class="chapter">5 Context menu</h2>
-
-<p>The program also contains "context menu" functionality, which is more generally known as "right-click" functionality. This functionality is rather limited 
-but can be very handy in some situations as it reduces mouse (kilo)meters.
-Without photos loaded, you will have a "mini" menu. With photos loaded you will get a larger menu containing image related functions.<br>
-<img title="Context menu without photos loaded" src="contextmenu1.jpg" alt="Context menu without photos loaded"><br>
-Context menu without photos loaded.
-<p><img title="Context menu with photos loaded" src="contextmenu2.jpg" alt="Context menu with photos loaded"><br>
-Context menu with photos loaded.
 
 <p> </p>
 
@@ -542,7 +572,7 @@ If not found you have to specify where exiftool is. You can also use this option
 then standard available for your distribution. At this moment most Linux distributions ship with some 8.xy exiftool version.
 </li></ul>
 <p>For the Gpano functionality you really need a version equal or newer then 9.07. 
-See also "<a href="#EditgpanoData">4.4 Edit GPano (Google Photosphere) data</a>".
+See also "<a href="#EditgpanoData">5.4 Edit GPano (Google Photosphere) data</a>".
 <p><h3>Default values:</h3>
 <p>These fields give you the option to specify your name (for example) and some copyright notice (for example: Spiderman (c) 2012).
 They can be copied into the relevant exif, xmp and iptc fields for these values.</li></ul>
