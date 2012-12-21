@@ -1,4 +1,34 @@
-83[tip]   2a62f3ee9fbb   2012-12-19 22:54 +0100   hvdwolf
+93[tip]   0b4d1eda353c   2012-12-21 17:14 +0100   hvdwolf
+  Added tag 0.25 for changeset 492bb39c7dae
+
+92[0.25]   492bb39c7dae   2012-12-21 17:13 +0100   hvdwolf
+  Update version date
+
+91   e562f9ed044b   2012-12-21 15:34 +0100   harryvanderWolf
+  some style changes in the manual
+
+90   8b7e9590dc1c   2012-12-20 23:19 +0100   hvdwolf
+  forgot gpano screen capture
+
+89   2cf294ba2f53   2012-12-20 23:12 +0100   hvdwolf
+  minor changes to gui; some new screen captures for manual
+
+88   5163918b3020   2012-12-20 22:21 +0100   hvdwolf
+  fix minor display error in gpano view tab; Add "backup originals" also to gpano
+
+87   1841ca9775a8   2012-12-20 21:41 +0100   hvdwolf
+  Reenable more gpano tags now that exiftool 9.09 supports it
+
+86   e6deb2743f6b   2012-12-20 15:40 +0100   harryvanderWolf
+  Add few more actions to context menu; Expand manual and correct typos etc.
+
+85   808bc695ccb0   2012-12-20 07:46 +0100   hvdwolf
+  minor textual change in context menu
+
+84   c60f5e7be549   2012-12-19 22:56 +0100   hvdwolf
+  Update Changelog
+
+83   2a62f3ee9fbb   2012-12-19 22:54 +0100   hvdwolf
   improve date/time shift function; prepare for 0.25 release
 
 82   24b36fd71263   2012-12-18 18:11 +0100   hvdwolf
