@@ -23,7 +23,7 @@
 
 NAME                = "pyExifToolGui"
 VERSION             = "0.25"
-VERSIONDATE         = "20121219"
+VERSIONDATE         = "20121221"
 GPL_VERSION         = "3"
 AUTHOR              = "Harry van der Wolf"
 COPYRIGHT           = "Copyright 2012 Harry van der Wolf"
