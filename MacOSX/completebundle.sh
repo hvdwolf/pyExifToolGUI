@@ -46,5 +46,5 @@ do
 done
 
 # Finally copy the manual into the bundle
-cp -a "../$curpath" "$MacOSfolder"
+cp -a "$curpath/../manual" "$MacOSfolder"
 
