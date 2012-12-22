@@ -2928,7 +2928,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
         <x>20</x>
         <y>20</y>
         <width>671</width>
-        <height>61</height>
+        <height>121</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -2943,27 +2943,27 @@ Currently I have no intent to add functionality to this standard, maybe later.</
       <property name="lineWidth">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="horizontalLayoutWidget_2">
+      <widget class="QWidget" name="gridLayoutWidget_10">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>10</y>
          <width>641</width>
-         <height>41</height>
+         <height>91</height>
         </rect>
        </property>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QLabel" name="label_8">
+       <layout class="QGridLayout" name="gridLayout_10">
+        <item row="0" column="2">
+         <widget class="QPushButton" name="btn_choose_exiftool">
           <property name="toolTip">
            <string>The program will go for the default exiftool version. Here you can specify another version.</string>
           </property>
           <property name="text">
-           <string>Exiftool</string>
+           <string>Choose</string>
           </property>
          </widget>
         </item>
-        <item>
+        <item row="0" column="1">
          <widget class="QLineEdit" name="exiftooloption">
           <property name="toolTip">
            <string>The program will go for the default exiftool version. Here you can specify another version.</string>
@@ -2973,13 +2973,29 @@ Currently I have no intent to add functionality to this standard, maybe later.</
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QPushButton" name="btn_choose_exiftool">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_8">
           <property name="toolTip">
            <string>The program will go for the default exiftool version. Here you can specify another version.</string>
           </property>
           <property name="text">
-           <string>Choose</string>
+           <string>Exiftool</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="pref_thumbnail_preview">
+          <property name="toolTip">
+           <string>This checkbox determines whether thumbnail previews are displayed in the table. Default is yes but it slows down loading considerably</string>
+          </property>
+          <property name="statusTip">
+           <string>This checkbox determines whether thumbnail previews are displayed in the table. Default is yes but it slows down loading considerably</string>
+          </property>
+          <property name="text">
+           <string>Display image thumbnails as preview</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -3102,7 +3118,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
      <x>0</x>
      <y>0</y>
      <width>1120</width>
-     <height>26</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -3314,8 +3330,6 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <tabstop>btn_savegpano</tabstop>
   <tabstop>btn_resetgpano</tabstop>
   <tabstop>btn_gpanohelp</tabstop>
-  <tabstop>exiftooloption</tabstop>
-  <tabstop>btn_choose_exiftool</tabstop>
   <tabstop>def_creator</tabstop>
   <tabstop>def_copyright</tabstop>
   <tabstop>btn_preferences_save</tabstop>

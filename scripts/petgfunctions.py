@@ -169,6 +169,7 @@ def write_config(self, aftererror):
 		config.set("preferences", "alternate_exiftool", str(False))
 		self.alternate_exiftool = False
 		config.set("preferences", "exiftooloption", "exiftool")
+                config.set("preferences", "pref_thumbnail_preview",str(True))
 		config.set("preferences", "def_creator", "")
 		config.set("preferences", "def_copyright", "")
 	else:
@@ -178,6 +179,10 @@ def write_config(self, aftererror):
 		else: # user has changed it
 			config.set("preferences", "alternate_exiftool", str(True))
 			config.set("preferences", "exiftooloption", self.exiftooloption.text())
+                if self.pref_thumbnail_preview.isChecked():
+                   config.set("preferences", "pref_thumbnail_preview",str(True))
+                else:
+                   config.set("preferences", "pref_thumbnail_preview",str(True))
 		config.set("preferences", "def_creator", self.def_creator.text())
 		config.set("preferences", "def_copyright", self.def_copyright.text())
 
@@ -235,6 +240,13 @@ def read_config(self):
 			error_reading_configparameter(self)  
 		try:
 			self.exiftooloption.setText(config.get("preferences", "exiftooloption"))
+		except:
+			error_reading_configparameter(self)
+		try:
+                        if config.get("preferences", "pref_thumbnail_preview") == "True":
+			   self.pref_thumbnail_preview.setChecked(1)
+                        else:
+			   self.pref_thumbnail_preview.setChecked(0)
 		except:
 			error_reading_configparameter(self)
 		try:
@@ -328,18 +340,26 @@ def loadimages(self,loadedimages, loadedimagesstring,qApp):
         	    folder,imagefile = os.path.split(loadedimage)
         	    self.image_folder = folder
         	    qtablefilename = QTableWidgetItem(imagefile)
-        	    # Now create the thumbnail to be displayed
-        	    thumbnail = QLabel(self)
-        	    image = QImage(loadedimage)
-        	    thumbnail.setPixmap(QPixmap.fromImage(image))
-
-        	    thumbnail.setScaledContents(True)
-	            # Fill the table
         	    self.MaintableWidget.insertRow(rowcounter)
-        	    self.MaintableWidget.setRowHeight(rowcounter,75)
-        	    self.MaintableWidget.setColumnWidth(0,75)
-        	    self.MaintableWidget.setColumnWidth(1,225)
-        	    self.MaintableWidget.setCellWidget(rowcounter, 0, thumbnail)
+                    # in case thumbs are disabled
+                    dis_thumb_string = QTableWidgetItem("disabled")
+                    #self.create_thumbs = False
+                    if self.pref_thumbnail_preview.isChecked():
+        	       # Now create the thumbnail to be displayed
+        	       thumbnail = QLabel(self)
+        	       image = QImage(loadedimage)
+        	       thumbnail.setPixmap(QPixmap.fromImage(image))
+        	       thumbnail.setScaledContents(True)
+                       # Fill the table
+                       self.MaintableWidget.setRowHeight(rowcounter,75)
+                       self.MaintableWidget.setColumnWidth(0,75)
+                       self.MaintableWidget.setColumnWidth(1,225)
+                       self.MaintableWidget.setCellWidget(rowcounter, 0, thumbnail)
+                    else:
+                       # Fill the table
+                       self.MaintableWidget.setColumnWidth(0,75)
+                       self.MaintableWidget.setColumnWidth(1,225)
+                       self.MaintableWidget.setItem(rowcounter, 0, dis_thumb_string)
         	    self.MaintableWidget.setItem(rowcounter, 1, qtablefilename)
                     self.MaintableWidget.setToolTip('image(s) folder: ' + folder)
         	    rowcounter += 1
