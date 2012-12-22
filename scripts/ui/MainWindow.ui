@@ -1,0 +1,3407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1120</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1120</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1120</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>pyExifToolGUI</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="accessibleName">
+    <string>Main</string>
+   </property>
+   <widget class="QProgressBar" name="progressbar">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>631</y>
+      <width>301</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>351</width>
+      <height>641</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QTableWidget" name="MaintableWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>321</width>
+       <height>591</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>displays the image names after they have been loaded</string>
+     </property>
+     <property name="columnCount">
+      <number>2</number>
+     </property>
+     <column>
+      <property name="text">
+       <string>Thumb</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>file name</string>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </column>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>600</y>
+       <width>311</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="imagebuttonsLayout">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="btn_loadimages">
+        <property name="maximumSize">
+         <size>
+          <width>159</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Load images for which you want to view or modify metadata</string>
+        </property>
+        <property name="text">
+         <string>Load Images</string>
+        </property>
+        <property name="autoDefault">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="showimagebutton">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="toolTip">
+         <string>Display the selected image in the default image viewer (if supported movies will play in the default movie player)</string>
+        </property>
+        <property name="text">
+         <string>Display Image</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>10</y>
+      <width>721</width>
+      <height>611</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string/>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="generaltab">
+     <attribute name="title">
+      <string>View Data</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>5</y>
+        <width>701</width>
+        <height>571</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QTableWidget" name="exiftableWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>681</width>
+         <height>521</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <column>
+        <property name="text">
+         <string>Descriptor</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Description</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="QWidget" name="horizontalLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>691</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <item>
+         <widget class="QRadioButton" name="radioButton_all">
+          <property name="text">
+           <string>All</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_exif">
+          <property name="toolTip">
+           <string>Select to display all available Exif info</string>
+          </property>
+          <property name="text">
+           <string>Exif</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_xmp">
+          <property name="toolTip">
+           <string>Select to display all available xmp info</string>
+          </property>
+          <property name="text">
+           <string>xmp</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_iptc">
+          <property name="toolTip">
+           <string>Select to display all available Select to display all available Exif info info</string>
+          </property>
+          <property name="text">
+           <string>IPTC</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_gps">
+          <property name="toolTip">
+           <string>Select to display all available gps and location info from either or both exif, xmp and IPTC</string>
+          </property>
+          <property name="text">
+           <string>GPS/Location</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_gpano">
+          <property name="toolTip">
+           <string>Select to display all available Google PhotoSphere info</string>
+          </property>
+          <property name="text">
+           <string>GPano</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_iccprofile">
+          <property name="text">
+           <string>ICC_profile</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="radioButton_makernotes">
+          <property name="toolTip">
+           <string>Select to display all available Maker notes info</string>
+          </property>
+          <property name="text">
+           <string>Makernotes</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="edittab">
+     <attribute name="title">
+      <string>Edit Data</string>
+     </attribute>
+     <widget class="QTabWidget" name="tabWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>0</y>
+        <width>701</width>
+        <height>571</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="editgpstab">
+       <attribute name="title">
+        <string>Gps</string>
+       </attribute>
+       <widget class="QWidget" name="verticalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>160</y>
+          <width>251</width>
+          <height>201</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QPushButton" name="btn_gps_copyfrom">
+           <property name="toolTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="statusTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="text">
+            <string>Copy from selected image</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_savegps">
+           <property name="toolTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="statusTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="text">
+            <string>Save to selected image(s)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="chk_gps_backuporiginals">
+           <property name="toolTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="statusTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="text">
+            <string>Make backup of originals</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_resetgps">
+           <property name="toolTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="statusTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="text">
+            <string>Reset fields</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_mapcoordinates">
+           <property name="toolTip">
+            <string>This will open the mapcoordinates.net website enabling you to get and copy  lat/lon/alt data for your photo(s)</string>
+           </property>
+           <property name="statusTip">
+            <string>This will open the mapcoordinates.net website enabling you to get and copy  lat/lon/alt data for your photo(s)</string>
+           </property>
+           <property name="text">
+            <string>Open MapCoordinates.net</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_gpshelp">
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="statusTip">
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="text">
+            <string>Help</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="btn_copy_calc_to_gps">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>380</y>
+          <width>151</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>Copy the values from the calculator to the input fields</string>
+        </property>
+        <property name="statusTip">
+         <string>Opens a popup with some additional info on this screen</string>
+        </property>
+        <property name="text">
+         <string>Copy to input fields</string>
+        </property>
+       </widget>
+       <widget class="QFrame" name="frame">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>381</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>2</number>
+        </property>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>381</width>
+           <height>151</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+         <widget class="QWidget" name="gridLayoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>27</y>
+            <width>291</width>
+            <height>125</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="topMargin">
+            <number>10</number>
+           </property>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="gps_lat_decimal">
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>This is the decimal value of latitutde. Note that South latitudes are negative</string>
+             </property>
+             <property name="statusTip">
+              <string>This is the decimal value of latitutde. Note that South latitudes are negative</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="gps_lon_decimal">
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>This is the decimal value of longitude. Note that West longitudes are negative</string>
+             </property>
+             <property name="statusTip">
+              <string>This is the decimal value of longitude. Note that West longitudes are negative</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_25">
+             <property name="text">
+              <string>Decimal</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <property name="leftMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="gps_lat_deg">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>35</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>a number in the range 0 - 90</string>
+               </property>
+               <property name="inputMask">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="gps_lat_min">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>30</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>a number in the range 0 - 59</string>
+               </property>
+               <property name="inputMask">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="gps_lat_sec">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>30</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>a number in the range 0 - 59</string>
+               </property>
+               <property name="inputMask">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_14">
+             <property name="text">
+              <string>Longitude</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="gps_altitude">
+             <property name="maximumSize">
+              <size>
+               <width>75</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>This is height (or depth) in meters.</string>
+             </property>
+             <property name="statusTip">
+              <string>This is the decimal value of longitude. Note that West longitudes are negative</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_17">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>GPS</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_15">
+             <property name="text">
+              <string>Altitude</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <property name="leftMargin">
+              <number>10</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="gps_lon_deg">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>35</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>a number in the range 0 - 180</string>
+               </property>
+               <property name="inputMask">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="gps_lon_min">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>30</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>a number in the range 0 - 59</string>
+               </property>
+               <property name="inputMask">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="gps_lon_sec">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>30</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>a number in the range 0 - 59</string>
+               </property>
+               <property name="inputMask">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="2">
+            <widget class="QCheckBox" name="chk_AboveSeaLevel">
+             <property name="text">
+              <string>Above sea level</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_12">
+             <property name="text">
+              <string>    deg      min      sec</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_13">
+             <property name="text">
+              <string>Latitude</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="horizontalLayoutWidget_8">
+          <property name="geometry">
+           <rect>
+            <x>290</x>
+            <y>60</y>
+            <width>87</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QRadioButton" name="radioButton_gpsN">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="toolTip">
+              <string>North</string>
+             </property>
+             <property name="text">
+              <string>N</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_gpsS">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="toolTip">
+              <string>South</string>
+             </property>
+             <property name="text">
+              <string>S</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="horizontalLayoutWidget_9">
+          <property name="geometry">
+           <rect>
+            <x>290</x>
+            <y>90</y>
+            <width>89</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QRadioButton" name="radioButton_gpsE">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="toolTip">
+              <string>East</string>
+             </property>
+             <property name="text">
+              <string>E</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_gpsW">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="toolTip">
+              <string>West</string>
+             </property>
+             <property name="text">
+              <string>W</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QCheckBox" name="chk_lat_lon_alt">
+          <property name="geometry">
+           <rect>
+            <x>2</x>
+            <y>0</y>
+            <width>301</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Save Latitude/longitude/Altitude</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>380</y>
+          <width>191</width>
+          <height>121</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>This program wants your 
+latitude and longitude as 
+decimal values for input.
+If you have your data in 
+deg-min-sec N(S)/E(W),
+you can use this calculator
+to convert the data.</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>380</y>
+          <width>331</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="calc_latitude">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>a number in the range 0 - 90</string>
+           </property>
+           <property name="inputMask">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>decimal</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="calc_longitude">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>A number bigger then -180 and smaller then 180</string>
+           </property>
+           <property name="inputMask">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_9">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Longitude</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Latitude   </string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLineEdit" name="calc_lat_deg">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>a number in the range 0 - 90</string>
+           </property>
+           <property name="inputMask">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>deg</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QLineEdit" name="calc_lat_min">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>a number in the range 0 - 59</string>
+           </property>
+           <property name="inputMask">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QLineEdit" name="calc_lat_sec">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>a number in the range 0 - 59</string>
+           </property>
+           <property name="inputMask">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>min</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>sec</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLineEdit" name="calc_lon_deg">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>a number in the range 0 - 180</string>
+           </property>
+           <property name="inputMask">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QLineEdit" name="calc_lon_min">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>a number in the range 0 - 59</string>
+           </property>
+           <property name="inputMask">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="4">
+          <widget class="QLineEdit" name="calc_lon_sec">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>a number in the range 0 - 59</string>
+           </property>
+           <property name="inputMask">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_4">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string>This calculator converts back and forth between the decimal and degr-min-sec format</string>
+           </property>
+           <property name="text">
+            <string>Calculator</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="horizontalLayoutWidget_5">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>470</y>
+          <width>458</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QPushButton" name="dec2dmsbutton">
+           <property name="text">
+            <string>Decimal to Minutes-Seconds =&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="dms2decbutton">
+           <property name="text">
+            <string>&lt;= Minutes-Seconds to Decimal</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="horizontalLayoutWidget_6">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>410</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <widget class="QRadioButton" name="radioButton_calc_gpsN">
+           <property name="toolTip">
+            <string>North</string>
+           </property>
+           <property name="text">
+            <string>N</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_calc_gpsS">
+           <property name="toolTip">
+            <string>South</string>
+           </property>
+           <property name="text">
+            <string>S</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QFrame" name="frame_3">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>0</y>
+          <width>271</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>2</number>
+        </property>
+        <widget class="QWidget" name="gridLayoutWidget_9">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>261</width>
+           <height>152</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0,0,0" rowminimumheight="0,0,0,0,0">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_81">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Save</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="gps_versionid">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_80">
+            <property name="text">
+             <string>GPS Version ID</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_78">
+            <property name="text">
+             <string>GPS Time Stamp</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="gps_timestamp">
+            <property name="toolTip">
+             <string>Time in HH:MM:SS (24 hrs)</string>
+            </property>
+            <property name="statusTip">
+             <string>Time in HH:MM:SS (24 hrs)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QCheckBox" name="chk_gps_timestamp">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_77">
+            <property name="text">
+             <string>GPS Date Stamp</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="gps_datestamp">
+            <property name="toolTip">
+             <string>Date in YYYY:MM:DD</string>
+            </property>
+            <property name="statusTip">
+             <string>Date in YYYY:MM:DD</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QCheckBox" name="chk_gps_datestamp">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_79">
+            <property name="text">
+             <string>GPS Map Datum</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="gps_mapdatum">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="label_24">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>500</y>
+          <width>501</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>9</pointsize>
+          <weight>50</weight>
+          <italic>true</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Note that &quot;South&quot; latitudes and &quot;West&quot; longitudes convert to negative decimal numbers</string>
+        </property>
+       </widget>
+       <widget class="QFrame" name="frame_4">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>160</y>
+          <width>411</width>
+          <height>171</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>2</number>
+        </property>
+        <widget class="QWidget" name="gridLayoutWidget_4">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>412</width>
+           <height>151</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_19">
+            <property name="text">
+             <string>Country</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string>State - Province </string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_21">
+            <property name="text">
+             <string>City</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string>(Where is/are the photo(s) taken)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="xmp_state"/>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="xmp_country"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_18">
+            <property name="text">
+             <string>Location</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_23">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>XMP/IPTC location</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="xmp_city"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="xmp_location">
+            <property name="toolTip">
+             <string>Location can be either a self-chosen description or a landmark like &quot;Eiffel tower&quot;</string>
+            </property>
+            <property name="statusTip">
+             <string>Location can be either a self-chosen description or a landmark like &quot;Eiffel tower&quot;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QCheckBox" name="chk_xmp_location">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QCheckBox" name="chk_xmp_country">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QCheckBox" name="chk_xmp_state">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QCheckBox" name="chk_xmp_city">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_49">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Save</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="horizontalLayoutWidget_7">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>440</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <item>
+          <widget class="QRadioButton" name="radioButton_calc_gpsE">
+           <property name="toolTip">
+            <string>East</string>
+           </property>
+           <property name="text">
+            <string>E</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_calc_gpsW">
+           <property name="toolTip">
+            <string>West</string>
+           </property>
+           <property name="text">
+            <string>W</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="Line" name="line">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>360</y>
+          <width>691</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="lineWidth">
+         <number>3</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="editexiftab">
+       <attribute name="title">
+        <string>Exif</string>
+       </attribute>
+       <widget class="QWidget" name="gridLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>521</width>
+          <height>441</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0">
+         <property name="leftMargin">
+          <number>10</number>
+         </property>
+         <property name="topMargin">
+          <number>10</number>
+         </property>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="exif_Make"/>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLineEdit" name="exif_DateTimeOriginal"/>
+         </item>
+         <item row="10" column="2">
+          <widget class="QCheckBox" name="chk_exif_Artist">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_33">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Camera/Equipment</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="1">
+          <widget class="QLineEdit" name="exif_Copyright"/>
+         </item>
+         <item row="13" column="1">
+          <widget class="QPlainTextEdit" name="exif_ImageDescription">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>50</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="1">
+          <widget class="QLineEdit" name="exif_Artist"/>
+         </item>
+         <item row="11" column="0">
+          <widget class="QLabel" name="label_31">
+           <property name="text">
+            <string>Copyright:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QCheckBox" name="chk_exif_Make">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_35">
+           <property name="text">
+            <string>Make:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_36">
+           <property name="text">
+            <string>Model:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_38">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Date and Time</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_37">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="1">
+          <widget class="QLineEdit" name="exif_UserComment"/>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_40">
+           <property name="text">
+            <string>CreateDate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLineEdit" name="exif_ModifyDate"/>
+         </item>
+         <item row="2" column="2">
+          <widget class="QCheckBox" name="chk_exif_Model">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_45">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Save</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_39">
+           <property name="text">
+            <string>DateTimeOriginal</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLabel" name="label_42">
+           <property name="text">
+            <string>YYYY:MM:DD hh:mm:ss (24Hrs); no checking done)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLineEdit" name="exif_CreateDate"/>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="exif_Model"/>
+         </item>
+         <item row="12" column="0">
+          <widget class="QLabel" name="label_32">
+           <property name="text">
+            <string>User Comment:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="0">
+          <widget class="QLabel" name="label_34">
+           <property name="text">
+            <string>Description:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="2">
+          <widget class="QCheckBox" name="chk_exif_UserComment">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="label_44">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Creative Tags</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="2">
+          <widget class="QCheckBox" name="chk_exif_Copyright">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="2">
+          <widget class="QCheckBox" name="chk_exif_ImageDescription">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="0">
+          <widget class="QLabel" name="label_30">
+           <property name="text">
+            <string>Artist / Creator:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_41">
+           <property name="text">
+            <string>ModifyDate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QCheckBox" name="chk_exif_DateTimeOriginal">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QCheckBox" name="chk_exif_CreateDate">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <widget class="QCheckBox" name="chk_exif_ModifyDate">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_43">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_7">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>460</y>
+          <width>651</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <item row="0" column="1">
+          <widget class="QPushButton" name="btn_saveexif">
+           <property name="toolTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="statusTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="text">
+            <string>Save to selected image(s)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btn_exif_copyfrom">
+           <property name="toolTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="statusTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="text">
+            <string>Copy from selected image</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="btn_resetexif">
+           <property name="toolTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="statusTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="text">
+            <string>Reset fields</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="btn_exifhelp">
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="statusTip">
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="text">
+            <string>Help</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="btn_copy_exif_defaults">
+           <property name="toolTip">
+            <string>Copies the default Artist and Copyright from Preferences</string>
+           </property>
+           <property name="statusTip">
+            <string>Copies the default Artist and Copyright from Preferences</string>
+           </property>
+           <property name="text">
+            <string>Copy Defaults</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="chk_exif_backuporiginals">
+           <property name="toolTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="statusTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="text">
+            <string>Make backup of originals</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="editxmptab">
+       <attribute name="title">
+        <string>Xmp</string>
+       </attribute>
+       <widget class="QWidget" name="gridLayoutWidget_6">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>20</y>
+          <width>541</width>
+          <height>401</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_56">
+           <property name="text">
+            <string>Rating</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QLineEdit" name="xmp_title"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_51">
+           <property name="text">
+            <string>Creator</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QLineEdit" name="xmp_label"/>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLineEdit" name="xmp_rights"/>
+         </item>
+         <item row="3" column="2">
+          <widget class="QPlainTextEdit" name="xmp_description">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>100</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QRadioButton" name="xmp_rating1">
+             <property name="text">
+              <string>*</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="xmp_rating2">
+             <property name="text">
+              <string>**</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="xmp_rating3">
+             <property name="text">
+              <string>***</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="xmp_rating4">
+             <property name="text">
+              <string>****</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="xmp_rating5">
+             <property name="text">
+              <string>*****</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="3">
+          <widget class="QCheckBox" name="chk_xmp_creator">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QLineEdit" name="xmp_subject"/>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLineEdit" name="xmp_creator"/>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_55">
+           <property name="text">
+            <string>Description</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_54">
+           <property name="text">
+            <string>Title</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_52">
+           <property name="text">
+            <string>Rights</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_53">
+           <property name="text">
+            <string>Subject</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_57">
+           <property name="text">
+            <string>Label</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QCheckBox" name="chk_xmp_rights">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="label_58">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Save</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="3">
+          <widget class="QCheckBox" name="chk_xmp_description">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="3">
+          <widget class="QCheckBox" name="chk_xmp_label">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="3">
+          <widget class="QCheckBox" name="chk_xmp_subject">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="3">
+          <widget class="QCheckBox" name="chk_xmp_title">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="3">
+          <widget class="QCheckBox" name="chk_xmp_rating">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_62">
+           <property name="toolTip">
+            <string>This field is actually two xmp tags: &quot;Person&quot; and &quot;Person in Image&quot;, and is used by many &quot;face recognition&quot; programs</string>
+           </property>
+           <property name="text">
+            <string>Person (In Image)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="2">
+          <widget class="QLineEdit" name="xmp_person">
+           <property name="toolTip">
+            <string>This field is actually two xmp tags: &quot;Person&quot; and &quot;Person in Image&quot;, and is used by many &quot;face recognition&quot; programs</string>
+           </property>
+           <property name="statusTip">
+            <string>This field is actually two xmp tags: &quot;Person&quot; and &quot;Person in Image&quot;, and is used by many &quot;face recognition&quot; programs</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="3">
+          <widget class="QCheckBox" name="chk_xmp_person">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_8">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>430</y>
+          <width>611</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_8">
+         <item row="1" column="0">
+          <widget class="QPushButton" name="btn_copy_xmp_defaults">
+           <property name="toolTip">
+            <string>Copies the default Creator and Rights from Preferences</string>
+           </property>
+           <property name="statusTip">
+            <string>Copies the default Creator and Rights from Preferences</string>
+           </property>
+           <property name="text">
+            <string>Copy Defaults</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="btn_savexmp">
+           <property name="toolTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="statusTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="text">
+            <string>Save to selected image(s)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="btn_resetxmp">
+           <property name="toolTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="statusTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="text">
+            <string>Reset fields</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btn_xmp_copyfrom">
+           <property name="toolTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="statusTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="text">
+            <string>Copy from selected image</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="btn_xmphelp">
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="statusTip">
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="text">
+            <string>Help</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="chk_xmp_backuporiginals">
+           <property name="toolTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="statusTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="text">
+            <string>Make backup of originals</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="editgpanotab">
+       <attribute name="title">
+        <string>GPano</string>
+       </attribute>
+       <widget class="QWidget" name="verticalLayoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>490</y>
+          <width>681</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <property name="leftMargin">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btn_gpano_copyfrom">
+           <property name="toolTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="statusTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="text">
+            <string>Copy from selected image</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_savegpano">
+           <property name="toolTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="statusTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="text">
+            <string>Save to selected image(s)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="chk_gpano_backuporiginals">
+           <property name="toolTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="statusTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="text">
+            <string>Backup
+Originals</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_resetgpano">
+           <property name="toolTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="statusTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="text">
+            <string>Reset fields</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_gpanohelp">
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="statusTip">
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="text">
+            <string>Help</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>611</width>
+          <height>451</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <property name="leftMargin">
+          <number>10</number>
+         </property>
+         <item row="12" column="0">
+          <widget class="QLabel" name="label_66">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>Initial View Pitch Degrees</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="0">
+          <widget class="QLabel" name="label_67">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>Initial Horizontal FOV Degrees</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLineEdit" name="xmp_StitchingSoftware">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="toolTip">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="3">
+          <widget class="QCheckBox" name="chk_xmp_CroppedAreaLeftPixels">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_28">
+           <property name="text">
+            <string>Projection Type</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>Cropped Area Image Height Pixels</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_22">
+           <property name="text">
+            <string>Cropped Area Image Width Pixels</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QLineEdit" name="xmp_CroppedAreaTopPixels"/>
+         </item>
+         <item row="7" column="2">
+          <widget class="QLineEdit" name="xmp_FullPanoWidthPixels"/>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="label_47">
+           <property name="text">
+            <string>Use Panorama Viewer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_29">
+           <property name="text">
+            <string>Full Pano Height Pixels</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_46">
+           <property name="text">
+            <string>Full Pano Width Pixels</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QLineEdit" name="xmp_CroppedAreaImageWidthPixels"/>
+         </item>
+         <item row="9" column="2">
+          <widget class="QCheckBox" name="xmp_UsePanoramaViewer">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLineEdit" name="xmp_CroppedAreaImageHeightPixels"/>
+         </item>
+         <item row="5" column="3">
+          <widget class="QCheckBox" name="chk_xmp_CroppedAreaTopPixels">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QLineEdit" name="xmp_FullPanoHeightPixels"/>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="label_50">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Save</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_64">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>Stitching Software</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="3">
+          <widget class="QCheckBox" name="chk_xmp_CroppedAreaImageWidthPixels">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QCheckBox" name="chk_xmp_CroppedAreaImageHeightPixels">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="3">
+          <widget class="QCheckBox" name="chk_xmp_FullPanoWidthPixels">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="3">
+          <widget class="QCheckBox" name="chk_xmp_FullPanoHeightPixels">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_27">
+           <property name="text">
+            <string>Cropped Area Top Pixels</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_26">
+           <property name="text">
+            <string>Cropped Area Left Pixels</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QLineEdit" name="xmp_CroppedAreaLeftPixels"/>
+         </item>
+         <item row="8" column="3">
+          <widget class="QCheckBox" name="chk_xmp_ProjectionType">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="3">
+          <widget class="QCheckBox" name="chk_xmp_UsePanoramaViewer">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="0">
+          <widget class="QLabel" name="label_48">
+           <property name="text">
+            <string>Pose Heading Degrees ( for Google Maps)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="2">
+          <widget class="QLineEdit" name="xmp_PoseHeadingDegrees"/>
+         </item>
+         <item row="10" column="3">
+          <widget class="QCheckBox" name="chk_xmp_PoseHeadingDegrees">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="2">
+          <widget class="QComboBox" name="xmp_ProjectionType">
+           <property name="toolTip">
+            <string>Google only supports equirectangular at this moment</string>
+           </property>
+           <property name="statusTip">
+            <string>Google only supports equirectangular at this moment</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>equirectangular</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cylindrical</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>rectilinear</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="11" column="0">
+          <widget class="QLabel" name="label_65">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>Initial View Heading Degrees</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="2">
+          <widget class="QLineEdit" name="xmp_InitialViewHeadingDegrees">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QCheckBox" name="chk_xmp_StitchingSoftware">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="2">
+          <widget class="QLineEdit" name="xmp_InitialHorizontalFOVDegrees">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="2">
+          <widget class="QLineEdit" name="xmp_InitialViewPitchDegrees">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="3">
+          <widget class="QCheckBox" name="chk_xmp_InitialHorizontalFOVDegrees">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="3">
+          <widget class="QCheckBox" name="chk_xmp_InitialViewPitchDegrees">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="3">
+          <widget class="QCheckBox" name="chk_xmp_InitialViewHeadingDegrees">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="0">
+          <widget class="QLabel" name="label_68">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>Initial View Roll Degrees</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="2">
+          <widget class="QLineEdit" name="xmp_InitialViewRollDegrees">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="3">
+          <widget class="QCheckBox" name="chk_xmp_InitialViewRollDegrees">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="label_71">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLabel" name="label_72">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLabel" name="label_73">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLabel" name="label_74">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLabel" name="label_75">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QLabel" name="label_76">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="1">
+          <widget class="QLabel" name="label_82">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="1">
+          <widget class="QLabel" name="label_70">
+           <property name="text">
+            <string>**</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="1">
+          <widget class="QLabel" name="label_83">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>***</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="1">
+          <widget class="QLabel" name="label_84">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>***</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="1">
+          <widget class="QLabel" name="label_85">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>***</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="1">
+          <widget class="QLabel" name="label_86">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>***</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="label_87">
+           <property name="text">
+            <string>***</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="verticalLayoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>0</y>
+          <width>681</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLabel" name="lbl_exiftool_leveltext">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="editiptctab">
+       <attribute name="title">
+        <string>IPTC</string>
+       </attribute>
+       <widget class="QLabel" name="label_63">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>100</y>
+          <width>561</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>IPTC is an older metadata information standard.
+It stands for &quot;International Press Telecommunications Council&quot;.
+This already shows the primary goal of this standard which is
+perhaps not what an amateur photograph is aiming for.
+Next to that: IPTC is being phased out in favor of XMP.
+
+Currently I have no intent to add functionality to this standard, maybe later.</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="preferencestab">
+     <attribute name="title">
+      <string>Preferences</string>
+     </attribute>
+     <widget class="QFrame" name="frame_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>671</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The program will go for the default exiftool version. Here you can specify another version.</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="lineWidth">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="gridLayoutWidget_10">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>641</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_10">
+        <item row="0" column="2">
+         <widget class="QPushButton" name="btn_choose_exiftool">
+          <property name="toolTip">
+           <string>The program will go for the default exiftool version. Here you can specify another version.</string>
+          </property>
+          <property name="text">
+           <string>Choose</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="exiftooloption">
+          <property name="toolTip">
+           <string>The program will go for the default exiftool version. Here you can specify another version.</string>
+          </property>
+          <property name="statusTip">
+           <string>The program will go for the default exiftool version. Here you can specify another version.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_8">
+          <property name="toolTip">
+           <string>The program will go for the default exiftool version. Here you can specify another version.</string>
+          </property>
+          <property name="text">
+           <string>Exiftool</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="pref_thumbnail_preview">
+          <property name="toolTip">
+           <string>This checkbox determines whether thumbnail previews are displayed in the table. Default is yes but it slows down loading considerably</string>
+          </property>
+          <property name="statusTip">
+           <string>This checkbox determines whether thumbnail previews are displayed in the table. Default is yes but it slows down loading considerably</string>
+          </property>
+          <property name="text">
+           <string>Display image thumbnails as preview</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="frame_5">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>270</y>
+        <width>531</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QWidget" name="formLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>511</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout">
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_59">
+          <property name="text">
+           <string>Creator / Artist / Photographer</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_60">
+          <property name="text">
+           <string>Copyrights / Rights</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="def_creator">
+          <property name="toolTip">
+           <string>exif, xmp (and iptc) have tags for creator and (copy)rights. These two fileds can be used to set defautls to be copied into your photos.</string>
+          </property>
+          <property name="statusTip">
+           <string>exif, xmp (and iptc) have tags for creator and (copy)rights. These two fileds can be used to set defautls to be copied into your photos.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="def_copyright">
+          <property name="toolTip">
+           <string>exif, xmp (and iptc) have tags for creator and (copy)rights. These two fileds can be used to set defautls to be copied into your photos.</string>
+          </property>
+          <property name="statusTip">
+           <string>exif, xmp (and iptc) have tags for creator and (copy)rights. These two fileds can be used to set defautls to be copied into your photos.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_61">
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Default values</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>520</y>
+        <width>291</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_14">
+       <item>
+        <widget class="QPushButton" name="btn_preferences_save">
+         <property name="toolTip">
+          <string>Preferences are always automatically saved on exit. In case you want to make an intermediate save you can use this button</string>
+         </property>
+         <property name="statusTip">
+          <string>Preferences are always automatically saved on exit. In case you want to make an intermediate save you can use this button</string>
+         </property>
+         <property name="text">
+          <string>Save</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_preferenceshelp">
+         <property name="text">
+          <string>Help</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1120</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="mnu_action_load_images"/>
+    <addaction name="separator"/>
+    <addaction name="action_Quit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="mnu_action_pyexiftoolgui_home"/>
+    <addaction name="mnu_action_exiftool"/>
+    <addaction name="mnu_action_manual"/>
+    <addaction name="separator"/>
+    <addaction name="mnu_action_Donate"/>
+    <addaction name="separator"/>
+    <addaction name="mnu_action_license"/>
+    <addaction name="mnu_action_Info"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuExtra">
+    <property name="title">
+     <string>&amp;Extra</string>
+    </property>
+    <addaction name="mnu_action_create_args"/>
+    <addaction name="mnu_action_export_metadata"/>
+    <addaction name="separator"/>
+    <addaction name="mnu_action_modifydatetime"/>
+    <addaction name="mnu_action_date_to_DateTimeOriginal"/>
+    <addaction name="mnu_action_repair_jpg"/>
+    <addaction name="separator"/>
+    <addaction name="mnu_action_remove_metadata"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menuExtra"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_Quit">
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+  </action>
+  <action name="mnu_action_Info">
+   <property name="text">
+    <string>&amp;Info</string>
+   </property>
+  </action>
+  <action name="mnu_action_exiftool">
+   <property name="text">
+    <string>ExifTool homepage</string>
+   </property>
+  </action>
+  <action name="mnu_action_ais">
+   <property name="text">
+    <string>Align_image_stack wiki page</string>
+   </property>
+  </action>
+  <action name="mnu_action_enfuse_reference">
+   <property name="text">
+    <string>Enfuse reference manual</string>
+   </property>
+  </action>
+  <action name="mnu_action_Donate">
+   <property name="text">
+    <string>Donate</string>
+   </property>
+  </action>
+  <action name="mnu_action_load_images">
+   <property name="text">
+    <string>&amp;Load Images</string>
+   </property>
+  </action>
+  <action name="mnu_action_license">
+   <property name="text">
+    <string>License</string>
+   </property>
+  </action>
+  <action name="mnu_action_EXIF_tags">
+   <property name="text">
+    <string>EXIF tags</string>
+   </property>
+  </action>
+  <action name="mnu_action_XMP_tags">
+   <property name="text">
+    <string>XMP tags</string>
+   </property>
+  </action>
+  <action name="mnu_action_IPTC_tags">
+   <property name="text">
+    <string>IPTC tags</string>
+   </property>
+  </action>
+  <action name="mnu_action_Maker_tags">
+   <property name="text">
+    <string>Maker tags</string>
+   </property>
+  </action>
+  <action name="mnu_action_mapcoordinates_tab">
+   <property name="text">
+    <string>MapCoordinates.net tab</string>
+   </property>
+  </action>
+  <action name="mnu_action_pyexiftoolgui_home">
+   <property name="text">
+    <string>pyExifToolGUI homepage</string>
+   </property>
+  </action>
+  <action name="mnu_action_remove_metadata">
+   <property name="text">
+    <string>Remove metadata</string>
+   </property>
+  </action>
+  <action name="mnu_action_manual">
+   <property name="text">
+    <string>Manual</string>
+   </property>
+  </action>
+  <action name="mnu_action_modifydatetime">
+   <property name="text">
+    <string>Modify Date/time</string>
+   </property>
+  </action>
+  <action name="mnu_action_export_metadata">
+   <property name="text">
+    <string>Export metadata</string>
+   </property>
+  </action>
+  <action name="mnu_action_create_args">
+   <property name="text">
+    <string>Create args file(s)</string>
+   </property>
+  </action>
+  <action name="mnu_action_date_to_DateTimeOriginal">
+   <property name="text">
+    <string>Set file date to DateTimeOriginal</string>
+   </property>
+  </action>
+  <action name="mnu_action_repair_jpg">
+   <property name="text">
+    <string>Repair JPG(s) with corrupted metadata</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>radioButton_all</tabstop>
+  <tabstop>radioButton_exif</tabstop>
+  <tabstop>radioButton_xmp</tabstop>
+  <tabstop>radioButton_iptc</tabstop>
+  <tabstop>radioButton_gps</tabstop>
+  <tabstop>radioButton_gpano</tabstop>
+  <tabstop>radioButton_iccprofile</tabstop>
+  <tabstop>radioButton_makernotes</tabstop>
+  <tabstop>gps_lat_decimal</tabstop>
+  <tabstop>gps_lon_decimal</tabstop>
+  <tabstop>gps_altitude</tabstop>
+  <tabstop>xmp_location</tabstop>
+  <tabstop>xmp_country</tabstop>
+  <tabstop>xmp_state</tabstop>
+  <tabstop>xmp_city</tabstop>
+  <tabstop>btn_gps_copyfrom</tabstop>
+  <tabstop>btn_savegps</tabstop>
+  <tabstop>btn_resetgps</tabstop>
+  <tabstop>btn_mapcoordinates</tabstop>
+  <tabstop>btn_gpshelp</tabstop>
+  <tabstop>exif_Make</tabstop>
+  <tabstop>exif_Model</tabstop>
+  <tabstop>exif_ModifyDate</tabstop>
+  <tabstop>exif_DateTimeOriginal</tabstop>
+  <tabstop>exif_CreateDate</tabstop>
+  <tabstop>exif_Artist</tabstop>
+  <tabstop>exif_Copyright</tabstop>
+  <tabstop>exif_UserComment</tabstop>
+  <tabstop>exif_ImageDescription</tabstop>
+  <tabstop>xmp_creator</tabstop>
+  <tabstop>xmp_rights</tabstop>
+  <tabstop>xmp_description</tabstop>
+  <tabstop>xmp_label</tabstop>
+  <tabstop>xmp_subject</tabstop>
+  <tabstop>xmp_title</tabstop>
+  <tabstop>xmp_rating1</tabstop>
+  <tabstop>xmp_rating2</tabstop>
+  <tabstop>xmp_rating3</tabstop>
+  <tabstop>xmp_rating4</tabstop>
+  <tabstop>xmp_rating5</tabstop>
+  <tabstop>xmp_person</tabstop>
+  <tabstop>xmp_StitchingSoftware</tabstop>
+  <tabstop>xmp_CroppedAreaImageHeightPixels</tabstop>
+  <tabstop>xmp_CroppedAreaImageWidthPixels</tabstop>
+  <tabstop>xmp_CroppedAreaLeftPixels</tabstop>
+  <tabstop>xmp_CroppedAreaTopPixels</tabstop>
+  <tabstop>xmp_FullPanoHeightPixels</tabstop>
+  <tabstop>xmp_FullPanoWidthPixels</tabstop>
+  <tabstop>xmp_ProjectionType</tabstop>
+  <tabstop>xmp_UsePanoramaViewer</tabstop>
+  <tabstop>xmp_PoseHeadingDegrees</tabstop>
+  <tabstop>xmp_InitialViewHeadingDegrees</tabstop>
+  <tabstop>xmp_InitialViewPitchDegrees</tabstop>
+  <tabstop>xmp_InitialViewRollDegrees</tabstop>
+  <tabstop>xmp_InitialHorizontalFOVDegrees</tabstop>
+  <tabstop>btn_gpano_copyfrom</tabstop>
+  <tabstop>btn_savegpano</tabstop>
+  <tabstop>btn_resetgpano</tabstop>
+  <tabstop>btn_gpanohelp</tabstop>
+  <tabstop>def_creator</tabstop>
+  <tabstop>def_copyright</tabstop>
+  <tabstop>btn_preferences_save</tabstop>
+  <tabstop>btn_preferenceshelp</tabstop>
+  <tabstop>chk_exif_DateTimeOriginal</tabstop>
+  <tabstop>chk_exif_CreateDate</tabstop>
+  <tabstop>chk_exif_ModifyDate</tabstop>
+  <tabstop>radioButton_gpsE</tabstop>
+  <tabstop>radioButton_gpsW</tabstop>
+  <tabstop>chk_lat_lon_alt</tabstop>
+  <tabstop>calc_latitude</tabstop>
+  <tabstop>calc_longitude</tabstop>
+  <tabstop>calc_lon_sec</tabstop>
+  <tabstop>calc_lon_deg</tabstop>
+  <tabstop>calc_lat_min</tabstop>
+  <tabstop>calc_lat_sec</tabstop>
+  <tabstop>dec2dmsbutton</tabstop>
+  <tabstop>dms2decbutton</tabstop>
+  <tabstop>radioButton_calc_gpsN</tabstop>
+  <tabstop>radioButton_calc_gpsS</tabstop>
+  <tabstop>showimagebutton</tabstop>
+  <tabstop>chk_xmp_creator</tabstop>
+  <tabstop>calc_lon_min</tabstop>
+  <tabstop>calc_lat_deg</tabstop>
+  <tabstop>chk_xmp_rights</tabstop>
+  <tabstop>chk_xmp_description</tabstop>
+  <tabstop>chk_xmp_label</tabstop>
+  <tabstop>chk_xmp_subject</tabstop>
+  <tabstop>chk_xmp_title</tabstop>
+  <tabstop>chk_xmp_rating</tabstop>
+  <tabstop>chk_xmp_person</tabstop>
+  <tabstop>gps_lat_deg</tabstop>
+  <tabstop>tabWidget_2</tabstop>
+  <tabstop>gps_lon_sec</tabstop>
+  <tabstop>chk_exif_Make</tabstop>
+  <tabstop>radioButton_gpsN</tabstop>
+  <tabstop>MaintableWidget</tabstop>
+  <tabstop>chk_AboveSeaLevel</tabstop>
+  <tabstop>chk_xmp_CroppedAreaLeftPixels</tabstop>
+  <tabstop>chk_xmp_country</tabstop>
+  <tabstop>chk_xmp_city</tabstop>
+  <tabstop>btn_loadimages</tabstop>
+  <tabstop>radioButton_calc_gpsW</tabstop>
+  <tabstop>btn_copy_calc_to_gps</tabstop>
+  <tabstop>chk_xmp_CroppedAreaTopPixels</tabstop>
+  <tabstop>chk_xmp_state</tabstop>
+  <tabstop>chk_xmp_CroppedAreaImageWidthPixels</tabstop>
+  <tabstop>chk_xmp_CroppedAreaImageHeightPixels</tabstop>
+  <tabstop>chk_xmp_FullPanoWidthPixels</tabstop>
+  <tabstop>chk_xmp_FullPanoHeightPixels</tabstop>
+  <tabstop>chk_xmp_location</tabstop>
+  <tabstop>chk_xmp_ProjectionType</tabstop>
+  <tabstop>chk_xmp_UsePanoramaViewer</tabstop>
+  <tabstop>gps_lat_min</tabstop>
+  <tabstop>chk_xmp_PoseHeadingDegrees</tabstop>
+  <tabstop>radioButton_calc_gpsE</tabstop>
+  <tabstop>gps_lon_deg</tabstop>
+  <tabstop>chk_xmp_StitchingSoftware</tabstop>
+  <tabstop>radioButton_gpsS</tabstop>
+  <tabstop>chk_exif_Artist</tabstop>
+  <tabstop>chk_xmp_InitialHorizontalFOVDegrees</tabstop>
+  <tabstop>chk_xmp_InitialViewPitchDegrees</tabstop>
+  <tabstop>chk_xmp_InitialViewHeadingDegrees</tabstop>
+  <tabstop>exiftableWidget</tabstop>
+  <tabstop>chk_xmp_InitialViewRollDegrees</tabstop>
+  <tabstop>chk_exif_Model</tabstop>
+  <tabstop>gps_lon_min</tabstop>
+  <tabstop>gps_lat_sec</tabstop>
+  <tabstop>chk_exif_UserComment</tabstop>
+  <tabstop>chk_exif_Copyright</tabstop>
+  <tabstop>chk_exif_ImageDescription</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
