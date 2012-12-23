@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sat Dec 22 15:04:40 2012
+# Created: Sun Dec 23 14:33:09 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1344,6 +1344,8 @@ class Ui_MainWindow(object):
         self.mnu_action_date_to_DateTimeOriginal.setObjectName("mnu_action_date_to_DateTimeOriginal")
         self.mnu_action_repair_jpg = QtGui.QAction(MainWindow)
         self.mnu_action_repair_jpg.setObjectName("mnu_action_repair_jpg")
+        self.mnu_action_copytoxmp = QtGui.QAction(MainWindow)
+        self.mnu_action_copytoxmp.setObjectName("mnu_action_copytoxmp")
         self.menu_File.addAction(self.mnu_action_load_images)
         self.menu_File.addSeparator()
         self.menu_File.addAction(self.action_Quit)
@@ -1364,6 +1366,7 @@ class Ui_MainWindow(object):
         self.menuExtra.addAction(self.mnu_action_modifydatetime)
         self.menuExtra.addAction(self.mnu_action_date_to_DateTimeOriginal)
         self.menuExtra.addAction(self.mnu_action_repair_jpg)
+        self.menuExtra.addAction(self.mnu_action_copytoxmp)
         self.menuExtra.addSeparator()
         self.menuExtra.addAction(self.mnu_action_remove_metadata)
         self.menubar.addAction(self.menu_File.menuAction())
@@ -1809,4 +1812,6 @@ class Ui_MainWindow(object):
         self.mnu_action_create_args.setText(QtGui.QApplication.translate("MainWindow", "Create args file(s)", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_date_to_DateTimeOriginal.setText(QtGui.QApplication.translate("MainWindow", "Set file date to DateTimeOriginal", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_repair_jpg.setText(QtGui.QApplication.translate("MainWindow", "Repair JPG(s) with corrupted metadata", None, QtGui.QApplication.UnicodeUTF8))
+        self.mnu_action_copytoxmp.setText(QtGui.QApplication.translate("MainWindow", "Copy all metadata to xmp format", None, QtGui.QApplication.UnicodeUTF8))
+        self.mnu_action_copytoxmp.setStatusTip(QtGui.QApplication.translate("MainWindow", "copy all available metadata in the image to XMP format", None, QtGui.QApplication.UnicodeUTF8))
 

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'export_metadata.ui'
 #
-# Created: Wed Dec 19 22:54:02 2012
+# Created: Sat Dec 22 23:18:47 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -77,7 +77,7 @@ class Ui_Dialog_export_metadata(object):
         self.qdem_xmp_radiobutton.setObjectName("qdem_xmp_radiobutton")
         self.horizontalLayout.addWidget(self.qdem_xmp_radiobutton)
         self.qdem_csv_radiobutton = QtGui.QRadioButton(self.horizontalLayoutWidget)
-        self.qdem_csv_radiobutton.setEnabled(False)
+        self.qdem_csv_radiobutton.setEnabled(True)
         self.qdem_csv_radiobutton.setObjectName("qdem_csv_radiobutton")
         self.horizontalLayout.addWidget(self.qdem_csv_radiobutton)
 

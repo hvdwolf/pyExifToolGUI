@@ -210,7 +210,7 @@ All formats give an export file per selected photo, apart from csv which will gi
     <item>
      <widget class="QRadioButton" name="qdem_csv_radiobutton">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="toolTip">
        <string>This option will give you one csv file for the selected photos</string>

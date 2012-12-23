@@ -3155,6 +3155,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
     <addaction name="mnu_action_modifydatetime"/>
     <addaction name="mnu_action_date_to_DateTimeOriginal"/>
     <addaction name="mnu_action_repair_jpg"/>
+    <addaction name="mnu_action_copytoxmp"/>
     <addaction name="separator"/>
     <addaction name="mnu_action_remove_metadata"/>
    </widget>
@@ -3266,6 +3267,14 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <action name="mnu_action_repair_jpg">
    <property name="text">
     <string>Repair JPG(s) with corrupted metadata</string>
+   </property>
+  </action>
+  <action name="mnu_action_copytoxmp">
+   <property name="text">
+    <string>Copy all metadata to xmp format</string>
+   </property>
+   <property name="statusTip">
+    <string>copy all available metadata in the image to XMP format</string>
    </property>
   </action>
  </widget>

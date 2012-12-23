@@ -79,6 +79,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mnu_action_remove_metadata.triggered.connect(self.remove_metadata)
         self.mnu_action_date_to_DateTimeOriginal.triggered.connect(self.date_to_datetimeoriginal)
         self.mnu_action_repair_jpg.triggered.connect(self.repair_jpg_metadata)
+        self.mnu_action_copytoxmp.triggered.connect(self.copymetadatatoxmp)
         #--- help menu
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
 	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
@@ -346,6 +347,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if reply == QMessageBox.Yes:
            # Add true to write function: Always make a backup in this case
            petgfunctions.write_image_info(self, et_param, qApp, True)
+
+    def copymetadatatoxmp(self):
+        et_param = "copymetadatatoxmp"
+        message = "This function will copy all possible information from exif and other tags into XMP format.\n"
+        message += "This is an internal \"same image to same image\" copy, for all the selected images.\n\n"
+        message += "Do you want to continue?"
+        reply = QMessageBox.question(self, "Copy all metadata to xmp format?", message, QMessageBox.Yes | QMessageBox.No)
+        if reply == QMessageBox.Yes:
+           petgfunctions.write_image_info(self, et_param, qApp, False)
 
 #------------------------------------------------------------------------
 # Help functions leading to html manual

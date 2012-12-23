@@ -1624,7 +1624,7 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
         elif " -csv " in exiftoolparams:
            # Create args file(s) from selected images(s)
            print "Exporting metadata from selected images(s)to csv file"
-           images_to_csv = exiftoolparams + " "
+           images_to_csv = exiftoolparams + ' '
         elif " -args " in exiftoolparams:
            # Create args file(s) from selected images(s)
            print "Create args file(s) from selected images(s)"
@@ -1638,9 +1638,9 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
         else:
            # writing metadata info to photos
            if backup_originals == True:
-                exiftoolparams = ' -P -ProcessingSoftware="' + mysoftware + '" ' + exiftoolparams
+                exiftoolparams = " -P -ProcessingSoftware='" + mysoftware + "' " + exiftoolparams
            else:
-                exiftoolparams = ' -P -overwrite_original_in_place -ProcessingSoftware="' + mysoftware + '" ' + exiftoolparams
+                exiftoolparams = " -P -overwrite_original_in_place -ProcessingSoftware='" + mysoftware + "' " + exiftoolparams
 
         selected_rows = self.MaintableWidget.selectedIndexes()
         print 'number of rows ' + str(len(selected_rows))
@@ -1665,7 +1665,10 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
         	        self.progressbar.setValue(rowcounter)
         	        if " -csv " in exiftoolparams:
                            # First collect images. Do not write yet
-                           images_to_csv += " " + selected_image + " "
+#                           if self.OSplatform in ("Windows", "win32"):
+#                              images_to_csv += " " + selected_image + " "
+#                           else:
+                           images_to_csv += ' ' + selected_image + ' '
                            #print images_to_csv
                         else: 
                            # All other actions are performed per image.
@@ -1673,6 +1676,12 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
                               self.statusbar.showMessage("Exporting information from: " + os.path.basename(selected_image) + " to chosen export format")
                            elif " -args " in exiftoolparams:
                               self.statusbar.showMessage("Create args file from: " + os.path.basename(selected_image))
+                           elif "copymetadatatoxmp" in exiftoolparams:
+                              self.statusbar.showMessage("Create all metadata internally inside " + os.path.basename(selected_image) + " to xmp format")
+                              if self.OSplatform in ("Windows", "win32"):
+                                 exiftoolparams = " -TagsFromFile " + selected_image.replace("/", "\\") + " \"-all>xmp:all\" "
+                              else:
+                                 exiftoolparams = " -TagsFromFile " + selected_image + " '-all>xmp:all' "
                            else:
                               #check whether we do an xmp to xmp file export
                               if xmpexportparam == "":
@@ -1712,17 +1721,18 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
         if " -csv " in exiftoolparams:
            # Use self.image_folder from loading the images
            if self.OSplatform in ("Windows", "win32"):
-              parameters = " " + images_to_csv + " > \"" + os.path.join(self.image_folder, 'output.csv') + "\""
+              parameters = " " + images_to_csv + " > \"" + os.path.join(self.image_folder, "output.csv") + "\""
               #parameters = " " + images_to_csv + " > output.csv"
               parameters = parameters.replace("/", "\\")
               args = self.exiftoolprog + parameters
               print args
               p = subprocess.call(args)
            else:
-              command_line = self.exiftoolprog + " " + images_to_csv + " > \"" + os.path.join(self.image_folder, 'output.csv') + "\""
+              command_line = self.exiftoolprog + " " + images_to_csv + " > '" + os.path.join(self.image_folder, 'output.csv') + "'"
               args = shlex.split(command_line)
               print command_line
-              p = subprocess.call(args,shell=true)
+              #p = subprocess.call(args,shell=true)
+              p = subprocess.call(command_line,shell=true)
         # end of csv option
         if " -w " in exiftoolparams:
            self.statusbar.showMessage("Done exporting the metadata for the selected image(s)")
