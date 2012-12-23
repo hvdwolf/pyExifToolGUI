@@ -111,10 +111,10 @@ def tool_check( self ):
                 self.exiftoolprog = "exiftool"
 	# Check for exiftool
 	if (self.OSplatform in ("Windows", "win32")):
-                print "On windows we expect exiftool.exe or exiftool(-k).exe in the pyexiftoolgui\exiftool folder"
-                self.exiftool_dir = os.path.join(self.realfile_dir, "exiftool", "exiftool.exe")
-                #self.exiftoolprog = self.exiftool_dir + "\exiftool.exe"
-                if not os.path.isfile(self.exiftoolprog):
+                if self.exiftoolprog == "exiftool":
+                   self.exiftool_dir = os.path.join(self.realfile_dir, "exiftool", "exiftool.exe")
+                   #self.exiftoolprog = self.exiftool_dir + "\exiftool.exe"
+                   if not os.path.isfile(self.exiftoolprog):
                        configure_message = "exiftool is missing or incorrectly configured in Preferences!\n"
                        configure_message += "This tool is an absolute must have!\nPlease set the correct location or install exiftool first.\n\n"
                        configure_message += "If your exiftool is named \"exiftool(-k).exe\", rename it to \"exiftool.exe\""
@@ -183,7 +183,7 @@ def write_config(self, aftererror):
                 if self.pref_thumbnail_preview.isChecked():
                    config.set("preferences", "pref_thumbnail_preview",str(True))
                 else:
-                   config.set("preferences", "pref_thumbnail_preview",str(True))
+                   config.set("preferences", "pref_thumbnail_preview",str(False))
 		config.set("preferences", "def_creator", self.def_creator.text())
 		config.set("preferences", "def_copyright", self.def_copyright.text())
 
@@ -223,7 +223,6 @@ def read_config(self):
           import ConfigParser
 	  config = ConfigParser.RawConfigParser()
 
-	# Here we write to our pyexiftoolgui config file
 	#print "Reading our config file"
 	userpath = os.path.expanduser('~')
 	print userpath
