@@ -128,6 +128,7 @@ def tool_check( self ):
                           self.exiftoolprog = result
                 print self.exiftoolprog
                 args = self.exiftoolprog + " -ver"
+                self.exiftoolversion = subprocess.check_output(args, shell=True)
         else:
 	        if not check_for_program(self.exiftoolprog):
 		       ret = QMessageBox.critical(self, "exiftool is missing or incorrectly configured", "exiftool is missing or incorrectly configured in Preferences!\nThis tool is an absolute must have!\nPlease set the correct location or install exiftool first.")
@@ -142,7 +143,7 @@ def tool_check( self ):
                           #print "result 2" + self.exiftoolprog
                 command_line = self.exiftoolprog + " -ver"
                 args = shlex.split(command_line)
-        self.exiftoolversion = subprocess.check_output(args)
+                self.exiftoolversion = subprocess.check_output(args)
         # remove last character which is the final ending \n (where \ is only the escape character)        
         self.exiftoolversion = self.exiftoolversion[:-1]
         exiftool_version_level_text(self)
@@ -409,12 +410,11 @@ def imageinfo(self, qApp):
         if self.OSplatform == "Windows":
                 selected_image = selected_image.replace("/", "\\")
                 args = self.exiftoolprog + " -a " + exiftool_params + " " + selected_image
+                p = subprocess.check_output(args, universal_newlines=True, shell=True)
         else:
                 command_line = self.exiftoolprog + " -a " + exiftool_params + " " + selected_image
                 args = shlex.split(command_line)
-        #print "command line is: " + command_line
-        #print "args are: " + args
-        p = subprocess.check_output(args, universal_newlines=True)
+                p = subprocess.check_output(args, universal_newlines=True)
         #arguments = arguments + " " + selected_image
         #print "ET = " + self.exiftoolprog + " arguments are " + arguments
         #myprocess = QProcess(self)
@@ -1192,12 +1192,11 @@ def qddt_use_reference_image_data(self):
         if self.OSplatform == "Windows":
                 self.referenceimage = self.referenceimage.replace("/", "\\")
                 args = self.exiftoolprog + " -a " + exiftool_params + " " + self.referenceimage
+                p = subprocess.check_output(args, universal_newlines=True, shell=True)
         else:
                 command_line = self.exiftoolprog + " -a " + exiftool_params + " " + self.referenceimage
                 args = shlex.split(command_line)
-        #print "command line is: " + command_line
-        #print "args are: " + args
-        p = subprocess.check_output(args, universal_newlines=True)
+                p = subprocess.check_output(args, universal_newlines=True)
         p = p[:-1]
         p_lines = re.split('\n',p)
         for line in p_lines:
@@ -1606,11 +1605,12 @@ def read_image_info(self, exiftool_params):
 	selected_image = "\"" + self.fileNames[selected_row] + "\""
         if self.OSplatform in ("Windows", "win32"):
                 selected_image = selected_image.replace("/", "\\")
-                args = self.exiftoolprog + exiftool_params + selected_image
+                args = self.exiftoolprog + exiftool_params + selected_image                
+                p = subprocess.check_output(args, universal_newlines=True, shell=True)
         else:
                 command_line = self.exiftoolprog + exiftool_params + selected_image
                 args = shlex.split(command_line)
-        p = subprocess.check_output(args, universal_newlines=True)
+                p = subprocess.check_output(args, universal_newlines=True)
         return p
 
 def write_image_info(self, exiftoolparams, qApp, backup_originals):
@@ -1702,7 +1702,7 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
                               # First write the info
                               selected_image = selected_image.replace("/", "\\")
                               args = self.exiftoolprog + exiftoolparams + selected_image
-                              p = subprocess.call(args)
+                              p = subprocess.call(args, shell=True)
                               ## Now reset the file date
                               #args = self.exiftoolprog + ' "-FileModifyDate<DateTimeOriginal" ' + selected_image
                               #p = subprocess.call(args)
@@ -1726,13 +1726,13 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
               parameters = parameters.replace("/", "\\")
               args = self.exiftoolprog + parameters
               print args
-              p = subprocess.call(args)
+              p = subprocess.call(args, shell=True)
            else:
               command_line = self.exiftoolprog + " " + images_to_csv + " > '" + os.path.join(self.image_folder, 'output.csv') + "'"
               args = shlex.split(command_line)
               print command_line
               #p = subprocess.call(args,shell=true)
-              p = subprocess.call(command_line,shell=true)
+              p = subprocess.call(command_line)
         # end of csv option
         if " -w " in exiftoolparams:
            self.statusbar.showMessage("Done exporting the metadata for the selected image(s)")
