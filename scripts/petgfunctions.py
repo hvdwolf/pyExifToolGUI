@@ -26,7 +26,6 @@ import os, sys, platform, shlex, subprocess, time, re, string, datetime
 import PySide
 from PySide.QtCore import *
 from PySide.QtGui import *
-#from PySide.QtUiTools import *
 
 import programinfo
 import programstrings
@@ -34,7 +33,7 @@ import programstrings
 from ui_create_args import Ui_Dialog_create_args
 from ui_export_metadata import Ui_Dialog_export_metadata
 from ui_remove_metadata import Ui_Dialog_remove_metadata
-from ui_modifydatetime import Ui_DateTimeDialog    
+from ui_modifydatetime import Ui_DateTimeDialog
 
 #------------------------------------------------------------------------
 # All kind of functions
@@ -192,12 +191,12 @@ def write_config(self, aftererror):
 		fldr = os.mkdir(os.path.join(userpath, '.pyexiftoolgui'))
 		#print "fldr gives: " + fldr
 	except:
-		print "config folder already exists: no problem"
+		print "Check for config folder: exists => OK"
 	try:
 		with open(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg'), 'wb') as configfile:
 			config.write(configfile)
 	except:
-		print "couln't write configfile"
+		print "couldn't write configfile"
 
 def error_reading_configparameter(self):
 	message = ("Somehow I encountered an error reading the config file.\n"

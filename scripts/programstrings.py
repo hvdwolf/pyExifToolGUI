@@ -73,5 +73,16 @@ SUPPORTEDFORMATS     = ("*.3fr *.3g2 *.3gp2 *.3gp *.3gpp "
                        "*.vob *.vrd *.vsd *.wav *.webm *.webp *.wma *.wmv *.wv "
                        "*.x3f *.xcf *.xls *.xlt *.xlsx *.xlsm *.xlsb *.xltx *.xltm *.xmp")
 
+# Renaming options for the second "Do it yourself"tab
+d01 = { 'option' : 'YYYYMMDDHHMMSS', 'tag' : '${CreateDate}', 'format': '%Y%m%d%H%M%S' }
+d02 = { 'option' : 'YYYYMMDD_HHMMSS', 'tag' : '${CreateDate}', 'format': '%Y%m%d_%H%M%S' }
+d03 = { 'option' : 'YYYYMMDD-HHMMSS', 'tag' : '${CreateDate}', 'format': '%Y%m%d-%H%M%S' }
+d04 = { 'option' : 'YYYY_MM_DD_HH_MM_SS', 'tag' : '${CreateDate}', 'format': '%Y_%m_%d_%H_%M_%S' }
+d05 = { 'option' : 'YYYY-MM-DD-HH-MM-SS', 'tag' : '${CreateDate}', 'format': '%Y-%m-%d-%H-%M-%S' }
+d06 = { 'option' : 'YYYYMMDD', 'tag' : '${CreateDate}', 'format': '%Y%m%d' }
+d07 = { 'option' : 'YYYY_MM_DD', 'tag' : '${CreateDate}', 'format': '%Y_%m_%d' }
+d08 = { 'option' : 'YYYY-MM-DD', 'tag' : '${CreateDate}', 'format': '%Y-%m-%d' }
+
+
 # End of strings 
 

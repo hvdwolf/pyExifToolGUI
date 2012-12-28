@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sun Dec 23 14:33:09 2012
+# Created: Sun Dec 23 19:00:34 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1346,6 +1346,8 @@ class Ui_MainWindow(object):
         self.mnu_action_repair_jpg.setObjectName("mnu_action_repair_jpg")
         self.mnu_action_copytoxmp = QtGui.QAction(MainWindow)
         self.mnu_action_copytoxmp.setObjectName("mnu_action_copytoxmp")
+        self.mnu_action_renaming = QtGui.QAction(MainWindow)
+        self.mnu_action_renaming.setObjectName("mnu_action_renaming")
         self.menu_File.addAction(self.mnu_action_load_images)
         self.menu_File.addSeparator()
         self.menu_File.addAction(self.action_Quit)
@@ -1360,6 +1362,8 @@ class Ui_MainWindow(object):
         self.menuHelp.addSeparator()
         self.menuHelp.addSeparator()
         self.menuHelp.addSeparator()
+        self.menuExtra.addAction(self.mnu_action_renaming)
+        self.menuExtra.addSeparator()
         self.menuExtra.addAction(self.mnu_action_create_args)
         self.menuExtra.addAction(self.mnu_action_export_metadata)
         self.menuExtra.addSeparator()
@@ -1814,4 +1818,5 @@ class Ui_MainWindow(object):
         self.mnu_action_repair_jpg.setText(QtGui.QApplication.translate("MainWindow", "Repair JPG(s) with corrupted metadata", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_copytoxmp.setText(QtGui.QApplication.translate("MainWindow", "Copy all metadata to xmp format", None, QtGui.QApplication.UnicodeUTF8))
         self.mnu_action_copytoxmp.setStatusTip(QtGui.QApplication.translate("MainWindow", "copy all available metadata in the image to XMP format", None, QtGui.QApplication.UnicodeUTF8))
+        self.mnu_action_renaming.setText(QtGui.QApplication.translate("MainWindow", "Rename photos", None, QtGui.QApplication.UnicodeUTF8))
 

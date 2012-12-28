@@ -54,6 +54,7 @@ sys.path.append( realfile_dir + "/ui")
 import petgfunctions
 import programinfo
 import programstrings
+import renaming
 
 #import image_resources.rc
 if platform.system() == "Darwin":
@@ -80,6 +81,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mnu_action_date_to_DateTimeOriginal.triggered.connect(self.date_to_datetimeoriginal)
         self.mnu_action_repair_jpg.triggered.connect(self.repair_jpg_metadata)
         self.mnu_action_copytoxmp.triggered.connect(self.copymetadatatoxmp)
+        self.mnu_action_renaming.triggered.connect(self.rename_photos)
         #--- help menu
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
 	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
@@ -271,6 +273,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		
     def show_license(self):
         petgfunctions.info_window(self)
+
+    def rename_photos(self):
+        renaming.rename_photos(self,qApp)
 
     def create_args(self):
         try:
@@ -552,6 +557,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def moddialog_use_reference_image_data(self):
         petgfunctions.qddt_use_reference_image_data(self)
+
+    def check_radiobuttons(self):
+        renaming.check_radiobuttons(self)
 
 #------------------------------------------------------------------------
 #------------------------------------------------------------------------
