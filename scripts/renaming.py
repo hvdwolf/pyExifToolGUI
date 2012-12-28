@@ -45,6 +45,12 @@ class dialog_rename_photos(QDialog, Ui_Dialog_rename_files):
         # initialize buttons
         self.button_rename_info.clicked.connect(self.rename_info)
         self.button_rename_browse.clicked.connect(self.source_folder)
+        # disable date/time suffix options as program stats wth datetime prefix as default
+        self.radioButton_suffix_datetime.setEnabled(False)
+        self.radioButton_suffix_date.setEnabled(False)
+        self.comboBox_suffix_datetime.setEnabled(False)
+        self.comboBox_suffix_date.setEnabled(False)
+
 
     def rename_info(self):
         message = "If you leave the \"source folder\" empty, the program will use the selected photos from the main screen.\n"
@@ -77,13 +83,20 @@ def check_radiobuttons(self):
         if (self.rename_photos_dialog.radioButton_prefix_datetime.isChecked()) or (self.rename_photos_dialog.radioButton_prefix_date.isChecked()):
            self.rename_photos_dialog.radioButton_suffix_datetime.setEnabled(False)
            self.rename_photos_dialog.radioButton_suffix_date.setEnabled(False)
+           self.rename_photos_dialog.comboBox_suffix_datetime.setEnabled(False)
+           self.rename_photos_dialog.comboBox_suffix_date.setEnabled(False)
            self.rename_photos_dialog.radioButton_suffix_donotuse.setChecked(1)
-           self.rename_photos_dialog.suffix_string.setEnabled(False)
+           self.rename_photos_dialog.radioButton_suffix_donotuse.setEnabled(True)
+           self.rename_photos_dialog.suffix_string.setEnabled(True)
            self.rename_photos_dialog.radioButton_suffix_string.setEnabled(True)
         elif self.rename_photos_dialog.radioButton_prefix_string.isChecked():
+           self.rename_photos_dialog.radioButton_suffix_donotuse.setEnabled(False)
            self.rename_photos_dialog.radioButton_suffix_string.setEnabled(False)
            self.rename_photos_dialog.suffix_string.setEnabled(False)
+           self.rename_photos_dialog.suffix_string.setText("")
            self.rename_photos_dialog.radioButton_suffix_datetime.setEnabled(True)
+           self.rename_photos_dialog.comboBox_suffix_datetime.setEnabled(True)
+           self.rename_photos_dialog.comboBox_suffix_date.setEnabled(True)
            self.rename_photos_dialog.radioButton_suffix_datetime.setChecked(1)
            self.rename_photos_dialog.radioButton_suffix_date.setEnabled(True)
 
