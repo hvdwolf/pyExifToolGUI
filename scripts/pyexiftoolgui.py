@@ -66,22 +66,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
-        #self.setUnifiedTitleAndToolBarOnMac(True)
 # First set the menu actions
 	self.mnu_action_load_images.triggered.connect(self.loadimages)
 	self.action_Quit.triggered.connect(self.quit_application)
 	app.aboutToQuit.connect(self.quit_application)
         #--- Extra menu
-        # not in this 0.2 release, so disable action and hide menu item
         self.mnu_action_modifydatetime.triggered.connect(self.modify_datetime)
-        #self.menuExtra.removeAction(self.mnu_action_modifydatetime)
         self.mnu_action_create_args.triggered.connect(self.create_args)
         self.mnu_action_export_metadata.triggered.connect(self.export_metadata)
         self.mnu_action_remove_metadata.triggered.connect(self.remove_metadata)
         self.mnu_action_date_to_DateTimeOriginal.triggered.connect(self.date_to_datetimeoriginal)
         self.mnu_action_repair_jpg.triggered.connect(self.repair_jpg_metadata)
         self.mnu_action_copytoxmp.triggered.connect(self.copymetadatatoxmp)
-        self.mnu_action_renaming.triggered.connect(self.rename_photos)
+        # not in this 0.28 release, so disable action and hide menu item
+        #self.mnu_action_renaming.triggered.connect(self.rename_photos)
+        self.menuExtra.removeAction(self.mnu_action_renaming)
         #--- help menu
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
 	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
