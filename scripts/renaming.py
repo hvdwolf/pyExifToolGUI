@@ -122,29 +122,29 @@ def rename_photos(self, qApp):
           if self.rename_photos_dialog.radioButton_prefix_datetime.isChecked():
              if self.rename_photos_dialog.comboBox_prefix_datetime.currentText() == "YYYYMMDDHHMMSS":
                 prefix_message = "YYYYMMDDHHMMSS"
-                self.prefixformat = " -d %Y%m%d%H%M%S"
+                self.prefixformat = "-d %Y%m%d%H%M%S"
              elif self.rename_photos_dialog.comboBox_prefix_datetime.currentText() == "YYYYMMDD_HHMMSS":
                 prefix_message = "YYYYMMDD_HHMMSS"
-                self.prefixformat = " -d %Y%m%d_%H%M%S"
+                self.prefixformat = "-d %Y%m%d_%H%M%S"
              elif self.rename_photos_dialog.comboBox_prefix_datetime.currentText() == "YYYMMDD-HHMMSS":
                 prefix_message = "YYYMMDD-HHMMSS"
-                self.prefixformat = " -d %Y%m%d-%H%M%S"
+                self.prefixformat = "-d %Y%m%d-%H%M%S"
              elif self.rename_photos_dialog.comboBox_prefix_datetime.currentText() == "YYYY_MM_DD_HH_MM_SS":
                 prefix_message = "YYYY_MM_DD_HH_MM_SS"
-                self.prefixformat = " -d %Y_%m_%d_%H_%M_%S"
+                self.prefixformat = "-d %Y_%m_%d_%H_%M_%S"
              elif self.rename_photos_dialog.comboBox_prefix_datetime.currentText() == "YYYY-MM-DD-HH-MM-SS":
                 prefix_message = "YYYY-MM-DD-HH-MM-SS"
-                self.prefixformat = " -d %Y-%m-%d-%H-%M-%S"
+                self.prefixformat = "-d %Y-%m-%d-%H-%M-%S"
           elif self.rename_photos_dialog.radioButton_prefix_date.isChecked():
              if self.rename_photos_dialog.comboBox_prefix_date.currentText() == "YYYYMMDD":
                 prefix_message = "YYYYMMDD"
                 self.prefixformat = " -d %Y%m%d"
              elif self.rename_photos_dialog.comboBox_prefix_date.currentText() == "YYYY_MM_DD":
                 prefix_message = "YYYY_MM_DD"
-                self.prefixformat = " -d %Y_%m_%d"
+                self.prefixformat = "-d %Y_%m_%d"
              elif self.rename_photos_dialog.comboBox_prefix_date.currentText() == "YYYY-MM-DD":
                 prefix_message = "YYYY-MM-DD"
-                self.prefixformat = " -d %Y-%m-%d"
+                self.prefixformat = "-d %Y-%m-%d"
           elif self.rename_photos_dialog.radioButton_prefix_string.isChecked():
              prefix_message = self.rename_photos_dialog.prefix_string.text()
              self.prefix = self.rename_photos_dialog.prefix_string.text()
@@ -160,28 +160,31 @@ def rename_photos(self, qApp):
                  self.suffix = self.rename_photos_dialog.suffix_string.text()
                  self.suffixformat = ""
               elif self.rename_photos_dialog.radioButton_suffix_datetime.isChecked():
-                 if self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYYMMDD_HHMMSS":
+                 if self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYYMMDDHHMMSS":
+                    suffix_message = "YYYYMMDDHHMMSS"
+                    self.suffixformat = "-d %Y%m%d%H%M%S"
+                 elif self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYYMMDD_HHMMSS":
                     suffix_message = "YYYYMMDD_HHMMSS"
-                    self.suffixformat = " -d %Y%m%d_%H%M%S"
+                    self.suffixformat = "-d %Y%m%d_%H%M%S"
                  elif self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYMMDD-HHMMSS":
                     suffix_message = "YYYMMDD-HHMMSS"
-                    self.suffixformat = " -d %Y%m%d-%H%M%S"
+                    self.suffixformat = "-d %Y%m%d-%H%M%S"
                  elif self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYY_MM_DD_HH_MM_SS":
                     suffix_message = "YYYY_MM_DD_HH_MM_SS"
-                    self.suffixformat = " -d %Y_%m_%d_%H_%M_%S"
+                    self.suffixformat = "-d %Y_%m_%d_%H_%M_%S"
                  elif self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYY-MM-DD-HH-MM-SS":
                     suffix_message = "YYYY-MM-DD-HH-MM-SS"
-                    self.suffixformat = " -d %Y-%m-%d-%H-%M-%S"
+                    self.suffixformat = "-d %Y-%m-%d-%H-%M-%S"
               elif self.rename_photos_dialog.radioButton_suffix_date.isChecked():
                  if self.rename_photos_dialog.comboBox_suffix_date.currentText() == "YYYYMMDD":
                     suffix_message = "YYYYMMDD"
-                    self.suffixformat = " -d %Y%m%d"
+                    self.suffixformat = "-d %Y%m%d"
                  elif self.rename_photos_dialog.comboBox_suffix_date.currentText() == "YYYY_MM_DD":
                     suffix_message = "YYYY_MM_DD"
-                    self.suffixformat = " -d %Y_%m_%d"
+                    self.suffixformat = "-d %Y_%m_%d"
                  elif self.rename_photos_dialog.comboBox_suffix_date.currentText() == "YYYY-MM-DD":
                     suffix_message = "YYYY-MM-DD"
-                    self.suffixformat = " -d %Y-%m-%d"
+                    self.suffixformat = "-d %Y-%m-%d"
               elif self.rename_photos_dialog.radioButton_model.isChecked():
                  self.suffix = "${Exif:Model}"
                  suffix_message = "${Exif:Model}"
@@ -255,6 +258,7 @@ def run_rename_photos(self, work_on, qApp):
           return
        elif work_on == "main_screen_selection":
           # we use the images that were selected from the main screen
+          print "we use the images that were selected from the main screen"
           selected_rows = self.MaintableWidget.selectedIndexes()
           #exiftoolparams = "'-FileName<" + self.prefix + "_" + self.suffix + ".%le' " + self.prefixformat + " " + self.suffixformat + "-." + self.combobox_digits.currenttext() + "nc" + self.sourcefolder + "/*"
           for selected_row in selected_rows:
@@ -269,7 +273,7 @@ def run_rename_photos(self, work_on, qApp):
                         print 'exiftool ' + exiftoolparams + ' ' + selected_image
        elif work_on == "rename_source_folder":
           # work on all images in the source folder
-          print "pipo"
+          print "work on all images in the source folder"
           
        # Now continue with our renaming stuff
        QMessageBox.information(self,"selected options", "self.prefix: " + self.prefix + " self.prefixformat: " + self.prefixformat + "\nself.suffix: " + self.suffix + " self.suffixformat: " + self.suffixformat + "\n\n\n" + exiftoolparams)

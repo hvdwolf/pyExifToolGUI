@@ -1596,6 +1596,69 @@ def remove_metadata(self, qApp):
             self.statusbar.showMessage("you canceled the \"Removal of metadata\" action")   
 
 #------------------------------------------------------------------------
+# This is the part where your own exiftool parameters will be executed
+def yourcommands_go(self, qApp):
+        output_text = ""
+        exiftoolparams = " " + self.yourcommands_input.text() + " "
+        '''mysoftware = programinfo.NAME + " " + programinfo.VERSION
+        if self.OSplatform in ("Windows", "win32"):
+           exiftoolparams = " -ProcessingSoftware=\"" + mysoftware + "\" " + exiftoolparams
+        else:
+           exiftoolparams = " -ProcessingSoftware='" + mysoftware + "' " + exiftoolparams
+        '''
+        selected_rows = self.MaintableWidget.selectedIndexes()
+        if len(selected_rows) == 0:
+            self.the_no_photos_messagebox()
+        else:
+           print 'number of rows ' + str(len(selected_rows))
+           rowcounter = 0
+           total_rows = len(selected_rows)
+           self.progressbar.setRange(0, total_rows)
+           self.progressbar.setValue(0)
+           self.progressbar.show()
+           rows = []
+           for selected_row in selected_rows:
+                selected_row = str(selected_row)
+                selected_row = selected_row.replace("<PySide.QtCore.QModelIndex(",'')
+                selected_row, tail = re.split(',0x0',selected_row)
+                #print str(selected_row)
+                row, column = re.split(',',selected_row)
+                if row not in rows:
+                        rows.append(row)
+                        selected_image = "\"" + self.fileNames[int(row)] + "\""
+                        print 'exiftool ' + exiftoolparams + ' ' + selected_image
+        	        rowcounter += 1
+        	        self.progressbar.setValue(rowcounter)
+                        if self.OSplatform in ("Windows", "win32"):
+                            # First write the info
+                            selected_image = selected_image.replace("/", "\\")
+                            args = self.exiftoolprog + exiftoolparams + selected_image
+                            try:
+                                p = subprocess.check_output(args, universal_newlines=True, shell=True)
+                            except:
+                                p = "Your parameter(s) is/are wrong and could not be executed at all by exiftool.\nTherefore you don't get output."
+                        else:
+                            # First write the info
+                            command_line = self.exiftoolprog + exiftoolparams + selected_image
+                            print command_line
+                            args = shlex.split(command_line)
+                            try:
+                                p = subprocess.check_output(args, universal_newlines=True)
+                            except:
+                                p = "Your parameter(s) is/ware wrong and could not be executed at all by exiftool.\nTherefore you don't get output."
+                        if p == "":
+                           p = "Your parameters did not return output.\nEither there is no output or you did something wrong."
+                        p = p[:-1]
+                        #p_lines = re.split('\n',p)
+                        self.statusbar.showMessage("Executing your parameter(s) on: " + selected_image)
+                        self.yourcommands_output.insertPlainText("==== " + selected_image + " ====\n")
+                        self.yourcommands_output.insertPlainText(str(p))
+                        self.yourcommands_output.insertPlainText("\n\n\n")
+
+           self.progressbar.hide()
+           self.statusbar.showMessage("Finished executing your parameter(s)")
+
+#------------------------------------------------------------------------
 # Real exiftool read/write functions
 def read_image_info(self, exiftool_params):
         self.statusbar.showMessage("")
@@ -1636,9 +1699,15 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
         else:
            # writing metadata info to photos
            if backup_originals == True:
-                exiftoolparams = " -P -ProcessingSoftware='" + mysoftware + "' " + exiftoolparams
+                if self.OSplatform in ("Windows", "win32"):
+                   exiftoolparams = " -P -ProcessingSoftware=\"" + mysoftware + "\" " + exiftoolparams
+                else:
+                   exiftoolparams = " -P -ProcessingSoftware='" + mysoftware + "' " + exiftoolparams
            else:
-                exiftoolparams = " -P -overwrite_original_in_place -ProcessingSoftware='" + mysoftware + "' " + exiftoolparams
+                if self.OSplatform in ("Windows", "win32"):
+                   exiftoolparams = " -P -overwrite_original_in_place -ProcessingSoftware=\"" + mysoftware + "\" " + exiftoolparams
+                else:
+                   exiftoolparams = " -P -overwrite_original_in_place -ProcessingSoftware='" + mysoftware + "' " + exiftoolparams
 
         selected_rows = self.MaintableWidget.selectedIndexes()
         print 'number of rows ' + str(len(selected_rows))

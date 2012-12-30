@@ -2918,6 +2918,114 @@ Currently I have no intent to add functionality to this standard, maybe later.</
       </widget>
      </widget>
     </widget>
+    <widget class="QWidget" name="yourcommands">
+     <attribute name="title">
+      <string>Your Commands</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_11">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>701</width>
+        <height>561</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_11">
+       <property name="margin">
+        <number>10</number>
+       </property>
+       <item row="5" column="0">
+        <widget class="QPlainTextEdit" name="yourcommands_output">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_88">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Parameters:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_69">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;On this tab you can define your own parameters to &amp;quot;send to&amp;quot; exiftool. The parameters will be executed on the images you have selected on the left. &lt;br&gt;You can both specify read parameters as well as write parameters. You can also combine several parameters. &lt;b&gt;Note:&lt;/b&gt; You don't need (must not) provide the exiftool command itself. The Gui will take care of that.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLineEdit" name="yourcommands_input">
+         <property name="toolTip">
+          <string>Examples are:&lt;br&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;-exif:all&lt;/td&gt;&lt;td&gt;will display all exif tags for the selected images&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;-exif:all=&lt;/td&gt;&lt;td&gt;will remove(!) all exif tags from the selected images&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;-Exif:Artist=&quot;My Name&quot;&lt;/td&gt;&lt;td&gt;Will put &quot;Your Name&quot; into the selected images&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;-Xmp:City=Zwolle -Xmp:Country=Netherlands&lt;/td&gt;&lt;td&gt;Will write your city and country into the xmp tags of your image(s)&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_89">
+         <property name="text">
+          <string>The final output will be displayed below:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_13">
+         <item>
+          <widget class="QPushButton" name="btn_yourcommands_clearinput">
+           <property name="text">
+            <string>Clear parameter(s) field</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_yourcommands_clearoutput">
+           <property name="text">
+            <string>Clear output</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_yourcommands_go">
+           <property name="text">
+            <string>Go</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_yourcommands_help">
+           <property name="text">
+            <string>Help</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
     <widget class="QWidget" name="preferencestab">
      <attribute name="title">
       <string>Preferences</string>
@@ -3118,7 +3226,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
      <x>0</x>
      <y>0</y>
      <width>1120</width>
-     <height>24</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

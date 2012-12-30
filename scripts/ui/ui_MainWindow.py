@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sun Dec 23 19:00:34 2012
+# Created: Sun Dec 30 12:07:30 2012
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1218,6 +1218,53 @@ class Ui_MainWindow(object):
         self.label_63.setObjectName("label_63")
         self.tabWidget_2.addTab(self.editiptctab, "")
         self.tabWidget.addTab(self.edittab, "")
+        self.yourcommands = QtGui.QWidget()
+        self.yourcommands.setObjectName("yourcommands")
+        self.gridLayoutWidget_11 = QtGui.QWidget(self.yourcommands)
+        self.gridLayoutWidget_11.setGeometry(QtCore.QRect(10, 10, 701, 561))
+        self.gridLayoutWidget_11.setObjectName("gridLayoutWidget_11")
+        self.gridLayout_11 = QtGui.QGridLayout(self.gridLayoutWidget_11)
+        self.gridLayout_11.setContentsMargins(10, 10, 10, 10)
+        self.gridLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_11.setObjectName("gridLayout_11")
+        self.yourcommands_output = QtGui.QPlainTextEdit(self.gridLayoutWidget_11)
+        self.yourcommands_output.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.yourcommands_output.setReadOnly(True)
+        self.yourcommands_output.setObjectName("yourcommands_output")
+        self.gridLayout_11.addWidget(self.yourcommands_output, 5, 0, 1, 1)
+        self.label_88 = QtGui.QLabel(self.gridLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setWeight(75)
+        font.setBold(True)
+        self.label_88.setFont(font)
+        self.label_88.setObjectName("label_88")
+        self.gridLayout_11.addWidget(self.label_88, 1, 0, 1, 1)
+        self.label_69 = QtGui.QLabel(self.gridLayoutWidget_11)
+        self.label_69.setWordWrap(True)
+        self.label_69.setObjectName("label_69")
+        self.gridLayout_11.addWidget(self.label_69, 0, 0, 1, 1)
+        self.yourcommands_input = QtGui.QLineEdit(self.gridLayoutWidget_11)
+        self.yourcommands_input.setObjectName("yourcommands_input")
+        self.gridLayout_11.addWidget(self.yourcommands_input, 2, 0, 1, 1)
+        self.label_89 = QtGui.QLabel(self.gridLayoutWidget_11)
+        self.label_89.setObjectName("label_89")
+        self.gridLayout_11.addWidget(self.label_89, 4, 0, 1, 1)
+        self.horizontalLayout_13 = QtGui.QHBoxLayout()
+        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
+        self.btn_yourcommands_clearinput = QtGui.QPushButton(self.gridLayoutWidget_11)
+        self.btn_yourcommands_clearinput.setObjectName("btn_yourcommands_clearinput")
+        self.horizontalLayout_13.addWidget(self.btn_yourcommands_clearinput)
+        self.btn_yourcommands_clearoutput = QtGui.QPushButton(self.gridLayoutWidget_11)
+        self.btn_yourcommands_clearoutput.setObjectName("btn_yourcommands_clearoutput")
+        self.horizontalLayout_13.addWidget(self.btn_yourcommands_clearoutput)
+        self.btn_yourcommands_go = QtGui.QPushButton(self.gridLayoutWidget_11)
+        self.btn_yourcommands_go.setObjectName("btn_yourcommands_go")
+        self.horizontalLayout_13.addWidget(self.btn_yourcommands_go)
+        self.btn_yourcommands_help = QtGui.QPushButton(self.gridLayoutWidget_11)
+        self.btn_yourcommands_help.setObjectName("btn_yourcommands_help")
+        self.horizontalLayout_13.addWidget(self.btn_yourcommands_help)
+        self.gridLayout_11.addLayout(self.horizontalLayout_13, 3, 0, 1, 1)
+        self.tabWidget.addTab(self.yourcommands, "")
         self.preferencestab = QtGui.QWidget()
         self.preferencestab.setObjectName("preferencestab")
         self.frame_2 = QtGui.QFrame(self.preferencestab)
@@ -1290,7 +1337,7 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.preferencestab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 24))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1120, 26))
         self.menubar.setObjectName("menubar")
         self.menu_File = QtGui.QMenu(self.menubar)
         self.menu_File.setObjectName("menu_File")
@@ -1770,6 +1817,21 @@ class Ui_MainWindow(object):
 "Currently I have no intent to add functionality to this standard, maybe later.", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.editiptctab), QtGui.QApplication.translate("MainWindow", "IPTC", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.edittab), QtGui.QApplication.translate("MainWindow", "Edit Data", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_88.setText(QtGui.QApplication.translate("MainWindow", "Parameters:", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_69.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p>On this tab you can define your own parameters to &quot;send to&quot; exiftool. The parameters will be executed on the images you have selected on the left. <br>You can both specify read parameters as well as write parameters. You can also combine several parameters. <b>Note:</b> You don\'t need (must not) provide the exiftool command itself. The Gui will take care of that.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.yourcommands_input.setToolTip(QtGui.QApplication.translate("MainWindow", "Examples are:<br>\n"
+"<table>\n"
+"<tr><td>-exif:all</td><td>will display all exif tags for the selected images</td></tr>\n"
+"<tr><td>-exif:all=</td><td>will remove(!) all exif tags from the selected images</td></tr>\n"
+"<tr><td>-Exif:Artist=\"My Name\"</td><td>Will put \"Your Name\" into the selected images</td></tr>\n"
+"<tr><td>-Xmp:City=Zwolle -Xmp:Country=Netherlands</td><td>Will write your city and country into the xmp tags of your image(s)</td></tr>\n"
+"</table>", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_89.setText(QtGui.QApplication.translate("MainWindow", "The final output will be displayed below:", None, QtGui.QApplication.UnicodeUTF8))
+        self.btn_yourcommands_clearinput.setText(QtGui.QApplication.translate("MainWindow", "Clear parameter(s) field", None, QtGui.QApplication.UnicodeUTF8))
+        self.btn_yourcommands_clearoutput.setText(QtGui.QApplication.translate("MainWindow", "Clear output", None, QtGui.QApplication.UnicodeUTF8))
+        self.btn_yourcommands_go.setText(QtGui.QApplication.translate("MainWindow", "Go", None, QtGui.QApplication.UnicodeUTF8))
+        self.btn_yourcommands_help.setText(QtGui.QApplication.translate("MainWindow", "Help", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.yourcommands), QtGui.QApplication.translate("MainWindow", "Your Commands", None, QtGui.QApplication.UnicodeUTF8))
         self.frame_2.setToolTip(QtGui.QApplication.translate("MainWindow", "The program will go for the default exiftool version. Here you can specify another version.", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_choose_exiftool.setToolTip(QtGui.QApplication.translate("MainWindow", "The program will go for the default exiftool version. Here you can specify another version.", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_choose_exiftool.setText(QtGui.QApplication.translate("MainWindow", "Choose", None, QtGui.QApplication.UnicodeUTF8))

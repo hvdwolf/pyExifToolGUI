@@ -149,7 +149,8 @@ ul.toc {}
 <li><a href="#EditiptcData">5.5 IPTC data (not directly supported)</a>
 <li><a href="#workflow">5.5 Example workflow</a>
 </li></ul>
-<li><a name="toc_Preferences" href="#Preferences">6 Preferences</a>
+<li><a name="toc_Preferences" href="#YourCommands">6 Your commands</a>
+<li><a name="toc_Preferences" href="#Preferences">7 Preferences</a>
 <li><a name="toc_FDL" href="#FDL">Appendix A <acronym>GNU</acronym> Free Documentation License</a>
 </li></ul>
 </div>
@@ -558,13 +559,34 @@ processed and a progress bar displaying the complete progress.
 </table>
 <p> </p>
 
+<p> </p>
+
+<p><a name="YourCommands"></a>
+
+<h2 class="chapter">6 Your Commands</h2>
+
+<p>On this tab you can define your own parameters to "send to" exiftool. The parameters will be executed on the images you have selected on the left. 
+<p><img src="yourcommands.jpg" alt="yourcommands.jpg" title="The Your Commands tab" width="1100">
+<br>You can both specify read parameters as well as write parameters but not in one command: write actions take precedence. You can also combine several parameters. <b>Note:</b> You don't need (must not) provide the exiftool command itself. The Gui will take care of that.<br> 
+One thing YOU need to take care of is the use of either single quotes or double quotes around some commands. If you want to set the file date to the date the photo was taken, you need the command <tt>-FileModifyDate&lt;DateTimeOriginal</tt>.
+On Windows you need to double-quote this and on Linux and Mac OS X you need to single-quote this, like
+<ul><li>Linux/Mac OS X: <tt>'-FileModifyDate&lt;DateTimeOriginal'</tt></li>
+<li>Windows: <tt>"-FileModifyDate&lt;DateTimeOriginal"</tt></li></ul>
+Other examples are:
+<table border="1" cellpadding="10">
+<tr><td>-exif:all</td><td>will display all exif tags for the selected images</td></tr>
+<tr><td>-exif:all=</td><td>will remove(!) all exif tags from the selected images</td></tr>
+<tr><td>-Exif:Artist="My Name"</td><td>Will put "Your Name" into the selected images</td></tr>
+<tr><td>-Xmp:City=Zwolle -Xmp:Country=Netherlands</td><td>Will write your city and country into the xmp tags of your image(s)</td></tr>
+</table>
+See also the <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/exiftool_pod.html" target="_blank">exiftool Application Documentation</a> which gives extensive information and lots of examples.
 
 
 <p> </p>
 
 <p><a name="Preferences"></a>
 
-<h2 class="chapter">6 Preferences</h2>
+<h2 class="chapter">7 Preferences</h2>
 
 <p>The Preferences tab gives you the option to select some defaults for this application.
 <p><h3>ExifTool:</h3>

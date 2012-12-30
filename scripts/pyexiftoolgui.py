@@ -133,6 +133,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_savegpano.clicked.connect(self.savegpanodata)
         self.btn_savegpano.setEnabled(False)
         self.btn_resetgpano.clicked.connect(self.clear_gpano_fields)
+# Load several buttons from the Edit -> Your commands tab
+        self.btn_yourcommands_clearinput.clicked.connect(self.clear_yourcommands_input)
+        self.btn_yourcommands_clearoutput.clicked.connect(self.clear_yourcommands_output)
+        self.btn_yourcommands_go.clicked.connect(self.yourcommands_go)
+        self.btn_yourcommands_help.clicked.connect(self.yourcommands_help)
 # Load several buttons from the Preferences tab
         self.btn_preferences_save.clicked.connect(self.preferences_save)
 	self.btn_preferenceshelp.clicked.connect(self.preferences_help)
@@ -183,6 +188,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #    def set_logging(self):
 #	logging.basicConfig(filename=os.path.expanduser("~/pyexiftoolgui_"+time.strftime("%Y%m%d-%H%M%S")+".log"),level=logging.DEBUG)
 #	logging.info("Debug set to on: Logging started on " + time.strftime("%Y-%m-%d %H:%M"))
+    def the_no_photos_messagebox(self):
+         QMessageBox.information(self,"No photos loaded yet","You did not load or select any photos yet.")
 
     def testfunc(self):
         ret = petgfunctions.startup_checks(self)
@@ -280,48 +287,48 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def create_args(self):
         try:
             if len(self.fileNames) == 0:
-               QMessageBox.information(self,"No photos loaded yet","You did not load any photos.")
+               self.the_no_photos_messagebox()
             else:
                petgfunctions.create_args(self, qApp)
         except:
-            QMessageBox.information(self,"No photos loaded yet","No photos loaded yet")
+            self.the_no_photos_messagebox()
          
     def export_metadata(self):
         try:
             if len(self.fileNames) == 0:
-               QMessageBox.information(self,"No photos loaded yet","You did not load any photos.")
+               self.the_no_photos_messagebox()
             else:
                petgfunctions.export_metadata(self, qApp)
         except:
-            QMessageBox.information(self,"No photos loaded yet","No photos loaded yet")
+            self.the_no_photos_messagebox()
 
     def remove_metadata(self):
         try:
             if len(self.fileNames) == 0:
-               QMessageBox.information(self,"No photos loaded yet","You did not load any photos.")
+               self.the_no_photos_messagebox()
             else:
                petgfunctions.remove_metadata(self, qApp)
         except:
-            QMessageBox.information(self,"No photos loaded yet","No photos loaded yet")
+            self.the_no_photos_messagebox()
 
 
     def modify_datetime(self):
         try:
             if len(self.fileNames) == 0:
-               QMessageBox.information(self,"No photos loaded yet","You did not load any photos.")
+               self.the_no_photos_messagebox()
             else:
                petgfunctions.modifydatetime(self, qApp)
         except:
-            QMessageBox.information(self,"No photos loaded yet","No photos loaded yet")
+            self.the_no_photos_messagebox()
 
     def date_to_datetimeoriginal(self):
         try:
             if len(self.fileNames) == 0:
-               QMessageBox.information(self,"No photos loaded yet","You did not load any photos.")
+               self.the_no_photos_messagebox()
             else:
                petgfunctions.date_to_datetimeoriginal(self, qApp)
         except:
-            QMessageBox.information(self,"No photos loaded yet","No photos loaded yet")
+            self.the_no_photos_messagebox()
 
     def open_pyexiftoolgui_homepage(self):
         try:
@@ -425,6 +432,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	except:
 		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
 
+    def yourcommands_help(self):
+	try:
+             if self.OSplatform == "Windows":
+                if os.path.isfile(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html")): # from python exectuable
+                     webbrowser.open(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html"))
+                elif os.path.isfile(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html")): # Started from script
+                     webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
+             else:
+		webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", "pyexiftoolgui.html#YourCommands"))
+	except:
+		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
+
     def preferences_help(self):
  	try:
              if self.OSplatform == "Windows":
@@ -432,6 +451,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                      webbrowser.open(os.path.join(self.realfile_dir, "manual\pyexiftoolgui.html"))
                 elif os.path.isfile(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html")): # Started from script
                      webbrowser.open(os.path.join(self.parent_dir, "manual\pyexiftoolgui.html"))
+             else:
+		webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", "pyexiftoolgui.html#Preferences"))
 	except:
 		QMessageBox.critical(self, "Error!", "Unable to open the manual page" )
 
@@ -515,6 +536,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def savegpanodata(self):
         petgfunctions.savegpanodata(self, qApp)
+
+# Your Commands tab
+    def clear_yourcommands_input(self):
+        self.yourcommands_input.setText("")
+
+    def clear_yourcommands_output(self):
+        #self.yourcommands_output.insertPlainText("")
+        self.yourcommands_output.clear()
+
+    def yourcommands_go(self):
+        self.yourcommands_output.clear()
+        petgfunctions.yourcommands_go(self,qApp)
 
 # Preferences tab
     def select_exiftool(self):
