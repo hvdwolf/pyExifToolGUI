@@ -373,11 +373,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def all_access_to_manual(self, section):
         if section <> "":
            section = "#" + section
-        if self.OSplatform == "Windows":
-           # Stupid windows doesn't support anchors (#section) when started from file://
-           manual = "pyexiftoolgui.html"
-        else:
-           manual = "pyexiftoolgui.html" + section
+        manual = "pyexiftoolgui.html" + section
 	try:
              if self.OSplatform == "Windows":
                 if os.path.isfile(os.path.join(self.realfile_dir, "manual","pyexiftoolgui.html")): # from python executable
