@@ -20,5 +20,7 @@
 	<string>HvdW</string>
 	<key>LSBackgroundOnly</key>
 	<string>0</string>
+        <key>NSHumanReadableCopyright</key>
+        <string>© 2012-2013 Harry van der Wolf</string>
 </dict>
 </plist>

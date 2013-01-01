@@ -2,7 +2,7 @@
 
 # petgfunctions.py - This python "helper" script holds a lot of functions
 
-# Copyright (c) 2012 Harry van der Wolf. All rights reserved.
+# Copyright (c) 2012-2013 Harry van der Wolf. All rights reserved.
 # This program or module is free software: you can redistribute it and/or
 # modify it under the terms of the GNU General Public Licence as published
 # by the Free Software Foundation, either version 2 of the Licence, or
@@ -75,7 +75,7 @@ def check_for_program(program):
 	for path in os.environ["PATH"].split(os.pathsep):
 		path_plus_program = os.path.join(path, program)
 		if is_executable(path_plus_program):
-			print "program " + program + " found"
+			#print "program " + program + " found"
 			exists = True
 	return exists
 # End of function check_for_program and is_executable (mini sub for check_for_program)
@@ -119,13 +119,13 @@ def tool_check( self ):
                        configure_message += "If your exiftool is named \"exiftool(-k).exe\", rename it to \"exiftool.exe\""
                        ret = QMessageBox.critical(self, "exiftool is missing or incorrectly configured", configure_message)
                        result = self.select_exiftool()
-                       print str(result)
+                       #print str(result)
                        if result == "":
                           ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.")
                           sys.exit()
                        else:
                           self.exiftoolprog = result
-                print self.exiftoolprog
+                #print self.exiftoolprog
                 args = self.exiftoolprog + " -ver"
                 self.exiftoolversion = subprocess.check_output(args, shell=True)
         else:
@@ -133,7 +133,7 @@ def tool_check( self ):
 		       ret = QMessageBox.critical(self, "exiftool is missing or incorrectly configured", "exiftool is missing or incorrectly configured in Preferences!\nThis tool is an absolute must have!\nPlease set the correct location or install exiftool first.")
 		       #sys.exit()
                        result = self.select_exiftool()
-                       print str(result)
+                       #print str(result)
                        if result == "":
                           ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.")
                           sys.exit()
