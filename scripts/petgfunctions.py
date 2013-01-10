@@ -34,6 +34,8 @@ from ui_create_args import Ui_Dialog_create_args
 from ui_export_metadata import Ui_Dialog_export_metadata
 from ui_remove_metadata import Ui_Dialog_remove_metadata
 from ui_modifydatetime import Ui_DateTimeDialog
+from ui_syncdatetime import Ui_SyncDateTimeTagsDialog
+#from ui_rename_photos import Ui_Dialog_rename_files
 
 #------------------------------------------------------------------------
 # All kind of functions
@@ -1172,6 +1174,16 @@ def info_window(self):
     QObject.connect(self.buttonBox, SIGNAL("clicked(QAbstractButton*)"), self.info_window_dialog.close)
     QMetaObject.connectSlotsByName(self.info_window_dialog)
     self.info_window_dialog.exec_()
+#---
+class dialog_synchronizedatetime(QDialog, Ui_SyncDateTimeTagsDialog):
+    # This loads the py file created by pyside-uic from the ui.
+    # the Quiloader segfaults on windows after ending the function
+    def __init__(self, parent=None):
+        super(dialog_synchronizedatetime, self).__init__(parent)
+        self.setupUi(self)
+
+def synchronizedatetime(self, qApp):
+    self.synchronizedatetime_dialog = dialog_synchronizedatetime()
 
 #---
 def qddt_shift_clicked(self):
@@ -1796,10 +1808,10 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
               p = subprocess.call(args, shell=True)
            else:
               command_line = self.exiftoolprog + " " + images_to_csv + " > '" + os.path.join(self.image_folder, 'output.csv') + "'"
-              args = shlex.split(command_line)
+              #args = shlex.split(command_line)
               print command_line
-              #p = subprocess.call(args,shell=true)
-              p = subprocess.call(command_line)
+              #p = subprocess.call(args,shell=True)
+              p = subprocess.call(command_line,shell=True)
         # end of csv option
         if " -w " in exiftoolparams:
            self.statusbar.showMessage("Done exporting the metadata for the selected image(s)")

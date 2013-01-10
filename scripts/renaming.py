@@ -54,8 +54,9 @@ class dialog_rename_photos(QDialog, Ui_Dialog_rename_files):
 
     def rename_info(self):
         message = "If you leave the \"source folder\" empty, the program will use the selected photos from the main screen.\n"
-        message += "If you specify a source folder in this screen, this screen will use all content inside that folder.\n"
-        message += "Note that working on a directory instead of a collection of files is about 10! times as fast."
+        message += "If you specify a source folder in this screen, this screen will use all content inside that folder.\n\n"
+        message += "Note that working on a directory instead of a collection of files is about 10! times as fast.\n\n"
+        message += "You can on the other hand load an extensive set of photos in the main screen and update subselections of them in two or three rounds."
         QMessageBox.information(self,"folder options", message)
 
 
@@ -328,18 +329,20 @@ def run_rename_photos(self, work_on, qApp):
                            print args
                            p = subprocess.call(args, shell=True)
                         else:
-                           command_line = self.exiftoolprog + ' ' + parameters
+                           #parameters = parameters.replace("'", "\"")
+                           command_line = self.exiftoolprog + ' ' + exiftoolparams + ' ' + selected_image
                            args = shlex.split(command_line)
-                           print command_line
-                           p = subprocess.call(command_line)
+                           print "command_line " + command_line
+                           #p = subprocess.call(command_line)
+                           p = subprocess.call(args)
                 self.statusbar.showMessage("Finished renaming")
                 qApp.processEvents()
           self.progressbar.hide()
           self.statusbar.showMessage("")
        elif work_on == "rename_source_folder":
           # work on all images in the source folder and do it in this function self
-          print "work on all images in the source folder"
-          print self.rename_photos_dialog.LineEdit_rename_source_folder.text()
+          #print "work on all images in the source folder"
+          #print self.rename_photos_dialog.LineEdit_rename_source_folder.text()
           self.statusbar.showMessage("Renaming all images in: " + self.rename_photos_dialog.LineEdit_rename_source_folder.text())
           parameters = ' ' + exiftoolparams + ' "' + self.rename_photos_dialog.LineEdit_rename_source_folder.text() + '"'
           if self.OSplatform in ("Windows", "win32"):
@@ -349,11 +352,10 @@ def run_rename_photos(self, work_on, qApp):
               print args
               p = subprocess.call(args, shell=True)
           else:
-              command_line = self.exiftoolprog + ' ' + exiftoolparams + ' "' + LineEdit_rename_source_folder + '"'
-              args = shlex.split(command_line)
-              print command_line
-              #p = subprocess.call(args,shell=true)
-              p = subprocess.call(command_line)
+              pathofimages = self.rename_photos_dialog.LineEdit_rename_source_folder.text().replace(" ", "\\ ")
+              command_line = self.exiftoolprog + ' ' + exiftoolparams + ' ' + pathofimages
+              #print "command_line " + command_line
+              p = subprocess.call(command_line, shell=True)
           self.statusbar.showMessage("Finished renaming all images in: " + self.rename_photos_dialog.LineEdit_rename_source_folder.text())
        # Now continue with our renaming stuff
        #QMessageBox.information(self,"selected options", "self.prefix: " + self.prefix + " self.prefixformat: " + self.prefixformat + "\nself.suffix: " + self.suffix + " self.suffixformat: " + self.suffixformat + "\n\n\n" + exiftoolparams)
