@@ -79,8 +79,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mnu_action_repair_jpg.triggered.connect(self.repair_jpg_metadata)
         self.mnu_action_copytoxmp.triggered.connect(self.copymetadatatoxmp)
         # not in this 0.28 release, so disable action and hide menu item
-        #self.mnu_action_renaming.triggered.connect(self.rename_photos)
-        self.menuExtra.removeAction(self.mnu_action_renaming)
+        self.mnu_action_renaming.triggered.connect(self.rename_photos)
+        #self.menuExtra.removeAction(self.mnu_action_renaming)
         #--- help menu
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
 	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
@@ -239,6 +239,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         try:
           if len(self.fileNames) > 0:
            cntxtmenu.addAction(self.mnu_action_load_images)
+           cntxtmenu.addAction(self.mnu_action_renaming)
            cntxtmenu.addAction(self.imagereference)
            cntxtmenu.addAction(self.displayphoto)
            cntxtmenu.addAction(self.mnu_action_create_args)
@@ -250,6 +251,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         except:
            # no images loaded yet
            cntxtmenu.addAction(self.mnu_action_load_images)
+           cntxtmenu.addAction(self.mnu_action_renaming)
            cntxtmenu.addAction(self.mnu_action_Info)
            cntxtmenu.addAction(self.mnu_action_license)
         cntxtmenu.exec_(event.globalPos())

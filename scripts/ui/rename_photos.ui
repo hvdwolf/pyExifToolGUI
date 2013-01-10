@@ -234,11 +234,6 @@ Please specify how the tool should do this.</string>
         <widget class="QComboBox" name="comboBox_digits">
          <item>
           <property name="text">
-           <string>1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
            <string>2</string>
           </property>
          </item>

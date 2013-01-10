@@ -202,10 +202,12 @@ def rename_photos(self, qApp):
        else:
           self.rename_extension = ".%ue"
        # Wants the user to start counting as of the first image or starting on the second image
-       if self.rename_photos_dialog.comboBox_startcount.currentIndex() == 1:
+       if self.rename_photos_dialog.comboBox_startcount.currentIndex() == 0:
           self.startcounting = "nc"
+          print "start counting on 1st image"
        else:
           self.startcounting = "c"
+          print "start counting on 2nd image"
 
        message = "You selected:\n\n"
        message += prefix_message
@@ -230,27 +232,63 @@ def check_before_run_rename_photos(self):
                   return "nothing_to_work_with"
            else:
                   # just exit this function with the option "main_screen_selection"
+                  print "main_screen_selection"
                   return "main_screen_selection"
        except:
            QMessageBox.information(self,"Nothing to work with","You did not specify a source folder and neither did you load/select any photos in the main screen.")
            return "nothing_to_work_with"
     else:
       # just exit this function with the option rename_source_folder (this is not the path)
+      print "rename_source_folder"
       return "rename_source_folder"
 #---
 def run_rename_photos(self, work_on, qApp):
+       '''
+       Examples
+       D:/Datadir/python/exiftool.exe "-FileName<${CreateDate}_pipo%-.3nc.%e"  -d %Y%m%d "D:\Datadir\fototest\testje"
+       20121114_pipo-001.jpg
+       20121114_pipo-002.jpg
+       20121114_pipo-003.jpg
+       20121114_pipo-004.jpg
+       
+       D:/Datadir/python/exiftool.exe "-FileName<${CreateDate}_pipo.%e"  -d %Y%m%d%%-.3nc "D:\Datadir\fototest\testje"
+       20121114-001_pipo.jpg
+       20121114-002_pipo.jpg
+       20121114-003_pipo.jpg
+       20121114-004_pipo.jpg
+       
+       D:/Datadir/python/exiftool.exe "-FileName<pipo_${Exif:Model}%-.2c.%e" "D:\Datadir\fototest\testje"
+       pipo_DMC-TZ30-00.jpg
+       pipo_DMC-TZ30-01.jpg
+       pipo_DMC-TZ30-02.jpg
+       pipo_DMC-TZ30-03.jpg
+       
+       D:/Datadir/python/exiftool.exe "-FileName<pipo_${CreateDate}%-.2nc.%e" -d %Y%m%d "D:\Datadir\fototest\testje"
+       pipo_20121114-01.jpg
+       pipo_20121114-02.jpg
+       pipo_20121114-03.jpg
+       pipo_20121114-04.jpg
+       
+       D:/Datadir/python/exiftool.exe "-FileName<pipo_${Exif:Model}.%e" -d%%-.2c "D:\Datadir\fototest\testje"
+       does not work!
+       '''
        # build our exiftoolparams string
        # exiftoolparams = "'-FileName<" + self.prefix + "_" + self.suffix + ".%le' " + self.prefixformat + " " + self.suffixformat + "-." + self.combobox_digits.currenttext() + "nc" + self.sourcefolder + "/*"
        exiftoolparams = "'-FileName<" + self.prefix
        if not self.rename_photos_dialog.radioButton_suffix_donotuse.isChecked():
           exiftoolparams += "_" + self.suffix
-       exiftoolparams += self.rename_extension + "' "
+       exiftoolparams += "%-." + self.rename_photos_dialog.comboBox_digits.currentText() + self.startcounting
+       # Do everything split for a prefix as date(time) vs. string; no combined actions, is much simpler       
        if self.prefixformat <> "":
-          exiftoolparams += " " + self.prefixformat
+          # This means that the prefix is a date(time)
+          exiftoolparams += self.rename_extension + "' " + self.prefixformat
+          # both lines above mean : prefix_suffix_number.extension
        else:
+          # this means that we use a string instead of date(time) as prefix
+          # if self.prefixformat is empty we need to move the "counter"
+          exiftoolparams += self.rename_extension + "'"
           if self.suffixformat <> "":
              exiftoolparams += " " + self.suffixformat
-       exiftoolparams += "%%-." + self.rename_photos_dialog.comboBox_digits.currentText() + self.startcounting
 
        # now start working and detect which images we use
        if work_on == "nothing_to_work_with":
@@ -261,6 +299,13 @@ def run_rename_photos(self, work_on, qApp):
           print "we use the images that were selected from the main screen"
           selected_rows = self.MaintableWidget.selectedIndexes()
           #exiftoolparams = "'-FileName<" + self.prefix + "_" + self.suffix + ".%le' " + self.prefixformat + " " + self.suffixformat + "-." + self.combobox_digits.currenttext() + "nc" + self.sourcefolder + "/*"
+          rowcounter = 0
+          total_rows = len(selected_rows)
+          self.progressbar.setRange(0, total_rows)
+          self.progressbar.setValue(0)
+          self.progressbar.show()
+          rows = []
+          qApp.processEvents()
           for selected_row in selected_rows:
                 selected_row = str(selected_row)
                 selected_row = selected_row.replace("<PySide.QtCore.QModelIndex(",'')
@@ -271,10 +316,45 @@ def run_rename_photos(self, work_on, qApp):
                         rows.append(row)
                         selected_image = "\"" + self.fileNames[int(row)] + "\""
                         print 'exiftool ' + exiftoolparams + ' ' + selected_image
+        	        rowcounter += 1
+        	        self.progressbar.setValue(rowcounter)
+                        parameters = ' ' + exiftoolparams + ' ' + selected_image
+                        self.statusbar.showMessage("Renaming " + os.path.basename(selected_image))
+                        qApp.processEvents()
+                        if self.OSplatform in ("Windows", "win32"):
+                           parameters = parameters.replace("/", "\\")
+                           parameters = parameters.replace("'", "\"")
+                           args = self.exiftoolprog + parameters
+                           print args
+                           p = subprocess.call(args, shell=True)
+                        else:
+                           command_line = self.exiftoolprog + ' ' + parameters
+                           args = shlex.split(command_line)
+                           print command_line
+                           p = subprocess.call(command_line)
+                self.statusbar.showMessage("Finished renaming")
+                qApp.processEvents()
+          self.progressbar.hide()
+          self.statusbar.showMessage("")
        elif work_on == "rename_source_folder":
-          # work on all images in the source folder
+          # work on all images in the source folder and do it in this function self
           print "work on all images in the source folder"
-          
+          print self.rename_photos_dialog.LineEdit_rename_source_folder.text()
+          self.statusbar.showMessage("Renaming all images in: " + self.rename_photos_dialog.LineEdit_rename_source_folder.text())
+          parameters = ' ' + exiftoolparams + ' "' + self.rename_photos_dialog.LineEdit_rename_source_folder.text() + '"'
+          if self.OSplatform in ("Windows", "win32"):
+              parameters = parameters.replace("/", "\\")
+              parameters = parameters.replace("'", "\"")
+              args = self.exiftoolprog + parameters
+              print args
+              p = subprocess.call(args, shell=True)
+          else:
+              command_line = self.exiftoolprog + ' ' + exiftoolparams + ' "' + LineEdit_rename_source_folder + '"'
+              args = shlex.split(command_line)
+              print command_line
+              #p = subprocess.call(args,shell=true)
+              p = subprocess.call(command_line)
+          self.statusbar.showMessage("Finished renaming all images in: " + self.rename_photos_dialog.LineEdit_rename_source_folder.text())
        # Now continue with our renaming stuff
-       QMessageBox.information(self,"selected options", "self.prefix: " + self.prefix + " self.prefixformat: " + self.prefixformat + "\nself.suffix: " + self.suffix + " self.suffixformat: " + self.suffixformat + "\n\n\n" + exiftoolparams)
+       #QMessageBox.information(self,"selected options", "self.prefix: " + self.prefix + " self.prefixformat: " + self.prefixformat + "\nself.suffix: " + self.suffix + " self.suffixformat: " + self.suffixformat + "\n\n\n" + exiftoolparams)
 
