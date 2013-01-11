@@ -50,6 +50,7 @@ class dialog_rename_photos(QDialog, Ui_Dialog_rename_files):
         self.radioButton_suffix_date.setEnabled(False)
         self.comboBox_suffix_datetime.setEnabled(False)
         self.comboBox_suffix_date.setEnabled(False)
+        self.tabWidget.removeTab(1)
 
 
     def rename_info(self):
