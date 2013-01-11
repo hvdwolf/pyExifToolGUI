@@ -261,6 +261,9 @@ Please specify how the tool should do this.</string>
        </item>
        <item>
         <widget class="QComboBox" name="comboBox_startcount">
+         <property name="toolTip">
+          <string>When counting from the 1st image, the counting runs from 1 to n, like 01, 02, 03, etc.  When starting on the second image the counting runs from 00, 01, 02, etc.</string>
+         </property>
          <item>
           <property name="text">
            <string>Start counting on 1st image</string>
@@ -714,7 +717,11 @@ Please specify how the tool should do this.</string>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="LineEdit_rename_source_folder"/>
+     <widget class="QLineEdit" name="LineEdit_rename_source_folder">
+      <property name="toolTip">
+       <string>If you select a source folder all images in that folder will be renamed. Note that also images in subfolders will be renamed.</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QPushButton" name="button_rename_browse">

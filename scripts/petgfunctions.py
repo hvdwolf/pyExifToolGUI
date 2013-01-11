@@ -1142,7 +1142,7 @@ def date_to_datetimeoriginal(self, qApp):
     message += "This function will take the original date/time when the photo was taken from the exif:DateTimeOriginal "
     message += "and use that (again) as file date/time.\n\n"
     message += "Do you want to continue?"
-    reply = QMessageBox.question(self, "Set file dat/time to DateTimeOriginal?", message, QMessageBox.Yes | QMessageBox.No)
+    reply = QMessageBox.question(self, "Set file date/time to DateTimeOriginal?", message, QMessageBox.Yes | QMessageBox.No)
     if reply == QMessageBox.Yes:
        write_image_info(self, exiftool_params, qApp, False)
        

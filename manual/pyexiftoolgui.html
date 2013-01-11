@@ -1,4 +1,4 @@
-<html lang="en">
+5.5<html lang="en">
 <head>
 <title>pyexiftoolgui: a cross-platform python pyside gui for exiftool</title>
 <meta http-equiv="Content-Type" content="text/html">
@@ -147,10 +147,25 @@ ul.toc {}
 <li><a href="#EditxmpData">5.3 Edit xmp data</a>
 <li><a href="#EditgpanoData">5.4 Edit GPano (Google Photosphere) data</a>
 <li><a href="#EditiptcData">5.5 IPTC data (not directly supported)</a>
-<li><a href="#workflow">5.5 Example workflow</a>
+<li><a href="#workflow">5.6 Example workflows</a>
+<ul>
+<li><a href="#generalworkflow">5.6.1 General workflow</a>
+<li><a href="#scan_rename_workflow">5.6.2 After scanning: Correcting Date/time and Renaming workflow</a>
 </li></ul>
-<li><a name="toc_Preferences" href="#YourCommands">6 Your commands</a>
-<li><a name="toc_Preferences" href="#Preferences">7 Preferences</a>
+</li></ul>
+<li><a name="toc_ExtraMenu" href="#ExtraMenu">6 Extra Menu</a>
+<ul>
+<li><a href="#extramenu-renamephotos">6.1 Rename photos</a>
+<li><a href="#extramenu-createargsfile">6.2 Create args file(s)</a>
+<li><a href="#extramenu-exportmetadata">6.3 Export metadata</a>
+<li><a href="#extramenu-modifydatetime">6.4 Modify Date/time</a>
+<li><a href="#extramenu-setfiledatetodto">6.5 Set file date to DateTimeOriginal</a>
+<li><a href="#extramenu-repairjpgs">6.6 Repair JPG(s) with corrupted metadata</a>
+<li><a href="#extramenu-copytoxmp">6.7 Copy all metadata to xmp format</a>
+<li><a href="#extramenu-removemetadata">Remove metadata</a>
+</li></ul>
+<li><a name="toc_YourCommands" href="#YourCommands">7 Your commands</a>
+<li><a name="toc_Preferences" href="#Preferences">8 Preferences</a>
 <li><a name="toc_FDL" href="#FDL">Appendix A <acronym>GNU</acronym> Free Documentation License</a>
 </li></ul>
 </div>
@@ -168,8 +183,8 @@ copy data from. A strong point of this software is the ability to write the data
 copied or not from a source image, to multiple images at once.
 
 <!-- Document Body -->
+<hr>
 <p><a name="Overview"></a>
-
 <h2 class="chapter">1 Overview</h2>
 
 <!-- Undo the roman page numbering we used for the Table-of-Contents, -->
@@ -217,8 +232,8 @@ Not all parts of the manual will be updated which might lead to older program sc
 slightly deviate from the program you will be working with.<br>
 Note also that you will see screen captures from several operating systems and/or window managers.
 
+<hr>
 <p><a name="Installation"></a>
-
 <h2 class="chapter">2 Installation</h2>
 
 <p>This tool is written for Linux and primarily aimed at Linux.
@@ -333,8 +348,7 @@ that the package does not create registry entries.
 
 
 
-<p><a name="GeneralUsage"></a>
-
+<hr><p><a name="GeneralUsage"></a>
 <h2 class="chapter">3 General Usage</h2>
 
 <p>The program consists of a left pane containing your photos, and a right pane which consists of a set of tabs. One of these tabs contains a subset of tabs.
@@ -372,8 +386,7 @@ Without photos loaded, you will have a "mini" menu. With photos loaded you will 
 
 
 
-<p><a name="ViewData"></a>
-
+<hr><p><a name="ViewData"></a>
 <h2 class="chapter">4 View Data</h2>
 
 <p>The "View Data" tab gives you the option to display all available meta data from a photo (image).
@@ -393,8 +406,7 @@ preview thumbnails. If you think it is not correct you can simply select the ima
 and see whether your "normal" image viewer displays it correctly, meaning that your image has the correct setting.
 <p>
 
-<p><a name="EditData"></a>
-
+<hr><p><a name="EditData"></a>
 <h2 class="chapter">5 Edit Data</h2>
 
 <p>The application is a so called "tabbed" application. The "Edit Data" tab is the (obvious) tab
@@ -506,21 +518,26 @@ combination with the Newspaper Association of America (NAA) Information Intercha
 This already shows the primary goal of this standard which is perhaps not what 
 an amateur photograph is aiming for.
 Next to that: IPTC is being phased out in favor of XMP.
+<p>On some of the edit tabs the IPTC data is automatically updated when (for example) the xmp data is updated.
 <p> </p>
 <p>
 
 
 
 <p><a name="workflow"></a>
-<h3 class="section">5.5 Example workflow</h3>
+<h3 class="section">5.6 Example workflows</h3>
 
-<p>Below you'll find an example of how you can use the program.
+<p> </p>
+<p><a name="generalworkflow"></a>
+<h4 class="subsection">5.6.1 General workflow</h4>
+
+<p>Below you'll find an example of how you can use the program to edit the metadata of your images.
 Click the images for a full size version.
-<table border="0" width="900" cellpadding="10">
+<table border="0" width="980" cellpadding="10">
 <tbody>
 <tr>
 <td><a href="01-workflow-pyexiftoolgui.jpg"><img title="select an image; Click for a full size version" src="01-workflow-pyexiftoolgui.jpg" alt="Select an image" width="500"></a></td>
-<td>Load your image(s) via "File -&gt; Load Images" or via the "Load Images" button.
+<td>Load your image(s) via "File -&gt; Load Images", via the "Load Images" button or via the right-click option in the context menu.
 <p>Go to the "Edit -&gt; Gps" tag.</p>
 <p>If one of your images contains the info you need for your other image(s), select that image. Use the "Copy from selected image".</p>
 <p>The available gps information will be copied into the relevant input fields.</p>
@@ -556,14 +573,155 @@ the photos.
 processed and a progress bar displaying the complete progress.
 </td>
 </tr>
+</tbody>
 </table>
 <p> </p>
+<p><a name="scan_rename_workflow"></a>
+<h4 class="subsection">5.6.2 After scanning: Correcting Date/time and Renaming workflow</h4>
+<p>The following workflow shows an example where (in this case) old diapositives out of 1977 were scanned. We start with the scanned images and the workflow is as follows:
+<ul><li>Set the datetime metatags (We don't know the exact the date so we estimate the date as precise as possible.)
+<li>We set the file date based on the datetime metatags we have just set in the previous set.
+<li>We rename the photos based on metadata tags and possible string (like the occasion, location or whatever you want to use to identify/classify the photos).
+</li></ul>
+<p>The following workflow consists of a mix-and-match of Mac OS X screens and Ubuntu Unity screens (the latter with Mac OS X windowing icon theme as I don't like Ubuntu Unity's default orange icons).
+<p><table border="0" width="980" cellpadding="10">
+<tbody>
+<tr>
+<td><a href="workflow_scanned_images-01.jpg"><img title="Right-click your loaded selection; Click for a full size version" src="workflow_scanned_images-01.jpg" alt="Right-click your loaded selection" width="500"></a></td>
+<td><p>After you have loaded your image(s) and made your selection, you select the "Modify Date/time" option by either right-clicking and selecting it from the context menu or from the Extra menu.<br>The "Modify Date/time" dialog will 
+be opened.</td>
+</tr>
+<tr>
+<td><img title="Use a reference image" src="workflow_scanned_images-02.jpg" alt="Use a reference image" width="500"></td>
+<td><p><i>Note:</i> If you have a photo with the correct datetime tags, you can select it from your photo-selection, right-click that photo and select the option "Select photo as reference for "Extra" menu". You can then use the copied data in a number of edit screens. It will remain available after a new "load image(s)" session.
+</td>
+</tr>
+<tr>
+<td><a href="workflow_scanned_images-03.jpg"><img title="Modify date time; Click for a full size version" src="workflow_scanned_images-03.jpg" alt="Modify Date time" width="500"></a></td>
+<td><p>Set the date and time in the "ModifyDate" field to the correct date (In this case of old scanned photos as accurate as possible).<br>Optionally copy&paste the "ModifyDate" field value to the other two fields. These data 
+fields are Exif datetime tags. If you want the XMP datetime tags also be set, check that XMP checkbox as well.
+<p>When done click the "Save" button.
+<p><i>Note:</li> If you did select a reference photo with correct datetime metadata tags, you can now use that data by checking the "Use date and time from reference image". It will immediately fill/update the three datetime fields.</td>
+</tr>
+<tr>
+<td><a href="workflow_scanned_images-04.jpg"><img title="Set file date to DateTimeOriginal; Click for a full size version" src="workflow_scanned_images-04.jpg" alt="Set file date to DateTimeOriginal" width="500"></a></td>
+<td><p>Right-click somewhere in your selection and select from the context-menu the option "Set file date to DateTimeOriginal" or select that option from the "Extra" menu.<br></td>
+</tr>
+<tr>
+<td><img title="Set file/date time to DateTimeOriginal" src="workflow_scanned_images-04a.jpg" alt="Set file/date time to DateTimeOriginal" width="500"></td>
+<td><p>If you scanned your old photos, negatives or diapositives, your scanned images will get the file date time of 
+the moment of scanning while your images itself are (most certainly) much older.
+This function will now take the "exif:DateTimeOriginal" from the metadata datetime tags in your image(s) you just 
+added in the previous step and use that as file date/time.
+<i>Note</i>: exiftool can go back as far as 01-01-1970 for file dates (metadata can be any date/time). If your images are from e.g. 26 December 1958 (mid day) you need to use the "touch" function on linux/Mac OS X like "touch -t 195812261200.00 name_of_image(s)"
+</td>
+</tr>
+<tr>
+<td><a href="workflow_scanned_images-05.jpg"><img title="Rename photos option; Click for a full size version" src="workflow_scanned_images-05.jpg" alt="Rename photos option" width="500"></a></td>
+<td><p><b>Renaming your photos requires that your photos must contain metadata as that is where exiftool 
+renaming is based upon.</b><br>
+<p>Right-click somewhere in your image selection and select the option "Rename photos" from the context menu or select that option from the "Extra" menu.<br>The "Rename photos" dialog will be opened.</td>
+</tr>
+<tr>
+<td><a href="workflow_scanned_images-06.jpg"><img title="Rename photos dialog; Click for a full size version" src="workflow_scanned_images-06.jpg" alt="Rename photos dialog" width="500"></a></td>
+<td><p>In this screen you can rename your photos based upon a selection from the main screen, or from an entire folder which you 
+can select here. In this example workflow the renaming is based on the main screen selection so we leave the source 
+folder empty. <i>(Click the info button in this dialog for more info)</i></td>
+</tr>
+</tbody>
+</table>
 
 <p> </p>
 
-<p><a name="YourCommands"></a>
+<hr><p><a name="ExtraMenu"></a>
+<h2 class="chapter">6 Extra Menu</h2>
+<p>The extra menu gives a set of exiftool command options which will be explained in the following subsections.<br>
+<img title="The Extra menu" src="ExtraMenu.jpg" alt="The Extra menu">
 
-<h2 class="chapter">6 Your Commands</h2>
+<p> </p>
+<p><a name="extramenu-renamephotos"></a>
+<h3 class="section">6.1 Rename photos</h3>
+<table><tr><td><p><img title="Rename photos dialog; Click for a full size version" src="workflow_scanned_images-06.jpg" alt="Rename photos dialog" width="500" align="left"></a><p>The functionality of this screen is also partially described in the <a href="scan_rename_workflow">5.6.2 After scanning: Correcting Date/time and Renaming workflow</a> above.<br>
+There are two options to use this screen:
+<ul><li>Using a (sub)selection from the main screen.
+<li>Selecting a source folder in this renaming screen.</li></ul>
+= Using a (sub)selection from the main screen</br>
+The way of working is described in the last subsection of 5.6.2.<br>
+<p>= Selecting a source folder in this renaming screen.<br>
+When you use this option the renaming will work on all supported formats in the selected folder and in 
+any subfolder of the selected folder.<p>
+= What are the differences?<br>
+The main screen selection gives you the option to load a set of images from a folder and work sequentially on the subselections. It is therefore more flexible.<br>
+The source folder option on the other hand is up to 10 times faster.</td></tr></table>
+
+
+
+<p> </p>
+<p><a name="extramenu-createargsfile"></a>
+<h3 class="section">6.2 Create args file(s)</h3>
+<table><tr><td><p><img title="Create args file(s)" src="extramenu-argsfile.jpg" alt="Create args file(s)" align="left">Exiftool has the option to output information in the form of exiftool arguments. If you create an args file by exporting the information from your photo(s), you can use this args file as an "exiftool commands" file to write to another (set of) photo(s). pyExifToolGUI (currently) only supports the creation of these args files. pyExifToolGUI can't use these files (yet) to write to other photos.<br>A workaround however is to use this args file from the "Your commands" tab as explained in chapter <a href="#YourCommands">7 Your commands</a>.</td></tr></table>
+
+<p> </p>
+<p><a name="extramenu-exportmetadata"></a>
+<h3 class="section">6.3 Export metadata</h3>
+<table><tr><td><p><img title="Export metadata" src="extramenu-exportmetadata.jpg" alt="Export metadata" align="left">
+<p>Exiftool can export the metadata inside images to a number of output formats. From this popup screen you can 
+export the metadata from your selected image(s) to files in these export formats.
+<p>Note that per selected image an output (export) file is written (1 photo gives 1 export file). The only exception to this is the 
+"csv" format. The "csv" format is an LibreOffice/OpenOffice/Excel compatible format which contains one row of 
+metadata per image in one file.<br>
+<p>Note also that the output files are written to the same folder as where the images are.</td></tr></table>
+
+<p> </p>
+<p><a name="extramenu-modifydatetime"></a>
+<h3 class="section">6.4 Modify Date/time</h3>
+<table><tr><td><p><img title="Modify DateTime" src="extramenu-modifydatetime.jpg" alt="Modify DateTime" align="left">
+<p>As the popup mentions: This dialog gives you the option to modify the several date/time tags in the exif information like in the "Edit->Exif" tab. It works on the images you selected in the main screen.<br><p>This dialog gives you more date/time functionality (and only date/time functionality) compared to the exif->edit tab: You can use the "shift above date/times" function to shift the date/time forward or backward (in the future or in the past) for the selected fields. This function also respects whether you selected the specific tag (field) to save or not, and also works on the selected images from the main screen.<br>The "Use date and time from reference image" can also be used in combination with the "shift above date/times" function.<br><p>The corresponding xmp values can be updated at the same time.</td></tr></table>
+
+<p> </p>
+<p><a name="extramenu-setfiledatetodto"></a>
+<h3 class="section">6.5 Set file date to DateTimeOriginal</h3>
+<table><tr><td><p><img title="Set file/date time to DateTimeOriginal" src="workflow_scanned_images-04a.jpg" alt="Set file/date time to DateTimeOriginal" align="left"><p>If you modified your images in a "sloppy" image editor or copied them around or whatever other action(s), the file 
+date/time of your images might have changed to the date when you did your action/modification on the photo(s). In 
+such a situation the real filedate(= creation date) of your images is (much) older. You might want to change the file date 
+back to what it really should be based on the metadata when you took the photo.<br>
+Another option could be that you scanned some old photos, negatives or dia positives. These photos will get the date when they were saved after the scanning. Next to that: these scanned images mostly contain no exif data at all.<br><p>
+This "Set file/date time to DateTimeOriginal" function will take the original date/time when the photo was taken from the exif:DateTimeOriginal 
+and use that (again) as file date/time.
+<br><i>Note:</i> In case you have images that don't contain datetime metadata anymore, or not at all like the scanned photos, you first need to use the "Modify Date/time" function as described in <a href="#extramenu-modifydatetime">6.4 Modify Date/time</a></td></tr></table>
+
+<p> </p>
+<p><a name="extramenu-repairjpgs"></a>
+<h3 class="section">6.6 Repair JPG(s) with corrupted metadata</h3>
+<table><tr><td><p><img title="Repair JPG(s) with corrupted metadata" src="extramenu-repairjpgs.jpg" alt="Repair JPG(s) with corrupted metadata" align="left">
+<p>As the popup on the left already mentions: If exiftool can't write to your photo it might be due to corrupted 
+metadata. Exiftool can fix a lot of the metadata but only for the tags that are still readible. In a jpeg the image data is separated from the meta data. Exiftool will create a clean metadata structure and write as much metadata back to the metadata part of the JPG.<br>
+<i>Note:</i> If your photo can't be displayed in an image viewer, your image data itself is corrupt. Exiftool can't repair 
+that.<br>
+This only works for jpgs as a lot of other formats don't separate the metadata from the image data.</td></tr></table>
+
+<p> </p>
+<p><a name="extramenu-copytoxmp"></a>
+<h3 class="section">6.7 Copy all metadata to xmp format</h3>
+<table><tr><td><p><img title="Copy all metadata to xmp format" src="extramenu-export2xmpformat.jpg" alt="Copy all metadata to xmp format" align="left">
+XMP stands for "Extensible Metadata Platform", an XML/RDF-based metadata format which is being pushed by Adobe. 
+Information in this format can be embedded in many different image file types including JPG, JP2, TIFF, GIF, EPS, 
+PDF, PSD, IND, INX, PNG, DJVU, SVG, PGF, MIFF, XCF, CRW, DNG and a variety of proprietary TIFF-based RAW images, 
+as well as in MOV, AVI, ASF, WMV, FLV, SWF and MP4 videos, but also in WMA and audio formats supporting ID3v2 information.<br>
+<p>XMP is a "growing" and easy extensible metadata format and already incorporates a lot of EXIF and IPTC metadata. It also allows for software products to define their own set of XMP tags, like the Google photosphere, microsoft face recognition and Digikam xmp tags.<br>This "Copy all metadata to xmp format" function copies all the relevant information from the exif and iptc tags into the corresponding xmp tags.
+</td></tr></table>
+
+<p> </p>
+<p><a name="extramenu-removemetadata"></a>
+<h3 class="section">6.8 Remove metadata</h3>
+<table><tr><td><p><img title="Remove metadata" src="extramenu-removemetadata.jpg" alt="Remove metadata" align="left">
+This function (on the left) is the most dangerous one of the program. Therefore it is also the only function using a 
+second "Are you sure?" popup (see below). By default it makes a backup of your images.<br>
+For the rest it is simple: It removes the metadata you select.<br><br> 
+<img title="Remove metadata - verify if user really wants this" src="extramenu-removemetadata_areyousure.jpg" alt="Remove metadata - verify if user really wants this" align="left"></td></tr></table>
+
+<hr><p><a name="YourCommands"></a>
+<h2 class="chapter">7 Your Commands</h2>
 
 <p>On this tab you can define your own parameters to "send to" exiftool. The parameters will be executed on the images you have selected on the left. 
 <p><img src="yourcommands.jpg" alt="yourcommands.jpg" title="The Your Commands tab" width="1100">
@@ -584,9 +742,8 @@ See also the <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/exiftool_pod.
 
 <p> </p>
 
-<p><a name="Preferences"></a>
-
-<h2 class="chapter">7 Preferences</h2>
+<hr><p><a name="Preferences"></a>
+<h2 class="chapter">8 Preferences</h2>
 
 <p>The Preferences tab gives you the option to select some defaults for this application.
 <p><h3>ExifTool:</h3>

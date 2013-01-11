@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'rename_photos.ui'
 #
-# Created: Thu Jan 10 16:07:52 2013
-#      by: pyside-uic 0.2.12 running on PySide 1.0.5
+# Created: Fri Jan 11 22:46:52 2013
+#      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -315,6 +315,7 @@ class Ui_Dialog_rename_files(object):
         self.comboBox_digits.setItemText(2, QtGui.QApplication.translate("Dialog_rename_files", "4", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox_digits.setItemText(3, QtGui.QApplication.translate("Dialog_rename_files", "5", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox_digits.setItemText(4, QtGui.QApplication.translate("Dialog_rename_files", "6", None, QtGui.QApplication.UnicodeUTF8))
+        self.comboBox_startcount.setToolTip(QtGui.QApplication.translate("Dialog_rename_files", "When counting from the 1st image, the counting runs from 1 to n, like 01, 02, 03, etc.\\n When starting on the second image the counting runs from 00, 01, 02, etc.", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox_startcount.setItemText(0, QtGui.QApplication.translate("Dialog_rename_files", "Start counting on 1st image", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox_startcount.setItemText(1, QtGui.QApplication.translate("Dialog_rename_files", "Start counting on 2nd image", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButton_suffix_datetime.setText(QtGui.QApplication.translate("Dialog_rename_files", "Date_time", None, QtGui.QApplication.UnicodeUTF8))
@@ -363,6 +364,7 @@ class Ui_Dialog_rename_files(object):
         self.label_24.setText(QtGui.QApplication.translate("Dialog_rename_files", "s04 : Author (${author})", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.doityourself), QtGui.QApplication.translate("Dialog_rename_files", "Do it yourself", None, QtGui.QApplication.UnicodeUTF8))
         self.button_rename_info.setText(QtGui.QApplication.translate("Dialog_rename_files", "Info", None, QtGui.QApplication.UnicodeUTF8))
+        self.LineEdit_rename_source_folder.setToolTip(QtGui.QApplication.translate("Dialog_rename_files", "If you select a source folder all images in that folder will be renamed. Note that also images in subfolders will be renamed.", None, QtGui.QApplication.UnicodeUTF8))
         self.button_rename_browse.setText(QtGui.QApplication.translate("Dialog_rename_files", "Browse", None, QtGui.QApplication.UnicodeUTF8))
         self.label_19.setText(QtGui.QApplication.translate("Dialog_rename_files", "Source folder:", None, QtGui.QApplication.UnicodeUTF8))
 

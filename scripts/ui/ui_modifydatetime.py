@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'modifydatetime.ui'
 #
-# Created: Wed Dec 19 22:54:02 2012
+# Created: Fri Jan 11 18:40:08 2013
 #      by: pyside-uic 0.2.13 running on PySide 1.1.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -126,7 +126,7 @@ class Ui_DateTimeDialog(object):
         DateTimeDialog.setTabOrder(self.chk_qddt_updatexmp, self.buttonBox)
 
     def retranslateUi(self, DateTimeDialog):
-        DateTimeDialog.setWindowTitle(QtGui.QApplication.translate("DateTimeDialog", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
+        DateTimeDialog.setWindowTitle(QtGui.QApplication.translate("DateTimeDialog", "Modify DateTime", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("DateTimeDialog", "ModifyDate", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("DateTimeDialog", "DateTimeOriginal", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("DateTimeDialog", "CreateDate", None, QtGui.QApplication.UnicodeUTF8))

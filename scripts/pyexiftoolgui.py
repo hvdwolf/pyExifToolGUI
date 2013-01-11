@@ -356,7 +356,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         message += "for the tags that are still readible. In a jpeg the image data is separated from the meta data. If your "
         message += "photo can't be displayed in an image viewer, your image data itself is corrupt. Exiftool can't repair that.\n\n"
         message += "Do you want to continue and repair as much metadata as possible?"
-        reply = QMessageBox.question(self, "Set file dat/time to DateTimeOriginal?", message, QMessageBox.Yes | QMessageBox.No)
+        reply = QMessageBox.question(self, "Repair corrupted metadata in JPG(s)", message, QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
            # Add true to write function: Always make a backup in this case
            petgfunctions.write_image_info(self, et_param, qApp, True)
