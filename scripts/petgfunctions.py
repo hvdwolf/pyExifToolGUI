@@ -1136,9 +1136,9 @@ def savegpanodata(self, qApp):
 #---
 def date_to_datetimeoriginal(self, qApp):
     exiftool_params = " -FileModifyDate<DateTimeOriginal "
-    message = "If you have modified your images or copied them around or whatever other action(s), the file "
-    message += "date/time of your images might have changed to the date when your action was performed while "
-    message += "your images itself might be much older.\n"
+    message = "If you have modified your images in a \"sloppy\" image editor or copied them around or whatever other action(s), the file "
+    message += "date/time of your images might have changed to the date your did the action/modification on the image "
+    message += "where as the real file date (= creation date) of your images is most certainly (much) older.\n"
     message += "This function will take the original date/time when the photo was taken from the exif:DateTimeOriginal "
     message += "and use that (again) as file date/time.\n\n"
     message += "Do you want to continue?"

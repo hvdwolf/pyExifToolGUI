@@ -6,7 +6,7 @@
 <link title="Top" rel="top" href="#Top">
 
 <!--
-This manual is for pyexiftoolgui (version 0.28, December 2012).
+This manual is for pyexiftoolgui (version 0.31, January 2013).
 pyExifToolGui is a python pySide QT4 script program that reads and writes
 exif, xmp and IPTC tags from/to image files. It can use areference" image as source image to
 copy data from. A strong point of this software is the ability to write the data,
@@ -176,7 +176,7 @@ ul.toc {}
 
 <h2 class="unnumbered">pyExifToolGUI</h2>
 
-<p>This manual is for pyExifToolGUI (version 0.28, December 2012).
+<p>This manual is for pyExifToolGUI (version 0.31, January 2013).
 pyExifToolGui is a python pySide QT4 script program that reads and writes
 exif, xmp (and IPTC) tags from/to image files. It can use a "reference" image as source image to
 copy data from. A strong point of this software is the ability to write the data,
@@ -190,8 +190,9 @@ copied or not from a source image, to multiple images at once.
 <!-- Undo the roman page numbering we used for the Table-of-Contents, -->
 <!-- the List-of-Tables, and the List-of-Figures. -->
 <p>pyExifToolGui is a python pySide QT4 script program that reads and writes
-exif, xmp (and a very limited set of IPTC) tags from/to image files using exiftool. It can use a  
-"reference" image as source image to copy data from. 
+exif, xmp (and a very limited set of IPTC) tags from/to image files using exiftool. 
+pyExifToolGUI: py for python, GUI for Graphical User Interface to ExifTool.
+pyExifToolGUI can use a  "reference" image as source image to copy data from. 
 A strong point of this software is the ability to write the data,
 copied or not from a source image, to multiple images at once.
 The main goal for this tool was the ability to write gps data to images as I 
@@ -246,6 +247,9 @@ This also means that it doesn't do any dependency checks for necessary
 libraries and so on. 
 I wrote a simple "setup" script that takes care of installation and removal. 
 This setup script is for Linux but can also be used on Mac OS X. 
+<p><b>Note:</b> pyExifToolGUI comes without exiftool which you need to download yourself from Phil Harvey's 
+<a href="http://www.sno.phy.queensu.ca/~phil/exiftool/" target="blank">exiftool site</a> if you want the latest version. 
+On Linux you can also use the version belonging to your distribution.
 <p> For Mac OS X you can either run the simple bundle (via the setup script) from the tar.gz and install the 
 dependencies yourself, or you can download the full bundle.
 <p>For Windows a python executable has been created (Note to Windows users: Currently there is the 
@@ -318,6 +322,10 @@ your liking where /Applications is of course the most suitable place.
 open source installer like INNOsetup, but for the moment it is simply packaged in a 
 zip file. Unzip the zip archive to some folder of your liking and start it. This also means
 that the package does not create registry entries.
+<b>Note:</b> As mentioned in the intro: pyExifToolGUI comes without exiftool itself. If you download it, the default 
+version for windows is called exiftool(-k).exe. Always rename this to exiftool.exe as the first version pauses after every screen of output and requires a keypress to continue: You don't want that.</a>.
+
+
 
 
 <p><a name="NoInstall"></a>
@@ -715,8 +723,8 @@ as well as in MOV, AVI, ASF, WMV, FLV, SWF and MP4 videos, but also in WMA and a
 <p><a name="extramenu-removemetadata"></a>
 <h3 class="section">6.8 Remove metadata</h3>
 <table><tr><td><p><img title="Remove metadata" src="extramenu-removemetadata.jpg" alt="Remove metadata" align="left">
-This function (on the left) is the most dangerous one of the program. Therefore it is also the only function using a 
-second "Are you sure?" popup (see below). By default it makes a backup of your images.<br>
+This function (on the left) is the most dangerous one of the program. Therefore it is one of the few functions using a 
+second "Are you sure?" popup (see below) and that's also why it makes a backup of your images by default.<br>
 For the rest it is simple: It removes the metadata you select.<br><br> 
 <img title="Remove metadata - verify if user really wants this" src="extramenu-removemetadata_areyousure.jpg" alt="Remove metadata - verify if user really wants this" align="left"></td></tr></table>
 
@@ -733,7 +741,7 @@ On Windows you need to double-quote this and on Linux and Mac OS X you need to s
 Other examples are:
 <table border="1" cellpadding="10">
 <tr><td>-exif:all</td><td>will display all exif tags for the selected images</td></tr>
-<tr><td>-exif:all=</td><td>will remove(!) all exif tags from the selected images</td></tr>
+<tr><td>-exif:all=</td><td>will remove(<b>!</b>) all exif tags from the selected images</td></tr>
 <tr><td>-Exif:Artist="My Name"</td><td>Will put "Your Name" into the selected images</td></tr>
 <tr><td>-Xmp:City=Zwolle -Xmp:Country=Netherlands</td><td>Will write your city and country into the xmp tags of your image(s)</td></tr>
 </table>
@@ -748,7 +756,7 @@ See also the <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/exiftool_pod.
 <p>The Preferences tab gives you the option to select some defaults for this application.
 <p><h3>ExifTool:</h3>
 <ul><li><b>Windows:</b>  You always have to specify where exiftool.exe is. Please rename exiftool(-k).exe to exiftool.exe. 
-If you stick to exiftool(-k).exe the program will halt on the most peculiar moments.</li>
+If you stick to exiftool(-k).exe the program will pause after every screen of output and wait for a key to continue. That will give problems in pyExifToolGUI (in any GUI for that matter).</li>
 <li><b>Linux and Mac OS X:</b>  The program will check for an installed exiftool in the standard program folders. 
 If not found you have to specify where exiftool is. You can also use this option to specify a newer exiftool version 
 then standard available for your distribution. At this moment most Linux distributions ship with some 8.xy exiftool version.

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleShortVersionString</key>
-	<string>0.30</string>
+	<string>0.31</string>
 	<key>CFBundleExecutable</key>
 	<string>MacOS/pyexiftoolgui</string>
 	<key>CFBundleName</key>
