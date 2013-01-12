@@ -1158,6 +1158,15 @@ def info_window(self):
                license_file = os.path.join(self.realfile_dir, 'COPYING')
             else:
                QMessageBox.critical(self, "Can't find the license file", "Please check www.gnu.org/license")
+    elif self.OSplatform == "Darwin":
+            if os.path.isfile(os.path.join(self.parent_dir, 'COPYING')):
+               # started from python
+               license_file = os.path.join(self.parent_dir, 'COPYING')
+            elif os.path.isfile(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","Resources","COPYING")):
+               # Started from the executable 
+               license_file = os.path.join(self.realfile_dir,"pyexiftoolgui.app","Contents","Resources",'COPYING')
+            else:
+               QMessageBox.critical(self, "Can't find the license file", "Please check www.gnu.org/license")
     else:
             license_file = os.path.join(self.parent_dir, 'COPYING')
     self.info_window_dialog = QDialog()

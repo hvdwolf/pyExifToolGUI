@@ -383,9 +383,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 elif os.path.isfile(os.path.join(self.parent_dir, "manual","pyexiftoolgui.html")): # Started from script
                      webbrowser.open(os.path.join(self.parent_dir, "manual",manual))
              elif self.OSplatform == "Darwin":
-                if os.path.isfile(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","manual",manual)): # from python app
+                if os.path.isfile(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","manual","pyexiftoolgui.html")): # from python app
                      webbrowser.open("file://" + os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","manual", manual))
-                elif os.path.isfile(os.path.join(self.parent_dir, "manual",manual)): # Started from script
+                elif os.path.isfile(os.path.join(self.parent_dir, "manual","pyexiftoolgui.html")): # Started from script
                      webbrowser.open("file://" + os.path.join(self.parent_dir, "manual" , manual))
              else:
 		        webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", manual))

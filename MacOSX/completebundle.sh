@@ -45,6 +45,9 @@ do
  done
 done
 
+# Copy the Gnu license file into the bundle
+cp -a "$curpath/../COPYING" "$App/Contents/Resources"  
+
 # Finally copy the manual into the bundle
 cp -a "$curpath/../manual" "$MacOSfolder"
 
