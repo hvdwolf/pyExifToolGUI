@@ -10,8 +10,8 @@ or (Open)Suse or Fedora/Redhat.
 This also means that it doesn't do any dependency checks for necessary
 libraries and so on. 
 I simply wrote a "setup" script that takes care of installation and removal. 
-Currently it only works on Linux and Mac OS X. Windows is not my target but 
-eventually it will get it's own python executable.
+Currently that only works on Linux and Mac OS X. For Windows an executable is
+available and for Mac OS X a bundle is available.
 
 Run pyexiftoolgui from this folder (No Installation)
 ====================================================
@@ -64,12 +64,7 @@ Installation:
 
 Installation on Windows
 =======================
-I'm working on a windows python executable, but currently you are on your own here.
-But if you want to try I will provide some basic instructions.
-- Install python on your system. Download it from www.python.org
-- Install pyside on your system. Download it from www.pyside.org (pay attention to the possible combinations)
-- Download pyExifToolGUI-x.y.tgz and unpack it to some folder.
-- Start from a dos/command box with: <drive:\path\to\python\executable drive:\path\to\pyexiftoolgui.py>
+Download the executable from the website.
 
 
 Run pyexiftoolgui from this folder (No Installation)
@@ -93,7 +88,7 @@ Uninstall / Removal
 - run the setup script from the command line with "sudo ./setup.py remove" (no double quotes).
 - On Mac OS X simply remove pyExifToolGUI.app from /Applications
 
-This file: Version 0.2, 2012-12-12, H. van der Wolf
+This file: Version 0.3, 2013-01-12, H. van der Wolf
 
 
 
