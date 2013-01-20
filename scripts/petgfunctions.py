@@ -44,42 +44,42 @@ from ui_syncdatetime import Ui_SyncDateTimeTagsDialog
 # Start of Startup checks and configuration
 ###################################################################################################################
 def remove_workspace( self ):
-	# Remove our temporary workspace
-#	try:
-#		fls = os.remove(self.tmpworkdir + "/*")
-#	except:
-#		print("No files in " + self.tmpworkdir + " or no folder at all")
-#	try: 
-#		fldr = os.rmdir(self.tmpworkdir)
-#	except:
-#		print("Couldn't remove folder")
-	print self.tmpworkdir
-	if self.OSplatform == "Windows":
-                self.tmpworkdir = self.tmpworkdir.replace("/", "\\")
-                command_line = "rmdir /S /Q " + self.tmpworkdir
-        else:
-                command_line = "rm -rf " + self.tmpworkdir
+    # Remove our temporary workspace
+#    try:
+#        fls = os.remove(self.tmpworkdir + "/*")
+#    except:
+#        print("No files in " + self.tmpworkdir + " or no folder at all")
+#    try: 
+#        fldr = os.rmdir(self.tmpworkdir)
+#    except:
+#        print("Couldn't remove folder")
+    print(self.tmpworkdir)
+    if self.OSplatform == "Windows":
+        self.tmpworkdir = self.tmpworkdir.replace("/", "\\")
+        command_line = "rmdir /S /Q " + self.tmpworkdir
+    else:
+        command_line = "rm -rf " + self.tmpworkdir
         p = os.system(command_line)
-	#args = shlex.split(command_line)
-	#print args
-	#p = subprocess.call(args, shell=True)
+        #args = shlex.split(command_line)
+        #print args
+        #p = subprocess.call(args, shell=True)
 
-	if p == 0:
-		print("Removed " + self.tmpworkdir + " and it contents.")
-	else:
-		print("Error removing " + self.tmpworkdir + " and it contents.")
+    if p == 0:
+        print(("Removed " + self.tmpworkdir + " and it contents."))
+    else:
+        print(("Error removing " + self.tmpworkdir + " and it contents."))
 
 def is_executable(fpath):
-	return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
+    return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
 
 def check_for_program(program):
-	exists = False
-	for path in os.environ["PATH"].split(os.pathsep):
-		path_plus_program = os.path.join(path, program)
-		if is_executable(path_plus_program):
-			#print "program " + program + " found"
-			exists = True
-	return exists
+    exists = False
+    for path in os.environ["PATH"].split(os.pathsep):
+        path_plus_program = os.path.join(path, program)
+        if is_executable(path_plus_program):
+            #print "program " + program + " found"
+            exists = True
+    return exists
 # End of function check_for_program and is_executable (mini sub for check_for_program)
 
 def exiftool_version_level_text(self):
@@ -103,19 +103,19 @@ def exiftool_version_level_text(self):
 
 
 def tool_check( self ):
-	# We need this startup check as long as we don't have a package
-	# that deals with dependencies
+    # We need this startup check as long as we don't have a package
+    # that deals with dependencies
 
-        if self.alternate_exiftool == True:
-                self.exiftoolprog = self.exiftooloption.text()
-        else:
-                self.exiftoolprog = "exiftool"
-	# Check for exiftool
-	if (self.OSplatform in ("Windows", "win32")):
-                if self.exiftoolprog == "exiftool":
-                   self.exiftool_dir = os.path.join(self.realfile_dir, "exiftool", "exiftool.exe")
-                   #self.exiftoolprog = self.exiftool_dir + "\exiftool.exe"
-                   if not os.path.isfile(self.exiftoolprog):
+   if self.alternate_exiftool == True:
+       self.exiftoolprog = self.exiftooloption.text()
+   else:
+       self.exiftoolprog = "exiftool"
+   # Check for exiftool, based on the setting or no setting above
+   if (self.OSplatform in ("Windows", "win32")):
+        if self.exiftoolprog == "exiftool":
+            self.exiftool_dir = os.path.join(self.realfile_dir, "exiftool", "exiftool.exe")
+            #self.exiftoolprog = self.exiftool_dir + "\exiftool.exe"
+            if not os.path.isfile(self.exiftoolprog):
                        configure_message = "exiftool is missing or incorrectly configured in Preferences!\n"
                        configure_message += "This tool is an absolute must have!\nPlease set the correct location or install exiftool first.\n\n"
                        configure_message += "If your exiftool is named \"exiftool(-k).exe\", rename it to \"exiftool.exe\""
@@ -127,142 +127,142 @@ def tool_check( self ):
                           sys.exit()
                        else:
                           self.exiftoolprog = result
-                #print self.exiftoolprog
-                args = self.exiftoolprog + " -ver"
-                self.exiftoolversion = subprocess.check_output(args, shell=True)
-        else:
-	        if not check_for_program(self.exiftoolprog):
-		       ret = QMessageBox.critical(self, "exiftool is missing or incorrectly configured", "exiftool is missing or incorrectly configured in Preferences!\nThis tool is an absolute must have!\nPlease set the correct location or install exiftool first.")
-		       #sys.exit()
-                       result = self.select_exiftool()
-                       #print str(result)
-                       if result == "":
-                          ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.")
-                          sys.exit()
-                       else:
-		          self.exiftoolprog = result
-                          #print "result 2" + self.exiftoolprog
-                command_line = self.exiftoolprog + " -ver"
-                args = shlex.split(command_line)
-                self.exiftoolversion = subprocess.check_output(args)
-        # remove last character which is the final ending \n (where \ is only the escape character)        
-        self.exiftoolversion = self.exiftoolversion[:-1]
-        exiftool_version_level_text(self)
+            #print self.exiftoolprog
+            args = self.exiftoolprog + " -ver"
+            self.exiftoolversion = subprocess.check_output(args, shell=True)
+   else:
+        if not check_for_program(self.exiftoolprog):
+            ret = QMessageBox.critical(self, "exiftool is missing or incorrectly configured", "exiftool is missing or incorrectly configured in Preferences!\nThis tool is an absolute must have!\nPlease set the correct location or install exiftool first.")
+            #sys.exit()
+            result = self.select_exiftool()
+            #print str(result)
+            if result == "":
+                ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.")
+                sys.exit()
+            else:
+                self.exiftoolprog = result
+                #print "result 2" + self.exiftoolprog
+        command_line = self.exiftoolprog + " -ver"
+        args = shlex.split(command_line)
+        self.exiftoolversion = subprocess.check_output(args)
+   # remove last character which is the final ending \n (where \ is only the escape character)        
+   self.exiftoolversion = self.exiftoolversion[:-1]
+   exiftool_version_level_text(self)
 # End of function tool_check
 
 def write_config(self, aftererror):
-        if sys.version_info>(3,0,0):
-          print "We are on python 3"
-          import configparser
-	  config = configparser.RawConfigParser()
-        elif sys.version_info<(2,7,0):
-          sys.stderr.write("\n\nYou need python 2.7 or later to use pyexiftoolgui\n")
-          exit(1) 
-        else: # 2.7.0 < version < 3.0.0
-          import ConfigParser
-	  config = ConfigParser.RawConfigParser()
+    if sys.version_info>(3,0,0):
+        print("We are on python 3")
+        import configparser
+        config = configparser.RawConfigParser()
+    elif sys.version_info<(2,7,0):
+        sys.stderr.write("\n\nYou need python 2.7 or later to use pyexiftoolgui\n")
+        exit(1) 
+    else: # 2.7.0 < version < 3.0.0
+        import ConfigParser
+        config = ConfigParser.RawConfigParser()
 
-	# Here we write to our pyexiftoolgui config file
-	#print "Writing our config file"
+    # Here we write to our pyexiftoolgui config file
+    #print "Writing our config file"
 
-	# Create our config
-	config.add_section("preferences")
-	if aftererror == 1: # Some error occurred. Go back to defaults
-		config.set("preferences", "alternate_exiftool", str(False))
-		self.alternate_exiftool = False
-		config.set("preferences", "exiftooloption", "exiftool")
-                config.set("preferences", "pref_thumbnail_preview",str(True))
-		config.set("preferences", "def_creator", "")
-		config.set("preferences", "def_copyright", "")
-	else:
-		if self.exiftooloption.text() in ("exiftool", ""):
-			config.set("preferences", "alternate_exiftool", str(False))
-			config.set("preferences", "exiftooloption", "exiftool")
-		else: # user has changed it
-			config.set("preferences", "alternate_exiftool", str(True))
-			config.set("preferences", "exiftooloption", self.exiftooloption.text())
-                if self.pref_thumbnail_preview.isChecked():
-                   config.set("preferences", "pref_thumbnail_preview",str(True))
-                else:
-                   config.set("preferences", "pref_thumbnail_preview",str(False))
-		config.set("preferences", "def_creator", self.def_creator.text())
-		config.set("preferences", "def_copyright", self.def_copyright.text())
+    # Create our config
+    config.add_section("preferences")
+    if aftererror == 1: # Some error occurred. Go back to defaults
+        config.set("preferences", "alternate_exiftool", str(False))
+        self.alternate_exiftool = False
+        config.set("preferences", "exiftooloption", "exiftool")
+        config.set("preferences", "pref_thumbnail_preview",str(True))
+        config.set("preferences", "def_creator", "")
+        config.set("preferences", "def_copyright", "")
+    else:
+        if self.exiftooloption.text() in ("exiftool", ""):
+            config.set("preferences", "alternate_exiftool", str(False))
+            config.set("preferences", "exiftooloption", "exiftool")
+        else: # user has changed it
+            config.set("preferences", "alternate_exiftool", str(True))
+            config.set("preferences", "exiftooloption", self.exiftooloption.text())
+            if self.pref_thumbnail_preview.isChecked():
+               config.set("preferences", "pref_thumbnail_preview",str(True))
+            else:
+               config.set("preferences", "pref_thumbnail_preview",str(False))
+        config.set("preferences", "def_creator", self.def_creator.text())
+        config.set("preferences", "def_copyright", self.def_copyright.text())
 
-	userpath = os.path.expanduser('~')
-	try:
-		fldr = os.mkdir(os.path.join(userpath, '.pyexiftoolgui'))
-		#print "fldr gives: " + fldr
-	except:
-		print "Check for config folder: exists => OK"
-	try:
-		with open(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg'), 'wb') as configfile:
-			config.write(configfile)
-	except:
-		print "couldn't write configfile"
+    userpath = os.path.expanduser('~')
+    try:
+        fldr = os.mkdir(os.path.join(userpath, '.pyexiftoolgui'))
+        #print "fldr gives: " + fldr
+    except:
+        print("Check for config folder: exists => OK")
+    try:
+        with open(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg'), 'wb') as configfile:
+            config.write(configfile)
+    except:
+        print("couldn't write configfile")
 
 def error_reading_configparameter(self):
-	message = ("Somehow I encountered an error reading the config file.\n"
-		   "This can happen when:\n- an updated version added or removed a parameter\n"
-		   "- when the config file somehow got damaged.\n"
+    message = ("Somehow I encountered an error reading the config file.\n"
+           "This can happen when:\n- an updated version added or removed a parameter\n"
+           "- when the config file somehow got damaged.\n"
                    "- when this is the very first program start.\n\n"
-		   "I will simply create a new config file. Please "
-		   "check your preferences.")
-	ret = QMessageBox.warning(self, "error reading config", message) 
-	# simply run the write_config function to create our initial config file
-	aftererror = True
-	write_config(self, 1)
+           "I will simply create a new config file. Please "
+           "check your preferences.")
+    ret = QMessageBox.warning(self, "error reading config", message) 
+    # simply run the write_config function to create our initial config file
+    aftererror = True
+    write_config(self, 1)
 
 def read_config(self):
-        if sys.version_info>(3,0,0):
-          print "We are on python 3"
-          import configparser
-	  config = configparser.RawConfigParser()
-        elif sys.version_info<(2,7,0):
-          sys.stderr.write("\n\nYou need python 2.7 or later to use pyexiftoolgui\n")
-          exit(1) 
-        else: # 2.7.0 < version < 3.0.0
-          import ConfigParser
-	  config = ConfigParser.RawConfigParser()
+    if sys.version_info>(3,0,0):
+        print("We are on python 3")
+        import configparser
+        config = configparser.RawConfigParser()
+    elif sys.version_info<(2,7,0):
+        sys.stderr.write("\n\nYou need python 2.7 or later to use pyexiftoolgui\n")
+        exit(1) 
+    else: # 2.7.0 < version < 3.0.0
+        import ConfigParser
+        config = ConfigParser.RawConfigParser()
 
-	#print "Reading our config file"
-	userpath = os.path.expanduser('~')
-	print userpath
-	print os.path.join(userpath, '.pyexiftoolgui', 'config.cfg')
-	# First we check in the safe way for the existence of the config file
-	if os.path.isfile(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg')):
-	   try:
-   		with open(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg')) as f: pass
-		# If no error we can continue
-		#print "no error on config check, continue"
-		config.read(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg'))
-		try: 
-			self.alternate_exiftool = config.getboolean("preferences", "alternate_exiftool")
-		except:
-			error_reading_configparameter(self)  
-		try:
-			self.exiftooloption.setText(config.get("preferences", "exiftooloption"))
-		except:
-			error_reading_configparameter(self)
-		try:
-                        if config.get("preferences", "pref_thumbnail_preview") == "True":
-			   self.pref_thumbnail_preview.setChecked(1)
-                        else:
-			   self.pref_thumbnail_preview.setChecked(0)
-		except:
-			error_reading_configparameter(self)
-		try:
-			self.def_creator.setText(config.get("preferences", "def_creator"))
-		except:
-			error_reading_configparameter(self)
-		try:
-			self.def_copyright.setText(config.get("preferences", "def_copyright"))
-		except:
-			error_reading_configparameter(self)
-		
-	   except IOError as e: # error reading the config file itself
-   		print "Very first program start, updated pyexiftoolgui with added/removed setting or user deleted the config file"
-   	else:
-           error_reading_configparameter(self)
+    #print "Reading our config file"
+    userpath = os.path.expanduser('~')
+    print(userpath)
+    print(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg'))
+    # First we check in the safe way for the existence of the config file
+    if os.path.isfile(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg')):
+        try:
+            with open(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg')) as f: pass
+            # If no error we can continue
+            #print "no error on config check, continue"
+            config.read(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg'))
+            try: 
+                self.alternate_exiftool = config.getboolean("preferences", "alternate_exiftool")
+            except:
+                error_reading_configparameter(self)  
+            try:
+                self.exiftooloption.setText(config.get("preferences", "exiftooloption"))
+            except:
+                error_reading_configparameter(self)
+            try:
+                if config.get("preferences", "pref_thumbnail_preview") == "True":
+                    self.pref_thumbnail_preview.setChecked(1)
+                else:
+                    self.pref_thumbnail_preview.setChecked(0)
+            except:
+                error_reading_configparameter(self)
+            try:
+                self.def_creator.setText(config.get("preferences", "def_creator"))
+            except:
+                error_reading_configparameter(self)
+            try:
+                self.def_copyright.setText(config.get("preferences", "def_copyright"))
+            except:
+                error_reading_configparameter(self)
+        
+        except IOError as e: # error reading the config file itself
+            print("Very first program start, updated pyexiftoolgui with added/removed setting or user deleted the config file")
+    else:
+        error_reading_configparameter(self)
 
 ###################################################################################################################
 # End of Startup checks and configuration
@@ -301,152 +301,152 @@ def images_dialog(self, qApp):
         for fileName in fileNames:
            # Make sure that spaces in path/file names etcetera are
            # covered by putting them within spaces
-	   #print fileName
+           #print fileName
            filenamesstring += "\"" + fileName + "\" "
         #ret= QMessageBox.about(self, "file names", """ %s""" % fnstring)
         #return fileNames
         self.fileNames = fileNames
         self.filenamesstring = filenamesstring
     else:
-	# user canceled
+        # user canceled
         self.statusbar.showMessage("you canceled loading the images.")
-	fileNames = ""
+        fileNames = ""
     return (fileNames, filenamesstring)
 
 
 def loadimages(self,loadedimages, loadedimagesstring,qApp):
-	if loadedimagesstring == "":
-		# user canceled loading images
-		print("user canceled loading images")
-	else:
-	        imagestring = ""
-        	rowcounter = 0
-	        total_images = len(loadedimages)
-		self.progressbar.setRange(0, total_images)
-	        self.progressbar.setValue(0)
-	        self.progressbar.show()
-	        qApp.processEvents()
-        	self.MaintableWidget.clearContents()
-                self.MaintableWidget.setRowCount(0)
-        	#self.MaintableWidget.setRowCount(len(loadedimages))
-		self.resolutions = []
-        	cur_width_height = ""
-        	for loadedimage in loadedimages:
-        	    if self.DebugMsg:
-        	        print rowcounter
-        	        print loadedimage + "\n"
-        	        print loadedimagesstring
+    if loadedimagesstring == "":
+        # user canceled loading images
+        print("user canceled loading images")
+    else:
+        imagestring = ""
+        rowcounter = 0
+        total_images = len(loadedimages)
+        self.progressbar.setRange(0, total_images)
+        self.progressbar.setValue(0)
+        self.progressbar.show()
+        qApp.processEvents()
+        self.MaintableWidget.clearContents()
+        self.MaintableWidget.setRowCount(0)
+        #self.MaintableWidget.setRowCount(len(loadedimages))
+        self.resolutions = []
+        cur_width_height = ""
+        for loadedimage in loadedimages:
+            if self.DebugMsg:
+                print(rowcounter)
+                print(loadedimage + "\n")
+                print(loadedimagesstring)
 
-                    #print "loaded image: " + loadedimage
-        	    folder,imagefile = os.path.split(loadedimage)
-        	    self.image_folder = folder
-        	    qtablefilename = QTableWidgetItem(imagefile)
-        	    self.MaintableWidget.insertRow(rowcounter)
-                    # in case thumbs are disabled
-                    dis_thumb_string = QTableWidgetItem("disabled")
-                    if self.pref_thumbnail_preview.isChecked():
-        	       # Now create the thumbnail to be displayed
-        	       thumbnail = QLabel(self)
-        	       image = QImage(loadedimage)
-        	       thumbnail.setPixmap(QPixmap.fromImage(image))
-        	       thumbnail.setScaledContents(True)
-                       # Fill the table
-                       self.MaintableWidget.setRowHeight(rowcounter,75)
-                       self.MaintableWidget.setColumnWidth(0,75)
-                       self.MaintableWidget.setColumnWidth(1,225)
-                       self.MaintableWidget.setCellWidget(rowcounter, 0, thumbnail)
-                    else:
-                       # Fill the table
-                       self.MaintableWidget.setColumnWidth(0,75)
-                       self.MaintableWidget.setColumnWidth(1,225)
-                       self.MaintableWidget.setItem(rowcounter, 0, dis_thumb_string)
-        	    self.MaintableWidget.setItem(rowcounter, 1, qtablefilename)
-                    self.MaintableWidget.setToolTip('image(s) folder: ' + folder)
-        	    rowcounter += 1
-        	    self.progressbar.setValue(rowcounter) 
-                    self.statusbar.showMessage("Creating thumbnail of: " + os.path.basename(loadedimage))
-        	    qApp.processEvents()
-        	    imagestring += loadedimage + " "
-        	if self.allDebugMsg:
-        	    ret= QMessageBox.about(self, "file names", "images found \n %s" % loadedimagesstring)
-        	    ret= QMessageBox.about(self, "file names", "images found 2 \n %s" % imagestring)
-        	#self.imagesfolderlineitem.setText(folder)
-                # After loading the photos we will enable buttons and events
-                self.activate_buttons_events()
+            #print "loaded image: " + loadedimage
+            folder,imagefile = os.path.split(loadedimage)
+            self.image_folder = folder
+            qtablefilename = QTableWidgetItem(imagefile)
+            self.MaintableWidget.insertRow(rowcounter)
+            # in case thumbs are disabled
+            dis_thumb_string = QTableWidgetItem("disabled")
+            if self.pref_thumbnail_preview.isChecked():
+                # Now create the thumbnail to be displayed
+                thumbnail = QLabel(self)
+                image = QImage(loadedimage)
+                thumbnail.setPixmap(QPixmap.fromImage(image))
+                thumbnail.setScaledContents(True)
+                # Fill the table
+                self.MaintableWidget.setRowHeight(rowcounter,75)
+                self.MaintableWidget.setColumnWidth(0,75)
+                self.MaintableWidget.setColumnWidth(1,225)
+                self.MaintableWidget.setCellWidget(rowcounter, 0, thumbnail)
+            else:
+                # Fill the table
+                self.MaintableWidget.setColumnWidth(0,75)
+                self.MaintableWidget.setColumnWidth(1,225)
+                self.MaintableWidget.setItem(rowcounter, 0, dis_thumb_string)
+            self.MaintableWidget.setItem(rowcounter, 1, qtablefilename)
+            self.MaintableWidget.setToolTip('image(s) folder: ' + folder)
+            rowcounter += 1
+            self.progressbar.setValue(rowcounter) 
+            self.statusbar.showMessage("Creating thumbnail of: " + os.path.basename(loadedimage))
+            qApp.processEvents()
+            imagestring += loadedimage + " "
+        if self.allDebugMsg:
+            ret= QMessageBox.about(self, "file names", "images found \n %s" % loadedimagesstring)
+            ret= QMessageBox.about(self, "file names", "images found 2 \n %s" % imagestring)
+        #self.imagesfolderlineitem.setText(folder)
+        # After loading the photos we will enable buttons and events
+        self.activate_buttons_events()
 
 
 
 def imageinfo(self, qApp):
-        self.statusbar.showMessage("")
-	selected_row = self.MaintableWidget.currentRow()
-	selected_image = "\"" + self.fileNames[selected_row] + "\""
-        if self.radioButton_all.isChecked():
-            exiftool_params = ""
-            arguments = " -a "
-            header = "all tags"
-        if self.radioButton_exif.isChecked():
-            exiftool_params = "-exif:all"
-            header = "EXIF tags"
-        if self.radioButton_xmp.isChecked():
-            exiftool_params = "-xmp:all"
-            header = "XMP tags"
-        if self.radioButton_iptc.isChecked():
-            exiftool_params = "-iptc:all"
-            header = "IPTC tags"
-        if self.radioButton_iccprofile.isChecked():
-            exiftool_params = "-icc_profile:all"
-            header = "ICC profile tags"
-        if self.radioButton_gps.isChecked():
-            exiftool_params = "-gps:all -xmp:GPSLatitude -xmp:GPSLongitude -xmp:Location -xmp:Country -xmp:State -xmp:City"
-            arguments = " -a -gps:all -xmp:GPSLatitude -xmp:GPSLongitude -xmp:Location -xmp:Country -xmp:State -xmp:City"
-            header = "GPS tags"
-        if self.radioButton_gpano.isChecked():
-            exiftool_params = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewPitchDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees"
-            arguments = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewPitchDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees"
-            header = "GPano tags"
-        if self.radioButton_makernotes.isChecked():
-            exiftool_params = "-makernotes:all"
-            header = "makernotes tags"
-        if self.OSplatform == "Windows":
-                selected_image = selected_image.replace("/", "\\")
-                args = self.exiftoolprog + " -a " + exiftool_params + " " + selected_image
-                p = subprocess.check_output(args, universal_newlines=True, shell=True)
-        else:
-                command_line = self.exiftoolprog + " -a " + exiftool_params + " " + selected_image
-                args = shlex.split(command_line)
-                p = subprocess.check_output(args, universal_newlines=True)
-        #arguments = arguments + " " + selected_image
-        #print "ET = " + self.exiftoolprog + " arguments are " + arguments
-        #myprocess = QProcess(self)
-        #myprocess.start(self.exiftoolprog, arguments)
-        #myprocess.waitForFinished(-1)
-        #p = myprocess.readAll()
-        #print "p after myprocess"
-        #print p
-        if len(p) == 0:
-           p = header + "   :   No data available\n"
-           #print p
-        # remove last character which is the final ending \n (where \ is only the escape character)        
-        p = p[:-1]
-        p_lines = re.split('\n',p)
-        self.exiftableWidget.clearContents()
-	self.exiftableWidget.setRowCount(0)
-        rowcounter = 0
-        for line in p_lines:
-            try: 
-               descriptor, description = re.split(':', line,1)
-               descriptor = descriptor.strip()
-               description = description.strip()
-               #print "descriptor " + descriptor + " ;description " + description
-               self.exiftableWidget.insertRow(rowcounter)
-               self.exiftableWidget.setColumnWidth(0,225)
-               self.exiftableWidget.setColumnWidth(1,325)
-               self.exiftableWidget.setItem(rowcounter, 0, QTableWidgetItem(descriptor))
-               self.exiftableWidget.setItem(rowcounter, 1, QTableWidgetItem(description))
-               rowcounter += 1
-               qApp.processEvents()
-            except:
-               print "always the last line that doesn't work"
+    self.statusbar.showMessage("")
+    selected_row = self.MaintableWidget.currentRow()
+    selected_image = "\"" + self.fileNames[selected_row] + "\""
+    if self.radioButton_all.isChecked():
+        exiftool_params = ""
+        arguments = " -a "
+        header = "all tags"
+    if self.radioButton_exif.isChecked():
+        exiftool_params = "-exif:all"
+        header = "EXIF tags"
+    if self.radioButton_xmp.isChecked():
+        exiftool_params = "-xmp:all"
+        header = "XMP tags"
+    if self.radioButton_iptc.isChecked():
+        exiftool_params = "-iptc:all"
+        header = "IPTC tags"
+    if self.radioButton_iccprofile.isChecked():
+        exiftool_params = "-icc_profile:all"
+        header = "ICC profile tags"
+    if self.radioButton_gps.isChecked():
+        exiftool_params = "-gps:all -xmp:GPSLatitude -xmp:GPSLongitude -xmp:Location -xmp:Country -xmp:State -xmp:City"
+        arguments = " -a -gps:all -xmp:GPSLatitude -xmp:GPSLongitude -xmp:Location -xmp:Country -xmp:State -xmp:City"
+        header = "GPS tags"
+    if self.radioButton_gpano.isChecked():
+        exiftool_params = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewPitchDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees"
+        arguments = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewPitchDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees"
+        header = "GPano tags"
+    if self.radioButton_makernotes.isChecked():
+        exiftool_params = "-makernotes:all"
+        header = "makernotes tags"
+    if self.OSplatform == "Windows":
+            selected_image = selected_image.replace("/", "\\")
+            args = self.exiftoolprog + " -a " + exiftool_params + " " + selected_image
+            p = subprocess.check_output(args, universal_newlines=True, shell=True)
+    else:
+            command_line = self.exiftoolprog + " -a " + exiftool_params + " " + selected_image
+            args = shlex.split(command_line)
+            p = subprocess.check_output(args, universal_newlines=True)
+    #arguments = arguments + " " + selected_image
+    #print "ET = " + self.exiftoolprog + " arguments are " + arguments
+    #myprocess = QProcess(self)
+    #myprocess.start(self.exiftoolprog, arguments)
+    #myprocess.waitForFinished(-1)
+    #p = myprocess.readAll()
+    #print "p after myprocess"
+    #print p
+    if len(p) == 0:
+       p = header + "   :   No data available\n"
+       #print p
+    # remove last character which is the final ending \n (where \ is only the escape character)        
+    p = p[:-1]
+    p_lines = re.split('\n',p)
+    self.exiftableWidget.clearContents()
+    self.exiftableWidget.setRowCount(0)
+    rowcounter = 0
+    for line in p_lines:
+       try: 
+           descriptor, description = re.split(':', line,1)
+           descriptor = descriptor.strip()
+           description = description.strip()
+           #print "descriptor " + descriptor + " ;description " + description
+           self.exiftableWidget.insertRow(rowcounter)
+           self.exiftableWidget.setColumnWidth(0,225)
+           self.exiftableWidget.setColumnWidth(1,325)
+           self.exiftableWidget.setItem(rowcounter, 0, QTableWidgetItem(descriptor))
+           self.exiftableWidget.setItem(rowcounter, 1, QTableWidgetItem(description))
+           rowcounter += 1
+           qApp.processEvents()
+       except:
+           print("always the last line that doesn't work")
 
 def copy_defaults(self, qApp, category):
     if category == "exif":
@@ -558,78 +558,78 @@ def convertLatLong(self, direction):
          ret = QMessageBox.critical(self, "degrees error", "Longitude decimal must fall in the range -180 < degr < 180")
 
 def clear_gps_fields(self):
-        self.calc_lat_deg.setText("")
-        self.calc_lat_min.setText("")
-        self.calc_lat_sec.setText("")
-        self.calc_latitude.setText("")
-        self.radioButton_calc_gpsN.setChecked(1)
-        self.calc_lon_deg.setText("")
-        self.calc_lon_min.setText("")
-        self.calc_lon_sec.setText("")
-        self.calc_longitude.setText("")
-        self.gps_lat_decimal.setText("")
-        self.gps_lon_decimal.setText("")
-        self.radioButton_calc_gpsE.setChecked(1)
-        self.gps_altitude.setText("")
-        self.chk_AboveSeaLevel.setChecked(1)
-        self.gps_lat_deg.setText("")
-        self.gps_lat_min.setText("")
-        self.gps_lat_sec.setText("")
-        self.gps_lon_deg.setText("")
-        self.gps_lon_min.setText("")
-        self.gps_lon_sec.setText("")
-        self.radioButton_gpsN.setChecked(1)
-        self.radioButton_gpsE.setChecked(1)
-        self.xmp_location.setText("")
-        self.xmp_country.setText("")
-        self.xmp_state.setText("")
-        self.xmp_city.setText("")
-        self.chk_xmp_location.setChecked(1)
-        self.chk_xmp_country.setChecked(1)
-        self.chk_xmp_state.setChecked(1)
-        self.chk_xmp_city.setChecked(1)
-        self.gps_timestamp.setText("")
-        self.gps_datestamp.setText("")
-        self.gps_versionid.setText("")
-        self.gps_mapdatum.setText("")
-        self.chk_gps_timestamp.setChecked(1)
-        self.chk_gps_datestamp.setChecked(1)
+    self.calc_lat_deg.setText("")
+    self.calc_lat_min.setText("")
+    self.calc_lat_sec.setText("")
+    self.calc_latitude.setText("")
+    self.radioButton_calc_gpsN.setChecked(1)
+    self.calc_lon_deg.setText("")
+    self.calc_lon_min.setText("")
+    self.calc_lon_sec.setText("")
+    self.calc_longitude.setText("")
+    self.gps_lat_decimal.setText("")
+    self.gps_lon_decimal.setText("")
+    self.radioButton_calc_gpsE.setChecked(1)
+    self.gps_altitude.setText("")
+    self.chk_AboveSeaLevel.setChecked(1)
+    self.gps_lat_deg.setText("")
+    self.gps_lat_min.setText("")
+    self.gps_lat_sec.setText("")
+    self.gps_lon_deg.setText("")
+    self.gps_lon_min.setText("")
+    self.gps_lon_sec.setText("")
+    self.radioButton_gpsN.setChecked(1)
+    self.radioButton_gpsE.setChecked(1)
+    self.xmp_location.setText("")
+    self.xmp_country.setText("")
+    self.xmp_state.setText("")
+    self.xmp_city.setText("")
+    self.chk_xmp_location.setChecked(1)
+    self.chk_xmp_country.setChecked(1)
+    self.chk_xmp_state.setChecked(1)
+    self.chk_xmp_city.setChecked(1)
+    self.gps_timestamp.setText("")
+    self.gps_datestamp.setText("")
+    self.gps_versionid.setText("")
+    self.gps_mapdatum.setText("")
+    self.chk_gps_timestamp.setChecked(1)
+    self.chk_gps_datestamp.setChecked(1)
 
 def copy_calc_to_gpsinput(self):
-        self.gps_lat_decimal.setText(self.calc_latitude.text())
-        self.gps_lon_decimal.setText(self.calc_longitude.text())
-        self.gps_lat_deg.setText(self.calc_lat_deg.text())
-        self.gps_lat_min.setText(self.calc_lat_min.text())
-        self.gps_lat_sec.setText(self.calc_lat_sec.text())
-        self.gps_lon_deg.setText(self.calc_lon_deg.text())
-        self.gps_lon_min.setText(self.calc_lon_min.text())
-        self.gps_lon_sec.setText(self.calc_lon_sec.text())
-        if self.radioButton_calc_gpsN.isChecked():
-		self.radioButton_gpsN.setChecked(1)
-        else:
-		self.radioButton_gpsS.setChecked(1)
-        if self.radioButton_calc_gpsE.isChecked():
-		self.radioButton_gpsE.setChecked(1)
-        else:
-		self.radioButton_gpsW.setChecked(1)
+    self.gps_lat_decimal.setText(self.calc_latitude.text())
+    self.gps_lon_decimal.setText(self.calc_longitude.text())
+    self.gps_lat_deg.setText(self.calc_lat_deg.text())
+    self.gps_lat_min.setText(self.calc_lat_min.text())
+    self.gps_lat_sec.setText(self.calc_lat_sec.text())
+    self.gps_lon_deg.setText(self.calc_lon_deg.text())
+    self.gps_lon_min.setText(self.calc_lon_min.text())
+    self.gps_lon_sec.setText(self.calc_lon_sec.text())
+    if self.radioButton_calc_gpsN.isChecked():
+        self.radioButton_gpsN.setChecked(1)
+    else:
+        self.radioButton_gpsS.setChecked(1)
+    if self.radioButton_calc_gpsE.isChecked():
+        self.radioButton_gpsE.setChecked(1)
+    else:
+        self.radioButton_gpsW.setChecked(1)
 
 
 def d2dms(self, value, sort):
-        # This is a simplified one-way copy of the convertLatLong function above for the input read-only fields
-        # Both cold be integrated, more efficient, but this is faster to maintain (and I'm lazy)
-        value = abs(float(value))
-        deg = int(value)
-        min = (float(value) - int(deg)) * 60
-        sec = int(round(((float(min) - int(min)) *60), 0))
-        # only "int" at the latest moment or calculations go wrong
-        if sort == "lat":
-           self.gps_lat_deg.setText(str(deg))
-           self.gps_lat_min.setText(str(int(min)))
-           self.gps_lat_sec.setText(str(sec))
-        else:
-           self.gps_lon_deg.setText(str(deg))
-           self.gps_lon_min.setText(str(int(min)))
-           self.gps_lon_sec.setText(str(sec))
+    # This is a simplified one-way copy of the convertLatLong function above for the input read-only fields
+    # Both cold be integrated, more efficient, but this is faster to maintain (and I'm lazy)
+    value = abs(float(value))
+    deg = int(value)
+    min = (float(value) - int(deg)) * 60
+    sec = int(round(((float(min) - int(min)) *60), 0))
+    # only "int" at the latest moment or calculations go wrong
+    if sort == "lat":
+       self.gps_lat_deg.setText(str(deg))
+       self.gps_lat_min.setText(str(int(min)))
+       self.gps_lat_sec.setText(str(sec))
+    else:
+       self.gps_lon_deg.setText(str(deg))
+       self.gps_lon_min.setText(str(int(min)))
+       self.gps_lon_sec.setText(str(sec))
        
 
 def copygpsfromselected(self,qApp):
@@ -674,7 +674,7 @@ def copygpsfromselected(self,qApp):
                if descriptor == "GPS Latitude":
                      gpslat += 1
                      if gpslat == 2:
-                        print "we have a xmp latitude"
+                        print("we have a xmp latitude")
                      gpslatvalue = description
                      self.gps_lat_decimal.setText(str(round(float(description),6)))
                if descriptor == "GPS Longitude Ref":
@@ -687,7 +687,7 @@ def copygpsfromselected(self,qApp):
                if descriptor == "GPS Longitude":
                       gpslon += 1
                       if gpslon == 2:
-                         print "we have an xmp longitude"
+                         print("we have an xmp longitude")
                       gpslonvalue = description
                       self.gps_lon_decimal.setText(str(round(float(description),6)))
                if descriptor == "GPS Altitude Ref":
@@ -786,7 +786,7 @@ def savegpsdata(self, qApp):
                exiftool_params +=  '-exif:GPSMapDatum="WGS-84" '
         else:
                exiftool_params +=  '-exif:GPSMapDatum="' + self.gps_mapdatum.text() + '" '
-        print exiftool_params
+        print(exiftool_params)
         # Now write the data to the photo(s)
         if self.chk_gps_backuporiginals.isChecked():
            write_image_info(self, exiftool_params, qApp, True)
@@ -1233,7 +1233,7 @@ def qddt_use_reference_image_data(self):
                   createdate = description
                   self.modifydatetime_dialog.qddt_createdate.setText(createdate)
             except:
-               print "always the last line that doesn't work"
+               print("always the last line that doesn't work")
 
        #self.referenceimage
        #result = read_image_info(self, exiftool_params)
@@ -1265,7 +1265,7 @@ def modifydatetime(self, qApp):
     self.modifydatetime_dialog.chk_qddt_use_referencedata.clicked.connect(self.moddialog_use_reference_image_data)
 
     if self.modifydatetime_dialog.exec_() == QDialog.Accepted:
-       print "You selected Save"
+       print("You selected Save")
        if self.modifydatetime_dialog.chk_qddt_shift.isChecked():
           # we will do a date/time shift
           if self.modifydatetime_dialog.qddt_shiftdatetime.text() == "0000:00:00 00:00:00":
@@ -1273,7 +1273,7 @@ def modifydatetime(self, qApp):
              # exit function
              return
           else: 
-             print self.modifydatetime_dialog.qddt_shiftdatetime.text() 
+             print(self.modifydatetime_dialog.qddt_shiftdatetime.text()) 
              # We will first build the parameter string and then check for forward or backward timeshift and simply use
              # a string replace on the already created exiftool_parameters string
              exiftool_params = ""
@@ -1291,30 +1291,30 @@ def modifydatetime(self, qApp):
                    exiftool_params +=  " \"-xmp:DateTimeDigitized-=" + self.modifydatetime_dialog.qddt_shiftdatetime.text() + "\" "
 
              if self.modifydatetime_dialog.chk_qddt_forward.isChecked():
-                print "we are going to shift date and time forward"
+                print("we are going to shift date and time forward")
                 exiftool_params = exiftool_params.replace("-=", "+=")
              write_image_info(self, exiftool_params, qApp, False)
        else:
           # Update the selected date time fields, so no date/time shift
           if self.modifydatetime_dialog.chk_qddt_modifydate.isChecked():
-             print "-exif:ModifyDate " + self.modifydatetime_dialog.qddt_modifydate.text()
+             print("-exif:ModifyDate " + self.modifydatetime_dialog.qddt_modifydate.text())
              exiftool_params =  '-exif:ModifyDate="' + self.modifydatetime_dialog.qddt_modifydate.text() + '" '
              if self.modifydatetime_dialog.chk_qddt_updatexmp.isChecked():
                exiftool_params +=  '-xmp:ModifyDate="' + self.modifydatetime_dialog.qddt_modifydate.text() + '" '
           if self.modifydatetime_dialog.chk_qddt_datetimeoriginal.isChecked():
-             print self.modifydatetime_dialog.qddt_datetimeoriginal.text()
+             print(self.modifydatetime_dialog.qddt_datetimeoriginal.text())
              exiftool_params +=  '-exif:DateTimeOriginal="' + self.modifydatetime_dialog.qddt_datetimeoriginal.text() + '" '
              if self.modifydatetime_dialog.chk_qddt_updatexmp.isChecked():
                 exiftool_params +=  '-xmp:DateTimeOriginal="' + self.modifydatetime_dialog.qddt_datetimeoriginal.text() + '" '
           if self.modifydatetime_dialog.chk_qddt_createdate.isChecked():
-             print self.modifydatetime_dialog.qddt_createdate.text()
+             print(self.modifydatetime_dialog.qddt_createdate.text())
              exiftool_params +=  '-exif:CreateDate="' + self.modifydatetime_dialog.qddt_createdate.text() + '" '
              if self.modifydatetime_dialog.chk_qddt_updatexmp.isChecked():
                 exiftool_params +=  '-xmp:DateTimeDigitized="' + self.modifydatetime_dialog.qddt_createdate.text() + '" '
-          print exiftool_params
+          print(exiftool_params)
           write_image_info(self, exiftool_params, qApp, False)
     else:
-       print "you cancelled" 
+       print("you cancelled") 
        self.statusbar.showMessage("you canceled the \"Modification of date/time\" action")   
 
 #---
@@ -1339,7 +1339,7 @@ class dialog_create_args(QDialog, Ui_Dialog_create_args):
         super(dialog_create_args, self).__init__(parent)
         self.setupUi(self)
 
-    print "create arguments file(s) from selected image(s)"
+    print("create arguments file(s) from selected image(s)")
 
 def create_args(self, qApp):    
     self.create_args_dialog = dialog_create_args()
@@ -1350,34 +1350,34 @@ def create_args(self, qApp):
             message = "You selected:\n\n"
             empty_selection = 0
             if self.create_args_dialog.qdca_chk_args_all_metadata.isChecked():
-               print "Add all metadata to args file(s)"
+               print("Add all metadata to args file(s)")
                message += "- Add all metadata\n"
                et_param = " -a -all "
             else:
                empty_selection = 1
                et_param = ""
                if self.create_args_dialog.qdca_chk_args_exif_data.isChecked():
-                  print "Add exif data to args file(s)"
+                  print("Add exif data to args file(s)")
                   message += "- Add exif data\n"
                   et_param += " -a -exif:all "
                   empty_selection = 0
                if self.create_args_dialog.qdca_chk_args_xmp_data.isChecked():
-                  print "Add xmp data to args file(s)"
+                  print("Add xmp data to args file(s)")
                   message += "- Add xmp data\n"
                   et_param += " -a -xmp:all "
                   empty_selection = 0
                if self.create_args_dialog.qdca_chk_args_gps_data.isChecked():
-                  print "Add gps data to args file(s)"
+                  print("Add gps data to args file(s)")
                   message += "- Add gps data\n"
                   et_param += " -a -gps:all "
                   empty_selection = 0
                if self.create_args_dialog.qdca_chk_args_iptc_data.isChecked():
-                  print "Add iptc data to args file(s)"
+                  print("Add iptc data to args file(s)")
                   message += "- Add iptc data\n"
                   et_param += " -a -iptc:all "
                   empty_selection = 0                  
                if self.create_args_dialog.qdca_chk_args_iccprofile_data.isChecked():
-                  print "Add icc profile data to args file(s)"
+                  print("Add icc profile data to args file(s)")
                   message += "- Add icc profile data\n"
                   et_param += " -a -icc_profile:all "
                   empty_selection = 0                  
@@ -1387,14 +1387,14 @@ def create_args(self, qApp):
                message += "\nAre you sure you want to add the above metadata from the selected image(s) to your args file(s)?"
                ret = QMessageBox.question(self, "Add metadata from image(s) to args file(s)", message, buttons=QMessageBox.Ok|QMessageBox.Cancel) 
                if ret == QMessageBox.Ok:
-                  print "User wants to continue"
+                  print("User wants to continue")
                   et_param += " -args --filename --directory -w args "
-                  print et_param
+                  print(et_param)
                   write_image_info(self, et_param, qApp, False)
                else:
                   self.statusbar.showMessage("you canceled the \"Export metadata to args file(s)\" action")   
     else:
-            print "you cancelled" 
+            print("you cancelled") 
             self.statusbar.showMessage("you canceled the \"Export metadata to args file(s)\" action")
 
             
@@ -1444,7 +1444,7 @@ class dialog_export_metadata(QDialog, Ui_Dialog_export_metadata):
         super(dialog_export_metadata, self).__init__(parent)
         self.setupUi(self)
 
-    print "create arguments file(s) from selected image(s)"
+    print("create arguments file(s) from selected image(s)")
 
 def export_metadata(self, qApp):    
     self.export_metadata_dialog = dialog_export_metadata()
@@ -1460,34 +1460,34 @@ def export_metadata(self, qApp):
             message = "You selected:\n\n"
             empty_selection = 0
             if self.export_metadata_dialog.qdem_chk_export_all_metadata.isChecked():
-               print "export all metadata"
+               print("export all metadata")
                message += "- export all metadata\n"
                et_param = " -a -all "
             else:
                empty_selection = 1
                et_param = ""
                if self.export_metadata_dialog.qdem_chk_export_exif_data.isChecked():
-                  print "export exif data"
+                  print("export exif data")
                   message += "- export exif data\n"
                   et_param += " -a -exif:all "
                   empty_selection = 0
                if self.export_metadata_dialog.qdem_chk_export_xmp_data.isChecked():
-                  print "export xmp data"
+                  print("export xmp data")
                   message += "- export xmp data\n"
                   et_param += " -a -xmp:all "
                   empty_selection = 0
                if self.export_metadata_dialog.qdem_chk_export_gps_data.isChecked():
-                  print "export gps data"
+                  print("export gps data")
                   message += "- export gps data\n"
                   et_param += " -a -gps:all "
                   empty_selection = 0
                if self.export_metadata_dialog.qdem_chk_export_iptc_data.isChecked():
-                  print "export iptc data"
+                  print("export iptc data")
                   message += "- export iptc data\n"
                   et_param += " -a -iptc:all "
                   empty_selection = 0                  
                if self.export_metadata_dialog.qdem_chk_export_iccprofile_data.isChecked():
-                  print "export icc profile data"
+                  print("export icc profile data")
                   message += "- export icc profile data\n"
                   et_param += " -a -icc_profile:all "
                   empty_selection = 0                  
@@ -1497,8 +1497,8 @@ def export_metadata(self, qApp):
                message += "\nAre you sure you want to export the above metadata from the selected image(s)?"
                ret = QMessageBox.question(self, "export metadata from image(s)", message, buttons=QMessageBox.Ok|QMessageBox.Cancel) 
                if ret == QMessageBox.Ok:
-                  print "User wants to continue"
-                  print et_param
+                  print("User wants to continue")
+                  print(et_param)
                   if self.export_metadata_dialog.qdem_txt_radiobutton.isChecked():
                           et_param += " -w! txt "
                   elif self.export_metadata_dialog.qdem_tab_radiobutton.isChecked():
@@ -1515,7 +1515,7 @@ def export_metadata(self, qApp):
                else:
                   self.statusbar.showMessage("you canceled the \"Export of metadata\" action")   
     else:
-            print "you cancelled" 
+            print("you cancelled") 
             self.statusbar.showMessage("you canceled the \"Export of metadata\" action")   
 
 
@@ -1566,34 +1566,34 @@ def remove_metadata(self, qApp):
             message = "You selected:\n\n"
             empty_selection = 0
             if self.rem_metadata_dialog.chk_rem_all_metadata.isChecked():
-               print "Remove all metadata"
+               print("Remove all metadata")
                message += "- Remove all metadata\n"
                et_param = " -all= "
             else:
                empty_selection = 1
                et_param = ""
                if self.rem_metadata_dialog.chk_rem_exif_data.isChecked():
-                  print "Remove exif data"
+                  print("Remove exif data")
                   message += "- Remove exif data\n"
                   et_param += " -exif:all= "
                   empty_selection = 0
                if self.rem_metadata_dialog.chk_rem_xmp_data.isChecked():
-                  print "Remove xmp data"
+                  print("Remove xmp data")
                   message += "- Remove xmp data\n"
                   et_param += " -xmp:all= "
                   empty_selection = 0
                if self.rem_metadata_dialog.chk_rem_gps_data.isChecked():
-                  print "Remove gps data"
+                  print("Remove gps data")
                   message += "- Remove gps data\n"
                   et_param += " -gps:all= "
                   empty_selection = 0
                if self.rem_metadata_dialog.chk_rem_iptc_data.isChecked():
-                  print "Remove iptc data"
+                  print("Remove iptc data")
                   message += "- Remove iptc data\n"
                   et_param += " -iptc:all= "
                   empty_selection = 0                  
                if self.rem_metadata_dialog.chk_rem_iccprofile_data.isChecked():
-                  print "Remove icc profile data"
+                  print("Remove icc profile data")
                   message += "- Remove icc profile data\n"
                   et_param += " -icc_profile:all= "
                   empty_selection = 0                  
@@ -1603,17 +1603,17 @@ def remove_metadata(self, qApp):
                message += "\nAre you sure you want to remove the above metadata from the selected image(s)?"
                ret = QMessageBox.question(self, "Remove metadata from image(s)", message, buttons=QMessageBox.Ok|QMessageBox.Cancel) 
                if ret == QMessageBox.Ok:
-                  print "User wants to continue"
-                  print et_param
+                  print("User wants to continue")
+                  print(et_param)
                   if self.rem_metadata_dialog.chk_rem_backuporiginals.isChecked():
-                     print "make backup of originals"
+                     print("make backup of originals")
                      write_image_info(self, et_param, qApp, True)
                   else:
                      write_image_info(self, et_param, qApp, False)
                else:
                   self.statusbar.showMessage("you canceled the \"Removal of metadata\" action")   
     else:
-            print "you cancelled" 
+            print("you cancelled") 
             self.statusbar.showMessage("you canceled the \"Removal of metadata\" action")   
 
 #------------------------------------------------------------------------
@@ -1631,7 +1631,7 @@ def yourcommands_go(self, qApp):
         if len(selected_rows) == 0:
             self.the_no_photos_messagebox()
         else:
-           print 'number of rows ' + str(len(selected_rows))
+           print('number of rows ' + str(len(selected_rows)))
            rowcounter = 0
            total_rows = len(selected_rows)
            self.progressbar.setRange(0, total_rows)
@@ -1647,9 +1647,9 @@ def yourcommands_go(self, qApp):
                 if row not in rows:
                         rows.append(row)
                         selected_image = "\"" + self.fileNames[int(row)] + "\""
-                        print 'exiftool ' + exiftoolparams + ' ' + selected_image
-        	        rowcounter += 1
-        	        self.progressbar.setValue(rowcounter)
+                        print('exiftool ' + exiftoolparams + ' ' + selected_image)
+                        rowcounter += 1
+                        self.progressbar.setValue(rowcounter)
                         if self.OSplatform in ("Windows", "win32"):
                             # First write the info
                             selected_image = selected_image.replace("/", "\\")
@@ -1661,7 +1661,7 @@ def yourcommands_go(self, qApp):
                         else:
                             # First write the info
                             command_line = self.exiftoolprog + exiftoolparams + selected_image
-                            print command_line
+                            print(command_line)
                             args = shlex.split(command_line)
                             try:
                                 p = subprocess.check_output(args, universal_newlines=True)
@@ -1683,8 +1683,8 @@ def yourcommands_go(self, qApp):
 # Real exiftool read/write functions
 def read_image_info(self, exiftool_params):
         self.statusbar.showMessage("")
-	selected_row = self.MaintableWidget.currentRow()
-	selected_image = "\"" + self.fileNames[selected_row] + "\""
+        selected_row = self.MaintableWidget.currentRow()
+        selected_image = "\"" + self.fileNames[selected_row] + "\""
         if self.OSplatform in ("Windows", "win32"):
                 selected_image = selected_image.replace("/", "\\")
                 args = self.exiftoolprog + exiftool_params + selected_image                
@@ -1701,22 +1701,22 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
         # silly if/elif/else statement. improve later
         if " -w! " in exiftoolparams:
            # exporting metadata
-           print "exporting metadata"
+           print("exporting metadata")
            #exiftoolparams += " -overwrite_original_in_place "
         elif " -csv " in exiftoolparams:
            # Create args file(s) from selected images(s)
-           print "Exporting metadata from selected images(s)to csv file"
+           print("Exporting metadata from selected images(s)to csv file")
            images_to_csv = exiftoolparams + ' '
         elif " -args " in exiftoolparams:
            # Create args file(s) from selected images(s)
-           print "Create args file(s) from selected images(s)"
+           print("Create args file(s) from selected images(s)")
         elif " xmpexport " in exiftoolparams:
            # Create xmp file(s) from selected images(s) only for xmp data
-           print "Create xmp file(s) from selected images(s) only for xmp data"
+           print("Create xmp file(s) from selected images(s) only for xmp data")
            # create extra variable otherwise exiftoolparams ovewrites original xmpexport string, bit clumsy but it works
            xmpexportparam = exiftoolparams
         elif " -FileModifyDate<DateTimeOriginal " in exiftoolparams:
-           print "Only change file date/time to DateTimeOriginal"
+           print("Only change file date/time to DateTimeOriginal")
         else:
            # writing metadata info to photos
            if backup_originals == True:
@@ -1731,12 +1731,12 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
                    exiftoolparams = " -P -overwrite_original_in_place -ProcessingSoftware='" + mysoftware + "' " + exiftoolparams
 
         selected_rows = self.MaintableWidget.selectedIndexes()
-        print 'number of rows ' + str(len(selected_rows))
+        print('number of rows ' + str(len(selected_rows)))
         rowcounter = 0
         total_rows = len(selected_rows)
         self.progressbar.setRange(0, total_rows)
-	self.progressbar.setValue(0)
-	self.progressbar.show()
+        self.progressbar.setValue(0)
+        self.progressbar.show()
         rows = []
         for selected_row in selected_rows:
                 selected_row = str(selected_row)
@@ -1747,11 +1747,11 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
                 if row not in rows:
                         rows.append(row)
                         selected_image = "\"" + self.fileNames[int(row)] + "\""
-                        print 'exiftool ' + exiftoolparams + ' ' + selected_image
+                        print('exiftool ' + exiftoolparams + ' ' + selected_image)
                         #print 'exiftool "-FileModifyDate<DateTimeOriginal" ' + selected_image
-        	        rowcounter += 1
-        	        self.progressbar.setValue(rowcounter)
-        	        if " -csv " in exiftoolparams:
+                        rowcounter += 1
+                        self.progressbar.setValue(rowcounter)
+                        if " -csv " in exiftoolparams:
                            # First collect images. Do not write yet
 #                           if self.OSplatform in ("Windows", "win32"):
 #                              images_to_csv += " " + selected_image + " "
@@ -1797,7 +1797,7 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
                            else:
                               # First write the info
                               command_line = self.exiftoolprog + exiftoolparams + selected_image
-                              print command_line
+                              print(command_line)
                               args = shlex.split(command_line)
                               p = subprocess.call(args)
                               ## Now reset the file date
@@ -1813,12 +1813,12 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
               #parameters = " " + images_to_csv + " > output.csv"
               parameters = parameters.replace("/", "\\")
               args = self.exiftoolprog + parameters
-              print args
+              print(args)
               p = subprocess.call(args, shell=True)
            else:
               command_line = self.exiftoolprog + " " + images_to_csv + " > '" + os.path.join(self.image_folder, 'output.csv') + "'"
               #args = shlex.split(command_line)
-              print command_line
+              print(command_line)
               #p = subprocess.call(args,shell=True)
               p = subprocess.call(command_line,shell=True)
         # end of csv option

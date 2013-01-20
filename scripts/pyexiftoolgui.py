@@ -33,6 +33,8 @@ from PySide.QtGui import *
 if sys.version_info<(2,7,0):
      sys.stderr.write("\n\nYou need python 2.7 or later to use pyexiftoolgui\n")
      exit(1) 
+else:
+     print("\nProgram start: We are on python " + sys.version)
 
 # Make sure we can run pyexiftoolgui from this folder and that subfolders are added
 # base_path  can give a link, realfile gives the correct location
@@ -42,9 +44,9 @@ realfile_dir = os.path.dirname(os.path.abspath(realfile))
 
 
 if sys.path.count(realfile_dir) == 0:
-        sys.path.insert(0, realfile_dir)
+    sys.path.insert(0, realfile_dir)
 else:
-        sys.path.append(realfile_dir)
+    sys.path.append(realfile_dir)
 # Add subfolders
 #sys.path.append( realfile_dir + "/scripts" )
 sys.path.append( realfile_dir + "/ui")
@@ -67,9 +69,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
 # First set the menu actions
-	self.mnu_action_load_images.triggered.connect(self.loadimages)
-	self.action_Quit.triggered.connect(self.quit_application)
-	app.aboutToQuit.connect(self.quit_application)
+        self.mnu_action_load_images.triggered.connect(self.loadimages)
+        self.action_Quit.triggered.connect(self.quit_application)
+        app.aboutToQuit.connect(self.quit_application)
         #--- Extra menu
         self.mnu_action_modifydatetime.triggered.connect(self.modify_datetime)
         self.mnu_action_create_args.triggered.connect(self.create_args)
@@ -83,11 +85,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #self.menuExtra.removeAction(self.mnu_action_renaming)
         #--- help menu
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
-	self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
+        self.mnu_action_exiftool.triggered.connect(self.open_exiftool_homepage)
         self.mnu_action_manual.triggered.connect(self.open_manual)
         #self.mnu_action_mapcoordinates_tab.triggered.connect(self.mapcoordinates_help)
-	self.mnu_action_license.triggered.connect(self.show_license)
-	self.mnu_action_Donate.triggered.connect(self.open_donate_page)
+        self.mnu_action_license.triggered.connect(self.show_license)
+        self.mnu_action_Donate.triggered.connect(self.open_donate_page)
         self.mnu_action_Info.triggered.connect(self.show_about_window)
         # Set extra actions for context menu (others taken from normal menu)
         self.imagereference = QAction("Select photo as reference for \"Extra\" menu", self, triggered = self.reference_image)
@@ -97,7 +99,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.showimagebutton.clicked.connect(self.showimage)
         self.showimagebutton.setEnabled(False)
         self.statusbar.showMessage("")
-	self.progressbar.hide()
+        self.progressbar.hide()
 # Load several buttons from the Edit -> GPS tab
         self.dec2dmsbutton.clicked.connect(self.convertd2dms)
         self.dms2decbutton.clicked.connect(self.convertdms2d)
@@ -139,54 +141,53 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_yourcommands_help.clicked.connect(self.yourcommands_help)
 # Load several buttons from the Preferences tab
         self.btn_preferences_save.clicked.connect(self.preferences_save)
-	self.btn_preferenceshelp.clicked.connect(self.preferences_help)
-	self.btn_choose_exiftool.clicked.connect(self.select_exiftool)
+        self.btn_preferenceshelp.clicked.connect(self.preferences_help)
+        self.btn_choose_exiftool.clicked.connect(self.select_exiftool)
 
 #------------------------------------------------------------------------
 # Define a few globals and variables
         self.DebugMsg = False
         self.allDebugMsg = False
-	self.logging = ""
-	self.logtofile = 0
-# 	self.tmpworkdir = tempfile.gettempdir() +"/pyGPSTtmp"
+        self.logging = ""
+        self.logtofile = 0
+#         self.tmpworkdir = tempfile.gettempdir() +"/pyGPSTtmp"
 
         self.OSplatform = platform.system()
-	petgfunctions.read_config(self)
-	# First clean up and recreate our temporary workspace
-#	petgfunctions.remove_workspace( self )
-#	try:
-#		fldr = os.mkdir(self.tmpworkdir)
-#	except: 
-#		if self.logtofile:
-#			logging.info(self.tmpworkdir + " already exists.")
+        petgfunctions.read_config(self)
+        # First clean up and recreate our temporary workspace
+#        petgfunctions.remove_workspace( self )
+#        try:
+#        fldr = os.mkdir(self.tmpworkdir)
+#        except: 
+#        if self.logtofile:
+#            logging.info(self.tmpworkdir + " already exists.")
 
 #------------------------------------------------------------------------
 # Initialize file paths
         self.realfile_dir  = os.path.dirname(os.path.abspath(__file__))
         self.parent_dir    = os.path.dirname(self.realfile_dir)
-        self.ui_dir        = os.path.join(self.realfile_dir, "ui")
+        self.ui_dir    = os.path.join(self.realfile_dir, "ui")
 
 #------------------------------------------------------------------------
 # Start up functions
 #        OSplatform, img_converter, enfuseprg, aisprg = petgfunctions.startup_checks(self)
-#        self.OSplatform = OSplatform
+#            self.OSplatform = OSplatform
         if self.allDebugMsg:
             ret = QMessageBox.about(self, "returned check values", "platform: %s\nconverter: %s\nenfuse: %s\nais: %s" % (OSplatform, img_converter, enfuseprg, aisprg))
 
-	# Startup check for available tools
-	petgfunctions.tool_check(self)
-
+        # Startup check for available tools
+        petgfunctions.tool_check(self)
 
 #------------------------------------------------------------------------
 # General functions
     def quit_application(self):
-	#petgfunctions.remove_workspace(self)
-	petgfunctions.write_config(self, 0)
-	self.close()
+        #petgfunctions.remove_workspace(self)
+        petgfunctions.write_config(self, 0)
+        self.close()
 
 #    def set_logging(self):
-#	logging.basicConfig(filename=os.path.expanduser("~/pyexiftoolgui_"+time.strftime("%Y%m%d-%H%M%S")+".log"),level=logging.DEBUG)
-#	logging.info("Debug set to on: Logging started on " + time.strftime("%Y-%m-%d %H:%M"))
+#        logging.basicConfig(filename=os.path.expanduser("~/pyexiftoolgui_"+time.strftime("%Y%m%d-%H%M%S")+".log"),level=logging.DEBUG)
+#        logging.info("Debug set to on: Logging started on " + time.strftime("%Y-%m-%d %H:%M"))
     def the_no_photos_messagebox(self):
          QMessageBox.information(self,"No photos loaded yet","You did not load or select any photos yet.")
 
@@ -214,8 +215,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_exif_copyfrom.setEnabled(True)
         self.btn_saveexif.setEnabled(True)
         if float(self.exiftoolversion) > 9.06:
-           self.btn_gpano_copyfrom.setEnabled(True)
-           self.btn_savegpano.setEnabled(True)
+            self.btn_gpano_copyfrom.setEnabled(True)
+            self.btn_savegpano.setEnabled(True)
         self.btn_xmp_copyfrom.setEnabled(True)
         self.btn_savexmp.setEnabled(True)
         self.progressbar.hide()
@@ -237,23 +238,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         cntxtmenu = ""
         cntxtmenu = QMenu(self)
         try:
-          if len(self.fileNames) > 0:
-           cntxtmenu.addAction(self.mnu_action_load_images)
-           cntxtmenu.addAction(self.mnu_action_renaming)
-           cntxtmenu.addAction(self.imagereference)
-           cntxtmenu.addAction(self.displayphoto)
-           cntxtmenu.addAction(self.mnu_action_create_args)
-           cntxtmenu.addAction(self.mnu_action_export_metadata)
-           cntxtmenu.addAction(self.mnu_action_modifydatetime)
-           cntxtmenu.addAction(self.mnu_action_date_to_DateTimeOriginal)
-           cntxtmenu.addAction(self.mnu_action_repair_jpg)
-           cntxtmenu.addAction(self.mnu_action_remove_metadata)
+            if len(self.fileNames) > 0:
+                cntxtmenu.addAction(self.mnu_action_load_images)
+                cntxtmenu.addAction(self.mnu_action_renaming)
+                cntxtmenu.addAction(self.imagereference)
+                cntxtmenu.addAction(self.displayphoto)
+                cntxtmenu.addAction(self.mnu_action_create_args)
+                cntxtmenu.addAction(self.mnu_action_export_metadata)
+                cntxtmenu.addAction(self.mnu_action_modifydatetime)
+                cntxtmenu.addAction(self.mnu_action_date_to_DateTimeOriginal)
+                cntxtmenu.addAction(self.mnu_action_repair_jpg)
+                cntxtmenu.addAction(self.mnu_action_remove_metadata)
         except:
-           # no images loaded yet
-           cntxtmenu.addAction(self.mnu_action_load_images)
-           cntxtmenu.addAction(self.mnu_action_renaming)
-           cntxtmenu.addAction(self.mnu_action_Info)
-           cntxtmenu.addAction(self.mnu_action_license)
+            # no images loaded yet
+            cntxtmenu.addAction(self.mnu_action_load_images)
+            cntxtmenu.addAction(self.mnu_action_renaming)
+            cntxtmenu.addAction(self.mnu_action_Info)
+            cntxtmenu.addAction(self.mnu_action_license)
         cntxtmenu.exec_(event.globalPos())
 
     def reference_image(self):
@@ -264,21 +265,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #------------------------------------------------------------------------
 # Menu actions/functions
     def show_about_window(self):
-	self.aboutbox = QMessageBox()
-	
-	self.licenselabel = QLabel()
-	self.licensebutton = self.aboutbox.addButton(self.tr("License"), QMessageBox.ActionRole)
-	self.donatelabel = QLabel()
-	self.donatebutton = self.aboutbox.addButton(self.tr("Donate"), QMessageBox.ActionRole)
+        self.aboutbox = QMessageBox()
+        
+        self.licenselabel = QLabel()
+        self.licensebutton = self.aboutbox.addButton(self.tr("License"), QMessageBox.ActionRole)
+        self.donatelabel = QLabel()
+        self.donatebutton = self.aboutbox.addButton(self.tr("Donate"), QMessageBox.ActionRole)
 
-	closebutton = self.aboutbox.addButton(QMessageBox.Close)
+        closebutton = self.aboutbox.addButton(QMessageBox.Close)
 
-	self.licensebutton.clicked.connect(self.show_license)
+        self.licensebutton.clicked.connect(self.show_license)
         self.donatebutton.clicked.connect(self.open_donate_page)
-	self.aboutbox.setWindowTitle("About pyexiftoolgui " + programinfo.VERSION)
-	self.aboutbox.setText(programinfo.ABOUTMESSAGE)
-	ret = self.aboutbox.exec_()
-		
+        self.aboutbox.setWindowTitle("About pyexiftoolgui " + programinfo.VERSION)
+        self.aboutbox.setText(programinfo.ABOUTMESSAGE)
+        ret = self.aboutbox.exec_()
+        
     def show_license(self):
         petgfunctions.info_window(self)
 
@@ -288,27 +289,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def create_args(self):
         try:
             if len(self.fileNames) == 0:
-               self.the_no_photos_messagebox()
+                self.the_no_photos_messagebox()
             else:
-               petgfunctions.create_args(self, qApp)
+                petgfunctions.create_args(self, qApp)
         except:
             self.the_no_photos_messagebox()
          
     def export_metadata(self):
         try:
             if len(self.fileNames) == 0:
-               self.the_no_photos_messagebox()
+                self.the_no_photos_messagebox()
             else:
-               petgfunctions.export_metadata(self, qApp)
+                petgfunctions.export_metadata(self, qApp)
         except:
             self.the_no_photos_messagebox()
 
     def remove_metadata(self):
         try:
             if len(self.fileNames) == 0:
-               self.the_no_photos_messagebox()
+                self.the_no_photos_messagebox()
             else:
-               petgfunctions.remove_metadata(self, qApp)
+                petgfunctions.remove_metadata(self, qApp)
         except:
             self.the_no_photos_messagebox()
 
@@ -316,38 +317,38 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def modify_datetime(self):
         try:
             if len(self.fileNames) == 0:
-               self.the_no_photos_messagebox()
+                self.the_no_photos_messagebox()
             else:
-               petgfunctions.modifydatetime(self, qApp)
+                petgfunctions.modifydatetime(self, qApp)
         except:
             self.the_no_photos_messagebox()
 
     def date_to_datetimeoriginal(self):
         try:
             if len(self.fileNames) == 0:
-               self.the_no_photos_messagebox()
+                self.the_no_photos_messagebox()
             else:
-               petgfunctions.date_to_datetimeoriginal(self, qApp)
+                petgfunctions.date_to_datetimeoriginal(self, qApp)
         except:
             self.the_no_photos_messagebox()
 
     def open_pyexiftoolgui_homepage(self):
         try:
-                webbrowser.open("http://panorama.dyndns.org/index.php?lang=en&subject=pyExifToolGUI&texttag=pyExifToolGUI")
+            webbrowser.open("http://panorama.dyndns.org/index.php?lang=en&subject=pyExifToolGUI&texttag=pyExifToolGUI")
         except:
-		QMessageBox.critical(self, "Error!", "Unable to open the pyExifToolGUI homepage" )
+            QMessageBox.critical(self, "Error!", "Unable to open the pyExifToolGUI homepage" )
 
     def open_exiftool_homepage(self):
-	try:
-		webbrowser.open("http://www.sno.phy.queensu.ca/~phil/exiftool/")
-	except:
-		QMessageBox.critical(self, "Error!", "Unable to open the ExifTool homepage" )
+        try:
+            webbrowser.open("http://www.sno.phy.queensu.ca/~phil/exiftool/")
+        except:
+            QMessageBox.critical(self, "Error!", "Unable to open the ExifTool homepage" )
 
     def open_donate_page(self):
-	try:
-		webbrowser.open("http://members.home.nl/harryvanderwolf/pyexiftoolgui/donate.html")
-	except:
-		QMessageBox.critical(self, "Error!", "Unable to open the donation web page" )
+        try:
+            webbrowser.open("http://members.home.nl/harryvanderwolf/pyexiftoolgui/donate.html")
+        except:
+            QMessageBox.critical(self, "Error!", "Unable to open the donation web page" )
 
 
     def repair_jpg_metadata(self):
@@ -358,8 +359,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         message += "Do you want to continue and repair as much metadata as possible?"
         reply = QMessageBox.question(self, "Repair corrupted metadata in JPG(s)", message, QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
-           # Add true to write function: Always make a backup in this case
-           petgfunctions.write_image_info(self, et_param, qApp, True)
+            # Add true to write function: Always make a backup in this case
+            petgfunctions.write_image_info(self, et_param, qApp, True)
 
     def copymetadatatoxmp(self):
         et_param = "copymetadatatoxmp"
@@ -368,29 +369,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         message += "Do you want to continue?"
         reply = QMessageBox.question(self, "Copy all metadata to xmp format?", message, QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
-           petgfunctions.write_image_info(self, et_param, qApp, False)
+            petgfunctions.write_image_info(self, et_param, qApp, False)
 
 #------------------------------------------------------------------------
 # Help functions leading to html manual
     def all_access_to_manual(self, section):
-        if section <> "":
+        if section != "":
            section = "#" + section
         manual = "pyexiftoolgui.html" + section
-	try:
-             if self.OSplatform == "Windows":
-                if os.path.isfile(os.path.join(self.realfile_dir, "manual","pyexiftoolgui.html")): # from python executable
-                     webbrowser.open(os.path.join(self.realfile_dir, "manual",manual))
-                elif os.path.isfile(os.path.join(self.parent_dir, "manual","pyexiftoolgui.html")): # Started from script
-                     webbrowser.open(os.path.join(self.parent_dir, "manual",manual))
-             elif self.OSplatform == "Darwin":
-                if os.path.isfile(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","manual","pyexiftoolgui.html")): # from python app
-                     webbrowser.open("file://" + os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","manual", manual))
-                elif os.path.isfile(os.path.join(self.parent_dir, "manual","pyexiftoolgui.html")): # Started from script
-                     webbrowser.open("file://" + os.path.join(self.parent_dir, "manual" , manual))
-             else:
-		        webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", manual))
-	except:
-		QMessageBox.critical(self, "Error!", "Unable to open the manual" )
+        try:
+         if self.OSplatform == "Windows":
+            if os.path.isfile(os.path.join(self.realfile_dir, "manual","pyexiftoolgui.html")): # from python executable
+             webbrowser.open(os.path.join(self.realfile_dir, "manual",manual))
+            elif os.path.isfile(os.path.join(self.parent_dir, "manual","pyexiftoolgui.html")): # Started from script
+             webbrowser.open(os.path.join(self.parent_dir, "manual",manual))
+         elif self.OSplatform == "Darwin":
+            if os.path.isfile(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","manual","pyexiftoolgui.html")): # from python app
+             webbrowser.open("file://" + os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","manual", manual))
+            elif os.path.isfile(os.path.join(self.parent_dir, "manual","pyexiftoolgui.html")): # Started from script
+             webbrowser.open("file://" + os.path.join(self.parent_dir, "manual" , manual))
+         else:
+            webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", manual))
+        except:
+            QMessageBox.critical(self, "Error!", "Unable to open the manual" )
 
     def open_manual(self):
         self.all_access_to_manual("")
@@ -402,30 +403,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.all_access_to_manual("EditexifData")
 
     def xmp_help(self):
-        self.all_access_to_manual("EditxmpData")
+       self.all_access_to_manual("EditxmpData")
 
     def gpano_help(self):
-        self.all_access_to_manual("EditgpanoData")
+       self.all_access_to_manual("EditgpanoData")
 
     def yourcommands_help(self):
-        self.all_access_to_manual("YourCommands")
+       self.all_access_to_manual("YourCommands")
 
     def preferences_help(self):
-        self.all_access_to_manual("Preferences")
+       self.all_access_to_manual("Preferences")
 
 #------------------------------------------------------------------------
 # Image table actions
     def showimage(self):
-	selected_row = self.MaintableWidget.currentRow()
-	#print "current row " + str(selected_row)
-	selected_image = "\"" + self.fileNames[selected_row] + "\""
-	if self.OSplatform == "Windows":
-                selected_image = selected_image.replace("/", "\\")
-                os.startfile(selected_image)
+        selected_row = self.MaintableWidget.currentRow()
+        #print "current row " + str(selected_row)
+        selected_image = "\"" + self.fileNames[selected_row] + "\""
+        if self.OSplatform == "Windows":
+            selected_image = selected_image.replace("/", "\\")
+            os.startfile(selected_image)
         elif self.OSplatform == "Darwin":
-                os.system('open /Applications/Preview.app ' + selected_image)
+            os.system('open /Applications/Preview.app ' + selected_image)
         else:
-                os.system('xdg-open ' + selected_image)
+            os.system('xdg-open ' + selected_image)
 
     def imageinfo(self):
         petgfunctions.imageinfo(self,qApp)
@@ -439,7 +440,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def convertdms2d(self):
         petgfunctions.convertLatLong(self,"dms2d")
-                            
+                
     def clear_gps_fields(self):
         petgfunctions.clear_gps_fields(self)
 
@@ -453,10 +454,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         petgfunctions.savegpsdata(self, qApp)
 
     def open_mapcoordinates(self):
-	try:
-		webbrowser.open("http://www.mapcoordinates.net/en")
-	except:
-		QMessageBox.critical(self, "Error!", "Unable to open the MapCoordinates.net website" )
+        try:
+            webbrowser.open("http://www.mapcoordinates.net/en")
+        except:
+            QMessageBox.critical(self, "Error!", "Unable to open the MapCoordinates.net website" )
 
 # Edit -> EXIF tab
     def clear_exif_fields(self):
@@ -514,7 +515,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         select_exiftool.setViewMode(QFileDialog.Detail)
         if select_exiftool.exec_():
            files_list = select_exiftool.selectedFiles()
-           print "files_list[0]" + str(files_list[0])
+           print("files_list[0]" + str(files_list[0]))
            self.exiftooloption.setText(files_list[0])
            return files_list[0]
         else:
