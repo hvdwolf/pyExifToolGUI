@@ -258,9 +258,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         cntxtmenu.exec_(event.globalPos())
 
     def reference_image(self):
-	selected_row = self.MaintableWidget.currentRow()
-	self.referenceimage = "\"" + self.fileNames[selected_row] + "\""
-        print str(self.referenceimage)
+        selected_row = self.MaintableWidget.currentRow()
+        self.referenceimage = "\"" + self.fileNames[selected_row] + "\""
+        print(str(self.referenceimage))
 
 #------------------------------------------------------------------------
 # Menu actions/functions
