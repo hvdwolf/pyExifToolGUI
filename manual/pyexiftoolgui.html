@@ -177,8 +177,8 @@ ul.toc {}
 <h2 class="unnumbered">pyExifToolGUI</h2>
 
 <p>This manual is for pyExifToolGUI (version 0.32, January 2013).
-pyExifToolGui is a python pySide QT4 script program that reads and writes
-exif, xmp (and IPTC) tags from/to image files. It can use a "reference" image as source image to
+pyExifToolGui is a python pySide QT4 script program that reads and writes metadata like
+exif, xmp, gps, gpano tags from/to image files. It can use a "reference" image as source image to
 copy data from. A strong point of this software is the ability to write the data,
 copied or not from a source image, to multiple images at once.
 
@@ -190,28 +190,24 @@ copied or not from a source image, to multiple images at once.
 <!-- Undo the roman page numbering we used for the Table-of-Contents, -->
 <!-- the List-of-Tables, and the List-of-Figures. -->
 <p>pyExifToolGui is a python pySide QT4 script program that reads and writes
-exif, xmp (and a very limited set of IPTC) tags from/to image files using exiftool. 
+exif, gps, xmp, gpano (and a very limited set of IPTC) tags from/to image files using exiftool. 
 pyExifToolGUI: py for python, GUI for Graphical User Interface to ExifTool.
-pyExifToolGUI can use a  "reference" image as source image to copy data from. 
-A strong point of this software is the ability to write the data,
-copied or not from a source image, to multiple images at once.
-The main goal for this tool was the ability to write gps data to images as I 
-photograph a lot in buildings like Churches/Cathedrals and Musea (when allowed), 
-which means that the gps functionality of the camera doesn't function.
-Next to the gps functionality pyExifToolGUI also supports a limited set of exif and xmp tags but 
-will slowly grow into a general exiftool Gui and will also write other tags to your images.
-<p>This pyExifToolGUI tool is NOT a geotagging tool!
+
 
 <p>pyExifToolGui is a graphical frontend for the excellent open source
 command line tool <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/" target="_blank">ExifTool</a> by Phil Harvey.
 pyExifToolGui is not a complete ExifTool Gui, far from that.
 I needed a tool to add gps data to my images and couldn't find one
 and decided to write my own. 
-"By accident" it contains more functions as ExifTool is a powerful tool
-and once you have written the basic program Gui skeleton it is relatively easy
-to add extra functionality, which is basically to add more exif/xmp/iptc tags and
-add them to the "write to image" functions. This is a really time consuming process but not a 
-difficult one.
+So the main goal for this tool was the ability to write gps data to photos as I 
+photograph a lot in buildings like Churches/Cathedrals and Musea (when allowed), 
+which means that the gps functionality of the camera doesn't function.
+In the mean time the functionality of pyExifToolGUI has expanded and also supports reading, writing and exporting 
+all kind of metadata. Next to that it now contains also extended photo file renaming functionality 
+based on the exif info in your photos.
+By now pyExifToolGUI is a general exiftool Gui but it is still far from complete.
+<p>This pyExifToolGUI tool is NOT a geotagging tool!
+
 <p>IPTC tags are only partly supported. IPTC is an older and slowly deminishing metadata standard being replaced by xmp. Where
 applicable, e.g. redundant tags in xmp, the iptc tags will be updated simultaneously.
 <p>This program is Open Source and completely free and will always stay that way, but you can donate any amount to me to show
