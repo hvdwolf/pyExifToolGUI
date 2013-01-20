@@ -75,7 +75,7 @@ class dialog_rename_photos(QDialog, Ui_Dialog_rename_files):
         if select_folder.exec_():
            self.rename_source_folder = select_folder.selectedFiles()[0]
            self.LineEdit_rename_source_folder.setText(self.rename_source_folder)
-           print str(self.rename_source_folder)
+           print(str(self.rename_source_folder))
         else:
 	   # user canceled
            self.statusbar.showMessage("you canceled selecting a folder for the renaming options.")
@@ -206,10 +206,10 @@ def rename_photos(self, qApp):
        # Wants the user to start counting as of the first image or starting on the second image
        if self.rename_photos_dialog.comboBox_startcount.currentIndex() == 0:
           self.startcounting = "nc"
-          print "start counting on 1st image"
+          print("start counting on 1st image")
        else:
           self.startcounting = "c"
-          print "start counting on 2nd image"
+          print("start counting on 2nd image")
 
        message = "You selected:\n\n"
        message += prefix_message
@@ -219,11 +219,11 @@ def rename_photos(self, qApp):
        #QMessageBox.information(self,"Renaming photos", message)
        run_rename_photos(self, work_on, qApp)
     else:
-            print "you cancelled" 
+            print("you cancelled") 
             self.statusbar.showMessage("you canceled the \"Rename photos\" action")
 #---
 def check_before_run_rename_photos(self):
-    print "self.rename_photos_dialog.LineEdit_rename_source_folder #" + self.rename_photos_dialog.LineEdit_rename_source_folder.text() + "#"
+    print("self.rename_photos_dialog.LineEdit_rename_source_folder #" + self.rename_photos_dialog.LineEdit_rename_source_folder.text() + "#")
     if self.rename_photos_dialog.LineEdit_rename_source_folder.text() == "":
        # user did not select a source folder, now check in the except whether he/she selected images in the main screen
        try:
@@ -234,14 +234,14 @@ def check_before_run_rename_photos(self):
                   return "nothing_to_work_with"
            else:
                   # just exit this function with the option "main_screen_selection"
-                  print "main_screen_selection"
+                  print("main_screen_selection")
                   return "main_screen_selection"
        except:
            QMessageBox.information(self,"Nothing to work with","You did not specify a source folder and neither did you load/select any photos in the main screen.")
            return "nothing_to_work_with"
     else:
       # just exit this function with the option rename_source_folder (this is not the path)
-      print "rename_source_folder"
+      print("rename_source_folder")
       return "rename_source_folder"
 #---
 def run_rename_photos(self, work_on, qApp):
@@ -281,7 +281,7 @@ def run_rename_photos(self, work_on, qApp):
           exiftoolparams += "_" + self.suffix
        exiftoolparams += "%-." + self.rename_photos_dialog.comboBox_digits.currentText() + self.startcounting
        # Do everything split for a prefix as date(time) vs. string; no combined actions, is much simpler       
-       if self.prefixformat <> "":
+       if self.prefixformat != "":
           # This means that the prefix is a date(time)
           exiftoolparams += self.rename_extension + "' " + self.prefixformat
           # both lines above mean : prefix_suffix_number.extension
@@ -289,7 +289,7 @@ def run_rename_photos(self, work_on, qApp):
           # this means that we use a string instead of date(time) as prefix
           # if self.prefixformat is empty we need to move the "counter"
           exiftoolparams += self.rename_extension + "'"
-          if self.suffixformat <> "":
+          if self.suffixformat != "":
              exiftoolparams += " " + self.suffixformat
 
        # now start working and detect which images we use
@@ -298,7 +298,7 @@ def run_rename_photos(self, work_on, qApp):
           return
        elif work_on == "main_screen_selection":
           # we use the images that were selected from the main screen
-          print "we use the images that were selected from the main screen"
+          print("we use the images that were selected from the main screen")
           selected_rows = self.MaintableWidget.selectedIndexes()
           #exiftoolparams = "'-FileName<" + self.prefix + "_" + self.suffix + ".%le' " + self.prefixformat + " " + self.suffixformat + "-." + self.combobox_digits.currenttext() + "nc" + self.sourcefolder + "/*"
           rowcounter = 0
@@ -317,9 +317,9 @@ def run_rename_photos(self, work_on, qApp):
                 if row not in rows:
                         rows.append(row)
                         selected_image = "\"" + self.fileNames[int(row)] + "\""
-                        print 'exiftool ' + exiftoolparams + ' ' + selected_image
-        	        rowcounter += 1
-        	        self.progressbar.setValue(rowcounter)
+                        print('exiftool ' + exiftoolparams + ' ' + selected_image)
+                        rowcounter += 1
+                        self.progressbar.setValue(rowcounter)
                         parameters = ' ' + exiftoolparams + ' ' + selected_image
                         self.statusbar.showMessage("Renaming " + os.path.basename(selected_image))
                         qApp.processEvents()
@@ -327,13 +327,13 @@ def run_rename_photos(self, work_on, qApp):
                            parameters = parameters.replace("/", "\\")
                            parameters = parameters.replace("'", "\"")
                            args = self.exiftoolprog + parameters
-                           print args
+                           print(args)
                            p = subprocess.call(args, shell=True)
                         else:
                            #parameters = parameters.replace("'", "\"")
                            command_line = self.exiftoolprog + ' ' + exiftoolparams + ' ' + selected_image
                            args = shlex.split(command_line)
-                           print "command_line " + command_line
+                           print("command_line " + command_line)
                            #p = subprocess.call(command_line)
                            p = subprocess.call(args)
                 self.statusbar.showMessage("Finished renaming")
@@ -350,7 +350,7 @@ def run_rename_photos(self, work_on, qApp):
               parameters = parameters.replace("/", "\\")
               parameters = parameters.replace("'", "\"")
               args = self.exiftoolprog + parameters
-              print args
+              print(args)
               p = subprocess.call(args, shell=True)
           else:
               pathofimages = self.rename_photos_dialog.LineEdit_rename_source_folder.text().replace(" ", "\\ ")
