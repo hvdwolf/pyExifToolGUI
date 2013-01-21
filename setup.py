@@ -22,93 +22,48 @@
 # a complete exiftool gui: not at all.
 
 import os, sys, platform
+from distutils.core import setup
 
 
-def print_usage():
-    print "\nUsage of this script:"
-    print "sudo ./setup.py install		: This will install pyExifToolGui on your system"
-    print "sudo ./setup.py remove		: This will remove pyExifToolGui from your system\n\n"
-    sys.exit()
+#-- Functionality when script is used as distutils setup script
+# Boolean: running as root?
+ROOT = os.geteuid() == 0
+# For Debian packaging it could be a fakeroot so reset flag to prevent execution of
+# system update services for Mime and Desktop registrations.
+# The debian/openshot.postinst script must do those.
+if not os.getenv("FAKEROOTKEY") == None:
+	print "NOTICE: Detected execution in a FakeRoot so disabling calls to system update services."
+	ROOT = False
 
-def darwin_install():
-    os.system('rm -f scripts/*.pyc scripts/*~ ui/*.pyc ui/*~')
-    copyapp = os.system('cp -a MacOSX/pyExifToolGUI.app /Applications')
-    copyrest = os.system('cp -a COPYING scripts manual /Applications/pyExifToolGUI.app/Contents/Resources/')
-    print "\nYou will find a pyExifToolGui.app in your Applications folder."
-    print "This app only contains the scripts for the application itself."
-    print "Make sure that you install QT4 and pyside on your system.\n"
-    sys.exit()
-
-def windows_install():
-    print "\nSorry. There is no installation script available yet"
-    print "for windows."
-
-#------------------------------------------------------------------------
-# main
-OSplatform = platform.system()
-if OSplatform != "Windows":
-   if os.geteuid() != 0:
-      print '\n#### Script must be run with root authorization. ####'
-      print_usage()
-   
+os_files = [
+	 # XDG application description
+	 ('share/applications', ['xdg/pyexiftoolgui.desktop']),
+	 # XDG application icon
+	 ('share/pixmaps', ['logo/pyexiftoolgui.png']),
+]
 
 
-if len(sys.argv) == 1:
-   print_usage()
-elif len(sys.argv) == 2:
-   usr_share_path = os.path.join('/', 'usr', 'share')
-   pyexiftoolgui_path = os.path.join(usr_share_path, 'pyexiftoolgui')
-   if "install" in sys.argv:
-      OSplatform = platform.system()
-      if OSplatform == "Darwin":
-           darwin_install()
-      if OSplatform == "Windows":
-           windows_install()
-      print "\nYou have chosen to install pyExiftoolGUI on your system"
-      # use system commands. Somehow they do work better then os.mkdir, shutil.copytree, shutil.rmtree and so on
-      if not os.path.exists(pyexiftoolgui_path):
-         try:
-            fldr = os.system('mkdir -p ' + pyexiftoolgui_path)
-         except:
-            print "Could not create " + pyexiftoolgui_path
-      # First a bit of clean up in case users ran pyexiftoolgui already or modified some stuff
-      os.system('rm -f scripts/*.pyc scripts/*~ ui/*.pyc ui/*~')
-      copyfolders = os.system('cp -a scripts manual ' + pyexiftoolgui_path)
-      copyfiles = os.system('cp -a COPYING ' + pyexiftoolgui_path)
-      copylauncher = os.system('cp -a bin/pyexiftoolgui /usr/bin')
-      copydesktop = os.system('cp -a xdg/pyexiftoolgui.desktop ' + os.path.join(usr_share_path, 'applications'))
-      copyicon = os.system('cp -a logo/pyexiftoolgui.png ' + os.path.join(usr_share_path, 'pixmaps'))
-      print "\nIf you didn't see errors on your screen, pyExifToolGui has been installed."
-      print "In case of errors contact me."
-      print "You might also see a lot of \"kbuildsycoca4\" messages."
-      print "This is the cache being rebuilt and your application"
-      print "being added to menus and so on.\n"
+UPD_FAILED = 'Tried to upgrade but it failed.\n\n'
 
-   # remove pyexiftoolgui
-   elif "remove" in sys.argv:
-      try:
-            #fldr = shutil.rmtree(pyexiftoolgui_path)
-            fldr = os.system('rm -rf ' + pyexiftoolgui_path)
-      except:
-            print "Could not remove " + pyexiftoolgui_path
-      try:
-            #result = os.remove('/usr/bin/pyexiftoolgui')
-            result = os.system('rm -rf /usr/bin/pyexiftoolgui')
-      except:
-            print "Could not remove /usr/bin/pyexiftoolgui"
-      try:
-            #result = os.remove(os.path.join(usr_share_path, 'applications', 'pyexiftoolgui.desktop'))
-            result = os.system('rm -rf ' + os.path.join(usr_share_path, 'applications', 'pyexiftoolgui.desktop'))
-      except:
-            print "Could not remove " + os.path.join(usr_share_path, 'applications', 'pyexiftoolgui.desktop')
-      try:
-            #result = os.remove(os.path.join(usr_share_path, 'pixmaps', 'pyexiftoolgui.png'))
-            result = os.system('rm -rf ' + os.path.join(usr_share_path, 'pixmaps', 'pyexiftoolgui.png'))
-      except:
-            print "Could not remove " + os.path.join(usr_share_path, 'pixmaps', 'pyexiftoolgui.png')
-   # Some non-existent option or --help or --hlp for example
-   else:
-      print_usage()
-else: # More than 2 arguments
-   print_usage()
+# main distutils setup (command)
+dist = setup(
+        scripts     = ['bin/pyexiftoolgui'],
+        packages    = ['scripts', 'scripts.ui'],
+        package_data = { 'scripts.ui': ['*.ui'], 'manual' : ['*'], 'logo' : ['*'], 'xdg' : ['*'],
+                       },
+        data_files = os_files
+    )
 
+if ROOT and dist != None:
+# update the XDG .desktop file database
+    try:
+        sys.stdout.write('Updating the .desktop file database.\n')
+        subprocess.call(["update-desktop-database"])
+    except:
+        sys.stderr.write(UPD_FAILED)
+        sys.stdout.write("\n-----------------------------------------------")
+        sys.stdout.write("\nInstallation Finished!")
+        sys.stdout.write("\nRun pyExifToolGUI by typing 'pyexiftoolgui' or ")
+        sys.stdout.write("Run it through the Ubuntu Dash by starting to type pyexiftoolgui or ")
+        sys.stdout.write("Run it via the Applications menu.")
+        sys.stdout.write("\n-----------------------------------------------\n")
