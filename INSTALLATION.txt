@@ -31,7 +31,7 @@ Dependencies (Meaning that you need to install them yourself):
 Installation:
 - Untar the package to some folder (You obviously did that already if you are reading this).
 - Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
-- Run the setup script from the command line with "sudo ./setup.py install".
+- Run the setup script from the command line with "sudo ./install_remove.py install".
 - pyExifToolGUI will be installed and you should have an icon.
 - Start and enjoy.
 
@@ -56,7 +56,7 @@ Simple download the dmg containing the bundle and drag the bundle to a suitable 
 Installation:
 - Untar the package to some folder (You obviously did that already if you are reading this).
 - Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
-- Run the setup script from the command line with "sudo ./setup.py install" (no double-quotes).
+- Run the setup script from the command line with "sudo ./install_remove.py install" (no double-quotes).
 - The script will install a "bare bones" pyExifToolGUI.app in your Applications folder.
   Note that the pyExifToolGUI.app is NOT a complete self contained application. It needs the mentioned dependencies.
 - Start and enjoy.
@@ -85,7 +85,7 @@ Uninstall / Removal
 ===================
 - Open a terminal
 - Move into the folder where you untarred this (You might need to download again if your removed everything).
-- run the setup script from the command line with "sudo ./setup.py remove" (no double quotes).
+- run the setup script from the command line with "sudo ./install_remove.py remove" (no double quotes).
 - On Mac OS X simply remove pyExifToolGUI.app from /Applications
 
 This file: Version 0.3, 2013-01-12, H. van der Wolf

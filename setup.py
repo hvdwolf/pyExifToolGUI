@@ -2,7 +2,7 @@
 
 # setup.py
 
-# Copyright (c) 2012 Harry van der Wolf. All rights reserved.
+# Copyright (c) 2012-2013 Harry van der Wolf. All rights reserved.
 # This program or module is free software: you can redistribute it and/or
 # modify it under the terms of the GNU General Public Licence as published
 # by the Free Software Foundation, either version 2 of the Licence, or
@@ -21,7 +21,7 @@
 # command line tool exiftool by Phil Harvey, but it's not
 # a complete exiftool gui: not at all.
 
-import os, sys, platform
+import os, sys, platform, glob, subprocess
 from distutils.core import setup
 
 
@@ -48,8 +48,13 @@ UPD_FAILED = 'Tried to upgrade but it failed.\n\n'
 # main distutils setup (command)
 dist = setup(
         scripts     = ['bin/pyexiftoolgui'],
-        packages    = ['scripts', 'scripts.ui'],
-        package_data = { 'scripts.ui': ['*.ui'], 'manual' : ['*'], 'logo' : ['*'], 'xdg' : ['*'],
+        packages    = ['scripts', 'scripts.ui', 'manual', 'logo', 'xdg'],
+        package_data = { 
+                       'scripts': ['*.py'],
+                       'scripts.ui': ['*.py', '*.ui'], 
+                       'manual' : ['*'], 
+                       'logo' : ['*'], 
+                       'xdg' : ['*'],
                        },
         data_files = os_files
     )
@@ -67,3 +72,4 @@ if ROOT and dist != None:
         sys.stdout.write("Run it through the Ubuntu Dash by starting to type pyexiftoolgui or ")
         sys.stdout.write("Run it via the Applications menu.")
         sys.stdout.write("\n-----------------------------------------------\n")
+

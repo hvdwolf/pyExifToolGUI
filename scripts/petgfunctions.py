@@ -837,6 +837,7 @@ def copygpsfromselected(self,qApp):
            d2dms(self, gpslonvalue, "lon")
 
 def savegpsdata(self, qApp):
+        exiftool_params=""
         # Exif and xmp gps data
         if self.chk_lat_lon_alt.isChecked():
             exiftool_params =  ' -exif:GPSLatitude="' + self.gps_lat_decimal.text() + '" '
