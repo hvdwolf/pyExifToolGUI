@@ -1,13 +1,136 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 <html>
 <head>
 
-<META HTTP-EQUIV="Refresh" CONTENT="0;URL=manual/pyexiftoolgui.html">
+<title>pyExifToolGUI</title>
+<META NAME="description" LANG="EN" CONTENT="pyExifToolGUI">
+<META NAME="keywords" LANG="EN" CONTENT="pyExifToolGUI, photo, exiftool, exif, xmp, iptc, gps, image, rename, gui, gpano, metadata, tags, jpg, jpeg, tif, tiff, png">
+<META NAME="description" LANG="NL" CONTENT="pyExifToolGUI">
+<META NAME="keywords" LANG="NL" CONTENT="pyExifToolGUI, foto, exiftool, exif, xmp, iptc, gps, image, rename, gui, gpano, metadata, tags, jpg, jpeg, tif, tiff, png">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<link rel="shortcut icon" href="web_images/favicon.ico" >
+
+<!-- styles for panos -->
+<link rel="STYLESHEET" type="text/css" href="css/styles.css">
+
+
 
 </head>
+<body  bgcolor="#FFFFCC">
 
-<body>
+<center>
+<!-- First  "menu" -->
+<table border="0" width="940"><tbody><tr><td>
+<p class="menu"><a href="hvdwolf.github.com/pyExifToolGUI/">Home</a> &nbsp;&nbsp;&nbsp; <a href="https://github.com/hvdwolf/pyExifToolGUI/releases">Downloads</a> &nbsp;&nbsp;&nbsp;  <a href="manual/pyexiftoolgui.html">Online manual</a></p>
+</td></tr></tbody></table>
+<!-- This is the part where the content will be displayed -->
+<table border="0" width="940"><tbody><tr><td><center>
+<p style="text-align: center;"><span style="font-size: medium;"><strong>pyExifToolGUI</strong></span></p>
+<p><img style="float: left; margin: 20px;" title="Image description" src="images/pyexiftoolgui.png" alt="pyExifToolGUI programme icon" width="64" height="64" /></p>
+<p style="text-align: left;">pyExifToolGui is a graphical frontend for the excellent open source command line tool <a href="http://www.sno.phy.queensu.ca/%7Ephil/exiftool/" target="_blank">ExifTool</a> by Phil Harvey. pyExifToolGui is a python pySide QT4 script program that reads and writes all kind of metadata tags from/to image files. A strong point of this software is the ability to write the data, copied or not from a source image (reference image), to multiple images at once.</p>
+<p style="text-align: left;">My main goal was a tool to write gps data to my images as I photograph a lot inside buildings like Churches/Cathedrals and Musea (when allowed), which means that the gps functionality of my camera doesn't function.&nbsp; And sometimes you have already made 20 photos while your GPS is still not up-to-date or uses settings from your previous location.</p>
+<p style="text-align: left;">Next to the gps functionality, I also wanted extensive renaming functionality, based on metadata in the images, to be part of this programs functionality.</p>
+<p style="text-align: left;">It is also one of the first applications to support Googles new PhotoSphere options for panoramic images.</p>
+<p style="text-align: left;">pyExifToolGUI will slowly grow into a general exiftool Gui and will also write other tags to your images. <br />This pyExifToolGUI tool is NOT a geotagging tool!</p>
+<p style="text-align: center;"><a title="Click to open full size image" href="images/pyexiftoolgui-ubuntu-unity-quantal.jpg"><img title="pyExifToolGUI on ubuntu" src="images/pyexiftoolgui-ubuntu-unity-quantal.jpg" alt="pyExifToolGUI on ubuntu" width="700" /></a><br /><a href="images/pyexiftoolgui-ubuntu-unity-quantal.jpg">Click for full size version.</a></p>
+<p style="text-align: left;">As mentioned: pyExifToolGui is a graphical frontend for the excellent open source command line tool <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/" target="_blank">ExifTool</a> by Phil Harvey, but pyExifToolGui is not a complete ExifTool Gui, far from that.<br />I needed a tool to add gps data to my images and couldn't find one and decided to write my own. <br />"By accident" it contains more functions as ExifTool is such a powerful tool and once you have written the basic program Gui skeleton it is relatively easy to add extra functionality, which is basically to add more exif/xmp/iptc tags and add them to "write to image" function.</p>
+<h2 style="text-align: left;">Features</h2>
+<ul style="text-align: left;">
+<li>Extensive renaming options based on metadata of your photos.</li>
+<li>Supports all formats exiftool itself supports  in "read" mode. Preview thumbnails for standard image formats and most raw formats.</li>
+<li>Writes GPS data to (selected) images.</li>
+<li>Writes several exif and xmp tags to images.</li>
+<li>Removes metadata (if you want that).</li>
+<li>Supports new Google Photosphere (gpano) functionality (with exiftool &gt;= 9.07)</li>
+<li>Modify datetime tags</li>
+<li>Modify image file dates based on datetime tags.</li>
+<li>options for exporting (all) tag categories to a series of export options</li>
+<li>A tab where you can execute your own commands in case they are not directly supported by the Gui functionality</li>
+</ul>
+<p style="text-align: left;">&nbsp;</p>
+<p style="text-align: center;"><a title="Click to open full size image" href="images/05-pyexiftoolgui_saving_to_multiple_photos.jpg"><img src="images/05-pyexiftoolgui_saving_to_multiple_photos.jpg" alt="Write metadata to multiple files at once" width="700" height="452" /></a></p>
+<p style="text-align: center;"><a href="images/05-pyexiftoolgui_saving_to_multiple_photos.jpg">Click for full size version.</a></p>
+<h2 style="text-align: left;">Downloads<br /></h2>
+<p style="text-align: left;"><strong>exiftool is not included in any of the packages.</strong> Download it from Phil Harvey's <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/" target="_blank">exiftool site</a>.</p>
+<p style="text-align: left;"><strong> </strong><strong> </strong><strong> </strong><strong> </strong><strong> </strong> 
+<table border="1" width="950" align="left">
+<thead> 
+<tr style="background-color: #0099ff; color: #ffffff;">
+<td><span style="color: #ffffff;"><strong>Version</strong></span></td>
+<td><span style="color: #ffffff;"><strong>Date</strong></span></td>
+<td><span style="color: #ffffff;"><strong>Linux (script + setup) (tgz)</strong></span></td>
+<td><span style="color: #ffffff;"><strong>Mac OS X bundle (dmg)</strong></span></td>
+<td><span style="color: #ffffff;"><strong>Windows executable (zip)</strong></span></td>
+<td><span style="color: #ffffff;"><strong>Remarks</strong></span></td>
+</tr>
+</thead> 
+<tbody>
+<tr>
+<td><a href="https://github.com/hvdwolf/pyExifToolGUI/releases/tag/0.32">pyExifToolGUI-0.32</a></td>
+<td>27 Jan. 2013</td>
+<td><a href="https://github.com/hvdwolf/pyExifToolGUI/releases/download/0.32/pyExifToolGUI-0.32.tgz">.tgz</a></td>
+<td>No new bundle</td>
+<td>No new executable</td>
+<td>
+<p>pyExifToolGUI is now 100% Python2 and Python3 compatible.<br /> No functional changes added. No difference in Mac OS X and/or Windows functionality.<br />Installation script is now install_remove.py instead of setup.py.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hvdwolf/pyExifToolGUI/releases/tag/0.31">pyExifToolGUI-0.31</a></td>
+<td>12 Jan. 2013</td>
+<td><a href="https://github.com/hvdwolf/pyExifToolGUI/releases/download/0.31/pyExifToolGUI-0.31.tgz">.tgz</a></td>
+<td><a href="https://github.com/hvdwolf/pyExifToolGUI/releases/download/0.31/pyExifToolGUI-0.31.dmg">.dmg</a></td>
+<td><a href="https://github.com/hvdwolf/pyExifToolGUI/releases/download/0.31/pyExifToolGUI-0.31.zip">.zip</a></td>
+<td>Fourth  release. See <a href="version_info.html">Version History</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/hvdwolf/pyExifToolGUI/releases/tag/0.28">pyExifToolGUI-0.28</a></td>
+<td>30 Dec. 2012</td>
+<td><a href="https://github.com/hvdwolf/pyExifToolGUI/releases/download/0.28/pyExifToolGUI-0.28.tgz">.tgz</a></td>
+<td><a href="https://github.com/hvdwolf/pyExifToolGUI/releases/download/0.28/pyExifToolGUI-0.28.dmg">.dmg</a></td>
+<td><a href="https://github.com/hvdwolf/pyExifToolGUI/releases/download/0.28/pyExifToolGUI-0.28.zip">.zip</a></td>
+<td>Third release. See <a href="version_info.html">Version History</a></td>
+</tr>
+<tr>
+<td>pyExifToolGUI-0.25</td>
+<td>22 Dec. 2012</td>
+<td colspan="3">No longer available</td>
+<td>Second release. See <a href="version_info.html">Version History</a></td>
+</tr>
+<tr>
+<td>pyExifToolGUI-0.2</td>
+<td>12 Dec. 2012</td>
+<td colspan="3">No longer available</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</p>
+<p style="text-align: left;"><a href="version_info.html">Version History</a> &nbsp;&nbsp; <a href="Changelog" target="_blank">Development Changelog</a></p>
+<p style="text-align: left;">The downloads contain an INSTALLATION.txt, but you can also read the installation chapter of the <a href="manual/pyexiftoolgui.html#Installation" target="_blank">manual</a> (which is also included in the program, but that's after installation). Note that the Linux version can also be used on Mac OS X (again: read the manual).</p>
+<h2 style="text-align: left;">Quirks and "Things to Do"</h2>
+<p style="text-align: left;"><strong>Linux:</strong> The program is not yet packaged for any distribution. Use the setup.py script to install.</p>
+<p style="text-align: left;"><strong>Windows:</strong> First start takes very long. Rename your downloaded exiftool(-k).exe to exiftool.exe (if you only see exiftool(-k) in your explorer, rename to exiftool and don't add an extension).</p>
+<p style="text-align: left;"><strong>Mac OS X:</strong> Sometimes pyExifToolGUI crashes on first start. This only occurs with the full bundle.</p>
+<p style="text-align: left;"><strong>General:</strong></p>
+<ul>
+<li style="text-align: left;">Expand functionality</li>
+<li style="text-align: left;">Create packages for Linux.</li>
+<li style="text-align: left;">Many bugs to fix????</li>
+</ul>
+<p style="text-align: left;">&nbsp;</p>
+<p style="text-align: left;">This program  is completely free, but you can donate any amount to me to show your  appreciation. See the Help menu in the program or the donate button  below.</p>
+<p style="text-align: left;">&nbsp;</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post"> <input name="cmd" type="hidden" value="_s-xclick" /> <input name="hosted_button_id" type="hidden" value="C8A8UH8JJPD6G" /> <input alt="PayPal &acirc;&euro;&rdquo; The safer, easier way to pay online." name="submit" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" type="image" /> <img src="https://www.paypalobjects.com/nl_NL/i/scr/pixel.gif" border="0" alt="" width="1" height="1" /> </form>
+<p>&nbsp;</p></center></td></tr></tbody></table>
+<p></p>
+<!-- End of table content -->
+
+<!-- footer -->
+<center>
+
+</center>
 </body>
 </html>
-
