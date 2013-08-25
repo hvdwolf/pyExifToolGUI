@@ -1,0 +1,1169 @@
+<html lang="en">
+<head>
+<title>pyexiftoolgui: a cross-platform python pyside gui for exiftool</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="pyexiftoolgui: a cross-platform python pyside gui for exiftool" version="0.32">
+<link title="Top" rel="top" href="#Top">
+
+<!--
+This manual is for pyexiftoolgui (version 0.32, January 2013).
+pyExifToolGui is a python pySide QT4 script program that reads and writes
+exif, xmp and IPTC tags from/to image files. It can use areference" image as source image to
+copy data from. A strong point of this software is the ability to write the data,
+copied or not from a source image, to multiple images at once.
+
+Copyright (C) 2012-2013 Harry van der Wolf.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, no Front-Cover Texts and no
+     Back-Cover Texts.  A copy of the license is included in the section
+     entitledGNU Free Documentation License".
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+    margin-left: 6%;
+    margin-right: 6%
+}
+h1, h2, h3, h4, h5, h6 {margin-left: -4%}
+
+dl, h1, h2, h3, h4, h5, h6, ol, p, table, ul {font-family: sans-serif}
+code, pre {font-family: monospace; font-size: 110%}
+var {
+    font-family: sans-serif;
+    font-style: italic
+}
+
+/* Class- and attibute based settings */
+div.contents {}
+div.float {
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+}
+
+dl.compact {}
+dl.listoffloats {}
+
+h1.chapter {}
+h1.settitle {}
+h1.unnumbered {}
+h2.section {}
+h3.subsection {}
+h4.subsubsection {}
+
+hr.small {
+    background-color: black;
+    color: black;
+    height: 1px;
+    width: 113%
+}
+hr.middle {
+    background-color: black;
+    color: black;
+    height: 2px;
+    width: 113%
+}
+hr.big {
+    background-color: black;
+    color: black;
+    height: 4px;
+    width: 113%
+}
+
+math {display: block}
+math[display=inline] {display: inline}
+
+pre.example {}
+pre.display {font-family: sans-serif}
+pre.menu-comment {
+    font-family: sans-serif;
+    font-size: 110%;
+    font-weight: bold;
+    margin-top: 2ex;
+}
+
+small.enddots {}
+
+span.option {font-size: 110%}
+span.samp {font-size: 110%}
+
+strong {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+table.index-cp {}
+table.index-op {}
+table.index-pg {}
+table.menu {}
+
+tt {font-size: 110%}
+
+ul.toc {}
+--></style>
+</head>
+<body>
+<img src="pyexiftoolgui.png" alt="pyexiftoolgui.png" title="pyexiftoolgui.png"><h1 class="settitle">pyExifToolGUI: a cross-platform python pyside gui for exiftool</h1>
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">pyExifToolGUI</a>
+<li><a name="toc_Overview" href="#Overview">1 Overview</a>
+<ul>
+<li><a href="#manual_version">1.1 This manual and the pyExifToolGUI version</a>
+</li></ul>
+<li><a name="toc_Installation" href="#Installation">2 Installation</a>
+<ul>
+<li><a href="#InstallLinux">2.1 Installation on Linux</a>
+<li><a href="#InstallMacOSX">2.2 Installation on Mac OS X</a>
+<ul>
+<li><a href="#InstallMacOSXFullBundle">2.2.1 Full application bundle X</a>
+<li><a href="#InstallMacOSXSimpleBundle">2.2.2 Simple application bundle (install dependencies yourself)</a>
+</ul>
+<li><a href="#InstallWindows">2.3 Installation on Windows</a>
+<li><a href="#NoInstall">2.4 Run pyexiftoolgui from download folder (No Installation)</a>
+<li><a href="#UnInstall">2.5 Uninstall / Removal</a>
+</li></ul>
+<li><a name="toc_GeneralUsage" href="#contextmenu">3 General usage</a>
+<ul>
+<li><a name="toc_Contextmenu" href="#contextmenu">3.1 Context menu</a>
+</li></ul>
+<li><a name="toc_ViewData" href="#ViewData">4 View Data</a>
+<li><a name="toc_EditData" href="#EditData">5 Edit Data</a>
+<ul>
+<li><a href="#EditgpsData">5.1 Edit GPS data</a>
+<li><a href="#EditexifData">5.2 Edit exif data</a>
+<li><a href="#EditxmpData">5.3 Edit xmp data</a>
+<li><a href="#EditgpanoData">5.4 Edit GPano (Google Photosphere) data</a>
+<li><a href="#EditiptcData">5.5 IPTC data (not directly supported)</a>
+<li><a href="#workflow">5.6 Example workflows</a>
+<ul>
+<li><a href="#generalworkflow">5.6.1 General workflow</a>
+<li><a href="#scan_rename_workflow">5.6.2 After scanning: Correcting Date/time and Renaming workflow</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_ExtraMenu" href="#ExtraMenu">6 Extra Menu</a>
+<ul>
+<li><a href="#extramenu-renamephotos">6.1 Rename photos</a>
+<li><a href="#extramenu-createargsfile">6.2 Create args file(s)</a>
+<li><a href="#extramenu-exportmetadata">6.3 Export metadata</a>
+<li><a href="#extramenu-modifydatetime">6.4 Modify Date/time</a>
+<li><a href="#extramenu-setfiledatetodto">6.5 Set file date to DateTimeOriginal</a>
+<li><a href="#extramenu-repairjpgs">6.6 Repair JPG(s) with corrupted metadata</a>
+<li><a href="#extramenu-copytoxmp">6.7 Copy all metadata to xmp format</a>
+<li><a href="#extramenu-removemetadata">Remove metadata</a>
+</li></ul>
+<li><a name="toc_YourCommands" href="#YourCommands">7 Your commands</a>
+<li><a name="toc_Preferences" href="#Preferences">8 Preferences</a>
+<li><a name="toc_FDL" href="#FDL">Appendix A <acronym>GNU</acronym> Free Documentation License</a>
+</li></ul>
+</div>
+
+
+
+<p><a name="Top"></a>
+
+<h2 class="unnumbered">pyExifToolGUI</h2>
+
+<p>This manual is for pyExifToolGUI (version 0.32, January 2013).
+pyExifToolGui is a python pySide QT4 script program that reads and writes metadata like
+exif, xmp, gps, gpano tags from/to image files. It can use a "reference" image as source image to
+copy data from. A strong point of this software is the ability to write the data,
+copied or not from a source image, to multiple images at once.
+
+<!-- Document Body -->
+<hr>
+<p><a name="Overview"></a>
+<h2 class="chapter">1 Overview</h2>
+
+<!-- Undo the roman page numbering we used for the Table-of-Contents, -->
+<!-- the List-of-Tables, and the List-of-Figures. -->
+<p>pyExifToolGui is a python pySide QT4 script program that reads and writes
+exif, gps, xmp, gpano (and a very limited set of IPTC) tags from/to image files using exiftool. 
+pyExifToolGUI: py for python, GUI for Graphical User Interface to ExifTool.
+
+
+<p>pyExifToolGui is a graphical frontend for the excellent open source
+command line tool <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/" target="_blank">ExifTool</a> by Phil Harvey.
+pyExifToolGui is not a complete ExifTool Gui, far from that.
+I needed a tool to add gps data to my images and couldn't find one
+and decided to write my own. 
+So the main goal for this tool was the ability to write gps data to photos as I 
+photograph a lot in buildings like Churches/Cathedrals and Musea (when allowed), 
+which means that the gps functionality of the camera doesn't function.
+In the mean time the functionality of pyExifToolGUI has expanded and also supports reading, writing and exporting 
+all kind of metadata. Next to that it now contains also extended photo file renaming functionality 
+based on the exif info in your photos.
+By now pyExifToolGUI is a general exiftool Gui but it is still far from complete.
+<p>This pyExifToolGUI tool is NOT a geotagging tool!
+
+<p>IPTC tags are only partly supported. IPTC is an older and slowly deminishing metadata standard being replaced by xmp. Where
+applicable, e.g. redundant tags in xmp, the iptc tags will be updated simultaneously.
+<p>This program is Open Source and completely free and will always stay that way, but you can donate any amount to me to show
+your appreciation. See the Help menu in the program or the donate button below.
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="C8A8UH8JJPD6G">
+<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+<img alt="" border="0" src="https://www.paypalobjects.com/nl_NL/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<p><a name="manual_version"></a>
+
+<h3 class="section">1.1 This manual and the pyExifToolGUI version</h3>
+
+<p>This manual and the pyExifToolGUI version might not always run synchronously. If new functionality 
+is added to the program which requires a new chapter or paragraph, the manual will be updated for that new section.
+However, not all parts of the manual will/might be updated which might lead to older program screens in the manual that might 
+slightly deviate from the program version you will be working with.<br>
+Note also that you will see screen captures from several operating systems (Linux/Windows/Mac OS X) and/or window managers (on Linux).
+
+<hr>
+<p><a name="Installation"></a>
+<h2 class="chapter">2 Installation</h2>
+
+<p>This tool is written for Linux and primarily aimed at Linux.
+However, it runs fine and functions fine on Mac OS X and Windows as well 
+for which, respectively, a program bundle and an executable is available for download.
+pyExifToolGUI is currently not part of any Linux distribution and I'm currently lacking 
+the skills to write a distutils or exportutils (or good automake/configure) 
+script to package it for Ubuntu (or any other Debian based linux), 
+or (Open)Suse or Fedora/Redhat.
+This also means that it doesn't do any dependency checks for necessary
+libraries and so on. 
+I wrote a simple "setup" script that takes care of installation and removal. 
+This setup script is for Linux but can also be used on Mac OS X. 
+<p><b>Note:</b> pyExifToolGUI comes without exiftool which you need to download yourself from Phil Harvey's 
+<a href="http://www.sno.phy.queensu.ca/~phil/exiftool/" target="blank">exiftool site</a> if you want the latest version. 
+On Linux you can also use the version belonging to your distribution.
+<p> For Mac OS X you can either run the simple pyExifToolGUI.app bundle (via the setup script) from the tar.gz and install the 
+dependencies yourself, or you can download the full bundle which includes everything internally.
+<p>For Windows a python executable has been created (Note to Windows users: Currently there is the 
+closed sourced but free exiftoolgui for windows. pyexiftoolgui contains the functionality 
+of applying your changes to a selected set of images at once, exiftoolgui only has 
+this on a limited set of tags. The total "functionality set" of exiftoolgui is currently
+more then that of pyexiftoolgui, but it misses the new GPano functionality 
+(see <a href="#EditgpanoData">paragraph 5.4</a>).
+
+<p>You can run pyexiftoolgui without installing it: see <a href="#NoInstall">paragraph 2.4</a> below the
+installation instructions. 
+
+
+<p><a name="InstallLinux"></a>
+
+<h3 class="section">2.1 Installation on Linux</h3>
+<p>Dependencies (Meaning that you need to install them yourself):
+<ul><li>python: part of every linux system, so always available, but >=2.6 required.
+<li>pyside: Install via your distribution's package manager. Otherwise download it from www.pyside.org
+<li>python-pyside (qtcore, qtgui and qtuitools are required): Install via your distribution's package manager. 
+  <br>Otherwise download it from www.pyside.org
+<li>ExifTool: Install via your distribution's package manager.</li></ul>
+
+<p>Installation:
+<ul><li>Untar the package to some folder.
+<li>Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
+<li>pyExiftoolGUI <= 0.31: Run the setup script from the command line with <PRE>sudo ./setup.py install</PRE>.
+<li>pyExiftoolGUI >= 0.32: Run the setup script from the command line with <PRE>sudo ./install_remove.py install</PRE>.
+<li>pyExifToolGUI will be installed and you should have an icon in your menu under the Graphics sub menu
+ or in your Dash (Ubuntu).
+<li>Start and enjoy.</li></ul>
+
+<p><a name="InstallMacOSX"></a>
+
+<h3 class="section">2.2 Installation on Mac OS X</h3>
+
+<p>You have two options for installation on Mac OS X
+
+<p><a name="InstallMacOSXFullBundle"></a>
+<h4 class="subsection">2.2.1 Full application bundle</h4>
+<p>Download the dmg with the full pyexiftoolgui.app bundle. Open the dmg and copy the pyexiftoolgui.app to a place of 
+your liking where /Applications is of course the most suitable location.
+<p> </p>
+
+<p><a name="InstallMacOSXSimpleBundle"></a>
+<h4 class="subsection">2.2.2 Simple application bundle (install dependencies yourself)</h4>
+
+<p>Dependencies (Meaning that you need to install them yourself):
+<ul><li>python: part of every linux system, so always available, but 2.7 required.
+  <ul><li>(Snow) Leopard: Download python 2.7 from python.org and install. Then run the
+     "Update Shell Profile.command" from <span style="white-space: nowrap;">/Applications/Python 2.7</span>
+  <li>(Mountain) Lion comes with python 2.7</li></ul>
+<li>pyside: Download it from www.pyside.org. (You can also install it from MacPorts but this will give issues most of the time.)
+<li>pyX.Y-pyside: Install via MacPorts. (XY needs to be 2.7).
+<li>ExifTool: Download the DMG from the ExifTool website (highly preferred) or install via MacPorts.</li></ul>
+
+<p>Installation:
+<ul><li>Untar the package to some folder.
+<li>Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
+<li>pyExiftoolGUI <= 0.31: Run the setup script from the command line with <PRE>sudo ./setup.py install</PRE>.
+<li>pyExiftoolGUI >= 0.32: Run the setup script from the command line with <PRE>sudo ./install_remove.py install</PRE>.
+<li>The script will install a "bare bones" pyExifToolGUI.app in your Applications folder.
+  Note that the pyExifToolGUI.app is NOT a complete self contained application. It needs the mentioned dependencies.
+<li>Start and enjoy.</li></ul>
+
+
+<p><a name="InstallWindows"></a>
+
+<h3 class="section">2.3 Installation on Windows</h3>
+
+<p>For windows an executable has been created. This could be easily packaged with some
+open source installer like INNOsetup, but for the moment it is simply packaged in a 
+zip file. Unzip the zip archive to some folder of your liking and start it. This also means
+that the package does not create registry entries.
+<b>Note:</b> As mentioned in the intro: pyExifToolGUI comes without exiftool itself. If you download it, the default 
+version for windows is called exiftool(-k).exe. Always rename this to exiftool.exe as the exiftool(-k).exe version pauses after every screen of output and requires a keypress to continue: You don't want that.
+(Tip: If you only see exiftool(-k) without an extension in you file manager then simply rename it to exiftool).
+
+
+
+
+
+<p><a name="NoInstall"></a>
+
+<h3 class="section">2.4 Run pyexiftoolgui from download folder (No Installation)</h3>
+
+<p>You can run pyexiftoolgui without installing it. 
+
+<p>- Linux/MacOSX
+<ul><li> Make sure you have the dependecies installed as described above in the subsections.
+<li>From this folder, start in a terminal: <PRE>$ ./bin/pyexiftoolgui</PRE></li></ul>
+
+<p>- Windows
+<ul><li>Make sure you have the dependecies installed as described above in the Windows subsection.
+<li>From this folder, start in a command-box (dos-box): python bin/pyexiftoolgui
+   (If python is not in your path, provide the full path to it)</li></ul>
+
+
+<p><a name="UnInstall"></a>
+
+<h3 class="section">Uninstall / Removal</h3>
+<ul><li>Open a terminal
+<li>Move into the folder where you untarred the pyExifToolGUI.<version>.tgz (You might need to download again if your removed everything).
+<li>pyExiftoolGUI <= 0.31: run the setup script from the command line with <PRE>$ sudo ./setup.py remove</PRE>.
+<li>pyExiftoolGUI >= 0.32: run the setup script from the command line with <PRE>$ sudo ./install_remove.py remove</PRE>.
+<li>On Mac OS X simply remove pyExifToolGUI.app from /Applications</li>
+<li>On Windows simply remove the folder containing the pyexiftoolgui.exe application.</ul>
+<p> <br></p>
+
+
+
+<hr><p><a name="GeneralUsage"></a>
+<h2 class="chapter">3 General Usage</h2>
+
+<p>The program consists of a left pane containing your photos, and a right pane which consists of a set of tabs. One of these tabs contains a subset of tabs.
+Next to the tabs on the right the program also has an "Extra" menu which contains another set of functionalities.
+A number of buttons and functions will not work, and are disabled, untill you have loaded at least one photo.
+Most actions on your images which you perform in the right tabs or in the Extra menu, only work after having selected at least one, or more of the loaded photos in the left pane.
+
+<h4>View data</h4>
+<p>Select an image and simply click one of the radiobuttons. If you have multiple images selected, the metadata for the last selected image will be displayed.
+
+<h4>Edit data</h4>
+<p>Here as well: All actions in the right "Edit" tab only work after having selected one or more of the loaded photos.
+<ul>
+<li>You can select one image and modify the data for it.
+<li>You can select multiple images at once and modify the data for all these images at once.
+<li>You can select one image, copy data from it, then select multiple images, and paste the (copied) data to these multiple images at once.
+</ul>
+
+<h4>"Extra" menu</h4>
+<p>This is not a tab, but a sub-menu from the main menu. A few options can only be used in conjunction with the Context menu.
+<p><img title="Extra menu" src="extramenu.jpg" alt="Extra menu">
+
+<p><a name="Contextmenu"></a>
+
+<h2 class="section">3.1 Context menu</h2>
+
+<p>The program also contains "context menu" functionality, which is more generally known as "right-click" functionality. This functionality can be very handy in some situations as it reduces mouse (kilo)meters.
+Without photos loaded, you will have a "mini" menu. With photos loaded you will get a larger context menu containing image related functions.<br>
+<table border="0" cellpadding="30">
+<tr>
+<td><img title="Context menu without photos loaded" src="contextmenu1.jpg" alt="Context menu without photos loaded"><br>Context menu without photos loaded.</td>
+<td><img title="Context menu with photos loaded" src="contextmenu2.jpg" alt="Context menu with photos loaded"><br>Context menu with photos loaded.</td>
+</tr>
+</table>
+
+
+
+
+<hr><p><a name="ViewData"></a>
+<h2 class="chapter">4 View Data</h2>
+
+<p>The "View Data" tab gives you the option to display all available meta data from a photo (image).
+You select a photo on the left side and click the radiobutton on the right side to see all or a selected 
+set of data of the photo.
+As ExifTool supports a large number of image formats, but also movie formats, all available metadata that
+ExifTool can read, can be displayed by pyExifToolGUI as well. The file filter, used to select files from the file dialog, 
+is by default set to all image types pexiftool supports, but can also be set to the total set of file extensions that exiftool supports (and simply to "All files (*.*)"). Note that some of the data, 
+or subsets of data, is simply not available in the non-image formats.<br>
+pyExifToolGUI will try to make a preview (thumbnail) of the image, but will not always succeed as most RAW formats are not supported. In case of other
+ formats like movies and so on, the creation of a preview will almost certain not function.</p>
+<img src="viewdatatab.jpg" alt="viewdatatab.jpg" title="The View Data tab" width="1100">
+<p>Note that the "Display Image" button will display the selected image in the default image viewer. If this "image" 
+happens to be a movie, the movie will be displayed in the default movie/media viewer if the format is supported. (Right-click ->Display image works as well).
+<p>Image rotation is not always correctly "interpreted" by the underlying QT image plugins that create the 
+preview thumbnails. If you think it is not correct you can simply select the image, click on the "Display Image" button 
+and see whether your "normal" image viewer displays it correctly, meaning that your image has the correct setting.
+<p>
+
+<hr><p><a name="EditData"></a>
+<h2 class="chapter">5 Edit Data</h2>
+
+<p>The application is a so called "tabbed" application. The "Edit Data" tab is the (obvious) tab
+that contains the sub tabs with all the edit options. Currently a moderate set of tabs have been 
+defined but the order, number and even content can change during the further development of this application.
+
+<p><a name="EditgpsData"></a>
+
+<h3 class="section">5.1 Edit gps Data</h3>
+
+<p>This tab is used to add GPS data to your images. This tab works on a combination of
+exif, xmp and iptc gps data as latitude, longitude and altitude are covered in both the exif and
+in the xmp metadata structure. The Location metadata details (Country, Province/State, city, Location) 
+are covered by xmp and IPTC. This tab therefore acts on multiple tag categories (exif, xmp and iptc) at once 
+and simply tries to make your gps/location data as complete as possible in the 
+several tag categories.</p>
+<img src="editgpstab.jpg" alt="editgpstab.jpg" title="The Edit gps tab" width="1100">
+<ul><li><h3>Buttons working on image(s):</h3>
+<ul><li><b>Copy from selected image</b>: This will copy all the (available) gps data from
+the selected image into the input fields.</li>
+<li><b>Save to selected image(s)</b>: This will save the gps data to your selected image(s).</li></ul></ul>
+<p><b>Note:</b> When the "Save" checkbox is enabled, empty fields will write empty values to your image(s). Take this into account!
+<ul><li><h3>General buttons:</h3>
+<ul><li><b>Reset fields</b>: This will empty all fields and set radiobuttons and checkboxes to their defaults.</li>
+<li><b>Open MapCoordinates.net</b>: This will open the mapcoordinates.net website enabling you to get and copy latitude, longitude and altitude data
+ for your photo(s). MapCoordinates is based on Google Maps. <br>Note that the altitude is mostly correct. but sometimes completely wrong.</li>
+<li><b>Help</b>: This button opens the manual you are currently reading.</li></ul></ul>
+<ul><li><h3>Calculator buttons:</h3>
+<ul><li><b>Copy to input fields</b>: This copies the calculated values (bottom half) to the input fields (top half).</li>
+<li><b>Decimal to Minutes-Seconds</b>: Convert decimal longitude/latitude values to deg-min-sec.</li>
+<li><b>Minutes-Seconds to Decimal</b>: Convert deg-min-sec to decimal latitude/longitude (necessary for input).</li></ul>
+</ul>
+
+
+<p><a name="EditexifData"></a>
+<h3 class="section">5.2 Edit exif Data</h3>
+
+<p>This tab is used to add (a limited amount of) exif data to your selected image(s).</p>
+<img src="editexiftab.jpg" alt="editexiftab.jpg" title="The Edit exif tab" width="1100">
+<p><b>Things to take into account!</b></p>
+<p>As you can see the options all have a <b>Save</b> checkbox behind their input fields.
+It means that this option will be saved when checked, even when the field is empty.
+This also means that you can:
+<ul><li>overwrite existing data with empty data "by accident".</li>
+<li>deliberately overwrite existing data with data from empty fields.</li></ul>
+<ul><li><h3>Available buttons:</h3>
+<ul><li><b>Copy from selected image</b>: This will copy all the (available) exif data from
+the selected image into the input fields.</li>
+<li><b>Save to selected image(s)</b>: This will save the \"checked\" exif data to your selected image(s).</li>
+<li><b>Copy Defaults</b>: This will copy the default Artitst and Copyright data which you provided in the Preferences tab.</li>
+<li><b>Reset fields</b>: This will empty all fields and set checkboxes to their defaults.</li>
+<li><b>Help</b>: This button opens the manual you are currently reading.</li></ul></li></ul>
+<p> </p>
+<p>
+
+<p><a name="EditxmpData"></a>
+<h3 class="section">5.3 Edit xmp Data</h3>
+
+<p>This tab is used to add (a limited amount of) xmp data to your selected image(s).</p>
+<img src="editxmptab.jpg" alt="editxmptab.jpg" title="The Edit xmp tab" width="1100">
+<p><b>Things to take into account!</b></p>
+<p>As you can see the options all have a <b>Save</b> checkbox behind their input fields.
+It means that this option will be saved when checked, even when the field is empty.
+This also means that you can:
+<ul><li>overwrite existing data with empty data "by accident".</li>
+<li>deliberately overwrite existing data with data from empty fields.</li></ul>
+<ul><li><h3>Available buttons:</h3>
+<ul><li><b>Copy from selected image</b>: This will copy all the (available) xmp data from
+the selected image into the input fields.</li>
+<li><b>Save to selected image(s)</b>: This will save the \"checked\" exif data to your selected image(s).</li>
+<li><b>Copy Defaults</b>: This will copy the default creator and rights data which you provided in the Preferences tab.</li>
+<li><b>Reset fields</b>: This will empty all fields and set checkboxes to their defaults.</li>
+<li><b>Help</b>: This button opens the manual you are currently reading.</li></ul>
+</li></ul></li></ul>
+
+
+<p><a name="EditgpanoData"></a>
+<h3 class="section">5.4 Edit GPano (Google Photosphere) data</h3>
+
+<p>This tab is used to add GPano Google PhotoSphere data to your selected image(s).</p>
+<p>The Google PhotoSphere functionality has been added in November 2012 to PicasaWeb and Google+ to enable the use
+of auto-rotating panoramic photos inside these products. For more info see <a href="https://developers.google.com/panorama/metadata/" target="_blank">
+this Google page</a>
+<p><img src="editgpanotab.jpg" alt="editgpanotab.jpg" title="The GPano Google PhotoSphere tab" width="1100">
+<p>This functionality is only available if you have exiftool 9.07 or newer. You can always download
+the latest <a href='http://www.sno.phy.queensu.ca/~phil/exiftool/'>exiftool</a> version.
+On Windows and Mac OS X simply install it. On Linux you simply unpack the tar.gz to some
+ folder. After the install/unpack you can use the Preferences tab to select that untarred version.</p>
+<p><b>Things to take into account!</b></p>
+<p>As you can see the options all have a <b>Save</b> checkbox behind their input fields
+It means that this option will be saved when checked, even when the field is empty.
+This also means that you can:
+<ul><li>overwrite existing data with empty data "by accident".</li>
+<li>deliberately overwrite existing data with data from empty fields.</li></ul>
+<ul><li><h3>Available buttons:</h3>
+<ul><li><b>Copy from selected image</b>: This will copy all the (available) exif data from
+the selected image into the input fields.</li>
+<li><b>Save to selected image(s)</b>: This will save the \"checked\" exif data to your selected image(s).</li>
+<li><b>Reset fields</b>: This will empty all fields and set checkboxes to their defaults.</li>
+<li><b>Help</b>: This button opens the manual you are currently reading.</li></ul></li></ul>
+<p>
+
+
+<p><a name="EditiptcData"></a>
+<h3 class="section">5.5 IPTC data (not directly supported)</h3>
+<p>IPTC is an older metadata information standard.
+It stands for "International Press Telecommunications Council", also with a 
+combination with the Newspaper Association of America (NAA) Information Interchange Model (IIM).
+This already shows the primary goal of this standard which is perhaps not what 
+an amateur photograph is aiming for.
+Next to that: IPTC is being phased out in favor of XMP.
+<p>On some of the edit tabs the IPTC data is automatically updated when (for example) the xmp data is updated.
+<p> </p>
+<p>
+
+
+
+<p><a name="workflow"></a>
+<h3 class="section">5.6 Example workflows</h3>
+
+<p> </p>
+<p><a name="generalworkflow"></a>
+<h4 class="subsection">5.6.1 General workflow</h4>
+
+<p>Below you'll find an example of how you can use the program to edit the metadata of your images.
+Click the images for a full size version.
+<table border="0" width="980" cellpadding="10">
+<tbody>
+<tr>
+<td><a href="01-workflow-pyexiftoolgui.jpg"><img title="select an image; Click for a full size version" src="01-workflow-pyexiftoolgui.jpg" alt="Select an image" width="500"></a></td>
+<td>Load your image(s) via "File -&gt; Load Images", via the "Load Images" button or via the right-click option in the context menu.
+<p>Go to the "Edit -&gt; Gps" tag.</p>
+<p>If one of your images contains the info you need for your other image(s), select that image. Use the "Copy from selected image".</p>
+<p>The available gps information will be copied into the relevant input fields.</p>
+</td>
+</tr>
+<tr>
+<td><a href="02-workflow-pyexiftoolgui.jpg"><img title="Copy the selected info; Click for a full size version" src="02-workflow-pyexiftoolgui.jpg" alt="Copy the selected info" width="500"></a></td>
+<td><p>The xmp/iptc location info (location, country, state, city) is hardly ever available, but you can add the info yourself.</p>
+<p>In case your images don't contain any information at all, but you do know the location, you can click the "Open 
+MapCoordinates.net" button. This will open the mapcoordinates.net website in your default webbrowser. mapcoordinates.net 
+is based on google maps and you can search for the location and landmarks, like "Eiffel tower" (in Paris) or "machu picchu" (Peru). 
+The website will display a popup with the decimal altitude and longitude coordinates and the altitude. 
+<p>Note that this altitude is mostly correct, but sometimes completely wrong.
+</td>
+</tr>
+<tr>
+<td><a href="03-workflow-pyexiftoolgui.jpg"><img title="Possibly alter or extend the info; Click for a full size version" src="03-workflow-pyexiftoolgui.jpg" alt="Possibly alter or extend the info" width="500"></a></td>
+<td><p>After you have added or altered the information, you need to pay attention to which information you want to save to your image(s).
+<p>The <b>Save</b> checkboxes determine which information will be stored upon saving. Note that when an input field is empty, 
+you can by accident, or deliberately write "clean" the data in your images for the relevant tags.
+</td>
+</tr>
+<tr>
+<td><a href="04-workflow-pyexiftoolgui.jpg"><img title="Select the photos you want to save the information to; Click for a full size version" src="04-workflow-pyexiftoolgui.jpg" alt="Select the photos you want to save the information to" width="500"></a></td>
+<td><p>Now select the photos on the left side where you want the information to be saved into. Note that Shift and Control works in selecting 
+the photos.
+<p>Once you have selected the images click the "Save to selected images" button.
+</td>
+</tr>
+<tr>
+<td><a href="05-workflow-pyexiftoolgui.jpg"><img title="Saving the information to the photos; Click for a full size version" src="05-workflow-pyexiftoolgui.jpg" alt="Saving the information to the photos" width="500"></a></td>
+<td><p>Once the button "Save to selected images" has been clicked you will see a message displayed describing which image is 
+processed and a progress bar displaying the complete progress.
+</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<p><a name="scan_rename_workflow"></a>
+<h4 class="subsection">5.6.2 After scanning: Correcting Date/time and Renaming workflow</h4>
+<p>The following workflow shows an example where (in this case) old diapositives out of 1977 were scanned. We start with the scanned images and the workflow is as follows:
+<ul><li>Set the datetime metatags (We don't know the exact the date so we estimate the date as precise as possible.)
+<li>We set the file date based on the datetime metatags we have just set in the previous set.
+<li>We rename the photos based on metadata tags and possible string (like the occasion, location or whatever you want to use to identify/classify the photos).
+</li></ul>
+<p>The following workflow consists of a mix-and-match of Mac OS X screens and Ubuntu Unity screens (the latter with Mac OS X windowing icon theme as I don't like Ubuntu Unity's default orange icons).
+<p><table border="0" width="980" cellpadding="10">
+<tbody>
+<tr>
+<td><a href="workflow_scanned_images-01.jpg"><img title="Right-click your loaded selection; Click for a full size version" src="workflow_scanned_images-01.jpg" alt="Right-click your loaded selection" width="500"></a></td>
+<td><p>After you have loaded your image(s) and made your selection, you select the "Modify Date/time" option by either right-clicking and selecting it from the context menu or from the Extra menu.<br>The "Modify Date/time" dialog will 
+be opened.</td>
+</tr>
+<tr>
+<td><img title="Use a reference image" src="workflow_scanned_images-02.jpg" alt="Use a reference image" width="500"></td>
+<td><p><i>Note:</i> If you have a photo with the correct datetime tags, you can select it from your photo-selection, right-click that photo and select the option "Select photo as reference for "Extra" menu". You can then use the copied data in a number of edit screens. It will remain available after a new "load image(s)" session.
+</td>
+</tr>
+<tr>
+<td><a href="workflow_scanned_images-03.jpg"><img title="Modify date time; Click for a full size version" src="workflow_scanned_images-03.jpg" alt="Modify Date time" width="500"></a></td>
+<td><p>Set the date and time in the "ModifyDate" field to the correct date (In this case of old scanned photos as accurate as possible).<br>Optionally copy&paste the "ModifyDate" field value to the other two fields. These data 
+fields are Exif datetime tags. If you want the XMP datetime tags also be set, check that XMP checkbox as well.
+<p>When done click the "Save" button.
+<p><i>Note:</li> If you did select a reference photo with correct datetime metadata tags, you can now use that data by checking the "Use date and time from reference image". It will immediately fill/update the three datetime fields.</td>
+</tr>
+<tr>
+<td><a href="workflow_scanned_images-04.jpg"><img title="Set file date to DateTimeOriginal; Click for a full size version" src="workflow_scanned_images-04.jpg" alt="Set file date to DateTimeOriginal" width="500"></a></td>
+<td><p>Right-click somewhere in your selection and select from the context-menu the option "Set file date to DateTimeOriginal" or select that option from the "Extra" menu.<br></td>
+</tr>
+<tr>
+<td><img title="Set file/date time to DateTimeOriginal" src="workflow_scanned_images-04a.jpg" alt="Set file/date time to DateTimeOriginal" width="500"></td>
+<td><p>If you scanned your old photos, negatives or diapositives, your scanned images will get the file date time of 
+the moment of scanning while your images itself are (most certainly) much older.
+This function will now take the "exif:DateTimeOriginal" from the metadata datetime tags in your image(s) you just 
+added in the previous step and use that as file date/time.
+<i>Note</i>: exiftool can go back as far as 01-01-1970 for file dates (metadata can be any date/time). If your images are from e.g. 26 December 1958 (mid day) you need to use the "touch" function on linux/Mac OS X like "touch -t 195812261200.00 name_of_image(s)"
+</td>
+</tr>
+<tr>
+<td><a href="workflow_scanned_images-05.jpg"><img title="Rename photos option; Click for a full size version" src="workflow_scanned_images-05.jpg" alt="Rename photos option" width="500"></a></td>
+<td><p><b>Renaming your photos requires that your photos must contain metadata as that is where exiftool 
+renaming is based upon.</b><br>
+<p>Right-click somewhere in your image selection and select the option "Rename photos" from the context menu or select that option from the "Extra" menu.<br>The "Rename photos" dialog will be opened.</td>
+</tr>
+<tr>
+<td><a href="workflow_scanned_images-06.jpg"><img title="Rename photos dialog; Click for a full size version" src="workflow_scanned_images-06.jpg" alt="Rename photos dialog" width="500"></a></td>
+<td><p>In this screen you can rename your photos based upon a selection from the main screen, or from an entire folder which you 
+can select here. In this example workflow the renaming is based on the main screen selection so we leave the source 
+folder empty. <i>(Click the info button in this dialog for more info)</i></td>
+</tr>
+</tbody>
+</table>
+
+<p> </p>
+
+<hr><p><a name="ExtraMenu"></a>
+<h2 class="chapter">6 Extra Menu</h2>
+<p>The extra menu gives a set of exiftool command options which will be explained in the following subsections.<br>
+<img title="The Extra menu" src="ExtraMenu.jpg" alt="The Extra menu">
+
+<p> </p>
+<p><a name="extramenu-renamephotos"></a>
+<h3 class="section">6.1 Rename photos</h3>
+<table><tr><td><p><img title="Rename photos dialog; Click for a full size version" src="workflow_scanned_images-06.jpg" alt="Rename photos dialog" width="500" align="left"></a><p>The functionality of this screen is also partially described in the <a href="scan_rename_workflow">5.6.2 After scanning: Correcting Date/time and Renaming workflow</a> above.<br>
+There are two options to use this screen:
+<ul><li>Using a (sub)selection from the main screen.
+<li>Selecting a source folder in this renaming screen.</li></ul>
+= Using a (sub)selection from the main screen</br>
+The way of working is described in the last subsection of 5.6.2.<br>
+<p>= Selecting a source folder in this renaming screen.<br>
+When you use this option the renaming will work on all supported formats in the selected folder and in 
+any subfolder of the selected folder.<p>
+= What are the differences?<br>
+The main screen selection gives you the option to load a set of images from a folder and work sequentially on the subselections. It is therefore more flexible.<br>
+The source folder option on the other hand is up to 10 times faster.</td></tr></table>
+
+
+
+<p> </p>
+<p><a name="extramenu-createargsfile"></a>
+<h3 class="section">6.2 Create args file(s)</h3>
+<table><tr><td><p><img title="Create args file(s)" src="extramenu-argsfile.jpg" alt="Create args file(s)" align="left">Exiftool has the option to output information in the form of exiftool arguments. If you create an args file by exporting the information from your photo(s), you can use this args file as an "exiftool commands" file to write to another (set of) photo(s). pyExifToolGUI (currently) only supports the creation of these args files. pyExifToolGUI can't use these files (yet) to write to other photos.<br>A workaround however is to use this args file from the "Your commands" tab as explained in chapter <a href="#YourCommands">7 Your commands</a>.</td></tr></table>
+
+<p> </p>
+<p><a name="extramenu-exportmetadata"></a>
+<h3 class="section">6.3 Export metadata</h3>
+<table><tr><td><p><img title="Export metadata" src="extramenu-exportmetadata.jpg" alt="Export metadata" align="left">
+<p>Exiftool can export the metadata inside images to a number of output formats. From this popup screen you can 
+export the metadata from your selected image(s) to files in these export formats.
+<p>Note that per selected image an output (export) file is written (1 photo gives 1 export file). The only exception to this is the 
+"csv" format. The "csv" format is an LibreOffice/OpenOffice/Excel compatible format which contains one row of 
+metadata per image in one "output.csv"file.<br>
+<p>Note also that the output files are written to the same folder as where the images are.</td></tr></table>
+
+<p> </p>
+<p><a name="extramenu-modifydatetime"></a>
+<h3 class="section">6.4 Modify Date/time</h3>
+<table><tr><td><p><img title="Modify DateTime" src="extramenu-modifydatetime.jpg" alt="Modify DateTime" align="left">
+<p>As the popup mentions: This dialog gives you the option to modify the several date/time tags in the exif information like in the "Edit->Exif" tab. It works on the images you selected in the main screen.<br><p>This dialog gives you more date/time functionality (and only date/time functionality) compared to the exif->edit tab: You can use the "shift above date/times" function to shift the date/time forward or backward (in the future or in the past) for the selected fields. This function also respects whether you selected the specific tag (field) to save or not, and also works on the selected images from the main screen.<br>The "Use date and time from reference image" can also be used in combination with the "shift above date/times" function.<br><p>The corresponding xmp values can be updated at the same time.</td></tr></table>
+
+<p> </p>
+<p><a name="extramenu-setfiledatetodto"></a>
+<h3 class="section">6.5 Set file date to DateTimeOriginal</h3>
+<table><tr><td><p><img title="Set file/date time to DateTimeOriginal" src="workflow_scanned_images-04a.jpg" alt="Set file/date time to DateTimeOriginal" align="left"><p>If you modified your images in a "sloppy" image editor or copied them around or whatever other action(s), the file 
+date/time of your images might have changed to the date when you did your action/modification on the photo(s). In 
+such a situation the real filedate(= creation date) of your images is (much) older. You might want to change the file date 
+back to what it really should be based on the metadata when you took the photo.<br>
+Another option could be that you scanned some old photos, negatives or dia positives. These photos will get the date when they were saved after the scanning. Next to that: these scanned images mostly contain no exif data at all.<br><p>
+This "Set file/date time to DateTimeOriginal" function will take the original date/time when the photo was taken from the exif:DateTimeOriginal 
+and use that (again) as file date/time.
+<br><i>Note:</i> In case you have images that don't contain datetime metadata anymore, or not at all like the scanned photos, you first need to use the "Modify Date/time" function as described in <a href="#extramenu-modifydatetime">6.4 Modify Date/time</a></td></tr></table>
+
+<p> </p>
+<p><a name="extramenu-repairjpgs"></a>
+<h3 class="section">6.6 Repair JPG(s) with corrupted metadata</h3>
+<table><tr><td><p><img title="Repair JPG(s) with corrupted metadata" src="extramenu-repairjpgs.jpg" alt="Repair JPG(s) with corrupted metadata" align="left">
+<p>As the popup on the left already mentions: If exiftool can't write to your photo it might be due to corrupted 
+metadata. Exiftool can fix a lot of the metadata but only for the tags that are still readible. In a jpeg the image data is separated from the meta data. Exiftool will create a clean metadata structure and write as much metadata back to the metadata part of the JPG.<br>
+<i>Note:</i> If your photo can't be displayed in an image viewer, your image data itself is corrupt. Exiftool can't repair 
+that.<br>
+This only works for jpgs as a lot of other formats don't separate the metadata from the image data.</td></tr></table>
+
+<p> </p>
+<p><a name="extramenu-copytoxmp"></a>
+<h3 class="section">6.7 Copy all metadata to xmp format</h3>
+<table><tr><td><p><img title="Copy all metadata to xmp format" src="extramenu-export2xmpformat.jpg" alt="Copy all metadata to xmp format" align="left">
+XMP stands for "Extensible Metadata Platform", an XML/RDF-based metadata format which is being pushed by Adobe. 
+Information in this format can be embedded in many different image file types including JPG, JP2, TIFF, GIF, EPS, 
+PDF, PSD, IND, INX, PNG, DJVU, SVG, PGF, MIFF, XCF, CRW, DNG and a variety of proprietary TIFF-based RAW images, 
+as well as in MOV, AVI, ASF, WMV, FLV, SWF and MP4 videos, but also in WMA and audio formats supporting ID3v2 information.<br>
+<p>XMP is a "growing" and easy extensible metadata format and already incorporates a lot of EXIF and IPTC metadata. It also allows for software products to define their own set of XMP tags, like the Google photosphere, microsoft face recognition and Digikam xmp tags.<br>This "Copy all metadata to xmp format" function copies all the relevant information from the exif and iptc tags into the corresponding xmp tags.
+</td></tr></table>
+
+<p> </p>
+<p><a name="extramenu-removemetadata"></a>
+<h3 class="section">6.8 Remove metadata</h3>
+<table><tr><td><p><img title="Remove metadata" src="extramenu-removemetadata.jpg" alt="Remove metadata" align="left">
+This function (on the left) is the most dangerous one of the program. Therefore it is one of the few functions using a 
+second "Are you sure?" popup (see below) and that's also why it makes a backup of your images by default.<br>
+For the rest it is simple: It removes the metadata you select.<br><br> 
+<img title="Remove metadata - verify if user really wants this" src="extramenu-removemetadata_areyousure.jpg" alt="Remove metadata - verify if user really wants this" align="left"></td></tr></table>
+
+<hr><p><a name="YourCommands"></a>
+<h2 class="chapter">7 Your Commands</h2>
+
+<p>On this tab you can define your own parameters to "send to" exiftool. The parameters will be executed on the images you have selected on the left. 
+<p><img src="yourcommands.jpg" alt="yourcommands.jpg" title="The Your Commands tab" width="1100">
+<br>You can both specify read parameters as well as write parameters but not in one command: write actions take precedence. You can also combine several parameters. <b>Note:</b> You don't need (must not) provide the exiftool command itself. The Gui will take care of that.<br> 
+One thing YOU need to take care of is the use of either single quotes or double quotes around some commands. If you want to set the file date to the date the photo was taken, you need the command <tt>-FileModifyDate&lt;DateTimeOriginal</tt>.
+On Windows you need to double-quote this and on Linux and Mac OS X you need to single-quote this, like
+<ul><li>Linux/Mac OS X: <tt>'-FileModifyDate&lt;DateTimeOriginal'</tt></li>
+<li>Windows: <tt>"-FileModifyDate&lt;DateTimeOriginal"</tt></li></ul>
+Other examples are:
+<table border="1" cellpadding="10">
+<tr><td>-exif:all</td><td>will display all exif tags for the selected images</td></tr>
+<tr><td>-exif:all=</td><td>will remove(<b>!</b>) all exif tags from the selected images</td></tr>
+<tr><td>-Exif:Artist="My Name"</td><td>Will put "Your Name" into the selected images</td></tr>
+<tr><td>-Xmp:City=Zwolle -Xmp:Country=Netherlands</td><td>Will write your city and country into the xmp tags of your image(s)</td></tr>
+</table>
+See also the <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/exiftool_pod.html" target="_blank">exiftool Application Documentation</a> which gives extensive information and lots of examples.
+
+
+<p> </p>
+
+<hr><p><a name="Preferences"></a>
+<h2 class="chapter">8 Preferences</h2>
+
+<p>The Preferences tab gives you the option to select some defaults for this application.
+<p><h3>ExifTool:</h3>
+<ul><li><b>Windows:</b>  You always have to specify where exiftool.exe is. Please rename exiftool(-k).exe to exiftool.exe. 
+If you stick to exiftool(-k).exe the program will pause after every screen of output and wait for a key to continue. That will give problems in pyExifToolGUI (in any GUI for that matter).</li>
+<li><b>Linux and Mac OS X:</b>  The program will check for an installed exiftool in the standard program folders. 
+If not found you have to specify where exiftool is. You can also use this option to specify a newer exiftool version 
+then standard available for your distribution. At this moment most Linux distributions ship with some 8.xy exiftool version.
+</li></ul>
+<p>For the Gpano functionality you really need a version equal or newer then 9.07. 
+See also "<a href="#EditgpanoData">5.4 Edit GPano (Google Photosphere) data</a>".
+<p><h3>Default values:</h3>
+<p>These fields give you the option to specify your name (for example) and some copyright notice (for example: Spiderman (c) 2012).
+They can be copied into the relevant exif, xmp and iptc fields for these values.</li></ul>
+<p><img src="preferencestab.jpg" alt="preferencestab.jpg" title="Preferences tab" width="1100">
+
+<p><br><br><br>
+
+<Hr>
+<p><a name="FDL"></a>
+
+<h2 class="appendix">Appendix A <acronym>GNU</acronym> Free Documentation License</h2>
+
+<p><a name="index-free-documentation-license-_0028_0040acronym_007bFDL_007d_0029-265"></a><a name="index-g_t_0040acronym_007bGNU_007d-free-documentation-license-266"></a>
+
+<!-- The GNU Free Documentation License. -->
+   <p>Version 1.2, November 2002
+
+<!-- This file is intended to be included within another document, -->
+<!-- hence no sectioning command or @node. -->
+<pre class="display">     Copyright &copy; 2000, 2001, 2002 Free Software Foundation, Inc.
+     51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA
+     
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+</pre>
+     <ol type=1 start=0>
+<li>PREAMBLE
+
+     <p>The purpose of this License is to make a manual, textbook, or other
+functional and useful document <dfn>free</dfn> in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially. 
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.
+
+     <p>This License is a kind of &ldquo;copyleft&rdquo;, which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the <acronym>GNU</acronym> General Public License, which is a
+copyleft license designed for free software.
+
+     <p>We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+
+     <li>APPLICABILITY AND DEFINITIONS
+
+     <p>This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The &ldquo;Document&rdquo;, below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as &ldquo;you&rdquo;.  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.
+
+     <p>A &ldquo;Modified Version&rdquo; of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+
+     <p>A &ldquo;Secondary Section&rdquo; is a named appendix or a front-matter section
+of the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document's overall
+subject (or to related matters) and contains nothing that could fall
+directly within that overall subject.  (Thus, if the Document is in
+part a textbook of mathematics, a Secondary Section may not explain
+any mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+
+     <p>The &ldquo;Invariant Sections&rdquo; are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.
+
+     <p>The &ldquo;Cover Texts&rdquo; are certain short passages of text that are
+listed, as Front-Cover Texts or Back-Cover Texts, in the notice that
+says that the Document is released under this License.  A Front-Cover
+Text may be at most 5 words, and a Back-Cover Text may be at most 25
+words.
+
+     <p>A &ldquo;Transparent&rdquo; copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent. 
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not &ldquo;Transparent&rdquo; is called &ldquo;Opaque&rdquo;.
+
+     <p>Examples of suitable formats for Transparent copies include plain
+<span class="sc">ascii</span> without markup, Texinfo input format, LaTeX input
+format, <acronym>SGML</acronym> or <acronym>XML</acronym> using a publicly available
+<acronym>DTD</acronym>, and standard-conforming simple <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> designed for human modification.  Examples
+of transparent image formats include <acronym>PNG</acronym>, <acronym>XCF</acronym> and
+<acronym>JPG</acronym>.  Opaque formats include proprietary formats that can be
+read and edited only by proprietary word processors, <acronym>SGML</acronym> or
+<acronym>XML</acronym> for which the <acronym>DTD</acronym> and/or processing tools are
+not generally available, and the machine-generated <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> produced by some word processors for
+output purposes only.
+
+     <p>The &ldquo;Title Page&rdquo; means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, &ldquo;Title Page&rdquo; means
+the text near the most prominent appearance of the work's title,
+preceding the beginning of the body of the text.
+
+     <p>A section &ldquo;Entitled XYZ&rdquo; means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, &ldquo;Endorsements&rdquo;, or &ldquo;History&rdquo;.)  To &ldquo;Preserve the
+Title&rdquo; of such a section when you modify the Document means that it
+remains a section &ldquo;Entitled XYZ&rdquo; according to this definition.
+
+     <p>The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.
+
+     <li>VERBATIM COPYING
+
+     <p>You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no
+other conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+
+     <p>You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+
+     <li>COPYING IN QUANTITY
+
+     <p>If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document's license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition. 
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+
+     <p>If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+
+     <p>If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material. 
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+
+     <p>It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to
+give them a chance to provide you with an updated version of the
+Document.
+
+     <li>MODIFICATIONS
+
+     <p>You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+
+          <ol type=A start=1>
+<li>Use in the Title Page (and on the covers, if any) a title distinct
+from that of the Document, and from those of previous versions (which
+should, if there were any, be listed in the History section of the
+Document).  You may use the same title as a previous version if the
+original publisher of that version gives permission.
+
+          <li>List on the Title Page, as authors, one or more persons or entities
+responsible for authorship of the modifications in the Modified
+Version, together with at least five of the principal authors of the
+Document (all of its principal authors, if it has fewer than five),
+unless they release you from this requirement.
+
+          <li>State on the Title page the name of the publisher of the Modified
+Version, as the publisher.
+
+          <li>Preserve all the copyright notices of the Document.
+
+          <li>Add an appropriate copyright notice for your modifications adjacent to
+the other copyright notices.
+
+          <li>Include, immediately after the copyright notices, a license notice
+giving the public permission to use the Modified Version under the
+terms of this License, in the form shown in the Addendum below.
+
+          <li>Preserve in that license notice the full lists of Invariant Sections
+and required Cover Texts given in the Document's license notice.
+
+          <li>Include an unaltered copy of this License.
+
+          <li>Preserve the section Entitled &ldquo;History&rdquo;, Preserve its Title, and add
+to it an item stating at least the title, year, new authors, and
+publisher of the Modified Version as given on the Title Page.  If
+there is no section Entitled &ldquo;History&rdquo; in the Document, create one
+stating the title, year, authors, and publisher of the Document as
+given on its Title Page, then add an item describing the Modified
+Version as stated in the previous sentence.
+
+          <li>Preserve the network location, if any, given in the Document for
+public access to a Transparent copy of the Document, and likewise the
+network locations given in the Document for previous versions it was
+based on.  These may be placed in the &ldquo;History&rdquo; section.  You may
+omit a network location for a work that was published at least four
+years before the Document itself, or if the original publisher of the
+version it refers to gives permission.
+
+          <li>For any section Entitled &ldquo;Acknowledgements&rdquo; or &ldquo;Dedications&rdquo;,
+Preserve the Title of the section, and preserve in the section all the
+substance and tone of each of the contributor acknowledgements and/or
+dedications given therein.
+
+          <li>Preserve all the Invariant Sections of the Document, unaltered in
+their text and in their titles.  Section numbers or the equivalent are
+not considered part of the section titles.
+
+          <li>Delete any section Entitled &ldquo;Endorsements&rdquo;.  Such a section may not
+be included in the Modified Version.
+
+          <li>Do not retitle any existing section to be Entitled &ldquo;Endorsements&rdquo; or
+to conflict in title with any Invariant Section.
+
+          <li>Preserve any Warranty Disclaimers.
+          </ol>
+
+     <p>If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version's license notice. 
+These titles must be distinct from any other section titles.
+
+     <p>You may add a section Entitled &ldquo;Endorsements&rdquo;, provided it contains
+nothing but endorsements of your Modified Version by various
+parties&mdash;for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+
+     <p>You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+
+     <p>The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+
+     <li>COMBINING DOCUMENTS
+
+     <p>You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.
+
+     <p>The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number. 
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+
+     <p>In the combination, you must combine any sections Entitled &ldquo;History&rdquo;
+in the various original documents, forming one section Entitled
+&ldquo;History&rdquo;; likewise combine any sections Entitled
+&ldquo;Acknowledgements&rdquo;, and any sections Entitled &ldquo;Dedications&rdquo;.  You
+must delete all sections Entitled &ldquo;Endorsements.&rdquo;
+
+     <li>COLLECTIONS OF DOCUMENTS
+
+     <p>You may make a collection consisting of the Document and other
+documents released under this License, and replace the individual
+copies of this License in the various documents with a single copy
+that is included in the collection, provided that you follow the rules
+of this License for verbatim copying of each of the documents in all
+other respects.
+
+     <p>You may extract a single document from such a collection, and
+distribute it individually under this License, provided you insert a
+copy of this License into the extracted document, and follow this
+License in all other respects regarding verbatim copying of that
+document.
+
+     <li>AGGREGATION WITH INDEPENDENT WORKS
+
+     <p>A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an &ldquo;aggregate&rdquo; if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation's users beyond what the individual works permit. 
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+
+     <p>If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document's Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form. 
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.
+
+     <li>TRANSLATION
+
+     <p>Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4. 
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.
+
+     <p>If a section in the Document is Entitled &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, or &ldquo;History&rdquo;, the requirement (section 4) to
+Preserve its Title (section 1) will typically require changing the
+actual title.
+
+     <li>TERMINATION
+
+     <p>You may not copy, modify, sublicense, or distribute the Document
+except as expressly provided for under this License.  Any other
+attempt to copy, modify, sublicense or distribute the Document is
+void, and will automatically terminate your rights under this License. 
+However, parties who have received copies, or rights, from you under
+this License will not have their licenses terminated so long as such
+parties remain in full compliance.
+
+     <li>FUTURE REVISIONS OF THIS LICENSE
+
+     <p>The Free Software Foundation may publish new, revised versions of the
+<acronym>GNU</acronym> Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+<a href="http://www.gnu.org/copyleft/">http://www.gnu.org/copyleft/</a>.
+
+     <p>Each version of the License is given a distinguishing version number. 
+If the Document specifies that a particular numbered version of this
+License &ldquo;or any later version&rdquo; applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.
+        </ol>
+
+<p>
+<!-- End of Document -->
+</body></html>
+
