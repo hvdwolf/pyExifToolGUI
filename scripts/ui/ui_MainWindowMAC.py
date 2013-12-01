@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sun Dec  1 16:54:52 2013
+# Created: Sun Dec  1 19:08:35 2013
 #      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -1272,11 +1272,11 @@ class Ui_MainWindow(object):
         self.btn_geotag_img_browse.setObjectName("btn_geotag_img_browse")
         self.horizontalLayout.addWidget(self.btn_geotag_img_browse)
         self.gridLayout_12.addLayout(self.horizontalLayout, 4, 0, 1, 1)
-        self.geotagging_geosynctime = QtGui.QLineEdit(self.gridLayoutWidget_12)
-        self.geotagging_geosynctime.setEnabled(True)
-        self.geotagging_geosynctime.setToolTip("")
-        self.geotagging_geosynctime.setObjectName("geotagging_geosynctime")
-        self.gridLayout_12.addWidget(self.geotagging_geosynctime, 10, 0, 1, 1)
+        self.LineEdit_geotagging_geosynctime = QtGui.QLineEdit(self.gridLayoutWidget_12)
+        self.LineEdit_geotagging_geosynctime.setEnabled(True)
+        self.LineEdit_geotagging_geosynctime.setToolTip("")
+        self.LineEdit_geotagging_geosynctime.setObjectName("LineEdit_geotagging_geosynctime")
+        self.gridLayout_12.addWidget(self.LineEdit_geotagging_geosynctime, 10, 0, 1, 1)
         spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.gridLayout_12.addItem(spacerItem, 11, 0, 1, 1)
         spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)

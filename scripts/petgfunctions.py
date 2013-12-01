@@ -1713,6 +1713,146 @@ def remove_metadata(self, qApp):
             self.statusbar.showMessage("you canceled the \"Removal of metadata\" action")   
 
 #------------------------------------------------------------------------
+# This is the part where the geotag functions will be executed
+def write_geotag_info(self,qApp):
+       # First check if we have something to work on
+       result = check_geotag_folder_before_run_geotag_photos(self)
+       if result == "nothing_to_work_with":
+          # error message already displayed, exit function
+          return
+       else:
+          # work_on gets the geotag folder or the main images screen selection
+          work_on = result
+          # Now check whether we have a GPS track log file
+          if self.LineEdit_geotag_log_file.text() == "":
+		# user did not specify a GPS track log file
+		QMessageBox.information(self,"No GPS track log file", "You did not select a GPS track log file\n. Cancelling this action")
+		return "nothing_to_work_with"
+          else:
+		# At this stage we have images and a track log file
+		run_geotag_photos(self, work_on, qApps)
+        
+#---
+def check_geotag_folder_before_run_geotag_photos(self):
+    print("self.LineEdit_getoag_source_folder #" + self.LineEdit_geotag_source_folder.text() + "#")
+    if self.LineEdit_geotag_source_folder.text() == "":
+       # user did not select a source folder, now check in the except whether he/she selected images in the main screen
+       try:
+           #if len(self.fileNames) == 0:
+           selected_rows = self.MaintableWidget.selectedIndexes()
+           if len(selected_rows) == 0:
+                  QMessageBox.information(self,"Nothing to work with","You did not specify a source folder and neither did you load/select any photos in the main screen.")
+                  return "nothing_to_work_with"
+           else:
+                  # just exit this function with the option "main_screen_selection"
+                  print("main_screen_selection")
+                  return "main_screen_selection"
+       except:
+           QMessageBox.information(self,"Nothing to work with","You did not specify a source folder and neither did you load/select any photos in the main screen.")
+           return "nothing_to_work_with"
+    else:
+      # just exit this function with the option rename_source_folder (this is not the path)
+      print("geotag_source_folder")
+      return "geotag_source_folder"
+
+#---
+def run_geotag_photos(self, work_on, qApps):
+       # Now do the real work
+       # Check whether user specified a geosync time
+       if self.LineEdit_geotagging_geosynctime.text() == "":
+          exiftoolparams = " -geotag '" + self.LineEdit_geotag_log_file.text() + "'"
+          xmpparams = " -xmp:geotag '" + self.LineEdit_geotag_log_file.text() + "'"
+       else:
+          exiftoolparams = " -geotag '" + self.LineEdit_geotag_log_file.text() + "' -geosync=" + self.LineEdit_geotagging_geosynctime.text() + " "
+          xmpparams = " -xmp:geotag '" + self.LineEdit_geotag_log_file.text() + "' -geosync=" + self.LineEdit_geotagging_geosynctime.text() + " "
+
+       # final check
+       if work_on == "nothing_to_work_with":
+          # This should already been dealt with earlier, but in case I did something stupid we simply exit this function
+          return
+       elif work_on == "main_screen_selection":
+          # we use the images that were selected from the main screen
+          print("we use the images that were selected from the main screen")
+          selected_rows = self.MaintableWidget.selectedIndexes()
+          #exiftoolparams = "'-FileName<" + self.prefix + "_" + self.suffix + ".%le' " + self.prefixformat + " " + self.suffixformat + "-." + self.combobox_digits.currenttext() + "nc" + self.sourcefolder + "/*"
+          rowcounter = 0
+          total_rows = len(selected_rows)
+          self.progressbar.setRange(0, total_rows)
+          self.progressbar.setValue(0)
+          self.progressbar.show()
+          rows = []
+          qApp.processEvents()
+          for selected_row in selected_rows:
+                selected_row = str(selected_row)
+                selected_row = selected_row.replace("<PySide.QtCore.QModelIndex(",'')
+                selected_row, tail = re.split(',0x0',selected_row)
+                #print str(selected_row)
+                row, column = re.split(',',selected_row)
+                if row not in rows:
+                        rows.append(row)
+                        selected_image = "\"" + self.fileNames[int(row)] + "\""
+                        print('exiftool ' + exiftoolparams + ' ' + selected_image)
+                        rowcounter += 1
+                        self.progressbar.setValue(rowcounter)
+                        parameters = ' ' + exiftoolparams + ' ' + selected_image
+                        xmpparameters = ' ' + xmpparams + ' ' + selected_image
+                        self.statusbar.showMessage("Trying to geotag " + os.path.basename(selected_image))
+                        qApp.processEvents()
+                        if self.OSplatform in ("Windows", "win32"):
+                           parameters = parameters.replace("/", "\\")
+                           parameters = parameters.replace("'", "\"")
+                           xmpparameters = xmpparameters.replace("/", "\\")
+                           xmpparameters = xmpparameters.replace("'", "\"")
+                           args = self.exiftoolprog + parameters
+                           xmpargs = self.exiftoolprog + xmpparameters
+                           print(args)
+                           print(xmpargs)
+                           p = subprocess.call(args, shell=True)
+                           p = subprocess.call(xmpargs, shell=True)
+                        else:
+                           #parameters = parameters.replace("'", "\"")
+                           command_line = self.exiftoolprog + ' ' + exiftoolparams + ' ' + selected_image
+                           xmp_command_line = self.exiftoolprog + ' ' + xmpparams + ' ' + selected_image
+                           args = shlex.split(command_line)
+                           xmpargs = shlex.split(xmp_command_line)
+                           print("command_line " + command_line)
+                           print("xmp command_line " + xmp_command_line)
+                           #p = subprocess.call(command_line)
+                           p = subprocess.call(args)
+                           p = subprocess.call(xmpargs)
+                self.statusbar.showMessage("Finished geotagging images where timestamps fit.")
+                qApp.processEvents()
+          self.progressbar.hide()
+          self.statusbar.showMessage("")
+       elif work_on == "geotag_source_folder":
+          # work on all images in the source folder and do it in this function self
+          #print "work on all images in the source folder"
+          #print self.rename_photos_dialog.LineEdit_rename_source_folder.text()
+          self.statusbar.showMessage("Trying to geotag all images in: " + self.LineEdit_geotag_source_folder.text())
+          parameters = ' ' + exiftoolparams + ' "' + self.LineEdit_geotag_source_folder.text() + '"'
+          xmpparameters = ' ' + xmpparams + ' "' + self.LineEdit_geotag_source_folder.text() + '"'
+          if self.OSplatform in ("Windows", "win32"):
+              parameters = parameters.replace("/", "\\")
+              parameters = parameters.replace("'", "\"")
+              xmpparameters = xmpparameters.replace("/", "\\")
+              xmpparameters = xmpparameters.replace("'", "\"")
+              args = self.exiftoolprog + parameters
+              xmpargs = self.exiftoolprog + xmpparameters
+              print(args)
+              print(xmpargs)
+              p = subprocess.call(args, shell=True)
+              p = subprocess.call(xmpargs, shell=True)
+          else:
+              pathofimages = self.LineEdit_geotag_source_folder.text().replace(" ", "\\ ")
+              command_line = self.exiftoolprog + ' ' + exiftoolparams + ' ' + pathofimages
+              xmpcommand_line = self.exiftoolprog + ' ' + xmpparams + ' ' + pathofimages
+              #print "command_line " + command_line
+              p = subprocess.call(command_line, shell=True)
+              p = subprocess.call(xmpcommand_line, shell=True)
+          self.statusbar.showMessage("Finished geotagging all images in: " + self.LineEdit_geotag_source_folder.text()) + " where timestamps fit."
+
+
+#------------------------------------------------------------------------
 # This is the part where your own exiftool parameters will be executed
 def yourcommands_go(self, qApp):
         output_text = ""

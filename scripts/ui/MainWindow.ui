@@ -3021,7 +3021,7 @@ Originals</string>
           </layout>
          </item>
          <item row="10" column="0">
-          <widget class="QLineEdit" name="geotagging_geosynctime">
+          <widget class="QLineEdit" name="LineEdit_geotagging_geosynctime">
            <property name="enabled">
             <bool>true</bool>
            </property>

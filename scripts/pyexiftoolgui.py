@@ -547,11 +547,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	   # user canceled
            self.statusbar.showMessage("you canceled selecting the GPS track log file.")
            self.geotag_gps_file = ""
-
 #---
     def write_geotag_info(self):
            print("pushed button to write the geotag info")
            self.statusbar.showMessage("writing geotag information to image(s).")
+           petgfunctions.write_geotag_info(self,qApp)
 
 
 # Your Commands tab
