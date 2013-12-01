@@ -1,6 +1,6 @@
 Mac OSX has it's unified menubar. This is a main problem for all QT-related (PySide/pyQT)
 applications as you will find somewhere in your ui_MainWindow.py (or whatever you called it)
-a line menntioning something like:
+a line mentioning something like:
 
       MainWindow.setMenuBar(self.menubar)
 
