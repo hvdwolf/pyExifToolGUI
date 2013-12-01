@@ -478,7 +478,7 @@
             <x>0</x>
             <y>27</y>
             <width>291</width>
-            <height>125</height>
+            <height>127</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout">
@@ -1213,7 +1213,7 @@ to convert the data.</string>
            <x>0</x>
            <y>0</y>
            <width>261</width>
-           <height>152</height>
+           <height>155</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0,0,0" rowminimumheight="0,0,0,0,0">
@@ -2375,7 +2375,7 @@ Originals</string>
           <x>10</x>
           <y>60</y>
           <width>611</width>
-          <height>451</height>
+          <height>461</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
@@ -2892,6 +2892,206 @@ Originals</string>
         </layout>
        </widget>
       </widget>
+      <widget class="QWidget" name="editgeotagtab">
+       <attribute name="title">
+        <string>Geotagging</string>
+       </attribute>
+       <widget class="QWidget" name="gridLayoutWidget_12">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>80</y>
+          <width>641</width>
+          <height>411</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_12">
+         <property name="margin">
+          <number>10</number>
+         </property>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_90">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Folder containing the images:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_91">
+           <property name="text">
+            <string>Leave the &quot;Folder containing the images:&quot; empty if you want to use (a selection of) the images in the left images pane.
+</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="label_93">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Geosync time:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <property name="topMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLineEdit" name="LineEdit_geotag_log_file">
+             <property name="toolTip">
+              <string>If you select a source folder all images in that folder will be renamed. Note that also images in subfolders will be renamed.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_geotag_gps_track_browse">
+             <property name="text">
+              <string>Browse</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btn_geotagging_help">
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="statusTip">
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="text">
+            <string>Help</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_92">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>GPS log file:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="topMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLineEdit" name="LineEdit_geotag_source_folder">
+             <property name="toolTip">
+              <string>If you select a source folder all images in that folder will be renamed. Note that also images in subfolders will be renamed.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_geotag_img_browse">
+             <property name="text">
+              <string>Browse</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="10" column="0">
+          <widget class="QLineEdit" name="geotagging_geosynctime">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="toolTip">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="0">
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="8" column="0">
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="12" column="0">
+          <widget class="QPushButton" name="btn_write_geotaginfo">
+           <property name="text">
+            <string>Write geotag information to image(s)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="2" column="0">
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
       <widget class="QWidget" name="editiptctab">
        <attribute name="title">
         <string>IPTC</string>
@@ -3226,7 +3426,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
      <x>0</x>
      <y>0</y>
      <width>1120</width>
-     <height>26</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

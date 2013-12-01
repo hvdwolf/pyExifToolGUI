@@ -134,6 +134,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_savegpano.clicked.connect(self.savegpanodata)
         self.btn_savegpano.setEnabled(False)
         self.btn_resetgpano.clicked.connect(self.clear_gpano_fields)
+# Load several buttons from the Edit -> Geotagging tab
+	self.btn_geotagging_help.clicked.connect(self.geotagging_help)
+	self.btn_geotag_img_browse.clicked.connect(self.geotag_source_folder)
+	self.btn_geotag_gps_track_browse.clicked.connect(self.geotag_gps_file)
+	self.btn_write_geotaginfo.clicked.connect(self.write_geotag_info)
 # Load several buttons from the Edit -> Your commands tab
         self.btn_yourcommands_clearinput.clicked.connect(self.clear_yourcommands_input)
         self.btn_yourcommands_clearoutput.clicked.connect(self.clear_yourcommands_output)
@@ -408,6 +413,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def gpano_help(self):
        self.all_access_to_manual("EditgpanoData")
 
+    def geotagging_help(self):
+       self.all_access_to_manual("Geotagging")
+
     def yourcommands_help(self):
        self.all_access_to_manual("YourCommands")
 
@@ -494,6 +502,57 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def savegpanodata(self):
         petgfunctions.savegpanodata(self, qApp)
+
+# Edit -> Geotagging tab
+    def geotag_source_folder(self):
+        select_folder = QFileDialog(self)
+        select_folder.setFileMode(QFileDialog.Directory)
+        qApp.processEvents()
+        if platform.system() == "Darwin":
+            select_folder.setDirectory(os.path.expanduser('~/Pictures'))
+        elif platform.system() == "Linux":
+            select_folder.setDirectory(os.path.expanduser('~/Pictures'))
+        elif platform.system() == "Windows":
+            select_folder.setDirectory(os.path.expanduser('~/My Pictures'))
+        select_folder.setViewMode(QFileDialog.Detail)
+        qApp.processEvents()
+        self.geotag_source_folder = ""
+        if select_folder.exec_():
+           self.geotag_source_folder = select_folder.selectedFiles()[0]
+           self.LineEdit_geotag_source_folder.setText(self.geotag_source_folder)
+           print(str(self.geotag_source_folder))
+        else:
+	   # user canceled
+           self.statusbar.showMessage("you canceled selecting a folder for geotagging.")
+           self.geotag_source_folder = ""
+#---
+    def geotag_gps_file(self):
+        select_folder = QFileDialog(self)
+        select_folder.setFileMode(QFileDialog.ExistingFiles)
+        qApp.processEvents()
+        if platform.system() == "Darwin":
+            select_folder.setDirectory(os.path.expanduser('~/Pictures'))
+        elif platform.system() == "Linux":
+            select_folder.setDirectory(os.path.expanduser('~/Pictures'))
+        elif platform.system() == "Windows":
+            select_folder.setDirectory(os.path.expanduser('~/My Pictures'))
+        qApp.processEvents()
+        select_folder.setViewMode(QFileDialog.Detail)
+        self.geotag_gps_file = ""
+        if select_folder.exec_():
+           self.geotag_gps_file = select_folder.selectedFiles()[0]
+           self.LineEdit_geotag_log_file.setText(self.geotag_gps_file)
+           print(str(self.geotag_gps_file))
+        else:
+	   # user canceled
+           self.statusbar.showMessage("you canceled selecting the GPS track log file.")
+           self.geotag_gps_file = ""
+
+#---
+    def write_geotag_info(self):
+           print("pushed button to write the geotag info")
+           self.statusbar.showMessage("writing geotag information to image(s).")
+
 
 # Your Commands tab
     def clear_yourcommands_input(self):
