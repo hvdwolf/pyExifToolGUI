@@ -8,7 +8,7 @@ photograph a lot in buildings like Churches/Cathedrals and Musea (when allowed),
 which means that the gps functionality of the camera doesn't function.
 Next to the gps functionality pyExifToolGUI will slowly grow into a general exiftool Gui and will
 also write other tags to your images.
-This pyExifToolGUI tool is NOT a geotagging tool!
+This pyExifToolGUI tool is also a geotagging tool as of version 0.4.
 
 pyExifToolGui is a graphical frontend for the excellent open source
 command line tool ExifTool(1) by Phil Harvey.
@@ -40,5 +40,5 @@ License along with this program.  If not, see www.gnu.org/licenses
 (2): http://members.home.nl/harryvanderwolf/pyexiftoolgui/donate.html
 
 
-This file: Version 0.20, 2012-12-12, H van der Wolf
+This file: Version 0.40, 2013-12-02, H van der Wolf
 

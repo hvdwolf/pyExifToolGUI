@@ -88,7 +88,7 @@ Uninstall / Removal
 - run the setup script from the command line with "sudo ./install_remove.py remove" (no double quotes).
 - On Mac OS X simply remove pyExifToolGUI.app from /Applications
 
-This file: Version 0.3, 2013-01-12, H. van der Wolf
+This file: Version 0.4, 2013-12-02, H. van der Wolf
 
 
 
