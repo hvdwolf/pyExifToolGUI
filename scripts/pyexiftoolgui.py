@@ -507,7 +507,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def geotag_source_folder(self):
         select_folder = QFileDialog(self)
         select_folder.setFileMode(QFileDialog.Directory)
-        qApp.processEvents()
+        #qApp.processEvents()
         if platform.system() == "Darwin":
             select_folder.setDirectory(os.path.expanduser('~/Pictures'))
         elif platform.system() == "Linux":
@@ -515,7 +515,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         elif platform.system() == "Windows":
             select_folder.setDirectory(os.path.expanduser('~/My Pictures'))
         select_folder.setViewMode(QFileDialog.Detail)
-        qApp.processEvents()
+        #qApp.processEvents()
         self.geotag_source_folder = ""
         if select_folder.exec_():
            self.geotag_source_folder = select_folder.selectedFiles()[0]
@@ -527,20 +527,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
            self.geotag_source_folder = ""
 #---
     def geotag_gps_file(self):
-        select_folder = QFileDialog(self)
-        select_folder.setFileMode(QFileDialog.ExistingFiles)
-        qApp.processEvents()
+        #self.geotag_gps_file = ""
+        select_file = QFileDialog(self)
+        select_file.setFileMode(QFileDialog.ExistingFiles)
+        #qApp.processEvents()
         if platform.system() == "Darwin":
-            select_folder.setDirectory(os.path.expanduser('~/Pictures'))
+            select_file.setDirectory(os.path.expanduser('~/Pictures'))
         elif platform.system() == "Linux":
-            select_folder.setDirectory(os.path.expanduser('~/Pictures'))
+            select_file.setDirectory(os.path.expanduser('~/Pictures'))
         elif platform.system() == "Windows":
-            select_folder.setDirectory(os.path.expanduser('~/My Pictures'))
-        qApp.processEvents()
-        select_folder.setViewMode(QFileDialog.Detail)
+            select_file.setDirectory(os.path.expanduser('~/My Pictures'))
+        #qApp.processEvents()
+        select_file.setViewMode(QFileDialog.Detail)
         self.geotag_gps_file = ""
-        if select_folder.exec_():
-           self.geotag_gps_file = select_folder.selectedFiles()[0]
+        if select_file.exec_():
+           self.geotag_gps_file = select_file.selectedFiles()[0]
            self.LineEdit_geotag_log_file.setText(self.geotag_gps_file)
            print(str(self.geotag_gps_file))
         else:

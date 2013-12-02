@@ -1730,11 +1730,11 @@ def write_geotag_info(self,qApp):
 		return "nothing_to_work_with"
           else:
 		# At this stage we have images and a track log file
-		run_geotag_photos(self, work_on, qApps)
+		run_geotag_photos(self, work_on, qApp)
         
 #---
 def check_geotag_folder_before_run_geotag_photos(self):
-    print("self.LineEdit_getoag_source_folder #" + self.LineEdit_geotag_source_folder.text() + "#")
+    print("self.LineEdit_geotag_source_folder #" + self.LineEdit_geotag_source_folder.text() + "#")
     if self.LineEdit_geotag_source_folder.text() == "":
        # user did not select a source folder, now check in the except whether he/she selected images in the main screen
        try:
@@ -1756,15 +1756,19 @@ def check_geotag_folder_before_run_geotag_photos(self):
       return "geotag_source_folder"
 
 #---
-def run_geotag_photos(self, work_on, qApps):
+def run_geotag_photos(self, work_on, qApp):
        # Now do the real work
        # Check whether user specified a geosync time
        if self.LineEdit_geotagging_geosynctime.text() == "":
-          exiftoolparams = " -geotag '" + self.LineEdit_geotag_log_file.text() + "'"
-          xmpparams = " -xmp:geotag '" + self.LineEdit_geotag_log_file.text() + "'"
+          exiftoolparams = " -P -overwrite_original_in_place -geotag '" + self.LineEdit_geotag_log_file.text() + "'"
+          xmpparams = " -P -overwrite_original_in_place -xmp:geotag='" + self.LineEdit_geotag_log_file.text() + "'"
        else:
-          exiftoolparams = " -geotag '" + self.LineEdit_geotag_log_file.text() + "' -geosync=" + self.LineEdit_geotagging_geosynctime.text() + " "
-          xmpparams = " -xmp:geotag '" + self.LineEdit_geotag_log_file.text() + "' -geosync=" + self.LineEdit_geotagging_geosynctime.text() + " "
+          # A geosync time has been specified. just make sure to remove extra quotes or double quotes
+          gstime = self.LineEdit_geotagging_geosynctime.text()
+          gstime = gstime.replace("'", "")
+          gstime = gstime.replace('"', '')
+          exiftoolparams = " -P -overwrite_original_in_place -geotag '" + self.LineEdit_geotag_log_file.text() + "' -geosync=" + gstime + " "
+          xmpparams = " -P -overwrite_original_in_place -xmp:geotag='" + self.LineEdit_geotag_log_file.text() + "' -geosync=" + gstime + " "
 
        # final check
        if work_on == "nothing_to_work_with":
@@ -1829,8 +1833,9 @@ def run_geotag_photos(self, work_on, qApps):
           #print "work on all images in the source folder"
           #print self.rename_photos_dialog.LineEdit_rename_source_folder.text()
           self.statusbar.showMessage("Trying to geotag all images in: " + self.LineEdit_geotag_source_folder.text())
-          parameters = ' ' + exiftoolparams + ' "' + self.LineEdit_geotag_source_folder.text() + '"'
-          xmpparameters = ' ' + xmpparams + ' "' + self.LineEdit_geotag_source_folder.text() + '"'
+          print("Trying to geotag all images in: " + self.LineEdit_geotag_source_folder.text())
+          parameters = exiftoolparams + ' "' + self.LineEdit_geotag_source_folder.text() + '"'
+          xmpparameters = xmpparams + ' "' + self.LineEdit_geotag_source_folder.text() + '"'
           if self.OSplatform in ("Windows", "win32"):
               parameters = parameters.replace("/", "\\")
               parameters = parameters.replace("'", "\"")
@@ -1838,18 +1843,19 @@ def run_geotag_photos(self, work_on, qApps):
               xmpparameters = xmpparameters.replace("'", "\"")
               args = self.exiftoolprog + parameters
               xmpargs = self.exiftoolprog + xmpparameters
-              print(args)
-              print(xmpargs)
+              print("args " + args)
+              print("xmpargs " + xmpargs)
               p = subprocess.call(args, shell=True)
               p = subprocess.call(xmpargs, shell=True)
           else:
               pathofimages = self.LineEdit_geotag_source_folder.text().replace(" ", "\\ ")
-              command_line = self.exiftoolprog + ' ' + exiftoolparams + ' ' + pathofimages
-              xmpcommand_line = self.exiftoolprog + ' ' + xmpparams + ' ' + pathofimages
-              #print "command_line " + command_line
+              command_line = self.exiftoolprog + ' ' + exiftoolparams + ' "' + pathofimages + '"'
+              xmpcommand_line = self.exiftoolprog + ' ' + xmpparams + ' "' + pathofimages + '"'
+              print("command_line " + command_line)
+              print("xmpcommandline " + xmpcommand_line)
               p = subprocess.call(command_line, shell=True)
               p = subprocess.call(xmpcommand_line, shell=True)
-          self.statusbar.showMessage("Finished geotagging all images in: " + self.LineEdit_geotag_source_folder.text()) + " where timestamps fit."
+          self.statusbar.showMessage("Finished geotagging all images in: " + self.LineEdit_geotag_source_folder.text() + " where timestamps fit.")
 
 
 #------------------------------------------------------------------------
