@@ -146,8 +146,7 @@ def tool_check( self ):
                 #print "result 2" + self.exiftoolprog
         command_line = self.exiftoolprog + " -ver"
         args = shlex.split(command_line)
-#        args = self.exiftoolprog + " -ver"
-        self.exiftoolversion = subprocess.check_output(args, shell=True)
+        self.exiftoolversion = subprocess.check_output(args)
    # remove last character which is the final ending \n (where \ is only the escape character)
    self.exiftoolversion = self.exiftoolversion[:-1]
    exiftool_version_level_text(self)
