@@ -112,9 +112,9 @@ def tool_check( self ):
        self.exiftoolprog = "exiftool"
    # Check for exiftool, based on the setting or no setting above
    if (self.OSplatform in ("Windows", "win32")):
-        if self.exiftoolprog == "exiftool":
-            self.exiftool_dir = os.path.join(self.realfile_dir, "exiftool", "exiftool.exe")
-            #self.exiftoolprog = self.exiftool_dir + "\exiftool.exe"
+        if ("exiftool.exe" in self.exiftoolprog) or ("Exiftool.exe" in self.exiftoolprog):
+           self.exiftool_dir = os.path.join(self.realfile_dir, "exiftool", "exiftool.exe")
+           #self.exiftoolprog = self.exiftool_dir + "\exiftool.exe"
             if not os.path.isfile(self.exiftoolprog):
                        configure_message = "exiftool is missing or incorrectly configured in Preferences!\n"
                        configure_message += "This tool is an absolute must have!\nPlease set the correct location or install exiftool first.\n\n"
@@ -129,7 +129,9 @@ def tool_check( self ):
                           self.exiftoolprog = result
             #print self.exiftoolprog
             args = self.exiftoolprog + " -ver"
+            print("windows args " + args)
             self.exiftoolversion = subprocess.check_output(args, shell=True)
+            print("self.exiftoolversion " + str(self.exiftoolversion)) 
    else:
         if not check_for_program(self.exiftoolprog):
             ret = QMessageBox.critical(self, "exiftool is missing or incorrectly configured", "exiftool is missing or incorrectly configured in Preferences!\nThis tool is an absolute must have!\nPlease set the correct location or install exiftool first.")
@@ -144,8 +146,9 @@ def tool_check( self ):
                 #print "result 2" + self.exiftoolprog
         command_line = self.exiftoolprog + " -ver"
         args = shlex.split(command_line)
-        self.exiftoolversion = subprocess.check_output(args)
-   # remove last character which is the final ending \n (where \ is only the escape character)        
+#        args = self.exiftoolprog + " -ver"
+        self.exiftoolversion = subprocess.check_output(args, shell=True)
+   # remove last character which is the final ending \n (where \ is only the escape character)
    self.exiftoolversion = self.exiftoolversion[:-1]
    exiftool_version_level_text(self)
 # End of function tool_check
@@ -283,7 +286,9 @@ def read_config(self):
             with open(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg')) as f: pass
             # If no error we can continue
             #print "no error on config check, continue"
+            print("reading config.cfg")
             config.read(os.path.join(userpath, '.pyexiftoolgui', 'config.cfg'))
+            #print("config.cfg read")
             try: 
                 self.alternate_exiftool = config.getboolean("preferences", "alternate_exiftool")
             except:

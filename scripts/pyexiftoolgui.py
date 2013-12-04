@@ -181,6 +181,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             ret = QMessageBox.about(self, "returned check values", "platform: %s\nconverter: %s\nenfuse: %s\nais: %s" % (OSplatform, img_converter, enfuseprg, aisprg))
 
         # Startup check for available tools
+		# First set exiftoolversion for windows
+        self.exiftoolversion = "0.00"
         petgfunctions.tool_check(self)
 
 #------------------------------------------------------------------------
