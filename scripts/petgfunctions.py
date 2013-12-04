@@ -113,8 +113,8 @@ def tool_check( self ):
    # Check for exiftool, based on the setting or no setting above
    if (self.OSplatform in ("Windows", "win32")):
         if ("exiftool.exe" in self.exiftoolprog) or ("Exiftool.exe" in self.exiftoolprog):
-           self.exiftool_dir = os.path.join(self.realfile_dir, "exiftool", "exiftool.exe")
-           #self.exiftoolprog = self.exiftool_dir + "\exiftool.exe"
+            self.exiftool_dir = os.path.join(self.realfile_dir, "exiftool", "exiftool.exe")
+            #self.exiftoolprog = self.exiftool_dir + "\exiftool.exe"
             if not os.path.isfile(self.exiftoolprog):
                        configure_message = "exiftool is missing or incorrectly configured in Preferences!\n"
                        configure_message += "This tool is an absolute must have!\nPlease set the correct location or install exiftool first.\n\n"
