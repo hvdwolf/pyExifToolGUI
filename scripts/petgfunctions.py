@@ -128,7 +128,7 @@ def tool_check( self ):
                        else:
                           self.exiftoolprog = result
             #print self.exiftoolprog
-            args = self.exiftoolprog + " -ver"
+            args = '"' + self.exiftoolprog + '" -ver'
             print("windows args " + args)
             self.exiftoolversion = subprocess.check_output(args, shell=True)
             print("self.exiftoolversion " + str(self.exiftoolversion)) 
@@ -508,7 +508,7 @@ def imageinfo(self, qApp):
         header = "makernotes tags"
     if self.OSplatform == "Windows":
             selected_image = selected_image.replace("/", "\\")
-            args = self.exiftoolprog + " -a " + exiftool_params + " " + selected_image
+            args = "\"" + self.exiftoolprog + "\" -a " + exiftool_params + " " + selected_image
             p = subprocess.check_output(args, universal_newlines=True, shell=True)
     else:
             command_line = self.exiftoolprog + " -a " + exiftool_params + " " + selected_image
@@ -1310,7 +1310,7 @@ def qddt_use_reference_image_data(self):
         exiftool_params = " -exif:ModifyDate -exif:DateTimeOriginal -exif:CreateDate "
         if self.OSplatform == "Windows":
                 self.referenceimage = self.referenceimage.replace("/", "\\")
-                args = self.exiftoolprog + " -a " + exiftool_params + " " + self.referenceimage
+                args = '"' + self.exiftoolprog + '" -a ' + exiftool_params + ' ' + self.referenceimage
                 p = subprocess.check_output(args, universal_newlines=True, shell=True)
         else:
                 command_line = self.exiftoolprog + " -a " + exiftool_params + " " + self.referenceimage
@@ -1811,8 +1811,8 @@ def run_geotag_photos(self, work_on, qApp):
                            parameters = parameters.replace("'", "\"")
                            xmpparameters = xmpparameters.replace("/", "\\")
                            xmpparameters = xmpparameters.replace("'", "\"")
-                           args = self.exiftoolprog + parameters
-                           xmpargs = self.exiftoolprog + xmpparameters
+                           args = '"' + self.exiftoolprog + '" ' + parameters
+                           xmpargs = '"' + self.exiftoolprog + '" ' + xmpparameters
                            print(args)
                            print(xmpargs)
                            p = subprocess.call(args, shell=True)
@@ -1845,8 +1845,8 @@ def run_geotag_photos(self, work_on, qApp):
               parameters = parameters.replace("'", "\"")
               xmpparameters = xmpparameters.replace("/", "\\")
               xmpparameters = xmpparameters.replace("'", "\"")
-              args = self.exiftoolprog + parameters
-              xmpargs = self.exiftoolprog + xmpparameters
+              args = '"' + self.exiftoolprog + '" ' + parameters
+              xmpargs = '"' + self.exiftoolprog + '" ' + xmpparameters
               print("args " + args)
               print("xmpargs " + xmpargs)
               p = subprocess.call(args, shell=True)
@@ -1899,7 +1899,7 @@ def yourcommands_go(self, qApp):
                         if self.OSplatform in ("Windows", "win32"):
                             # First write the info
                             selected_image = selected_image.replace("/", "\\")
-                            args = self.exiftoolprog + exiftoolparams + selected_image
+                            args = '"' + self.exiftoolprog + '" ' + exiftoolparams + selected_image
                             try:
                                 p = subprocess.check_output(args, universal_newlines=True, shell=True)
                             except:
@@ -1933,7 +1933,7 @@ def read_image_info(self, exiftool_params):
         selected_image = "\"" + self.fileNames[selected_row] + "\""
         if self.OSplatform in ("Windows", "win32"):
                 selected_image = selected_image.replace("/", "\\")
-                args = self.exiftoolprog + exiftool_params + selected_image                
+                args = '"' + self.exiftoolprog + '" ' + exiftool_params + selected_image                
                 p = subprocess.check_output(args, universal_newlines=True, shell=True)
         else:
                 command_line = self.exiftoolprog + exiftool_params + selected_image
@@ -2035,7 +2035,7 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
                            if self.OSplatform in ("Windows", "win32"):
                               # First write the info
                               selected_image = selected_image.replace("/", "\\")
-                              args = self.exiftoolprog + exiftoolparams + selected_image
+                              args = '"' + self.exiftoolprog + '" ' + exiftoolparams + selected_image
                               p = subprocess.call(args, shell=True)
                               ## Now reset the file date
                               #args = self.exiftoolprog + ' "-FileModifyDate<DateTimeOriginal" ' + selected_image
@@ -2058,7 +2058,7 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
               parameters = " " + images_to_csv + " > \"" + os.path.join(self.image_folder, "output.csv") + "\""
               #parameters = " " + images_to_csv + " > output.csv"
               parameters = parameters.replace("/", "\\")
-              args = self.exiftoolprog + parameters
+              args = '"' + self.exiftoolprog + '" ' + parameters
               print(args)
               p = subprocess.call(args, shell=True)
            else:

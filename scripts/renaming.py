@@ -326,7 +326,7 @@ def run_rename_photos(self, work_on, qApp):
                         if self.OSplatform in ("Windows", "win32"):
                            parameters = parameters.replace("/", "\\")
                            parameters = parameters.replace("'", "\"")
-                           args = self.exiftoolprog + parameters
+                           args = '"' + self.exiftoolprog + '" ' + parameters
                            print(args)
                            p = subprocess.call(args, shell=True)
                         else:
@@ -349,7 +349,7 @@ def run_rename_photos(self, work_on, qApp):
           if self.OSplatform in ("Windows", "win32"):
               parameters = parameters.replace("/", "\\")
               parameters = parameters.replace("'", "\"")
-              args = self.exiftoolprog + parameters
+              args = '"' + self.exiftoolprog + '" ' + parameters
               print(args)
               p = subprocess.call(args, shell=True)
           else:
