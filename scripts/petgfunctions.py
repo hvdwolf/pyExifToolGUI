@@ -961,6 +961,7 @@ def copyexiffromselected(self,qApp):
                rowcounter += 1
 
 def saveexifdata(self, qApp):
+        exiftool_params = ""
         if self.chk_exif_Make.isChecked():
                exiftool_params =  ' -exif:Make="' + self.exif_Make.text() + '" '
         if self.chk_exif_Model.isChecked():
@@ -1060,6 +1061,7 @@ def copyxmpfromselected(self,qApp):
                rowcounter += 1
 
 def savexmpdata(self, qApp):
+        xmptool_params = ""
         if self.chk_xmp_creator.isChecked():
                xmptool_params =  ' -xmp:Creator="' + self.xmp_creator.text() + '" '
         if self.chk_xmp_rights.isChecked():
@@ -1189,6 +1191,7 @@ def copygpanofromselected(self,qApp):
                rowcounter += 1
 
 def savegpanodata(self, qApp):
+        exiftool_params = ""
         if self.chk_xmp_CroppedAreaImageHeightPixels.isChecked():
                exiftool_params =  ' -xmp:CroppedAreaImageHeightPixels="' + self.xmp_CroppedAreaImageHeightPixels.text() + '" '
         if self.chk_xmp_CroppedAreaImageWidthPixels.isChecked():
@@ -1233,6 +1236,93 @@ def savegpanodata(self, qApp):
         else:
            write_image_info(self, exiftool_params, qApp, False)
 
+
+#------------------------------------------------------------------------
+# Edit -> Lens tab and actions
+def clear_lens_fields(self):
+        self.lens_make.setText("")
+        self.lens_model.setText("")
+        self.lens_serialnumber.setText("")
+        self.lens_focallength.setText("")
+        self.lens_focallengthin35mmformat.setText("")
+        self.lens_maxaperturevalue.setText("")
+        self.lens_fnumber.setText("")
+        self.lens_meteringmode.setCurrentIndex(0)
+
+        self.chk_lens_make.setChecked(1)
+        self.chk_lens_model.setChecked(1)
+        self.chk_lens_serialnumber.setChecked(1)
+        self.chk_lens_focallength.setChecked(1)
+        self.chk_lens_focallengthin35mmformat.setChecked(1)
+        self.chk_lens_maxaperturevalue.setChecked(1)
+        self.chk_lens_fnumber.setChecked(1)
+        self.chk_lens_meteringmode.setChecked(1)
+
+def copylensfromselected(self,qApp):
+        # First clean input fields
+        clear_lens_fields(self)
+        lenstool_params = ' -e -n -exif:lensmake -exif:lensmodel -exif:lensserialnumber -exif:focallength -exif:focallengthIn35mmformat -exif:fnumber -exif:maxaperturevalue -exif:meteringmode '
+        p = read_image_info(self, lenstool_params)
+        if len(p) == 0:
+           data = False
+           message = ("<p>You are trying to copy lens info from your source image, but your source image "
+                      "doesn't contain the specified lens data or doesn't seem to contain any lens data (or you didn't select an image).</p>")
+           ret = QMessageBox.warning(self, "Error copying lens info from source image", message)
+        else:
+           # remove last character which is the final ending \n (where \ is only the escape character)        
+           p = p[:-1]
+           p_lines = re.split('\n',p)
+           rowcounter = 0
+           for line in p_lines:
+            #try: 
+               descriptor, description = re.split(':', line,1)
+               descriptor = descriptor.strip()
+               description = description.strip()
+               gpslat = 0
+               gpslon = 0
+               if descriptor == "lensmake":
+                     self.lens_make.setText(description)
+               if descriptor == "lensmodel":
+                     self.lens_model.setText(description)
+               if descriptor == "lensserialnumber":
+                     self.lens_lensserialnumber.setText(description)
+               if descriptor == "focallength":
+                      self.lens_focallength.setText(description)
+               if descriptor == "focallengthin35mmformat":
+                     self.lens_focallengthin35mmformat.setText(description)
+               if descriptor == "maxaperturevalue":
+                     self.lens_maxaperturevalue.setText(description)
+               if descriptor == "fnumber":
+                     self.lens_fnumber.setText(description)
+               if descriptor == "meteringmode":
+                     self.lens_meteringmode.setText(description)
+               #print "rowcounter " + str(rowcounter) + " descriptor " + descriptor + " ;description " + description
+               rowcounter += 1
+
+def savelensdata(self, qApp):
+        lenstool_params = ""
+        if self.chk_lens_make.isChecked():
+               lenstool_params =  ' -exif:lensmake="' + self.lens_make.text() + ' -xmp:lensmake="' + self.lens_make.text() + '" '
+        if self.chk_lens_model.isChecked():
+               lenstool_params +=  '-exif:lensmodel="' + self.lens_model.text() + '-xmp:lensmodel="' + self.lens_model.text() + '" '
+        if self.chk_lens_lensserialnumber.isChecked():
+               lenstool_params +=  '-exif:lensserialnumber="' + self.lens_lensserialnumber.text() + '-xmp:lensserialnumber="' + self.lens_lensserialnumber.text() + '" '
+        if self.chk_lens_focallength.isChecked():
+               lenstool_params +=  '-exif:lensfocallength="' + self.lens_focallength.text() + '-xmp:lensfocallength="' + self.lens_focallength.text() + '" '
+        if self.chk_lens_focallengthin35mmformat.isChecked():
+               lenstool_params +=  '-exif:focallengthin35mmformat="' + self.lens_focallengthin35mmformat.text() + '-xmp:focallengthin35mmformat="' + self.lens_focallengthin35mmformat.text() + '" '
+        if self.chk_lens_maxaperturevalue.isChecked():
+               lenstool_params +=  '-exif:maxaperturevalue="' + self.lens_maxaperturevalue.text() + '-xmp:maxaperturevalue="' + self.lens_maxaperturevalue.text() + '" '
+        if self.chk_lens_fnumber.isChecked():
+               lenstool_params +=  '-exif:fnumber="' + self.lens_fnumber.text() + '-xmp:fnumber="' + self.lens_fnumber.text() + '" '
+        if self.chk_lens_meteringmode.isChecked():
+               lenstool_params +=  '-exif:meteringmode="' + self.lens_meteringmode.text() + '-xmp:meteringmode="' + self.lens_meteringmode.text() + '" '
+
+        if self.chk_lens_backuporiginals.isChecked():
+           write_image_info(self, lenstool_params, qApp, True)
+        else:
+           write_image_info(self, lenstool_params, qApp, False)
+		   
 #---
 def date_to_datetimeoriginal(self, qApp):
     exiftool_params = " -FileModifyDate<DateTimeOriginal "
@@ -1867,8 +1957,8 @@ def run_geotag_photos(self, work_on, qApp):
 def yourcommands_go(self, qApp):
         output_text = ""
         exiftoolparams = " " + self.yourcommands_input.text() + " "
-        '''mysoftware = programinfo.NAME + " " + programinfo.VERSION
-        if self.OSplatform in ("Windows", "win32"):
+        mysoftware = programinfo.NAME + " " + programinfo.VERSION
+        ''''if self.OSplatform in ("Windows", "win32"):
            exiftoolparams = " -ProcessingSoftware=\"" + mysoftware + "\" " + exiftoolparams
         else:
            exiftoolparams = " -ProcessingSoftware='" + mysoftware + "' " + exiftoolparams
