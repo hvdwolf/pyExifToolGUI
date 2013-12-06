@@ -1,10 +1,12 @@
-* e925095 -  (HEAD, origin/master, origin/HEAD, master)Compile all gui files before 0.4 (2 minutes ago) <hvdwolf>
-* 9959e72 - Fix renaming for full date-time, this always added a number. Set version to 0.4 in relevant files. (16 minutes ago) <hvdwolf>
-* 700b969 - convert README.txt unix line endings to dos line endings to make it readible on all OSes (2 hours ago) <hvdwolf>
-* 3a62abe - Create readme.txt in windows folder to describe how to create a windows package (2 hours ago) <hvdwolf>
-* 5e78baa - Disable save geotag info if we don't have images loaded (2 hours ago) <hvdwolf>
-* 5b4f5b1 - Fix initial parameters variabele when saving parts of information; bui;ld first lens functionality (5 hours ago) <hvdwolf>
-* 6067f30 - [Windows] Fix incorrect escaping when exiftool in path with spaces (26 hours ago) <hvdwolf>
+* fbea783 -  (HEAD, tag: 0.4.0.1, origin/master, origin/HEAD, master)Fix link to pyExifToolGUI homepage. It still linked to old location. (3 minutes ago) <hvdwolf>
+* 1c5772e -  (tag: 0.4)Update Changelog (32 minutes ago) <hvdwolf>
+* e925095 - Compile all gui files before 0.4 (36 minutes ago) <hvdwolf>
+* 9959e72 - Fix renaming for full date-time, this always added a number. Set version to 0.4 in relevant files. (49 minutes ago) <hvdwolf>
+* 700b969 - convert README.txt unix line endings to dos line endings to make it readible on all OSes (3 hours ago) <hvdwolf>
+* 3a62abe - Create readme.txt in windows folder to describe how to create a windows package (3 hours ago) <hvdwolf>
+* 5e78baa - Disable save geotag info if we don't have images loaded (3 hours ago) <hvdwolf>
+* 5b4f5b1 - Fix initial parameters variabele when saving parts of information; bui;ld first lens functionality (6 hours ago) <hvdwolf>
+* 6067f30 - [Windows] Fix incorrect escaping when exiftool in path with spaces (27 hours ago) <hvdwolf>
 * 6103eb0 - Fix indent of two lines of code (2 days ago) <hvdwolf>
 * 29086dd - And immediately correct stupid change in linux/OSX version (2 days ago) <hvdwolf>
 * 3dafbb3 - Fix stupid error in windows check of exiftool existence (2 days ago) <hvdwolf>
@@ -111,7 +113,7 @@
 * d75f1bb - minor change to new info_window (12 months ago) <harryvanderwolf>
 * 9c98a2e - Dynamically call ui files; adapt installation texts (12 months ago) <harryvanderwolf>
 * 63dd89c - Modify menu (12 months ago) <harryvanderwolf>
-* 8677538 - [OSX] improved pyinstaller spec file but still not 100 pct correct (12 months ago) <harryvanderwolf>
+* 8677538 - [OSX] improved pyinstaller spec file but still not 100 pct correct (1 year ago) <harryvanderwolf>
 * 2aff243 - add (currently not working) pyinstaller spec file (1 year ago) <harryvanderwolf>
 * 7a11562 - Improve pyinstaller spec file for windows (1 year ago) <harryvanderWolf (hvdwolf>
 * 161919d - correct stupid bug in gpano functionality (1 year ago) <harryvanderwolf>
