@@ -1,13 +1,13 @@
 pyExifToolGui is a python pySide QT4 script program that reads and writes
-exif, xmp and IPTC tags from/to image files using exiftool. It can use a 
+exif, xmp and IPTC tags from/to image files using exiftool. It can use a
 "reference" image as source image to copy data from. 
 A strong point of this software is the ability to write the data,
 copied or not from a source image, to multiple images at once.
-The main goal for this tool was the ability to write gps data to my images as I 
-photograph a lot in buildings like Churches/Cathedrals and Musea (when allowed), 
+The main goal for this tool was the ability to write gps data to my images as I
+photograph a lot in buildings like Churches/Cathedrals and Musea (when allowed),
 which means that the gps functionality of the camera doesn't function.
-Next to the gps functionality pyExifToolGUI will slowly grow into a general exiftool Gui and will
-also write other tags to your images.
+Next to the gps functionality pyExifToolGUI will slowly grow into a general 
+exiftool Gui and will also write other tags to your images.
 This pyExifToolGUI tool is also a geotagging tool as of version 0.4.
 
 pyExifToolGui is a graphical frontend for the excellent open source
