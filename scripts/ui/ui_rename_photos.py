@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'rename_photos.ui'
 #
-# Created: Fri Jan 11 22:46:52 2013
-#      by: pyside-uic 0.2.13 running on PySide 1.1.1
+# Created: Fri Dec  6 18:23:35 2013
+#      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -315,7 +315,7 @@ class Ui_Dialog_rename_files(object):
         self.comboBox_digits.setItemText(2, QtGui.QApplication.translate("Dialog_rename_files", "4", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox_digits.setItemText(3, QtGui.QApplication.translate("Dialog_rename_files", "5", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox_digits.setItemText(4, QtGui.QApplication.translate("Dialog_rename_files", "6", None, QtGui.QApplication.UnicodeUTF8))
-        self.comboBox_startcount.setToolTip(QtGui.QApplication.translate("Dialog_rename_files", "When counting from the 1st image, the counting runs from 1 to n, like 01, 02, 03, etc.\\n When starting on the second image the counting runs from 00, 01, 02, etc.", None, QtGui.QApplication.UnicodeUTF8))
+        self.comboBox_startcount.setToolTip(QtGui.QApplication.translate("Dialog_rename_files", "When counting from the 1st image, the counting runs from 1 to n, like 01, 02, 03, etc.  When starting on the second image the counting runs from 00, 01, 02, etc.", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox_startcount.setItemText(0, QtGui.QApplication.translate("Dialog_rename_files", "Start counting on 1st image", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox_startcount.setItemText(1, QtGui.QApplication.translate("Dialog_rename_files", "Start counting on 2nd image", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButton_suffix_datetime.setText(QtGui.QApplication.translate("Dialog_rename_files", "Date_time", None, QtGui.QApplication.UnicodeUTF8))
