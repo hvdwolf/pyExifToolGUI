@@ -343,7 +343,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def open_pyexiftoolgui_homepage(self):
         try:
-            webbrowser.open("http://panorama.dyndns.org/index.php?lang=en&subject=pyExifToolGUI&texttag=pyExifToolGUI")
+            webbrowser.open("http://hvdwolf.github.io/pyExifToolGUI/")
         except:
             QMessageBox.critical(self, "Error!", "Unable to open the pyExifToolGUI homepage" )
 
