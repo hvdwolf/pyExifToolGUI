@@ -120,23 +120,29 @@ def rename_photos(self, qApp):
        else:
           work_on = result
           # analyze prefix
+          self.fulldatetime = False
           self.prefix = "${CreateDate}"
           if self.rename_photos_dialog.radioButton_prefix_datetime.isChecked():
              if self.rename_photos_dialog.comboBox_prefix_datetime.currentText() == "YYYYMMDDHHMMSS":
                 prefix_message = "YYYYMMDDHHMMSS"
                 self.prefixformat = "-d %Y%m%d%H%M%S"
+                self.fulldatetime = True
              elif self.rename_photos_dialog.comboBox_prefix_datetime.currentText() == "YYYYMMDD_HHMMSS":
                 prefix_message = "YYYYMMDD_HHMMSS"
                 self.prefixformat = "-d %Y%m%d_%H%M%S"
+                self.fulldatetime = True
              elif self.rename_photos_dialog.comboBox_prefix_datetime.currentText() == "YYYMMDD-HHMMSS":
                 prefix_message = "YYYMMDD-HHMMSS"
                 self.prefixformat = "-d %Y%m%d-%H%M%S"
+                self.fulldatetime = True
              elif self.rename_photos_dialog.comboBox_prefix_datetime.currentText() == "YYYY_MM_DD_HH_MM_SS":
                 prefix_message = "YYYY_MM_DD_HH_MM_SS"
                 self.prefixformat = "-d %Y_%m_%d_%H_%M_%S"
+                self.fulldatetime = True
              elif self.rename_photos_dialog.comboBox_prefix_datetime.currentText() == "YYYY-MM-DD-HH-MM-SS":
                 prefix_message = "YYYY-MM-DD-HH-MM-SS"
                 self.prefixformat = "-d %Y-%m-%d-%H-%M-%S"
+                self.fulldatetime = True
           elif self.rename_photos_dialog.radioButton_prefix_date.isChecked():
              if self.rename_photos_dialog.comboBox_prefix_date.currentText() == "YYYYMMDD":
                 prefix_message = "YYYYMMDD"
@@ -162,21 +168,26 @@ def rename_photos(self, qApp):
                  self.suffix = self.rename_photos_dialog.suffix_string.text()
                  self.suffixformat = ""
               elif self.rename_photos_dialog.radioButton_suffix_datetime.isChecked():
-                 if self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYYMMDDHHMMSS":
+                if self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYYMMDDHHMMSS":
                     suffix_message = "YYYYMMDDHHMMSS"
                     self.suffixformat = "-d %Y%m%d%H%M%S"
-                 elif self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYYMMDD_HHMMSS":
+                    self.fulldatetime = True
+                elif self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYYMMDD_HHMMSS":
                     suffix_message = "YYYYMMDD_HHMMSS"
                     self.suffixformat = "-d %Y%m%d_%H%M%S"
-                 elif self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYMMDD-HHMMSS":
+                    self.fulldatetime = True
+                elif self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYMMDD-HHMMSS":
                     suffix_message = "YYYMMDD-HHMMSS"
                     self.suffixformat = "-d %Y%m%d-%H%M%S"
-                 elif self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYY_MM_DD_HH_MM_SS":
+                    self.fulldatetime = True
+                elif self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYY_MM_DD_HH_MM_SS":
                     suffix_message = "YYYY_MM_DD_HH_MM_SS"
                     self.suffixformat = "-d %Y_%m_%d_%H_%M_%S"
-                 elif self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYY-MM-DD-HH-MM-SS":
+                    self.fulldatetime = True
+                elif self.rename_photos_dialog.comboBox_suffix_datetime.currentText() == "YYYY-MM-DD-HH-MM-SS":
                     suffix_message = "YYYY-MM-DD-HH-MM-SS"
                     self.suffixformat = "-d %Y-%m-%d-%H-%M-%S"
+                    self.fulldatetime = True
               elif self.rename_photos_dialog.radioButton_suffix_date.isChecked():
                  if self.rename_photos_dialog.comboBox_suffix_date.currentText() == "YYYYMMDD":
                     suffix_message = "YYYYMMDD"
@@ -203,7 +214,7 @@ def rename_photos(self, qApp):
           self.rename_extension = ".%le"
        else:
           self.rename_extension = ".%ue"
-       # Wants the user to start counting as of the first image or starting on the second image
+       # Does the user want to start counting as of the first image or starting on the second image
        if self.rename_photos_dialog.comboBox_startcount.currentIndex() == 0:
           self.startcounting = "nc"
           print("start counting on 1st image")
@@ -279,7 +290,13 @@ def run_rename_photos(self, work_on, qApp):
        exiftoolparams = "'-FileName<" + self.prefix
        if not self.rename_photos_dialog.radioButton_suffix_donotuse.isChecked():
           exiftoolparams += "_" + self.suffix
-       exiftoolparams += "%-." + self.rename_photos_dialog.comboBox_digits.currentText() + self.startcounting
+       print("self.fulldatetime " + str(self.fulldatetime))
+       if self.fulldatetime == True: 
+          # This means that the autonumber should only work on images that have the same full datetime
+          exiftoolparams += "%-" + self.rename_photos_dialog.comboBox_digits.currentText() + self.startcounting
+       else:
+          exiftoolparams += "%-." + self.rename_photos_dialog.comboBox_digits.currentText() + self.startcounting
+       print("numbering: exiftoolparams " + exiftoolparams)
        # Do everything split for a prefix as date(time) vs. string; no combined actions, is much simpler       
        if self.prefixformat != "":
           # This means that the prefix is a date(time)
