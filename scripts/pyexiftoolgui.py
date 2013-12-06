@@ -135,10 +135,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_savegpano.setEnabled(False)
         self.btn_resetgpano.clicked.connect(self.clear_gpano_fields)
 # Load several buttons from the Edit -> Geotagging tab
-	self.btn_geotagging_help.clicked.connect(self.geotagging_help)
-	self.btn_geotag_img_browse.clicked.connect(self.geotag_source_folder)
-	self.btn_geotag_gps_track_browse.clicked.connect(self.geotag_gps_file)
-	self.btn_write_geotaginfo.clicked.connect(self.write_geotag_info)
+        self.btn_geotagging_help.clicked.connect(self.geotagging_help)
+        self.btn_geotag_img_browse.clicked.connect(self.geotag_source_folder)
+        self.btn_geotag_gps_track_browse.clicked.connect(self.geotag_gps_file)
+        self.btn_write_geotaginfo.clicked.connect(self.write_geotag_info)
+        self.btn_write_geotaginfo.setEnabled(False)
 # Load several buttons from the Edit -> Your commands tab
         self.btn_yourcommands_clearinput.clicked.connect(self.clear_yourcommands_input)
         self.btn_yourcommands_clearoutput.clicked.connect(self.clear_yourcommands_output)
@@ -226,6 +227,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.btn_savegpano.setEnabled(True)
         self.btn_xmp_copyfrom.setEnabled(True)
         self.btn_savexmp.setEnabled(True)
+        self.btn_write_geotaginfo.setEnabled(True)
         self.progressbar.hide()
         self.statusbar.showMessage("Click thumb or filename to display the image info")
         # Set proper events
