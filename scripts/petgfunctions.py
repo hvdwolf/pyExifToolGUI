@@ -1248,6 +1248,7 @@ def clear_lens_fields(self):
         self.lens_maxaperturevalue.setText("")
         self.lens_fnumber.setText("")
         self.lens_meteringmode.setCurrentIndex(0)
+        #self.lens_meteringmode.setText("")
 
         self.chk_lens_make.setChecked(1)
         self.chk_lens_model.setChecked(1)
@@ -1305,8 +1306,8 @@ def savelensdata(self, qApp):
                lenstool_params =  ' -exif:lensmake="' + self.lens_make.text() + ' -xmp:lensmake="' + self.lens_make.text() + '" '
         if self.chk_lens_model.isChecked():
                lenstool_params +=  '-exif:lensmodel="' + self.lens_model.text() + '-xmp:lensmodel="' + self.lens_model.text() + '" '
-        if self.chk_lens_lensserialnumber.isChecked():
-               lenstool_params +=  '-exif:lensserialnumber="' + self.lens_lensserialnumber.text() + '-xmp:lensserialnumber="' + self.lens_lensserialnumber.text() + '" '
+        if self.chk_lens_serialnumber.isChecked():
+               lenstool_params +=  '-exif:lensserialnumber="' + self.lens_serialnumber.text() + '-xmp:lensserialnumber="' + self.lens_serialnumber.text() + '" '
         if self.chk_lens_focallength.isChecked():
                lenstool_params +=  '-exif:lensfocallength="' + self.lens_focallength.text() + '-xmp:lensfocallength="' + self.lens_focallength.text() + '" '
         if self.chk_lens_focallengthin35mmformat.isChecked():

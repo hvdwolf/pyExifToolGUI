@@ -1578,7 +1578,11 @@ to convert the data.</string>
           <number>10</number>
          </property>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="exif_Make"/>
+          <widget class="QLineEdit" name="exif_Make">
+           <property name="toolTip">
+            <string>This refers to the make of the body</string>
+           </property>
+          </widget>
          </item>
          <item row="6" column="1">
           <widget class="QLineEdit" name="exif_DateTimeOriginal"/>
@@ -1727,7 +1731,11 @@ to convert the data.</string>
           <widget class="QLineEdit" name="exif_CreateDate"/>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="exif_Model"/>
+          <widget class="QLineEdit" name="exif_Model">
+           <property name="toolTip">
+            <string>This refers to the model of the body</string>
+           </property>
+          </widget>
          </item>
          <item row="12" column="0">
           <widget class="QLabel" name="label_32">
@@ -1852,7 +1860,7 @@ to convert the data.</string>
          <item row="0" column="1">
           <widget class="QPushButton" name="btn_saveexif">
            <property name="toolTip">
-            <string>Save the gps and xmp data to the image file</string>
+            <string>Save the exif data to the image file(s)</string>
            </property>
            <property name="statusTip">
             <string>Save the gps and xmp data to the image file</string>
@@ -1865,7 +1873,7 @@ to convert the data.</string>
          <item row="0" column="0">
           <widget class="QPushButton" name="btn_exif_copyfrom">
            <property name="toolTip">
-            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+            <string>This button will copy the (available) exif info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="statusTip">
             <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
@@ -2207,7 +2215,7 @@ to convert the data.</string>
          <item row="0" column="1">
           <widget class="QPushButton" name="btn_savexmp">
            <property name="toolTip">
-            <string>Save the gps and xmp data to the image file</string>
+            <string>Save the xmp data to the image file(s)</string>
            </property>
            <property name="statusTip">
             <string>Save the gps and xmp data to the image file</string>
@@ -2233,7 +2241,7 @@ to convert the data.</string>
          <item row="0" column="0">
           <widget class="QPushButton" name="btn_xmp_copyfrom">
            <property name="toolTip">
-            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+            <string>This button will copy all the (available) xmp info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="statusTip">
             <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
@@ -2298,7 +2306,7 @@ to convert the data.</string>
          <item>
           <widget class="QPushButton" name="btn_gpano_copyfrom">
            <property name="toolTip">
-            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+            <string>This button will copy all the (available) gpano info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="statusTip">
             <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
@@ -2311,7 +2319,7 @@ to convert the data.</string>
          <item>
           <widget class="QPushButton" name="btn_savegpano">
            <property name="toolTip">
-            <string>Save the gps and xmp data to the image file</string>
+            <string>Save the gpano data to the image file(s)</string>
            </property>
            <property name="statusTip">
             <string>Save the gps and xmp data to the image file</string>
@@ -2373,7 +2381,7 @@ Originals</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>60</y>
+          <y>50</y>
           <width>611</width>
           <height>461</height>
          </rect>
@@ -2881,6 +2889,12 @@ Originals</string>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <widget class="QLabel" name="lbl_exiftool_leveltext">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -3088,6 +3102,390 @@ Originals</string>
             </size>
            </property>
           </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="editlenstab">
+       <attribute name="title">
+        <string>Lens</string>
+       </attribute>
+       <widget class="QWidget" name="gridLayoutWidget_13">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>10</y>
+          <width>521</width>
+          <height>441</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_13" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0">
+         <property name="leftMargin">
+          <number>10</number>
+         </property>
+         <property name="topMargin">
+          <number>10</number>
+         </property>
+         <item row="11" column="0">
+          <widget class="QLabel" name="label_105">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLineEdit" name="lens_fnumber"/>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_106">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="2">
+          <widget class="QCheckBox" name="chk_lens_maxaperturevalue">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QLineEdit" name="lens_maxaperturevalue"/>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLineEdit" name="lens_focallength"/>
+         </item>
+         <item row="9" column="2">
+          <widget class="QCheckBox" name="chk_lens_meteringmode">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <widget class="QCheckBox" name="chk_lens_fnumber">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="label_95">
+           <property name="text">
+            <string>Metering mode:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_102">
+           <property name="text">
+            <string>Focal length:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="lens_make">
+           <property name="toolTip">
+            <string>This refers to the make of the lens</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_94">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Lens data</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QCheckBox" name="chk_lens_make">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_96">
+           <property name="text">
+            <string>Make:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_97">
+           <property name="text">
+            <string>Model:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_99">
+           <property name="text">
+            <string>Serial number:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_100">
+           <property name="text">
+            <string>Focal length (35mm):</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QCheckBox" name="chk_lens_model">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_101">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Save</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLineEdit" name="lens_focallengthin35mmformat"/>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="lens_model">
+           <property name="toolTip">
+            <string>This refers to the model of the lens</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QCheckBox" name="chk_lens_focallength">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QCheckBox" name="chk_lens_focallengthin35mmformat">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_109">
+           <property name="text">
+            <string>fnumber:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QCheckBox" name="chk_lens_serialnumber">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="lens_serialnumber">
+           <property name="toolTip">
+            <string>This refers to the serial number of the lens</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_107">
+           <property name="text">
+            <string>Max. aperturevalue:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="1">
+          <widget class="QComboBox" name="lens_meteringmode">
+           <property name="toolTip">
+            <string>Google only supports equirectangular at this moment</string>
+           </property>
+           <property name="statusTip">
+            <string>Google only supports equirectangular at this moment</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>Unknown</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Average</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Center-weighted average</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Spot</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Multi-spot</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Multi-segment</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Partial</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Other</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_14">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>450</y>
+          <width>651</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_14">
+         <item row="0" column="1">
+          <widget class="QPushButton" name="btn_savelens">
+           <property name="toolTip">
+            <string>Save the lens data to the image file(s)</string>
+           </property>
+           <property name="statusTip">
+            <string>Save the gps and xmp data to the image file</string>
+           </property>
+           <property name="text">
+            <string>Save to selected image(s)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btn_lens_copyfrom">
+           <property name="toolTip">
+            <string>This button will copy all the (available) lens info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="statusTip">
+            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+           </property>
+           <property name="text">
+            <string>Copy from selected image</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="btn_resetlens">
+           <property name="toolTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="statusTip">
+            <string>Empties all fields</string>
+           </property>
+           <property name="text">
+            <string>Reset fields</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="btn_lenshelp">
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="statusTip">
+            <string>Opens the manual with some additional info on this screen</string>
+           </property>
+           <property name="text">
+            <string>Help</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="btn_copy_lens_defaults">
+           <property name="toolTip">
+            <string>Copies the lens data from one of your defined lenses</string>
+           </property>
+           <property name="statusTip">
+            <string>Copies the default Artist and Copyright from Preferences</string>
+           </property>
+           <property name="text">
+            <string>Copy from defined lens</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="chk_lens_backuporiginals">
+           <property name="toolTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="statusTip">
+            <string>Overwrite your image or make a backup first</string>
+           </property>
+           <property name="text">
+            <string>Make backup of originals</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>

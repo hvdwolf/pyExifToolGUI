@@ -140,6 +140,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_geotag_gps_track_browse.clicked.connect(self.geotag_gps_file)
         self.btn_write_geotaginfo.clicked.connect(self.write_geotag_info)
         self.btn_write_geotaginfo.setEnabled(False)
+# Load several buttons from the Edit -> lens tab
+        self.btn_lenshelp.clicked.connect(self.lens_help)
+        self.btn_lens_copyfrom.clicked.connect(self.copylensfromselected)
+        self.btn_lens_copyfrom.setEnabled(False)
+        self.btn_savelens.clicked.connect(self.savelensdata)
+        self.btn_savelens.setEnabled(False)
+        self.btn_resetlens.clicked.connect(self.clear_lens_fields)
+        self.btn_copy_lens_defaults.clicked.connect(self.lens_defaults)
 # Load several buttons from the Edit -> Your commands tab
         self.btn_yourcommands_clearinput.clicked.connect(self.clear_yourcommands_input)
         self.btn_yourcommands_clearoutput.clicked.connect(self.clear_yourcommands_output)
@@ -228,6 +236,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_xmp_copyfrom.setEnabled(True)
         self.btn_savexmp.setEnabled(True)
         self.btn_write_geotaginfo.setEnabled(True)
+        self.btn_lens_copyfrom.setEnabled(True)
+        self.btn_savelens.setEnabled(True)
         self.progressbar.hide()
         self.statusbar.showMessage("Click thumb or filename to display the image info")
         # Set proper events
@@ -420,6 +430,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def geotagging_help(self):
        self.all_access_to_manual("Geotagging")
 
+    def lens_help(self):
+        self.all_access_to_manual("EditlensData")
+
     def yourcommands_help(self):
        self.all_access_to_manual("YourCommands")
 
@@ -557,6 +570,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
            print("pushed button to write the geotag info")
            self.statusbar.showMessage("writing geotag information to image(s).")
            petgfunctions.write_geotag_info(self,qApp)
+
+# Edit -> lens tab
+    def clear_lens_fields(self):
+        petgfunctions.clear_lens_fields(self)
+
+    def copylensfromselected(self):
+        petgfunctions.copylensfromselected(self,qApp)
+
+    def lens_defaults(self):
+        petgfunctions.copy_defaults(self, qApp, "lens")
+
+    def savelensdata(self):
+        petgfunctions.savelensdata(self, qApp)
 
 
 # Your Commands tab
