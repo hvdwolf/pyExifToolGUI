@@ -314,9 +314,9 @@
      <widget class="QTabWidget" name="tabWidget_2">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>0</x>
         <y>0</y>
-        <width>701</width>
+        <width>721</width>
         <height>571</height>
        </rect>
       </property>
@@ -2290,604 +2290,17 @@ to convert the data.</string>
        <attribute name="title">
         <string>GPano</string>
        </attribute>
-       <widget class="QWidget" name="verticalLayoutWidget_3">
+       <widget class="QWidget" name="gridLayoutWidget_15">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>490</y>
-          <width>681</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_12">
-         <property name="leftMargin">
-          <number>10</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="btn_gpano_copyfrom">
-           <property name="toolTip">
-            <string>This button will copy all the (available) gpano info from the selected image to the internal &quot;clipboard&quot;</string>
-           </property>
-           <property name="statusTip">
-            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
-           </property>
-           <property name="text">
-            <string>Copy from selected image</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_savegpano">
-           <property name="toolTip">
-            <string>Save the gpano data to the image file(s)</string>
-           </property>
-           <property name="statusTip">
-            <string>Save the gps and xmp data to the image file</string>
-           </property>
-           <property name="text">
-            <string>Save to selected image(s)</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="chk_gpano_backuporiginals">
-           <property name="toolTip">
-            <string>Overwrite your image or make a backup first</string>
-           </property>
-           <property name="statusTip">
-            <string>Overwrite your image or make a backup first</string>
-           </property>
-           <property name="text">
-            <string>Backup
-Originals</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_resetgpano">
-           <property name="toolTip">
-            <string>Empties all fields</string>
-           </property>
-           <property name="statusTip">
-            <string>Empties all fields</string>
-           </property>
-           <property name="text">
-            <string>Reset fields</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_gpanohelp">
-           <property name="font">
-            <font>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="toolTip">
-            <string>Opens the manual with some additional info on this screen</string>
-           </property>
-           <property name="statusTip">
-            <string>Opens the manual with some additional info on this screen</string>
-           </property>
-           <property name="text">
-            <string>Help</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="gridLayoutWidget_5">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>50</y>
-          <width>611</width>
-          <height>461</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_4">
-         <property name="leftMargin">
-          <number>10</number>
-         </property>
-         <item row="12" column="0">
-          <widget class="QLabel" name="label_66">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string>Initial View Pitch Degrees</string>
-           </property>
-          </widget>
-         </item>
-         <item row="14" column="0">
-          <widget class="QLabel" name="label_67">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string>Initial Horizontal FOV Degrees</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QLineEdit" name="xmp_StitchingSoftware">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="toolTip">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="3">
-          <widget class="QCheckBox" name="chk_xmp_CroppedAreaLeftPixels">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="0">
-          <widget class="QLabel" name="label_28">
-           <property name="text">
-            <string>Projection Type</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_11">
-           <property name="text">
-            <string>Cropped Area Image Height Pixels</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_22">
-           <property name="text">
-            <string>Cropped Area Image Width Pixels</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="2">
-          <widget class="QLineEdit" name="xmp_CroppedAreaTopPixels"/>
-         </item>
-         <item row="7" column="2">
-          <widget class="QLineEdit" name="xmp_FullPanoWidthPixels"/>
-         </item>
-         <item row="9" column="0">
-          <widget class="QLabel" name="label_47">
-           <property name="text">
-            <string>Use Panorama Viewer</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="label_29">
-           <property name="text">
-            <string>Full Pano Height Pixels</string>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="0">
-          <widget class="QLabel" name="label_46">
-           <property name="text">
-            <string>Full Pano Width Pixels</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="2">
-          <widget class="QLineEdit" name="xmp_CroppedAreaImageWidthPixels"/>
-         </item>
-         <item row="9" column="2">
-          <widget class="QCheckBox" name="xmp_UsePanoramaViewer">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QLineEdit" name="xmp_CroppedAreaImageHeightPixels"/>
-         </item>
-         <item row="5" column="3">
-          <widget class="QCheckBox" name="chk_xmp_CroppedAreaTopPixels">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="2">
-          <widget class="QLineEdit" name="xmp_FullPanoHeightPixels"/>
-         </item>
-         <item row="0" column="3">
-          <widget class="QLabel" name="label_50">
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Save</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_64">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string>Stitching Software</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="3">
-          <widget class="QCheckBox" name="chk_xmp_CroppedAreaImageWidthPixels">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="3">
-          <widget class="QCheckBox" name="chk_xmp_CroppedAreaImageHeightPixels">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="3">
-          <widget class="QCheckBox" name="chk_xmp_FullPanoWidthPixels">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="3">
-          <widget class="QCheckBox" name="chk_xmp_FullPanoHeightPixels">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_27">
-           <property name="text">
-            <string>Cropped Area Top Pixels</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_26">
-           <property name="text">
-            <string>Cropped Area Left Pixels</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="2">
-          <widget class="QLineEdit" name="xmp_CroppedAreaLeftPixels"/>
-         </item>
-         <item row="8" column="3">
-          <widget class="QCheckBox" name="chk_xmp_ProjectionType">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="3">
-          <widget class="QCheckBox" name="chk_xmp_UsePanoramaViewer">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="10" column="0">
-          <widget class="QLabel" name="label_48">
-           <property name="text">
-            <string>Pose Heading Degrees ( for Google Maps)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="10" column="2">
-          <widget class="QLineEdit" name="xmp_PoseHeadingDegrees"/>
-         </item>
-         <item row="10" column="3">
-          <widget class="QCheckBox" name="chk_xmp_PoseHeadingDegrees">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="2">
-          <widget class="QComboBox" name="xmp_ProjectionType">
-           <property name="toolTip">
-            <string>Google only supports equirectangular at this moment</string>
-           </property>
-           <property name="statusTip">
-            <string>Google only supports equirectangular at this moment</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>equirectangular</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>cylindrical</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>rectilinear</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="11" column="0">
-          <widget class="QLabel" name="label_65">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string>Initial View Heading Degrees</string>
-           </property>
-          </widget>
-         </item>
-         <item row="11" column="2">
-          <widget class="QLineEdit" name="xmp_InitialViewHeadingDegrees">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="3">
-          <widget class="QCheckBox" name="chk_xmp_StitchingSoftware">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="14" column="2">
-          <widget class="QLineEdit" name="xmp_InitialHorizontalFOVDegrees">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="12" column="2">
-          <widget class="QLineEdit" name="xmp_InitialViewPitchDegrees">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="14" column="3">
-          <widget class="QCheckBox" name="chk_xmp_InitialHorizontalFOVDegrees">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="12" column="3">
-          <widget class="QCheckBox" name="chk_xmp_InitialViewPitchDegrees">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="11" column="3">
-          <widget class="QCheckBox" name="chk_xmp_InitialViewHeadingDegrees">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="13" column="0">
-          <widget class="QLabel" name="label_68">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string>Initial View Roll Degrees</string>
-           </property>
-          </widget>
-         </item>
-         <item row="13" column="2">
-          <widget class="QLineEdit" name="xmp_InitialViewRollDegrees">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="13" column="3">
-          <widget class="QCheckBox" name="chk_xmp_InitialViewRollDegrees">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLabel" name="label_71">
-           <property name="text">
-            <string>*</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLabel" name="label_72">
-           <property name="text">
-            <string>*</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QLabel" name="label_73">
-           <property name="text">
-            <string>*</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QLabel" name="label_74">
-           <property name="text">
-            <string>*</string>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="1">
-          <widget class="QLabel" name="label_75">
-           <property name="text">
-            <string>*</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="1">
-          <widget class="QLabel" name="label_76">
-           <property name="text">
-            <string>*</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="1">
-          <widget class="QLabel" name="label_82">
-           <property name="text">
-            <string>*</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="label_10">
-           <property name="text">
-            <string>*</string>
-           </property>
-          </widget>
-         </item>
-         <item row="10" column="1">
-          <widget class="QLabel" name="label_70">
-           <property name="text">
-            <string>**</string>
-           </property>
-          </widget>
-         </item>
-         <item row="11" column="1">
-          <widget class="QLabel" name="label_83">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string>***</string>
-           </property>
-          </widget>
-         </item>
-         <item row="12" column="1">
-          <widget class="QLabel" name="label_84">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string>***</string>
-           </property>
-          </widget>
-         </item>
-         <item row="13" column="1">
-          <widget class="QLabel" name="label_85">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string>***</string>
-           </property>
-          </widget>
-         </item>
-         <item row="14" column="1">
-          <widget class="QLabel" name="label_86">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string>***</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="label_87">
-           <property name="text">
-            <string>***</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="verticalLayoutWidget_4">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
+          <x>0</x>
           <y>0</y>
-          <width>681</width>
-          <height>61</height>
+          <width>691</width>
+          <height>541</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
+        <layout class="QGridLayout" name="gridLayout_15">
+         <item row="0" column="0">
           <widget class="QLabel" name="lbl_exiftool_leveltext">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -2902,6 +2315,577 @@ Originals</string>
             <bool>true</bool>
            </property>
           </widget>
+         </item>
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_12">
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="btn_gpano_copyfrom">
+             <property name="toolTip">
+              <string>This button will copy all the (available) gpano info from the selected image to the internal &quot;clipboard&quot;</string>
+             </property>
+             <property name="statusTip">
+              <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+             </property>
+             <property name="text">
+              <string>Copy from selected image</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_savegpano">
+             <property name="toolTip">
+              <string>Save the gpano data to the image file(s)</string>
+             </property>
+             <property name="statusTip">
+              <string>Save the gps and xmp data to the image file</string>
+             </property>
+             <property name="text">
+              <string>Save to selected image(s)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="chk_gpano_backuporiginals">
+             <property name="toolTip">
+              <string>Overwrite your image or make a backup first</string>
+             </property>
+             <property name="statusTip">
+              <string>Overwrite your image or make a backup first</string>
+             </property>
+             <property name="text">
+              <string>Backup
+Originals</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_resetgpano">
+             <property name="toolTip">
+              <string>Empties all fields</string>
+             </property>
+             <property name="statusTip">
+              <string>Empties all fields</string>
+             </property>
+             <property name="text">
+              <string>Reset fields</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_gpanohelp">
+             <property name="font">
+              <font>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>Opens the manual with some additional info on this screen</string>
+             </property>
+             <property name="statusTip">
+              <string>Opens the manual with some additional info on this screen</string>
+             </property>
+             <property name="text">
+              <string>Help</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <layout class="QGridLayout" name="gridLayout_4">
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <item row="12" column="0">
+            <widget class="QLabel" name="label_66">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>Initial View Pitch Degrees</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0">
+            <widget class="QLabel" name="label_67">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>Initial Horizontal FOV Degrees</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="xmp_StitchingSoftware">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="toolTip">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="3">
+            <widget class="QCheckBox" name="chk_xmp_CroppedAreaLeftPixels">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="label_28">
+             <property name="text">
+              <string>Projection Type</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>Cropped Area Image Height Pixels</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_22">
+             <property name="text">
+              <string>Cropped Area Image Width Pixels</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="2">
+            <widget class="QLineEdit" name="xmp_CroppedAreaTopPixels"/>
+           </item>
+           <item row="7" column="2">
+            <widget class="QLineEdit" name="xmp_FullPanoWidthPixels"/>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="label_47">
+             <property name="text">
+              <string>Use Panorama Viewer</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="label_29">
+             <property name="text">
+              <string>Full Pano Height Pixels</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="label_46">
+             <property name="text">
+              <string>Full Pano Width Pixels</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QLineEdit" name="xmp_CroppedAreaImageWidthPixels"/>
+           </item>
+           <item row="9" column="2">
+            <widget class="QCheckBox" name="xmp_UsePanoramaViewer">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="xmp_CroppedAreaImageHeightPixels"/>
+           </item>
+           <item row="5" column="3">
+            <widget class="QCheckBox" name="chk_xmp_CroppedAreaTopPixels">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="2">
+            <widget class="QLineEdit" name="xmp_FullPanoHeightPixels"/>
+           </item>
+           <item row="0" column="3">
+            <widget class="QLabel" name="label_50">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Save</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_64">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>Stitching Software</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="3">
+            <widget class="QCheckBox" name="chk_xmp_CroppedAreaImageWidthPixels">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="3">
+            <widget class="QCheckBox" name="chk_xmp_CroppedAreaImageHeightPixels">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="3">
+            <widget class="QCheckBox" name="chk_xmp_FullPanoWidthPixels">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="3">
+            <widget class="QCheckBox" name="chk_xmp_FullPanoHeightPixels">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_27">
+             <property name="text">
+              <string>Cropped Area Top Pixels</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_26">
+             <property name="text">
+              <string>Cropped Area Left Pixels</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2">
+            <widget class="QLineEdit" name="xmp_CroppedAreaLeftPixels"/>
+           </item>
+           <item row="8" column="3">
+            <widget class="QCheckBox" name="chk_xmp_ProjectionType">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="3">
+            <widget class="QCheckBox" name="chk_xmp_UsePanoramaViewer">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QLabel" name="label_48">
+             <property name="text">
+              <string>Pose Heading Degrees ( for Google Maps)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="2">
+            <widget class="QLineEdit" name="xmp_PoseHeadingDegrees"/>
+           </item>
+           <item row="10" column="3">
+            <widget class="QCheckBox" name="chk_xmp_PoseHeadingDegrees">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="2">
+            <widget class="QComboBox" name="xmp_ProjectionType">
+             <property name="toolTip">
+              <string>Google only supports equirectangular at this moment</string>
+             </property>
+             <property name="statusTip">
+              <string>Google only supports equirectangular at this moment</string>
+             </property>
+             <item>
+              <property name="text">
+               <string>equirectangular</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>cylindrical</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>rectilinear</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="label_65">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>Initial View Heading Degrees</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="2">
+            <widget class="QLineEdit" name="xmp_InitialViewHeadingDegrees">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="3">
+            <widget class="QCheckBox" name="chk_xmp_StitchingSoftware">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="2">
+            <widget class="QLineEdit" name="xmp_InitialHorizontalFOVDegrees">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="2">
+            <widget class="QLineEdit" name="xmp_InitialViewPitchDegrees">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="3">
+            <widget class="QCheckBox" name="chk_xmp_InitialHorizontalFOVDegrees">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="3">
+            <widget class="QCheckBox" name="chk_xmp_InitialViewPitchDegrees">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="3">
+            <widget class="QCheckBox" name="chk_xmp_InitialViewHeadingDegrees">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="0">
+            <widget class="QLabel" name="label_68">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>Initial View Roll Degrees</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="2">
+            <widget class="QLineEdit" name="xmp_InitialViewRollDegrees">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="3">
+            <widget class="QCheckBox" name="chk_xmp_InitialViewRollDegrees">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLabel" name="label_71">
+             <property name="text">
+              <string>*</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLabel" name="label_72">
+             <property name="text">
+              <string>*</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QLabel" name="label_73">
+             <property name="text">
+              <string>*</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QLabel" name="label_74">
+             <property name="text">
+              <string>*</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QLabel" name="label_75">
+             <property name="text">
+              <string>*</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QLabel" name="label_76">
+             <property name="text">
+              <string>*</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="QLabel" name="label_82">
+             <property name="text">
+              <string>*</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>*</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QLabel" name="label_70">
+             <property name="text">
+              <string>**</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="QLabel" name="label_83">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>***</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="1">
+            <widget class="QLabel" name="label_84">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>***</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="1">
+            <widget class="QLabel" name="label_85">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>***</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="1">
+            <widget class="QLabel" name="label_86">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="text">
+              <string>***</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="label_87">
+             <property name="text">
+              <string>***</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
         </layout>
        </widget>
@@ -4034,20 +4018,6 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <tabstop>xmp_rating4</tabstop>
   <tabstop>xmp_rating5</tabstop>
   <tabstop>xmp_person</tabstop>
-  <tabstop>xmp_StitchingSoftware</tabstop>
-  <tabstop>xmp_CroppedAreaImageHeightPixels</tabstop>
-  <tabstop>xmp_CroppedAreaImageWidthPixels</tabstop>
-  <tabstop>xmp_CroppedAreaLeftPixels</tabstop>
-  <tabstop>xmp_CroppedAreaTopPixels</tabstop>
-  <tabstop>xmp_FullPanoHeightPixels</tabstop>
-  <tabstop>xmp_FullPanoWidthPixels</tabstop>
-  <tabstop>xmp_ProjectionType</tabstop>
-  <tabstop>xmp_UsePanoramaViewer</tabstop>
-  <tabstop>xmp_PoseHeadingDegrees</tabstop>
-  <tabstop>xmp_InitialViewHeadingDegrees</tabstop>
-  <tabstop>xmp_InitialViewPitchDegrees</tabstop>
-  <tabstop>xmp_InitialViewRollDegrees</tabstop>
-  <tabstop>xmp_InitialHorizontalFOVDegrees</tabstop>
   <tabstop>btn_gpano_copyfrom</tabstop>
   <tabstop>btn_savegpano</tabstop>
   <tabstop>btn_resetgpano</tabstop>
@@ -4090,33 +4060,19 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <tabstop>radioButton_gpsN</tabstop>
   <tabstop>MaintableWidget</tabstop>
   <tabstop>chk_AboveSeaLevel</tabstop>
-  <tabstop>chk_xmp_CroppedAreaLeftPixels</tabstop>
   <tabstop>chk_xmp_country</tabstop>
   <tabstop>chk_xmp_city</tabstop>
   <tabstop>btn_loadimages</tabstop>
   <tabstop>radioButton_calc_gpsW</tabstop>
   <tabstop>btn_copy_calc_to_gps</tabstop>
-  <tabstop>chk_xmp_CroppedAreaTopPixels</tabstop>
   <tabstop>chk_xmp_state</tabstop>
-  <tabstop>chk_xmp_CroppedAreaImageWidthPixels</tabstop>
-  <tabstop>chk_xmp_CroppedAreaImageHeightPixels</tabstop>
-  <tabstop>chk_xmp_FullPanoWidthPixels</tabstop>
-  <tabstop>chk_xmp_FullPanoHeightPixels</tabstop>
   <tabstop>chk_xmp_location</tabstop>
-  <tabstop>chk_xmp_ProjectionType</tabstop>
-  <tabstop>chk_xmp_UsePanoramaViewer</tabstop>
   <tabstop>gps_lat_min</tabstop>
-  <tabstop>chk_xmp_PoseHeadingDegrees</tabstop>
   <tabstop>radioButton_calc_gpsE</tabstop>
   <tabstop>gps_lon_deg</tabstop>
-  <tabstop>chk_xmp_StitchingSoftware</tabstop>
   <tabstop>radioButton_gpsS</tabstop>
   <tabstop>chk_exif_Artist</tabstop>
-  <tabstop>chk_xmp_InitialHorizontalFOVDegrees</tabstop>
-  <tabstop>chk_xmp_InitialViewPitchDegrees</tabstop>
-  <tabstop>chk_xmp_InitialViewHeadingDegrees</tabstop>
   <tabstop>exiftableWidget</tabstop>
-  <tabstop>chk_xmp_InitialViewRollDegrees</tabstop>
   <tabstop>chk_exif_Model</tabstop>
   <tabstop>gps_lon_min</tabstop>
   <tabstop>gps_lat_sec</tabstop>
