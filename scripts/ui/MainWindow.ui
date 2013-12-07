@@ -1863,7 +1863,7 @@ to convert the data.</string>
             <string>Save the exif data to the image file(s)</string>
            </property>
            <property name="statusTip">
-            <string>Save the gps and xmp data to the image file</string>
+            <string>Save the exif data to the image file(s)</string>
            </property>
            <property name="text">
             <string>Save to selected image(s)</string>
@@ -1876,7 +1876,7 @@ to convert the data.</string>
             <string>This button will copy the (available) exif info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="statusTip">
-            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+            <string>This button will copy the (available) exif info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="text">
             <string>Copy from selected image</string>
@@ -2218,7 +2218,7 @@ to convert the data.</string>
             <string>Save the xmp data to the image file(s)</string>
            </property>
            <property name="statusTip">
-            <string>Save the gps and xmp data to the image file</string>
+            <string>Save the xmp data to the image file(s)</string>
            </property>
            <property name="text">
             <string>Save to selected image(s)</string>
@@ -2244,7 +2244,7 @@ to convert the data.</string>
             <string>This button will copy all the (available) xmp info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="statusTip">
-            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+            <string>This button will copy all the (available) xmp info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="text">
             <string>Copy from selected image</string>
@@ -2327,7 +2327,7 @@ to convert the data.</string>
               <string>This button will copy all the (available) gpano info from the selected image to the internal &quot;clipboard&quot;</string>
              </property>
              <property name="statusTip">
-              <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+              <string>This button will copy all the (available) gpano info from the selected image to the internal &quot;clipboard&quot;</string>
              </property>
              <property name="text">
               <string>Copy from selected image</string>
@@ -2340,7 +2340,7 @@ to convert the data.</string>
               <string>Save the gpano data to the image file(s)</string>
              </property>
              <property name="statusTip">
-              <string>Save the gps and xmp data to the image file</string>
+              <string>Save the gpano data to the image file(s)</string>
              </property>
              <property name="text">
               <string>Save to selected image(s)</string>
@@ -3056,6 +3056,12 @@ Originals</string>
          </item>
          <item row="12" column="0">
           <widget class="QPushButton" name="btn_write_geotaginfo">
+           <property name="toolTip">
+            <string>Write the geotag info to the images where possible</string>
+           </property>
+           <property name="statusTip">
+            <string>Write the geotag info to the images where possible</string>
+           </property>
            <property name="text">
             <string>Write geotag information to image(s)</string>
            </property>
@@ -3393,7 +3399,7 @@ Originals</string>
             <string>Save the lens data to the image file(s)</string>
            </property>
            <property name="statusTip">
-            <string>Save the gps and xmp data to the image file</string>
+            <string>This button will copy all the (available) lens info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="text">
             <string>Save to selected image(s)</string>
@@ -3406,7 +3412,7 @@ Originals</string>
             <string>This button will copy all the (available) lens info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="statusTip">
-            <string>This button will copy all the (available) gps/location info from the selected image to the internal &quot;clipboard&quot;</string>
+            <string>This button will copy all the (available) lens info from the selected image to the internal &quot;clipboard&quot;</string>
            </property>
            <property name="text">
             <string>Copy from selected image</string>
@@ -3451,7 +3457,7 @@ Originals</string>
             <string>Copies the lens data from one of your defined lenses</string>
            </property>
            <property name="statusTip">
-            <string>Copies the default Artist and Copyright from Preferences</string>
+            <string>Copies the lens data from one of your defined lenses</string>
            </property>
            <property name="text">
             <string>Copy from defined lens</string>
