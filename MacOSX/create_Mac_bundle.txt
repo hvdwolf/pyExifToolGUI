@@ -1,0 +1,20 @@
+How to create the mac bundle
+
+Currently I use pyinstaller version 2.0 (www.pyinstaller.org)
+Version 2.1 has strange quircks regarding the copying out of the "exe" folder. 
+However, that is how Mac OS X works. Binaries go into MacOS, other "things" go
+into folders outside the MacOS folder, but 2.1 does not allow this
+
+From within the MacOSX folder:
+- open pyexiftoolgui.spec and check whether paths are correct
+- run: "<path/to>/pyinstaller-2.0/pyinstaller.py --windowed pyexiftoolgui.spec
+- run "./completebundle.sh" to use the install_name_tool to set all links internally.
+- Create a folder "pyExifToolGUI-<version>" inside this MacOSX folder
+- Copy README.txt, INSTALLATION.txt, Changelog and COPYING inside the "pyExifToolGUI-<version>"
+- Copy the pyexiftoolgui.app from the dist folder into the "pyExifToolGUI-<version>".
+- Start the Disk Utility program
+- Create a dmg ("Create Disk Image from Folder") from the "pyExifToolGUI-<version>" folder.
+
+
+This file: version 0.1, 2013-12-08, hvdwolf.
+
