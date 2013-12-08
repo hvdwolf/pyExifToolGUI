@@ -303,7 +303,7 @@ Please specify how the tool should do this.</string>
         <x>10</x>
         <y>10</y>
         <width>342</width>
-        <height>211</height>
+        <height>213</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
@@ -466,7 +466,7 @@ Please specify how the tool should do this.</string>
         <x>10</x>
         <y>0</y>
         <width>303</width>
-        <height>130</height>
+        <height>132</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -752,6 +752,34 @@ Please specify how the tool should do this.</string>
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>buttonBox</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>button_rename_info</tabstop>
+  <tabstop>LineEdit_rename_source_folder</tabstop>
+  <tabstop>button_rename_browse</tabstop>
+  <tabstop>radioButton_prefix_datetime</tabstop>
+  <tabstop>comboBox_prefix_datetime</tabstop>
+  <tabstop>radioButton_prefix_date</tabstop>
+  <tabstop>comboBox_prefix_date</tabstop>
+  <tabstop>radioButton_prefix_string</tabstop>
+  <tabstop>prefix_string</tabstop>
+  <tabstop>radioButton_suffix_donotuse</tabstop>
+  <tabstop>radioButton_suffix_string</tabstop>
+  <tabstop>suffix_string</tabstop>
+  <tabstop>radioButton_suffix_datetime</tabstop>
+  <tabstop>comboBox_suffix_datetime</tabstop>
+  <tabstop>radioButton_suffix_date</tabstop>
+  <tabstop>comboBox_suffix_date</tabstop>
+  <tabstop>radioButton_model</tabstop>
+  <tabstop>radioButton_orgfilename</tabstop>
+  <tabstop>comboBox_digits</tabstop>
+  <tabstop>comboBox_startcount</tabstop>
+  <tabstop>radioButton_fileext_asis</tabstop>
+  <tabstop>radioButton_fileext_tolower</tabstop>
+  <tabstop>radioButton_fileext_toupper</tabstop>
+  <tabstop>s01</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

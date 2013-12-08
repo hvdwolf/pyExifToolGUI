@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'rename_photos.ui'
 #
-# Created: Sat Dec  7 12:11:39 2013
+# Created: Sun Dec  8 11:53:10 2013
 #      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -111,7 +111,7 @@ class Ui_Dialog_rename_files(object):
         self.frame_4.setLineWidth(2)
         self.frame_4.setObjectName("frame_4")
         self.gridLayoutWidget_2 = QtGui.QWidget(self.frame_4)
-        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(10, 10, 342, 211))
+        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(10, 10, 342, 213))
         self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
         self.gridLayout_2 = QtGui.QGridLayout(self.gridLayoutWidget_2)
         self.gridLayout_2.setContentsMargins(10, 10, 10, 10)
@@ -175,7 +175,7 @@ class Ui_Dialog_rename_files(object):
         self.frame_3.setLineWidth(2)
         self.frame_3.setObjectName("frame_3")
         self.gridLayoutWidget = QtGui.QWidget(self.frame_3)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 0, 303, 130))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 0, 303, 132))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtGui.QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setContentsMargins(10, 10, 10, 10)
@@ -297,6 +297,31 @@ class Ui_Dialog_rename_files(object):
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), Dialog_rename_files.accept)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), Dialog_rename_files.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog_rename_files)
+        Dialog_rename_files.setTabOrder(self.buttonBox, self.tabWidget)
+        Dialog_rename_files.setTabOrder(self.tabWidget, self.button_rename_info)
+        Dialog_rename_files.setTabOrder(self.button_rename_info, self.LineEdit_rename_source_folder)
+        Dialog_rename_files.setTabOrder(self.LineEdit_rename_source_folder, self.button_rename_browse)
+        Dialog_rename_files.setTabOrder(self.button_rename_browse, self.radioButton_prefix_datetime)
+        Dialog_rename_files.setTabOrder(self.radioButton_prefix_datetime, self.comboBox_prefix_datetime)
+        Dialog_rename_files.setTabOrder(self.comboBox_prefix_datetime, self.radioButton_prefix_date)
+        Dialog_rename_files.setTabOrder(self.radioButton_prefix_date, self.comboBox_prefix_date)
+        Dialog_rename_files.setTabOrder(self.comboBox_prefix_date, self.radioButton_prefix_string)
+        Dialog_rename_files.setTabOrder(self.radioButton_prefix_string, self.prefix_string)
+        Dialog_rename_files.setTabOrder(self.prefix_string, self.radioButton_suffix_donotuse)
+        Dialog_rename_files.setTabOrder(self.radioButton_suffix_donotuse, self.radioButton_suffix_string)
+        Dialog_rename_files.setTabOrder(self.radioButton_suffix_string, self.suffix_string)
+        Dialog_rename_files.setTabOrder(self.suffix_string, self.radioButton_suffix_datetime)
+        Dialog_rename_files.setTabOrder(self.radioButton_suffix_datetime, self.comboBox_suffix_datetime)
+        Dialog_rename_files.setTabOrder(self.comboBox_suffix_datetime, self.radioButton_suffix_date)
+        Dialog_rename_files.setTabOrder(self.radioButton_suffix_date, self.comboBox_suffix_date)
+        Dialog_rename_files.setTabOrder(self.comboBox_suffix_date, self.radioButton_model)
+        Dialog_rename_files.setTabOrder(self.radioButton_model, self.radioButton_orgfilename)
+        Dialog_rename_files.setTabOrder(self.radioButton_orgfilename, self.comboBox_digits)
+        Dialog_rename_files.setTabOrder(self.comboBox_digits, self.comboBox_startcount)
+        Dialog_rename_files.setTabOrder(self.comboBox_startcount, self.radioButton_fileext_asis)
+        Dialog_rename_files.setTabOrder(self.radioButton_fileext_asis, self.radioButton_fileext_tolower)
+        Dialog_rename_files.setTabOrder(self.radioButton_fileext_tolower, self.radioButton_fileext_toupper)
+        Dialog_rename_files.setTabOrder(self.radioButton_fileext_toupper, self.s01)
 
     def retranslateUi(self, Dialog_rename_files):
         Dialog_rename_files.setWindowTitle(QtGui.QApplication.translate("Dialog_rename_files", "Rename photos", None, QtGui.QApplication.UnicodeUTF8))

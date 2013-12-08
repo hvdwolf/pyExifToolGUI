@@ -57,6 +57,7 @@ import petgfunctions
 import programinfo
 import programstrings
 import renaming
+import lensdefinitions
 
 #import image_resources.rc
 if platform.system() == "Darwin":
@@ -80,8 +81,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mnu_action_date_to_DateTimeOriginal.triggered.connect(self.date_to_datetimeoriginal)
         self.mnu_action_repair_jpg.triggered.connect(self.repair_jpg_metadata)
         self.mnu_action_copytoxmp.triggered.connect(self.copymetadatatoxmp)
-        # not in this 0.28 release, so disable action and hide menu item
         self.mnu_action_renaming.triggered.connect(self.rename_photos)
+        self.mnu_action_define_lens.triggered.connect(self.lensdialog)
         #self.menuExtra.removeAction(self.mnu_action_renaming)
         #--- help menu
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
@@ -147,7 +148,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_savelens.clicked.connect(self.savelensdata)
         self.btn_savelens.setEnabled(False)
         self.btn_resetlens.clicked.connect(self.clear_lens_fields)
-        self.btn_copy_lens_defaults.clicked.connect(self.lens_defaults)
+        self.btn_copy_lens_defaults.clicked.connect(self.lensdialog)
 # Load several buttons from the Edit -> Your commands tab
         self.btn_yourcommands_clearinput.clicked.connect(self.clear_yourcommands_input)
         self.btn_yourcommands_clearoutput.clicked.connect(self.clear_yourcommands_output)
@@ -304,6 +305,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def rename_photos(self):
         renaming.rename_photos(self,qApp)
+
+    def lensdialog(self):
+        lensdefinitions.process_lensdialog(self,qApp)
 
     def create_args(self):
         try:

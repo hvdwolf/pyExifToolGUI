@@ -3846,6 +3846,7 @@ Currently I have no intent to add functionality to this standard, maybe later.</
      <string>&amp;Extra</string>
     </property>
     <addaction name="mnu_action_renaming"/>
+    <addaction name="mnu_action_define_lens"/>
     <addaction name="separator"/>
     <addaction name="mnu_action_create_args"/>
     <addaction name="mnu_action_export_metadata"/>
@@ -3978,6 +3979,11 @@ Currently I have no intent to add functionality to this standard, maybe later.</
   <action name="mnu_action_renaming">
    <property name="text">
     <string>Rename photos</string>
+   </property>
+  </action>
+  <action name="mnu_action_define_lens">
+   <property name="text">
+    <string>Define lens(es)</string>
    </property>
   </action>
  </widget>
