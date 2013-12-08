@@ -146,11 +146,12 @@ ul.toc {}
 <li><a href="#EditexifData">5.2 Edit exif data</a>
 <li><a href="#EditxmpData">5.3 Edit xmp data</a>
 <li><a href="#EditgpanoData">5.4 Edit GPano (Google Photosphere) data</a>
-<li><a href="#EditiptcData">5.5 IPTC data (not directly supported)</a>
-<li><a href="#workflow">5.6 Example workflows</a>
+<li><a href="#Geotagging">5.5 Geotagging</a>
+<li><a href="#EditiptcData">5.6 IPTC data (not directly supported)</a>
+<li><a href="#workflow">5.7 Example workflows</a>
 <ul>
-<li><a href="#generalworkflow">5.6.1 General workflow</a>
-<li><a href="#scan_rename_workflow">5.6.2 After scanning: Correcting Date/time and Renaming workflow</a>
+<li><a href="#generalworkflow">5.7.1 General workflow</a>
+<li><a href="#scan_rename_workflow">5.7.2 After scanning: Correcting Date/time and Renaming workflow</a>
 </li></ul>
 </li></ul>
 <li><a name="toc_ExtraMenu" href="#ExtraMenu">6 Extra Menu</a>
@@ -206,7 +207,7 @@ In the mean time the functionality of pyExifToolGUI has expanded and also suppor
 all kind of metadata. Next to that it now contains also extended photo file renaming functionality 
 based on the exif info in your photos.
 By now pyExifToolGUI is a general exiftool Gui but it is still far from complete.
-<p>This pyExifToolGUI tool is NOT a geotagging tool!
+<p>This pyExifToolGUI tool is also a geotagging tool since version 0.4!
 
 <p>IPTC tags are only partly supported. IPTC is an older and slowly deminishing metadata standard being replaced by xmp. Where
 applicable, e.g. redundant tags in xmp, the iptc tags will be updated simultaneously.
@@ -521,8 +522,26 @@ the selected image into the input fields.</li>
 <p>
 
 
+<p><a name="Geotagging"></a>
+<h3 class="section">5.5 Geotagging</h3>
+<p>Geotagging adds GPS data to your images based on data from a GPS track log file. This GPS track file can be used from your phone, gps device, navigation device, or whatever you have providing such a GPS track.<br>
+The GPS track log file is loaded, and linear interpolation is used to determine the GPS position at the time of the image, then the following tags are written to the image (if the corresponding information is available).
+It means that your camera needs to be set correctly with regard to the date/time of the location where you are.<br>
+PyExifToolGUI also supports the "Geosync" feature of ExifTool. The Geosync tag is only needed when the image timestamps are not properly synchronized with GPS time.<br>
+For example, a value of "+1:20" specifies that 1 minute and 20 seconds is added to the Geotime value before checking with the GPS track file. This is for a camera running 1 minute 20 seconds slower than the GPS clock.<br>
+The Geosync time is specified as  "SS", "MM:SS", "HH:MM:SS" or "DD HH:MM:SS" (where SS=seconds, MM=minutes, HH=hours and DD=days), and a leading "+" or "-" may be added for positive or negative differences.<br>
+Note: Do not use (double) quotes around the geosync time in pyExifToolGUI. Simply use something like -25 or +1:20</p>
+<p>In pyExifToolGUI you have 2 options:
+<ol><li>Use (a selection of) the images you loaded in the left images pane.</li>
+<li>Specify a folder containing a set of images to be tagged.</li>
+</ol></p>
+<p>In case of the first option you need to leave the folder empty. If the "Folder containing the images:" is not left empty, it will always be the first option used.<br><br>
+Note that pyExifToolGui will write both the EXIF GPS tags as well as the XMP GPS tags.
+</p>
+
+
 <p><a name="EditiptcData"></a>
-<h3 class="section">5.5 IPTC data (not directly supported)</h3>
+<h3 class="section">5.6 IPTC data (not directly supported)</h3>
 <p>IPTC is an older metadata information standard.
 It stands for "International Press Telecommunications Council", also with a 
 combination with the Newspaper Association of America (NAA) Information Interchange Model (IIM).
@@ -536,11 +555,11 @@ Next to that: IPTC is being phased out in favor of XMP.
 
 
 <p><a name="workflow"></a>
-<h3 class="section">5.6 Example workflows</h3>
+<h3 class="section">5.7 Example workflows</h3>
 
 <p> </p>
 <p><a name="generalworkflow"></a>
-<h4 class="subsection">5.6.1 General workflow</h4>
+<h4 class="subsection">5.7.1 General workflow</h4>
 
 <p>Below you'll find an example of how you can use the program to edit the metadata of your images.
 Click the images for a full size version.
@@ -588,7 +607,7 @@ processed and a progress bar displaying the complete progress.
 </table>
 <p> </p>
 <p><a name="scan_rename_workflow"></a>
-<h4 class="subsection">5.6.2 After scanning: Correcting Date/time and Renaming workflow</h4>
+<h4 class="subsection">5.7.2 After scanning: Correcting Date/time and Renaming workflow</h4>
 <p>The following workflow shows an example where (in this case) old diapositives out of 1977 were scanned. We start with the scanned images and the workflow is as follows:
 <ul><li>Set the datetime metatags (We don't know the exact the date so we estimate the date as precise as possible.)
 <li>We set the file date based on the datetime metatags we have just set in the previous set.
@@ -1166,4 +1185,3 @@ as a draft) by the Free Software Foundation.
 <p>
 <!-- End of Document -->
 </body></html>
-
