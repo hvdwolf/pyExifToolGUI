@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sun Dec  8 11:53:10 2013
+# Created: Sun Dec  8 19:53:40 2013
 #      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -1634,6 +1634,8 @@ class Ui_MainWindow(object):
         self.mnu_action_renaming = QtGui.QAction(MainWindow)
         self.mnu_action_renaming.setObjectName("mnu_action_renaming")
         self.mnu_action_define_lens = QtGui.QAction(MainWindow)
+        self.mnu_action_define_lens.setEnabled(False)
+        self.mnu_action_define_lens.setVisible(False)
         self.mnu_action_define_lens.setObjectName("mnu_action_define_lens")
         self.menu_File.addAction(self.mnu_action_load_images)
         self.menu_File.addSeparator()

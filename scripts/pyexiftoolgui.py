@@ -69,6 +69,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
+# Set window title to start with
+        self.setWindowTitle(programinfo.NAME + " " + programinfo.VERSION )
 # First set the menu actions
         self.mnu_action_load_images.triggered.connect(self.loadimages)
         self.action_Quit.triggered.connect(self.quit_application)
@@ -82,7 +84,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mnu_action_repair_jpg.triggered.connect(self.repair_jpg_metadata)
         self.mnu_action_copytoxmp.triggered.connect(self.copymetadatatoxmp)
         self.mnu_action_renaming.triggered.connect(self.rename_photos)
-        self.mnu_action_define_lens.triggered.connect(self.lensdialog)
+        #self.mnu_action_define_lens.triggered.connect(self.lensdialog)
         #self.menuExtra.removeAction(self.mnu_action_renaming)
         #--- help menu
         self.mnu_action_pyexiftoolgui_home.triggered.connect(self.open_pyexiftoolgui_homepage)
@@ -149,6 +151,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_savelens.setEnabled(False)
         self.btn_resetlens.clicked.connect(self.clear_lens_fields)
         self.btn_copy_lens_defaults.clicked.connect(self.lensdialog)
+        # For the time being hide the button
+        self.btn_copy_lens_defaults.setVisible(False)
 # Load several buttons from the Edit -> Your commands tab
         self.btn_yourcommands_clearinput.clicked.connect(self.clear_yourcommands_input)
         self.btn_yourcommands_clearoutput.clicked.connect(self.clear_yourcommands_output)
@@ -297,7 +301,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.licensebutton.clicked.connect(self.show_license)
         self.donatebutton.clicked.connect(self.open_donate_page)
         self.aboutbox.setWindowTitle("About pyexiftoolgui " + programinfo.VERSION)
-        self.aboutbox.setText(programinfo.ABOUTMESSAGE)
+        if platform.system() == "Darwin":
+           self.aboutbox.setText("<p>This is<b> " + programinfo.NAME + " " + programinfo.VERSION + "</b></p>" + programinfo.ABOUTMESSAGE)
+        else:
+           self.aboutbox.setText(programinfo.ABOUTMESSAGE)
+
         ret = self.aboutbox.exec_()
         
     def show_license(self):

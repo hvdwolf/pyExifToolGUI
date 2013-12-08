@@ -3982,8 +3982,14 @@ Currently I have no intent to add functionality to this standard, maybe later.</
    </property>
   </action>
   <action name="mnu_action_define_lens">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Define lens(es)</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
   </action>
  </widget>
