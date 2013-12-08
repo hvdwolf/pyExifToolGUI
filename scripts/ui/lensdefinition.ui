@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>lensdefinitiondialog</class>
+ <widget class="QDialog" name="lensdefinitiondialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>526</width>
+    <height>640</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Lens definitions</string>
+  </property>
+  <widget class="QLabel" name="qdldf_lbl">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>501</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This dialog gives you the option to select and use, create or modify a lens definition. &lt;br&gt;Examples are: &lt;ul&gt;&lt;li&gt;you have an old lens (via an adapter ring) that's not recognised by your camera.&lt;/li&gt; &lt;li&gt;you have a tele/macro converter attached onto your lens giving incorrect settings for fnumber, aperture and so on. &lt;/li&gt;&lt;/ul&gt;&lt;p&gt;This dialog gives you the option so select a lens definition, modify a lens definition or create a lens definition. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_13">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>240</y>
+     <width>471</width>
+     <height>335</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_13" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0">
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_99">
+      <property name="text">
+       <string>Serial number:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <widget class="QLineEdit" name="lens_maxaperturevalue"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_100">
+      <property name="text">
+       <string>Focal length (35mm):</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lens_make">
+      <property name="toolTip">
+       <string>This refers to the make of the lens</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_97">
+      <property name="text">
+       <string>Model:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="lens_serialnumber">
+      <property name="toolTip">
+       <string>This refers to the serial number of the lens</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_96">
+      <property name="text">
+       <string>Make:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="label_109">
+      <property name="text">
+       <string>fnumber:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="lens_focallengthin35mmformat"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_106">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="lens_model">
+      <property name="toolTip">
+       <string>This refers to the model of the lens</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QCheckBox" name="checkBox_qdldf_new_lens">
+      <property name="text">
+       <string>Define new lens</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_102">
+      <property name="text">
+       <string>Focal length:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="lens_fnumber"/>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="lens_focallength"/>
+    </item>
+    <item row="11" column="0">
+     <widget class="QLabel" name="label_105">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="label_107">
+      <property name="text">
+       <string>Max. aperturevalue:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="qdldf_selectlens_label">
+      <property name="font">
+       <font>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Select lens:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QComboBox" name="qdldf_selectlens_combobox"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>600</y>
+     <width>311</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="qdldf_dialogbuttons">
+    <item>
+     <widget class="QPushButton" name="btn_qdldf_select">
+      <property name="toolTip">
+       <string>Select the lens and close the dialog</string>
+      </property>
+      <property name="text">
+       <string>Select</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_qdldf_cancel">
+      <property name="toolTip">
+       <string>Cancel and close this dialog</string>
+      </property>
+      <property name="text">
+       <string>Cancel</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_qdldf_save">
+      <property name="toolTip">
+       <string>Save your new or modified lens definition</string>
+      </property>
+      <property name="text">
+       <string>Save</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>btn_qdldf_select</tabstop>
+  <tabstop>btn_qdldf_cancel</tabstop>
+  <tabstop>btn_qdldf_save</tabstop>
+  <tabstop>checkBox_qdldf_new_lens</tabstop>
+  <tabstop>qdldf_selectlens_combobox</tabstop>
+  <tabstop>lens_make</tabstop>
+  <tabstop>lens_model</tabstop>
+  <tabstop>lens_serialnumber</tabstop>
+  <tabstop>lens_focallength</tabstop>
+  <tabstop>lens_focallengthin35mmformat</tabstop>
+  <tabstop>lens_fnumber</tabstop>
+  <tabstop>lens_maxaperturevalue</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
