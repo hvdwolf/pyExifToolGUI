@@ -23,6 +23,7 @@ Installation on Linux
 =====================
 Dependencies (Meaning that you need to install them yourself):
 - python: part of every linux system, so always available, but >=2.6 required.
+- Qt >=4.6: Qt is available for all major distributions but in case it is not you can download it from http://qt-project.org/downloads
 - pyside: Install via your distribution's package manager. Otherwise download it from www.pyside.org
 - python-pyside (qtcore, qtgui and qtuitools are required): Install via your distribution's package manager. 
   Otherwise download it from www.pyside.org
@@ -49,6 +50,7 @@ Simple download the dmg containing the bundle and drag the bundle to a suitable 
   -- (Snow) Leopard: Download python 2.7 from python.org and install. Then run
      Update Shell Profile.command from /Applications/Python 2.7
   -- (Mountain) Lion comes with python 2.7
+- Qt: you can download it from http://qt-project.org/downloads (or install it via MacPorts)
 - pyside: Download it from www.pyside.org. (You can also install it from MacPorts but this will give issues most of the time.)
 - pyX.Y-pyside: Install via MacPorts. (XY needs to be 2.7).
 - ExifTool: Download the DMG from the ExifTool website (highly preferred) or install via MacPorts.
