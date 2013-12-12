@@ -144,7 +144,7 @@ def tool_check( self ):
             else:
                 self.exiftoolprog = result
                 #print "result 2" + self.exiftoolprog
-        command_line = self.exiftoolprog + " -ver"
+        command_line = '"' + self.exiftoolprog + '" -ver'
         args = shlex.split(command_line)
         self.exiftoolversion = subprocess.check_output(args)
    # remove last character which is the final ending \n (where \ is only the escape character)
@@ -511,7 +511,7 @@ def imageinfo(self, qApp):
             args = "\"" + self.exiftoolprog + "\" -a " + exiftool_params + " " + selected_image
             p = subprocess.check_output(args, universal_newlines=True, shell=True)
     else:
-            command_line = self.exiftoolprog + " -a " + exiftool_params + " " + selected_image
+            command_line = "\"" + self.exiftoolprog + "\" -a " + exiftool_params + " " + selected_image
             args = shlex.split(command_line)
             p = subprocess.check_output(args, universal_newlines=True)
     #arguments = arguments + " " + selected_image
@@ -1455,7 +1455,7 @@ def qddt_use_reference_image_data(self):
                 args = '"' + self.exiftoolprog + '" -a ' + exiftool_params + ' ' + self.referenceimage
                 p = subprocess.check_output(args, universal_newlines=True, shell=True)
         else:
-                command_line = self.exiftoolprog + " -a " + exiftool_params + " " + self.referenceimage
+                command_line = '"' + self.exiftoolprog + '" -a ' + exiftool_params + ' ' + self.referenceimage
                 args = shlex.split(command_line)
                 p = subprocess.check_output(args, universal_newlines=True)
         p = p[:-1]
@@ -1961,8 +1961,8 @@ def run_geotag_photos(self, work_on, qApp):
                            p = subprocess.call(xmpargs, shell=True)
                         else:
                            #parameters = parameters.replace("'", "\"")
-                           command_line = self.exiftoolprog + ' ' + exiftoolparams + ' ' + selected_image
-                           xmp_command_line = self.exiftoolprog + ' ' + xmpparams + ' ' + selected_image
+                           command_line = '"' + self.exiftoolprog + '" ' + exiftoolparams + ' ' + selected_image
+                           xmp_command_line = '"' + self.exiftoolprog + '" ' + xmpparams + ' ' + selected_image
                            args = shlex.split(command_line)
                            xmpargs = shlex.split(xmp_command_line)
                            print("command_line " + command_line)
@@ -1995,8 +1995,8 @@ def run_geotag_photos(self, work_on, qApp):
               p = subprocess.call(xmpargs, shell=True)
           else:
               pathofimages = self.LineEdit_geotag_source_folder.text().replace(" ", "\\ ")
-              command_line = self.exiftoolprog + ' ' + exiftoolparams + ' "' + pathofimages + '"'
-              xmpcommand_line = self.exiftoolprog + ' ' + xmpparams + ' "' + pathofimages + '"'
+              command_line = '"' + self.exiftoolprog + '" ' + exiftoolparams + ' "' + pathofimages + '"'
+              xmpcommand_line = '"' + self.exiftoolprog + '" ' + xmpparams + ' "' + pathofimages + '"'
               print("command_line " + command_line)
               print("xmpcommandline " + xmpcommand_line)
               p = subprocess.call(command_line, shell=True)
@@ -2048,7 +2048,7 @@ def yourcommands_go(self, qApp):
                                 p = "Your parameter(s) is/are wrong and could not be executed at all by exiftool.\nTherefore you don't get output."
                         else:
                             # First write the info
-                            command_line = self.exiftoolprog + exiftoolparams + selected_image
+                            command_line = '"' + self.exiftoolprog + '" ' + exiftoolparams + selected_image
                             print(command_line)
                             args = shlex.split(command_line)
                             try:
@@ -2078,7 +2078,7 @@ def read_image_info(self, exiftool_params):
                 args = '"' + self.exiftoolprog + '" ' + exiftool_params + selected_image                
                 p = subprocess.check_output(args, universal_newlines=True, shell=True)
         else:
-                command_line = self.exiftoolprog + exiftool_params + selected_image
+                command_line = '"' + self.exiftoolprog + '" ' + exiftool_params + selected_image
                 args = shlex.split(command_line)
                 p = subprocess.check_output(args, universal_newlines=True)
         return p
@@ -2184,7 +2184,7 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
                               #p = subprocess.call(args)
                            else:
                               # First write the info
-                              command_line = self.exiftoolprog + exiftoolparams + selected_image
+                              command_line = '"' + self.exiftoolprog + '" ' + exiftoolparams + selected_image
                               print(command_line)
                               args = shlex.split(command_line)
                               p = subprocess.call(args)
@@ -2204,7 +2204,7 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
               print(args)
               p = subprocess.call(args, shell=True)
            else:
-              command_line = self.exiftoolprog + " " + images_to_csv + " > '" + os.path.join(self.image_folder, 'output.csv') + "'"
+              command_line = '"' + self.exiftoolprog + '" ' + images_to_csv + ' > \'' + os.path.join(self.image_folder, 'output.csv') + '\''
               #args = shlex.split(command_line)
               print(command_line)
               #p = subprocess.call(args,shell=True)
