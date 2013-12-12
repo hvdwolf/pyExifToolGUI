@@ -1238,6 +1238,57 @@ def savegpanodata(self, qApp):
 
 
 #------------------------------------------------------------------------
+# Edit -> geotagging tab and actions
+def geotag_source_folder(self, qApp):
+        select_folder = QFileDialog(self)
+        select_folder.setFileMode(QFileDialog.Directory)
+        qApp.processEvents()
+        if platform.system() == "Darwin":
+            select_folder.setDirectory(os.path.expanduser('~/Pictures'))
+        elif platform.system() == "Linux":
+            select_folder.setDirectory(os.path.expanduser('~/Pictures'))
+        elif platform.system() == "Windows":
+            select_folder.setDirectory(os.path.expanduser('~/My Pictures'))
+        select_folder.setViewMode(QFileDialog.Detail)
+        qApp.processEvents()
+        self.geotag_source_folder = ""
+        if select_folder.exec_():
+           self.geotag_source_folder = select_folder.selectedFiles()[0]
+           self.LineEdit_geotag_source_folder.setText(self.geotag_source_folder)
+           #print(str(self.geotag_source_folder))
+        else:
+	   # user canceled
+           self.statusbar.showMessage("you canceled selecting a folder for geotagging.")
+           self.geotag_source_folder = ""
+
+def geotag_gps_file(self, qApp):
+        select_file = QFileDialog(self,"Open gpx track log file")
+        select_file.setFileMode(QFileDialog.ExistingFiles)
+        qApp.processEvents()
+        if platform.system() == "Darwin":
+            select_file.setDirectory(os.path.expanduser('~/Pictures'))
+        elif platform.system() == "Linux":
+            select_file.setDirectory(os.path.expanduser('~/Pictures'))
+        elif platform.system() == "Windows":
+            select_file.setDirectory(os.path.expanduser('~/My Pictures'))
+        qApp.processEvents()
+        select_file.setViewMode(QFileDialog.Detail)
+        #select_file.setNameFilter("gpx track log files (*.gpx *.GPX *.log *.LOG)\nAll files (*.*)")
+        geotag_gps_file = ""
+        #select_file.selectedFiles() = []
+        if select_file.exec_():
+           print("select file exec")
+           geotag_gps_file = select_file.selectedFiles()[0]
+           self.geotag_gps_file = geotag_gps_file
+           print("file should be selected")
+           self.LineEdit_geotag_log_file.setText(geotag_gps_file)
+           #print(str(self.geotag_gps_file))
+        else:
+	   # user canceled
+           self.statusbar.showMessage("you canceled selecting the GPS track log file.")
+           geotag_gps_file = ""
+
+#------------------------------------------------------------------------
 # Edit -> Lens tab and actions
 def clear_lens_fields(self):
         self.lens_make.setText("")
