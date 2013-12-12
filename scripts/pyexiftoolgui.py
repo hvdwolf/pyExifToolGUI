@@ -71,6 +71,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 # Set window title to start with
         self.setWindowTitle(programinfo.NAME + " " + programinfo.VERSION )
+# Hide lens tab in this 0.4.0.2 version
+        self.tabWidget_2.removeTab(5)
 # First set the menu actions
         self.mnu_action_load_images.triggered.connect(self.loadimages)
         self.action_Quit.triggered.connect(self.quit_application)

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sun Dec  8 19:53:40 2013
+# Created: Thu Dec 12 20:35:35 2013
 #      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -1275,7 +1275,6 @@ class Ui_MainWindow(object):
         self.gridLayout_12.addLayout(self.horizontalLayout, 4, 0, 1, 1)
         self.LineEdit_geotagging_geosynctime = QtGui.QLineEdit(self.gridLayoutWidget_12)
         self.LineEdit_geotagging_geosynctime.setEnabled(True)
-        self.LineEdit_geotagging_geosynctime.setToolTip("")
         self.LineEdit_geotagging_geosynctime.setObjectName("LineEdit_geotagging_geosynctime")
         self.gridLayout_12.addWidget(self.LineEdit_geotagging_geosynctime, 10, 0, 1, 1)
         spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
@@ -2037,6 +2036,7 @@ class Ui_MainWindow(object):
         self.label_92.setText(QtGui.QApplication.translate("MainWindow", "GPS log file:", None, QtGui.QApplication.UnicodeUTF8))
         self.LineEdit_geotag_source_folder.setToolTip(QtGui.QApplication.translate("MainWindow", "If you select a source folder all images in that folder will be renamed. Note that also images in subfolders will be renamed.", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_geotag_img_browse.setText(QtGui.QApplication.translate("MainWindow", "Browse", None, QtGui.QApplication.UnicodeUTF8))
+        self.LineEdit_geotagging_geosynctime.setToolTip(QtGui.QApplication.translate("MainWindow", "The Geosync time is specified as \"SS\", \"MM:SS\", \"HH:MM:SS\" or \"DD HH:MM:SS\" (where SS=seconds, MM=minutes, HH=hours and DD=days), and a leading \"+\" or \"-\" may be added for positive or negative differences.", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_write_geotaginfo.setToolTip(QtGui.QApplication.translate("MainWindow", "Write the geotag info to the images where possible", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_write_geotaginfo.setStatusTip(QtGui.QApplication.translate("MainWindow", "Write the geotag info to the images where possible", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_write_geotaginfo.setText(QtGui.QApplication.translate("MainWindow", "Write geotag information to image(s)", None, QtGui.QApplication.UnicodeUTF8))

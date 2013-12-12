@@ -3024,7 +3024,7 @@ Originals</string>
             <bool>true</bool>
            </property>
            <property name="toolTip">
-            <string/>
+            <string>The Geosync time is specified as &quot;SS&quot;, &quot;MM:SS&quot;, &quot;HH:MM:SS&quot; or &quot;DD HH:MM:SS&quot; (where SS=seconds, MM=minutes, HH=hours and DD=days), and a leading &quot;+&quot; or &quot;-&quot; may be added for positive or negative differences.</string>
            </property>
           </widget>
          </item>
