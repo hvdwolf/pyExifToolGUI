@@ -1240,6 +1240,7 @@ def savegpanodata(self, qApp):
 #------------------------------------------------------------------------
 # Edit -> geotagging tab and actions
 def geotag_source_folder(self, qApp):
+        self.statusbar.showMessage("")
         select_folder = QFileDialog(self)
         select_folder.setFileMode(QFileDialog.Directory)
         qApp.processEvents()
@@ -1251,17 +1252,21 @@ def geotag_source_folder(self, qApp):
             select_folder.setDirectory(os.path.expanduser('~/My Pictures'))
         select_folder.setViewMode(QFileDialog.Detail)
         qApp.processEvents()
-        self.geotag_source_folder = ""
+        geotag_source_folder = ""
         if select_folder.exec_():
-           self.geotag_source_folder = select_folder.selectedFiles()[0]
-           self.LineEdit_geotag_source_folder.setText(self.geotag_source_folder)
+           geotag_source_folder = select_folder.selectedFiles()[0]
+           self.geotag_source_folder = geotag_source_folder 
+           self.LineEdit_geotag_source_folder.setText(geotag_source_folder)
            #print(str(self.geotag_source_folder))
+           # button to write can be enabled
+           self.btn_write_geotaginfo.setEnabled(True)
         else:
 	   # user canceled
            self.statusbar.showMessage("you canceled selecting a folder for geotagging.")
-           self.geotag_source_folder = ""
+           geotag_source_folder = ""
 
 def geotag_gps_file(self, qApp):
+        self.statusbar.showMessage("")
         select_file = QFileDialog(self,"Open gpx track log file")
         select_file.setFileMode(QFileDialog.ExistingFiles)
         qApp.processEvents()
@@ -1275,7 +1280,6 @@ def geotag_gps_file(self, qApp):
         select_file.setViewMode(QFileDialog.Detail)
         #select_file.setNameFilter("gpx track log files (*.gpx *.GPX *.log *.LOG)\nAll files (*.*)")
         geotag_gps_file = ""
-        #select_file.selectedFiles() = []
         if select_file.exec_():
            print("select file exec")
            geotag_gps_file = select_file.selectedFiles()[0]
