@@ -186,10 +186,10 @@ def write_config(self, aftererror):
         else: # user has changed it
             config.set("preferences", "alternate_exiftool", str(True))
             config.set("preferences", "exiftooloption", self.exiftooloption.text())
-            if self.pref_thumbnail_preview.isChecked():
-               config.set("preferences", "pref_thumbnail_preview",str(True))
-            else:
-               config.set("preferences", "pref_thumbnail_preview",str(False))
+        if self.pref_thumbnail_preview.isChecked():
+           config.set("preferences", "pref_thumbnail_preview",str(True))
+        else:
+           config.set("preferences", "pref_thumbnail_preview",str(False))
         config.set("preferences", "def_creator", self.def_creator.text())
         config.set("preferences", "def_copyright", self.def_copyright.text())
 
@@ -228,10 +228,10 @@ def write_config3(self, aftererror):
         else: # user has changed it
             config["preferences"]["alternate_exiftool"] = str(True)
             config["preferences"]["exiftooloption"] = self.exiftooloption.text()
-            if self.pref_thumbnail_preview.isChecked():
-               config["preferences"]["pref_thumbnail_preview"] = str(True)
-            else:
-               config["preferences"]["pref_thumbnail_preview"] = str(False)
+        if self.pref_thumbnail_preview.isChecked():
+           config["preferences"]["pref_thumbnail_preview"] = str(True)
+        else:
+           config["preferences"]["pref_thumbnail_preview"] = str(False)
         config["preferences"]["def_creator"] = self.def_creator.text()
         config["preferences"]["def_copyright"] = self.def_copyright.text()
 
