@@ -20,23 +20,13 @@ Depends: ${python:Depends},
          python-qt4,
          python-pyside,
          libimage-exiftool-perl
-Description: pyExifToolGui is a graphical frontend for ExifTool
+Description: python Pyside QT4 graphical frontend for ExifTool
  pyExifToolGui is a graphical frontend for the excellent open source command 
  line tool ExifTool by Phil Harvey. pyExifToolGui is a python pySide QT4 
  script program that reads and writes all kind of metadata tags from/to your 
  image files.
 
-#Package: pyexiftoolgui3
-#Architecture: all
-#Depends: ${python3:Depends}, 
-#         ${misc:Depends},
-#         libqt4-core,
-#         libqt4-gui,
-#         python-qt4,
-#         python-pyside,
-#         libimage-exiftool-perl
-#Description: pyExifToolGui is a graphical frontend for ExifTool
-# pyExifToolGui is a graphical frontend for the excellent open source command line tool ExifTool by Phil Harvey.
-# pyExifToolGui is a python pySide QT4 script program that reads and writes all kind of metadata tags from/to 
-# your image files.
-
+# We don't need a pyexiftoolgui3 package setup.
+# pyExifToolGUI is internally completely python3 compatible and compliant
+# Due to the "private" install in /us/share/pyexiftoolgui and using the
+# /usr/bin/env python in the /usr/bin/pyexiftoolgui script it will work
