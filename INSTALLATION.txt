@@ -30,6 +30,7 @@ Dependencies (Meaning that you need to install them yourself):
 - ExifTool: Install via your distribution's package manager.
 
 Installation:
+= DO NOT RUN setup.py DIRECTLY ! =
 - Untar the package to some folder (You obviously did that already if you are reading this).
 - Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
 - Run the setup script from the command line with "sudo ./install_remove.py install".
@@ -56,6 +57,7 @@ Simple download the dmg containing the bundle and drag the bundle to a suitable 
 - ExifTool: Download the DMG from the ExifTool website (highly preferred) or install via MacPorts.
 
 Installation:
+= DO NOT RUN setup.py DIRECTLY ! =
 - Untar the package to some folder (You obviously did that already if you are reading this).
 - Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
 - Run the setup script from the command line with "sudo ./install_remove.py install" (no double-quotes).

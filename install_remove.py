@@ -67,19 +67,9 @@ elif len(sys.argv) == 2:
       if OSplatform == "Windows":
            windows_install()
       print "\nYou have chosen to install pyExiftoolGUI on your system"
-      # use system commands. Somehow they do work better then os.mkdir, shutil.copytree, shutil.rmtree and so on
-      if not os.path.exists(pyexiftoolgui_path):
-         try:
-            fldr = os.system('mkdir -p ' + pyexiftoolgui_path)
-         except:
-            print "Could not create " + pyexiftoolgui_path
-      # First a bit of clean up in case users ran pyexiftoolgui already or modified some stuff
-      os.system('rm -f scripts/*.pyc scripts/*~ ui/*.pyc ui/*~')
-      copyfolders = os.system('cp -a scripts manual ' + pyexiftoolgui_path)
-      copyfiles = os.system('cp -a COPYING ' + pyexiftoolgui_path)
-      copylauncher = os.system('cp -a bin/pyexiftoolgui /usr/bin')
-      copydesktop = os.system('cp -a xdg/pyexiftoolgui.desktop ' + os.path.join(usr_share_path, 'applications'))
-      copyicon = os.system('cp -a logo/pyexiftoolgui.png ' + os.path.join(usr_share_path, 'pixmaps'))
+      print "\n=======================================================\n"
+      os.system("python setup.py install --install-layout=deb --install-lib=/usr/share/pyexiftoolgui --install-scripts=/usr/bin")
+      print "\n======================================================="
       print "\nIf you didn't see errors on your screen, pyExifToolGui has been installed."
       print "In case of errors contact me."
       print "You might also see a lot of \"kbuildsycoca4\" messages."

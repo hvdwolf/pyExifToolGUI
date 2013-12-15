@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 # setup.py
 
 # Copyright (c) 2012-2013 Harry van der Wolf. All rights reserved.
@@ -21,19 +19,7 @@
 # command line tool exiftool by Phil Harvey, but it's not
 # a complete exiftool gui: not at all.
 
-import os, sys, platform, glob, subprocess
 from distutils.core import setup
-
-
-#-- Functionality when script is used as distutils setup script
-# Boolean: running as root?
-ROOT = os.geteuid() == 0
-# For Debian packaging it could be a fakeroot so reset flag to prevent execution of
-# system update services for Mime and Desktop registrations.
-# The debian/openshot.postinst script must do those.
-if not os.getenv("FAKEROOTKEY") == None:
-	print "NOTICE: Detected execution in a FakeRoot so disabling calls to system update services."
-	ROOT = False
 
 os_files = [
 	 # XDG application description
@@ -43,10 +29,13 @@ os_files = [
 ]
 
 
-UPD_FAILED = 'Tried to upgrade but it failed.\n\n'
-
 # main distutils setup (command)
-dist = setup(
+dist = setup(name = "pyexiftoolgui",
+        version = "0.4.0.2",
+        description = "pyExifToolGui is a graphical frontend for ExifTool",
+        author = "Harry van der Wolf",
+        author_email = "hvdwolf@gmail.com",
+        url = "http://hvdwolf.github.io/pyExifToolGUI",
         scripts     = ['bin/pyexiftoolgui'],
         packages    = ['scripts', 'scripts.ui', 'manual', 'logo', 'xdg'],
         package_data = { 
@@ -58,18 +47,4 @@ dist = setup(
                        },
         data_files = os_files
     )
-
-if ROOT and dist != None:
-# update the XDG .desktop file database
-    try:
-        sys.stdout.write('Updating the .desktop file database.\n')
-        subprocess.call(["update-desktop-database"])
-    except:
-        sys.stderr.write(UPD_FAILED)
-        sys.stdout.write("\n-----------------------------------------------")
-        sys.stdout.write("\nInstallation Finished!")
-        sys.stdout.write("\nRun pyExifToolGUI by typing 'pyexiftoolgui' or ")
-        sys.stdout.write("Run it through the Ubuntu Dash by starting to type pyexiftoolgui or ")
-        sys.stdout.write("Run it via the Applications menu.")
-        sys.stdout.write("\n-----------------------------------------------\n")
 
