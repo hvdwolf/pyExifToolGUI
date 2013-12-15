@@ -1,4 +1,4 @@
-pyexiftoolgui (0.4.0.2-1) saucy; urgency=low
+pyexiftoolgui (0.4.0.2) saucy; urgency=low
 
   * [Linux][Mac OS X] Fix incorrect escaping when exiftool itself 
     resides in path with spaces
@@ -10,14 +10,14 @@ pyexiftoolgui (0.4.0.2-1) saucy; urgency=low
 
  -- hvdwolf <hvdwolf@gmail.com>  Thu, 12 Dec 2013 12:35:02 +0100
 
-pyexiftoolgui (0.4.0.1-1) saucy; urgency=low
+pyexiftoolgui (0.4.0.1) saucy; urgency=low
 
   * Correct pyExifToolGUI homepage link
 
  -- hvdwolf <hvdwolf@gmail.com>  Fri, 06 Dec 2013 12:00:00 +0100
 
 
-pyexiftoolgui (0.4-1) saucy; urgency=low
+pyexiftoolgui (0.4) saucy; urgency=low
 
   * Add geotagging functionality to pyExifToolGUI
   * [Win] Bugfix: Fix incorrect escaping when exiftool itself resides in path 
@@ -28,7 +28,7 @@ pyexiftoolgui (0.4-1) saucy; urgency=low
  -- hvdwolf <hvdwolf@gmail.com>  Thu, 05 Dec 2013 12:00:00 +0100
 
 
-pyexiftoolgui (0.32-1) precise; urgency=low
+pyexiftoolgui (0.32) precise; urgency=low
 
   * pyExifToolGUI is now 100% Python2 and Python3 compatible.
   * No functional changes added. No difference in Mac OS X and/or Windows 
@@ -38,7 +38,7 @@ pyexiftoolgui (0.32-1) precise; urgency=low
  -- hvdwolf <hvdwolf@gmail.com>  Sun, 27 Jan 2013 12:00:00 +0100
 
 
-pyexiftoolgui (0.31-1) precise; urgency=low
+pyexiftoolgui (0.31) precise; urgency=low
 
   * This release is more or less a code improvement and code restructuring 
     release.
@@ -51,7 +51,7 @@ pyexiftoolgui (0.31-1) precise; urgency=low
  -- hvdwolf <hvdwolf@gmail.com>  Sat, 12 Jan 2013 12:00:00 +0100
 
 
-pyexiftoolgui (0.28-1) precise; urgency=low
+pyexiftoolgui (0.28) precise; urgency=low
 
   * Added tab "Your Commands" where you can directly execute exiftool commands 
     that are not in the Gui.

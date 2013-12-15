@@ -1,0 +1,16 @@
+= Create a deb package =
+This might not be the exact prescribed way to do this but it works fine.
+Required: python-stdeb
+Tested: Ubuntu 13.10
+
+- Create a working folder (Do this to prevent a lot of temp files in one of your regular folders)
+- Download source .tar.gz package in this working folder
+- untar the source package inside this working folder
+- rename folder pyExifToolGUI-x.y.z to pyexiftoolgui-x.y.z
+- create new tar.gz from folder like "tar -cvzf pyexiftoolgui-x.y.z.tar.gz pyexiftoolgui-x.y.z"
+- create orig.tar.gz like "cp pyexiftoolgui-x.y.z.tar.gz pyexiftoolgui_x.y.z.orig.tar.gz"
+  (mind the underscore instead of hyphen in the second name)
+- cd into the "pyexiftoolgui-x.y.z/debian" folder
+- execute the command "debuild -uc -us"
+- this will create a new deb two folder levels higher, e.g. inside the working folder 
+  next to the pyexiftoolgui-x.y.z folder.
