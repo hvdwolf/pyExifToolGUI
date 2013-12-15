@@ -6,7 +6,3 @@
 %:
 	dh $@ --with python2
 
-
-  override_dh_auto_install:
-        python setup.py install --install-layout=deb --install-lib=/usr/share/pyexiftoolgui --install-scripts=/usr/bin 
-  override_dh_auto_build:

@@ -60,4 +60,3 @@ pyexiftoolgui (0.28-1) precise; urgency=low
   * Added internal image metadata copy: All possible metadata to XMP format
 
  -- hvdwolf <hvdwolf@gmail.com>  Sun, 30 Dec 2013 12:00:00 +0100
-
