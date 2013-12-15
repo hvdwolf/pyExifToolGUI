@@ -1,0 +1,63 @@
+pyexiftoolgui (0.4.0.2-1) saucy; urgency=low
+
+  * [Linux][Mac OS X] Fix incorrect escaping when exiftool itself 
+    resides in path with spaces
+  * Fix "button hang" after cancelling browse action in Geotagging tab. 
+    After cancel the buttons didn't work anymore
+  * Restructure gpano tab: it's a full tab and needed some optimisation 
+    (especially on Mac)
+  * Fix a few (copy&pasted) statusline messages
+
+ -- hvdwolf <hvdwolf@gmail.com>  Thu, 12 Dec 2013 12:35:02 +0100
+
+pyexiftoolgui (0.4.0.1-1) saucy; urgency=low
+
+  * Correct pyExifToolGUI homepage link
+
+ -- hvdwolf <hvdwolf@gmail.com>  Fri, 06 Dec 2013 12:00:00 +0100
+
+
+pyexiftoolgui (0.4-1) saucy; urgency=low
+
+  * Add geotagging functionality to pyExifToolGUI
+  * [Win] Bugfix: Fix incorrect escaping when exiftool itself resides in path 
+    with spaces
+  * Bugfix: Fix when renaming to full date-time, this always added a number 
+    (00) even when not wanted.
+
+ -- hvdwolf <hvdwolf@gmail.com>  Thu, 05 Dec 2013 12:00:00 +0100
+
+
+pyexiftoolgui (0.32-1) precise; urgency=low
+
+  * pyExifToolGUI is now 100% Python2 and Python3 compatible.
+  * No functional changes added. No difference in Mac OS X and/or Windows 
+    functionality.
+  * Installation script is now install_remove.py instead of setup.py.
+
+ -- hvdwolf <hvdwolf@gmail.com>  Sun, 27 Jan 2013 12:00:00 +0100
+
+
+pyexiftoolgui (0.31-1) precise; urgency=low
+
+  * This release is more or less a code improvement and code restructuring 
+    release.
+  * Lots of minor textual changes in all kind of popups, message boxes and 
+    so on.
+  * Lots of work on manual: Added section for Extra menu and added chapter 
+    on renaming
+  * Code cleaning and efficiency improvements
+
+ -- hvdwolf <hvdwolf@gmail.com>  Sat, 12 Jan 2013 12:00:00 +0100
+
+
+pyexiftoolgui (0.28-1) precise; urgency=low
+
+  * Added tab "Your Commands" where you can directly execute exiftool commands 
+    that are not in the Gui.
+  * Fix: exiftool command box no longer "flashes" on windows.
+  * Bugfix: manual could not be opened from Mac OS X full bundle.
+  * Added internal image metadata copy: All possible metadata to XMP format
+
+ -- hvdwolf <hvdwolf@gmail.com>  Sun, 30 Dec 2013 12:00:00 +0100
+

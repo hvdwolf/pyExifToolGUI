@@ -1,0 +1,42 @@
+Source: pyexiftoolgui
+Section: python
+Priority: optional
+Maintainer: hvdwolf <hvdwolf@gmail.com>
+Build-Depends: debhelper (>= 9), python (>= 2.7), python3 (>= 3.1)
+#Build-Depends: debhelper (>= 9), python-all (>= 2.7.3-0~), python3-all (>= 3.1.2-7~)
+Standards-Version: 3.9.4
+Homepage: http://hvdwolf.github.io/pyExifToolGUI/
+Vcs-Git: https://github.com/hvdwolf/pyExifToolGUI.git
+Vcs-Browser: https://github.com/hvdwolf/pyExifToolGUI
+X-Python-Version: >= 2.7
+X-Python3-Version: >= 3.1 
+
+Package: pyexiftoolgui
+Architecture: all
+Depends: ${python:Depends}, 
+         ${misc:Depends},
+         libqt4-core,
+         libqt4-gui,
+         python-qt4,
+         python-pyside,
+         libimage-exiftool-perl
+Description: pyExifToolGui is a graphical frontend for ExifTool
+ pyExifToolGui is a graphical frontend for the excellent open source command 
+ line tool ExifTool by Phil Harvey. pyExifToolGui is a python pySide QT4 
+ script program that reads and writes all kind of metadata tags from/to your 
+ image files.
+
+#Package: pyexiftoolgui3
+#Architecture: all
+#Depends: ${python3:Depends}, 
+#         ${misc:Depends},
+#         libqt4-core,
+#         libqt4-gui,
+#         python-qt4,
+#         python-pyside,
+#         libimage-exiftool-perl
+#Description: pyExifToolGui is a graphical frontend for ExifTool
+# pyExifToolGui is a graphical frontend for the excellent open source command line tool ExifTool by Phil Harvey.
+# pyExifToolGui is a python pySide QT4 script program that reads and writes all kind of metadata tags from/to 
+# your image files.
+
