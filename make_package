@@ -14,3 +14,15 @@ Tested: Ubuntu 13.10
 - execute the command "debuild -uc -us"
 - this will create a new deb two folder levels higher, e.g. inside the working folder 
   next to the pyexiftoolgui-x.y.z folder.
+
+
+= Create a RedHat/Fedora package from Ubuntu/Debian =
+This is NOT the way to do it properly, but it might work
+- Use .deb from above method (I'm on Ubuntu)
+- do "sudo alien -r pyexiftoolgui_x.y.z_all.deb"
+
+= Create an Ubuntu/Debian package from Fedora/RedHat =
+This is NOT the way to do it properly, but it might work
+(I don't know yet how to create a Fedora/Redhat package.
+- Do "alien pyexiftoolgui-x.y.z.noarch.rpm"
+

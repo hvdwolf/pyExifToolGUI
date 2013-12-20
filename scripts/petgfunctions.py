@@ -483,29 +483,30 @@ def imageinfo(self, qApp):
         exiftool_params = ""
         arguments = " -a "
         header = "all tags"
-    if self.radioButton_exif.isChecked():
+    elif self.radioButton_exif.isChecked():
         exiftool_params = "-exif:all"
         header = "EXIF tags"
-    if self.radioButton_xmp.isChecked():
+    elif self.radioButton_xmp.isChecked():
         exiftool_params = "-xmp:all"
         header = "XMP tags"
-    if self.radioButton_iptc.isChecked():
+    elif self.radioButton_iptc.isChecked():
         exiftool_params = "-iptc:all"
         header = "IPTC tags"
-    if self.radioButton_iccprofile.isChecked():
+    elif self.radioButton_iccprofile.isChecked():
         exiftool_params = "-icc_profile:all"
         header = "ICC profile tags"
-    if self.radioButton_gps.isChecked():
+    elif self.radioButton_gps.isChecked():
         exiftool_params = "-gps:all -xmp:GPSLatitude -xmp:GPSLongitude -xmp:Location -xmp:Country -xmp:State -xmp:City"
         arguments = " -a -gps:all -xmp:GPSLatitude -xmp:GPSLongitude -xmp:Location -xmp:Country -xmp:State -xmp:City"
         header = "GPS tags"
-    if self.radioButton_gpano.isChecked():
+    elif self.radioButton_gpano.isChecked():
         exiftool_params = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewPitchDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees"
         arguments = " -xmp:CroppedAreaImageHeightPixels -xmp:CroppedAreaImageWidthPixels -xmp:CroppedAreaLeftPixels -xmp:CroppedAreaTopPixels -xmp:FullPanoHeightPixels -xmp:FullPanoWidthPixels -xmp:ProjectionType -xmp:UsePanoramaViewer -xmp:PoseHeadingDegrees -xmp:InitialViewHeadingDegrees -xmp:InitialViewPitchDegrees -xmp:InitialViewRollDegrees -xmp:StitchingSoftware -xmp:InitialHorizontalFOVDegrees"
         header = "GPano tags"
-    if self.radioButton_makernotes.isChecked():
+    elif self.radioButton_makernotes.isChecked():
         exiftool_params = "-makernotes:all"
         header = "makernotes tags"
+
     if self.OSplatform == "Windows":
             selected_image = selected_image.replace("/", "\\")
             args = "\"" + self.exiftoolprog + "\" -a " + exiftool_params + " " + selected_image
@@ -1303,8 +1304,7 @@ def clear_lens_fields(self):
         self.lens_maxaperturevalue.setText("")
         self.lens_fnumber.setText("")
         self.lens_meteringmode.setCurrentIndex(0)
-        #self.lens_meteringmode.setText("")
-
+ 
         self.chk_lens_make.setChecked(1)
         self.chk_lens_model.setChecked(1)
         self.chk_lens_serialnumber.setChecked(1)
@@ -1317,8 +1317,9 @@ def clear_lens_fields(self):
 def copylensfromselected(self,qApp):
         # First clean input fields
         clear_lens_fields(self)
-        lenstool_params = ' -e -n -exif:lensmake -exif:lensmodel -exif:lensserialnumber -exif:focallength -exif:focallengthIn35mmformat -exif:fnumber -exif:maxaperturevalue -exif:meteringmode '
+        lenstool_params = ' -s -n -exif:lensmake -exif:lensmodel -exif:lensserialnumber -exif:focallength -exif:focallengthIn35mmformat -exif:fnumber -exif:maxaperturevalue -exif:meteringmode '
         p = read_image_info(self, lenstool_params)
+        print (" lensparameters read " + str(p))
         if len(p) == 0:
            data = False
            message = ("<p>You are trying to copy lens info from your source image, but your source image "
@@ -1336,43 +1337,61 @@ def copylensfromselected(self,qApp):
                description = description.strip()
                gpslat = 0
                gpslon = 0
-               if descriptor == "lensmake":
+               if descriptor == "LensMake":
                      self.lens_make.setText(description)
-               if descriptor == "lensmodel":
+               if descriptor == "LensModel":
                      self.lens_model.setText(description)
-               if descriptor == "lensserialnumber":
-                     self.lens_lensserialnumber.setText(description)
-               if descriptor == "focallength":
+               if descriptor == "LensSerialNumber":
+                     self.lens_serialnumber.setText(description)
+               if descriptor == "FocalLength":
                       self.lens_focallength.setText(description)
-               if descriptor == "focallengthin35mmformat":
+               if descriptor == "FocalLengthIn35mmFormat":
                      self.lens_focallengthin35mmformat.setText(description)
-               if descriptor == "maxaperturevalue":
+               if descriptor == "MaxApertureValue":
                      self.lens_maxaperturevalue.setText(description)
-               if descriptor == "fnumber":
+               if descriptor == "FNumber":
                      self.lens_fnumber.setText(description)
-               if descriptor == "meteringmode":
-                     self.lens_meteringmode.setText(description)
+               if descriptor == "MeteringMode":
+                     self.lens_meteringmode.setCurrentIndex(int(description))
                #print "rowcounter " + str(rowcounter) + " descriptor " + descriptor + " ;description " + description
                rowcounter += 1
 
 def savelensdata(self, qApp):
         lenstool_params = ""
         if self.chk_lens_make.isChecked():
-               lenstool_params =  ' -exif:lensmake="' + self.lens_make.text() + ' -xmp:lensmake="' + self.lens_make.text() + '" '
+               lenstool_params =  ' -exif:lensmake="' + self.lens_make.text() + '" -xmp:lensmake="' + self.lens_make.text() + '" '
         if self.chk_lens_model.isChecked():
-               lenstool_params +=  '-exif:lensmodel="' + self.lens_model.text() + '-xmp:lensmodel="' + self.lens_model.text() + '" '
+               lenstool_params +=  '-exif:lensmodel="' + self.lens_model.text() + '" -xmp:lensmodel="' + self.lens_model.text() + '" '
         if self.chk_lens_serialnumber.isChecked():
-               lenstool_params +=  '-exif:lensserialnumber="' + self.lens_serialnumber.text() + '-xmp:lensserialnumber="' + self.lens_serialnumber.text() + '" '
+               lenstool_params +=  '-exif:lensserialnumber="' + self.lens_serialnumber.text() + '" -xmp:lensserialnumber="' + self.lens_serialnumber.text() + '" '
         if self.chk_lens_focallength.isChecked():
-               lenstool_params +=  '-exif:lensfocallength="' + self.lens_focallength.text() + '-xmp:lensfocallength="' + self.lens_focallength.text() + '" '
+               lenstool_params +=  '-exif:focallength="' + self.lens_focallength.text() + '" -xmp:focallength="' + self.lens_focallength.text() + '" '
         if self.chk_lens_focallengthin35mmformat.isChecked():
-               lenstool_params +=  '-exif:focallengthin35mmformat="' + self.lens_focallengthin35mmformat.text() + '-xmp:focallengthin35mmformat="' + self.lens_focallengthin35mmformat.text() + '" '
+               lenstool_params +=  '-exif:focallengthin35mmformat="' + self.lens_focallengthin35mmformat.text() + '" -xmp:focallengthin35mmformat="' + self.lens_focallengthin35mmformat.text() + '" '
         if self.chk_lens_maxaperturevalue.isChecked():
-               lenstool_params +=  '-exif:maxaperturevalue="' + self.lens_maxaperturevalue.text() + '-xmp:maxaperturevalue="' + self.lens_maxaperturevalue.text() + '" '
+               lenstool_params +=  '-exif:maxaperturevalue="' + self.lens_maxaperturevalue.text() + '" -xmp:maxaperturevalue="' + self.lens_maxaperturevalue.text() + '" '
         if self.chk_lens_fnumber.isChecked():
-               lenstool_params +=  '-exif:fnumber="' + self.lens_fnumber.text() + '-xmp:fnumber="' + self.lens_fnumber.text() + '" '
+               lenstool_params +=  '-exif:fnumber="' + self.lens_fnumber.text() + '" -xmp:fnumber="' + self.lens_fnumber.text() + '" '
         if self.chk_lens_meteringmode.isChecked():
-               lenstool_params +=  '-exif:meteringmode="' + self.lens_meteringmode.text() + '-xmp:meteringmode="' + self.lens_meteringmode.text() + '" '
+               if self.lens_meteringmode.currentIndex() == 0:
+                  meteringmode = "Unknown"
+               elif self.lens_meteringmode.currentIndex() == 1:
+                  meteringmode = "Average"
+               elif self.lens_meteringmode.currentIndex() == 2:
+                  meteringmode = "Center-weighted average"
+               elif self.lens_meteringmode.currentIndex() == 3:
+                  meteringmode = "Spot"
+               elif self.lens_meteringmode.currentIndex() == 4:
+                  meteringmode = "Multi-spot"
+               elif self.lens_meteringmode.currentIndex() == 5:
+                  meteringmode = "Multi-segment"
+               elif self.lens_meteringmode.currentIndex() == 6:
+                  meteringmode = "Partial"
+               elif self.lens_meteringmode.currentIndex() == 255:
+                  meteringmode = "Other"
+#               lenstool_params +=  '-exif:meteringmode=' + str(self.lens_meteringmode.currentIndex()) + ' -xmp:meteringmode=' + str(self.lens_meteringmode.currentIndex()) + ' '
+               lenstool_params +=  '-exif:meteringmode="' + meteringmode + '" -xmp:meteringmode="' + meteringmode + '" '
+               print("lenstool_params " + lenstool_params)
 
         if self.chk_lens_backuporiginals.isChecked():
            write_image_info(self, lenstool_params, qApp, True)
