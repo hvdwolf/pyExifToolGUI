@@ -3116,86 +3116,6 @@ Originals</string>
          <property name="topMargin">
           <number>10</number>
          </property>
-         <item row="11" column="0">
-          <widget class="QLabel" name="label_105">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="1">
-          <widget class="QLineEdit" name="lens_fnumber"/>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_106">
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="2">
-          <widget class="QCheckBox" name="chk_lens_maxaperturevalue">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="1">
-          <widget class="QLineEdit" name="lens_maxaperturevalue"/>
-         </item>
-         <item row="5" column="1">
-          <widget class="QLineEdit" name="lens_focallength"/>
-         </item>
-         <item row="9" column="2">
-          <widget class="QCheckBox" name="chk_lens_meteringmode">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="2">
-          <widget class="QCheckBox" name="chk_lens_fnumber">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="0">
-          <widget class="QLabel" name="label_95">
-           <property name="text">
-            <string>Metering mode:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_102">
-           <property name="text">
-            <string>Focal length:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLineEdit" name="lens_make">
-           <property name="toolTip">
-            <string>This refers to the make of the lens</string>
-           </property>
-          </widget>
-         </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_94">
            <property name="font">
@@ -3206,54 +3126,6 @@ Originals</string>
            </property>
            <property name="text">
             <string>Lens data</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QCheckBox" name="chk_lens_make">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_96">
-           <property name="text">
-            <string>Make:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_97">
-           <property name="text">
-            <string>Model:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_99">
-           <property name="text">
-            <string>Serial number:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="label_100">
-           <property name="text">
-            <string>Focal length (35mm):</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QCheckBox" name="chk_lens_model">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -3270,8 +3142,36 @@ Originals</string>
            </property>
           </widget>
          </item>
-         <item row="6" column="1">
-          <widget class="QLineEdit" name="lens_focallengthin35mmformat"/>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_96">
+           <property name="text">
+            <string>Make:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="lens_make">
+           <property name="toolTip">
+            <string>This refers to the make of the lens</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QCheckBox" name="chk_lens_make">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_97">
+           <property name="text">
+            <string>Model:</string>
+           </property>
+          </widget>
          </item>
          <item row="2" column="1">
           <widget class="QLineEdit" name="lens_model">
@@ -3279,6 +3179,63 @@ Originals</string>
             <string>This refers to the model of the lens</string>
            </property>
           </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QCheckBox" name="chk_lens_model">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_99">
+           <property name="text">
+            <string>Serial number:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="lens_serialnumber">
+           <property name="toolTip">
+            <string>This refers to the serial number of the lens</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QCheckBox" name="chk_lens_serialnumber">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_106">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_102">
+           <property name="text">
+            <string>Focal length:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLineEdit" name="lens_focallength"/>
          </item>
          <item row="5" column="2">
           <widget class="QCheckBox" name="chk_lens_focallength">
@@ -3289,6 +3246,16 @@ Originals</string>
             <bool>true</bool>
            </property>
           </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_100">
+           <property name="text">
+            <string>Focal length (35mm):</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLineEdit" name="lens_focallengthin35mmformat"/>
          </item>
          <item row="6" column="2">
           <widget class="QCheckBox" name="chk_lens_focallengthin35mmformat">
@@ -3307,8 +3274,11 @@ Originals</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="2">
-          <widget class="QCheckBox" name="chk_lens_serialnumber">
+         <item row="7" column="1">
+          <widget class="QLineEdit" name="lens_fnumber"/>
+         </item>
+         <item row="7" column="2">
+          <widget class="QCheckBox" name="chk_lens_fnumber">
            <property name="text">
             <string/>
            </property>
@@ -3317,17 +3287,30 @@ Originals</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="1">
-          <widget class="QLineEdit" name="lens_serialnumber">
-           <property name="toolTip">
-            <string>This refers to the serial number of the lens</string>
-           </property>
-          </widget>
-         </item>
          <item row="8" column="0">
           <widget class="QLabel" name="label_107">
            <property name="text">
             <string>Max. aperturevalue:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QLineEdit" name="lens_maxaperturevalue"/>
+         </item>
+         <item row="8" column="2">
+          <widget class="QCheckBox" name="chk_lens_maxaperturevalue">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="label_95">
+           <property name="text">
+            <string>Metering mode:</string>
            </property>
           </widget>
          </item>
@@ -3379,6 +3362,23 @@ Originals</string>
              <string>Other</string>
             </property>
            </item>
+          </widget>
+         </item>
+         <item row="9" column="2">
+          <widget class="QCheckBox" name="chk_lens_meteringmode">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="0">
+          <widget class="QLabel" name="label_105">
+           <property name="text">
+            <string/>
+           </property>
           </widget>
          </item>
         </layout>
