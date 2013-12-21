@@ -147,11 +147,12 @@ ul.toc {}
 <li><a href="#EditxmpData">5.3 Edit xmp data</a>
 <li><a href="#EditgpanoData">5.4 Edit GPano (Google Photosphere) data</a>
 <li><a href="#Geotagging">5.5 Geotagging</a>
-<li><a href="#EditiptcData">5.6 IPTC data (not directly supported)</a>
-<li><a href="#workflow">5.7 Example workflows</a>
+<li><a href="#EditlensData">5.6 Lens data</a>
+<li><a href="#EditiptcData">5.7 IPTC data (not directly supported)</a>
+<li><a href="#workflow">5.8 Example workflows</a>
 <ul>
-<li><a href="#generalworkflow">5.7.1 General workflow</a>
-<li><a href="#scan_rename_workflow">5.7.2 After scanning: Correcting Date/time and Renaming workflow</a>
+<li><a href="#generalworkflow">5.8.1 General workflow</a>
+<li><a href="#scan_rename_workflow">5.8.2 After scanning: Correcting Date/time and Renaming workflow</a>
 </li></ul>
 </li></ul>
 <li><a name="toc_ExtraMenu" href="#ExtraMenu">6 Extra Menu</a>
@@ -540,8 +541,22 @@ Note that pyExifToolGui will write both the EXIF GPS tags as well as the XMP GPS
 </p>
 
 
+<p><a name="EditlensData"></a>
+<h3 class="section">5.6 Lens data</h3>
+<p>
+Nowadays both cameras and lenses come with their own CPUs and firmware and they communicate electronically. However, you can also have the option that:
+<ul>
+<li>You have an "old" lens connected to your camera body, directly or via an adapter, that can't share its fnumber, aperture and so on with the camera. This results in missing or incorrect exif data for your lens.</li>
+<li>You have a perfectly supported lens but you connect a tele or macro converter to it, which characteristics are not combined with the original lens characteristics, again leading to either missing lens data or incorrect lens data.</li>
+<li>You have a perfectly combined combination but the lens characteristics, especially lens make, lens model and lens serial number, are only written down in the MakerNotes and not in exif and/or xmp meta data</li>
+</ul>
+For this reason the Lens tab has been created. If you want to maintain lens specifics that are not written into the exif/xmp tags for whatever reason, you can now adapt these to your liking.<br>
+In case of the third option you can literally copy&paste the data from the MakerNotes tab into the corresponding fields in the Lens tab.
+</p>
+
+
 <p><a name="EditiptcData"></a>
-<h3 class="section">5.6 IPTC data (not directly supported)</h3>
+<h3 class="section">5.7 IPTC data (not directly supported)</h3>
 <p>IPTC is an older metadata information standard.
 It stands for "International Press Telecommunications Council", also with a 
 combination with the Newspaper Association of America (NAA) Information Interchange Model (IIM).
@@ -555,11 +570,11 @@ Next to that: IPTC is being phased out in favor of XMP.
 
 
 <p><a name="workflow"></a>
-<h3 class="section">5.7 Example workflows</h3>
+<h3 class="section">5.8 Example workflows</h3>
 
 <p> </p>
 <p><a name="generalworkflow"></a>
-<h4 class="subsection">5.7.1 General workflow</h4>
+<h4 class="subsection">5.8.1 General workflow</h4>
 
 <p>Below you'll find an example of how you can use the program to edit the metadata of your images.
 Click the images for a full size version.
@@ -607,7 +622,7 @@ processed and a progress bar displaying the complete progress.
 </table>
 <p> </p>
 <p><a name="scan_rename_workflow"></a>
-<h4 class="subsection">5.7.2 After scanning: Correcting Date/time and Renaming workflow</h4>
+<h4 class="subsection">5.8.2 After scanning: Correcting Date/time and Renaming workflow</h4>
 <p>The following workflow shows an example where (in this case) old diapositives out of 1977 were scanned. We start with the scanned images and the workflow is as follows:
 <ul><li>Set the datetime metatags (We don't know the exact the date so we estimate the date as precise as possible.)
 <li>We set the file date based on the datetime metatags we have just set in the previous set.
