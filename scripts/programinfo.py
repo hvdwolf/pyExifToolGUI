@@ -22,8 +22,8 @@
 # a complete exiftool gui: not at all.
 
 NAME                = "pyExifToolGui"
-VERSION             = "0.4.0.2"
-VERSIONDATE         = "20131212"
+VERSION             = "0.5"
+VERSIONDATE         = "20131223"
 GPL_VERSION         = "3"
 AUTHOR              = "Harry van der Wolf"
 COPYRIGHT           = "Copyright 2012-2013 Harry van der Wolf"

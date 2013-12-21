@@ -1,3 +1,13 @@
+pyexiftoolgui (0.5) saucy; urgency=low
+
+  * Add a Lens tab to enable the addition or correction of lens
+    data if this does not get written to the exif data due to an
+    old or incompatible or a converter lens.
+  * Fix incorrect indentation in config file functionality which crippled 
+    the "display image thumbnails as preview" setting (patch by jowave)
+
+ -- hvdwolf <hvdwolf@gmail.com> Mon, 23 Dec 2013 12:00:00 +0100
+
 pyexiftoolgui (0.4.0.2) saucy; urgency=low
 
   * [Linux][Mac OS X] Fix incorrect escaping when exiftool itself 
