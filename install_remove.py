@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# setup.py
+# install_remove.py
 
 # Copyright (c) 2012-2013 Harry van der Wolf. All rights reserved.
 # This program or module is free software: you can redistribute it and/or

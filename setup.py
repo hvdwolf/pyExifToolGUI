@@ -31,7 +31,7 @@ os_files = [
 
 # main distutils setup (command)
 dist = setup(name = "pyexiftoolgui",
-        version = "0.4.0.2",
+        version = "0.5",
         description = "pyExifToolGui is a graphical frontend for ExifTool",
         author = "Harry van der Wolf",
         author_email = "hvdwolf@gmail.com",
