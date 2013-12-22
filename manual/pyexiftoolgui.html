@@ -2,11 +2,11 @@
 <head>
 <title>pyexiftoolgui: a cross-platform python pyside gui for exiftool</title>
 <meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="pyexiftoolgui: a cross-platform python pyside gui for exiftool" version="0.32">
+<meta name="description" content="pyexiftoolgui: a cross-platform python pyside gui for exiftool" version="0.5">
 <link title="Top" rel="top" href="#Top">
 
 <!--
-This manual is for pyexiftoolgui (version 0.32, January 2013).
+This manual is for pyexiftoolgui (version 0.5, December 2013).
 pyExifToolGui is a python pySide QT4 script program that reads and writes
 exif, xmp and IPTC tags from/to image files. It can use areference" image as source image to
 copy data from. A strong point of this software is the ability to write the data,
@@ -178,7 +178,7 @@ ul.toc {}
 
 <h2 class="unnumbered">pyExifToolGUI</h2>
 
-<p>This manual is for pyExifToolGUI (version 0.32, January 2013).
+<p>This manual is for pyExifToolGUI (version 0.5, December 2013).
 pyExifToolGui is a python pySide QT4 script program that reads and writes metadata like
 exif, xmp, gps, gpano tags from/to image files. It can use a "reference" image as source image to
 copy data from. A strong point of this software is the ability to write the data,
@@ -273,19 +273,19 @@ installation instructions.
 <li>ExifTool: Install via your distribution's package manager.</li></ul>
 
 <p>Installation:
-<ul><li>Untar the package to some folder.
-<li>Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
-<li>pyExiftoolGUI <= 0.31: Run the setup script from the command line with <PRE>sudo ./setup.py install</PRE>.
-<li>pyExiftoolGUI >= 0.32: Run the setup script from the command line with <PRE>sudo ./install_remove.py install</PRE>.
+<ul><li>Untar the package to some folder.</li>
+<li>Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz</li>
+<li>pyExiftoolGUI >= 0.32: Run the setup script from the command line with <PRE>sudo ./install_remove.py install</PRE></li>
+<li>pyExiftoolGUI <= 0.31: Different but no longer supported.</li>
 <li>pyExifToolGUI will be installed and you should have an icon in your menu under the Graphics sub menu
- or in your Dash (Ubuntu).
+ or in your Dash (Ubuntu).</li>
 <li>Start and enjoy.</li></ul>
 
 <p><a name="InstallMacOSX"></a>
 
 <h3 class="section">2.2 Installation on Mac OS X</h3>
 
-<p>You have two options for installation on Mac OS X
+<p>You have two options for installation on Mac OS X: A full bundle "with everything in it", or a simple application bundle.
 
 <p><a name="InstallMacOSXFullBundle"></a>
 <h4 class="subsection">2.2.1 Full application bundle</h4>
@@ -297,21 +297,20 @@ your liking where /Applications is of course the most suitable location.
 <h4 class="subsection">2.2.2 Simple application bundle (install dependencies yourself)</h4>
 
 <p>Dependencies (Meaning that you need to install them yourself):
-<ul><li>python: part of every linux system, so always available, but 2.7 required.
+<ul><li>python: part of every Mac OS X system, so always available, but version 2.7 is required.
   <ul><li>(Snow) Leopard: Download python 2.7 from python.org and install. Then run the
      "Update Shell Profile.command" from <span style="white-space: nowrap;">/Applications/Python 2.7</span>
   <li>(Mountain) Lion comes with python 2.7</li></ul>
-<li>pyside: Download it from www.pyside.org. (You can also install it from MacPorts but this will give issues most of the time.)
-<li>pyX.Y-pyside: Install via MacPorts. (XY needs to be 2.7).
+<li>pyside: Download it from www.pyside.org. (You can also install it from MacPorts but this can sometimes give issues.)
+<li>pyX.Y-pyside: Install via MacPorts. (XY needs to be 2.7 or better).
 <li>ExifTool: Download the DMG from the ExifTool website (highly preferred) or install via MacPorts.</li></ul>
 
 <p>Installation:
-<ul><li>Untar the package to some folder.
-<li>Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz
-<li>pyExiftoolGUI <= 0.31: Run the setup script from the command line with <PRE>sudo ./setup.py install</PRE>.
-<li>pyExiftoolGUI >= 0.32: Run the setup script from the command line with <PRE>sudo ./install_remove.py install</PRE>.
-<li>The script will install a "bare bones" pyExifToolGUI.app in your Applications folder.
-  Note that the pyExifToolGUI.app is NOT a complete self contained application. It needs the mentioned dependencies.
+<ul><li>Untar the package to some folder.</li>
+<li>Open a terminal and move into the folder where you untarred the pyExifToolGui-x.y.tgz</li>
+<li>pyExiftoolGUI >= 0.32: Run the setup script from the command line with <PRE>sudo ./install_remove.py install</PRE></li>
+<li>pyExiftoolGUI <= 0.31: Different but no longer supported.</li>
+<li>The script will install a "bare bones" pyExifToolGUI.app in your Applications folder.</li>
 <li>Start and enjoy.</li></ul>
 
 
@@ -325,7 +324,7 @@ zip file. Unzip the zip archive to some folder of your liking and start it. This
 that the package does not create registry entries.
 <b>Note:</b> As mentioned in the intro: pyExifToolGUI comes without exiftool itself. If you download it, the default 
 version for windows is called exiftool(-k).exe. Always rename this to exiftool.exe as the exiftool(-k).exe version pauses after every screen of output and requires a keypress to continue: You don't want that.
-(Tip: If you only see exiftool(-k) without an extension in you file manager then simply rename it to exiftool).
+(Tip: If you only see exiftool(-k) without an extension in you file manager then simply rename it to exiftool).<br>
 
 
 
@@ -350,12 +349,12 @@ version for windows is called exiftool(-k).exe. Always rename this to exiftool.e
 <p><a name="UnInstall"></a>
 
 <h3 class="section">Uninstall / Removal</h3>
-<ul><li>Open a terminal
-<li>Move into the folder where you untarred the pyExifToolGUI.<version>.tgz (You might need to download again if your removed everything).
-<li>pyExiftoolGUI <= 0.31: run the setup script from the command line with <PRE>$ sudo ./setup.py remove</PRE>.
-<li>pyExiftoolGUI >= 0.32: run the setup script from the command line with <PRE>$ sudo ./install_remove.py remove</PRE>.
+<ul><li>Open a terminal</li>
+<li>Move into the folder where you untarred the pyExifToolGUI.<version>.tgz (You might need to download again if your removed everything).</li>
+<li>pyExiftoolGUI >= 0.32: run the setup script from the command line with <PRE>$ sudo ./install_remove.py remove</PRE></li>
+<li>pyExiftoolGUI <= 0.31 (0.31 and older is no longer supported): <PRE>$ sudo ./install_remove.py remove</PRE></li>
 <li>On Mac OS X simply remove pyExifToolGUI.app from /Applications</li>
-<li>On Windows simply remove the folder containing the pyexiftoolgui.exe application.</ul>
+<li>On Windows simply remove the folder containing the pyexiftoolgui.exe application.</li></ul>
 <p> <br></p>
 
 
