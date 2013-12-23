@@ -1,6 +1,6 @@
 # -*- mode: python -*-
-a = Analysis(['/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.4.0.1/scripts/pyexiftoolgui.py'],
-             pathex=['/Users/Shared/development/python_related/pyinstaller-2.0', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.4.0.1/scripts/', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.4.0.1/scripts/ui/'],
+a = Analysis(['/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5/scripts/pyexiftoolgui.py'],
+             pathex=['/Users/Shared/development/python_related/pyinstaller-2.0', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5/scripts/', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5/scripts/ui/'],
              hiddenimports=[],
              hookspath=None)
 pyz = PYZ(a.pure)
@@ -11,16 +11,16 @@ exe = EXE(pyz,
           debug=False,
           strip=None,
           upx=True,
-          console=False , icon='/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.4.0.1/MacOSX/pyExifToolGUI.app/Contents/Resources/appIcon.icns' )
+          console=False , icon='/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5/MacOSX/pyExifToolGUI.app/Contents/Resources/appIcon.icns' )
 coll = COLLECT(exe,
                a.binaries +
                [('libpyside-python2.7.1.1.dylib', '/usr/lib/libpyside-python2.7.1.1.dylib', 'DATA')] +
                [('libshiboken-python2.7.1.1.dylib', '/usr/lib/libshiboken-python2.7.1.1.dylib', 'DATA')] +
-               [('../Resources/qt.conf', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.4.0.1/MacOSX/qt.conf', 'DATA')] +
-               [('COPYING', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.4.0.1/COPYING', 'DATA')] +
-               [('../Resources/appIcon.icns', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.4.0.1/MacOSX/appIcon.icns', 'DATA')] +
-               [('../Info.plist', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.4.0.1/MacOSX/Info.plist', 'DATA')] +
-               [('../PkgInfo', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.4.0.1/MacOSX/PkgInfo', 'DATA')] +
+               [('../Resources/qt.conf', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5/MacOSX/qt.conf', 'DATA')] +
+               [('COPYING', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5/COPYING', 'DATA')] +
+               [('../Resources/appIcon.icns', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5/MacOSX/appIcon.icns', 'DATA')] +
+               [('../Info.plist', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5/MacOSX/Info.plist', 'DATA')] +
+               [('../PkgInfo', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5/MacOSX/PkgInfo', 'DATA')] +
                [('../Resources/qt_menu.nib/classes.nib', '/Library/Frameworks/QtGui.framework/Versions/Current/Resources/qt_menu.nib/classes.nib', 'DATA')] +
                [('../Resources/qt_menu.nib/info.nib', '/Library/Frameworks/QtGui.framework/Versions/Current/Resources/qt_menu.nib/info.nib', 'DATA')] +
                [('../Resources/qt_menu.nib/keyedobjects.nib', '/Library/Frameworks/QtGui.framework/Versions/Current/Resources/qt_menu.nib/keyedobjects.nib', 'DATA')] +
