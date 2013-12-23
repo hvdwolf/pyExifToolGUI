@@ -1,38 +1,56 @@
-* e2037f1 -  (HEAD, origin/master, origin/HEAD, master)Temporary disable lens tab for version 0.4.0.2 (17 minutes ago) <hvdwolf>
-* 1ca6f01 - Fix "button hang" after cancelling browse action in Geotagging screen. This had to do with the fact that I set some variables incorrectly. wrong: self.LineEdit_geotag_source_folder.setText(self.geotag_source_folder) Correct: self.LineEdit_geotag_source_folder.setText(geotag_source_folder) self.geotag_source_folder = geotag_source_folder (41 minutes ago) <hvdwolf>
-* 7b5aa07 - [Linux and OSX] Also here: Fix incorrect escaping when exiftool in path with spaces (80 minutes ago) <hvdwolf>
-*   36f9acc - Merge branch 'master' of https://github.com/hvdwolf/pyExifToolGUI (13 hours ago) <hvdwolf>
+* f458ee7 -  (HEAD, origin/master, origin/HEAD, master)Add better alt text to images for better search results in Google (5 minutes ago) <hvdwolf>
+* 0fbf586 - Update manual; remove 0.31 installer options; Add 0.5 version texts (31 hours ago) <hvdwolf>
+* 7ea6ccb - Add 0.5 version to setup.py as well (32 hours ago) <hvdwolf>
+* 921b628 - Already update changelog and version strings for 0.5 release (2 days ago) <hvdwolf>
+* fd10582 - Add text of Lens data tab to the manual (2 days ago) <hvdwolf>
+* 19b2308 - Set correct tab order in lesn tab (2 days ago) <hvdwolf>
+* 1e423a3 - Make lens function work; minor change to packaging (3 days ago) <hvdwolf>
+* 0a5d859 - Further fixes/enhancements to debian package build functionality (8 days ago) <hvdwolf>
+* 8969d39 - Update debian packaging stuff (8 days ago) <hvdwolf>
+* 8ac98be - Some further addtions/changes ot debian package structure (8 days ago) <hvdwolf>
+* 9c13de1 - Add debian folder structure as first attempt to create Debian/Ubuntu package (8 days ago) <hvdwolf>
+* 57021ba - Rebuild setup.py and make it a "private" install. Change some accompanying files. (8 days ago) <hvdwolf>
+*   6248aac - Merge pull request #3 from jowave/write_config (9 days ago) <hvdwolf>
 |\  
-| * be4f099 - Update installation.txt. Qt was not mentioned as dependency. (2 days ago) <hvdwolf>
-| * 3951e14 - Update windows build file and readme (3 days ago) <hvdwolf>
-* | 0579bf6 - Put geotag functions inside pergfunctions.py (13 hours ago) <hvdwolf>
+| * 01fbbb6 - fixed indentation to write thumbnail preference (9 days ago) <jowave>
 |/  
-* bec2088 - Forgot to add new lensdefinition py and ui (4 days ago) <hvdwolf>
-* 7ce993a - Addition to previous fix: Also update Mac OS X gui itself (4 days ago) <hvdwolf>
-* c9e5dae - Some window titles are not displayed on Mac OS X, work around that. Hide lens definition options temporarily (4 days ago) <hvdwolf>
-* 34792a1 - Update Mac OS X bundle stuff; add create_Mac_bundle.txt for explanation (4 days ago) <hvdwolf>
-* 877f260 - Build lensdefinition gui and basic functionality; adapt tab order in a few dialogs (4 days ago) <hvdwolf>
-* 235050b - Fix a few (copy&pasted) statusline messages (5 days ago) <hvdwolf>
-* 9b8b8ee - Restructure gpano tab: it's a full tab and needed some optimisation (5 days ago) <hvdwolf>
-* 15295e4 - First implementation of new lens data functionality + some minor fixes (5 days ago) <hvdwolf>
-* 152efe9 -  (tag: 0.4.0.1)Update Changelog to 0.4.0.1 (6 days ago) <hvdwolf>
-* fbea783 - Fix link to pyExifToolGUI homepage. It still linked to old location. (6 days ago) <hvdwolf>
-* 1c5772e -  (tag: 0.4)Update Changelog (6 days ago) <hvdwolf>
-* e925095 - Compile all gui files before 0.4 (6 days ago) <hvdwolf>
-* 9959e72 - Fix renaming for full date-time, this always added a number. Set version to 0.4 in relevant files. (6 days ago) <hvdwolf>
-* 700b969 - convert README.txt unix line endings to dos line endings to make it readible on all OSes (6 days ago) <hvdwolf>
-* 3a62abe - Create readme.txt in windows folder to describe how to create a windows package (6 days ago) <hvdwolf>
-* 5e78baa - Disable save geotag info if we don't have images loaded (6 days ago) <hvdwolf>
-* 5b4f5b1 - Fix initial parameters variabele when saving parts of information; bui;ld first lens functionality (6 days ago) <hvdwolf>
-* 6067f30 - [Windows] Fix incorrect escaping when exiftool in path with spaces (7 days ago) <hvdwolf>
-* 6103eb0 - Fix indent of two lines of code (8 days ago) <hvdwolf>
-* 29086dd - And immediately correct stupid change in linux/OSX version (8 days ago) <hvdwolf>
-* 3dafbb3 - Fix stupid error in windows check of exiftool existence (8 days ago) <hvdwolf>
-* a03d569 - Fix many errors in geotagging functionality (10 days ago) <hvdwolf>
-* 6dd2d0e - Adapt windows build; set alfa version; minor code chage and manual change (10 days ago) <hvdwolf>
-* ef93eb1 - Geotagging: First untested code added; Minor addition to manual. (11 days ago) <hvdwolf>
-* 635bcdd - 1. Add gui elements for geotagging (not functional yet) 2. Add first geotagging information to manual (draft) 3. Add file functions to geotagging tab (11 days ago) <hvdwolf>
-* 5588701 - correct typo in ui README (11 days ago) <hvdwolf>
+* f74dbfc - Re-enable lens tab (11 days ago) <hvdwolf>
+* ef6889e - Prepare 0.4.0.2 bugfix: Update versions, Update Changelog, set tag (11 days ago) <hvdwolf>
+* e2037f1 -  (tag: 0.4.0.2)Temporary disable lens tab for version 0.4.0.2 (11 days ago) <hvdwolf>
+* 1ca6f01 - Fix "button hang" after cancelling browse action in Geotagging screen. This had to do with the fact that I set some variables incorrectly. wrong: self.LineEdit_geotag_source_folder.setText(self.geotag_source_folder) Correct: self.LineEdit_geotag_source_folder.setText(geotag_source_folder) self.geotag_source_folder = geotag_source_folder (11 days ago) <hvdwolf>
+* 7b5aa07 - [Linux and OSX] Also here: Fix incorrect escaping when exiftool in path with spaces (11 days ago) <hvdwolf>
+*   36f9acc - Merge branch 'master' of https://github.com/hvdwolf/pyExifToolGUI (11 days ago) <hvdwolf>
+|\  
+| * be4f099 - Update installation.txt. Qt was not mentioned as dependency. (13 days ago) <hvdwolf>
+| * 3951e14 - Update windows build file and readme (2 weeks ago) <hvdwolf>
+* | 0579bf6 - Put geotag functions inside pergfunctions.py (11 days ago) <hvdwolf>
+|/  
+* bec2088 - Forgot to add new lensdefinition py and ui (2 weeks ago) <hvdwolf>
+* 7ce993a - Addition to previous fix: Also update Mac OS X gui itself (2 weeks ago) <hvdwolf>
+* c9e5dae - Some window titles are not displayed on Mac OS X, work around that. Hide lens definition options temporarily (2 weeks ago) <hvdwolf>
+* 34792a1 - Update Mac OS X bundle stuff; add create_Mac_bundle.txt for explanation (2 weeks ago) <hvdwolf>
+* 877f260 - Build lensdefinition gui and basic functionality; adapt tab order in a few dialogs (2 weeks ago) <hvdwolf>
+* 235050b - Fix a few (copy&pasted) statusline messages (2 weeks ago) <hvdwolf>
+* 9b8b8ee - Restructure gpano tab: it's a full tab and needed some optimisation (2 weeks ago) <hvdwolf>
+* 15295e4 - First implementation of new lens data functionality + some minor fixes (2 weeks ago) <hvdwolf>
+* 152efe9 -  (tag: 0.4.0.1)Update Changelog to 0.4.0.1 (2 weeks ago) <hvdwolf>
+* fbea783 - Fix link to pyExifToolGUI homepage. It still linked to old location. (2 weeks ago) <hvdwolf>
+* 1c5772e -  (tag: 0.4)Update Changelog (2 weeks ago) <hvdwolf>
+* e925095 - Compile all gui files before 0.4 (2 weeks ago) <hvdwolf>
+* 9959e72 - Fix renaming for full date-time, this always added a number. Set version to 0.4 in relevant files. (2 weeks ago) <hvdwolf>
+* 700b969 - convert README.txt unix line endings to dos line endings to make it readible on all OSes (2 weeks ago) <hvdwolf>
+* 3a62abe - Create readme.txt in windows folder to describe how to create a windows package (2 weeks ago) <hvdwolf>
+* 5e78baa - Disable save geotag info if we don't have images loaded (2 weeks ago) <hvdwolf>
+* 5b4f5b1 - Fix initial parameters variabele when saving parts of information; bui;ld first lens functionality (2 weeks ago) <hvdwolf>
+* 6067f30 - [Windows] Fix incorrect escaping when exiftool in path with spaces (3 weeks ago) <hvdwolf>
+* 6103eb0 - Fix indent of two lines of code (3 weeks ago) <hvdwolf>
+* 29086dd - And immediately correct stupid change in linux/OSX version (3 weeks ago) <hvdwolf>
+* 3dafbb3 - Fix stupid error in windows check of exiftool existence (3 weeks ago) <hvdwolf>
+* a03d569 - Fix many errors in geotagging functionality (3 weeks ago) <hvdwolf>
+* 6dd2d0e - Adapt windows build; set alfa version; minor code chage and manual change (3 weeks ago) <hvdwolf>
+* ef93eb1 - Geotagging: First untested code added; Minor addition to manual. (3 weeks ago) <hvdwolf>
+* 635bcdd - 1. Add gui elements for geotagging (not functional yet) 2. Add first geotagging information to manual (draft) 3. Add file functions to geotagging tab (3 weeks ago) <hvdwolf>
+* 5588701 - correct typo in ui README (3 weeks ago) <hvdwolf>
 * 7152841 -  (tag: 0.32, tag: 0.31, tag: 0.28)change from setup to hg_install_remove to conform to python rules (4 months ago) <harryvanderwolf>
 * 3c07c92 - rename setup.py to install_remove.py and create new distutils compatible setup.py script (11 months ago) <harryvanderWolf (hvdwolf>
 * ebf9454 - Some textual changes to the info and manual to reflect the current grown state of pyExifToolGUI (11 months ago) <harryvanderwolf>
@@ -44,17 +62,17 @@
 * ca9bbfc - more updates to manual incl. some images (11 months ago) <harryvanderwolf>
 * 988f2b9 - correct typo in manual (11 months ago) <harryvanderwolf>
 * bb35445 - Textual modifications to manual (11 months ago) <harryvanderWolf (hvdwolf>
-* 512ebc3 - [OSX] Correct opening the manual and the license file again from the bundle (11 months ago) <harryvanderwolf>
-* e2895f3 - Added tag 0.31 for changeset 74bd1394f926 (11 months ago) <harryvanderwolf>
-* 62a4e29 - textual update to INSTALLATION.txt (11 months ago) <harryvanderwolf>
-* 506031b - prepare for 0.31 release; update version stamps, small modifications to texts in program and manual (11 months ago) <harryvanderwolf>
-* 2158953 - Replace incorrect extramenu image (11 months ago) <harryvanderwolf>
-* 6677027 - Add the "Rename photos", the "Extra" menu andanother workflow describing a range of actions on a set of photos; Some minor changes to dialogs (11 months ago) <harryvanderwolf>
-* 7faa467 - Minor changes to version numbers; hide complex renaming tab temporarily (11 months ago) <harryvanderwolf>
-* d463eba - Added tag 0.30 for changeset ee4d59b21772 (11 months ago) <harryvanderwolf>
-* 4daf3ed - Added tag 0.29 for changeset c0d8c5aef54e (11 months ago) <harryvanderwolf>
-* 4d297b5 - renaming made functional on linux and OSX; csv export now functions correctly; first addition of sync datetime tags (11 months ago) <harryvanderwolf>
-* f47bf1c - Complete renaming screen and functionality (11 months ago) <harryvanderWolf (hvdwolf>
+* 512ebc3 - [OSX] Correct opening the manual and the license file again from the bundle (12 months ago) <harryvanderwolf>
+* e2895f3 - Added tag 0.31 for changeset 74bd1394f926 (12 months ago) <harryvanderwolf>
+* 62a4e29 - textual update to INSTALLATION.txt (12 months ago) <harryvanderwolf>
+* 506031b - prepare for 0.31 release; update version stamps, small modifications to texts in program and manual (12 months ago) <harryvanderwolf>
+* 2158953 - Replace incorrect extramenu image (12 months ago) <harryvanderwolf>
+* 6677027 - Add the "Rename photos", the "Extra" menu andanother workflow describing a range of actions on a set of photos; Some minor changes to dialogs (12 months ago) <harryvanderwolf>
+* 7faa467 - Minor changes to version numbers; hide complex renaming tab temporarily (12 months ago) <harryvanderwolf>
+* d463eba - Added tag 0.30 for changeset ee4d59b21772 (12 months ago) <harryvanderwolf>
+* 4daf3ed - Added tag 0.29 for changeset c0d8c5aef54e (12 months ago) <harryvanderwolf>
+* 4d297b5 - renaming made functional on linux and OSX; csv export now functions correctly; first addition of sync datetime tags (12 months ago) <harryvanderwolf>
+* f47bf1c - Complete renaming screen and functionality (12 months ago) <harryvanderWolf (hvdwolf>
 * 816c171 - Update copyright notices for 2013 (12 months ago) <harryvanderwolf>
 * ef678f3 - [Win] Opening a html with an anchor from file now works on windows (or did I something stupid) (12 months ago) <harryvanderWolf (hvdwolf>
 * 6c27748 - calls to sections in manual had grown over time, so clean code and make one general function to be called by the simple others (12 months ago) <harryvanderwolf>
@@ -64,45 +82,45 @@
 * 873e67a - Add "Your Commands" tab where users can provide their own commands to exiftool; create function for recurring messagebox; expand manual; more work on renaming (12 months ago) <harryvanderwolf>
 * f784404 - Correct error in renaming prefix/suffix options and make possible combinations idiot proof (12 months ago) <harryvanderwolf>
 * 95f0d37 - Save all preliminary work on Renaming before writing the actual "write to" function (12 months ago) <harryvanderwolf>
-* b565fc8 - Correct error in writing config for thumbs preview; correct error after updating exiftool location on windows: it displayed an error message when there was no error (12 months ago) <harryvanderWolf (hvdwolf>
-* fa25a74 - Added tag 0.27 for changeset 6c130a9b303d (12 months ago) <harryvanderWolf (hvdwolf>
-* 477a490 - [Windows] stop flashing of command box window everytime exiftool is called (12 months ago) <harryvanderWolf (hvdwolf>
-* fbd41d3 - Added tag 0.26 for changeset 9911e08f325b (12 months ago) <harryvanderwolf>
-* 6b4bd16 - Add internal image metadata copy: All possible metadata to XMP format (12 months ago) <harryvanderwolf>
-* 2e6ad3c - Made a stupid mistake; removed some important files by accident; add again to repository (12 months ago) <harryvanderwolf>
-*   ded475b - merge (12 months ago) <harryvanderwolf>
+* b565fc8 - Correct error in writing config for thumbs preview; correct error after updating exiftool location on windows: it displayed an error message when there was no error (1 year ago) <harryvanderWolf (hvdwolf>
+* fa25a74 - Added tag 0.27 for changeset 6c130a9b303d (1 year ago) <harryvanderWolf (hvdwolf>
+* 477a490 - [Windows] stop flashing of command box window everytime exiftool is called (1 year ago) <harryvanderWolf (hvdwolf>
+* fbd41d3 - Added tag 0.26 for changeset 9911e08f325b (1 year ago) <harryvanderwolf>
+* 6b4bd16 - Add internal image metadata copy: All possible metadata to XMP format (1 year ago) <harryvanderwolf>
+* 2e6ad3c - Made a stupid mistake; removed some important files by accident; add again to repository (1 year ago) <harryvanderwolf>
+*   ded475b - merge (1 year ago) <harryvanderwolf>
 |\  
-| * e96edc1 - Make display of preview thumbnails a Preference setting (12 months ago) <harryvanderwolf>
-* | 5609962 - Update Info.plists for MacOSX as well (12 months ago) <harryvanderwolf>
+| * e96edc1 - Make display of preview thumbnails a Preference setting (1 year ago) <harryvanderwolf>
+* | 5609962 - Update Info.plists for MacOSX as well (1 year ago) <harryvanderwolf>
 |/  
-* cc2a9ad - Update changelog (12 months ago) <harryvanderwolf>
-* e074ac9 - Added tag 0.25 for changeset 492bb39c7dae (12 months ago) <harryvanderwolf>
-* 63c7353 - Update version date (12 months ago) <harryvanderwolf>
-* 41bf578 - some style changes in the manual (12 months ago) <harryvanderWolf (hvdwolf>
-* 5757643 - forgot gpano screen capture (12 months ago) <harryvanderwolf>
-* 6eda739 - minor changes to gui; some new screen captures for manual (12 months ago) <harryvanderwolf>
-* ef08653 - fix minor display error in gpano view tab; Add "backup originals" also to gpano (12 months ago) <harryvanderwolf>
-* 4e563be - Reenable more gpano tags now that exiftool 9.09 supports it (12 months ago) <harryvanderwolf>
-* 485bd2d - Add few more actions to context menu; Expand manual and correct typos etc. (12 months ago) <harryvanderWolf (hvdwolf>
-* 791e664 - minor textual change in context menu (12 months ago) <harryvanderwolf>
-* 28d8388 - Update Changelog (12 months ago) <harryvanderwolf>
-* 91c7697 - improve date/time shift function; prepare for 0.25 release (12 months ago) <harryvanderwolf>
-* 033aa13 - Added tag 0.24 for changeset 3519c98f84dc (12 months ago) <harryvanderwolf>
-* 03bfcb7 - Add function "repair JPG(s) with corrupted metadata (12 months ago) <harryvanderwolf>
-* 7b3275d - Added tag 0.23 for changeset 0fab3728585c (12 months ago) <harryvanderWolf (hvdwolf>
-* 41c51bd - Add extra "Modify Date/tine" function with timeshift option; Add "Set file date to DateTimeOriginal" function (12 months ago) <harryvanderWolf (hvdwolf>
-* e40074f - correct some minor errors; add to all image "changing" functions a "Make backup of originals" checkbox (12 months ago) <harryvanderwolf>
-* b4e78df - Set correct tab order in all guis; was a mess (12 months ago) <harryvanderwolf>
-* 163a341 - Added tag 0.22 for changeset 8d168195f958 (12 months ago) <harryvanderwolf>
-* 25a0d2d - [OSX] increase size of export ui (12 months ago) <harryvanderwolf>
-* b546cd9 - improve xmp to xmp output; filedialog: expand filter option "Files of Type" and make split between image formats(default) and all exiftool supported formats; Add icc_profile to view tab and "Extra menu" options (12 months ago) <harryvanderwolf>
-* 573821b - Add xmp file export of only xmp data; temporarily disable csv export (12 months ago) <harryvanderwolf>
-* 9f1c030 - Added tag 0.21 for changeset b0e5798ffb53 (12 months ago) <harryvanderwolf>
-* cbb0d47 - work on csv output which is not correct yet (12 months ago) <harryvanderWolf (hvdwolf>
-* 0c46815 - Add some text to manual about context menu (12 months ago) <harryvanderWolf (hvdwolf>
-* f2e3ad9 - expand context menu functionality; add "export to args file" functionality; some code cleanup and restructuring (12 months ago) <harryvanderWolf (hvdwolf>
-* 1956482 - Add right-click context menu with some options: to be expanded (12 months ago) <harryvanderwolf>
-* 4445ee2 - Add metadata export options to the tool (12 months ago) <harryvanderWolf (hvdwolf>
+* cc2a9ad - Update changelog (1 year ago) <harryvanderwolf>
+* e074ac9 - Added tag 0.25 for changeset 492bb39c7dae (1 year ago) <harryvanderwolf>
+* 63c7353 - Update version date (1 year ago) <harryvanderwolf>
+* 41bf578 - some style changes in the manual (1 year ago) <harryvanderWolf (hvdwolf>
+* 5757643 - forgot gpano screen capture (1 year ago) <harryvanderwolf>
+* 6eda739 - minor changes to gui; some new screen captures for manual (1 year ago) <harryvanderwolf>
+* ef08653 - fix minor display error in gpano view tab; Add "backup originals" also to gpano (1 year ago) <harryvanderwolf>
+* 4e563be - Reenable more gpano tags now that exiftool 9.09 supports it (1 year ago) <harryvanderwolf>
+* 485bd2d - Add few more actions to context menu; Expand manual and correct typos etc. (1 year ago) <harryvanderWolf (hvdwolf>
+* 791e664 - minor textual change in context menu (1 year ago) <harryvanderwolf>
+* 28d8388 - Update Changelog (1 year ago) <harryvanderwolf>
+* 91c7697 - improve date/time shift function; prepare for 0.25 release (1 year ago) <harryvanderwolf>
+* 033aa13 - Added tag 0.24 for changeset 3519c98f84dc (1 year ago) <harryvanderwolf>
+* 03bfcb7 - Add function "repair JPG(s) with corrupted metadata (1 year ago) <harryvanderwolf>
+* 7b3275d - Added tag 0.23 for changeset 0fab3728585c (1 year ago) <harryvanderWolf (hvdwolf>
+* 41c51bd - Add extra "Modify Date/tine" function with timeshift option; Add "Set file date to DateTimeOriginal" function (1 year ago) <harryvanderWolf (hvdwolf>
+* e40074f - correct some minor errors; add to all image "changing" functions a "Make backup of originals" checkbox (1 year ago) <harryvanderwolf>
+* b4e78df - Set correct tab order in all guis; was a mess (1 year ago) <harryvanderwolf>
+* 163a341 - Added tag 0.22 for changeset 8d168195f958 (1 year ago) <harryvanderwolf>
+* 25a0d2d - [OSX] increase size of export ui (1 year ago) <harryvanderwolf>
+* b546cd9 - improve xmp to xmp output; filedialog: expand filter option "Files of Type" and make split between image formats(default) and all exiftool supported formats; Add icc_profile to view tab and "Extra menu" options (1 year ago) <harryvanderwolf>
+* 573821b - Add xmp file export of only xmp data; temporarily disable csv export (1 year ago) <harryvanderwolf>
+* 9f1c030 - Added tag 0.21 for changeset b0e5798ffb53 (1 year ago) <harryvanderwolf>
+* cbb0d47 - work on csv output which is not correct yet (1 year ago) <harryvanderWolf (hvdwolf>
+* 0c46815 - Add some text to manual about context menu (1 year ago) <harryvanderWolf (hvdwolf>
+* f2e3ad9 - expand context menu functionality; add "export to args file" functionality; some code cleanup and restructuring (1 year ago) <harryvanderWolf (hvdwolf>
+* 1956482 - Add right-click context menu with some options: to be expanded (1 year ago) <harryvanderwolf>
+* 4445ee2 - Add metadata export options to the tool (1 year ago) <harryvanderWolf (hvdwolf>
 * affa106 - Added tag 0.2 for changeset 87ef258a0df1 (1 year ago) <harryvanderwolf>
 * bbfdbc1 - Update Changelog (1 year ago) <harryvanderwolf>
 * 909b221 - Prepare for first 0.2 release (1 year ago) <harryvanderwolf>
@@ -128,45 +146,45 @@
 * 3d6fcd3 - [OSX] Make a "Menu" tab in the gui for OS X platform as a rough cut patch as Mac has a terrible menu behaviour impacting QT applications (1 year ago) <harryvanderwolf>
 * 2244e44 - [OSX] Change "Program Info" menu item back in "About" as it doesn't change anything on OSX (1 year ago) <harryvanderwolf>
 * bf00715 - add extended Google Photosphere functionality (1 year ago) <harryvanderwolf>
-* d75f1bb - minor change to new info_window (1 year ago) <harryvanderwolf>
-* 9c98a2e - Dynamically call ui files; adapt installation texts (1 year ago) <harryvanderwolf>
-* 63dd89c - Modify menu (1 year ago) <harryvanderwolf>
-* 8677538 - [OSX] improved pyinstaller spec file but still not 100 pct correct (1 year ago) <harryvanderwolf>
-* 2aff243 - add (currently not working) pyinstaller spec file (1 year ago) <harryvanderwolf>
-* 7a11562 - Improve pyinstaller spec file for windows (1 year ago) <harryvanderWolf (hvdwolf>
-* 161919d - correct stupid bug in gpano functionality (1 year ago) <harryvanderwolf>
-* 0095e16 - expand manual (1 year ago) <harryvanderwolf>
-* b076d4b - further changes to manual (1 year ago) <harryvanderWolf (hvdwolf>
-* 4f24ff8 - small changes and fixes to manual (1 year ago) <harryvanderwolf>
-* 60f673f - one image missing from manual (1 year ago) <harryvanderwolf>
-* cfbaf77 - Add paypal donate button to manual and about popup (1 year ago) <harryvanderwolf>
-* cc43502 - Added tag 0.19 for changeset 0fc9083ab1af (1 year ago) <harryvanderwolf>
-* 8866232 - Make IPTC edit tab only a placeholder for some text; Do not add functionality at this moment for this old, deminishing standard (1 year ago) <harryvanderwolf>
-* e95dd28 - manual path on windows differs when run as script or when run as python executable (1 year ago) <harryvanderWolf (hvdwolf>
-* e1f7419 - remove file from windows spec list (1 year ago) <harryvanderWolf (hvdwolf>
-* 0f1903f - windows python executable now works; create COPYING.txt for windows sake (1 year ago) <harryvanderWolf (hvdwolf>
-* 9e42f36 - Remove py2exe setup and replace with pyinstaller spec file (1 year ago) <harryvanderWolf (hvdwolf>
-* f245fc1 - Add windows program icon to repo (1 year ago) <harryvanderWolf (hvdwolf>
-* 21e22be - call to webpage on disk with anchor added does notwrok on windows; correct minor stylesheet errors in html manual (1 year ago) <harryvanderWolf (hvdwolf>
-* 5cb55e3 - Do some cleanup first before copying files during setup. Users might already have started the gui from the release folder (1 year ago) <harryvanderwolf>
-* b7ff124 - Add new Mac OS X bare-bones pyExifToolGUI.app (1 year ago) <harryvanderwolf>
-* 3095b20 - Adapt setup.py for OSX; remove current app (1 year ago) <harryvanderwolf>
-* b6c027e - Add installation to HTML manual (1 year ago) <harryvanderwolf>
-* b989371 - Restructure source folder itself and install to comply a bit more to a "standard" python way; Improve call to license file; Rewrite some texts (1 year ago) <harryvanderwolf>
-* 9384c72 - Remove Mapcoordinates webview from application and make it a simple button in the GPS edit tab to open the mapcoordinates website (1 year ago) <harryvanderwolf>
-* 111c2aa - add HTML manual stuff to setup.py (1 year ago) <harryvanderwolf>
-* 99c4d73 - Make some menu changes (1 year ago) <harryvanderwolf>
-* 2242792 - Add defaults for artist and copyrights to preferences; add copy defaults functionality; add xmp functionality; expand manual slightly (1 year ago) <harryvanderwolf>
-* 0334b2f - Expand gui; add defaults and start xmp (1 year ago) <harryvanderwolf>
-* 541232a - expand html manual (1 year ago) <harryvanderwolf>
-* 81be5cd - reroute help calls to QMessageBoxes to html manual (1 year ago) <harryvanderWolf (hvdwolf>
-* e039ca1 - Start writing HTML manual instead of using Messageboxes of help texts. this also allows for an online manual or a pfd manual (1 year ago) <harryvanderWolf (hvdwolf>
-* 826edb4 - Add (still not working) py2exe setup to repo (1 year ago) <harryvanderWolf (hvdwolf>
-* 57d9c13 - Use user friendly formatted gpano tags in gpano tab instead of exiftool internal variable names (1 year ago) <harryvanderwolf>
-* 1186aa3 - previous comment was "add "read" functionality" but should be "write" functionality. This commit is only an update of version in the programinfo.py (1 year ago) <harryvanderwolf>
-* d5c4746 - Add gpano (Google Photosphere) "read" functionality to program and gui (1 year ago) <harryvanderwolf>
-* fe4c888 - Added tag 0.17 for changeset bc6095087229 (1 year ago) <harryvanderwolf>
-* c6e67ec - Add gpano (Google Photosphere) "read" functionality to program and gui; Improve exiftool version check functionality (1 year ago) <harryvanderwolf>
-* 4c47f98 - corrected Mac OS X install: ended with linux message (1 year ago) <harryvanderwolf>
-* 21cfdc3 - exiftool  location test corrected (1 year ago) <harryvanderwolf>
-* 5b5907d - initial commit; add all files; equal to 0.17 (1 year ago) <harryvanderwolf>
+* d75f1bb - minor change to new info_window (1 year, 1 month ago) <harryvanderwolf>
+* 9c98a2e - Dynamically call ui files; adapt installation texts (1 year, 1 month ago) <harryvanderwolf>
+* 63dd89c - Modify menu (1 year, 1 month ago) <harryvanderwolf>
+* 8677538 - [OSX] improved pyinstaller spec file but still not 100 pct correct (1 year, 1 month ago) <harryvanderwolf>
+* 2aff243 - add (currently not working) pyinstaller spec file (1 year, 1 month ago) <harryvanderwolf>
+* 7a11562 - Improve pyinstaller spec file for windows (1 year, 1 month ago) <harryvanderWolf (hvdwolf>
+* 161919d - correct stupid bug in gpano functionality (1 year, 1 month ago) <harryvanderwolf>
+* 0095e16 - expand manual (1 year, 1 month ago) <harryvanderwolf>
+* b076d4b - further changes to manual (1 year, 1 month ago) <harryvanderWolf (hvdwolf>
+* 4f24ff8 - small changes and fixes to manual (1 year, 1 month ago) <harryvanderwolf>
+* 60f673f - one image missing from manual (1 year, 1 month ago) <harryvanderwolf>
+* cfbaf77 - Add paypal donate button to manual and about popup (1 year, 1 month ago) <harryvanderwolf>
+* cc43502 - Added tag 0.19 for changeset 0fc9083ab1af (1 year, 1 month ago) <harryvanderwolf>
+* 8866232 - Make IPTC edit tab only a placeholder for some text; Do not add functionality at this moment for this old, deminishing standard (1 year, 1 month ago) <harryvanderwolf>
+* e95dd28 - manual path on windows differs when run as script or when run as python executable (1 year, 1 month ago) <harryvanderWolf (hvdwolf>
+* e1f7419 - remove file from windows spec list (1 year, 1 month ago) <harryvanderWolf (hvdwolf>
+* 0f1903f - windows python executable now works; create COPYING.txt for windows sake (1 year, 1 month ago) <harryvanderWolf (hvdwolf>
+* 9e42f36 - Remove py2exe setup and replace with pyinstaller spec file (1 year, 1 month ago) <harryvanderWolf (hvdwolf>
+* f245fc1 - Add windows program icon to repo (1 year, 1 month ago) <harryvanderWolf (hvdwolf>
+* 21e22be - call to webpage on disk with anchor added does notwrok on windows; correct minor stylesheet errors in html manual (1 year, 1 month ago) <harryvanderWolf (hvdwolf>
+* 5cb55e3 - Do some cleanup first before copying files during setup. Users might already have started the gui from the release folder (1 year, 1 month ago) <harryvanderwolf>
+* b7ff124 - Add new Mac OS X bare-bones pyExifToolGUI.app (1 year, 1 month ago) <harryvanderwolf>
+* 3095b20 - Adapt setup.py for OSX; remove current app (1 year, 1 month ago) <harryvanderwolf>
+* b6c027e - Add installation to HTML manual (1 year, 1 month ago) <harryvanderwolf>
+* b989371 - Restructure source folder itself and install to comply a bit more to a "standard" python way; Improve call to license file; Rewrite some texts (1 year, 1 month ago) <harryvanderwolf>
+* 9384c72 - Remove Mapcoordinates webview from application and make it a simple button in the GPS edit tab to open the mapcoordinates website (1 year, 1 month ago) <harryvanderwolf>
+* 111c2aa - add HTML manual stuff to setup.py (1 year, 1 month ago) <harryvanderwolf>
+* 99c4d73 - Make some menu changes (1 year, 1 month ago) <harryvanderwolf>
+* 2242792 - Add defaults for artist and copyrights to preferences; add copy defaults functionality; add xmp functionality; expand manual slightly (1 year, 1 month ago) <harryvanderwolf>
+* 0334b2f - Expand gui; add defaults and start xmp (1 year, 1 month ago) <harryvanderwolf>
+* 541232a - expand html manual (1 year, 1 month ago) <harryvanderwolf>
+* 81be5cd - reroute help calls to QMessageBoxes to html manual (1 year, 1 month ago) <harryvanderWolf (hvdwolf>
+* e039ca1 - Start writing HTML manual instead of using Messageboxes of help texts. this also allows for an online manual or a pfd manual (1 year, 1 month ago) <harryvanderWolf (hvdwolf>
+* 826edb4 - Add (still not working) py2exe setup to repo (1 year, 1 month ago) <harryvanderWolf (hvdwolf>
+* 57d9c13 - Use user friendly formatted gpano tags in gpano tab instead of exiftool internal variable names (1 year, 1 month ago) <harryvanderwolf>
+* 1186aa3 - previous comment was "add "read" functionality" but should be "write" functionality. This commit is only an update of version in the programinfo.py (1 year, 1 month ago) <harryvanderwolf>
+* d5c4746 - Add gpano (Google Photosphere) "read" functionality to program and gui (1 year, 1 month ago) <harryvanderwolf>
+* fe4c888 - Added tag 0.17 for changeset bc6095087229 (1 year, 1 month ago) <harryvanderwolf>
+* c6e67ec - Add gpano (Google Photosphere) "read" functionality to program and gui; Improve exiftool version check functionality (1 year, 1 month ago) <harryvanderwolf>
+* 4c47f98 - corrected Mac OS X install: ended with linux message (1 year, 1 month ago) <harryvanderwolf>
+* 21cfdc3 - exiftool  location test corrected (1 year, 1 month ago) <harryvanderwolf>
+* 5b5907d - initial commit; add all files; equal to 0.17 (1 year, 1 month ago) <harryvanderwolf>

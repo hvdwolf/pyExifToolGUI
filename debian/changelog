@@ -1,5 +1,6 @@
 pyexiftoolgui (0.5) saucy; urgency=low
 
+  * First option to create Ubuntu/Mint/Debian .debs for download
   * Add a Lens tab to enable the addition or correction of lens
     data if this does not get written to the exif data due to an
     old or incompatible or a converter lens.
