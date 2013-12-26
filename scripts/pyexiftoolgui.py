@@ -57,7 +57,7 @@ import petgfunctions
 import programinfo
 import programstrings
 import renaming
-import lensdefinitions
+#import lensdefinitions
 
 #import image_resources.rc
 if platform.system() == "Darwin":
@@ -144,15 +144,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_write_geotaginfo.clicked.connect(self.write_geotag_info)
         self.btn_write_geotaginfo.setEnabled(False)
 # Load several buttons from the Edit -> lens tab
+        self.chk_predefined_lenses.clicked.connect(self.check_self_defined_lenses)
         self.btn_lenshelp.clicked.connect(self.lens_help)
         self.btn_lens_copyfrom.clicked.connect(self.copylensfromselected)
         self.btn_lens_copyfrom.setEnabled(False)
         self.btn_savelens.clicked.connect(self.savelensdata)
         self.btn_savelens.setEnabled(False)
         self.btn_resetlens.clicked.connect(self.clear_lens_fields)
-        self.btn_copy_lens_defaults.clicked.connect(self.lensdialog)
+        self.btn_save_lens.clicked.connect(self.savelens)
+        self.btn_update_lens.clicked.connect(self.updatelens)
+        self.btn_delete_lens.clicked.connect(self.deletelens)
         # For the time being hide the button
-        self.btn_copy_lens_defaults.setVisible(False)
+        #self.btn_copy_lens_defaults.setVisible(False)
 # Load several buttons from the Edit -> Your commands tab
         self.btn_yourcommands_clearinput.clicked.connect(self.clear_yourcommands_input)
         self.btn_yourcommands_clearoutput.clicked.connect(self.clear_yourcommands_output)
@@ -162,6 +165,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_preferences_save.clicked.connect(self.preferences_save)
         self.btn_preferenceshelp.clicked.connect(self.preferences_help)
         self.btn_choose_exiftool.clicked.connect(self.select_exiftool)
+
+#------------------------------------------------------------------------
+# Initialize Combobox mass change tab
+        self.grouplist = [
+            self.tr('exif'),
+            self.tr('jfif'),
+            self.tr('gps'),
+            self.tr('iptc'),
+            self.tr('xmp'),
+            self.tr('icc_profile'),
+            self.tr('makernotes'),
+            ]
+# experiment with lens tab
+#        self.predefined_lenses.clear()
+#        self.predefined_lenses.addItems(self.grouplist)
 
 #------------------------------------------------------------------------
 # Define a few globals and variables
@@ -545,6 +563,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
            petgfunctions.write_geotag_info(self,qApp)
 
 # Edit -> lens tab
+    def check_self_defined_lenses(self):
+        petgfunctions.check_self_defined_lenses(self)
+
     def clear_lens_fields(self):
         petgfunctions.clear_lens_fields(self)
 
@@ -554,8 +575,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def lens_defaults(self):
         petgfunctions.copy_defaults(self, qApp, "lens")
 
-    def savelensdata(self):
+    def savelensdata(self): # save data to image
         petgfunctions.savelensdata(self, qApp)
+
+    def savelens(self): # save lens data to lens db
+        petgfunctions.savelens(self, qApp)
+
+    def updatelens(self):
+        petgfunctions.updatelens(self, qApp)
+
+    def deletelens(self):
+        petgfunctions.deletelens(self, qApp)
 
 
 # Your Commands tab

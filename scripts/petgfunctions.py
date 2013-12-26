@@ -1295,6 +1295,19 @@ def geotag_gps_file(self, qApp):
 
 #------------------------------------------------------------------------
 # Edit -> Lens tab and actions
+def check_self_defined_lenses(self):
+        if self.chk_predefined_lenses.isChecked():
+           self.predefined_lenses.setEnabled(True)
+           self.btn_save_lens.setEnabled(False)
+           self.btn_update_lens.setEnabled(True)
+           self.btn_delete_lens.setEnabled(True)
+        else:
+           self.predefined_lenses.setEnabled(False)
+           self.btn_save_lens.setEnabled(True)
+           self.btn_update_lens.setEnabled(False)
+           self.btn_delete_lens.setEnabled(False)
+
+
 def clear_lens_fields(self):
         self.lens_make.setText("")
         self.lens_model.setText("")
@@ -1357,6 +1370,7 @@ def copylensfromselected(self,qApp):
                rowcounter += 1
 
 def savelensdata(self, qApp):
+# This function saves the lens data into the image
         lenstool_params = ""
         if self.chk_lens_make.isChecked():
                lenstool_params =  ' -exif:lensmake="' + self.lens_make.text() + '" -xmp:lensmake="' + self.lens_make.text() + '" '
@@ -1397,6 +1411,17 @@ def savelensdata(self, qApp):
            write_image_info(self, lenstool_params, qApp, True)
         else:
            write_image_info(self, lenstool_params, qApp, False)
+
+def savelens(self, qApp):
+# This function saves the lens data itself into the lens database
+    print('save lens data itself into the lens database')
+
+def updatelens(self, qApp):
+    print('update lens data for this lens inside the lens database')
+
+def deletelens(self, qApp):
+    print('delete lens data for this lens inside the lens database')
+
 		   
 #---
 def date_to_datetimeoriginal(self, qApp):
