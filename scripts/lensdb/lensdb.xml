@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<data>
+	<lens name="Panasonic LUMIX G VARIO 14-140/F3.5-5.6">
+		<make>Panasonic</make>
+		<model>LUMIX G VARIO 14-140/F3.5-5.6</model>
+		<serialnumber>13HIB081309N</serialnumber>
+		<focallength>24</focallength>
+		<focallengthin35mmformat>49</focallengthin35mmformat>
+		<fnumber>4.1</fnumber>
+		<maxaperturevalue>4.1</maxaperturevalue>
+		<meteringmode>Multi-segment</meteringmode>
+	</lens>
+
+	<lens name="Panasonic LUMIX G 14mm F2.5">
+		<make>Panasonic</make>
+		<model>LUMIX G 14mm F2.5</model>
+		<serialnumber></serialnumber>
+		<focallength>14</focallength>
+		<focallengthin35mmformat>49</focallengthin35mmformat>
+		<fnumber>2.5</fnumber>
+		<maxaperturevalue>22</maxaperturevalue>
+		<meteringmode></meteringmode>
+	</lens>
+
+	<lens name="Panasonic Leica DG Summilux 25/f1.4">
+		<make>Panasonic</make>
+		<model>Leica DG Summilux 25/f1.4</model>
+		<serialnumber></serialnumber>
+		<focallength>25</focallength>
+		<focallengthin35mmformat>50</focallengthin35mmformat>
+		<fnumber>1.4</fnumber>
+		<maxaperturevalue></maxaperturevalue>
+		<meteringmode></meteringmode>
+	</lens>
+
+	<lens name="Olympus Zuiko Digital 50mm f/2.0 Macro">
+		<make>Olympus</make>
+		<model>Zuiko Digital 50mm f/2.0 Macro</model>
+		<serialnumber></serialnumber>
+		<focallength>50</focallength>
+		<focallengthin35mmformat>100</focallengthin35mmformat>
+		<fnumber>2.0</fnumber>
+		<maxaperturevalue></maxaperturevalue>
+		<meteringmode></meteringmode>
+	</lens>
+</data>

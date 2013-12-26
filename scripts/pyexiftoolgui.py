@@ -57,6 +57,7 @@ import petgfunctions
 import programinfo
 import programstrings
 import renaming
+import petgfilehandling
 #import lensdefinitions
 
 #import image_resources.rc
@@ -154,6 +155,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_save_lens.clicked.connect(self.savelens)
         self.btn_update_lens.clicked.connect(self.updatelens)
         self.btn_delete_lens.clicked.connect(self.deletelens)
+        self.predefined_lenses.currentIndexChanged.connect(self.definedlenschanged)
         # For the time being hide the button
         #self.btn_copy_lens_defaults.setVisible(False)
 # Load several buttons from the Edit -> Your commands tab
@@ -166,20 +168,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_preferenceshelp.clicked.connect(self.preferences_help)
         self.btn_choose_exiftool.clicked.connect(self.select_exiftool)
 
-#------------------------------------------------------------------------
-# Initialize Combobox mass change tab
-        self.grouplist = [
-            self.tr('exif'),
-            self.tr('jfif'),
-            self.tr('gps'),
-            self.tr('iptc'),
-            self.tr('xmp'),
-            self.tr('icc_profile'),
-            self.tr('makernotes'),
-            ]
-# experiment with lens tab
-#        self.predefined_lenses.clear()
-#        self.predefined_lenses.addItems(self.grouplist)
 
 #------------------------------------------------------------------------
 # Define a few globals and variables
@@ -216,6 +204,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 		# First set exiftoolversion for windows
         self.exiftoolversion = "0.00"
         petgfunctions.tool_check(self)
+
+        # Initialize Combobox on lens tab with loaded lenses (if any)
+        petgfilehandling.read_defined_lenses(self, qApp)
+
+        # Initialize Combobox mass change tab
+        '''self.grouplist = [
+        self.tr('exif'),
+        self.tr('jfif'),
+        self.tr('gps'),
+        self.tr('iptc'),
+        self.tr('xmp'),
+        self.tr('icc_profile'),
+        self.tr('makernotes'),
+        ] '''
 
 #------------------------------------------------------------------------
 # General functions
@@ -332,8 +334,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def rename_photos(self):
         renaming.rename_photos(self,qApp)
 
-    def lensdialog(self):
-        lensdefinitions.process_lensdialog(self,qApp)
+#    def lensdialog(self):
+#        lensdefinitions.process_lensdialog(self,qApp)
 
     def create_args(self):
         try:
@@ -587,6 +589,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def deletelens(self):
         petgfunctions.deletelens(self, qApp)
 
+    def definedlenschanged(self):
+        petgfunctions.definedlenschanged(self, qApp)
 
 # Your Commands tab
     def clear_yourcommands_input(self):

@@ -3387,10 +3387,10 @@ Originals</string>
             <bool>false</bool>
            </property>
            <property name="toolTip">
-            <string>Google only supports equirectangular at this moment</string>
+            <string>Upon selecting a lens the underlying fields will be filled</string>
            </property>
            <property name="statusTip">
-            <string>Google only supports equirectangular at this moment</string>
+            <string>Upon selecting a lens the underlying fields will be filled</string>
            </property>
            <item>
             <property name="text">

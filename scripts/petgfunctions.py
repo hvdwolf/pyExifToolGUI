@@ -29,13 +29,14 @@ from PySide.QtGui import *
 
 import programinfo
 import programstrings
+import petgfilehandling
+
 
 from ui_create_args import Ui_Dialog_create_args
 from ui_export_metadata import Ui_Dialog_export_metadata
 from ui_remove_metadata import Ui_Dialog_remove_metadata
 from ui_modifydatetime import Ui_DateTimeDialog
 from ui_syncdatetime import Ui_SyncDateTimeTagsDialog
-#from ui_rename_photos import Ui_Dialog_rename_files
 
 #------------------------------------------------------------------------
 # All kind of functions
@@ -1421,6 +1422,9 @@ def updatelens(self, qApp):
 
 def deletelens(self, qApp):
     print('delete lens data for this lens inside the lens database')
+
+def definedlenschanged(self, qApp):
+    print('Changed the index of the lens')
 
 		   
 #---
