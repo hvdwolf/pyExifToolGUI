@@ -14,8 +14,6 @@ Currently I use pyinstaller 2.1 for this (http://www.pyinstaller.org/).
   "python pyinstaller.py pyexiftoolgui\pyexiftoolgui.spec"
 - If the paths in your .spec file are correct, your pyexiftoolgui.exe including 
   all the necessary files and dll libraries will be built.
-- Copy the manual folder from the source folder into the dist\pyexiftoolgui folder that contains your created pyexiftool
-  package.
 - Use the unix2dos utility to change the unix line endings to DOS line endings in the Changelog by
   using the command "unix2dos Changelog"
 

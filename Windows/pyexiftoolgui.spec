@@ -12,8 +12,11 @@ exe = EXE(pyz,
           strip=None,
           upx=True,
           console=False , icon='..\\pyside\\pyexiftoolgui-0.5.1\\logo\\pyexiftoolgui.ico')
+
 coll = COLLECT(exe,
                a.binaries +
+			   Tree('..\\pyside\\pyexiftoolgui-0.5.1\\manual', prefix='manual') +
+			   Tree('..\\pyside\\pyexiftoolgui-0.5.1\\scripts\\lensdb', prefix='lensdb') +
                [('qt.conf', '..\\pyside\\pyexiftoolgui-0.5.1\\Windows\\qt.conf', 'DATA')] +
                [('plugins\\imageformats\\qjpeg4.dll', 'D:\\LocalData_387640\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qjpeg4.dll', 'DATA')] +
                [('plugins\\imageformats\\qgif4.dll', 'D:\\LocalData_387640\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qgif4.dll', 'DATA')] +
@@ -23,7 +26,7 @@ coll = COLLECT(exe,
                [('plugins\\imageformats\\qico4.dll', 'D:\\LocalData_387640\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qico4.dll', 'DATA')] +
                [('COPYING', '..\\pyside\\pyexiftoolgui-0.5.1\\COPYING', 'DATA')] +
                [('README.txt', '..\\pyside\\pyexiftoolgui-0.5.1\\README.txt', 'DATA')] +
-               [('Changelog', '..\\pyside\\pyexiftoolgui-0.5.1\\Changelog', 'DATA')] ,
+               [('Changelog', '..\\pyside\\pyexiftoolgui-0.5.1\\Changelog', 'DATA')],
                a.zipfiles,
                a.datas,
                strip=None,
