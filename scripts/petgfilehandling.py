@@ -38,8 +38,8 @@ def read_defined_lenses(self, qApp):
          elif self.OSplatform == "Darwin":
             if os.path.isfile(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","lensdb","lensdb.xml")): # from python app
              tree = ET.parse(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","lensdb","lensdb.xml"))
-            elif os.path.isfile(os.path.join(self.parent_dir, "lensdb","lensdb.xml")): # Started from script
-             tree = ET.parse(os.path.join(self.parent_dir, "lensdb","lensdb.xml"))
+            elif os.path.isfile(os.path.join(self.realfile_dir, "lensdb","lensdb.xml")): # Started from script
+             tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
          else:
             tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
          root = tree.getroot()
@@ -51,5 +51,4 @@ def read_defined_lenses(self, qApp):
          self.predefined_lenses.addItems(self.loaded_lenses)
     except:
             QMessageBox.critical(self, "Error!", "Unable to open lensdb" )
-
 

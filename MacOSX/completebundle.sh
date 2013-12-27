@@ -31,7 +31,7 @@ do
 
  echo "Processing: $exec_file"
 
- echo "First do the own $old_install_name_dirname"
+ echo "First do the own old_install_name_dirname"
   for lib in $(otool -D $exec_file | grep @loader_path | sed -e 's/ (.*$//' -e 's/^.*\///')
   do
    echo " Changing own install name."
