@@ -3417,10 +3417,10 @@ Originals</string>
               <bool>true</bool>
              </property>
              <property name="toolTip">
-              <string>Save the specified lens data into the lens database</string>
+              <string>Save the specified lens data into the lens database (name = make + model)</string>
              </property>
              <property name="statusTip">
-              <string>Save the specified lens data into the lens database</string>
+              <string>Save the specified lens data into the lens database (name = make + model)</string>
              </property>
              <property name="text">
               <string>Save Lens</string>

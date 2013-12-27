@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Thu Dec 26 20:32:50 2013
+# Created: Fri Dec 27 13:51:37 2013
 #      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -2089,8 +2089,8 @@ class Ui_MainWindow(object):
         self.predefined_lenses.setStatusTip(QtGui.QApplication.translate("MainWindow", "Upon selecting a lens the underlying fields will be filled", None, QtGui.QApplication.UnicodeUTF8))
         self.predefined_lenses.setItemText(0, QtGui.QApplication.translate("MainWindow", "None", None, QtGui.QApplication.UnicodeUTF8))
         self.chk_predefined_lenses.setText(QtGui.QApplication.translate("MainWindow", "Use predefined lens", None, QtGui.QApplication.UnicodeUTF8))
-        self.btn_save_lens.setToolTip(QtGui.QApplication.translate("MainWindow", "Save the specified lens data into the lens database", None, QtGui.QApplication.UnicodeUTF8))
-        self.btn_save_lens.setStatusTip(QtGui.QApplication.translate("MainWindow", "Save the specified lens data into the lens database", None, QtGui.QApplication.UnicodeUTF8))
+        self.btn_save_lens.setToolTip(QtGui.QApplication.translate("MainWindow", "Save the specified lens data into the lens database (name = make + model)", None, QtGui.QApplication.UnicodeUTF8))
+        self.btn_save_lens.setStatusTip(QtGui.QApplication.translate("MainWindow", "Save the specified lens data into the lens database (name = make + model)", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_save_lens.setText(QtGui.QApplication.translate("MainWindow", "Save Lens", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_update_lens.setToolTip(QtGui.QApplication.translate("MainWindow", "Updates the current lens in the lens db with the values given below", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_update_lens.setStatusTip(QtGui.QApplication.translate("MainWindow", "Updates the current lens in the lens db with the values given below", None, QtGui.QApplication.UnicodeUTF8))

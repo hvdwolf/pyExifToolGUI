@@ -36,7 +36,7 @@
 	<lens name="Olympus Zuiko Digital 50mm f/2.0 Macro">
 		<make>Olympus</make>
 		<model>Zuiko Digital 50mm f/2.0 Macro</model>
-		<serialnumber></serialnumber>
+		<serialnumber>123456</serialnumber>
 		<focallength>50</focallength>
 		<focallengthin35mmformat>100</focallengthin35mmformat>
 		<fnumber>2.0</fnumber>

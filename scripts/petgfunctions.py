@@ -1424,7 +1424,19 @@ def deletelens(self, qApp):
     print('delete lens data for this lens inside the lens database')
 
 def definedlenschanged(self, qApp):
-    print('Changed the index of the lens')
+    tempstr = lambda val: '' if val is None else val
+    for lens in self.root:
+        if lens.attrib["name"]  == self.predefined_lenses.currentText():
+           self.lens_make.setText(str(lens.find('make').text))
+           self.lens_model.setText(str(lens.find('model').text))
+           self.lens_serialnumber.setText(str(tempstr(lens.find('serialnumber').text)))
+           self.lens_focallength.setText(str(tempstr(lens.find('focallength').text)))
+           self.lens_focallengthin35mmformat.setText(str(tempstr(lens.find('focallengthin35mmformat').text)))
+           self.lens_fnumber.setText(str(tempstr(lens.find('fnumber').text)))
+           self.lens_maxaperturevalue.setText(str(tempstr(lens.find('maxaperturevalue').text)))
+           #self.lens_model.setText(str(lens.find('serialnumber').text))
+           
+    #print(str(self.lensdb))
 
 		   
 #---

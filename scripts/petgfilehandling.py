@@ -28,7 +28,11 @@ import PySide
 from PySide.QtCore import *
 from PySide.QtGui import *
 
+
 def read_defined_lenses(self, qApp):
+    file_read = True
+    tempstr = lambda val: '' if val is None else val
+
     try:
          if self.OSplatform == "Windows":
             if os.path.isfile(os.path.join(self.realfile_dir, "lensdb","lensdb.xml")): # from python executable
@@ -42,13 +46,15 @@ def read_defined_lenses(self, qApp):
              tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
          else:
             tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
-         root = tree.getroot()
-         self.loaded_lenses = ['none',]
-         for roottags in root.iter('lens'):
-             self.loaded_lenses.append(roottags.get('name'))
-             print('found lens: ' + roottags.get('name'))
-         self.predefined_lenses.clear()
-         self.predefined_lenses.addItems(self.loaded_lenses)
+         self.root = tree.getroot()
     except:
             QMessageBox.critical(self, "Error!", "Unable to open lensdb" )
+            file_read = False
+
+    if file_read:
+         self.loaded_lenses = ['none',]
+         for lens in self.root:
+             self.loaded_lenses.append(lens.attrib["name"])
+         self.predefined_lenses.clear()
+         self.predefined_lenses.addItems(self.loaded_lenses)
 
