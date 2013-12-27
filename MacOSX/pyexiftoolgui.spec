@@ -14,6 +14,8 @@ exe = EXE(pyz,
           console=False , icon='/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5.1/MacOSX/pyExifToolGUI.app/Contents/Resources/appIcon.icns' )
 coll = COLLECT(exe,
                a.binaries +
+			   Tree('/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5.1/manual', prefix='manual') +
+			   Tree('/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5.1//scripts//lensdb', prefix='lensdb') +
                [('libpyside-python2.7.1.1.dylib', '/usr/lib/libpyside-python2.7.1.1.dylib', 'DATA')] +
                [('libshiboken-python2.7.1.1.dylib', '/usr/lib/libshiboken-python2.7.1.1.dylib', 'DATA')] +
                [('../Resources/qt.conf', '/Users/Shared/development/python_related/pyside/pyExifToolGUI-0.5.1/MacOSX/qt.conf', 'DATA')] +
