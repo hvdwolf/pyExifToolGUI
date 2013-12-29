@@ -1413,18 +1413,10 @@ def savelensdata(self, qApp):
         else:
            write_image_info(self, lenstool_params, qApp, False)
 
-def savelens(self, qApp):
-# This function saves the lens data itself into the lens database
-    print('save lens data itself into the lens database')
-
-def updatelens(self, qApp):
-    print('update lens data for this lens inside the lens database')
-
-def deletelens(self, qApp):
-    print('delete lens data for this lens inside the lens database')
 
 def definedlenschanged(self, qApp):
     tempstr = lambda val: '' if val is None else val
+    clear_lens_fields(self)
     for lens in self.root:
         if lens.attrib["name"]  == self.predefined_lenses.currentText():
            self.lens_make.setText(str(lens.find('make').text))
@@ -1434,10 +1426,50 @@ def definedlenschanged(self, qApp):
            self.lens_focallengthin35mmformat.setText(str(tempstr(lens.find('focallengthin35mmformat').text)))
            self.lens_fnumber.setText(str(tempstr(lens.find('fnumber').text)))
            self.lens_maxaperturevalue.setText(str(tempstr(lens.find('maxaperturevalue').text)))
-           #self.lens_model.setText(str(lens.find('serialnumber').text))
            
     #print(str(self.lensdb))
 
+def updatelens(self, qApp):
+    print('update lens data for this lens inside the lens database')
+    tempstr = lambda val: '' if val is None else val
+    self.lens_current_index = self.predefined_lenses.currentIndex()
+    for lens in self.root:
+        if lens.attrib["name"]  == self.predefined_lenses.currentText():
+           for tags in lens.iter('make'):
+               tags.text = self.lens_make.text()
+           for tags in lens.iter('model'):
+               tags.text = self.lens_model.text()
+           for tags in lens.iter('serialnumber'):
+               tags.text = self.lens_serialnumber.text()
+           for tags in lens.iter('focallength'):
+               tags.text = self.lens_focallength.text()
+           for tags in lens.iter('focallengthin35mmformat'):
+               tags.text = self.lens_focallengthin35mmformat.text()
+           for tags in lens.iter('maxaperturevalue'):
+               tags.text = self.lens_maxaperturevalue.text()
+           for tags in lens.iter('fnumber'):
+               tags.text = self.lens_fnumber.text()
+           '''if self.lens_meteringmode.currentIndex() == 0:
+               meteringmode = "Unknown"
+           elif self.lens_meteringmode.currentIndex() == 1:
+               meteringmode = "Average"
+           elif self.lens_meteringmode.currentIndex() == 2:
+               meteringmode = "Center-weighted average"
+           elif self.lens_meteringmode.currentIndex() == 3:
+               meteringmode = "Spot"
+           elif self.lens_meteringmode.currentIndex() == 4:
+               meteringmode = "Multi-spot"
+           elif self.lens_meteringmode.currentIndex() == 5:
+               meteringmode = "Multi-segment"
+           elif self.lens_meteringmode.currentIndex() == 6:
+               meteringmode = "Partial"
+           elif self.lens_meteringmode.currentIndex() == 255:
+               meteringmode = "Other"
+           for tags in lens.iter('meteringmodel'):
+               tags.text = meteringmode'''
+
+           petgfilehandling.write_xml_file(self, qApp)
+           petgfilehandling.read_defined_lenses(self, qApp)
 		   
 #---
 def date_to_datetimeoriginal(self, qApp):

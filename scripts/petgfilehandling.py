@@ -36,17 +36,17 @@ def read_defined_lenses(self, qApp):
     try:
          if self.OSplatform == "Windows":
             if os.path.isfile(os.path.join(self.realfile_dir, "lensdb","lensdb.xml")): # from python executable
-             tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
+             self.tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
             elif os.path.isfile(os.path.join(self.parent_dir, "lensdb","lensdb.xml")): # Started from script
-             tree = ET.parse(os.path.join(self.parent_dir, "lensdb","lensdb.xml"))
+             self.tree = ET.parse(os.path.join(self.parent_dir, "lensdb","lensdb.xml"))
          elif self.OSplatform == "Darwin":
             if os.path.isfile(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","lensdb","lensdb.xml")): # from python app
-             tree = ET.parse(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","lensdb","lensdb.xml"))
+             self.tree = ET.parse(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","lensdb","lensdb.xml"))
             elif os.path.isfile(os.path.join(self.realfile_dir, "lensdb","lensdb.xml")): # Started from script
-             tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
+             self.tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
          else:
-            tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
-         self.root = tree.getroot()
+            self.tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
+         self.root = self.tree.getroot()
     except:
             QMessageBox.critical(self, "Error!", "Unable to open lensdb" )
             file_read = False
@@ -57,4 +57,76 @@ def read_defined_lenses(self, qApp):
              self.loaded_lenses.append(lens.attrib["name"])
          self.predefined_lenses.clear()
          self.predefined_lenses.addItems(self.loaded_lenses)
+    if self.lens_current_index <> '':
+         self.predefined_lenses.setCurrentIndex(int(self.lens_current_index))
+
+
+def write_xml_file(self, qApp):
+    try:
+         if self.OSplatform == "Windows":
+            if os.path.isfile(os.path.join(self.realfile_dir, "lensdb","lensdb.xml")): # from python executable
+             self.tree.write(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
+            elif os.path.isfile(os.path.join(self.parent_dir, "lensdb","lensdb.xml")): # Started from script
+             self.tree.write(os.path.join(self.parent_dir, "lensdb","lensdb.xml"))
+         elif self.OSplatform == "Darwin":
+            if os.path.isfile(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","lensdb","lensdb.xml")): # from python app
+             self.tree.write(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","lensdb","lensdb.xml"))
+            elif os.path.isfile(os.path.join(self.realfile_dir, "lensdb","lensdb.xml")): # Started from script
+             self.tree.write(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
+         else:
+            self.tree.write(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
+    except:
+            QMessageBox.critical(self, "Error!", "Unable to open lensdb for writing" )
+
+
+def deletelens(self, qApp):
+    print('delete lens data for this lens inside the lens database')
+    self.lens_current_index = 0
+    for lens in self.root:
+        if lens.attrib["name"]  == self.predefined_lenses.currentText():
+           self.root.remove(lens)
+
+    write_xml_file(self, qApp)
+    read_defined_lenses(self, qApp)
+
+
+def savelens(self, qApp):
+# This function saves the lens data itself into the lens database
+    print('save lens data itself into the lens database')
+    new_lens = ET.Element('lens', name=self.lens_make.text() + ' ' + self.lens_model.text())
+    lensnode = ET.Element('make')
+    lensnode.text = self.lens_make.text()
+    new_lens.append(lensnode)
+    lensnode= ET.Element('model')
+    lensnode.text = self.lens_model.text()
+    new_lens.append(lensnode)
+    lensnode= ET.Element('serialnumber')
+    lensnode.text = self.lens_serialnumber.text()
+    new_lens.append(lensnode)
+    lensnode= ET.Element('focallength')
+    lensnode.text = self.lens_focallength.text()
+    new_lens.append(lensnode)
+    lensnode= ET.Element('focallengthin35mmformat')
+    lensnode.text = self.lens_focallengthin35mmformat.text()
+    new_lens.append(lensnode)
+    lensnode= ET.Element('fnumber')
+    lensnode.text = self.lens_fnumber.text()
+    new_lens.append(lensnode)
+    lensnode= ET.Element('maxaperturevalue')
+    lensnode.text = self.lens_maxaperturevalue.text()
+    new_lens.append(lensnode)
+    new_lens_string = ET.tostring(new_lens)
+    new_lens_string = new_lens_string.replace("><",">\n\t\t<")
+    new_lens = ET.fromstring(new_lens_string)
+
+    self.root.append(new_lens)
+    rootstring = ET.tostring(self.root)
+    rootstring = rootstring.replace("</lens><lens ","</lens>\n\t<lens ")
+    rootstring = rootstring.replace("</lens></data>","</lens>\n</data>")
+    print(rootstring)
+    self.root = ET.fromstring(rootstring)
+
+    write_xml_file(self, qApp)
+    read_defined_lenses(self, qApp)
+
 

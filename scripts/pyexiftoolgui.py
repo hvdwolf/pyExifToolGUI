@@ -206,10 +206,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         petgfunctions.tool_check(self)
 
         # Initialize Combobox on lens tab with loaded lenses (if any)
+        self.lens_current_index = ''  # We need this later when updating or deleting lenses
         petgfilehandling.read_defined_lenses(self, qApp)
 
         # Initialize Combobox mass change tab
-        '''self.grouplist = [
+        '''self.grouplist = [ 
         self.tr('exif'),
         self.tr('jfif'),
         self.tr('gps'),
@@ -581,13 +582,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         petgfunctions.savelensdata(self, qApp)
 
     def savelens(self): # save lens data to lens db
-        petgfunctions.savelens(self, qApp)
+        petgfilehandling.savelens(self, qApp)
 
     def updatelens(self):
         petgfunctions.updatelens(self, qApp)
 
     def deletelens(self):
-        petgfunctions.deletelens(self, qApp)
+        petgfunctions.clear_lens_fields(self)
+        petgfilehandling.deletelens(self, qApp)
 
     def definedlenschanged(self):
         petgfunctions.definedlenschanged(self, qApp)

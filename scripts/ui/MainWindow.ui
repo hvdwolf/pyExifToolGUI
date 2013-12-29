@@ -3100,447 +3100,471 @@ Originals</string>
        <attribute name="title">
         <string>Lens</string>
        </attribute>
-       <widget class="QWidget" name="gridLayoutWidget_13">
+       <widget class="QWidget" name="verticalLayoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>50</y>
-          <width>521</width>
-          <height>401</height>
+          <x>20</x>
+          <y>20</y>
+          <width>641</width>
+          <height>490</height>
          </rect>
         </property>
-        <layout class="QGridLayout" name="gridLayout_13" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0">
-         <property name="leftMargin">
-          <number>10</number>
-         </property>
-         <property name="topMargin">
-          <number>10</number>
-         </property>
-         <item row="8" column="0">
-          <widget class="QLabel" name="label_100">
-           <property name="text">
-            <string>Focal length (35mm):</string>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <layout class="QGridLayout" name="gridLayout_13" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0">
+           <property name="leftMargin">
+            <number>10</number>
            </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_94">
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
+           <property name="topMargin">
+            <number>10</number>
            </property>
-           <property name="text">
-            <string>Lens data</string>
+           <property name="rightMargin">
+            <number>50</number>
            </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QLabel" name="label_101">
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Save</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_96">
-           <property name="text">
-            <string>Make:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLineEdit" name="lens_make">
-           <property name="toolTip">
-            <string>This refers to the make of the lens</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="2">
-          <widget class="QCheckBox" name="chk_lens_make">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_97">
-           <property name="text">
-            <string>Model:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLineEdit" name="lens_model">
-           <property name="toolTip">
-            <string>This refers to the model of the lens</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="2">
-          <widget class="QCheckBox" name="chk_lens_model">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_99">
-           <property name="text">
-            <string>Serial number:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QLineEdit" name="lens_serialnumber">
-           <property name="toolTip">
-            <string>This refers to the serial number of the lens</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="2">
-          <widget class="QCheckBox" name="chk_lens_serialnumber">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="label_106">
-           <property name="font">
-            <font>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="0">
-          <widget class="QLabel" name="label_102">
-           <property name="text">
-            <string>Focal length:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="1">
-          <widget class="QLineEdit" name="lens_focallength"/>
-         </item>
-         <item row="7" column="2">
-          <widget class="QCheckBox" name="chk_lens_focallength">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="1">
-          <widget class="QLineEdit" name="lens_focallengthin35mmformat"/>
-         </item>
-         <item row="8" column="2">
-          <widget class="QCheckBox" name="chk_lens_focallengthin35mmformat">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="0">
-          <widget class="QLabel" name="label_109">
-           <property name="text">
-            <string>fnumber:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="1">
-          <widget class="QLineEdit" name="lens_fnumber"/>
-         </item>
-         <item row="9" column="2">
-          <widget class="QCheckBox" name="chk_lens_fnumber">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="10" column="0">
-          <widget class="QLabel" name="label_107">
-           <property name="text">
-            <string>Max. aperturevalue:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="10" column="1">
-          <widget class="QLineEdit" name="lens_maxaperturevalue"/>
-         </item>
-         <item row="10" column="2">
-          <widget class="QCheckBox" name="chk_lens_maxaperturevalue">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="11" column="0">
-          <widget class="QLabel" name="label_95">
-           <property name="text">
-            <string>Metering mode:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="11" column="1">
-          <widget class="QComboBox" name="lens_meteringmode">
-           <property name="toolTip">
-            <string>Google only supports equirectangular at this moment</string>
-           </property>
-           <property name="statusTip">
-            <string>Google only supports equirectangular at this moment</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Unknown</string>
-            </property>
+           <item row="12" column="0">
+            <widget class="QLabel" name="label_95">
+             <property name="text">
+              <string>Metering mode:</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>Average</string>
-            </property>
+           <item row="8" column="0">
+            <widget class="QLabel" name="label_100">
+             <property name="text">
+              <string>Focal length (35mm):</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>Center-weighted average</string>
-            </property>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_94">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Lens data</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>Spot</string>
-            </property>
+           <item row="2" column="2">
+            <widget class="QLabel" name="label_101">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Save</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>Multi-spot</string>
-            </property>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_96">
+             <property name="text">
+              <string>Make:</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>Multi-segment</string>
-            </property>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="lens_make">
+             <property name="toolTip">
+              <string>This refers to the make of the lens</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>Partial</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Other</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="11" column="2">
-          <widget class="QCheckBox" name="chk_lens_meteringmode">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="13" column="0">
-          <widget class="QLabel" name="label_105">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="predefined_lenses">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="toolTip">
-            <string>Upon selecting a lens the underlying fields will be filled</string>
-           </property>
-           <property name="statusTip">
-            <string>Upon selecting a lens the underlying fields will be filled</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>None</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QCheckBox" name="chk_predefined_lenses">
-           <property name="text">
-            <string>Use predefined lens</string>
-           </property>
-           <property name="checked">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <layout class="QHBoxLayout" name="horizontalLayout_15">
-           <item>
-            <widget class="QPushButton" name="btn_save_lens">
-             <property name="enabled">
+           <item row="3" column="2">
+            <widget class="QCheckBox" name="chk_lens_make">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
               <bool>true</bool>
              </property>
-             <property name="toolTip">
-              <string>Save the specified lens data into the lens database (name = make + model)</string>
-             </property>
-             <property name="statusTip">
-              <string>Save the specified lens data into the lens database (name = make + model)</string>
-             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_97">
              <property name="text">
-              <string>Save Lens</string>
+              <string>Model:</string>
              </property>
             </widget>
            </item>
-           <item>
-            <widget class="QPushButton" name="btn_update_lens">
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="lens_model">
+             <property name="toolTip">
+              <string>This refers to the model of the lens</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2">
+            <widget class="QCheckBox" name="chk_lens_model">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_99">
+             <property name="text">
+              <string>Serial number:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QLineEdit" name="lens_serialnumber">
+             <property name="toolTip">
+              <string>This refers to the serial number of the lens</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="2">
+            <widget class="QCheckBox" name="chk_lens_serialnumber">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="label_106">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="label_102">
+             <property name="text">
+              <string>Focal length:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QLineEdit" name="lens_focallength"/>
+           </item>
+           <item row="7" column="2">
+            <widget class="QCheckBox" name="chk_lens_focallength">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QLineEdit" name="lens_focallengthin35mmformat"/>
+           </item>
+           <item row="8" column="2">
+            <widget class="QCheckBox" name="chk_lens_focallengthin35mmformat">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="label_109">
+             <property name="text">
+              <string>fnumber:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="QLineEdit" name="lens_fnumber"/>
+           </item>
+           <item row="9" column="2">
+            <widget class="QCheckBox" name="chk_lens_fnumber">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QLabel" name="label_107">
+             <property name="text">
+              <string>Max. aperturevalue:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QLineEdit" name="lens_maxaperturevalue"/>
+           </item>
+           <item row="10" column="2">
+            <widget class="QCheckBox" name="chk_lens_maxaperturevalue">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="predefined_lenses">
              <property name="enabled">
               <bool>false</bool>
              </property>
              <property name="toolTip">
-              <string>Updates the current lens in the lens db with the values given below</string>
+              <string>Upon selecting a lens the underlying fields will be filled</string>
              </property>
              <property name="statusTip">
-              <string>Updates the current lens in the lens db with the values given below</string>
+              <string>Upon selecting a lens the underlying fields will be filled</string>
              </property>
+             <item>
+              <property name="text">
+               <string>None</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QCheckBox" name="chk_predefined_lenses">
              <property name="text">
-              <string>Update Lens</string>
+              <string>Use predefined lens</string>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
              </property>
             </widget>
            </item>
-           <item>
-            <widget class="QPushButton" name="btn_delete_lens">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
+           <item row="1" column="1">
+            <layout class="QHBoxLayout" name="horizontalLayout_15">
+             <item>
+              <widget class="QPushButton" name="btn_save_lens">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="toolTip">
+                <string>Save the specified lens data into the lens database (name = make + model)</string>
+               </property>
+               <property name="statusTip">
+                <string>Save the specified lens data into the lens database (name = make + model)</string>
+               </property>
+               <property name="text">
+                <string>Save Lens</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_update_lens">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="toolTip">
+                <string>Updates the current lens in the lens db with the values given below</string>
+               </property>
+               <property name="statusTip">
+                <string>Updates the current lens in the lens db with the values given below</string>
+               </property>
+               <property name="text">
+                <string>Update Lens</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_delete_lens">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="toolTip">
+                <string>Deletes the current lens from the database</string>
+               </property>
+               <property name="statusTip">
+                <string>Deletes the current lens from the database</string>
+               </property>
+               <property name="text">
+                <string>Delete Lens</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="12" column="1">
+            <widget class="QComboBox" name="lens_meteringmode">
              <property name="toolTip">
-              <string>Deletes the current lens from the database</string>
+              <string>Google only supports equirectangular at this moment</string>
              </property>
              <property name="statusTip">
-              <string>Deletes the current lens from the database</string>
+              <string>Google only supports equirectangular at this moment</string>
              </property>
+             <item>
+              <property name="text">
+               <string>Unknown</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Average</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Center-weighted average</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Spot</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Multi-spot</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Multi-segment</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Partial</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Other</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="12" column="2">
+            <widget class="QCheckBox" name="chk_lens_meteringmode">
              <property name="text">
-              <string>Delete Lens</string>
+              <string/>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="label_98">
+             <property name="text">
+              <string/>
              </property>
             </widget>
            </item>
           </layout>
          </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="gridLayoutWidget_14">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>450</y>
-          <width>611</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_14">
-         <item row="0" column="1">
-          <widget class="QPushButton" name="btn_savelens">
-           <property name="toolTip">
-            <string>Save the lens data to the image file(s)</string>
+         <item>
+          <spacer name="verticalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
            </property>
-           <property name="statusTip">
-            <string>This button will copy all the (available) lens info from the selected image to the internal &quot;clipboard&quot;</string>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
            </property>
-           <property name="text">
-            <string>Save to selected image(s)</string>
-           </property>
-          </widget>
+          </spacer>
          </item>
-         <item row="0" column="0">
-          <widget class="QPushButton" name="btn_lens_copyfrom">
-           <property name="toolTip">
-            <string>This button will copy all the (available) lens info from the selected image to the internal &quot;clipboard&quot;</string>
-           </property>
-           <property name="statusTip">
-            <string>This button will copy all the (available) lens info from the selected image to the internal &quot;clipboard&quot;</string>
-           </property>
-           <property name="text">
-            <string>Copy from selected image</string>
-           </property>
-          </widget>
+         <item>
+          <layout class="QGridLayout" name="gridLayout_14">
+           <item row="0" column="1">
+            <widget class="QPushButton" name="btn_savelens">
+             <property name="toolTip">
+              <string>Save the lens data to the image file(s)</string>
+             </property>
+             <property name="statusTip">
+              <string>This button will copy all the (available) lens info from the selected image to the internal &quot;clipboard&quot;</string>
+             </property>
+             <property name="text">
+              <string>Save to selected image(s)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QPushButton" name="btn_lens_copyfrom">
+             <property name="toolTip">
+              <string>This button will copy all the (available) lens info from the selected image to the internal &quot;clipboard&quot;</string>
+             </property>
+             <property name="statusTip">
+              <string>This button will copy all the (available) lens info from the selected image to the internal &quot;clipboard&quot;</string>
+             </property>
+             <property name="text">
+              <string>Copy from selected image</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QCheckBox" name="chk_lens_backuporiginals">
+             <property name="toolTip">
+              <string>Overwrite your image or make a backup first</string>
+             </property>
+             <property name="statusTip">
+              <string>Overwrite your image or make a backup first</string>
+             </property>
+             <property name="text">
+              <string>Make backup of originals</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="btn_resetlens">
+             <property name="toolTip">
+              <string>Empties all fields</string>
+             </property>
+             <property name="statusTip">
+              <string>Empties all fields</string>
+             </property>
+             <property name="text">
+              <string>Reset fields</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="btn_lenshelp">
+             <property name="font">
+              <font>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>Opens the manual with some additional info on this screen</string>
+             </property>
+             <property name="statusTip">
+              <string>Opens the manual with some additional info on this screen</string>
+             </property>
+             <property name="text">
+              <string>Help</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
-         <item row="0" column="2">
-          <widget class="QCheckBox" name="chk_lens_backuporiginals">
-           <property name="toolTip">
-            <string>Overwrite your image or make a backup first</string>
-           </property>
-           <property name="statusTip">
-            <string>Overwrite your image or make a backup first</string>
-           </property>
-           <property name="text">
-            <string>Make backup of originals</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="btn_resetlens">
-           <property name="toolTip">
-            <string>Empties all fields</string>
-           </property>
-           <property name="statusTip">
-            <string>Empties all fields</string>
-           </property>
-           <property name="text">
-            <string>Reset fields</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QPushButton" name="btn_lenshelp">
+         <item>
+          <widget class="QLabel" name="label_103">
            <property name="font">
             <font>
-             <weight>50</weight>
-             <bold>false</bold>
+             <italic>true</italic>
             </font>
            </property>
-           <property name="toolTip">
-            <string>Opens the manual with some additional info on this screen</string>
-           </property>
-           <property name="statusTip">
-            <string>Opens the manual with some additional info on this screen</string>
-           </property>
            <property name="text">
-            <string>Help</string>
+            <string>Note: Metering mode is not part of the (saved) lens data</string>
            </property>
           </widget>
          </item>
