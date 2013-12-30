@@ -25,7 +25,7 @@
 # SUPPORTEDIMAGES is the list of exiftool supported images. If a new image format is added to exiftool, simply add it to this (alphabetical) list
 # This list should only contain images and not other formats like videos, music and so on
 SUPPORTEDIMAGES     = ("*.3fr "
-                       "*.acr *.ai *.ait .arw "
+                       "*.acr *.ai *.ait *.arw "
                        "*.bmp *.dib *.btf "
                        "*.cos *.cr2 *.crw *.ciff *.cs1 "
                        "*.dcm *.dc3 *.dic *.dicm *.dcp *.dcr *.djvu *.djv *.dng "
