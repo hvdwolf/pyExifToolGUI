@@ -1,3 +1,14 @@
+pyexiftoolgui (0.6) saucy; urgency=low
+
+  * Make default image folder upon loading images configurable
+    (preferences)
+  * Switch configuration from python native format to more universal
+    xml format. (Check you preferences after update)
+  * Add option to save your lens definitions to file (xml format)
+  * Fix typo in image file filter which made *.arw raw format "invisible"
+
+ -- hvdwolf <hvdwolf@gmail.com> Mon, 23 Dec 2013 12:00:00 +0100
+
 pyexiftoolgui (0.5) saucy; urgency=low
 
   * First option to create Ubuntu/Mint/Debian .debs for download

@@ -47,14 +47,12 @@ def write_default_config():
 
 def error_reading_configparameter(self):
     message = ("Somehow I encountered an error reading the config file.\n"
-           "This can happen when:\n- an updated version added or removed a parameter\n"
+           "This can happen when:\n- you updated from version <= 0.5 to version >= 0.6\n"
            "- when the config file somehow got damaged.\n"
                    "- when this is the very first program start.\n\n"
            "I will simply create a new config file. Please "
            "check your preferences.")
     ret = QMessageBox.warning(self, "error reading config", message) 
-    # simply run the write_config function to create our initial config file
-    write_xml_config(self)
 
 def read_xml_config(self):
     tempstr = lambda val: '' if val is None else val
@@ -71,6 +69,7 @@ def read_xml_config(self):
             QMessageBox.critical(self, "Error!", "config.xml exists, but unable to open config.xml" )
             file_read = False
     else: # No lensdb.xml => first time use or whatever error
+        error_reading_configparameter(self)
         write_default_config()
         self.configtree = ET.parse(os.path.join(userpath, '.pyexiftoolgui', 'config.xml'))
         self.configroot = self.configtree.getroot()
