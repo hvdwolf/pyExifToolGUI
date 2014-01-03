@@ -58,8 +58,8 @@ def read_xml_config(self):
     tempstr = lambda val: '' if val is None else val
 
     userpath = os.path.expanduser('~')
-    print(userpath)
-    print(os.path.join(userpath, '.pyexiftoolgui', 'config.xml'))
+    #print(userpath)
+    print("reading from " + os.path.join(userpath, '.pyexiftoolgui', 'config.xml'))
     # First we check in the safe way for the existence of the config file
     if os.path.isfile(os.path.join(userpath, '.pyexiftoolgui', 'config.xml')):
         try:
@@ -99,8 +99,10 @@ def write_xml_config(self):
          for tags in pref_record.iter('alternate_exiftool'):
              if self.exiftooloption.text() == "":
                tags.text = "False"
+               self.alternate_exiftool = False
              else:
                tags.text = "True"
+               self.alternate_exiftool = True
          for tags in pref_record.iter('exiftooloption'):
              tags.text = self.exiftooloption.text()
          for tags in pref_record.iter('pref_thumbnail_preview'):
@@ -117,7 +119,7 @@ def write_xml_config(self):
 
     try:
          userpath = os.path.expanduser('~')
-         print(userpath)
+         #print(userpath)
          self.configtree.write(os.path.join(userpath, '.pyexiftoolgui', 'config.xml'))
     except:
             QMessageBox.critical(self, "Error!", "Unable to open config.xml for writing" )
@@ -150,8 +152,8 @@ def read_defined_lenses(self, qApp):
     tempstr = lambda val: '' if val is None else val
 
     userpath = os.path.expanduser('~')
-    print(userpath)
-    print(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml'))
+    #print(userpath)
+    print("reading from " + os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml'))
     # First we check in the safe way for the existence of the lensdb xml
     if os.path.isfile(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml')):
         try:
