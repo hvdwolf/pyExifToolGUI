@@ -2,7 +2,7 @@
 
 # petgfunctions.py - This python "helper" script holds a lot of functions
 
-# Copyright (c) 2012-2013 Harry van der Wolf. All rights reserved.
+# Copyright (c) 2012-2014 Harry van der Wolf. All rights reserved.
 # This program or module is free software: you can redistribute it and/or
 # modify it under the terms of the GNU General Public Licence as published
 # by the Free Software Foundation, either version 2 of the Licence, or
@@ -313,18 +313,10 @@ def imageinfo(self, qApp):
             command_line = "\"" + self.exiftoolprog + "\" -a " + exiftool_params + " " + selected_image
             args = shlex.split(command_line)
             p = subprocess.check_output(args, universal_newlines=True)
-    #arguments = arguments + " " + selected_image
-    #print "ET = " + self.exiftoolprog + " arguments are " + arguments
-    #myprocess = QProcess(self)
-    #myprocess.start(self.exiftoolprog, arguments)
-    #myprocess.waitForFinished(-1)
-    #p = myprocess.readAll()
-    #print "p after myprocess"
-    #print p
+
     if len(p) == 0:
        p = header + "   :   No data available\n"
-       #print p
-    # remove last character which is the final ending \n (where \ is only the escape character)        
+     # remove last character which is the final ending \n (where \ is only the escape character)        
     p = p[:-1]
     p_lines = re.split('\n',p)
     self.exiftableWidget.clearContents()
@@ -1370,8 +1362,6 @@ def qddt_use_reference_image_data(self):
             except:
                print("always the last line that doesn't work")
 
-       #self.referenceimage
-       #result = read_image_info(self, exiftool_params)
     else:
        now = datetime.datetime.now()
        strnow = now.strftime("%Y:%m:%d %H:%M:%S")
@@ -1679,20 +1669,6 @@ class dialog_remove_metadata(QDialog, Ui_Dialog_remove_metadata):
 
       
 def remove_metadata(self, qApp):    
-#    ui = os.path.join(self.ui_dir, "remove_metadata.ui")
-#    loader = QUiLoader()
-#    if self.OSplatform == "Windows":
-#       #uifile = QFile ("scripts\\ui\\remove_metatada.ui")
-#       #file = QFile(":/forms/myform.ui")
-#       ui = ui.replace("/", "\\")
-#       print "ui " + ui
-#    uifile = QFile(ui)
-#    uifile.open(QFile.ReadOnly)
-#    self.rem_metadata_dialog = loader.load(uifile, self)
-#    uifile.close()
-#    self.rem_metadata_dialog.adjustSize()
-
-
     self.rem_metadata_dialog = dialog_remove_metadata()
     # Set proper event
     self.rem_metadata_dialog.chk_rem_all_metadata.clicked.connect(self.check_remove_metadata_boxes)
@@ -2072,19 +2048,12 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
                               selected_image = selected_image.replace("/", "\\")
                               args = '"' + self.exiftoolprog + '" ' + exiftoolparams + selected_image
                               p = subprocess.call(args, shell=True)
-                              ## Now reset the file date
-                              #args = self.exiftoolprog + ' "-FileModifyDate<DateTimeOriginal" ' + selected_image
-                              #p = subprocess.call(args)
                            else:
                               # First write the info
                               command_line = '"' + self.exiftoolprog + '" ' + exiftoolparams + selected_image
                               print(command_line)
                               args = shlex.split(command_line)
                               p = subprocess.call(args)
-                              ## Now reset the file date
-                              #command_line = self.exiftoolprog + ' "-FileModifyDate<DateTimeOriginal" ' + selected_image
-                              #args = shlex.split(command_line)
-                              #p = subprocess.call(args)
         self.progressbar.hide()
         # csv option: After having collected the images
         if " -csv " in exiftoolparams:

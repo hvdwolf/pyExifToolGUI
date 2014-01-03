@@ -2,7 +2,7 @@
 
 # petgfilehandling.py - This python "helper" script holds file handling functions
 
-# Copyright (c) 2012-2013 Harry van der Wolf. All rights reserved.
+# Copyright (c) 2012-2014 Harry van der Wolf. All rights reserved.
 # This program or module is free software: you can redistribute it and/or
 # modify it under the terms of the GNU General Public Licence as published
 # by the Free Software Foundation, either version 2 of the Licence, or
@@ -236,7 +236,4 @@ def savelens(self, qApp):
 
 ##################################################################################################
 # End of Lens config xml file
-
-
-
 

@@ -2,7 +2,7 @@
 
 # programstrings.py - This python "script" holds general texts for the other scripts
 
-# Copyright (c) 2012-2013 Harry van der Wolf. All rights reserved.
+# Copyright (c) 2012-2014 Harry van der Wolf. All rights reserved.
 # This program or module is free software: you can redistribute it and/or
 # modify it under the terms of the GNU General Public Licence as published
 # by the Free Software Foundation, either version 2 of the Licence, or
@@ -73,7 +73,7 @@ SUPPORTEDFORMATS     = ("*.3fr *.3g2 *.3gp2 *.3gp *.3gpp "
                        "*.vob *.vrd *.vsd *.wav *.webm *.webp *.wma *.wmv *.wv "
                        "*.x3f *.xcf *.xls *.xlt *.xlsx *.xlsm *.xlsb *.xltx *.xltm *.xmp")
 
-# Renaming options for the second "Do it yourself"tab
+# Renaming options for the second "Do it yourself" tab
 d01 = { 'option' : 'YYYYMMDDHHMMSS', 'tag' : '${CreateDate}', 'format': '%Y%m%d%H%M%S' }
 d02 = { 'option' : 'YYYYMMDD_HHMMSS', 'tag' : '${CreateDate}', 'format': '%Y%m%d_%H%M%S' }
 d03 = { 'option' : 'YYYYMMDD-HHMMSS', 'tag' : '${CreateDate}', 'format': '%Y%m%d-%H%M%S' }

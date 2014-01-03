@@ -2,7 +2,7 @@
 
 # programinfo.py - This python "script" holds general info data for the other scripts
 
-# Copyright (c) 2012-2013 Harry van der Wolf. All rights reserved.
+# Copyright (c) 2012-2014 Harry van der Wolf. All rights reserved.
 # This program or module is free software: you can redistribute it and/or
 # modify it under the terms of the GNU General Public Licence as published
 # by the Free Software Foundation, either version 2 of the Licence, or
@@ -22,12 +22,12 @@
 # a complete exiftool gui: not at all.
 
 NAME                = "pyExifToolGui"
-VERSION             = "0.5.1"
+VERSION             = "0.6"
 VERSIONDATE         = "20131223"
 GPL_VERSION         = "3"
 AUTHOR              = "Harry van der Wolf"
-COPYRIGHT           = "Copyright 2012-2013 Harry van der Wolf"
-PROJECTWEBSITE      = "http://imagefuser.sourceforge.net"
+COPYRIGHT           = "Copyright 2012-2014 Harry van der Wolf"
+PROJECTWEBSITE      = "http://hvdwolf.github.io/pyExifToolGUI"
 ABOUTMESSAGE        = ("<p><b>pyExifToolGui</b> is a pySide QT4 script program that functions as "
                         "a GUI for <a href='http://www.sno.phy.queensu.ca/~phil/exiftool/'>exiftool</a>. "
                         "It reads and writes metadata information from/to photos like exif, "

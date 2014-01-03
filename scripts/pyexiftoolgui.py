@@ -2,7 +2,7 @@
 
 # pyexiftoolgui.py
 
-# Copyright (c) 2012-2013 Harry van der Wolf. All rights reserved.
+# Copyright (c) 2012-2014 Harry van der Wolf. All rights reserved.
 # This program or module is free software: you can redistribute it and/or
 # modify it under the terms of the GNU General Public Licence as published
 # by the Free Software Foundation, either version 2 of the Licence, or
@@ -48,7 +48,6 @@ if sys.path.count(realfile_dir) == 0:
 else:
     sys.path.append(realfile_dir)
 # Add subfolders
-#sys.path.append( realfile_dir + "/scripts" )
 sys.path.append( realfile_dir + "/ui")
 
 
@@ -58,7 +57,6 @@ import programinfo
 import programstrings
 import renaming
 import petgfilehandling
-#import lensdefinitions
 
 #import image_resources.rc
 if platform.system() == "Darwin":
@@ -226,7 +224,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # General functions
     def quit_application(self):
         #petgfunctions.remove_workspace(self)
-        #petgfunctions.write_config(self, 0)
         petgfilehandling.write_xml_config(self)
         self.close()
 
@@ -337,9 +334,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def rename_photos(self):
         renaming.rename_photos(self,qApp)
-
-#    def lensdialog(self):
-#        lensdefinitions.process_lensdialog(self,qApp)
 
     def create_args(self):
         try:
@@ -640,7 +634,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
            self.defstartupfolder = ""
 
     def preferences_save(self):
-        #petgfunctions.write_config(self, 0)
         petgfilehandling.write_xml_config(self)
         petgfunctions.tool_check(self)
 
