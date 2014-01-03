@@ -28,32 +28,147 @@ import PySide
 from PySide.QtCore import *
 from PySide.QtGui import *
 
+##################################################################################################
+# Configuration xml file
+def write_default_config():
+    config = "<preferences>\n"
+    config += "\t<alternate_exiftool>False</alternate_exiftool>\n"
+    config += "\t<exiftooloption></exiftooloption>\n"
+    config += "\t<pref_thumbnail_preview>True</pref_thumbnail_preview>\n"
+    config += "\t<def_startupfolder></def_startupfolder>\n"
+    config += "\t<def_creator></def_creator>\n"
+    config += "\t<def_copyright></def_copyright>\n"
+    config += "</preferences>\n"
+
+    userpath = os.path.expanduser('~')
+    config_file = open(os.path.join(userpath, '.pyexiftoolgui', 'config.xml'), "w")
+    config_file.write(config)
+    config_file.close()
+
+def error_reading_configparameter(self):
+    message = ("Somehow I encountered an error reading the config file.\n"
+           "This can happen when:\n- an updated version added or removed a parameter\n"
+           "- when the config file somehow got damaged.\n"
+                   "- when this is the very first program start.\n\n"
+           "I will simply create a new config file. Please "
+           "check your preferences.")
+    ret = QMessageBox.warning(self, "error reading config", message) 
+    # simply run the write_config function to create our initial config file
+    write_xml_config(self)
+
+def read_xml_config(self):
+    tempstr = lambda val: '' if val is None else val
+
+    userpath = os.path.expanduser('~')
+    print(userpath)
+    print(os.path.join(userpath, '.pyexiftoolgui', 'config.xml'))
+    # First we check in the safe way for the existence of the config file
+    if os.path.isfile(os.path.join(userpath, '.pyexiftoolgui', 'config.xml')):
+        try:
+            self.configtree = ET.parse(os.path.join(userpath, '.pyexiftoolgui', 'config.xml'))
+            self.configroot = self.configtree.getroot()
+        except:
+            QMessageBox.critical(self, "Error!", "config.xml exists, but unable to open config.xml" )
+            file_read = False
+    else: # No lensdb.xml => first time use or whatever error
+        write_default_config()
+        self.configtree = ET.parse(os.path.join(userpath, '.pyexiftoolgui', 'config.xml'))
+        self.configroot = self.configtree.getroot()
+
+    for pref_record in self.configroot:
+         for tags in pref_record.iter('alternate_exiftool'):
+             if tags.text == "True":
+               self.alternate_exiftool = True
+             else:
+               self.alternate_exiftool = False
+         for tags in pref_record.iter('exiftooloption'):
+               self.exiftooloption.setText(tags.text)
+         for tags in pref_record.iter('pref_thumbnail_preview'):
+             if tags.text == "True": 
+               self.pref_thumbnail_preview.setChecked(1) 
+             else:
+               self.pref_thumbnail_preview.setChecked(0)
+         for tags in pref_record.iter('def_startupfolder'):
+               self.LineEdit_def_startupfolder.setText(tags.text)
+         for tags in pref_record.iter('def_creator'):
+               self.def_creator.setText(tags.text)
+         for tags in pref_record.iter('def_copyright'):
+               self.def_copyright.setText(tags.text)
+
+def write_xml_config(self):
+    for pref_record in self.configroot:
+         for tags in pref_record.iter('alternate_exiftool'):
+             if self.exiftooloption.text() == "":
+               tags.text = "False"
+             else:
+               tags.text = "True"
+         for tags in pref_record.iter('exiftooloption'):
+             tags.text = self.exiftooloption.text()
+         for tags in pref_record.iter('pref_thumbnail_preview'):
+             if self.pref_thumbnail_preview.isChecked(): 
+               tags.text = "True"
+             else:
+               tags.text = "False"
+         for tags in pref_record.iter('def_startupfolder'):
+             tags.text = self.LineEdit_def_startupfolder.text()
+         for tags in pref_record.iter('def_creator'):
+             tags.text = self.def_creator.text()
+         for tags in pref_record.iter('def_copyright'):
+             tags.text = self.def_copyright.text()
+
+    try:
+         userpath = os.path.expanduser('~')
+         print(userpath)
+         self.configtree.write(os.path.join(userpath, '.pyexiftoolgui', 'config.xml'))
+    except:
+            QMessageBox.critical(self, "Error!", "Unable to open config.xml for writing" )
+
+
+# End of Configuration xml file
+##################################################################################################
+# Lens config xml file
+def write_default_lensdb():
+    # If no lensdb exists, simply write a default lensdb to the users .pyexiftoolgui folder
+    lensdb = "<data>\n"
+    lensdb += "\t<lens name=\"Example: Panasonic Leica DG Summilux 25/f1.4\">\n"
+    lensdb += "\t\t<make>Panasonic</make>\n"
+    lensdb += "\t\t<model>Leica DG Summilux 25/f1.4</model>\n"
+    lensdb += "\t\t<serialnumber>123456-ABC</serialnumber>\n"
+    lensdb += "\t\t<focallength>25</focallength>\n"
+    lensdb += "\t\t<focallengthin35mmformat>50</focallengthin35mmformat>\n"
+    lensdb += "\t\t<fnumber>1.4</fnumber>\n"
+    lensdb += "\t\t<maxaperturevalue />\n"
+    lensdb += "\t</lens>\n"
+    lensdb += "</data>\n"
+
+    userpath = os.path.expanduser('~')
+    lensdb_file = open(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml'), "w")
+    lensdb_file.write(lensdb)
+    lensdb_file.close()
 
 def read_defined_lenses(self, qApp):
     file_read = True
     tempstr = lambda val: '' if val is None else val
 
-    try:
-         if self.OSplatform == "Windows":
-            if os.path.isfile(os.path.join(self.realfile_dir, "lensdb","lensdb.xml")): # from python executable
-             self.tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
-            elif os.path.isfile(os.path.join(self.parent_dir, "lensdb","lensdb.xml")): # Started from script
-             self.tree = ET.parse(os.path.join(self.parent_dir, "lensdb","lensdb.xml"))
-         elif self.OSplatform == "Darwin":
-            if os.path.isfile(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","lensdb","lensdb.xml")): # from python app
-             self.tree = ET.parse(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","lensdb","lensdb.xml"))
-            elif os.path.isfile(os.path.join(self.realfile_dir, "lensdb","lensdb.xml")): # Started from script
-             self.tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
-         else:
-            self.tree = ET.parse(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
-         self.root = self.tree.getroot()
-    except:
-            QMessageBox.critical(self, "Error!", "Unable to open lensdb" )
+    userpath = os.path.expanduser('~')
+    print(userpath)
+    print(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml'))
+    # First we check in the safe way for the existence of the lensdb xml
+    if os.path.isfile(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml')):
+        try:
+            self.lensdbtree = ET.parse(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml'))
+            self.lensdbroot = self.lensdbtree.getroot()
+        except:
+            QMessageBox.critical(self, "Error!", "lensdb exists, but unable to open lensdb" )
             file_read = False
+    else: # No lensdb.xml => first time use or whatever error
+        write_default_lensdb()
+        self.lensdbtree = ET.parse(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml'))
+        self.lensdbroot = self.lensdbtree.getroot()
 
     if file_read:
          self.loaded_lenses = ['none',]
-         for lens in self.root:
+         for lens in self.lensdbroot:
              self.loaded_lenses.append(lens.attrib["name"])
          self.predefined_lenses.clear()
          self.predefined_lenses.addItems(self.loaded_lenses)
@@ -61,20 +176,11 @@ def read_defined_lenses(self, qApp):
          self.predefined_lenses.setCurrentIndex(int(self.lens_current_index))
 
 
-def write_xml_file(self, qApp):
+def write_lensdb_xml(self, qApp):
     try:
-         if self.OSplatform == "Windows":
-            if os.path.isfile(os.path.join(self.realfile_dir, "lensdb","lensdb.xml")): # from python executable
-             self.tree.write(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
-            elif os.path.isfile(os.path.join(self.parent_dir, "lensdb","lensdb.xml")): # Started from script
-             self.tree.write(os.path.join(self.parent_dir, "lensdb","lensdb.xml"))
-         elif self.OSplatform == "Darwin":
-            if os.path.isfile(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","lensdb","lensdb.xml")): # from python app
-             self.tree.write(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","lensdb","lensdb.xml"))
-            elif os.path.isfile(os.path.join(self.realfile_dir, "lensdb","lensdb.xml")): # Started from script
-             self.tree.write(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
-         else:
-            self.tree.write(os.path.join(self.realfile_dir, "lensdb","lensdb.xml"))
+         userpath = os.path.expanduser('~')
+         print(userpath)
+         self.lensdbtree.write(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml'))
     except:
             QMessageBox.critical(self, "Error!", "Unable to open lensdb for writing" )
 
@@ -82,11 +188,11 @@ def write_xml_file(self, qApp):
 def deletelens(self, qApp):
     print('delete lens data for this lens inside the lens database')
     self.lens_current_index = 0
-    for lens in self.root:
+    for lens in self.lensdbroot:
         if lens.attrib["name"]  == self.predefined_lenses.currentText():
-           self.root.remove(lens)
+           self.lensdbroot.remove(lens)
 
-    write_xml_file(self, qApp)
+    write_lensdb_xml(self, qApp)
     read_defined_lenses(self, qApp)
 
 
@@ -119,14 +225,19 @@ def savelens(self, qApp):
     new_lens_string = new_lens_string.replace("><",">\n\t\t<")
     new_lens = ET.fromstring(new_lens_string)
 
-    self.root.append(new_lens)
-    rootstring = ET.tostring(self.root)
+    self.lensdbroot.append(new_lens)
+    rootstring = ET.tostring(self.lensdbroot)
     rootstring = rootstring.replace("</lens><lens ","</lens>\n\t<lens ")
     rootstring = rootstring.replace("</lens></data>","</lens>\n</data>")
     print(rootstring)
-    self.root = ET.fromstring(rootstring)
+    self.lensdbroot = ET.fromstring(rootstring)
 
-    write_xml_file(self, qApp)
+    write_lensdb_xml(self, qApp)
     read_defined_lenses(self, qApp)
+
+##################################################################################################
+# End of Lens config xml file
+
+
 
 

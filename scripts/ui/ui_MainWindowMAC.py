@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sun Dec 29 17:17:52 2013
+# Created: Fri Jan  3 16:29:04 2014
 #      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -1601,6 +1601,30 @@ class Ui_MainWindow(object):
         self.btn_preferenceshelp = QtGui.QPushButton(self.horizontalLayoutWidget_4)
         self.btn_preferenceshelp.setObjectName("btn_preferenceshelp")
         self.horizontalLayout_14.addWidget(self.btn_preferenceshelp)
+        self.frame_6 = QtGui.QFrame(self.preferencestab)
+        self.frame_6.setGeometry(QtCore.QRect(20, 150, 671, 91))
+        self.frame_6.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame_6.setObjectName("frame_6")
+        self.gridLayoutWidget_5 = QtGui.QWidget(self.frame_6)
+        self.gridLayoutWidget_5.setGeometry(QtCore.QRect(10, 10, 641, 61))
+        self.gridLayoutWidget_5.setObjectName("gridLayoutWidget_5")
+        self.gridLayout_16 = QtGui.QGridLayout(self.gridLayoutWidget_5)
+        self.gridLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_16.setObjectName("gridLayout_16")
+        self.btn_choose_defstartupfolder = QtGui.QPushButton(self.gridLayoutWidget_5)
+        self.btn_choose_defstartupfolder.setObjectName("btn_choose_defstartupfolder")
+        self.gridLayout_16.addWidget(self.btn_choose_defstartupfolder, 1, 1, 1, 1)
+        self.LineEdit_def_startupfolder = QtGui.QLineEdit(self.gridLayoutWidget_5)
+        self.LineEdit_def_startupfolder.setObjectName("LineEdit_def_startupfolder")
+        self.gridLayout_16.addWidget(self.LineEdit_def_startupfolder, 1, 0, 1, 1)
+        self.label_104 = QtGui.QLabel(self.gridLayoutWidget_5)
+        font = QtGui.QFont()
+        font.setWeight(75)
+        font.setBold(True)
+        self.label_104.setFont(font)
+        self.label_104.setObjectName("label_104")
+        self.gridLayout_16.addWidget(self.label_104, 0, 0, 1, 1)
         self.tabWidget.addTab(self.preferencestab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
@@ -2169,6 +2193,12 @@ class Ui_MainWindow(object):
         self.btn_preferences_save.setStatusTip(QtGui.QApplication.translate("MainWindow", "Preferences are always automatically saved on exit. In case you want to make an intermediate save you can use this button", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_preferences_save.setText(QtGui.QApplication.translate("MainWindow", "Save", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_preferenceshelp.setText(QtGui.QApplication.translate("MainWindow", "Help", None, QtGui.QApplication.UnicodeUTF8))
+        self.btn_choose_defstartupfolder.setToolTip(QtGui.QApplication.translate("MainWindow", "Browse to the startup folder of your choice", None, QtGui.QApplication.UnicodeUTF8))
+        self.btn_choose_defstartupfolder.setText(QtGui.QApplication.translate("MainWindow", "Choose", None, QtGui.QApplication.UnicodeUTF8))
+        self.LineEdit_def_startupfolder.setToolTip(QtGui.QApplication.translate("MainWindow", "Browse to the startup folder of your choice", None, QtGui.QApplication.UnicodeUTF8))
+        self.LineEdit_def_startupfolder.setStatusTip(QtGui.QApplication.translate("MainWindow", "Browse to the startup folder of your choice", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_104.setToolTip(QtGui.QApplication.translate("MainWindow", "The program will go for the default exiftool version. Here you can specify another version.", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_104.setText(QtGui.QApplication.translate("MainWindow", "Default image startup folder", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.preferencestab), QtGui.QApplication.translate("MainWindow", "Preferences", None, QtGui.QApplication.UnicodeUTF8))
         self.menu_File.setTitle(QtGui.QApplication.translate("MainWindow", "&File", None, QtGui.QApplication.UnicodeUTF8))
         self.menuHelp.setTitle(QtGui.QApplication.translate("MainWindow", "&Help", None, QtGui.QApplication.UnicodeUTF8))

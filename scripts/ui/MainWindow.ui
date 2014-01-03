@@ -3896,6 +3896,70 @@ Currently I have no intent to add functionality to this standard, maybe later.</
        </item>
       </layout>
      </widget>
+     <widget class="QFrame" name="frame_6">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>150</y>
+        <width>671</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QWidget" name="gridLayoutWidget_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>641</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_16">
+        <item row="1" column="1">
+         <widget class="QPushButton" name="btn_choose_defstartupfolder">
+          <property name="toolTip">
+           <string>Browse to the startup folder of your choice</string>
+          </property>
+          <property name="text">
+           <string>Choose</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLineEdit" name="LineEdit_def_startupfolder">
+          <property name="toolTip">
+           <string>Browse to the startup folder of your choice</string>
+          </property>
+          <property name="statusTip">
+           <string>Browse to the startup folder of your choice</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_104">
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="toolTip">
+           <string>The program will go for the default exiftool version. Here you can specify another version.</string>
+          </property>
+          <property name="text">
+           <string>Default image startup folder</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </widget>
    </widget>
   </widget>

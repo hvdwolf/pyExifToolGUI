@@ -76,7 +76,9 @@ def is_executable(fpath):
 def check_for_program(program):
     exists = False
     for path in os.environ["PATH"].split(os.pathsep):
+        #program = program.replace("\"", "")
         path_plus_program = os.path.join(path, program)
+        #print("path_plus_program " + str(path_plus_program))
         if is_executable(path_plus_program):
             #print "program " + program + " found"
             exists = True
@@ -180,6 +182,7 @@ def write_config(self, aftererror):
         config.set("preferences", "pref_thumbnail_preview",str(True))
         config.set("preferences", "def_creator", "")
         config.set("preferences", "def_copyright", "")
+        config.set("preferences", "def_startupfolder", "")
     else:
         if self.exiftooloption.text() in ("exiftool", ""):
             config.set("preferences", "alternate_exiftool", str(False))
@@ -191,6 +194,8 @@ def write_config(self, aftererror):
            config.set("preferences", "pref_thumbnail_preview",str(True))
         else:
            config.set("preferences", "pref_thumbnail_preview",str(False))
+
+        config.set("preferences", "def_startupfolder", self.LineEdit_def_startupfolder.text())
         config.set("preferences", "def_creator", self.def_creator.text())
         config.set("preferences", "def_copyright", self.def_copyright.text())
 
@@ -249,7 +254,7 @@ def write_config3(self, aftererror):
         print("couldn't write configfile")
 # end of write_config3: The python3 config writer
 
-
+'''
 def error_reading_configparameter(self):
     message = ("Somehow I encountered an error reading the config file.\n"
            "This can happen when:\n- an updated version added or removed a parameter\n"
@@ -261,7 +266,7 @@ def error_reading_configparameter(self):
     # simply run the write_config function to create our initial config file
     aftererror = True
     write_config(self, 1)
-
+'''
 def read_config(self):
     if sys.version_info>(3,0,0):
         print("We are on python 3. We will use the python3 read_config3 configparser")
@@ -310,6 +315,10 @@ def read_config(self):
                 error_reading_configparameter(self)
             try:
                 self.def_copyright.setText(config.get("preferences", "def_copyright"))
+            except:
+                error_reading_configparameter(self)
+            try:
+                self.LineEdit_def_startupfolder.setText(config.get("preferences", "def_startupfolder"))
             except:
                 error_reading_configparameter(self)
         
@@ -381,12 +390,17 @@ def images_dialog(self, qApp):
     loadedimages = QFileDialog(self)
     qApp.processEvents()
     loadedimages.setFileMode(QFileDialog.ExistingFiles)
-    if self.OSplatform == "Darwin":
-            loadedimages.setDirectory(os.path.expanduser('~/Pictures'))
-    elif self.OSplatform == "Linux":
-            loadedimages.setDirectory(os.path.expanduser('~/Pictures'))
-    elif self.OSplatform == "Windows":
-            loadedimages.setDirectory(os.path.expanduser('~/My Pictures'))
+    print("self.LineEdit_def_startupfolder.text: " + self.LineEdit_def_startupfolder.text())
+    if self.LineEdit_def_startupfolder.text() == "":
+            if self.OSplatform == "Darwin":
+               loadedimages.setDirectory(os.path.expanduser('~/Pictures'))
+            elif self.OSplatform == "Linux":
+               loadedimages.setDirectory(os.path.expanduser('~/Pictures'))
+            elif self.OSplatform == "Windows":
+               loadedimages.setDirectory(os.path.expanduser('~/My Pictures'))
+    else: 
+            # User has obviously specified a startup folder
+            loadedimages.setDirectory(self.LineEdit_def_startupfolder.text())
 
     qApp.processEvents()
     self.statusbar.showMessage("Loading images")
@@ -1417,7 +1431,7 @@ def savelensdata(self, qApp):
 def definedlenschanged(self, qApp):
     tempstr = lambda val: '' if val is None else val
     clear_lens_fields(self)
-    for lens in self.root:
+    for lens in self.lensdbroot:
         if lens.attrib["name"]  == self.predefined_lenses.currentText():
            self.lens_make.setText(str(lens.find('make').text))
            self.lens_model.setText(str(lens.find('model').text))
@@ -1433,7 +1447,7 @@ def updatelens(self, qApp):
     print('update lens data for this lens inside the lens database')
     tempstr = lambda val: '' if val is None else val
     self.lens_current_index = self.predefined_lenses.currentIndex()
-    for lens in self.root:
+    for lens in self.lensdbroot:
         if lens.attrib["name"]  == self.predefined_lenses.currentText():
            for tags in lens.iter('make'):
                tags.text = self.lens_make.text()
@@ -1468,7 +1482,7 @@ def updatelens(self, qApp):
            for tags in lens.iter('meteringmodel'):
                tags.text = meteringmode'''
 
-           petgfilehandling.write_xml_file(self, qApp)
+           petgfilehandling.write_lensdb_xml(self, qApp)
            petgfilehandling.read_defined_lenses(self, qApp)
 		   
 #---

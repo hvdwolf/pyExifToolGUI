@@ -167,6 +167,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_preferences_save.clicked.connect(self.preferences_save)
         self.btn_preferenceshelp.clicked.connect(self.preferences_help)
         self.btn_choose_exiftool.clicked.connect(self.select_exiftool)
+        self.btn_choose_defstartupfolder.clicked.connect(self.select_defstartupfolder)
 
 
 #------------------------------------------------------------------------
@@ -178,7 +179,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #         self.tmpworkdir = tempfile.gettempdir() +"/pyGPSTtmp"
 
         self.OSplatform = platform.system()
-        petgfunctions.read_config(self)
+        #petgfunctions.read_config(self)
+        petgfilehandling.read_xml_config(self)
         # First clean up and recreate our temporary workspace
 #        petgfunctions.remove_workspace( self )
 #        try:
@@ -224,7 +226,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # General functions
     def quit_application(self):
         #petgfunctions.remove_workspace(self)
-        petgfunctions.write_config(self, 0)
+        #petgfunctions.write_config(self, 0)
+        petgfilehandling.write_xml_config(self)
         self.close()
 
 #    def set_logging(self):
@@ -622,8 +625,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
            self.statusbar.showMessage("you canceled the exiftool selection.")
            return ""
 
+    def select_defstartupfolder(self):
+        select_defstartupfolder = QFileDialog(self)
+        qApp.processEvents()
+        select_defstartupfolder.setFileMode(QFileDialog.Directory)
+        select_defstartupfolder.setViewMode(QFileDialog.Detail)
+        if select_defstartupfolder.exec_():
+           self.defstartupfolder = select_defstartupfolder.selectedFiles()[0]
+           self.LineEdit_def_startupfolder.setText(self.defstartupfolder)
+           print(str(self.defstartupfolder))
+        else:
+	   # user canceled
+           self.statusbar.showMessage("you canceled the default image startup folder selection.")
+           self.defstartupfolder = ""
+
     def preferences_save(self):
-        petgfunctions.write_config(self, 0)
+        #petgfunctions.write_config(self, 0)
+        petgfilehandling.write_xml_config(self)
         petgfunctions.tool_check(self)
 
 
