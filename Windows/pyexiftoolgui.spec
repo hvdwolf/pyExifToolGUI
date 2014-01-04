@@ -16,7 +16,6 @@ exe = EXE(pyz,
 coll = COLLECT(exe,
                a.binaries +
 			   Tree('..\\pyside\\pyexiftoolgui-0.6\\manual', prefix='manual') +
-			   Tree('..\\pyside\\pyexiftoolgui-0.6\\scripts\\lensdb', prefix='lensdb') +
                [('qt.conf', '..\\pyside\\pyexiftoolgui-0.6\\Windows\\qt.conf', 'DATA')] +
                [('plugins\\imageformats\\qjpeg4.dll', 'D:\\LocalData_387640\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qjpeg4.dll', 'DATA')] +
                [('plugins\\imageformats\\qgif4.dll', 'D:\\LocalData_387640\\python27\\Lib\\site-packages\\PySide\\plugins\\imageformats\\qgif4.dll', 'DATA')] +
