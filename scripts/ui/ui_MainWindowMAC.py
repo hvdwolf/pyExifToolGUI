@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Fri Jan  3 16:29:04 2014
+# Created: Sat Jan  4 16:30:35 2014
 #      by: pyside-uic 0.2.14 running on PySide 1.1.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -77,7 +77,7 @@ class Ui_MainWindow(object):
         self.groupBox_2.setTitle("")
         self.groupBox_2.setObjectName("groupBox_2")
         self.exiftableWidget = QtGui.QTableWidget(self.groupBox_2)
-        self.exiftableWidget.setGeometry(QtCore.QRect(10, 40, 681, 521))
+        self.exiftableWidget.setGeometry(QtCore.QRect(10, 70, 681, 491))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setWeight(50)
@@ -92,7 +92,7 @@ class Ui_MainWindow(object):
         item = QtGui.QTableWidgetItem()
         self.exiftableWidget.setHorizontalHeaderItem(1, item)
         self.horizontalLayoutWidget_3 = QtGui.QWidget(self.groupBox_2)
-        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(0, 0, 691, 41))
+        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(10, 0, 681, 41))
         self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
         self.horizontalLayout_2 = QtGui.QHBoxLayout(self.horizontalLayoutWidget_3)
         self.horizontalLayout_2.setContentsMargins(10, -1, -1, -1)
@@ -122,6 +122,14 @@ class Ui_MainWindow(object):
         self.radioButton_makernotes = QtGui.QRadioButton(self.horizontalLayoutWidget_3)
         self.radioButton_makernotes.setObjectName("radioButton_makernotes")
         self.horizontalLayout_2.addWidget(self.radioButton_makernotes)
+        self.comboBox_languages = QtGui.QComboBox(self.groupBox_2)
+        self.comboBox_languages.setGeometry(QtCore.QRect(10, 40, 91, 26))
+        self.comboBox_languages.setObjectName("comboBox_languages")
+        self.comboBox_languages.addItem("")
+        self.comboBox_languages.setItemText(0, "")
+        self.label_longlanguage = QtGui.QLabel(self.groupBox_2)
+        self.label_longlanguage.setGeometry(QtCore.QRect(110, 50, 501, 20))
+        self.label_longlanguage.setObjectName("label_longlanguage")
         self.tabWidget.addTab(self.generaltab, "")
         self.edittab = QtGui.QWidget()
         self.edittab.setObjectName("edittab")
@@ -1725,8 +1733,7 @@ class Ui_MainWindow(object):
         self.tabWidget_2.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.tabWidget, self.radioButton_all)
-        MainWindow.setTabOrder(self.radioButton_all, self.radioButton_exif)
-        MainWindow.setTabOrder(self.radioButton_exif, self.radioButton_xmp)
+        MainWindow.setTabOrder(self.radioButton_all, self.radioButton_xmp)
         MainWindow.setTabOrder(self.radioButton_xmp, self.radioButton_iptc)
         MainWindow.setTabOrder(self.radioButton_iptc, self.radioButton_gps)
         MainWindow.setTabOrder(self.radioButton_gps, self.radioButton_gpano)
@@ -1853,6 +1860,9 @@ class Ui_MainWindow(object):
         self.radioButton_iccprofile.setText(QtGui.QApplication.translate("MainWindow", "ICC_profile", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButton_makernotes.setToolTip(QtGui.QApplication.translate("MainWindow", "Select to display all available Maker notes info", None, QtGui.QApplication.UnicodeUTF8))
         self.radioButton_makernotes.setText(QtGui.QApplication.translate("MainWindow", "Makernotes", None, QtGui.QApplication.UnicodeUTF8))
+        self.comboBox_languages.setToolTip(QtGui.QApplication.translate("MainWindow", "Select an ExifTool supported display language", None, QtGui.QApplication.UnicodeUTF8))
+        self.comboBox_languages.setStatusTip(QtGui.QApplication.translate("MainWindow", "Select an ExifTool supported display language", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_longlanguage.setText(QtGui.QApplication.translate("MainWindow", "Display language for tags and info", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.generaltab), QtGui.QApplication.translate("MainWindow", "View Data", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_gps_copyfrom.setToolTip(QtGui.QApplication.translate("MainWindow", "This button will copy all the (available) gps/location info from the selected image to the internal \"clipboard\"", None, QtGui.QApplication.UnicodeUTF8))
         self.btn_gps_copyfrom.setStatusTip(QtGui.QApplication.translate("MainWindow", "This button will copy all the (available) gps/location info from the selected image to the internal \"clipboard\"", None, QtGui.QApplication.UnicodeUTF8))

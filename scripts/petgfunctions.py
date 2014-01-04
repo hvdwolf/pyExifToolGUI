@@ -130,11 +130,12 @@ def tool_check( self ):
                           sys.exit()
                        else:
                           self.exiftoolprog = result
-            #print self.exiftoolprog
+            #Check exiftool version
             args = '"' + self.exiftoolprog + '" -ver'
-            print("windows args " + args)
             self.exiftoolversion = subprocess.check_output(args, shell=True)
-            print("self.exiftoolversion " + str(self.exiftoolversion)) 
+            # now check for the supported languages
+            args = '"' + self.exiftoolprog + '" -lang'
+            self.exiftoollanguages = subprocess.check_output(args, shell=True)            
    else:
         if not check_for_program(self.exiftoolprog):
             ret = QMessageBox.critical(self, "exiftool is missing or incorrectly configured", "exiftool is missing or incorrectly configured in Preferences!\nThis tool is an absolute must have!\nPlease set the correct location or install exiftool first.")
@@ -146,15 +147,37 @@ def tool_check( self ):
                 sys.exit()
             else:
                 self.exiftoolprog = result
-                #print "result 2" + self.exiftoolprog
+        #Check exiftool version
         command_line = '"' + self.exiftoolprog + '" -ver'
         args = shlex.split(command_line)
         self.exiftoolversion = subprocess.check_output(args)
+        # now check for the supported languages
+        command_line = '"' + self.exiftoolprog + '" -lang'
+        args = shlex.split(command_line)
+        self.exiftoollanguages = subprocess.check_output(args)
    # remove last character which is the final ending \n (where \ is only the escape character)
    self.exiftoolversion = self.exiftoolversion[:-1]
    exiftool_version_level_text(self)
 # End of function tool_check
 
+def exitool_languages(self):
+    # First remove first line
+    self.exiftoollanguages = self.exiftoollanguages.splitlines(True)[1:]
+    dropdownlanguages = []
+    self.longlanguages = []
+    self.longlanguages.append(" ")
+    for language in self.exiftoollanguages:
+        try:
+             shortlang, longlang = re.split(' - ',language,1)
+             shortlang = shortlang.strip()
+             dropdownlanguages.append(shortlang)
+             longlang = longlang.strip()
+             self.longlanguages.append(longlang.decode('utf-8'))
+             #print("shortlang: " + shortlang + "; longlang: "  + longlang)
+        except:
+          print("last character doesn't work. Only here in case that happens.")
+    
+    self.comboBox_languages.addItems(dropdownlanguages)
 
 ###################################################################################################################
 # End of Startup checks
@@ -167,6 +190,13 @@ def help_mbox(self,helptitle, helptext):
     self.helpmbox.setWindowTitle(helptitle)
     self.helpmbox.setText(helptext)
     ret = self.helpmbox.exec_()
+
+#------------------------------------------------------------------------
+# language combobox changed
+def comboBox_languageschanged(self):
+    # if the language in the box gets changed, display the long text.
+    self.label_longlanguage.setText("Display language for tags and info: " + self.longlanguages[self.comboBox_languages.currentIndex()])
+
 #------------------------------------------------------------------------
 # image functions
 def images_dialog(self, qApp):
@@ -305,18 +335,24 @@ def imageinfo(self, qApp):
         exiftool_params = "-makernotes:all"
         header = "makernotes tags"
 
+    # Check if we need to display it in a specific language
+    if self.comboBox_languages.currentText() == " ":
+       ETlang = ""
+    else:
+       ETlang = " -lang " + self.comboBox_languages.currentText() + " "
+    
     if self.OSplatform == "Windows":
             selected_image = selected_image.replace("/", "\\")
-            args = "\"" + self.exiftoolprog + "\" -a " + exiftool_params + " " + selected_image
+            args = "\"" + self.exiftoolprog + "\" -a " + ETlang + exiftool_params + " " + selected_image
             p = subprocess.check_output(args, universal_newlines=True, shell=True)
     else:
-            command_line = "\"" + self.exiftoolprog + "\" -a " + exiftool_params + " " + selected_image
+            command_line = "\"" + self.exiftoolprog + "\" -a " + ETlang  + exiftool_params + " " + selected_image
             args = shlex.split(command_line)
             p = subprocess.check_output(args, universal_newlines=True)
 
     if len(p) == 0:
        p = header + "   :   No data available\n"
-     # remove last character which is the final ending \n (where \ is only the escape character)        
+    # remove last character which is the final ending \n (where \ is only the escape character)  
     p = p[:-1]
     p_lines = re.split('\n',p)
     self.exiftableWidget.clearContents()
@@ -326,7 +362,9 @@ def imageinfo(self, qApp):
        try: 
            descriptor, description = re.split(':', line,1)
            descriptor = descriptor.strip()
+           descriptor = descriptor.decode('utf-8')
            description = description.strip()
+           description = description.decode('utf-8')
            #print "descriptor " + descriptor + " ;description " + description
            self.exiftableWidget.insertRow(rowcounter)
            self.exiftableWidget.setColumnWidth(0,225)

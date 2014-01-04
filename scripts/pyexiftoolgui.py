@@ -102,6 +102,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.showimagebutton.setEnabled(False)
         self.statusbar.showMessage("")
         self.progressbar.hide()
+        self.comboBox_languages.currentIndexChanged.connect(self.comboBox_languageschanged)
 # Load several buttons from the Edit -> GPS tab
         self.dec2dmsbutton.clicked.connect(self.convertd2dms)
         self.dms2decbutton.clicked.connect(self.convertdms2d)
@@ -201,9 +202,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             ret = QMessageBox.about(self, "returned check values", "platform: %s\nconverter: %s\nenfuse: %s\nais: %s" % (OSplatform, img_converter, enfuseprg, aisprg))
 
         # Startup check for available tools
-		# First set exiftoolversion for windows
         self.exiftoolversion = "0.00"
         petgfunctions.tool_check(self)
+        # Now that we know that we have exiftool version and languages available split the languages
+        petgfunctions.exitool_languages(self)
 
         # Initialize Combobox on lens tab with loaded lenses (if any)
         self.lens_current_index = ''  # We need this later when updating or deleting lenses
@@ -248,6 +250,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # If we alread did some copying or simply working on the GPS:edit tab we need to clean it after loading new images
         #petgfunctions.clear_gps_fields(self)
 
+    def comboBox_languageschanged(self):
+        petgfunctions.comboBox_languageschanged(self)
 
     def activate_buttons_events(self):
         # enable buttons that can only work once we have images loaded

@@ -1,6 +1,8 @@
 pyexiftoolgui (0.6) saucy; urgency=low
 
-  * Make default image folder upon loading images configurable
+  * Display tags and info in one of the languages that ExifTool supports
+    (This is only in the "View Data" tab)
+  * Make default image folder to open when loading images configurable
     (preferences)
   * Switch configuration from python native format to more universal
     xml format. (Check you preferences after update)

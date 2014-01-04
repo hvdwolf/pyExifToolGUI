@@ -189,9 +189,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>40</y>
+         <y>70</y>
          <width>681</width>
-         <height>521</height>
+         <height>491</height>
         </rect>
        </property>
        <property name="font">
@@ -216,9 +216,9 @@
       <widget class="QWidget" name="horizontalLayoutWidget_3">
        <property name="geometry">
         <rect>
-         <x>0</x>
+         <x>10</x>
          <y>0</y>
-         <width>691</width>
+         <width>681</width>
          <height>41</height>
         </rect>
        </property>
@@ -304,6 +304,40 @@
          </widget>
         </item>
        </layout>
+      </widget>
+      <widget class="QComboBox" name="comboBox_languages">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>91</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Select an ExifTool supported display language</string>
+       </property>
+       <property name="statusTip">
+        <string>Select an ExifTool supported display language</string>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_longlanguage">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>50</y>
+         <width>501</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Display language for tags and info</string>
+       </property>
       </widget>
      </widget>
     </widget>
@@ -4151,7 +4185,6 @@ Currently I have no intent to add functionality to this standard, maybe later.</
  <tabstops>
   <tabstop>tabWidget</tabstop>
   <tabstop>radioButton_all</tabstop>
-  <tabstop>radioButton_exif</tabstop>
   <tabstop>radioButton_xmp</tabstop>
   <tabstop>radioButton_iptc</tabstop>
   <tabstop>radioButton_gps</tabstop>
