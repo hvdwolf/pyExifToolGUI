@@ -17,9 +17,9 @@ I needed a tool to add gps data to my images and couldn't find one
 and decided to write my own. 
 "By accident" it contains more functions as ExifTool is a powerful tool
 and once you have written the basic program Gui skeleton it is relatively easy
-to add extra functionality, which is basically to add more exif/xmp/iptc tags and
-add them to the "write to image" function. This is a time consuming process but not a 
-difficult one.
+to add extra functionality, which is basically to add more exif/xmp/iptc 
+tags and add them to the "write to image" function. This is a time consuming 
+process but not a difficult one.
 
 This program is completely free, but you can donate any amount to me to show
 your appreciation. See the Help menu in the program or the link below (2).
