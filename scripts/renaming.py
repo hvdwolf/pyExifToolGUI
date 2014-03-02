@@ -362,7 +362,7 @@ def run_rename_photos(self, work_on, qApp):
           #print "work on all images in the source folder"
           #print self.rename_photos_dialog.LineEdit_rename_source_folder.text()
           self.statusbar.showMessage("Renaming all images in: " + self.rename_photos_dialog.LineEdit_rename_source_folder.text())
-          parameters = ' ' + exiftoolparams + ' "' + self.rename_photos_dialog.LineEdit_rename_source_folder.text() + '"'
+          parameters = ' -fileorder datetimeoriginal ' + exiftoolparams + ' "' + self.rename_photos_dialog.LineEdit_rename_source_folder.text() + '"'
           if self.OSplatform in ("Windows", "win32"):
               parameters = parameters.replace("/", "\\")
               parameters = parameters.replace("'", "\"")

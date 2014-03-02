@@ -203,7 +203,6 @@ def images_dialog(self, qApp):
     loadedimages = QFileDialog(self)
     qApp.processEvents()
     loadedimages.setFileMode(QFileDialog.ExistingFiles)
-    print("self.LineEdit_def_startupfolder.text: " + self.LineEdit_def_startupfolder.text())
     if self.LineEdit_def_startupfolder.text() == "":
             if self.OSplatform == "Darwin":
                loadedimages.setDirectory(os.path.expanduser('~/Pictures'))
