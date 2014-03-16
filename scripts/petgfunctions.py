@@ -335,7 +335,7 @@ def imageinfo(self, qApp):
         header = "makernotes tags"
 
     # Check if we need to display it in a specific language
-    if self.comboBox_languages.currentText() == " ":
+    if (self.comboBox_languages.currentText() == " ") or (self.comboBox_languages.currentText() == ""):
        ETlang = ""
     else:
        ETlang = " -lang " + self.comboBox_languages.currentText() + " "
