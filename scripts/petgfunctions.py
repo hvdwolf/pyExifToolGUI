@@ -689,9 +689,9 @@ def savegpsdata(self, qApp):
             exiftool_params +=  ' -exif:GPSAltitude="' + self.gps_altitude.text() + '" '
             exiftool_params +=  ' -xmp:GPSAltitude="' + self.gps_altitude.text() + '" '
             if self.chk_AboveSeaLevel.isChecked():
-                exiftool_params +=  ' -exif:GPSAltitudeRef= "0" '  # Above sea level
+                exiftool_params +=  ' -exif:GPSAltitudeRef="above" '  # Above sea level
             else:
-                exiftool_params +=  ' -exif:GPSAltitudeRef= "1" '  # Below sea level
+                exiftool_params +=  ' -exif:GPSAltitudeRef="below" '  # Below sea level
         # Location data for XMP and IPTC
         if self.chk_xmp_location.isChecked():
                exiftool_params +=  '-xmp:Location="' + self.xmp_location.text() + '" '
