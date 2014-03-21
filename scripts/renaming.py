@@ -324,6 +324,8 @@ def run_rename_photos(self, work_on, qApp):
           self.progressbar.setValue(0)
           self.progressbar.show()
           rows = []
+          selected_images = ""
+          message_images = ""
           qApp.processEvents()
           for selected_row in selected_rows:
                 selected_row = str(selected_row)
@@ -334,27 +336,29 @@ def run_rename_photos(self, work_on, qApp):
                 if row not in rows:
                         rows.append(row)
                         selected_image = "\"" + self.fileNames[int(row)] + "\""
-                        print('exiftool ' + exiftoolparams + ' ' + selected_image)
-                        rowcounter += 1
+                        selected_images += " " + selected_image + " "
+                        message_images += " " + os.path.basename(selected_image) + " "
                         self.progressbar.setValue(rowcounter)
-                        parameters = ' ' + exiftoolparams + ' ' + selected_image
-                        self.statusbar.showMessage("Renaming " + os.path.basename(selected_image))
-                        qApp.processEvents()
-                        if self.OSplatform in ("Windows", "win32"):
-                           parameters = parameters.replace("/", "\\")
-                           parameters = parameters.replace("'", "\"")
-                           args = '"' + self.exiftoolprog + '" ' + parameters
-                           print(args)
-                           p = subprocess.call(args, shell=True)
-                        else:
-                           #parameters = parameters.replace("'", "\"")
-                           command_line = self.exiftoolprog + ' ' + exiftoolparams + ' ' + selected_image
-                           args = shlex.split(command_line)
-                           print("command_line " + command_line)
-                           #p = subprocess.call(command_line)
-                           p = subprocess.call(args)
-                self.statusbar.showMessage("Finished renaming")
-                qApp.processEvents()
+                        #   p = subprocess.call(args)
+          parameters = ' -fileorder datetimeoriginal# ' + exiftoolparams + ' ' + selected_images
+          print('parameters ' + parameters)
+          self.statusbar.showMessage("Renaming " + message_images)
+          qApp.processEvents()
+          if self.OSplatform in ("Windows", "win32"):
+             parameters = parameters.replace("/", "\\")
+             parameters = parameters.replace("'", "\"")
+             args = '"' + self.exiftoolprog + '" ' + parameters
+             print(args)
+             p = subprocess.call(args, shell=True)
+          else:
+             #parameters = parameters.replace("'", "\"")
+             command_line = self.exiftoolprog + ' -fileorder datetimeoriginal# ' + exiftoolparams + ' ' + selected_images
+             args = shlex.split(command_line)
+             print("command_line " + command_line)
+             #p = subprocess.call(command_line)
+             p = subprocess.call(args)
+          self.statusbar.showMessage("Finished renaming")
+          qApp.processEvents()
           self.progressbar.hide()
           self.statusbar.showMessage("")
        elif work_on == "rename_source_folder":
