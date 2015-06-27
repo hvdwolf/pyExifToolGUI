@@ -9,7 +9,7 @@ script to package it for Ubuntu (or any other Debian based linux),
 or (Open)Suse or Fedora/Redhat.
 This also means that it doesn't do any dependency checks for necessary
 libraries and so on. 
-I simply wrote a "setup" script that takes care of installation and removal. 
+I simply wrote a "install_remove" script that takes care of installation and removal. 
 Currently that only works on Linux and Mac OS X. For Windows an executable is
 available and for Mac OS X a bundle is available.
 
