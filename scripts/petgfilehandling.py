@@ -142,7 +142,7 @@ def write_default_lensdb():
     lensdb += "\t</lens>\n"
     lensdb += "</data>\n"
 
-    userpath = os.environ('HOME')
+    userpath = os.environ['HOME']
     lensdb_file = open(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml'), "w")
     lensdb_file.write(lensdb)
     lensdb_file.close()
