@@ -367,7 +367,7 @@ def imageinfo(self, qApp):
            #print "descriptor " + descriptor + " ;description " + description
            self.exiftableWidget.insertRow(rowcounter)
            self.exiftableWidget.setColumnWidth(0,225)
-           self.exiftableWidget.setColumnWidth(1,325)
+           self.exiftableWidget.setColumnWidth(1,425)
            self.exiftableWidget.setItem(rowcounter, 0, QTableWidgetItem(descriptor))
            self.exiftableWidget.setItem(rowcounter, 1, QTableWidgetItem(description))
            rowcounter += 1
