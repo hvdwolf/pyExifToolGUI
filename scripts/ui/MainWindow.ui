@@ -426,7 +426,7 @@
               <widget class="QWidget" name="verticalLayoutWidget">
                <property name="geometry">
                 <rect>
-                 <x>430</x>
+                 <x>450</x>
                  <y>160</y>
                  <width>251</width>
                  <height>201</height>
@@ -543,7 +543,7 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>381</width>
+                 <width>421</width>
                  <height>151</height>
                 </rect>
                </property>
@@ -561,7 +561,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>381</width>
+                  <width>411</width>
                   <height>151</height>
                  </rect>
                 </property>
@@ -573,7 +573,7 @@
                   <rect>
                    <x>0</x>
                    <y>27</y>
-                   <width>291</width>
+                   <width>321</width>
                    <height>131</height>
                   </rect>
                  </property>
@@ -862,7 +862,7 @@
                 <widget class="QWidget" name="horizontalLayoutWidget_8">
                  <property name="geometry">
                   <rect>
-                   <x>290</x>
+                   <x>330</x>
                    <y>60</y>
                    <width>87</width>
                    <height>26</height>
@@ -903,7 +903,7 @@
                 <widget class="QWidget" name="horizontalLayoutWidget_9">
                  <property name="geometry">
                   <rect>
-                   <x>290</x>
+                   <x>330</x>
                    <y>90</y>
                    <width>89</width>
                    <height>26</height>
@@ -1288,7 +1288,7 @@ to convert the data.</string>
               <widget class="QFrame" name="frame_3">
                <property name="geometry">
                 <rect>
-                 <x>410</x>
+                 <x>430</x>
                  <y>0</y>
                  <width>271</width>
                  <height>151</height>
@@ -1308,7 +1308,7 @@ to convert the data.</string>
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>261</width>
+                  <width>271</width>
                   <height>160</height>
                  </rect>
                 </property>
@@ -1449,9 +1449,15 @@ to convert the data.</string>
                 <rect>
                  <x>0</x>
                  <y>160</y>
-                 <width>411</width>
+                 <width>431</width>
                  <height>171</height>
                 </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>1</horstretch>
+                 <verstretch>1</verstretch>
+                </sizepolicy>
                </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
@@ -1644,6 +1650,12 @@ to convert the data.</string>
                  <width>691</width>
                  <height>16</height>
                 </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>2</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
                <property name="lineWidth">
                 <number>3</number>
