@@ -32,10 +32,10 @@ from PySide.QtGui import *
 #-------------------------------------------------------------------------
 # Very first check on version
 if sys.version_info<(2,7,0):
-     sys.stderr.write("\n\nYou need python 2.7 or later to use pyexiftoolgui\n")
-     exit(1) 
+    sys.stderr.write("\n\nYou need python 2.7 or later to use pyexiftoolgui\n")
+    exit(1) 
 else:
-     print("\nProgram start: We are on python " + sys.version)
+    print("\nProgram start: We are on python " + sys.version)
 
 # Make sure we can run pyexiftoolgui from this folder and that subfolders are added
 # base_path  can give a link, realfile gives the correct location
@@ -61,9 +61,9 @@ import petgfilehandling
 
 #import image_resources.rc
 if platform.system() == "Darwin":
-   from ui_MainWindowMAC import Ui_MainWindow
+    from ui_MainWindowMAC import Ui_MainWindow
 else:
-   from ui_MainWindow import Ui_MainWindow
+    from ui_MainWindow import Ui_MainWindow
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -199,8 +199,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # Start up functions
 #        OSplatform, img_converter, enfuseprg, aisprg = petgfunctions.startup_checks(self)
 #            self.OSplatform = OSplatform
-        if self.allDebugMsg:
-            ret = QMessageBox.about(self, "returned check values", "platform: %s\nconverter: %s\nenfuse: %s\nais: %s" % (OSplatform, img_converter, enfuseprg, aisprg))
+#         if self.allDebugMsg:
+#             ret = QMessageBox.about(self, "returned check values",
+#                                      "platform: %s\nconverter: %s\nenfuse: %s\nais: %s"
+#                                       % (OSplatform, img_converter, enfuseprg, aisprg))
 
         # Startup check for available tools
         self.exiftoolversion = "0.00"
@@ -234,10 +236,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #        logging.basicConfig(filename=os.path.expanduser("~/pyexiftoolgui_"+time.strftime("%Y%m%d-%H%M%S")+".log"),level=logging.DEBUG)
 #        logging.info("Debug set to on: Logging started on " + time.strftime("%Y-%m-%d %H:%M"))
     def the_no_photos_messagebox(self):
-         QMessageBox.information(self,"No photos loaded yet","You did not load or select any photos yet.")
+        QMessageBox.information(self,"No photos loaded yet","You did not load or select any photos yet.")
 
-    def testfunc(self):
-        ret = petgfunctions.startup_checks(self)
+#     def testfunc(self):
+#         ret = petgfunctions.startup_checks(self)
 
     def enableimagebuttons(self):
         self.showimagebutton.setEnabled(True)
@@ -328,9 +330,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.donatebutton.clicked.connect(self.open_donate_page)
         self.aboutbox.setWindowTitle("About pyexiftoolgui " + programinfo.VERSION)
         if platform.system() == "Darwin":
-           self.aboutbox.setText("<p>This is<b> " + programinfo.NAME + " " + programinfo.VERSION + "</b></p>" + programinfo.ABOUTMESSAGE)
+            self.aboutbox.setText("<p>This is<b> " + programinfo.NAME + " " + programinfo.VERSION + "</b></p>" + programinfo.ABOUTMESSAGE)
         else:
-           self.aboutbox.setText(programinfo.ABOUTMESSAGE)
+            self.aboutbox.setText(programinfo.ABOUTMESSAGE)
 
         ret = self.aboutbox.exec_()
         
@@ -429,21 +431,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # Help functions leading to html manual
     def all_access_to_manual(self, section):
         if section != "":
-           section = "#" + section
+            section = "#" + section
         manual = "pyexiftoolgui.html" + section
         try:
-         if self.OSplatform == "Windows":
-            if os.path.isfile(os.path.join(self.realfile_dir, "manual","pyexiftoolgui.html")): # from python executable
-             webbrowser.open(os.path.join(self.realfile_dir, "manual",manual))
-            elif os.path.isfile(os.path.join(self.parent_dir, "manual","pyexiftoolgui.html")): # Started from script
-             webbrowser.open(os.path.join(self.parent_dir, "manual",manual))
-         elif self.OSplatform == "Darwin":
-            if os.path.isfile(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","manual","pyexiftoolgui.html")): # from python app
-             webbrowser.open("file://" + os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","manual", manual))
-            elif os.path.isfile(os.path.join(self.parent_dir, "manual","pyexiftoolgui.html")): # Started from script
-             webbrowser.open("file://" + os.path.join(self.parent_dir, "manual" , manual))
-         else:
-            webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", manual))
+            if self.OSplatform == "Windows":
+                if os.path.isfile(os.path.join(self.realfile_dir, "manual","pyexiftoolgui.html")): # from python executable
+                    webbrowser.open(os.path.join(self.realfile_dir, "manual",manual))
+                elif os.path.isfile(os.path.join(self.parent_dir, "manual","pyexiftoolgui.html")): # Started from script
+                    webbrowser.open(os.path.join(self.parent_dir, "manual",manual))
+            elif self.OSplatform == "Darwin":
+                if os.path.isfile(os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","manual","pyexiftoolgui.html")): # from python app
+                    webbrowser.open("file://" + os.path.join(self.realfile_dir, "pyexiftoolgui.app","Contents","MacOS","manual", manual))
+                elif os.path.isfile(os.path.join(self.parent_dir, "manual","pyexiftoolgui.html")): # Started from script
+                    webbrowser.open("file://" + os.path.join(self.parent_dir, "manual" , manual))
+            else:
+                webbrowser.open("file://" + os.path.join(self.parent_dir, "manual", manual))
         except:
             QMessageBox.critical(self, "Error!", "Unable to open the manual" )
 
@@ -457,22 +459,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.all_access_to_manual("EditexifData")
 
     def xmp_help(self):
-       self.all_access_to_manual("EditxmpData")
+        self.all_access_to_manual("EditxmpData")
 
     def gpano_help(self):
-       self.all_access_to_manual("EditgpanoData")
+        self.all_access_to_manual("EditgpanoData")
 
     def geotagging_help(self):
-       self.all_access_to_manual("Geotagging")
+        self.all_access_to_manual("Geotagging")
 
     def lens_help(self):
         self.all_access_to_manual("EditlensData")
 
     def yourcommands_help(self):
-       self.all_access_to_manual("YourCommands")
+        self.all_access_to_manual("YourCommands")
 
     def preferences_help(self):
-       self.all_access_to_manual("Preferences")
+        self.all_access_to_manual("Preferences")
 
 #------------------------------------------------------------------------
 # Image table actions
@@ -563,9 +565,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         petgfunctions.geotag_gps_file(self, qApp)
 #---
     def write_geotag_info(self):
-           print("pushed button to write the geotag info")
-           self.statusbar.showMessage("writing geotag information to image(s).")
-           petgfunctions.write_geotag_info(self,qApp)
+            print("pushed button to write the geotag info")
+            self.statusbar.showMessage("writing geotag information to image(s).")
+            petgfunctions.write_geotag_info(self,qApp)
 
 # Edit -> lens tab
     def check_self_defined_lenses(self):
@@ -615,14 +617,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         select_exiftool.setFileMode(QFileDialog.ExistingFile)
         select_exiftool.setViewMode(QFileDialog.Detail)
         if select_exiftool.exec_():
-           files_list = select_exiftool.selectedFiles()
-           print("files_list[0]" + str(files_list[0]))
-           self.exiftooloption.setText(files_list[0])
-           return files_list[0]
+            files_list = select_exiftool.selectedFiles()
+            print("files_list[0]" + str(files_list[0]))
+            self.exiftooloption.setText(files_list[0])
+            return files_list[0]
         else:
-           # user canceled
-           self.statusbar.showMessage("you canceled the exiftool selection.")
-           return ""
+            # user canceled
+            self.statusbar.showMessage("you canceled the exiftool selection.")
+            return ""
 
     def select_defstartupfolder(self):
         select_defstartupfolder = QFileDialog(self)
@@ -630,13 +632,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         select_defstartupfolder.setFileMode(QFileDialog.Directory)
         select_defstartupfolder.setViewMode(QFileDialog.Detail)
         if select_defstartupfolder.exec_():
-           self.defstartupfolder = select_defstartupfolder.selectedFiles()[0]
-           self.LineEdit_def_startupfolder.setText(self.defstartupfolder)
-           print(str(self.defstartupfolder))
+            self.defstartupfolder = select_defstartupfolder.selectedFiles()[0]
+            self.LineEdit_def_startupfolder.setText(self.defstartupfolder)
+            print(str(self.defstartupfolder))
         else:
-	   # user canceled
-           self.statusbar.showMessage("you canceled the default image startup folder selection.")
-           self.defstartupfolder = ""
+            # user canceled
+            self.statusbar.showMessage("you canceled the default image startup folder selection.")
+            self.defstartupfolder = ""
 
     def preferences_save(self):
         petgfilehandling.write_xml_config(self)
