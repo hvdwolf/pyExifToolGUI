@@ -247,11 +247,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def loadimages(self):
-        ''' load images and return a filenames arrary and a space separated string of file names within double quotes'''
-        loadedimages, loadedimagesstring = petgfunctions.images_dialog(self, qApp)
-        petgfunctions.loadimages(self,loadedimages, loadedimagesstring,qApp)
+        ''' show dialog of image files and load images selected '''
+        selectedimages = petgfunctions.images_dialog(self, qApp)
+        petgfunctions.loadimages(self, selectedimages, qApp)
         # If we alread did some copying or simply working on the GPS:edit tab we need to clean it after loading new images
         #petgfunctions.clear_gps_fields(self)
+ 
+
+    def load_cmd_images(self, args):
+        ''' load images from command line args'''
+        petgfunctions.loadimages(self, args, qApp)
 
     def comboBox_languageschanged(self):
         petgfunctions.comboBox_languageschanged(self)
@@ -677,4 +682,10 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     frame = MainWindow()
     frame.show()
+
+    if len(sys.argv) > 1:
+        print('Number of arguments: %d' % len(sys.argv))
+        print('Argument List:' + str(sys.argv))
+        frame.load_cmd_images(sys.argv[1:])
+        
     app.exec_()

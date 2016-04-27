@@ -27,6 +27,10 @@ realfile = os.path.realpath(__file__)
 realfile_dir = os.path.dirname(os.path.abspath(realfile))
 print("Real folder where this launcher was started from: " + realfile_dir)
 
+arg_string = ""
+for file_name in sys.argv[1:]:
+    arg_string += ' "' + file_name + '"'
+
 # determine if we are running from the /pyexiftoolgui-<something>/bin folder
 parent_folder_path = os.path.dirname(realfile_dir)
 scripts_path = os.path.join(parent_folder_path, 'scripts')
@@ -36,12 +40,12 @@ if os.path.exists(scripts_path):
     print("Added %s to system path" % scripts_path)
     if (platform.system()) == "Windows":
         print("starting pyexiftoolgui using: python " + os.path.join(scripts_path, 'pyexiftoolgui.py'))
-        os.system('python  ' + os.path.join(scripts_path, 'pyexiftoolgui.py'))
+        os.system('python  ' + os.path.join(scripts_path, 'pyexiftoolgui.py') + arg_string)
     else:
         print("starting pyexiftoolgui using: /usr/bin/env python " + os.path.join(scripts_path, 'pyexiftoolgui.py'))
-        os.system('/usr/bin/env python  ' + os.path.join(scripts_path, 'pyexiftoolgui.py'))
+        os.system('/usr/bin/env python  ' + os.path.join(scripts_path, 'pyexiftoolgui.py') + arg_string)
 
-else:	
+else:
     # determine if we are running from the /usr/bin folder (on Linux and MacOSX)
     print("We are not running from our source folder. Are we running from /usr/bin?")
     usr_bin_pyexiftoolgui = os.path.join('/', 'usr', 'bin', 'pyexiftoolgui')
@@ -53,5 +57,4 @@ else:
         print('usr_share_path ' + usr_share_path + '\n\n')
         if os.path.isfile(usr_share_path):
             print("starting pyexiftoolgui using: /usr/bin/env python " + usr_share_path)
-            os.system('/usr/bin/env python  ' + usr_share_path)
-
+            os.system('/usr/bin/env python  ' + usr_share_path + arg_string)

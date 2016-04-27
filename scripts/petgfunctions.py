@@ -220,56 +220,44 @@ def images_dialog(self, qApp):
 #    loadedimages.setNameFilter("image files (*.jpg *.tif *.tiff *.png)\nAll Files (*.*)")
     loadedimages.setNameFilter("image files (" + programstrings.SUPPORTEDIMAGES + ")\nsupported formats (" + programstrings.SUPPORTEDFORMATS + ")\nAll Files (*.*)")
     loadedimages.setViewMode(QFileDialog.Detail)
-    filenamesstring = ""
     if loadedimages.exec_():
         fileNames = loadedimages.selectedFiles()
         qApp.processEvents()
-        for fileName in fileNames:
-            # Make sure that spaces in path/file names etcetera are
-            # covered by putting them within spaces
-            #print fileName
-            filenamesstring += "\"" + fileName + "\" "
-        #ret= QMessageBox.about(self, "file names", """ %s""" % fnstring)
-        #return fileNames
-        self.fileNames = fileNames
-        self.filenamesstring = filenamesstring
     else:
         # user canceled
         self.statusbar.showMessage("you canceled loading the images.")
         fileNames = ""
-    return (fileNames, filenamesstring)
+    return (fileNames)
 
 
-def loadimages(self,loadedimages, loadedimagesstring,qApp):
-    if loadedimagesstring == "":
+def loadimages(self ,fileNames, qApp):
+    print("Loaded images = " + str(fileNames))
+    print("Loaded %d images " % len(fileNames))
+    if len(fileNames) < 1:
         # user canceled loading images
-        print("user canceled loading images")
+        if self.DebugMsg:
+            print("user canceled loading images")
     else:
+        self.fileNames = fileNames
         imagestring = ""
         rowcounter = 0
-        total_images = len(loadedimages)
+        total_images = len(fileNames)
         self.progressbar.setRange(0, total_images)
         self.progressbar.setValue(0)
         self.progressbar.show()
         qApp.processEvents()
         self.MaintableWidget.clearContents()
         self.MaintableWidget.setRowCount(0)
-        #self.MaintableWidget.setRowCount(len(loadedimages))
-        self.resolutions = []
-        cur_width_height = ""
-        for loadedimage in loadedimages:
+        self.MaintableWidget.setColumnWidth(0,100)
+        self.MaintableWidget.setColumnWidth(1,225)
+        for loadedimage in fileNames:
             if self.DebugMsg:
                 print(rowcounter)
                 print(loadedimage + "\n")
-                print(loadedimagesstring)
-
-            #print "loaded image: " + loadedimage
             folder,imagefile = os.path.split(loadedimage)
-            self.image_folder = folder
-            qtablefilename = QTableWidgetItem(imagefile)
             self.MaintableWidget.insertRow(rowcounter)
-            # in case thumbs are disabled
-            dis_thumb_string = QTableWidgetItem("disabled")
+            qtablefilename = QTableWidgetItem(imagefile)
+            self.MaintableWidget.setItem(rowcounter, 1, qtablefilename)
             if self.pref_thumbnail_preview.isChecked():
                 # Now create the thumbnail to be displayed
                 thumbnail = QLabel(self)
@@ -278,25 +266,20 @@ def loadimages(self,loadedimages, loadedimagesstring,qApp):
                 thumbnail.setScaledContents(True)
                 # Fill the table
                 self.MaintableWidget.setRowHeight(rowcounter,75)
-                self.MaintableWidget.setColumnWidth(0,75)
-                self.MaintableWidget.setColumnWidth(1,225)
                 self.MaintableWidget.setCellWidget(rowcounter, 0, thumbnail)
             else:
-                # Fill the table
-                self.MaintableWidget.setColumnWidth(0,75)
-                self.MaintableWidget.setColumnWidth(1,225)
+                # Fill the table when thumbs are disabled
+                dis_thumb_string = QTableWidgetItem("disabled")
                 self.MaintableWidget.setItem(rowcounter, 0, dis_thumb_string)
-            self.MaintableWidget.setItem(rowcounter, 1, qtablefilename)
-            self.MaintableWidget.setToolTip('image(s) folder: ' + folder)
             rowcounter += 1
             self.progressbar.setValue(rowcounter)
             self.statusbar.showMessage("Creating thumbnail of: " + os.path.basename(loadedimage))
             qApp.processEvents()
             imagestring += loadedimage + " "
+        self.image_folder = folder
+        self.MaintableWidget.setToolTip('image(s) folder: ' + folder)
         if self.allDebugMsg:
-            ret= QMessageBox.about(self, "file names", "images found \n %s" % loadedimagesstring)
-            ret= QMessageBox.about(self, "file names", "images found 2 \n %s" % imagestring)
-        #self.imagesfolderlineitem.setText(folder)
+            QMessageBox.about(self, "file names", "images found \n %s" % imagestring)
         # After loading the photos we will enable buttons and events
         self.activate_buttons_events()
 
