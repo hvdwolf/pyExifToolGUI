@@ -47,11 +47,11 @@ def write_default_config():
 
 def error_reading_configparameter(self):
     message = ("Somehow I encountered an error reading the config file.\n"
-           "This can happen when:\n- you updated from version <= 0.5 to version >= 0.6\n"
-           "- when the config file somehow got damaged.\n"
-                   "- when this is the very first program start.\n\n"
-           "I will simply create a new config file. Please "
-           "check your preferences.")
+            "This can happen when:\n- you updated from version <= 0.5 to version >= 0.6\n"
+            "- when the config file somehow got damaged.\n"
+            "- when this is the very first program start.\n\n"
+            "I will simply create a new config file. Please "
+            "check your preferences.")
     ret = QMessageBox.warning(self, "error reading config", message) 
 
 def read_xml_config(self):
@@ -75,52 +75,52 @@ def read_xml_config(self):
         self.configroot = self.configtree.getroot()
 
     for pref_record in self.configroot:
-         for tags in pref_record.iter('alternate_exiftool'):
-             if tags.text == "True":
-               self.alternate_exiftool = True
-             else:
-               self.alternate_exiftool = False
-         for tags in pref_record.iter('exiftooloption'):
-               self.exiftooloption.setText(tags.text)
-         for tags in pref_record.iter('pref_thumbnail_preview'):
-             if tags.text == "True": 
-               self.pref_thumbnail_preview.setChecked(1) 
-             else:
-               self.pref_thumbnail_preview.setChecked(0)
-         for tags in pref_record.iter('def_startupfolder'):
-               self.LineEdit_def_startupfolder.setText(tags.text)
-         for tags in pref_record.iter('def_creator'):
-               self.def_creator.setText(tags.text)
-         for tags in pref_record.iter('def_copyright'):
-               self.def_copyright.setText(tags.text)
+        for tags in pref_record.iter('alternate_exiftool'):
+            if tags.text == "True":
+                self.alternate_exiftool = True
+            else:
+                self.alternate_exiftool = False
+        for tags in pref_record.iter('exiftooloption'):
+                self.exiftooloption.setText(tags.text)
+        for tags in pref_record.iter('pref_thumbnail_preview'):
+            if tags.text == "True": 
+                self.pref_thumbnail_preview.setChecked(1) 
+            else:
+                self.pref_thumbnail_preview.setChecked(0)
+        for tags in pref_record.iter('def_startupfolder'):
+                self.LineEdit_def_startupfolder.setText(tags.text)
+        for tags in pref_record.iter('def_creator'):
+                self.def_creator.setText(tags.text)
+        for tags in pref_record.iter('def_copyright'):
+                self.def_copyright.setText(tags.text)
 
 def write_xml_config(self):
     for pref_record in self.configroot:
-         for tags in pref_record.iter('alternate_exiftool'):
-             if self.exiftooloption.text() == "":
-               tags.text = "False"
-               self.alternate_exiftool = False
-             else:
-               tags.text = "True"
-               self.alternate_exiftool = True
-         for tags in pref_record.iter('exiftooloption'):
-             tags.text = self.exiftooloption.text()
-         for tags in pref_record.iter('pref_thumbnail_preview'):
-             if self.pref_thumbnail_preview.isChecked(): 
-               tags.text = "True"
-             else:
-               tags.text = "False"
-         for tags in pref_record.iter('def_startupfolder'):
-             tags.text = self.LineEdit_def_startupfolder.text()
-         for tags in pref_record.iter('def_creator'):
-             tags.text = self.def_creator.text()
-         for tags in pref_record.iter('def_copyright'):
-             tags.text = self.def_copyright.text()
+        for tags in pref_record.iter('alternate_exiftool'):
+            if self.exiftooloption.text() == "":
+                tags.text = "False"
+                self.alternate_exiftool = False
+            else:
+                tags.text = "True"
+                self.alternate_exiftool = True
+        for tags in pref_record.iter('exiftooloption'):
+            tags.text = self.exiftooloption.text()
+        for tags in pref_record.iter('pref_thumbnail_preview'):
+            if self.pref_thumbnail_preview.isChecked(): 
+                tags.text = "True"
+            else:
+                tags.text = "False"
+        for tags in pref_record.iter('def_startupfolder'):
+            tags.text = self.LineEdit_def_startupfolder.text()
+        for tags in pref_record.iter('def_creator'):
+            tags.text = self.def_creator.text()
+        for tags in pref_record.iter('def_copyright'):
+            tags.text = self.def_copyright.text()
 
     try:
-         userpath = os.path.expanduser('~')
-         #print(userpath)
-         self.configtree.write(os.path.join(userpath, '.pyexiftoolgui', 'config.xml'))
+        userpath = os.path.expanduser('~')
+        #print(userpath)
+        self.configtree.write(os.path.join(userpath, '.pyexiftoolgui', 'config.xml'))
     except:
             QMessageBox.critical(self, "Error!", "Unable to open config.xml for writing" )
 
@@ -168,20 +168,20 @@ def read_defined_lenses(self, qApp):
         self.lensdbroot = self.lensdbtree.getroot()
 
     if file_read:
-         self.loaded_lenses = ['none',]
-         for lens in self.lensdbroot:
-             self.loaded_lenses.append(lens.attrib["name"])
-         self.predefined_lenses.clear()
-         self.predefined_lenses.addItems(self.loaded_lenses)
+        self.loaded_lenses = ['none',]
+        for lens in self.lensdbroot:
+            self.loaded_lenses.append(lens.attrib["name"])
+        self.predefined_lenses.clear()
+        self.predefined_lenses.addItems(self.loaded_lenses)
     if self.lens_current_index <> '':
-         self.predefined_lenses.setCurrentIndex(int(self.lens_current_index))
+        self.predefined_lenses.setCurrentIndex(int(self.lens_current_index))
 
 
 def write_lensdb_xml(self, qApp):
     try:
-         userpath = os.path.expanduser('~')
-         print(userpath)
-         self.lensdbtree.write(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml'))
+        userpath = os.path.expanduser('~')
+        print(userpath)
+        self.lensdbtree.write(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml'))
     except:
             QMessageBox.critical(self, "Error!", "Unable to open lensdb for writing" )
 
@@ -191,7 +191,7 @@ def deletelens(self, qApp):
     self.lens_current_index = 0
     for lens in self.lensdbroot:
         if lens.attrib["name"]  == self.predefined_lenses.currentText():
-           self.lensdbroot.remove(lens)
+            self.lensdbroot.remove(lens)
 
     write_lensdb_xml(self, qApp)
     read_defined_lenses(self, qApp)
