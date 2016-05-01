@@ -41,7 +41,10 @@ def write_default_config():
     config += "</preferences>\n"
 
     userpath = os.path.expanduser('~')
-    config_file = open(os.path.join(userpath, '.pyexiftoolgui', 'config.xml'), "w")
+    config_filepath = os.path.join(userpath, '.pyexiftoolgui')
+    if not os.path.isdir(config_filepath):
+	    os.mkdir(config_filepath)
+    config_file = open(os.path.join(config_filepath, 'config.xml'), "w")
     config_file.write(config)
     config_file.close()
 
