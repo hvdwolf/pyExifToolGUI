@@ -13,7 +13,7 @@
 # the GNU General Public Licence for more details.
 
 # This file is part of pyexiftoolgui.
-# pyexiftoolgui is a pySide script program that reads and writes  
+# pyexiftoolgui is a pySide script program that reads and writes
 # gps tags from/to files. It can use a "reference" image to write the
 # gps tags to a multiple set of files that are taken at the same
 # location.
@@ -43,19 +43,19 @@ def write_default_config():
     userpath = os.path.expanduser('~')
     config_filepath = os.path.join(userpath, '.pyexiftoolgui')
     if not os.path.isdir(config_filepath):
-	    os.mkdir(config_filepath)
+        os.mkdir(config_filepath)
     config_file = open(os.path.join(config_filepath, 'config.xml'), "w")
     config_file.write(config)
     config_file.close()
 
 def error_reading_configparameter(self):
     message = ("Somehow I encountered an error reading the config file.\n"
-            "This can happen when:\n- you updated from version <= 0.5 to version >= 0.6\n"
-            "- when the config file somehow got damaged.\n"
-            "- when this is the very first program start.\n\n"
-            "I will simply create a new config file. Please "
-            "check your preferences.")
-    ret = QMessageBox.warning(self, "error reading config", message) 
+               "This can happen when:\n- you updated from version <= 0.5 to version >= 0.6\n"
+               "- when the config file somehow got damaged.\n"
+               "- when this is the very first program start.\n\n"
+               "I will simply create a new config file. Please "
+               "check your preferences.")
+    ret = QMessageBox.warning(self, "error reading config", message)
 
 def read_xml_config(self):
     tempstr = lambda val: '' if val is None else val
@@ -84,18 +84,18 @@ def read_xml_config(self):
             else:
                 self.alternate_exiftool = False
         for tags in pref_record.iter('exiftooloption'):
-                self.exiftooloption.setText(tags.text)
+            self.exiftooloption.setText(tags.text)
         for tags in pref_record.iter('pref_thumbnail_preview'):
-            if tags.text == "True": 
-                self.pref_thumbnail_preview.setChecked(1) 
+            if tags.text == "True":
+                self.pref_thumbnail_preview.setChecked(1)
             else:
                 self.pref_thumbnail_preview.setChecked(0)
         for tags in pref_record.iter('def_startupfolder'):
-                self.LineEdit_def_startupfolder.setText(tags.text)
+            self.LineEdit_def_startupfolder.setText(tags.text)
         for tags in pref_record.iter('def_creator'):
-                self.def_creator.setText(tags.text)
+            self.def_creator.setText(tags.text)
         for tags in pref_record.iter('def_copyright'):
-                self.def_copyright.setText(tags.text)
+            self.def_copyright.setText(tags.text)
 
 def write_xml_config(self):
     for pref_record in self.configroot:
@@ -109,7 +109,7 @@ def write_xml_config(self):
         for tags in pref_record.iter('exiftooloption'):
             tags.text = self.exiftooloption.text()
         for tags in pref_record.iter('pref_thumbnail_preview'):
-            if self.pref_thumbnail_preview.isChecked(): 
+            if self.pref_thumbnail_preview.isChecked():
                 tags.text = "True"
             else:
                 tags.text = "False"
@@ -125,7 +125,7 @@ def write_xml_config(self):
         #print(userpath)
         self.configtree.write(os.path.join(userpath, '.pyexiftoolgui', 'config.xml'))
     except:
-            QMessageBox.critical(self, "Error!", "Unable to open config.xml for writing" )
+        QMessageBox.critical(self, "Error!", "Unable to open config.xml for writing" )
 
 
 # End of Configuration xml file
@@ -145,8 +145,12 @@ def write_default_lensdb():
     lensdb += "\t</lens>\n"
     lensdb += "</data>\n"
 
-    userpath = os.environ['HOME']
-    lensdb_file = open(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml'), "w")
+    #userpath = os.environ.get('HOME', os.environ.get("HOMEDIR", "."))
+    userpath = os.path.expanduser('~')
+    userpath = os.path.join(userpath, '.pyexiftoolgui')
+    if not os.path.exists(userpath):
+        os.makedirs(userpath)
+    lensdb_file = open(os.path.join(userpath, 'lensdb.xml'), "w")
     lensdb_file.write(lensdb)
     lensdb_file.close()
 
@@ -186,7 +190,7 @@ def write_lensdb_xml(self, qApp):
         print(userpath)
         self.lensdbtree.write(os.path.join(userpath, '.pyexiftoolgui', 'lensdb.xml'))
     except:
-            QMessageBox.critical(self, "Error!", "Unable to open lensdb for writing" )
+        QMessageBox.critical(self, "Error!", "Unable to open lensdb for writing" )
 
 
 def deletelens(self, qApp):
