@@ -621,7 +621,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         qApp.processEvents()
         select_exiftool.setFileMode(QFileDialog.ExistingFile)
         select_exiftool.setViewMode(QFileDialog.Detail)
-        select_exiftool.setFilters(["exiftool.exe", "*.exe"])
+        if self.OSplatform in ("Windows", "win32"):
+            select_exiftool.setFilters(["exiftool.exe", "*.exe"])
         if select_exiftool.exec_():
             files_list = select_exiftool.selectedFiles()
             print("files_list[0]" + str(files_list[0]))
