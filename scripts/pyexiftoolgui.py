@@ -14,7 +14,7 @@
 # the GNU General Public Licence for more details.
 
 # This file is part of pyexiftoolgui.
-# pyexiftoolgui is a pySide script program that reads and writes  
+# pyexiftoolgui is a pySide script program that reads and writes
 # gps tags from/to files. It can use a "reference" image to write the
 # gps tags to a multiple set of files that are taken at the same
 # location.
@@ -33,7 +33,7 @@ from PySide.QtGui import *
 # Very first check on version
 if sys.version_info<(2,7,0):
     sys.stderr.write("\n\nYou need python 2.7 or later to use pyexiftoolgui\n")
-    exit(1) 
+    exit(1)
 else:
     print("\nProgram start: We are on python " + sys.version)
 
@@ -185,7 +185,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #        petgfunctions.remove_workspace( self )
 #        try:
 #        fldr = os.mkdir(self.tmpworkdir)
-#        except: 
+#        except:
 #        if self.logtofile:
 #            logging.info(self.tmpworkdir + " already exists.")
 
@@ -215,7 +215,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         petgfilehandling.read_defined_lenses(self, qApp)
 
         # Initialize Combobox mass change tab
-        '''self.grouplist = [ 
+        '''self.grouplist = [
         self.tr('exif'),
         self.tr('jfif'),
         self.tr('gps'),
@@ -252,7 +252,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         petgfunctions.loadimages(self, selectedimages, qApp)
         # If we alread did some copying or simply working on the GPS:edit tab we need to clean it after loading new images
         #petgfunctions.clear_gps_fields(self)
- 
+
 
     def load_cmd_images(self, args):
         ''' load images from command line args'''
@@ -323,7 +323,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # Menu actions/functions
     def show_about_window(self):
         self.aboutbox = QMessageBox()
-        
+
         self.licenselabel = QLabel()
         self.licensebutton = self.aboutbox.addButton(self.tr("License"), QMessageBox.ActionRole)
         self.donatelabel = QLabel()
@@ -340,7 +340,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.aboutbox.setText(programinfo.ABOUTMESSAGE)
 
         ret = self.aboutbox.exec_()
-        
+
     def show_license(self):
         petgfunctions.info_window(self)
 
@@ -355,7 +355,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 petgfunctions.create_args(self, qApp)
         except:
             self.the_no_photos_messagebox()
-         
+
     def export_metadata(self):
         try:
             if len(self.fileNames) == 0:
@@ -507,7 +507,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def convertdms2d(self):
         petgfunctions.convertLatLong(self,"dms2d")
-                
+
     def clear_gps_fields(self):
         petgfunctions.clear_gps_fields(self)
 
@@ -621,6 +621,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         qApp.processEvents()
         select_exiftool.setFileMode(QFileDialog.ExistingFile)
         select_exiftool.setViewMode(QFileDialog.Detail)
+        select_exiftool.setFilters(["exiftool.exe", "*.exe"])
         if select_exiftool.exec_():
             files_list = select_exiftool.selectedFiles()
             print("files_list[0]" + str(files_list[0]))
@@ -687,5 +688,5 @@ if __name__ == '__main__':
         print('Number of arguments: %d' % len(sys.argv))
         print('Argument List:' + str(sys.argv))
         frame.load_cmd_images(sys.argv[1:])
-        
+
     app.exec_()

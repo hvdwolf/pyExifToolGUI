@@ -104,6 +104,13 @@ def exiftool_version_level_text(self):
         self.statusbar.showMessage("Your exiftoolversion is " + str(self.exiftoolversion))
     #print "exiftoolversion : " + self.exiftoolversion
 
+def find_on_path(tool):
+    """ Find the first occurrence of a tool on the path."""
+    paths = os.environ["PATH"].split(";")
+    for path in paths:
+        path = os.path.join(path, tool)
+        if os.path.exists(path):
+            return path
 
 def tool_check( self ):
     # We need this startup check as long as we don't have a package
@@ -113,10 +120,13 @@ def tool_check( self ):
         self.exiftoolprog = self.exiftooloption.text()
     else:
         self.exiftoolprog = "exiftool"
+        if (self.OSplatform in ("Windows", "win32")):
+            self.exiftoolprog = find_on_path("exiftool.exe")
+
     # Check for exiftool, based on the setting or no setting above
     if (self.OSplatform in ("Windows", "win32")):
-        if ("exiftool.exe" in self.exiftoolprog) or ("Exiftool.exe" in self.exiftoolprog):
-            self.exiftool_dir = os.path.join(self.realfile_dir, "exiftool", "exiftool.exe")
+        if ("exiftool.exe" in self.exiftoolprog) or ("Exiftool.exe" in self.exiftoolprog) or not self.exiftoolprog:
+            #self.exiftool_dir = os.path.join(self.realfile_dir, "exiftool", "exiftool.exe")
             #self.exiftoolprog = self.exiftool_dir + "\exiftool.exe"
             if not os.path.isfile(self.exiftoolprog):
                 configure_message = "exiftool is missing or incorrectly configured in Preferences!\n"
