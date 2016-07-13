@@ -1,3 +1,5 @@
+The website is https://hvdwolf.github.io/pyExifToolGUI/
+
 pyExifToolGui is a python pySide QT4 script program that reads and writes
 exif, xmp and IPTC tags from/to image files using exiftool. It can use a
 "reference" image as source image to copy data from. 
