@@ -106,7 +106,7 @@ def exiftool_version_level_text(self):
 
 def find_on_path(tool):
     """ Find the first occurrence of a tool on the path."""
-    paths = os.environ["PATH"].split(";")
+    paths = os.environ["PATH"].split(os.pathsep)
     for path in paths:
         path = os.path.join(path, tool)
         if os.path.exists(path):
@@ -122,6 +122,10 @@ def tool_check( self ):
         self.exiftoolprog = "exiftool"
         if (self.OSplatform in ("Windows", "win32")):
             self.exiftoolprog = find_on_path("exiftool.exe")
+	elif self.OSplatform == "Darwin":
+            self.exiftoolprog = find_on_path("exiftool")
+	#else:
+        #    self.exiftoolprog = find_on_path("exiftool")
 
     # Check for exiftool, based on the setting or no setting above
     if (self.OSplatform in ("Windows", "win32")):
@@ -136,10 +140,14 @@ def tool_check( self ):
                 result = self.select_exiftool()
                 #print str(result)
                 if result == "":
-                    ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.")
-                    sys.exit()
+			ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.\nI will now (try to) open the exiftool website.")
+			try:
+				webbrowser.open("http://www.sno.phy.queensu.ca/~phil/exiftool/")
+		        except:
+				sys.exit()
+			sys.exit()
                 else:
-                    self.exiftoolprog = result
+			self.exiftoolprog = result
             #Check exiftool version
             args = '"' + self.exiftoolprog + '" -ver'
             self.exiftoolversion = subprocess.check_output(args, shell=True)
@@ -153,7 +161,14 @@ def tool_check( self ):
             result = self.select_exiftool()
             #print str(result)
             if result == "":
-                ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.")
+		if self.OSplatform == "Darwin":
+                	ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.\nI will now (try to) open the exiftool website.")
+			try:
+				webbrowser.open("http://www.sno.phy.queensu.ca/~phil/exiftool/")
+		        except:
+				sys.exit()
+		else:
+                	ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.")
                 sys.exit()
             else:
                 self.exiftoolprog = result
