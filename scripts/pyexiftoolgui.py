@@ -158,6 +158,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.predefined_lenses.currentIndexChanged.connect(self.definedlenschanged)
         # For the time being hide the button
         #self.btn_copy_lens_defaults.setVisible(False)
+# Load several buttons from the Edit -> IPTC tab
+        self.btn_iptchelp.clicked.connect(self.iptc_help)
+        self.btn_iptc_copyfrom.clicked.connect(self.copyiptcfromselected)
+        self.btn_iptc_copyfrom.setEnabled(False)
+        self.btn_saveiptc.clicked.connect(self.saveiptcdata)
+        self.btn_saveiptc.setEnabled(False)
+        self.btn_resetiptc.clicked.connect(self.clear_iptc_fields)
 # Load several buttons from the Edit -> Your commands tab
         self.btn_yourcommands_clearinput.clicked.connect(self.clear_yourcommands_input)
         self.btn_yourcommands_clearoutput.clicked.connect(self.clear_yourcommands_output)
@@ -267,7 +274,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_gps_copyfrom.setEnabled(True)
         self.btn_savegps.setEnabled(True)
         self.btn_exif_copyfrom.setEnabled(True)
+        self.btn_iptc_copyfrom.setEnabled(True)
         self.btn_saveexif.setEnabled(True)
+        self.btn_saveiptc.setEnabled(True)
         if float(self.exiftoolversion) > 9.06:
             self.btn_gpano_copyfrom.setEnabled(True)
             self.btn_savegpano.setEnabled(True)
@@ -475,6 +484,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def lens_help(self):
         self.all_access_to_manual("EditlensData")
 
+    def iptc_help(self):
+        self.all_access_to_manual("EditiptcData")
+
     def yourcommands_help(self):
         self.all_access_to_manual("YourCommands")
 
@@ -602,6 +614,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def definedlenschanged(self):
         petgfunctions.definedlenschanged(self, qApp)
+
+# Edit -> IPTC tab
+    def clear_iptc_fields(self):
+        petgfunctions.clear_iptc_fields(self)
+
+    def copyiptcfromselected(self):
+        petgfunctions.copyiptcfromselected(self,qApp)
+        
+    def saveiptcdata(self):
+        petgfunctions.saveiptcdata(self, qApp)
 
 # Your Commands tab
     def clear_yourcommands_input(self):

@@ -3719,24 +3719,181 @@ Originals</string>
               <attribute name="title">
                <string>IPTC</string>
               </attribute>
-              <widget class="QLabel" name="label_63">
+              <widget class="QWidget" name="gridLayoutWidget_16">
                <property name="geometry">
                 <rect>
-                 <x>90</x>
-                 <y>100</y>
-                 <width>561</width>
-                 <height>181</height>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>691</width>
+                 <height>544</height>
                 </rect>
                </property>
-               <property name="text">
-                <string>IPTC is an older metadata information standard.
-It stands for &quot;International Press Telecommunications Council&quot;.
-This already shows the primary goal of this standard which is
-perhaps not what an amateur photograph is aiming for.
-Next to that: IPTC is being phased out in favor of XMP.
-
-Currently I have no intent to add functionality to this standard, maybe later.</string>
-               </property>
+               <layout class="QGridLayout" name="gridLayout_24">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="lbl_exiftool_leveltext_2">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <layout class="QGridLayout" name="gridLayout_25">
+                  <property name="leftMargin">
+                   <number>10</number>
+                  </property>
+                  <item row="1" column="2">
+                   <widget class="QCheckBox" name="chk_iptc_keywords">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="iptc_keywords">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="toolTip">
+                     <string>IPTC Keywords max length 64 characters</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QLabel" name="label_116">
+                    <property name="font">
+                     <font>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Save</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_117">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="text">
+                     <string>Keywords</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="3" column="0">
+                 <layout class="QHBoxLayout" name="horizontalLayout_16">
+                  <property name="leftMargin">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="btn_iptc_copyfrom">
+                    <property name="toolTip">
+                     <string>This button will copy all the (available) gpano info from the selected image to the internal &quot;clipboard&quot;</string>
+                    </property>
+                    <property name="statusTip">
+                     <string>This button will copy all the (available) gpano info from the selected image to the internal &quot;clipboard&quot;</string>
+                    </property>
+                    <property name="text">
+                     <string>Copy from selected image</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btn_saveiptc">
+                    <property name="toolTip">
+                     <string>Save the gpano data to the image file(s)</string>
+                    </property>
+                    <property name="statusTip">
+                     <string>Save the gpano data to the image file(s)</string>
+                    </property>
+                    <property name="text">
+                     <string>Save to selected image(s)</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="chk_iptc_backuporiginals">
+                    <property name="toolTip">
+                     <string>Overwrite your image or make a backup first</string>
+                    </property>
+                    <property name="statusTip">
+                     <string>Overwrite your image or make a backup first</string>
+                    </property>
+                    <property name="text">
+                     <string>Backup
+Originals</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btn_resetiptc">
+                    <property name="toolTip">
+                     <string>Empties all fields</string>
+                    </property>
+                    <property name="statusTip">
+                     <string>Empties all fields</string>
+                    </property>
+                    <property name="text">
+                     <string>Reset fields</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="btn_iptchelp">
+                    <property name="font">
+                     <font>
+                      <weight>50</weight>
+                      <bold>false</bold>
+                     </font>
+                    </property>
+                    <property name="toolTip">
+                     <string>Opens the manual with some additional info on this screen</string>
+                    </property>
+                    <property name="statusTip">
+                     <string>Opens the manual with some additional info on this screen</string>
+                    </property>
+                    <property name="text">
+                     <string>Help</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="lbl_exiftool_leveltext_3">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </widget>
             </widget>
