@@ -176,7 +176,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_choose_exiftool.clicked.connect(self.select_exiftool)
         self.btn_choose_defstartupfolder.clicked.connect(self.select_defstartupfolder)
 
-
 #------------------------------------------------------------------------
 # Define a few globals and variables
         self.DebugMsg = False

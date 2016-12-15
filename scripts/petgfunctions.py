@@ -254,6 +254,10 @@ def images_dialog(self, qApp):
         fileNames = ""
     return (fileNames)
 
+def imagegridsizes(self, numImages):
+    colswidth = 100
+    cols = self.MaintableWidget.width()/(colswidth+8)
+    return cols, colswidth
 
 def loadimages(self ,fileNames, qApp):
     print("Loaded images = " + str(fileNames))
@@ -263,6 +267,8 @@ def loadimages(self ,fileNames, qApp):
         if self.DebugMsg:
             print("user canceled loading images")
     else:
+        cols, colwidth = imagegridsizes(self, len(fileNames))
+        print(imagegridsizes(self, len(fileNames)))
         self.fileNames = fileNames
         imagestring = ""
         rowcounter = 0
@@ -272,30 +278,34 @@ def loadimages(self ,fileNames, qApp):
         self.progressbar.show()
         qApp.processEvents()
         self.MaintableWidget.clearContents()
-        self.MaintableWidget.setRowCount(0)
-        self.MaintableWidget.setColumnWidth(0,100)
-        self.MaintableWidget.setColumnWidth(1,225)
+        self.MaintableWidget.setRowCount(int(len(fileNames)/cols))
+        self.MaintableWidget.setColumnCount(cols)
+        #self.MaintableWidget.setColumnWidth(0,100)
+        #self.MaintableWidget.setColumnWidth(1,225)
+        print(self.MaintableWidget.width())
         for loadedimage in fileNames:
             if self.DebugMsg:
                 print(rowcounter)
                 print(loadedimage + "\n")
             folder,imagefile = os.path.split(loadedimage)
-            self.MaintableWidget.insertRow(rowcounter)
-            qtablefilename = QTableWidgetItem(imagefile)
-            self.MaintableWidget.setItem(rowcounter, 1, qtablefilename)
+            #self.MaintableWidget.insertRow(int(rowcounter/cols))
+            #qtablefilename = QTableWidgetItem(imagefile)
+            #self.MaintableWidget.setItem(rowcounter, 1, qtablefilename)
             if self.pref_thumbnail_preview.isChecked():
+                self.MaintableWidget.setColumnWidth(int(rowcounter%cols),colwidth)
+                self.MaintableWidget.setRowHeight(int(rowcounter/cols),(colwidth*0.75))
                 # Now create the thumbnail to be displayed
                 thumbnail = QLabel(self)
                 image = QImage(loadedimage)
                 thumbnail.setPixmap(QPixmap.fromImage(image))
                 thumbnail.setScaledContents(True)
+                thumbnail.setToolTip(imagefile)
                 # Fill the table
-                self.MaintableWidget.setRowHeight(rowcounter,75)
-                self.MaintableWidget.setCellWidget(rowcounter, 0, thumbnail)
+                self.MaintableWidget.setCellWidget(int(rowcounter/cols), int(rowcounter%cols), thumbnail)
             else:
                 # Fill the table when thumbs are disabled
                 dis_thumb_string = QTableWidgetItem("disabled")
-                self.MaintableWidget.setItem(rowcounter, 0, dis_thumb_string)
+                self.MaintableWidget.setItem(int(rowcounter/cols), int(rowcounter%cols), dis_thumb_string)
             rowcounter += 1
             self.progressbar.setValue(rowcounter)
             self.statusbar.showMessage("Creating thumbnail of: " + os.path.basename(loadedimage))
