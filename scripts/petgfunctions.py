@@ -311,8 +311,6 @@ def loadimages(self ,fileNames, qApp):
                 thumbnail.setToolTip(imagefile)
                 # Fill the table
                 if self.images_view.currentText() == "by cells":
-                    print(rowcounter)
-                    print(int(rowcounter/cols), int(rowcounter%cols))
                     self.MaintableWidget.setColumnWidth(int(rowcounter%cols),colwidth)
                     self.MaintableWidget.setRowHeight(int(rowcounter/cols),(colwidth*0.75))
                     self.MaintableWidget.setCellWidget(int(rowcounter/cols), int(rowcounter%cols), thumbnail)
@@ -342,8 +340,13 @@ def loadimages(self ,fileNames, qApp):
 
 def imageinfo(self, qApp):
     self.statusbar.showMessage("")
-    selected_row = self.MaintableWidget.currentRow()
-    selected_image = "\"" + self.fileNames[selected_row] + "\""
+    if self.images_view.currentText() == "by cells":
+        selected_row = self.MaintableWidget.currentRow()
+        selected_col = self.MaintableWidget.currentColumn()
+        selected_image = "\"" + self.fileNames[int((self.MaintableWidget.columnCount()*selected_row)+selected_col)] + "\""
+    else:
+        selected_row = self.MaintableWidget.currentRow()
+        selected_image = "\"" + self.fileNames[selected_row] + "\""
     if self.radioButton_all.isChecked():
         exiftool_params = ""
         arguments = " -a "
@@ -2052,8 +2055,11 @@ def yourcommands_go(self, qApp):
 # Real exiftool read/write functions
 def read_image_info(self, exiftool_params):
     self.statusbar.showMessage("")
-    selected_row = self.MaintableWidget.currentRow()
-    selected_image = "\"" + self.fileNames[selected_row] + "\""
+    
+    if self.images_view.currentText() == "by cells":
+        selected_image = "\"" + self.fileNames[int((self.MaintableWidget.columnCount()*self.MaintableWidget.currentRow())+self.MaintableWidget.currentColumn())] + "\""
+    else:
+        selected_image = "\"" + self.fileNames[self.MaintableWidget.currentRow()] + "\""
     if self.OSplatform in ("Windows", "win32"):
         selected_image = selected_image.replace("/", "\\")
         args = '"' + self.exiftoolprog + '" ' + exiftool_params + selected_image
