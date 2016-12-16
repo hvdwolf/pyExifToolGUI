@@ -35,6 +35,7 @@ def write_default_config():
     config += "\t<alternate_exiftool>False</alternate_exiftool>\n"
     config += "\t<exiftooloption></exiftooloption>\n"
     config += "\t<pref_thumbnail_preview>True</pref_thumbnail_preview>\n"
+    config += "\t<images_view>by cells</images_view>\n"
     config += "\t<def_startupfolder></def_startupfolder>\n"
     config += "\t<def_creator></def_creator>\n"
     config += "\t<def_copyright></def_copyright>\n"
@@ -96,6 +97,12 @@ def read_xml_config(self):
             self.def_creator.setText(tags.text)
         for tags in pref_record.iter('def_copyright'):
             self.def_copyright.setText(tags.text)
+        for tags in pref_record.iter('images_view'):
+            print(tags.text)
+            index = self.images_view.findText(tags.text, Qt.MatchFixedString)
+            if index >= 0:
+                self.images_view.setCurrentIndex(index)
+        
 
 def write_xml_config(self):
     for pref_record in self.configroot:
@@ -119,6 +126,8 @@ def write_xml_config(self):
             tags.text = self.def_creator.text()
         for tags in pref_record.iter('def_copyright'):
             tags.text = self.def_copyright.text()
+        for tags in pref_record.iter('images_view'):
+            tags.text = self.images_view.currentText()
 
     try:
         userpath = os.path.expanduser('~')

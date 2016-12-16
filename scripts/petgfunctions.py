@@ -21,7 +21,7 @@
 # command line tool exiftool by Phil Harvey, but it's not
 # a complete exiftool gui: not at all.
 
-import os, sys, platform, shlex, subprocess, time, re, string, datetime
+import os, sys, platform, shlex, subprocess, time, re, string, datetime, math
 
 import PySide
 from PySide.QtCore import *
@@ -256,7 +256,7 @@ def images_dialog(self, qApp):
 
 def imagegridsizes(self, numImages):
     colswidth = 100
-    cols = self.MaintableWidget.width()/(colswidth+8)
+    cols = self.MaintableWidget.width()/float(colswidth+8.0)
     return cols, colswidth
 
 def loadimages(self ,fileNames, qApp):
@@ -278,34 +278,54 @@ def loadimages(self ,fileNames, qApp):
         self.progressbar.show()
         qApp.processEvents()
         self.MaintableWidget.clearContents()
-        self.MaintableWidget.setRowCount(int(len(fileNames)/cols))
-        self.MaintableWidget.setColumnCount(cols)
-        #self.MaintableWidget.setColumnWidth(0,100)
-        #self.MaintableWidget.setColumnWidth(1,225)
-        print(self.MaintableWidget.width())
+        if self.images_view.currentText() == "by cells":
+            self.MaintableWidget.setSelectionBehavior(QAbstractItemView.SelectItems)
+            self.MaintableWidget.setRowCount(math.ceil(len(fileNames)/cols))
+            self.MaintableWidget.setColumnCount(cols)
+            cols = int(cols)
+        else:
+            self.MaintableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)
+            self.MaintableWidget.setRowCount(len(fileNames))
+            self.MaintableWidget.setColumnCount(2)
+            self.MaintableWidget.setColumnWidth(0,100)
+            self.MaintableWidget.setColumnWidth(1,225)
+            
         for loadedimage in fileNames:
             if self.DebugMsg:
                 print(rowcounter)
                 print(loadedimage + "\n")
             folder,imagefile = os.path.split(loadedimage)
-            #self.MaintableWidget.insertRow(int(rowcounter/cols))
-            #qtablefilename = QTableWidgetItem(imagefile)
-            #self.MaintableWidget.setItem(rowcounter, 1, qtablefilename)
+            #self.MaintableWidget.insertRow(rowcounter)
+            if self.images_view.currentText() == "by cells":
+                pass
+            else:
+                qtablefilename = QTableWidgetItem(imagefile)
+                self.MaintableWidget.setItem(rowcounter, 1, qtablefilename)
             if self.pref_thumbnail_preview.isChecked():
-                self.MaintableWidget.setColumnWidth(int(rowcounter%cols),colwidth)
-                self.MaintableWidget.setRowHeight(int(rowcounter/cols),(colwidth*0.75))
                 # Now create the thumbnail to be displayed
                 thumbnail = QLabel(self)
+                thumbnail.setMargin(8)
                 image = QImage(loadedimage)
                 thumbnail.setPixmap(QPixmap.fromImage(image))
                 thumbnail.setScaledContents(True)
                 thumbnail.setToolTip(imagefile)
                 # Fill the table
-                self.MaintableWidget.setCellWidget(int(rowcounter/cols), int(rowcounter%cols), thumbnail)
+                if self.images_view.currentText() == "by cells":
+                    print(rowcounter)
+                    print(int(rowcounter/cols), int(rowcounter%cols))
+                    self.MaintableWidget.setColumnWidth(int(rowcounter%cols),colwidth)
+                    self.MaintableWidget.setRowHeight(int(rowcounter/cols),(colwidth*0.75))
+                    self.MaintableWidget.setCellWidget(int(rowcounter/cols), int(rowcounter%cols), thumbnail)
+                else:
+                    self.MaintableWidget.setRowHeight(rowcounter,75)
+                    self.MaintableWidget.setCellWidget(rowcounter, 0, thumbnail)
             else:
                 # Fill the table when thumbs are disabled
                 dis_thumb_string = QTableWidgetItem("disabled")
-                self.MaintableWidget.setItem(int(rowcounter/cols), int(rowcounter%cols), dis_thumb_string)
+                if self.images_view.currentText() == "by cells":
+                    self.MaintableWidget.setItem(int(rowcounter/cols), int(rowcounter%cols), dis_thumb_string)
+                else:
+                    self.MaintableWidget.setItem(rowcounter, 0, dis_thumb_string)
             rowcounter += 1
             self.progressbar.setValue(rowcounter)
             self.statusbar.showMessage("Creating thumbnail of: " + os.path.basename(loadedimage))
@@ -2092,14 +2112,18 @@ def write_image_info(self, exiftoolparams, qApp, backup_originals):
         self.progressbar.show()
         rows = []
         for selected_row in selected_rows:
-            selected_row = str(selected_row)
-            selected_row = selected_row.replace("<PySide.QtCore.QModelIndex(",'')
-            selected_row, tail = re.split(',0x0',selected_row)
+            #selected_row = str(selected_row)
+            #selected_row = selected_row.replace("<PySide.QtCore.QModelIndex(",'')
+            #selected_row, tail = re.split(',0x0',selected_row)
             #print str(selected_row)
-            row, column = re.split(',',selected_row)
-            if row not in rows:
-                rows.append(row)
-                selected_image = "\"" + self.fileNames[int(row)] + "\""
+            #row, column = re.split(',',selected_row)
+            row, column = selected_row.row(), selected_row.column()
+            if str(str(row)+","+str(column)) not in rows:
+                rows.append(str(row)+","+str(column))
+                if self.images_view.currentText() == "by cells":
+                    selected_image = "\"" + self.fileNames[int((self.MaintableWidget.columnCount()*row)+column)] + "\""
+                else:
+                    selected_image = "\"" + self.fileNames[int(row)] + "\""
                 print('exiftool ' + exiftoolparams + ' ' + selected_image)
                 #print 'exiftool "-FileModifyDate<DateTimeOriginal" ' + selected_image
                 rowcounter += 1

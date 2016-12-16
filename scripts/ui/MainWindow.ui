@@ -59,6 +59,17 @@
       <widget class="QWidget" name="verticalLayoutWidget_4">
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
+         <widget class="QCommandLinkButton" name="linkbtn_reloadimages">
+          <property name="text">
+           <string>Reload Images</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>../../icons/1481858792_editor-redo-arrow-reload-outline-stroke.png</normaloff>../../icons/1481858792_editor-redo-arrow-reload-outline-stroke.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_21">
           <property name="sizeConstraint">
            <enum>QLayout::SetMaximumSize</enum>
@@ -66,25 +77,10 @@
           <item>
            <widget class="QTableWidget" name="MaintableWidget">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>10</horstretch>
               <verstretch>10</verstretch>
              </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QTableView::item
-{
-  border: 0px;
-  padding: 8px;
-};
-
-QTableWidget::item
-{
-  border: 0px;
-  padding: 8px;
-}
-
-</string>
             </property>
             <property name="showGrid">
              <bool>false</bool>
@@ -216,14 +212,35 @@ QTableWidget::item
                <property name="margin">
                 <number>2</number>
                </property>
-               <item row="1" column="1">
-                <widget class="QLabel" name="label_longlanguage">
-                 <property name="text">
-                  <string>Display language for tags and info</string>
+               <item row="12" column="3">
+                <widget class="QTableWidget" name="exiftableWidget">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>2</horstretch>
+                   <verstretch>2</verstretch>
+                  </sizepolicy>
                  </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <column>
+                  <property name="text">
+                   <string>Descriptor</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Description</string>
+                  </property>
+                 </column>
                 </widget>
                </item>
-               <item row="0" column="0" colspan="2">
+               <item row="0" column="3">
                 <layout class="QHBoxLayout" name="horizontalLayout_2">
                  <property name="sizeConstraint">
                   <enum>QLayout::SetDefaultConstraint</enum>
@@ -310,48 +327,31 @@ QTableWidget::item
                  </item>
                 </layout>
                </item>
-               <item row="2" column="0" colspan="2">
-                <widget class="QTableWidget" name="exiftableWidget">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                   <horstretch>2</horstretch>
-                   <verstretch>2</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>10</pointsize>
-                   <weight>50</weight>
-                   <italic>false</italic>
-                   <bold>false</bold>
-                  </font>
-                 </property>
-                 <column>
-                  <property name="text">
-                   <string>Descriptor</string>
-                  </property>
-                 </column>
-                 <column>
-                  <property name="text">
-                   <string>Description</string>
-                  </property>
-                 </column>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QComboBox" name="comboBox_languages">
-                 <property name="toolTip">
-                  <string>Select an ExifTool supported display language</string>
-                 </property>
-                 <property name="statusTip">
-                  <string>Select an ExifTool supported display language</string>
-                 </property>
+               <item row="1" column="3" rowspan="2">
+                <layout class="QHBoxLayout" name="horizontalLayout_18">
                  <item>
-                  <property name="text">
-                   <string/>
-                  </property>
+                  <widget class="QComboBox" name="comboBox_languages">
+                   <property name="toolTip">
+                    <string>Select an ExifTool supported display language</string>
+                   </property>
+                   <property name="statusTip">
+                    <string>Select an ExifTool supported display language</string>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </item>
+                  </widget>
                  </item>
-                </widget>
+                 <item>
+                  <widget class="QLabel" name="label_longlanguage">
+                   <property name="text">
+                    <string>Display language for tags and info</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </item>
               </layout>
              </widget>
@@ -373,9 +373,15 @@ QTableWidget::item
              <widget class="QTabWidget" name="tabWidget_2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                <horstretch>2</horstretch>
-                <verstretch>2</verstretch>
+                <horstretch>1</horstretch>
+                <verstretch>1</verstretch>
                </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>761</width>
+                <height>0</height>
+               </size>
               </property>
               <property name="currentIndex">
                <number>0</number>
@@ -400,6 +406,9 @@ QTableWidget::item
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout">
+                 <property name="margin">
+                  <number>10</number>
+                 </property>
                  <item>
                   <widget class="QPushButton" name="btn_gps_copyfrom">
                    <property name="toolTip">
@@ -511,7 +520,7 @@ QTableWidget::item
                   <x>0</x>
                   <y>0</y>
                   <width>421</width>
-                  <height>151</height>
+                  <height>161</height>
                  </rect>
                 </property>
                 <property name="frameShape">
@@ -528,8 +537,8 @@ QTableWidget::item
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>411</width>
-                   <height>151</height>
+                   <width>421</width>
+                   <height>161</height>
                   </rect>
                  </property>
                  <property name="title">
@@ -539,9 +548,9 @@ QTableWidget::item
                   <property name="geometry">
                    <rect>
                     <x>0</x>
-                    <y>27</y>
+                    <y>20</y>
                     <width>321</width>
-                    <height>131</height>
+                    <height>144</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="gridLayout">
@@ -1258,7 +1267,7 @@ to convert the data.</string>
                   <x>430</x>
                   <y>0</y>
                   <width>271</width>
-                  <height>151</height>
+                  <height>161</height>
                  </rect>
                 </property>
                 <property name="frameShape">
@@ -1280,22 +1289,60 @@ to convert the data.</string>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0,0,0" rowminimumheight="0,0,0,0,0">
-                  <property name="leftMargin">
+                  <property name="margin">
                    <number>10</number>
                   </property>
-                  <property name="topMargin">
-                   <number>10</number>
-                  </property>
-                  <item row="0" column="2">
-                   <widget class="QLabel" name="label_81">
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
+                  <item row="4" column="0">
+                   <widget class="QLabel" name="label_79">
                     <property name="text">
-                     <string>Save</string>
+                     <string>GPS Map Datum</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <widget class="QLineEdit" name="gps_mapdatum">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="2">
+                   <widget class="QCheckBox" name="chk_gps_datestamp">
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="2">
+                   <widget class="QCheckBox" name="chk_gps_timestamp">
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="label_77">
+                    <property name="text">
+                     <string>GPS Date Stamp</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QLineEdit" name="gps_datestamp">
+                    <property name="toolTip">
+                     <string>Date in YYYY:MM:DD</string>
+                    </property>
+                    <property name="statusTip">
+                     <string>Date in YYYY:MM:DD</string>
                     </property>
                    </widget>
                   </item>
@@ -1333,57 +1380,16 @@ to convert the data.</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="2" column="2">
-                   <widget class="QCheckBox" name="chk_gps_timestamp">
+                  <item row="0" column="2">
+                   <widget class="QLabel" name="label_81">
+                    <property name="font">
+                     <font>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
                     <property name="text">
-                     <string/>
-                    </property>
-                    <property name="checked">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="0">
-                   <widget class="QLabel" name="label_77">
-                    <property name="text">
-                     <string>GPS Date Stamp</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="1">
-                   <widget class="QLineEdit" name="gps_datestamp">
-                    <property name="toolTip">
-                     <string>Date in YYYY:MM:DD</string>
-                    </property>
-                    <property name="statusTip">
-                     <string>Date in YYYY:MM:DD</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="2">
-                   <widget class="QCheckBox" name="chk_gps_datestamp">
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="checked">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="0">
-                   <widget class="QLabel" name="label_79">
-                    <property name="text">
-                     <string>GPS Map Datum</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="1">
-                   <widget class="QLineEdit" name="gps_mapdatum">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="readOnly">
-                     <bool>true</bool>
+                     <string>Save</string>
                     </property>
                    </widget>
                   </item>
@@ -1415,7 +1421,7 @@ to convert the data.</string>
                 <property name="geometry">
                  <rect>
                   <x>0</x>
-                  <y>160</y>
+                  <y>170</y>
                   <width>431</width>
                   <height>171</height>
                  </rect>
@@ -1451,44 +1457,26 @@ to convert the data.</string>
                   <property name="rightMargin">
                    <number>10</number>
                   </property>
-                  <item row="2" column="0">
-                   <widget class="QLabel" name="label_19">
+                  <item row="0" column="2">
+                   <widget class="QLabel" name="label_49">
+                    <property name="font">
+                     <font>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
                     <property name="text">
-                     <string>Country</string>
+                     <string>Save</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="3" column="0">
-                   <widget class="QLabel" name="label_20">
+                  <item row="4" column="2">
+                   <widget class="QCheckBox" name="chk_xmp_city">
                     <property name="text">
-                     <string>State - Province </string>
+                     <string/>
                     </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="0">
-                   <widget class="QLabel" name="label_21">
-                    <property name="text">
-                     <string>City</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QLabel" name="label_16">
-                    <property name="text">
-                     <string>(Where is/are the photo(s) taken)</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="1">
-                   <widget class="QLineEdit" name="xmp_state"/>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QLineEdit" name="xmp_country"/>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="label_18">
-                    <property name="text">
-                     <string>Location</string>
+                    <property name="checked">
+                     <bool>true</bool>
                     </property>
                    </widget>
                   </item>
@@ -1548,26 +1536,44 @@ to convert the data.</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="4" column="2">
-                   <widget class="QCheckBox" name="chk_xmp_city">
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_18">
                     <property name="text">
-                     <string/>
-                    </property>
-                    <property name="checked">
-                     <bool>true</bool>
+                     <string>Location</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="0" column="2">
-                   <widget class="QLabel" name="label_49">
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
+                  <item row="2" column="1">
+                   <widget class="QLineEdit" name="xmp_country"/>
+                  </item>
+                  <item row="4" column="0">
+                   <widget class="QLabel" name="label_21">
                     <property name="text">
-                     <string>Save</string>
+                     <string>City</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="label_16">
+                    <property name="text">
+                     <string>(Where is/are the photo(s) taken)</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QLineEdit" name="xmp_state"/>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="label_19">
+                    <property name="text">
+                     <string>Country</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="label_20">
+                    <property name="text">
+                     <string>State - Province </string>
                     </property>
                    </widget>
                   </item>
@@ -1933,7 +1939,7 @@ to convert the data.</string>
                  <rect>
                   <x>30</x>
                   <y>460</y>
-                  <width>651</width>
+                  <width>551</width>
                   <height>71</height>
                  </rect>
                 </property>
@@ -2027,7 +2033,7 @@ to convert the data.</string>
               </widget>
               <widget class="QWidget" name="editxmptab">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>2</horstretch>
                  <verstretch>2</verstretch>
                 </sizepolicy>
@@ -2388,11 +2394,17 @@ to convert the data.</string>
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>691</width>
+                  <width>661</width>
                   <height>544</height>
                  </rect>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_15">
+                 <property name="sizeConstraint">
+                  <enum>QLayout::SetMinimumSize</enum>
+                 </property>
+                 <property name="margin">
+                  <number>10</number>
+                 </property>
                  <item row="0" column="0">
                   <widget class="QLabel" name="lbl_exiftool_leveltext">
                    <property name="sizePolicy">
@@ -2411,6 +2423,9 @@ to convert the data.</string>
                  </item>
                  <item row="2" column="0">
                   <layout class="QHBoxLayout" name="horizontalLayout_12">
+                   <property name="sizeConstraint">
+                    <enum>QLayout::SetMinimumSize</enum>
+                   </property>
                    <property name="leftMargin">
                     <number>10</number>
                    </property>
@@ -2490,6 +2505,9 @@ Originals</string>
                  </item>
                  <item row="1" column="0">
                   <layout class="QGridLayout" name="gridLayout_4">
+                   <property name="sizeConstraint">
+                    <enum>QLayout::SetMinimumSize</enum>
+                   </property>
                    <property name="leftMargin">
                     <number>10</number>
                    </property>
@@ -3691,13 +3709,22 @@ Originals</string>
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>691</width>
+                  <width>651</width>
                   <height>544</height>
                  </rect>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_24">
+                 <property name="sizeConstraint">
+                  <enum>QLayout::SetDefaultConstraint</enum>
+                 </property>
+                 <property name="margin">
+                  <number>10</number>
+                 </property>
                  <item row="1" column="0">
                   <layout class="QGridLayout" name="gridLayout_25">
+                   <property name="sizeConstraint">
+                    <enum>QLayout::SetMinimumSize</enum>
+                   </property>
                    <property name="leftMargin">
                     <number>10</number>
                    </property>
@@ -3767,6 +3794,9 @@ Originals</string>
                  </item>
                  <item row="3" column="0">
                   <layout class="QHBoxLayout" name="horizontalLayout_16">
+                   <property name="sizeConstraint">
+                    <enum>QLayout::SetMinimumSize</enum>
+                   </property>
                    <property name="leftMargin">
                     <number>10</number>
                    </property>
@@ -3996,8 +4026,8 @@ Originals</string>
              <rect>
               <x>20</x>
               <y>20</y>
-              <width>671</width>
-              <height>121</height>
+              <width>684</width>
+              <height>131</height>
              </rect>
             </property>
             <property name="toolTip">
@@ -4017,18 +4047,18 @@ Originals</string>
               <rect>
                <x>10</x>
                <y>10</y>
-               <width>641</width>
-               <height>91</height>
+               <width>651</width>
+               <height>111</height>
               </rect>
              </property>
              <layout class="QGridLayout" name="gridLayout_10">
-              <item row="0" column="2">
-               <widget class="QPushButton" name="btn_choose_exiftool">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_8">
                 <property name="toolTip">
                  <string>The program will go for the default exiftool version. Here you can specify another version.</string>
                 </property>
                 <property name="text">
-                 <string>Choose</string>
+                 <string>Exiftool</string>
                 </property>
                </widget>
               </item>
@@ -4042,13 +4072,13 @@ Originals</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_8">
+              <item row="0" column="2">
+               <widget class="QPushButton" name="btn_choose_exiftool">
                 <property name="toolTip">
                  <string>The program will go for the default exiftool version. Here you can specify another version.</string>
                 </property>
                 <property name="text">
-                 <string>Exiftool</string>
+                 <string>Choose</string>
                 </property>
                </widget>
               </item>
@@ -4065,6 +4095,27 @@ Originals</string>
                 </property>
                 <property name="checked">
                  <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="images_view">
+                <item>
+                 <property name="text">
+                  <string>by rows</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>by cells</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_63">
+                <property name="text">
+                 <string>Images View</string>
                 </property>
                </widget>
               </item>
@@ -4182,7 +4233,7 @@ Originals</string>
             <property name="geometry">
              <rect>
               <x>20</x>
-              <y>150</y>
+              <y>160</y>
               <width>671</width>
               <height>91</height>
              </rect>

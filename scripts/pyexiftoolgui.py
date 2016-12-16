@@ -98,6 +98,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.imagereference = QAction("Select photo as reference for \"Extra\" menu", self, triggered = self.reference_image)
         self.displayphoto = QAction("Display selected photo", self, triggered = self.showimage)
 # Load several views, buttons, comboboxes, spinboxes and labels from main screen
+        self.linkbtn_reloadimages.clicked.connect(self.reloadimages)
         self.btn_loadimages.clicked.connect(self.loadimages)
         self.showimagebutton.clicked.connect(self.showimage)
         self.showimagebutton.setEnabled(False)
@@ -195,6 +196,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #        if self.logtofile:
 #            logging.info(self.tmpworkdir + " already exists.")
 
+        # class var with images loaded
+        self.loaded_images = []
 #------------------------------------------------------------------------
 # Initialize file paths
         self.realfile_dir  = os.path.dirname(os.path.abspath(__file__))
@@ -219,6 +222,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Initialize Combobox on lens tab with loaded lenses (if any)
         self.lens_current_index = ''  # We need this later when updating or deleting lenses
         petgfilehandling.read_defined_lenses(self, qApp)
+        
 
         # Initialize Combobox mass change tab
         '''self.grouplist = [
@@ -252,9 +256,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.imageinfobutton.setEnabled(True)
 
 
+    def reloadimages(self):
+        petgfunctions.loadimages(self, self.loaded_images, qApp)
+    
     def loadimages(self):
         ''' show dialog of image files and load images selected '''
         selectedimages = petgfunctions.images_dialog(self, qApp)
+        self.loaded_images = selectedimages
         petgfunctions.loadimages(self, selectedimages, qApp)
         # If we alread did some copying or simply working on the GPS:edit tab we need to clean it after loading new images
         #petgfunctions.clear_gps_fields(self)
