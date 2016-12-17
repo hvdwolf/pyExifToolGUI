@@ -98,6 +98,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.imagereference = QAction("Select photo as reference for \"Extra\" menu", self, triggered = self.reference_image)
         self.displayphoto = QAction("Display selected photo", self, triggered = self.showimage)
 # Load several views, buttons, comboboxes, spinboxes and labels from main screen
+        self.linkbtn_reloadimages.clicked.connect(self.reloadimages)
         self.btn_loadimages.clicked.connect(self.loadimages)
         self.showimagebutton.clicked.connect(self.showimage)
         self.showimagebutton.setEnabled(False)
@@ -158,6 +159,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.predefined_lenses.currentIndexChanged.connect(self.definedlenschanged)
         # For the time being hide the button
         #self.btn_copy_lens_defaults.setVisible(False)
+# Load several buttons from the Edit -> IPTC tab
+        self.btn_iptchelp.clicked.connect(self.iptc_help)
+        self.btn_iptc_copyfrom.clicked.connect(self.copyiptcfromselected)
+        self.btn_iptc_copyfrom.setEnabled(False)
+        self.btn_saveiptc.clicked.connect(self.saveiptcdata)
+        self.btn_saveiptc.setEnabled(False)
+        self.btn_resetiptc.clicked.connect(self.clear_iptc_fields)
 # Load several buttons from the Edit -> Your commands tab
         self.btn_yourcommands_clearinput.clicked.connect(self.clear_yourcommands_input)
         self.btn_yourcommands_clearoutput.clicked.connect(self.clear_yourcommands_output)
@@ -168,7 +176,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_preferenceshelp.clicked.connect(self.preferences_help)
         self.btn_choose_exiftool.clicked.connect(self.select_exiftool)
         self.btn_choose_defstartupfolder.clicked.connect(self.select_defstartupfolder)
-
 
 #------------------------------------------------------------------------
 # Define a few globals and variables
@@ -189,6 +196,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #        if self.logtofile:
 #            logging.info(self.tmpworkdir + " already exists.")
 
+        # class var with images loaded
+        self.loaded_images = []
 #------------------------------------------------------------------------
 # Initialize file paths
         self.realfile_dir  = os.path.dirname(os.path.abspath(__file__))
@@ -213,6 +222,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Initialize Combobox on lens tab with loaded lenses (if any)
         self.lens_current_index = ''  # We need this later when updating or deleting lenses
         petgfilehandling.read_defined_lenses(self, qApp)
+        
 
         # Initialize Combobox mass change tab
         '''self.grouplist = [
@@ -246,9 +256,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.imageinfobutton.setEnabled(True)
 
 
+    def reloadimages(self):
+        petgfunctions.loadimages(self, self.loaded_images, qApp)
+    
     def loadimages(self):
         ''' show dialog of image files and load images selected '''
         selectedimages = petgfunctions.images_dialog(self, qApp)
+        self.loaded_images = selectedimages
         petgfunctions.loadimages(self, selectedimages, qApp)
         # If we alread did some copying or simply working on the GPS:edit tab we need to clean it after loading new images
         #petgfunctions.clear_gps_fields(self)
@@ -267,7 +281,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btn_gps_copyfrom.setEnabled(True)
         self.btn_savegps.setEnabled(True)
         self.btn_exif_copyfrom.setEnabled(True)
+        self.btn_iptc_copyfrom.setEnabled(True)
         self.btn_saveexif.setEnabled(True)
+        self.btn_saveiptc.setEnabled(True)
         if float(self.exiftoolversion) > 9.06:
             self.btn_gpano_copyfrom.setEnabled(True)
             self.btn_savegpano.setEnabled(True)
@@ -475,6 +491,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def lens_help(self):
         self.all_access_to_manual("EditlensData")
 
+    def iptc_help(self):
+        self.all_access_to_manual("EditiptcData")
+
     def yourcommands_help(self):
         self.all_access_to_manual("YourCommands")
 
@@ -602,6 +621,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def definedlenschanged(self):
         petgfunctions.definedlenschanged(self, qApp)
+
+# Edit -> IPTC tab
+    def clear_iptc_fields(self):
+        petgfunctions.clear_iptc_fields(self)
+
+    def copyiptcfromselected(self):
+        petgfunctions.copyiptcfromselected(self,qApp)
+        
+    def saveiptcdata(self):
+        petgfunctions.saveiptcdata(self, qApp)
 
 # Your Commands tab
     def clear_yourcommands_input(self):
