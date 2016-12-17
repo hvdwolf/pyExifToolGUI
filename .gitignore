@@ -2,4 +2,6 @@ build/
 *.pyc 
 scripts/.pyexiftoolgui/ 
 scripts/.pyexiftoolgui/ 
+scripts/*.pyc
+scripts/ui/*.pyc
 *.wp? 
