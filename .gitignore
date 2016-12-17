@@ -1,5 +1,5 @@
 build/ 
 *.pyc 
-scritps/.pyexiftoolgui/ 
+scripts/.pyexiftoolgui/ 
 scripts/.pyexiftoolgui/ 
 *.wp? 
