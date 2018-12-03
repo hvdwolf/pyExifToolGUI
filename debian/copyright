@@ -1,16 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: pyExifToolGUI
-
+Upstream-Contact: Harry van der Wolf <hvdwolf@gmail.com>
 Source: http://hvdwolf.github.io/pyExifToolGUI/
 
-Author:
-     Harry van der Wolf <hvdwolf@gmail.com>
-
-Copyright:
-    2012-2013 Harry van der Wolf <hvdwolf@gmail.com>
-
-
-License: GPL-3.0+
-
+Files: *
+Copyright: 2012-2013 Harry van der Wolf
+License: GPL-3+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 3 of the License, or
@@ -24,4 +19,6 @@ License: GPL-3.0+
  You should have received a copy of the GNU General Public License
  along with this program. If not, see <http://www.gnu.org/licenses/>
  .
-
+ On Debian systems, the full text of the GNU General Public
+ License version 3 can be found in the file
+ `/usr/share/common-licenses/GPL-3'.

@@ -65,7 +65,7 @@
           </property>
           <property name="icon">
            <iconset>
-            <normaloff>../../icons/1481858792_editor-redo-arrow-reload-outline-stroke.png</normaloff>../../icons/1481858792_editor-redo-arrow-reload-outline-stroke.png</iconset>
+            <normaloff>redo.png</normaloff>redo.png</iconset>
           </property>
          </widget>
         </item>

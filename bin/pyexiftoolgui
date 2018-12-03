@@ -53,7 +53,7 @@ else:
         print("Yes we are running from /usr/bin \n")
         # This means that we are installed and that "the rest" is in /usr/share/pyexiftoolgui
         # but test anyway
-        usr_share_path = os.path.join('/', 'usr', 'share', 'pyexiftoolgui', 'scripts', 'pyexiftoolgui.py')
+        usr_share_path = os.path.join('/', 'usr', 'share', 'pyexiftoolgui', 'pyexiftoolgui', 'pyexiftoolgui.py')
         print('usr_share_path ' + usr_share_path + '\n\n')
         if os.path.isfile(usr_share_path):
             print("starting pyexiftoolgui using: /usr/bin/env python " + usr_share_path)

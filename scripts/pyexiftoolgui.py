@@ -74,7 +74,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 # First set the menu actions
         self.mnu_action_load_images.triggered.connect(self.loadimages)
         self.action_Quit.triggered.connect(self.quit_application)
-        app.aboutToQuit.connect(self.quit_application)
+        qApp.aboutToQuit.connect(self.quit_application)
         #--- Extra menu
         self.mnu_action_modifydatetime.triggered.connect(self.modify_datetime)
         self.mnu_action_create_args.triggered.connect(self.create_args)

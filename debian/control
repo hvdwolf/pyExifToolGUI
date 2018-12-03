@@ -2,20 +2,23 @@ Source: pyexiftoolgui
 Section: python
 Priority: optional
 Maintainer: hvdwolf <hvdwolf@gmail.com>
-Build-Depends: debhelper (>= 8), python (>= 2.7), python3 (>= 3.1)
-Standards-Version: 3.9.4
+Build-Depends: debhelper (>= 8),
+               dh-python,
+               pyside-tools,
+               python (>= 2.7),
+               python-setuptools,
+               python3 (>= 3.1),
+               python3-setuptools
+Standards-Version: 4.2.1
 Homepage: http://hvdwolf.github.io/pyExifToolGUI/
 Vcs-Git: https://github.com/hvdwolf/pyExifToolGUI.git
 Vcs-Browser: https://github.com/hvdwolf/pyExifToolGUI
-X-Python-Version: >= 2.7
-X-Python3-Version: >= 3.1 
 
 Package: pyexiftoolgui
 Architecture: all
 Depends: ${python:Depends}, 
+         ${python3:Depends},
          ${misc:Depends},
-         libqt4-core,
-         libqt4-gui,
          python-qt4,
          python-pyside (>= 1.0.6),
          libimage-exiftool-perl
