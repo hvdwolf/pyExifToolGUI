@@ -189,7 +189,7 @@ def read_defined_lenses(self, qApp):
             self.loaded_lenses.append(lens.attrib["name"])
         self.predefined_lenses.clear()
         self.predefined_lenses.addItems(self.loaded_lenses)
-    if self.lens_current_index <> '':
+    if self.lens_current_index != '':
         self.predefined_lenses.setCurrentIndex(int(self.lens_current_index))
 
 

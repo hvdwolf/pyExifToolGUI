@@ -1,7 +1,17 @@
-build/ 
-*.pyc 
-scripts/.pyexiftoolgui/ 
-scripts/.pyexiftoolgui/ 
-scripts/*.pyc
-scripts/ui/*.pyc
-*.wp? 
+# Generated UI files
+scripts/ui/ui_*.py
+
+# Build files
+build/
+.pybuild/
+*.pyc
+pyexiftoolgui.egg-info/
+
+# IDE files?
+scripts/.pyexiftoolgui/
+*.wp?
+
+# Debian files
+debian/.debhelper/
+debian/files
+debian/pyexiftoolgui*

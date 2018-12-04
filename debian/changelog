@@ -1,3 +1,10 @@
+pyexiftoolgui (0.6ppa1) cosmic; urgency=low
+
+  * Improved Debian build system
+  * Minor fixes and improvements
+
+ -- Dark Dragon <darkdragon-001@web.de>  Sun, 02 Dec 2018 20:18:38 +0100
+
 pyexiftoolgui (0.6) saucy; urgency=low
 
   * Display tags and info in one of the languages that ExifTool supports
@@ -9,7 +16,7 @@ pyexiftoolgui (0.6) saucy; urgency=low
   * Add option to save your lens definitions to file (xml format)
   * Fix typo in image file filter which made *.arw raw format "invisible"
 
- -- hvdwolf <hvdwolf@gmail.com> Mon, 23 Dec 2013 12:00:00 +0100
+ -- hvdwolf <hvdwolf@gmail.com>  Mon, 23 Dec 2013 12:00:00 +0100
 
 pyexiftoolgui (0.5) saucy; urgency=low
 
@@ -20,7 +27,7 @@ pyexiftoolgui (0.5) saucy; urgency=low
   * Fix incorrect indentation in config file functionality which crippled 
     the "display image thumbnails as preview" setting (patch by jowave)
 
- -- hvdwolf <hvdwolf@gmail.com> Mon, 23 Dec 2013 12:00:00 +0100
+ -- hvdwolf <hvdwolf@gmail.com>  Mon, 23 Dec 2013 12:00:00 +0100
 
 pyexiftoolgui (0.4.0.2) saucy; urgency=low
 

@@ -122,7 +122,7 @@ def tool_check( self ):
         self.exiftoolprog = "exiftool"
         if (self.OSplatform in ("Windows", "win32")):
             self.exiftoolprog = find_on_path("exiftool.exe")
-	elif self.OSplatform == "Darwin":
+        elif self.OSplatform == "Darwin":
             self.exiftoolprog = find_on_path("exiftool")
 	#else:
         #    self.exiftoolprog = find_on_path("exiftool")
@@ -140,14 +140,13 @@ def tool_check( self ):
                 result = self.select_exiftool()
                 #print str(result)
                 if result == "":
-			ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.\nI will now (try to) open the exiftool website.")
-			try:
-				webbrowser.open("http://www.sno.phy.queensu.ca/~phil/exiftool/")
-		        except:
-				sys.exit()
-			sys.exit()
+                    ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.\nI will now (try to) open the exiftool website.")
+                    try:
+                        webbrowser.open("http://www.sno.phy.queensu.ca/~phil/exiftool/")
+                    finally:
+                        sys.exit()
                 else:
-			self.exiftoolprog = result
+                    self.exiftoolprog = result
             #Check exiftool version
             args = '"' + self.exiftoolprog + '" -ver'
             self.exiftoolversion = subprocess.check_output(args, shell=True)
@@ -156,20 +155,17 @@ def tool_check( self ):
             self.exiftoollanguages = subprocess.check_output(args, shell=True)
     else:
         if not check_for_program(self.exiftoolprog):
-            ret = QMessageBox.critical(self, "exiftool is missing or incorrectly configured", "exiftool is missing or incorrectly configured in Preferences!\nThis tool is an absolute must have!\nPlease set the correct location or install exiftool first.")
-            #sys.exit()
+            configure_message = "exiftool is missing or incorrectly configured in Preferences!\n"
+            configure_message += "This tool is an absolute must have!\nPlease set the correct location or install exiftool first."
+            ret = QMessageBox.critical(self, "exiftool is missing or incorrectly configured", configure_message)
             result = self.select_exiftool()
             #print str(result)
             if result == "":
-		if self.OSplatform == "Darwin":
-                	ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.\nI will now (try to) open the exiftool website.")
-			try:
-				webbrowser.open("http://www.sno.phy.queensu.ca/~phil/exiftool/")
-		        except:
-				sys.exit()
-		else:
-                	ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.")
-                sys.exit()
+                ret = QMessageBox.critical(self, "Canceled exiftool selection", "You canceled the exiftool selection.\nThe program will quit!\nFirst install exiftool or restart this program and select the correct exiftool.\nI will now (try to) open the exiftool website.")
+                try:
+                    webbrowser.open("http://www.sno.phy.queensu.ca/~phil/exiftool/")
+                finally:
+                    sys.exit()
             else:
                 self.exiftoolprog = result
         #Check exiftool version

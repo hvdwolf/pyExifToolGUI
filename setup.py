@@ -19,32 +19,31 @@
 # command line tool exiftool by Phil Harvey, but it's not
 # a complete exiftool gui: not at all.
 
-from distutils.core import setup
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
-os_files = [
-	 # XDG application description
-	 ('share/applications', ['xdg/pyexiftoolgui.desktop']),
-	 # XDG application icon
-	 ('share/pixmaps', ['logo/pyexiftoolgui.png']),
-]
-
-
-# main distutils setup (command)
-dist = setup(name = "pyexiftoolgui",
-        version = "0.5",
-        description = "pyExifToolGui is a graphical frontend for ExifTool",
-        author = "Harry van der Wolf",
-        author_email = "hvdwolf@gmail.com",
-        url = "http://hvdwolf.github.io/pyExifToolGUI",
-        scripts     = ['bin/pyexiftoolgui'],
-        packages    = ['scripts', 'scripts.ui', 'manual', 'logo', 'xdg'],
-        package_data = { 
-                       'scripts': ['*.py'],
-                       'scripts.ui': ['*.py', '*.ui'], 
-                       'manual' : ['*'], 
-                       'logo' : ['*'], 
-                       'xdg' : ['*'],
-                       },
-        data_files = os_files
-    )
-
+dist = setup(
+    name = "pyexiftoolgui",
+    version = "0.6",
+    author = "Harry van der Wolf",
+    author_email = "hvdwolf@gmail.com",
+    description = "pyExifToolGui is a graphical frontend for ExifTool",
+    license = "GPL-3+",
+    url = "http://hvdwolf.github.io/pyExifToolGUI",
+    scripts = ['bin/pyexiftoolgui'],
+    package_dir = {
+        'pyexiftoolgui': 'scripts',
+    },
+    packages    = ['pyexiftoolgui', 'pyexiftoolgui.ui'],
+    package_data = {
+        'pyexiftoolgui.ui': ['icons/*'],
+    },
+    data_files = [
+        # XDG application description
+        ('share/applications', ['xdg/pyexiftoolgui.desktop']),
+        # XDG application icon
+        ('share/pixmaps', ['logo/pyexiftoolgui.png']),
+    ]
+)
