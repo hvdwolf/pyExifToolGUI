@@ -58,7 +58,9 @@ if OSplatform != "Windows":
 if len(sys.argv) == 1:
    print_usage()
 elif len(sys.argv) == 2:
-   usr_share_path = os.path.join('/', 'usr', 'share')
+   prefix_path = os.path.join('/', 'usr', 'local')
+   usr_bin_path = os.path.join(prefix_path, 'bin')
+   usr_share_path = os.path.join(prefix_path, 'share')
    pyexiftoolgui_path = os.path.join(usr_share_path, 'pyexiftoolgui')
    if "install" in sys.argv:
       OSplatform = platform.system()
@@ -68,7 +70,7 @@ elif len(sys.argv) == 2:
            windows_install()
       print "\nYou have chosen to install pyExiftoolGUI on your system"
       print "\n=======================================================\n"
-      os.system("python setup.py install --install-layout=deb --install-lib=/usr/share/pyexiftoolgui --install-scripts=/usr/bin")
+      os.system("python setup.py install --install-layout=deb --install-lib=" + pyexiftoolgui_path + " --install-scripts=" + usr_bin_path)
       print "\n======================================================="
       print "\nIf you didn't see errors on your screen, pyExifToolGui has been installed."
       print "In case of errors contact me."
@@ -85,9 +87,9 @@ elif len(sys.argv) == 2:
             print "Could not remove " + pyexiftoolgui_path
       try:
             #result = os.remove('/usr/bin/pyexiftoolgui')
-            result = os.system('rm -rf /usr/bin/pyexiftoolgui')
+            result = os.system('rm -rf ' + os.path.join(usr_bin_path, 'pyexiftoolgui'))
       except:
-            print "Could not remove /usr/bin/pyexiftoolgui"
+            print "Could not remove " + os.path.join(usr_bin_path, 'pyexiftoolgui')
       try:
             #result = os.remove(os.path.join(usr_share_path, 'applications', 'pyexiftoolgui.desktop'))
             result = os.system('rm -rf ' + os.path.join(usr_share_path, 'applications', 'pyexiftoolgui.desktop'))
