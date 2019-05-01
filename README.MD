@@ -60,4 +60,4 @@ License along with this program.  If not, see www.gnu.org/licenses
 (2): http://members.home.nl/harryvanderwolf/pyexiftoolgui/donate.html
 
 
-This file: Version 0.40, 2013-12-02, H van der Wolf
+This file: Version 0.50, 2013-12-23, H van der Wolf
