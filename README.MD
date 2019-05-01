@@ -6,18 +6,18 @@ After that time a number of contributors added patches to further expand functio
 Contributors were (in alfabetical order): darkdragon-001, emteejay, GadgetSteve, jedi and jejimenez.
 I realy thank them for their contributions and hope I do not disappoint them too much.
 
-**WhatS next?**
+**What's next?**
 As I (involuntarily) started to program in java for Android some time ago, I decided to convert my pyExifToolGUI to java. 
 Java has some great advantages comparted to a Gui based python program:
 * It is (also) cross platform
-* It comes with the builtin Swing/AWT gui. No more tedious packaging (due to the pyside GUI) dfor every platform.
-* The packaged apps are much smaller and a java jar runs on any platform that has a JRE (Java Runtime Environment), whether it is Linux, AIX, BSD, windows, Mac OS/X, RiscOS, Sun Solaris, etc.
+* It comes with the builtin Swing/AWT gui. No more tedious packaging (due to the pyside GUI) for every platform.
+* The packaged apps are much smaller and a java jar runs on any platform that has a JRE (Java Runtime Environment), whether it is Linux, AIX, BSD, Windows, Mac OS/X, RiscOS, Sun Solaris, etc.
 
 So I'm curently working on jExifToolGUI.
 
 <hr>
-The website is https://hvdwolf.github.io/pyExifToolGUI/
-
+The pyExifToolGUI website is https://hvdwolf.github.io/pyExifToolGUI/
+<br><rr>
 pyExifToolGui is a python pySide QT4 script program that reads and writes
 exif, xmp and IPTC tags from/to image files using exiftool. It can use a
 "reference" image as source image to copy data from. 
@@ -56,7 +56,7 @@ You should have received a copy of the GNU General Public
 License along with this program.  If not, see www.gnu.org/licenses
 
 
-(1): http://www.sno.phy.queensu.ca/~phil/exiftool/
+(1): http://www.sno.phy.queensu.ca/~phil/exiftool/<br>
 (2): http://members.home.nl/harryvanderwolf/pyexiftoolgui/donate.html
 
 
