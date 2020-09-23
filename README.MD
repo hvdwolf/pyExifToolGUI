@@ -6,14 +6,7 @@ After that time a number of contributors added patches to further expand functio
 Contributors were (in alfabetical order): darkdragon-001, emteejay, GadgetSteve, jedi and jejimenez.
 I really thank them for their contributions and hope I do not disappoint them too much.
 
-**What's next?**
-As I (involuntarily) started to program in java for Android some time ago (as nobody else did what I needed), I decided to convert my pyExifToolGUI to java. 
-Java has some great advantages comparted to a Gui based python program:
-* It is (also) cross platform
-* It comes with the builtin Swing/AWT gui. No more tedious packaging (due to the pyside GUI) for every platform.
-* The packaged apps are much smaller and a java jar runs on any platform that has a JRE (Java Runtime Environment), whether it is Linux, AIX, BSD, Windows, Mac OS/X, RiscOS, Sun Solaris, etc.
-
-So I'm curently working on jExifToolGUI.
+## Please switch to [jExifToolGUI](https://github.com/hvdwolf/jExifToolGUI/releases)!
 
 <hr>
 The pyExifToolGUI website is https://hvdwolf.github.io/pyExifToolGUI/
